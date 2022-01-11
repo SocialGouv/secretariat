@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { gql, useQuery, useMutation } from "@apollo/client";
 
 function AddUserForm() {
@@ -11,6 +12,8 @@ function AddUserForm() {
     teams: {},
   };
   const [inputs, setInputs] = useState(initial_values);
+
+  const navigate = useNavigate()
 
   useQuery(
     gql`
@@ -105,8 +108,9 @@ function AddUserForm() {
               user_id: data.insert_users_one.id,
             })),
           },
-          onCompleted: (_) => {
+          onCompleted: () => {
             console.log("User's teams added successfully");
+            navigate("/")
           },
         });
       },

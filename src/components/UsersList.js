@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import User from "./User";
 import { gql, useQuery } from "@apollo/client";
-import "../styles/UsersList.css";
+import "styles/UsersList.css";
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -39,38 +39,5 @@ function UsersList() {
     </div>
   );
 }
-
-// class UsersList extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     const { loading, error, data } = useLazyQuery(gql`
-//       query getUsers {
-//         users {
-//           email
-//           id
-//           expiration
-//           firstname
-//           lastname
-//           profile
-//         }
-//       }
-//     `, {onCompleted: (data) => this.setState(data)});
-//     this.state = {
-//       users: []
-//     };
-//   }
-
-//   render() {
-//     return (
-//       <div className="grid-container">
-//         <div className="grid-element">Firstname</div>
-//         <div className="grid-element">Lastname</div>
-//         {this.state.users.map((user) => (
-//           <User user={user} key={user.firstname} />
-//         ))}
-//       </div>
-//     );
-//   }
-// }
 
 export default UsersList;

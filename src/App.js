@@ -1,10 +1,14 @@
-import UsersList from 'components/UsersList';
-import React from 'react';
-import './App.css';
+import AddUserForm from "components/AddUserForm";
+import UsersList from "components/UsersList";
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
-    <UsersList />
+    <div>
+      <UsersList />
+      <AddUserForm />
+    </div>
   );
 }
 

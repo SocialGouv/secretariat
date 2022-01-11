@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { gql, useQuery, useMutation } from "@apollo/client";
+import { printIntrospectionSchema } from "graphql";
 
-function AddUserForm() {
+function AddUserForm(props) {
   const initial_values = {
     firstname: "",
     lastname: "",
@@ -110,6 +111,7 @@ function AddUserForm() {
           },
           onCompleted: () => {
             console.log("User's teams added successfully");
+            props.updateUsersList()
             navigate("/")
           },
         });

@@ -114,8 +114,9 @@ function AddUserForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-y-4 items-center" onSubmit={handleSubmit}>
       <input
+        className="p-2 border-2 rounded-md"
         type="text"
         name="firstname"
         value={inputs.firstname}
@@ -123,6 +124,7 @@ function AddUserForm() {
         placeholder="Prénom"
       />
       <input
+        className="p-2 border-2 rounded-md"
         type="text"
         name="lastname"
         value={inputs.lastname}
@@ -130,13 +132,19 @@ function AddUserForm() {
         placeholder="Nom"
       />
       <input
-        type="text"
+        className="p-2 border-2 rounded-md"
+        type="email"
         name="email"
         value={inputs.email}
         onChange={handleTextChange}
         placeholder="Email"
       />
-      <select name="profile" value={inputs.profile} onChange={handleTextChange}>
+      <select
+        className="p-2 rounded-md bg-slate-200 hover:bg-slate-300 cursor-pointer"
+        name="profile"
+        value={inputs.profile}
+        onChange={handleTextChange}
+      >
         <option value="" disabled>
           Profil
         </option>
@@ -144,14 +152,17 @@ function AddUserForm() {
         <option value="product">Produit</option>
       </select>
       <input
+        className="p-2 rounded-md bg-slate-200 hover:bg-slate-300 cursor-pointer"
         type="date"
         name="expiration"
         value={inputs.expiration}
         onChange={handleTextChange}
       />
+      <span className="">Équipes :</span>
       {Object.keys(inputs.teams).map((team) => (
         <label key={team}>
           <input
+            className="mr-2"
             name={team}
             key={team}
             type="checkbox"
@@ -161,7 +172,7 @@ function AddUserForm() {
           {team}
         </label>
       ))}
-      <input type="submit" />
+      <input className="rounded-md bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer" type="submit" />
     </form>
   );
 }

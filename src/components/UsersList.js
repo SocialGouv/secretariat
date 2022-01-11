@@ -26,12 +26,12 @@ function UsersList() {
   );
 
   return (
-    <div className="grid-container">
-      <div className="grid-element"><b>Prénom</b></div>
-      <div className="grid-element"><b>Nom</b></div>
-      <div className="grid-element"><b>Email</b></div>
-      <div className="grid-element"><b>Profile</b></div>
-      <div className="grid-element"><b>Expiration</b></div>
+    <div className="grid grid-cols-5">
+      <div className="font-bold">Prénom</div>
+      <div className="font-bold">Nom</div>
+      <div className="font-bold">Email</div>
+      <div className="font-bold">Profile</div>
+      <div className="font-bold">Expiration</div>
       {users.map((user) => (
         <User user={user} key={user.id} />
       ))}

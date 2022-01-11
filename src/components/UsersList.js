@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import User from "./User";
 import { gql, useQuery } from "@apollo/client";
-import "styles/UsersList.css";
 
 function UsersList() {
   const [users, setUsers] = useState([]);

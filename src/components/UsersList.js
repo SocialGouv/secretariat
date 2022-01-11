@@ -34,7 +34,7 @@ function UsersList() {
       <div className="grid-element"><b>Profile</b></div>
       <div className="grid-element"><b>Expiration</b></div>
       {users.map((user) => (
-        <User user={user} key={user.firstname} />
+        <User user={user} key={user.id} />
       ))}
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
 
 function AddUserForm() {
   const initial_values = {
@@ -22,16 +22,48 @@ function AddUserForm() {
     `,
     {
       onCompleted: (data) => {
+        const new_teams = data.teams.reduce((result, team) => {
+          result[team.name] = false;
+          return result;
+        }, {});
         setInputs((values) => {
-          const new_teams = data.teams.reduce(
-            (result, team) => ((result[team.name] = false), result),
-            {}
-          );
           return { ...values, teams: new_teams };
         });
       },
     }
   );
+
+  const [insertUser] = useMutation(gql`
+    mutation InsertUser(
+      $firstname: String
+      $lastname: String
+      $email: String
+      $profile: String
+      $expiration: date
+    ) {
+      insert_users_one(
+        object: {
+          firstname: $firstname
+          lastname: $lastname
+          email: $email
+          profile: $profile
+          expiration: $expiration
+        }
+      ) {
+        id
+      }
+    }
+  `);
+
+  const [insertUserTeam] = useMutation(gql`
+    mutation InsertUserTeam($objects: [user_team_insert_input!] = {}) {
+      insert_user_team(objects: $objects) {
+        returning {
+          id
+        }
+      }
+    }
+  `);
 
   const handleTextChange = (event) => {
     const name = event.target.name;
@@ -40,21 +72,45 @@ function AddUserForm() {
       ...values,
       [name]: value,
     }));
-    console.log(inputs);
   };
 
   const handleTeamsChange = (event) => {
-    const team_name = event.target.name
-    const value = event.target.checked
-    setInputs(values => ({
+    const team_name = event.target.name;
+    const value = event.target.checked;
+    setInputs((values) => ({
       ...values,
-      teams: {...values.teams, [team_name]: value}
-    }))
-  }
+      teams: { ...values.teams, [team_name]: value },
+    }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs);
+    insertUser({
+      variables: {
+        firstname: inputs.firstname,
+        lastname: inputs.lastname,
+        email: inputs.email,
+        profile: inputs.profile,
+        expiration: inputs.expiration,
+      },
+      onCompleted: (data) => {
+        console.log("User added successfully");
+        const teams_to_insert = Object.keys(inputs.teams).filter(
+          (team) => inputs.teams[team]
+        );
+        insertUserTeam({
+          variables: {
+            objects: Array.from(teams_to_insert, (team) => ({
+              team_name: team,
+              user_id: data.insert_users_one.id,
+            })),
+          },
+          onCompleted: (_) => {
+            console.log("User's teams added successfully");
+          },
+        });
+      },
+    });
   };
 
   return (

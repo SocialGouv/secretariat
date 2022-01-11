@@ -1,7 +1,6 @@
 import React from "react";
 
 function User(props) {
-  console.log(props.user);
   return (
     <React.Fragment>
       <div className="grid-element">{props.user.firstname}</div>

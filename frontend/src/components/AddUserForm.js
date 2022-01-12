@@ -29,7 +29,7 @@ function AddUserForm ({ updateUsersList }) {
     {
       onCompleted: (data) => {
         const newTeams = data.teams.reduce((result, team) => {
-          result[team.name] = false
+          result[team.name] = inputs.teams[team.name] ?? false
           return result
         }, {})
         setInputs((values) => {

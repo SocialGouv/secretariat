@@ -172,20 +172,24 @@ function AddUserForm ({ updateUsersList }) {
           onChange={handleTextChange}
         />
       </label>
-      <span className="font-medium">Équipes :</span>
-      {Object.keys(inputs.teams).map((team) => (
-        <label key={team}>
-          <input
-            className="mr-2"
-            name={team}
-            key={team}
-            type="checkbox"
-            checked={inputs.teams[team]}
-            onChange={handleTeamsChange}
-          />
-          {team}
-        </label>
-      ))}
+      <div className="flex flex-col gap-y-0">
+        <span className="font-medium">Équipes :</span>
+        <div className='flex flex-col gap-y-0 items-start'>
+          {Object.keys(inputs.teams).map((team) => (
+            <label key={team}>
+              <input
+                className="mr-2"
+                name={team}
+                key={team}
+                type="checkbox"
+                checked={inputs.teams[team]}
+                onChange={handleTeamsChange}
+              />
+              {team}
+            </label>
+          ))}
+        </div>
+      </div>
 
       {/* User may create a new team while creating a new user */}
       <AddTeamForm updateTeamsList={refetchTeams} />

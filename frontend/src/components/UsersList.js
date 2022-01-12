@@ -20,7 +20,7 @@ function UsersList ({ users, updateUsersList }) {
 }
 
 UsersList.propTypes = {
-  users: PropTypes.object,
+  users: PropTypes.array,
   updateUsersList: PropTypes.func
 }
 

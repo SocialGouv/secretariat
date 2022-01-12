@@ -19,3 +19,10 @@ docker-compose up
 cd frontend
 npm run start
 ```
+
+### Lancer le serveur Express
+
+```sh
+cd backend/api
+npx nodemon start
+```

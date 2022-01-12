@@ -27,8 +27,9 @@ function User(props) {
       <div>{props.user.email}</div>
       <div>{props.user.profile}</div>
       <div>{props.user.expiration}</div>
+      <div>{props.user.user_teams.map(team => (<div key={team.team_name}>{team.team_name}</div>))}</div>
       <button
-        className="font-normal rounded-md bg-slate-200 hover:bg-slate-300 px-4 py-1 w-min"
+        className="font-normal rounded-md bg-slate-200 hover:bg-slate-300 px-4 py-1 w-min h-min"
         onClick={(_) => handleDelete(props.user.id)}
       >
         Supprimer

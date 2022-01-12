@@ -3,10 +3,7 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', function (_, res, next) {
-  res.send({
-    status: 200,
-    body: process.env.GITHUB_TOKEN
-  })
+  res.status(200).send({ text: 'up and running!' })
 })
 
 module.exports = router

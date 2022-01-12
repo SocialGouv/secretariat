@@ -11,7 +11,9 @@ function AddUserForm ({ updateUsersList }) {
     lastname: '',
     email: '',
     profile: '',
-    expiration: '',
+    expiration: new Date(
+      new Date().setMonth(new Date().getMonth() + 3)
+    ).toLocaleDateString('en-CA'),
     teams: {}
   }
   const [inputs, setInputs] = useState(initialValues)
@@ -174,7 +176,7 @@ function AddUserForm ({ updateUsersList }) {
       </label>
       <div className="flex flex-col gap-y-0">
         <span className="font-medium">Équipes :</span>
-        <div className='flex flex-col gap-y-0 items-start'>
+        <div className="flex flex-col gap-y-0 items-start">
           {Object.keys(inputs.teams).map((team) => (
             <label key={team}>
               <input

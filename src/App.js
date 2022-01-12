@@ -16,6 +16,9 @@ function App() {
           firstname
           lastname
           profile
+          user_teams {
+            team_name
+          }
         }
       }
     `,

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import AddUserForm from "components/AddUserForm";
-import UsersList from "components/UsersList";
-import { Routes, Route, Link } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
+import React, { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import AddUserForm from 'components/AddUserForm'
+import UsersList from 'components/UsersList'
+import { gql, useQuery } from '@apollo/client'
 
-function App() {
-  const [users, setUsers] = useState([]);
+function App () {
+  const [users, setUsers] = useState([])
   const { refetch: refetchUsers } = useQuery(
     gql`
       query getUsers {
@@ -24,14 +24,14 @@ function App() {
     `,
     {
       onCompleted: (data) => {
-        setUsers(data.users);
+        setUsers(data.users)
       },
-      onError: (error) => console.log(error),
+      onError: (error) => console.log(error)
     }
-  );
+  )
   const updateUsersList = () => {
-    refetchUsers();
-  };
+    refetchUsers()
+  }
 
   return (
     <div className="App text-center text-lg">
@@ -51,16 +51,20 @@ function App() {
       </nav>
       <div className="mt-8">
         <Routes>
-          <Route path="/" element={
-            <UsersList users={users} updateUsersList={updateUsersList} />
-          } />
-          <Route path="/add-user" element={
-          <AddUserForm updateUsersList={updateUsersList} />
-          } />
+          <Route
+            path="/"
+            element={
+              <UsersList users={users} updateUsersList={updateUsersList} />
+            }
+          />
+          <Route
+            path="/add-user"
+            element={<AddUserForm updateUsersList={updateUsersList} />}
+          />
         </Routes>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

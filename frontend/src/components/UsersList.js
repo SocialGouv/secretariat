@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import User from "./User";
-import { gql, useQuery } from "@apollo/client";
+import React from 'react'
+import PropTypes from 'prop-types'
+import User from 'components/User'
 
-function UsersList(props) {
+function UsersList ({ users, updateUsersList }) {
   return (
     <div className="grid grid-cols-7 gap-y-2">
       <div className="font-bold">Prénom</div>
@@ -12,11 +12,16 @@ function UsersList(props) {
       <div className="font-bold">Expiration</div>
       <div className="font-bold">Équipes</div>
       <div></div>
-      {props.users.map((user) => (
-        <User user={user} key={user.id} updateUsersList={props.updateUsersList} />
+      {users.map((user) => (
+        <User user={user} key={user.id} updateUsersList={updateUsersList} />
       ))}
     </div>
-  );
+  )
 }
 
-export default UsersList;
+UsersList.propTypes = {
+  users: PropTypes.object,
+  updateUsersList: PropTypes.func
+}
+
+export default UsersList

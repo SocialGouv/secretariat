@@ -7,11 +7,11 @@ Application de gestion des utilisateurs externes des différents outils en ligne
 ### Lancer la base de données PostgreSQL et le serveur Hasura
 
 ```sh
-cd backend
 docker-compose up
 ```
 
-Importez ensuite les metadonnées Hasura `hasura_metadata_2022_01_12_09_35_51_241.json` si vous lancez l'application pour la première fois.
+- importer les metadonnées Hasura `hasura_metadata_*.json`
+- régler l'url des *Actions* avec l'IP du bridge Docker
 
 ### Lancer le serveur de développement React
 

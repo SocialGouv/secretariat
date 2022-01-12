@@ -14,7 +14,9 @@ function AddUserForm ({ updateUsersList }) {
     expiration: new Date(
       new Date().setMonth(new Date().getMonth() + 3)
     ).toLocaleDateString('en-CA'),
-    teams: {}
+    teams: {},
+    services: { github: false },
+    githubPseudo: ''
   }
   const [inputs, setInputs] = useState(initialValues)
 
@@ -73,6 +75,15 @@ function AddUserForm ({ updateUsersList }) {
     }
   `)
 
+  const [addGithubUser] = useMutation(gql`
+    mutation AddGithubUser($username: String!) {
+      add_github_user(username: $username) {
+        status
+        text
+      }
+    }
+  `)
+
   const handleTextChange = (event) => {
     const name = event.target.name
     const value = event.target.value
@@ -88,6 +99,16 @@ function AddUserForm ({ updateUsersList }) {
     setInputs((values) => ({
       ...values,
       teams: { ...values.teams, [teamName]: value }
+    }))
+  }
+
+  const handleServicesChange = (event) => {
+    setInputs((values) => ({
+      ...values,
+      services: {
+        ...values.services,
+        [event.target.name]: event.target.checked
+      }
     }))
   }
 
@@ -115,6 +136,19 @@ function AddUserForm ({ updateUsersList }) {
           },
           onCompleted: () => {
             console.log("User's teams added successfully")
+            if (inputs.services.github) {
+              addGithubUser({
+                variables: {
+                  username: inputs.githubPseudo
+                },
+                onCompleted: (data) => {
+                  console.log(data.add_github_user)
+                },
+                onError: (error) => {
+                  console.log(error)
+                }
+              })
+            }
             updateUsersList()
             navigate('/')
           }
@@ -195,6 +229,30 @@ function AddUserForm ({ updateUsersList }) {
 
       {/* User may create a new team while creating a new user */}
       <AddTeamForm updateTeamsList={refetchTeams} />
+      <div className="mt-4 flex flex-col gap-y-2">
+        <span className="font-medium text-4xl">Services</span>
+        <div className="flex flex-col">
+          <label>
+            <input
+              className="mr-2"
+              name="github"
+              checked={inputs.services.github}
+              onChange={handleServicesChange}
+              type="checkbox"
+            />
+            Github
+          </label>
+          <input
+            name="githubPseudo"
+            value={inputs.githubPseudo}
+            onChange={handleTextChange}
+            disabled={!inputs.services.github}
+            className="p-2 border-2 rounded-md disabled:bg-slate-200 disabled:text-slate-500"
+            type="text"
+            placeholder="Pseudo Github"
+          />
+        </div>
+      </div>
       <input
         className="rounded-md bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer"
         type="submit"

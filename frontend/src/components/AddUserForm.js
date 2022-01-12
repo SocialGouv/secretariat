@@ -123,7 +123,7 @@ function AddUserForm ({ updateUsersList }) {
 
   return (
     <form
-      className="mx-2 flex flex-col gap-y-4 items-center"
+      className="flex flex-col gap-y-4 items-center"
       onSubmit={handleSubmit}
     >
       <input

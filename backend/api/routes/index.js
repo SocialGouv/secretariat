@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/', function (_, res, next) {
   res.send({
     status: 200,
-    body: 'oui'
+    body: process.env.GITHUB_TOKEN
   })
 })
 

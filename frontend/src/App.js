@@ -35,7 +35,7 @@ function App () {
 
   return (
     <div className="App text-center text-lg">
-      <nav className="mt-8 flex flex-row justify-evenly">
+      <nav className="mx-2 mt-8 flex flex-row justify-evenly gap-x-2">
         <Link
           className="rounded-md bg-slate-200 px-8 py-3 hover:bg-slate-300"
           to="/"

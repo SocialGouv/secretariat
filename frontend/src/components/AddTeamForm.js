@@ -49,7 +49,7 @@ function AddTeamForm ({ updateTeamsList }) {
         placeholder="Nouvelle équipe"
       />
       <input
-        className="ml-2 font-medium rounded-md bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer"
+        className="mt-2 ml-2 font-medium rounded-md bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer"
         type="button"
         onClick={handleSubmit}
         value="Créer"

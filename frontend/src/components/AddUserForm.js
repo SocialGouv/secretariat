@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { gql, useQuery, useMutation } from "@apollo/client";
-import { printIntrospectionSchema } from "graphql";
 
 function AddUserForm(props) {
   const initial_values = {
@@ -157,14 +156,17 @@ function AddUserForm(props) {
         <option value="dev">Dev</option>
         <option value="product">Produit</option>
       </select>
+      <label className="font-semibold">
+      Date d'expiration :
       <input
-        className="p-2 rounded-md bg-slate-200 hover:bg-slate-300 cursor-pointer"
+        className="ml-2 p-2 rounded-md bg-slate-200 hover:bg-slate-300 cursor-pointer"
         type="date"
         name="expiration"
         value={inputs.expiration}
         onChange={handleTextChange}
       />
-      <span className="">Équipes :</span>
+      </label>
+      <span className="font-semibold">Équipes :</span>
       {Object.keys(inputs.teams).map((team) => (
         <label key={team}>
           <input

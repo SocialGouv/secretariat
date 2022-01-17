@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { gql, useMutation } from '@apollo/client'
 
+import ServicesStatus from 'components/ServicesStatus'
+
 function User ({ user, updateUsersList }) {
+  const [isActive, setisActive] = useState(false)
+
   const [deleteUser] = useMutation(gql`
     mutation DeleteUser($id: Int!) {
       delete_users_by_pk(id: $id) {
@@ -23,16 +27,40 @@ function User ({ user, updateUsersList }) {
 
   return (
     <React.Fragment>
-      <div className="overflow-hidden text-ellipsis">
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
         {user.firstname}
       </div>
-      <div className="overflow-hidden text-ellipsis">{user.lastname}</div>
-      <div className="overflow-hidden text-ellipsis">{user.email}</div>
-      <div className="overflow-hidden text-ellipsis">{user.profile}</div>
-      <div className="overflow-hidden text-ellipsis">
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
+        {user.lastname}
+      </div>
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
+        {user.email}
+      </div>
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
+        {user.profile}
+      </div>
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
         {user.expiration}
       </div>
-      <div className="overflow-hidden text-ellipsis">
+      <div
+        onClick={(e) => setisActive(!isActive)}
+        className="overflow-hidden text-ellipsis"
+      >
         {user.user_teams.map((team) => (
           <div key={team.team_name}>{team.team_name}</div>
         ))}
@@ -43,6 +71,7 @@ function User ({ user, updateUsersList }) {
       >
         Supprimer
       </button>
+      {isActive && <ServicesStatus user={user} />}
     </React.Fragment>
   )
 }

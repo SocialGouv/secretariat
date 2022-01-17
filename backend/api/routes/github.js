@@ -16,13 +16,14 @@ async function adduser (username) {
     })
     console.log('Added user successfully')
     return {
-      status: 200
+      status: 200,
+      message: ''
     }
   } catch (error) {
     console.error(error)
     return {
       status: error.response.status,
-      text: error.response.data.message
+      message: error.response.data.message
     }
   }
 }

@@ -16,7 +16,7 @@ function UserCreationForm ({ updateUsersList }) {
     ).toLocaleDateString('en-CA'),
     teams: {},
     services: { github: false },
-    githubPseudo: ''
+    githubUsername: ''
   }
   const [inputs, setInputs] = useState(initialValues)
 
@@ -79,7 +79,7 @@ function UserCreationForm ({ updateUsersList }) {
     mutation AddGithubUser($username: String!) {
       add_github_user(username: $username) {
         status
-        text
+        message
       }
     }
   `)
@@ -139,7 +139,7 @@ function UserCreationForm ({ updateUsersList }) {
             if (inputs.services.github) {
               addGithubUser({
                 variables: {
-                  username: inputs.githubPseudo
+                  username: inputs.githubUsername
                 },
                 onCompleted: (data) => {
                   console.log(data.add_github_user)
@@ -243,13 +243,13 @@ function UserCreationForm ({ updateUsersList }) {
             Github
           </label>
           <input
-            name="githubPseudo"
-            value={inputs.githubPseudo}
+            name="githubUsername"
+            value={inputs.githubUsername}
             onChange={handleTextChange}
             disabled={!inputs.services.github}
             className="p-2 border-2 rounded-md disabled:bg-slate-200 disabled:text-slate-500"
             type="text"
-            placeholder="Pseudo Github"
+            placeholder="Nom d'utilisateur Github"
           />
         </div>
       </div>

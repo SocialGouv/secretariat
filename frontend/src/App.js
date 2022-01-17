@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import AddUserForm from 'components/AddUserForm'
+import UserCreationForm from 'components/UserCreationForm'
 import UsersList from 'components/UsersList'
 import { gql, useQuery } from '@apollo/client'
 
@@ -59,7 +59,7 @@ function App () {
           />
           <Route
             path="/add-user"
-            element={<AddUserForm updateUsersList={updateUsersList} />}
+            element={<UserCreationForm updateUsersList={updateUsersList} />}
           />
         </Routes>
       </div>

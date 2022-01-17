@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { gql, useQuery, useMutation } from '@apollo/client'
 
-import AddTeamForm from 'components/AddTeamForm'
+import TeamCreationForm from 'components/TeamCreationForm'
 
-function AddUserForm ({ updateUsersList }) {
+function UserCreationForm ({ updateUsersList }) {
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -228,7 +228,7 @@ function AddUserForm ({ updateUsersList }) {
       </div>
 
       {/* User may create a new team while creating a new user */}
-      <AddTeamForm updateTeamsList={refetchTeams} />
+      <TeamCreationForm updateTeamsList={refetchTeams} />
       <div className="mt-4 flex flex-col gap-y-2">
         <span className="font-medium text-4xl">Services</span>
         <div className="flex flex-col">
@@ -261,8 +261,8 @@ function AddUserForm ({ updateUsersList }) {
   )
 }
 
-AddUserForm.propTypes = {
+UserCreationForm.propTypes = {
   updateUsersList: PropTypes.func
 }
 
-export default AddUserForm
+export default UserCreationForm

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { gql, useMutation } from '@apollo/client'
 
-function AddTeamForm ({ updateTeamsList }) {
+function TeamCreationForm ({ updateTeamsList }) {
   const [teamNameInput, setTeamNameInput] = useState('')
 
   const [insertTeam] = useMutation(gql`
@@ -25,7 +25,7 @@ function AddTeamForm ({ updateTeamsList }) {
     }
   }
 
-  // Submit AddTeamForm
+  // Submit TeamCreationForm
   const handleSubmit = () => {
     insertTeam({
       variables: { name: teamNameInput },
@@ -58,8 +58,8 @@ function AddTeamForm ({ updateTeamsList }) {
   )
 }
 
-AddTeamForm.propTypes = {
+TeamCreationForm.propTypes = {
   updateTeamsList: PropTypes.func
 }
 
-export default AddTeamForm
+export default TeamCreationForm

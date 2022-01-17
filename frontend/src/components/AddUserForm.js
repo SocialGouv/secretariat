@@ -180,7 +180,7 @@ function AddUserForm ({ updateUsersList }) {
       />
       <input
         className="p-2 border-2 rounded-md"
-        type="email"
+        type="text"
         name="email"
         value={inputs.email}
         onChange={handleTextChange}

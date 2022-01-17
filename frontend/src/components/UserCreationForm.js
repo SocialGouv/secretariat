@@ -84,6 +84,16 @@ function UserCreationForm ({ updateUsersList }) {
     }
   `)
 
+  const [insertGithubUsername] = useMutation(gql`
+    mutation InsertGithubUsername($user_id: Int, $username: String) {
+      insert_github_usernames_one(
+        object: { user_id: $user_id, username: $username }
+      ) {
+        username
+      }
+    }
+  `)
+
   const handleTextChange = (event) => {
     const name = event.target.name
     const value = event.target.value
@@ -122,7 +132,7 @@ function UserCreationForm ({ updateUsersList }) {
         profile: inputs.profile,
         expiration: inputs.expiration
       },
-      onCompleted: (data) => {
+      onCompleted: (insertUserData) => {
         console.log('User added successfully')
         const teamToInsert = Object.keys(inputs.teams).filter(
           (team) => inputs.teams[team]
@@ -131,7 +141,7 @@ function UserCreationForm ({ updateUsersList }) {
           variables: {
             objects: Array.from(teamToInsert, (team) => ({
               team_name: team,
-              user_id: data.insert_users_one.id
+              user_id: insertUserData.insert_users_one.id
             }))
           },
           onCompleted: () => {
@@ -142,7 +152,18 @@ function UserCreationForm ({ updateUsersList }) {
                   username: inputs.githubUsername
                 },
                 onCompleted: (data) => {
-                  console.log(data.add_github_user)
+                  insertGithubUsername({
+                    variables: {
+                      user_id: insertUserData.insert_users_one.id,
+                      username: inputs.githubUsername
+                    },
+                    onCompleted: () => {
+                      console.log('Github username added successfully')
+                    },
+                    onError: (error) => {
+                      console.error(error)
+                    }
+                  })
                 },
                 onError: (error) => {
                   console.log(error)

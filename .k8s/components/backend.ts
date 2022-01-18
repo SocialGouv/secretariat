@@ -36,6 +36,9 @@ export const getManifests = async () => {
 		},
 		deployment: {
 			image: `ghcr.io/socialgouv/secretariat/backend:${version}`,
+			container: {
+				...podProbes
+			}
 		}
 	});
 

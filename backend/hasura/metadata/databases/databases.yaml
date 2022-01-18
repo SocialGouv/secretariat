@@ -1,9 +1,1 @@
-- name: main_db
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: PG_DATABASE_URL
-      isolation_level: read-committed
-      use_prepared_statements: false
-  tables: "!include main_db/tables/tables.yaml"
+[]

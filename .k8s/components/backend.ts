@@ -23,6 +23,7 @@ export const getManifests = async () => {
 			}
 		}),
 		{}
+		
 	);
 
 	const manifests = await create(name, {

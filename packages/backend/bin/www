@@ -8,6 +8,8 @@ const app = require('../app')
 const debug = require('debug')('api:server')
 const http = require('http')
 
+console.log('launching express API server')
+
 /**
  * Get port from environment and store in Express.
  */

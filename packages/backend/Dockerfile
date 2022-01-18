@@ -8,5 +8,4 @@ RUN npm ci --only=production
 
 EXPOSE 3000
 
-CMD ["echo", "bonjour"]
-#CMD [ "node", "./bin/www" ]
+CMD [ "node", "./bin/www" ]

@@ -6,7 +6,7 @@ router.get('/', function (_, res, next) {
 })
 
 router.get('/healthz', function (_, res, next) {
-  res.status(200)
+  res.status(200).send()
 })
 
 module.exports = router

@@ -23,7 +23,7 @@ export const getManifests = async () => {
 			}
 		}),
 		{}
-		
+
 	);
 
 	const manifests = await create(name, {
@@ -36,19 +36,6 @@ export const getManifests = async () => {
 		},
 		deployment: {
 			image: `ghcr.io/socialgouv/secretariat/backend:${version}`,
-			container: {
-				resources: {
-					requests: {
-						cpu: '50m',
-						memory: '128Mi'
-					},
-					limits: {
-						cpu: '200m',
-						memory: '256Mi'
-					}
-				},
-				...podProbes
-			}
 		}
 	});
 

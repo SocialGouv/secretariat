@@ -1,0 +1,11 @@
+type Mutation {
+  add_github_user(
+    username: String!
+  ): Response
+}
+
+type Response {
+  status: Int
+  message: String
+}
+

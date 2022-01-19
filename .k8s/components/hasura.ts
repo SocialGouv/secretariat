@@ -11,12 +11,28 @@ import { Service } from 'kubernetes-models/v1'
 declare type Manifests = Promise<{ kind: string }[] | []>
 
 export async function getManifests () {
+  const probesPath = '/healthz'
   const hasura = 'exposed'
 
   const ciEnv = environments(process.env)
   const version = ciEnv.isPreProduction
     ? `preprod-${ciEnv.sha}`
     : ciEnv.tag || `sha-${ciEnv.sha}`
+
+  const podProbes = ['livenessProbe', 'readinessProbe', 'startupProbe'].reduce(
+    (probes, probe) => ({
+      ...probes,
+      [probe]: {
+        httpGet: {
+          path: probesPath,
+          port: 3000
+        },
+        initialDelaySeconds: 37,
+        periodSeconds: 15
+      }
+    }),
+    {}
+  )
 
   const config = {
     config: { ingress: hasura === 'exposed' },
@@ -32,8 +48,11 @@ export async function getManifests () {
           memory: '128Mi'
         }
       },
-      startupProbe: {
-        initialDelaySeconds: 370
+      // startupProbe: {
+      //   initialDelaySeconds: 370
+      // }
+      container: {
+        ...podProbes
       }
     },
     env

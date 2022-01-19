@@ -15,7 +15,17 @@ export async function getManifests () {
   const config = {
     config: { ingress: hasura === 'exposed' },
     deployment: {
-      image: `ghcr.io/socialgouv/secretariat/hasura:${version}`
+      image: `ghcr.io/socialgouv/secretariat/hasura:${version}`,
+      resources: {
+        limits: {
+          cpu: '1000m',
+          memory: '1024Mi'
+        },
+        requests: {
+          cpu: '200m',
+          memory: '128Mi'
+        }
+      }
     },
     env
   }

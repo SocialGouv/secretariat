@@ -35,7 +35,7 @@ export async function getManifests () {
   )
 
   const config = {
-    config: { ingress: hasura === 'exposed' },
+    config: { ingress: hasura === 'exposed', containerPort: 'http' },
     deployment: {
       image: `ghcr.io/socialgouv/secretariat/hasura:${version}`,
       container: {

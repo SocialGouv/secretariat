@@ -33,7 +33,7 @@ export async function getManifests () {
         }
       },
       startupProbe: {
-        initialDelaySeconds: 120
+        initialDelaySeconds: 370
       }
     },
     env

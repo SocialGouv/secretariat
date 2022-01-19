@@ -25,9 +25,9 @@ export async function getManifests () {
       [probe]: {
         httpGet: {
           path: probesPath,
-          port: 3000
+          port: 8080
         },
-        initialDelaySeconds: 200,
+        initialDelaySeconds: 180,
         periodSeconds: 15
       }
     }),
@@ -38,19 +38,6 @@ export async function getManifests () {
     config: { ingress: hasura === 'exposed' },
     deployment: {
       image: `ghcr.io/socialgouv/secretariat/hasura:${version}`,
-      resources: {
-        limits: {
-          cpu: '1000m',
-          memory: '1024Mi'
-        },
-        requests: {
-          cpu: '200m',
-          memory: '128Mi'
-        }
-      },
-      // startupProbe: {
-      //   initialDelaySeconds: 370
-      // }
       container: {
         ...podProbes
       }

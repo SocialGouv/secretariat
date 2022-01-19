@@ -25,6 +25,9 @@ export async function getManifests () {
           cpu: '200m',
           memory: '128Mi'
         }
+      },
+      startupProbe: {
+        initialDelaySeconds: 120
       }
     },
     env

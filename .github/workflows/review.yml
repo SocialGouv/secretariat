@@ -53,6 +53,25 @@ jobs:
           dockercontext: ./packages/frontend
 
   ##############################################################################
+  ## BUILD AND REGISTER HASURA IMAGE
+  ##############################################################################
+  register-hasura:
+    name: Build & Register Hasura
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project name
+        run: |
+          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+      - name: Use autodevops build and register
+        uses: SocialGouv/actions/autodevops-build-register@v1
+        with:
+          project: ${{ env.project }}
+          dockerfile: ./packages/hasura/Dockerfile
+          dockercontext: ./packages/hasura
+          token: ${{ secrets.GITHUB_TOKEN }}
+          imageName: ${{ env.project }}/hasura
+
+  ##############################################################################
   ## GENERATE KUBERNETES MANIFESTS
   ##############################################################################
   manifests:
@@ -72,7 +91,7 @@ jobs:
   deploy:
     name: Deploy review branch
     runs-on: ubuntu-latest
-    needs: [register-backend, register-frontend, manifests]
+    needs: [register-backend, register-frontend, register-hasura, manifests]
     steps:
       - name: Use autodevops deployment
         uses: SocialGouv/actions/autodevops-deploy@v1

@@ -32,7 +32,7 @@ export const getManifests = async () => {
     config: {
       subdomain,
       ingress: true,
-      containerPort: 8080
+      containerPort: 80
     },
     deployment: {
       image: `ghcr.io/socialgouv/secretariat/frontend:${version}`,

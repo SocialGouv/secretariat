@@ -2,7 +2,7 @@ FROM node:16 as builder
 
 WORKDIR /usr/src/frontend
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
 RUN npm run build
 

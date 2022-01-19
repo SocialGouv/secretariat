@@ -5,7 +5,7 @@ import environments from '@socialgouv/kosko-charts/environments'
 export const getManifests = async () => {
   const name = 'backend'
   const probesPath = '/healthz'
-  const subdomain = 'secretariat'
+  const subdomain = 'backend.secretariat'
 
   const ciEnv = environments(process.env)
   const version = ciEnv.isPreProduction

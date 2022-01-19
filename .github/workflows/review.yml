@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   ##############################################################################
-  ## BUILD AND REGISTER APP IMAGE
+  ## BUILD AND REGISTER BACKEND
   ##############################################################################
   register-backend:
     name: Build & Register backend
@@ -32,6 +32,9 @@ jobs:
           dockerfile: ./packages/backend/Dockerfile
           dockercontext: ./packages/backend
 
+  ##############################################################################
+  ## BUILD AND REGISTER FRONTEND
+  ##############################################################################
   register-frontend:
     name: Build & Register frontend
     runs-on: ubuntu-latest

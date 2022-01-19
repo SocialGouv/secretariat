@@ -31,6 +31,7 @@ export const getManifests = async () => {
     env,
     config: {
       subdomain,
+      subDomainPrefix: `${subdomain}-`,
       ingress: true,
       withPostgres: true,
       containerPort: 3000

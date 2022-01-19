@@ -27,7 +27,7 @@ export async function getManifests () {
           path: probesPath,
           port: 'http'
         },
-        initialDelaySeconds: 180,
+        initialDelaySeconds: 60,
         periodSeconds: 15
       }
     }),

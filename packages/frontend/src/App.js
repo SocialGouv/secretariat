@@ -35,7 +35,6 @@ function App () {
 
   return (
     <div className="App text-center text-lg m-4">
-      <div>%%HASURA_API_URL%%</div>
       <nav className="mt-8 flex flex-row justify-evenly gap-x-2">
         <Link
           className="rounded-md bg-slate-200 px-8 py-3 hover:bg-slate-300"

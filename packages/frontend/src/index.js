@@ -6,10 +6,8 @@ import reportWebVitals from './reportWebVitals'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { BrowserRouter } from 'react-router-dom'
 
-console.log('%%HASURA_API_URL%%')
-
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/v1/graphql',
+  uri: '%%HASURA_API_URL%%',
   cache: new InMemoryCache()
 })
 

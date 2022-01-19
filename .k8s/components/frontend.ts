@@ -18,7 +18,7 @@ export const getManifests = async () => {
       [probe]: {
         httpGet: {
           path: probesPath,
-          port: 3000
+          port: 'http'
         },
         initialDelaySeconds: 30,
         periodSeconds: 15
@@ -32,8 +32,7 @@ export const getManifests = async () => {
     config: {
       subdomain,
       ingress: true,
-      withPostgres: true,
-      containerPort: 3000
+      containerPort: 8080
     },
     deployment: {
       image: `ghcr.io/socialgouv/secretariat/frontend:${version}`,

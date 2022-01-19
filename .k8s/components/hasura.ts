@@ -25,7 +25,7 @@ export async function getManifests () {
       [probe]: {
         httpGet: {
           path: probesPath,
-          port: 8080
+          port: 'http'
         },
         initialDelaySeconds: 180,
         periodSeconds: 15
@@ -35,7 +35,7 @@ export async function getManifests () {
   )
 
   const config = {
-    config: { ingress: hasura === 'exposed', containerPort: 'http' },
+    config: { ingress: hasura === 'exposed', containerPort: 8080 },
     deployment: {
       image: `ghcr.io/socialgouv/secretariat/hasura:${version}`,
       container: {

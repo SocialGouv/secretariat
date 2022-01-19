@@ -5,7 +5,6 @@ import environments from '@socialgouv/kosko-charts/environments'
 export const getManifests = async () => {
   const name = 'frontend'
   const probesPath = '/'
-  const subdomain = 'secretariat'
 
   const ciEnv = environments(process.env)
   const version = ciEnv.isPreProduction
@@ -30,7 +29,6 @@ export const getManifests = async () => {
   const manifests = await create(name, {
     env,
     config: {
-      subdomain,
       ingress: true,
       containerPort: 80
     },

@@ -1,6 +1,12 @@
 import env from '@kosko/env'
 import environments from '@socialgouv/kosko-charts/environments'
 import { create } from '@socialgouv/kosko-charts/components/hasura'
+import { getManifests as getBackendManifests } from './backend'
+import { addEnv } from '@socialgouv/kosko-charts/utils/addEnv'
+import { getManifestByKind } from '@socialgouv/kosko-charts/utils/getManifestByKind'
+import { EnvVar } from 'kubernetes-models/v1/EnvVar'
+import { Deployment } from 'kubernetes-models/apps/v1/Deployment'
+import { Service } from 'kubernetes-models/v1'
 
 declare type Manifests = Promise<{ kind: string }[] | []>
 
@@ -37,5 +43,26 @@ export async function getManifests () {
 
 export default async (): Manifests => {
   const manifests = await getManifests()
+
+  /* pass dynamic deployment URL as env var to the container */
+  // @ts-expect-error
+  const deployment = getManifestByKind(manifests, Deployment) as Deployment
+
+  const appManifests = await getBackendManifests()
+  const appService = appManifests.find((m) => m.kind === 'Service') as Service
+  let upstream = ''
+  if (appService && appService?.spec?.ports && appService?.spec?.ports.length) {
+    const serviceName = appService.metadata?.name
+    const servicePort = appService?.spec?.ports[0].port
+    upstream = `http://${serviceName}:${servicePort}`
+  }
+
+  const hasuraUrl = new EnvVar({
+    name: 'BACKEND_URL',
+    value: upstream
+  })
+
+  addEnv({ deployment, data: hasuraUrl })
+
   return manifests
 }

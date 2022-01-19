@@ -1,6 +1,12 @@
 import env from '@kosko/env'
 import { create } from '@socialgouv/kosko-charts/components/app'
 import environments from '@socialgouv/kosko-charts/environments'
+import { getManifests as getHasuraManifests } from './hasura'
+import { addEnv } from '@socialgouv/kosko-charts/utils/addEnv'
+import { getIngressHost } from '@socialgouv/kosko-charts/utils/getIngressHost'
+import { getManifestByKind } from '@socialgouv/kosko-charts/utils/getManifestByKind'
+import { EnvVar } from 'kubernetes-models/v1/EnvVar'
+import { Deployment } from 'kubernetes-models/apps/v1/Deployment'
 
 export const getManifests = async () => {
   const name = 'frontend'
@@ -47,6 +53,19 @@ export const getManifests = async () => {
 
 export default async () => {
   const manifests = await getManifests()
+
+  /* pass dynamic deployment URL as env var to the container */
+  // @ts-expect-error
+  const deployment = getManifestByKind(manifests, Deployment) as Deployment
+
+  const hasuraManifests = await getHasuraManifests()
+
+  const hasuraUrl = new EnvVar({
+    name: 'HASURA_API_URL',
+    value: `https://${getIngressHost(hasuraManifests)}/v1/graphql`
+  })
+
+  addEnv({ deployment, data: hasuraUrl })
 
   return manifests
 }

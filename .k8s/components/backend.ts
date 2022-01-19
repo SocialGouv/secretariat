@@ -5,6 +5,7 @@ import environments from '@socialgouv/kosko-charts/environments'
 export const getManifests = async () => {
   const name = 'backend'
   const probesPath = '/healthz'
+  const subdomain = 'secretariat'
 
   const ciEnv = environments(process.env)
   const version = ciEnv.isPreProduction
@@ -29,7 +30,8 @@ export const getManifests = async () => {
   const manifests = await create(name, {
     env,
     config: {
-      subDomainPrefix: 'backend-',
+      subdomain,
+      subDomainPrefix: `${name}-`,
       ingress: true,
       withPostgres: true,
       containerPort: 3000

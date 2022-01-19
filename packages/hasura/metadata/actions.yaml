@@ -1,6 +1,16 @@
-actions: []
+actions:
+- name: actionName
+  definition:
+    kind: synchronous
+    handler: '{{BACKEND_URL}}'
+    request_transform:
+      method: GET
+      query_params: {}
+      template_engine: Kriti
+  comment: Test API up
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: SampleOutput
   scalars: []

@@ -26,7 +26,7 @@ function User ({ user, updateUsersList }) {
   }
 
   return (
-    <React.Fragment>
+    <div className={'grid grid-cols-7 rounded-md p-2 ' + (isActive ? 'bg-blue-100' : 'even:bg-slate-100')}>
       <div
         onClick={(e) => setisActive(!isActive)}
         className="overflow-hidden text-ellipsis"
@@ -72,7 +72,7 @@ function User ({ user, updateUsersList }) {
         Supprimer
       </button>
       {isActive && <ServicesStatus user={user} />}
-    </React.Fragment>
+    </div>
   )
 }
 

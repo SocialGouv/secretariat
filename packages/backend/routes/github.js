@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 
-async function adduser (username) {
+async function registerUser (username) {
   try {
     const getUserIdResponse = await axios({
       url: `https://api.github.com/users/${username}`,
@@ -14,7 +14,7 @@ async function adduser (username) {
       headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
       data: { invitee_id: getUserIdResponse.data.id }
     })
-    console.log('Added user successfully')
+    console.log('Registered user successfully')
     return {
       status: 200,
       message: ''
@@ -28,8 +28,8 @@ async function adduser (username) {
   }
 }
 
-router.post('/add-user', function (expressRequest, expressResponse, next) {
-  adduser(expressRequest.body.input.username).then((result) => {
+router.post('/register-user', function (expressRequest, expressResponse, next) {
+  registerUser(expressRequest.body.input.githubUsername).then((result) => {
     expressResponse.status(result.status).json(result)
   })
 })

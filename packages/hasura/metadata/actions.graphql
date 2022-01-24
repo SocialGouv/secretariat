@@ -1,8 +1,15 @@
 type Mutation {
-  actionName: SampleOutput
+  register_github_user(
+    githubUsername: String!
+  ): ExpressResponse
 }
 
 type SampleOutput {
   text: String!
+}
+
+type ExpressResponse {
+  status: String!
+  message: Int!
 }
 

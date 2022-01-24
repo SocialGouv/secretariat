@@ -1,16 +1,17 @@
 actions:
-- name: actionName
+- name: register_github_user
   definition:
     kind: synchronous
-    handler: '{{BACKEND_URL}}'
+    handler: '{{BACKEND_URL}}/github/register-user'
     request_transform:
-      method: GET
+      method: POST
       query_params: {}
       template_engine: Kriti
-  comment: Test API up
+  comment: Register a Github user
 custom_types:
   enums: []
   input_objects: []
   objects:
   - name: SampleOutput
+  - name: ExpressResponse
   scalars: []

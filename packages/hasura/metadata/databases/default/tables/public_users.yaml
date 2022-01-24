@@ -1,3 +1,11 @@
 table:
   name: users
   schema: public
+array_relationships:
+- name: user_teams
+  using:
+    foreign_key_constraint_on:
+      column: user_id
+      table:
+        name: user_teams
+        schema: public

@@ -1,4 +1,12 @@
 actions:
+- name: get_github_user_status
+  definition:
+    kind: ""
+    handler: '{{BACKEND_URL}}/github/user-status'
+    request_transform:
+      method: GET
+      query_params: {}
+      template_engine: Kriti
 - name: register_github_user
   definition:
     kind: synchronous
@@ -10,7 +18,8 @@ actions:
   comment: Register a Github user
 custom_types:
   enums: []
-  input_objects: []
+  input_objects:
+  - name: SampleInput
   objects:
   - name: SampleOutput
   - name: ExpressResponse

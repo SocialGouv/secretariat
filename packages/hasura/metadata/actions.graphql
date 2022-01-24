@@ -1,11 +1,22 @@
-type Mutation {
-  register_github_user(
-    githubUsername: String!
+type Query {
+  get_github_user_status(
+    github_username: String!
   ): ExpressResponse
 }
 
+type Mutation {
+  register_github_user(
+    github_username: String!
+  ): ExpressResponse
+}
+
+input SampleInput {
+  username: String!
+  password: String!
+}
+
 type SampleOutput {
-  text: String!
+  accessToken: String!
 }
 
 type ExpressResponse {

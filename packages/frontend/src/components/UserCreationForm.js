@@ -76,8 +76,8 @@ function UserCreationForm ({ updateUsersList }) {
   `)
 
   const [registerGithubUser] = useMutation(gql`
-    mutation RegisterGithubUser($githubUsername: String!) {
-      register_github_user(githubUsername: $githubUsername) {
+    mutation RegisterGithubUser($github_username: String!) {
+      register_github_user(github_username: $github_username) {
         status
         message
       }
@@ -149,7 +149,7 @@ function UserCreationForm ({ updateUsersList }) {
             if (inputs.services.github) {
               registerGithubUser({
                 variables: {
-                  githubUsername: inputs.githubUsername
+                  github_username: inputs.githubUsername
                 },
                 onCompleted: (data) => {
                   insertGithubUsername({
@@ -159,6 +159,8 @@ function UserCreationForm ({ updateUsersList }) {
                     },
                     onCompleted: () => {
                       console.log('Github username added successfully')
+                      updateUsersList()
+                      navigate('/')
                     },
                     onError: (error) => {
                       console.error(error)
@@ -169,9 +171,10 @@ function UserCreationForm ({ updateUsersList }) {
                   console.log(error)
                 }
               })
+            } else {
+              updateUsersList()
+              navigate('/')
             }
-            updateUsersList()
-            navigate('/')
           }
         })
       }

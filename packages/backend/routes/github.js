@@ -51,13 +51,13 @@ async function getUserStatus (githubUsername) {
 }
 
 router.post('/register-user', function (expressRequest, expressResponse, next) {
-  registerUser(expressRequest.body.input.githubUsername).then((result) => {
+  registerUser(expressRequest.body.input.github_username).then((result) => {
     expressResponse.status(result.status).json(result)
   })
 })
 
 router.get('/user-status', function (expressRequest, expressResponse, next) {
-  getUserStatus(expressRequest.query.username).then((result) => {
+  getUserStatus(expressRequest.body.input.github_username).then((result) => {
     expressResponse.status(result.status).json(result)
   })
 })

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { BrowserRouter } from 'react-router-dom'
 
+console.log('Creating Apollo client with URI', '%%HASURA_API_URL%%')
 const client = new ApolloClient({
   uri: '%%HASURA_API_URL%%',
   cache: new InMemoryCache()

@@ -7,5 +7,5 @@ array_relationships:
     foreign_key_constraint_on:
       column: team_name
       table:
-        name: user_teams
+        name: user_team
         schema: public

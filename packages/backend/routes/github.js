@@ -3,20 +3,27 @@ const router = express.Router()
 const axios = require('axios')
 
 async function registerUser (githubUsername) {
-  const getUserIdResponse = await axios({
-    url: `https://api.github.com/users/${githubUsername}`,
-    method: 'get'
-  })
-  const registerUserResponse = await axios({
-    url: 'https://api.github.com/orgs/SocialGouv/invitations',
-    method: 'post',
-    headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
-    data: { invitee_id: getUserIdResponse.data.id }
-  })
-  console.log('Registered user', registerUserResponse)
-  return {
-    status: 200,
-    message: ''
+  try {
+    const getUserIdResponse = await axios({
+      url: `https://api.github.com/users/${githubUsername}`,
+      method: 'get'
+    })
+    const registerUserResponse = await axios({
+      url: 'https://api.github.com/orgs/SocialGouv/invitations',
+      method: 'post',
+      headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
+      data: { invitee_id: getUserIdResponse.data.id }
+    })
+    console.log('Registered user', registerUserResponse)
+    return {
+      status: 200,
+      message: ''
+    }
+  } catch (error) {
+    return {
+      status: 200,
+      message: ''
+    }
   }
 }
 

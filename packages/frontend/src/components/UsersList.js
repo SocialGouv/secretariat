@@ -4,7 +4,7 @@ import User from 'components/User'
 
 function UsersList ({ users, updateUsersList }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col sm:mx-8">
       <div className="grid grid-cols-7 p-2">
         <div className="font-medium">Prénom</div>
         <div className="font-medium">Nom</div>

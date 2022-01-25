@@ -1,4 +1,12 @@
 actions:
+- name: delete_github_user
+  definition:
+    kind: synchronous
+    handler: '{{BACKEND_URL}}/github/delete-user'
+    request_transform:
+      method: DELETE
+      query_params: {}
+      template_engine: Kriti
 - name: get_github_user_status
   definition:
     kind: ""

@@ -28,6 +28,33 @@ async function registerUser (githubUsername) {
   }
 }
 
+async function deleteUser (githubUsername) {
+  try {
+    await axios({
+      url: `https://api.github.com/orgs/SocialGouv/memberships/${githubUsername}`,
+      method: 'delete',
+      headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN }
+    })
+    console.log('Deleted user successfully')
+    return {
+      status: 200,
+      message: ''
+    }
+  } catch (error) {
+    if (error.response.status === 404) {
+      return {
+        status: 200,
+        message: ''
+      }
+    }
+    console.error(error)
+    return {
+      status: error.response.status,
+      message: error.response.data.message
+    }
+  }
+}
+
 async function getUserStatus (githubUsername) {
   try {
     const getUserStatusResponse = await axios({
@@ -36,7 +63,6 @@ async function getUserStatus (githubUsername) {
       headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN }
     })
     console.log("Got user's status successfully")
-    console.log(getUserStatusResponse)
     return {
       status: 200,
       message: getUserStatusResponse.data.state
@@ -64,6 +90,12 @@ router.post('/register-user', function (expressRequest, expressResponse, next) {
 
 router.get('/user-status', function (expressRequest, expressResponse, next) {
   getUserStatus(expressRequest.body.input.github_username).then((result) => {
+    expressResponse.status(result.status).json(result)
+  })
+})
+
+router.delete('/delete-user', function (expressRequest, expressResponse, next) {
+  deleteUser(expressRequest.body.input.github_username).then((result) => {
     expressResponse.status(result.status).json(result)
   })
 })

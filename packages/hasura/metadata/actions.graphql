@@ -1,3 +1,9 @@
+type Mutation {
+  delete_github_user(
+    github_username: String!
+  ): ExpressResponse
+}
+
 type Query {
   get_github_user_status(
     github_username: String!

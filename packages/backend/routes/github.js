@@ -42,6 +42,12 @@ async function getUserStatus (githubUsername) {
       message: getUserStatusResponse.data.state
     }
   } catch (error) {
+    if (error.response.status === 404) {
+      return {
+        status: 200,
+        message: 'not member'
+      }
+    }
     console.error(error)
     return {
       status: error.response.status,

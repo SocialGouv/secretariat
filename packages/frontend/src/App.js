@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, NavLink } from 'react-router-dom'
 import UserCreationForm from 'components/UserCreationForm'
 import UsersList from 'components/UsersList'
 import { gql, useQuery } from '@apollo/client'
@@ -39,18 +39,28 @@ function App () {
   return (
     <div className="App text-center text-lg m-4">
       <nav className="mt-8 flex flex-row justify-evenly gap-x-2">
-        <Link
-          className="rounded-md bg-slate-200 px-8 py-3 hover:bg-slate-300"
+        <NavLink
+          className={({ isActive }) => {
+            return (
+              'hover:bg-slate-200 px-8 py-3 ' +
+              (isActive ? 'border-slate-400 border-b-2' : null)
+            )
+          }}
           to="/"
         >
           Liste des utilisateurs
-        </Link>
-        <Link
-          className="rounded-md bg-slate-200 px-8 py-3 hover:bg-slate-300"
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => {
+            return (
+              'hover:bg-slate-200 px-8 py-3 ' +
+              (isActive ? 'border-slate-400 border-b-2' : null)
+            )
+          }}
           to="/add-user"
         >
           Ajouter un utilisateur
-        </Link>
+        </NavLink>
       </nav>
       <div className="mt-8">
         <Routes>

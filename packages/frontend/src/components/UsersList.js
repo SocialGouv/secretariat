@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import User from 'components/User'
+import { useSearchParams } from 'react-router-dom'
 
 function UsersList ({ users, updateUsersList }) {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [activeUser, setActiveUserState] = useState(
+    parseInt(searchParams.get('activeUser'))
+  )
+  const setActiveUser = (user) => {
+    if (user === null) {
+      setSearchParams({})
+    } else {
+      setSearchParams({ activeUser: user })
+    }
+    setActiveUserState(user)
+  }
+
   return (
     <div className="flex flex-col sm:mx-8">
       <div className="grid grid-cols-7 p-2">
@@ -15,7 +29,13 @@ function UsersList ({ users, updateUsersList }) {
         <div></div>
       </div>
       {users.map((user) => (
-        <User user={user} key={user.id} updateUsersList={updateUsersList} />
+        <User
+          user={user}
+          key={user.id}
+          isActive={user.id === activeUser}
+          setActiveUser={setActiveUser}
+          updateUsersList={updateUsersList}
+        />
       ))}
     </div>
   )

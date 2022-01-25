@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { gql, useMutation, useLazyQuery } from '@apollo/client'
 
 import ServicesStatus from 'components/ServicesStatus'
 
-function User ({ user, updateUsersList }) {
-  const [isActive, setisActive] = useState(false)
-
+function User ({ user, isActive, setActiveUser, updateUsersList }) {
   const [deleteUser] = useMutation(gql`
     mutation DeleteUser($id: Int!) {
       delete_users_by_pk(id: $id) {
@@ -69,47 +67,28 @@ function User ({ user, updateUsersList }) {
     })
   }
 
+  const handleComponentClick = () => {
+    if (isActive) {
+      setActiveUser(null)
+    } else {
+      setActiveUser(user.id)
+    }
+  }
+
   return (
     <div
       className={
-        'grid grid-cols-7 rounded-md p-2 ' +
+        'grid grid-cols-7 p-2 ' +
         (isActive ? 'bg-blue-100' : 'even:bg-slate-100')
       }
+      onClick={handleComponentClick}
     >
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
-        {user.firstname}
-      </div>
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
-        {user.lastname}
-      </div>
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
-        {user.email}
-      </div>
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
-        {user.profile}
-      </div>
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
-        {user.expiration}
-      </div>
-      <div
-        onClick={(e) => setisActive(!isActive)}
-        className="overflow-hidden text-ellipsis"
-      >
+      <div className="overflow-hidden text-ellipsis">{user.firstname}</div>
+      <div className="overflow-hidden text-ellipsis">{user.lastname}</div>
+      <div className="overflow-hidden text-ellipsis">{user.email}</div>
+      <div className="overflow-hidden text-ellipsis">{user.profile}</div>
+      <div className="overflow-hidden text-ellipsis">{user.expiration}</div>
+      <div className="overflow-hidden text-ellipsis">
         {user.user_teams.map((team) => (
           <div key={team.team_name}>{team.team_name}</div>
         ))}
@@ -127,6 +106,8 @@ function User ({ user, updateUsersList }) {
 
 User.propTypes = {
   user: PropTypes.object,
+  isActive: PropTypes.bool,
+  setActiveUser: PropTypes.func,
   updateUsersList: PropTypes.func
 }
 

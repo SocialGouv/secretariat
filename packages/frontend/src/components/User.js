@@ -67,11 +67,13 @@ function User ({ user, isActive, setActiveUser, updateUsersList }) {
     })
   }
 
-  const handleComponentClick = () => {
-    if (isActive) {
-      setActiveUser(null)
-    } else {
-      setActiveUser(user.id)
+  const handleComponentClick = (event) => {
+    if (event.target.id !== 'deleteButton') {
+      if (isActive) {
+        setActiveUser(null)
+      } else {
+        setActiveUser(user.id)
+      }
     }
   }
 
@@ -94,8 +96,9 @@ function User ({ user, isActive, setActiveUser, updateUsersList }) {
         ))}
       </div>
       <button
+        id="deleteButton"
         className="font-normal rounded-md bg-slate-200 hover:bg-slate-300 px-4 py-1 w-min h-min"
-        onClick={(_) => handleDelete(user.id)}
+        onClick={() => handleDelete(user.id)}
       >
         Supprimer
       </button>

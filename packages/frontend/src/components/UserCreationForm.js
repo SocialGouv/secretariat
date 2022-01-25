@@ -75,6 +75,16 @@ function UserCreationForm ({ updateUsersList }) {
     }
   `)
 
+  const [insertUserService] = useMutation(gql`
+    mutation InsertUserService($objects: [user_service_insert_input!] = {}) {
+      insert_user_service(objects: $objects) {
+        returning {
+          id
+        }
+      }
+    }
+  `)
+
   const [registerGithubUser] = useMutation(gql`
     mutation RegisterGithubUser($github_username: String!) {
       register_github_user(github_username: $github_username) {
@@ -134,47 +144,60 @@ function UserCreationForm ({ updateUsersList }) {
       },
       onCompleted: (insertUserData) => {
         console.log('User added successfully')
-        const teamToInsert = Object.keys(inputs.teams).filter(
+        const teamsToInsert = Object.keys(inputs.teams).filter(
           (team) => inputs.teams[team]
         )
         insertUserTeam({
           variables: {
-            objects: Array.from(teamToInsert, (team) => ({
+            objects: Array.from(teamsToInsert, (team) => ({
               team_name: team,
               user_id: insertUserData.insert_users_one.id
             }))
           },
           onCompleted: () => {
             console.log("User's teams added successfully")
-            if (inputs.services.github) {
-              registerGithubUser({
-                variables: {
-                  github_username: inputs.githubUsername
-                },
-                onCompleted: (data) => {
-                  insertGithubUsername({
+            const servicesToInsert = Object.keys(inputs.services).filter(
+              (service) => inputs.services[service]
+            )
+            insertUserService({
+              variables: {
+                objects: Array.from(servicesToInsert, (service) => ({
+                  service_name: service,
+                  user_id: insertUserData.insert_users_one.id
+                }))
+              },
+              onCompleted: () => {
+                if (inputs.services.github) {
+                  registerGithubUser({
                     variables: {
-                      user_id: insertUserData.insert_users_one.id,
-                      username: inputs.githubUsername
+                      github_username: inputs.githubUsername
                     },
-                    onCompleted: () => {
-                      console.log('Github username added successfully')
-                      updateUsersList()
-                      navigate('/')
+                    onCompleted: (data) => {
+                      insertGithubUsername({
+                        variables: {
+                          user_id: insertUserData.insert_users_one.id,
+                          username: inputs.githubUsername
+                        },
+                        onCompleted: () => {
+                          console.log('Github username added successfully')
+                          updateUsersList()
+                          navigate('/')
+                        },
+                        onError: (error) => {
+                          console.error(error)
+                        }
+                      })
                     },
                     onError: (error) => {
-                      console.error(error)
+                      console.log(error)
                     }
                   })
-                },
-                onError: (error) => {
-                  console.log(error)
+                } else {
+                  updateUsersList()
+                  navigate('/')
                 }
-              })
-            } else {
-              updateUsersList()
-              navigate('/')
-            }
+              }
+            })
           }
         })
       }

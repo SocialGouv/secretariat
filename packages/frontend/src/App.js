@@ -19,6 +19,9 @@ function App () {
           user_teams {
             team_name
           }
+          user_services {
+            service_name
+          }
         }
       }
     `,

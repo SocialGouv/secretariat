@@ -42,12 +42,18 @@ function GithubStatus ({ user }) {
   }
 
   if (getGithubUsername.loading || getGithubUserStatus.loading) {
-    return <div>Loading...</div>
+    return (
+      <div>
+        Github : <span className="font-bold">Chargement...</span>
+      </div>
+    )
   } else {
     return (
       <div>
-        Github status :{' '}
-        <span className='font-bold'>{getGithubUserStatus.data.get_github_user_status.message}</span>
+        Github :{' '}
+        <span className="font-bold">
+          {getGithubUserStatus.data.get_github_user_status.message}
+        </span>
       </div>
     )
   }

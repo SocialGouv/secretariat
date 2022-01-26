@@ -1,1 +1,9 @@
-[]
+- name: Github
+  definition:
+    url_from_env: GITHUB_GRAPHQL_ENDPOINT
+    timeout_seconds: 60
+    headers:
+    - name: Authorization
+      value_from_env: GITHUB_GRAPHQL_TOKEN
+    forward_client_headers: true
+  comment: ""

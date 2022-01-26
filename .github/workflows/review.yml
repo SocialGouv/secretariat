@@ -13,30 +13,10 @@ concurrency:
 
 jobs:
   ##############################################################################
-  ## BUILD AND REGISTER BACKEND
-  ##############################################################################
-  register-backend:
-    name: Build & Register backend
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get project name
-        run: |
-          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-
-      - name: Use autodevops build and register
-        uses: SocialGouv/actions/autodevops-build-register@v1
-        with:
-          project: ${{ env.project }}
-          imageName: ${{ env.project }}/backend
-          token: ${{ secrets.GITHUB_TOKEN }}
-          dockerfile: ./packages/backend/Dockerfile
-          dockercontext: ./packages/backend
-
-  ##############################################################################
-  ## BUILD AND REGISTER FRONTEND
+  ## BUILD AND REGISTER NEXT APP
   ##############################################################################
   register-frontend:
-    name: Build & Register frontend
+    name: Build & Register app
     runs-on: ubuntu-latest
     steps:
       - name: Get project name
@@ -47,10 +27,8 @@ jobs:
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
           project: ${{ env.project }}
-          imageName: ${{ env.project }}/frontend
+          imageName: ${{ env.project }}/app
           token: ${{ secrets.GITHUB_TOKEN }}
-          dockerfile: ./packages/frontend/Dockerfile
-          dockercontext: ./packages/frontend
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

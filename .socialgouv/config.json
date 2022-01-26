@@ -1,0 +1,22 @@
+
+{
+  "type": "app",
+  "azurepg": true,
+  "name": "secretariat",
+  "registry": "ghcr",
+  "hasura": {
+    "exposed": true,
+    "resources": {
+      "limits": {
+        "cpu": "500m",
+        "memory": "1024Mi"
+      },
+      "requests": {
+        "cpu": "250m",
+        "memory": "512Mi"
+      }
+    }
+  },
+  "project": "fabrique",
+  "subdomain": "secretariat",
+}

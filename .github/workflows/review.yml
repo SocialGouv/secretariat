@@ -15,7 +15,7 @@ jobs:
   ##############################################################################
   ## BUILD AND REGISTER NEXT APP
   ##############################################################################
-  register-frontend:
+  register-app:
     name: Build & Register app
     runs-on: ubuntu-latest
     steps:
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use autodevops manifests generation
-        uses: SocialGouv/actions/k8s-manifests@v1
+        uses: SocialGouv/actions/autodevops-manifests@v1
         with:
           environment: 'dev'
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
@@ -69,7 +69,7 @@ jobs:
   deploy:
     name: Deploy review branch
     runs-on: ubuntu-latest
-    needs: [register-backend, register-frontend, register-hasura, manifests]
+    needs: [register-app, register-hasura, manifests]
     steps:
       - name: Use autodevops deployment
         uses: SocialGouv/actions/autodevops-deploy@v1

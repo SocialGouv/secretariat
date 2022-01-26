@@ -1,26 +1,3 @@
 table:
   name: users
   schema: public
-object_relationships:
-- name: github_username
-  using:
-    foreign_key_constraint_on:
-      column: user_id
-      table:
-        name: github_usernames
-        schema: public
-array_relationships:
-- name: user_services
-  using:
-    foreign_key_constraint_on:
-      column: user_id
-      table:
-        name: user_service
-        schema: public
-- name: user_teams
-  using:
-    foreign_key_constraint_on:
-      column: user_id
-      table:
-        name: user_team
-        schema: public

@@ -1,29 +1,4 @@
-actions:
-- name: delete_github_user
-  definition:
-    kind: synchronous
-    handler: '{{BACKEND_URL}}/github/delete-user'
-    request_transform:
-      method: DELETE
-      query_params: {}
-      template_engine: Kriti
-- name: get_github_user_status
-  definition:
-    kind: ""
-    handler: '{{BACKEND_URL}}/github/user-status'
-    request_transform:
-      method: GET
-      query_params: {}
-      template_engine: Kriti
-- name: register_github_user
-  definition:
-    kind: synchronous
-    handler: '{{BACKEND_URL}}/github/register-user'
-    request_transform:
-      method: POST
-      query_params: {}
-      template_engine: Kriti
-  comment: Register a Github user
+actions: []
 custom_types:
   enums: []
   input_objects:

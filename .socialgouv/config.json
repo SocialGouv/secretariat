@@ -1,7 +1,7 @@
 {
   "type": "app",
   "azurepg": true,
-  "name": "secretariat",
+  "name": "app",
   "registry": "ghcr",
   "hasura": {
     "exposed": true,

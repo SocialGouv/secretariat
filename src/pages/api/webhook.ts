@@ -26,36 +26,55 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log("Headers from Github webhook", req.headers)
   console.log("Data from Github webhook", req.body)
 
-  const query = gql`
-    {
+  // Github users
+  const githubUsers = []
+  const githubUsersQuery = gql`
+    query GetGithubUsers($cursor: String) {
       organization(login: "SocialGouv") {
-        teams(first: 5) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
+        membersWithRole(first: 100, after: $cursor) {
           nodes {
             id
             name
-            members(first: 3) {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              nodes {
-                id
-              }
-            }
+            email
+            login
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
           }
         }
       }
     }
   `
-  const data = await request(
+  let {
+    organization: {
+      membersWithRole: {
+        nodes: githubUsersPage,
+        pageInfo: { hasNextPage, endCursor },
+      },
+    },
+  } = await request(
     process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-    query
+    githubUsersQuery
   )
-  console.log("Github data", data)
+  githubUsers.push(...githubUsersPage)
+  console.log(githubUsers)
+
+  // while (hasNextPage) {}
+
+  await request(
+    process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
+    gql`
+      mutation UpdateGithubData($githubData: jsonb!) {
+        update_services(where: {}, _set: { github: $githubData }) {
+          returning {
+            id
+          }
+        }
+      }
+    `,
+    { githubData: { members: githubUsers } }
+  )
 
   res.status(200).send("OK")
 }

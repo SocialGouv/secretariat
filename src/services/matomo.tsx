@@ -20,15 +20,13 @@ export const getMatomoUsers = async () => {
 }
 
 const useMatomoUsers = () => {
-  const { data, error, isValidating } = useSWR("teams", () =>
+  const { data, error, isValidating } = useSWR("matomo", () =>
     fetcher(getMatomoUsersQuery)
   )
 
-  return Array.isArray(data)
-    ? data
-    : data?.Matomo_data[0].admins_and_teams.teams
+  console.log("DATA MATOMO", data)
 
-  return data
+  return Array.isArray(data) ? data : data?.services[0].matomo
 }
 
 export const MatomoUsersLoader = () => {

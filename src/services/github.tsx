@@ -20,15 +20,12 @@ export const getGitHubUsers = async () => {
 }
 
 const useGithubUsers = () => {
-  const { data, error, isValidating } = useSWR("teams", () =>
+  const { data, error, isValidating } = useSWR("github", () =>
     fetcher(getGitHubUsersQuery)
   )
+  console.log("DATA GITHUB", data)
 
-  return Array.isArray(data)
-    ? data
-    : data?.github_data[0].admins_and_teams.teams
-
-  return data
+  return Array.isArray(data) ? data : data?.services[0].github.members
 }
 
 export const GithubUsersLoader = () => {

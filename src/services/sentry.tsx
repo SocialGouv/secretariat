@@ -20,15 +20,11 @@ export const getSentryUsers = async () => {
 }
 
 const useSentryUsers = () => {
-  const { data, error, isValidating } = useSWR("teams", () =>
+  const { data, error, isValidating } = useSWR("sentry", () =>
     fetcher(getSentryUsersQuery)
   )
 
-  return Array.isArray(data)
-    ? data
-    : data?.Sentry_data[0].admins_and_teams.teams
-
-  return data
+  return Array.isArray(data) ? data : data?.services[0].sentry
 }
 
 export const SentryUsersLoader = () => {

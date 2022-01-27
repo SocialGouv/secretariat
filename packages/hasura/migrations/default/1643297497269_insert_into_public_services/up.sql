@@ -1,0 +1,1 @@
+INSERT INTO "public"."services"("id", "github", "mattermost", "ovh", "matomo", "sentry", "zammad", "nextcloud") VALUES (E'5d522461-10f9-40db-8021-7fc258e59383', null, null, null, null, null, null, null);

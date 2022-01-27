@@ -1,7 +1,6 @@
 interface User {
   id: string
   login: string
-  email: number
+  email: string
   name: string
-  slug: string
 }

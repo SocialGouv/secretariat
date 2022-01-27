@@ -6,14 +6,9 @@ const Users = ({ users = [] }: { users: User[] }) => {
 
   return (
     <ul className="users">
-      {users.map(({ name, slug }, i) => (
-        <li key={i} className={slug === query.slug ? "selected" : ""}>
-          <Link
-            shallow={true}
-            href={{ query: { slug }, pathname: "/team/[slug]" }}
-          >
-            <a>{name}</a>
-          </Link>
+      {users.map(({ name }, i) => (
+        <li key={i}>
+          <a>{name}</a>
         </li>
       ))}
     </ul>

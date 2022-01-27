@@ -6,9 +6,9 @@ const Users = ({ users = [] }: { users: SentryUser[] }) => {
 
   return (
     <ul className="users">
-      {users.map(({ name }, i) => (
+      {users.map(({ email }, i) => (
         <li key={i}>
-          <a>{name}</a>
+          <a>{email}</a>
         </li>
       ))}
     </ul>

@@ -6,9 +6,9 @@ const Users = ({ users = [] }: { users: MatomoUser[] }) => {
 
   return (
     <ul className="users">
-      {users.map(({ login }, i) => (
+      {users.map(({ email }, i) => (
         <li key={i}>
-          <a>{login}</a>
+          <a>{email}</a>
         </li>
       ))}
     </ul>

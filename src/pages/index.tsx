@@ -1,14 +1,18 @@
 import { SWRConfig } from "swr"
 import type { GetStaticProps } from "next"
 
-import { getGitHubUsers, UsersLoader } from "@/utils/helpers"
+import { getGitHubUsers, GithubUsersLoader } from "@/services/github"
+import { getMatomoUsers, MatomoUsersLoader } from "@/services/matomo"
+import { getSentryUsers, SentryUsersLoader } from "@/services/sentry"
 
 export const getStaticProps: GetStaticProps = async () => {
-  const users = await getGitHubUsers()
+  const githubUsers = await getGitHubUsers()
+  const matomoUsers = await getMatomoUsers()
+  const sentryUsers = await getSentryUsers()
 
   return {
     props: {
-      fallback: { users },
+      fallback: { githubUsers, matomoUsers, sentryUsers },
     },
   }
 }
@@ -16,12 +20,14 @@ export const getStaticProps: GetStaticProps = async () => {
 const Page = ({
   fallback,
 }: {
-  fallback: Record<"users" | "posts", User[]>
+  fallback: Record<"users", GithubUser[] | MatomoUser[] | SentryUser[]>
 }) => (
   <div className="container">
     <SWRConfig value={{ fallback }}>
       <main>
-        <UsersLoader />
+        <GithubUsersLoader />
+        <MatomoUsersLoader />
+        <SentryUsersLoader />
       </main>
     </SWRConfig>
   </div>

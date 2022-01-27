@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const Users = ({ users = [] }: { users: User[] }) => {
+const Users = ({ users = [] }: { users: SentryUser[] }) => {
   const { query } = useRouter()
 
   return (

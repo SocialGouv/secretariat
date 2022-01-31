@@ -5,8 +5,12 @@ abstract class AbstractServiceAPI {
 
   abstract fetchData(): Promise<object>
 
+  formatData(data: object): object {
+    return data
+  }
+
   async fetchDataAndUpdateDatabase() {
-    const data = await this.fetchData()
+    const data = this.formatData(await this.fetchData())
 
     if (!process.env.NEXT_PUBLIC_HASURA_URL) {
       throw ReferenceError(

@@ -7,6 +7,7 @@ import {
   updateGithubData,
 } from "@/services/github"
 import { getUsersListFromMatomo, updateMatomoData } from "@/services/matomo"
+import { getUsersListFromSentry, updateSentryData } from "@/services/sentry"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
@@ -20,6 +21,9 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const matomoUsersList = await getUsersListFromMatomo()
   updateMatomoData(matomoUsersList)
+
+  const sentryUsersList = await getUsersListFromSentry()
+  updateSentryData(sentryUsersList)
 
   res.status(200).send("OK")
 }

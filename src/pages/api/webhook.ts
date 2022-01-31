@@ -1,13 +1,10 @@
 import { request, gql } from "graphql-request"
 import type { NextApiRequest, NextApiResponse } from "next"
 
-import {
-  reqIsGithub,
-  getUsersListFromGithub,
-  updateGithubData,
-} from "@/services/github"
-import { getUsersListFromMatomo, updateMatomoData } from "@/services/matomo"
-import { getUsersListFromSentry, updateSentryData } from "@/services/sentry"
+import { reqIsGithub } from "@/services/github"
+import GithubAPI from "@/services/APIs/GithubAPI"
+import MatomoAPI from "@/services/APIs/MatomoAPI"
+import SentryAPI from "@/services/APIs/SentryAPI"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
@@ -16,14 +13,9 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   //   return
   // }
 
-  const githubUsersList = await getUsersListFromGithub()
-  updateGithubData({ members: githubUsersList })
-
-  const matomoUsersList = await getUsersListFromMatomo()
-  updateMatomoData(matomoUsersList)
-
-  const sentryUsersList = await getUsersListFromSentry()
-  updateSentryData(sentryUsersList)
+  new GithubAPI().fetchDataAndUpdateDatabase()
+  new MatomoAPI().fetchDataAndUpdateDatabase()
+  new SentryAPI().fetchDataAndUpdateDatabase()
 
   res.status(200).send("OK")
 }

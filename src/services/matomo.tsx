@@ -37,34 +37,3 @@ export const MatomoUsersLoader = () => {
 
   return <MatomoUsers users={users} />
 }
-
-export const getUsersListFromMatomo = async () => {
-  const response = await fetch(
-    "https://matomo.fabrique.social.gouv.fr/index.php",
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-      },
-      body: `module=API&method=UsersManager.getUsers&format=json&token_auth=${process.env.MATOMO_API_TOKEN}`,
-    }
-  )
-  return await response.json()
-}
-
-export const updateMatomoData = (data: object) => {
-  request(
-    process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-    gql`
-      mutation UpdateMatomoData($matomoData: jsonb!) {
-        update_services(where: {}, _set: { matomo: $matomoData }) {
-          returning {
-            id
-          }
-        }
-      }
-    `,
-
-    { matomoData: data }
-  )
-}

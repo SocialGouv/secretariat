@@ -35,33 +35,3 @@ export const SentryUsersLoader = () => {
 
   return <Users users={users} />
 }
-
-export const getUsersListFromSentry = async () => {
-  const response = await fetch(
-    "https://sentry.fabrique.social.gouv.fr/api/0/organizations/incubateur/users/",
-    {
-      method: "GET",
-      headers: {
-        Authorization: process.env.SENTRY_API_TOKEN ?? "undefined",
-      },
-    }
-  )
-  return await response.json()
-}
-
-export const updateSentryData = (data: object) => {
-  request(
-    process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-    gql`
-      mutation UpdateSentryData($sentryData: jsonb!) {
-        update_services(where: {}, _set: { sentry: $sentryData }) {
-          returning {
-            id
-          }
-        }
-      }
-    `,
-
-    { sentryData: data }
-  )
-}

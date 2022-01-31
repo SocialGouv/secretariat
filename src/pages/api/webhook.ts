@@ -5,6 +5,7 @@ import GithubAPI from "@/services/APIs/GithubAPI"
 import MatomoAPI from "@/services/APIs/MatomoAPI"
 import SentryAPI from "@/services/APIs/SentryAPI"
 import OVHAPI from "@/services/APIs/OVHAPI"
+import ZammadAPI from "@/services/APIs/ZammadAPI"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
@@ -17,6 +18,7 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   new MatomoAPI().fetchDataAndUpdateDatabase()
   new SentryAPI().fetchDataAndUpdateDatabase()
   new OVHAPI().fetchDataAndUpdateDatabase()
+  new ZammadAPI().fetchDataAndUpdateDatabase()
 
   res.status(200).send("OK")
 }

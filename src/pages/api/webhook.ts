@@ -1,22 +1,20 @@
 import { request, gql } from "graphql-request"
 import type { NextApiRequest, NextApiResponse } from "next"
 
-import { reqIsGithub, getUsersList } from "@/utils/services/github"
+import {
+  reqIsGithub,
+  getUsersListFromGithub,
+  updateGithubData,
+} from "@/services/github"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
-  const githubUsersList = await getUsersList()
+  // if (!reqIsGithub(req)) {
+  //   res.status(403).send("Forbidden")
+  //   return
+  // }
 
-  await request(
-    process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-    gql`
-      mutation UpdateGithubData($githubData: jsonb!) {
-        update_services(where: {}, _set: { github: $githubData }) {
-          returning {
-            id
-          }
-        }
-      }
-    `,
+  const githubUsersList = getUsersListFromGithub()
+  updateGithubData({ members: githubUsersList })
 
     { githubData: { members: githubUsersList } }
   )

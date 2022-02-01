@@ -1,3 +1,42 @@
 table:
   name: services
   schema: public
+select_permissions:
+- permission:
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    - id
+    filter: {}
+  role: user
+- permission:
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    - id
+    filter: {}
+  role: webhook
+update_permissions:
+- permission:
+    check: {}
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    - id
+    filter: {}
+  role: webhook

@@ -9,6 +9,7 @@ const Auth = () => {
     return (
       <>
         Signed in as {session?.user?.email} <br />
+        User login: {session?.user?.login} <br />
         <button onClick={() => signOut()}>Sign out</button>
       </>
     )

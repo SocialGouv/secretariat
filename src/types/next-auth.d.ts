@@ -26,3 +26,11 @@ declare module "next-auth" {
     email: string | unknown
   }
 }
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    role: Role
+    teams: string[]
+    idToken?: string
+  }
+}

@@ -1,37 +1,23 @@
+import type { NextApiRequest } from "next"
+
 import useSWR from "swr"
-import { request, gql } from "graphql-request"
+import crypto from "crypto"
 
 import fetcher from "@/utils/fetcher"
+import useToken from "@/services/token"
 import Users from "@/components/github-users"
 import Loader from "@/components/common/loader"
-
-import crypto from "crypto"
-import type { NextApiRequest } from "next"
-import { getJwt } from "@/utils/jwt"
-
-import useToken from "@/services/token"
-
-const getGitHubUsersQuery = gql`
-  query getGithubUsers {
-    services {
-      github
-    }
-  }
-`
-
-// export const getGitHubUsers = async () => {
-//   const data = await fetcher(getGitHubUsersQuery)
-
-//   return data
-// }
+import { getGitHubUsers } from "@/queries/index"
 
 const useGithubUsers = () => {
   const [token] = useToken()
 
-  const { data, error, isValidating } = useSWR("github", () =>
-    fetcher(getGitHubUsersQuery, token)
+  const { data, error } = useSWR(
+    token ? [getGitHubUsers, token] : null,
+    fetcher
   )
-  console.log("DATA GITHUB", data)
+
+  console.log("useGithubUsers:", data, error)
 
   return Array.isArray(data) ? data : data?.services[0].github
 }

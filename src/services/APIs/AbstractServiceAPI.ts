@@ -1,3 +1,4 @@
+import fetcher from "@/utils/fetcher"
 import { request, gql } from "graphql-request"
 
 abstract class AbstractServiceAPI {
@@ -17,21 +18,18 @@ abstract class AbstractServiceAPI {
         "Could not find NEXT_PUBLIC_HASURA_URL environment variable"
       )
     }
-    request(
-      process.env.NEXT_PUBLIC_HASURA_URL,
+    fetcher(
       gql`
-        mutation UpdateData($data: jsonb!) {
-          update_services(where: {}, _set: { ${this.serviceName}: $data }) {
-            returning {
-              id
-            }
-          }
+    mutation UpdateData($data: jsonb!) {
+      update_services(where: {}, _set: { ${this.serviceName}: $data }) {
+        returning {
+          id
         }
-      `,
-      { data },
-      {
-        Authorization: `Bearer ${jwt}`,
       }
+    }
+  `,
+      jwt,
+      { data }
     )
   }
 }

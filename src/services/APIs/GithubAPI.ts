@@ -1,4 +1,5 @@
 import AbstractServiceAPI from "@/services/APIs/AbstractServiceAPI"
+import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
 import { request, gql } from "graphql-request"
 
@@ -34,12 +35,7 @@ class GithubAPI extends AbstractServiceAPI {
           pageInfo: { hasNextPage, endCursor },
         },
       },
-    } = await request(
-      process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-      githubUsersQuery,
-      {},
-      { Authorization: `Bearer ${jwt}` }
-    )
+    } = await fetcher(githubUsersQuery, jwt)
 
     githubUsersList.push(...githubUsersPage)
 
@@ -51,12 +47,7 @@ class GithubAPI extends AbstractServiceAPI {
             pageInfo: { hasNextPage, endCursor },
           },
         },
-      } = await request(
-        process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-        githubUsersQuery,
-        { cursor: endCursor },
-        { Authorization: `Bearer ${jwt}` }
-      ))
+      } = await fetcher(githubUsersQuery, jwt, { cursor: endCursor }))
       githubUsersList.push(...githubUsersPage)
     }
 

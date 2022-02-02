@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/SocialGouv/secretariat/compare/v1.0.4...v1.0.5) (2022-02-02)
+
+
+### Bug Fixes
+
+* Deactivate action ([#24](https://github.com/SocialGouv/secretariat/issues/24)) ([53df010](https://github.com/SocialGouv/secretariat/commit/53df0104211587db3dc0f949fd412388f486cd40))
+
 ## [1.0.4](https://github.com/SocialGouv/secretariat/compare/v1.0.3...v1.0.4) (2022-02-02)
 
 

@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/SocialGouv/secretariat/compare/v1.0.3...v1.0.4) (2022-02-02)
+
+
+### Bug Fixes
+
+* Fast home page data load ([#23](https://github.com/SocialGouv/secretariat/issues/23)) ([28b84a0](https://github.com/SocialGouv/secretariat/commit/28b84a04553855d2d9349f6d6b26a55ef068c6bf))
+
 ## [1.0.3](https://github.com/SocialGouv/secretariat/compare/v1.0.2...v1.0.3) (2022-02-02)
 
 

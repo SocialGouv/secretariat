@@ -7,6 +7,9 @@ import Loader from "@/components/common/loader"
 
 import crypto from "crypto"
 import type { NextApiRequest } from "next"
+import { getJwt } from "@/utils/jwt"
+
+import useToken from "@/services/token"
 
 const getGitHubUsersQuery = gql`
   query getGithubUsers {
@@ -23,8 +26,10 @@ export const getGitHubUsers = async () => {
 }
 
 const useGithubUsers = () => {
+  const [token] = useToken()
+
   const { data, error, isValidating } = useSWR("github", () =>
-    fetcher(getGitHubUsersQuery)
+    fetcher(getGitHubUsersQuery, token)
   )
   console.log("DATA GITHUB", data)
 

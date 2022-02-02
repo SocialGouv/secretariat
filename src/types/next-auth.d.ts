@@ -1,9 +1,6 @@
 import NextAuth from "next-auth"
 
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
     user: {
       teams: string[]
@@ -20,16 +17,17 @@ declare module "next-auth" {
     id: string
     role: Role
     teams: string[]
-    name: string | unknown
-    login: string | unknown
-    image: string | unknown
-    email: string | unknown
+    name: string
+    login: string
+    image: string
+    email: string
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
     role: Role
+    login: string
     teams: string[]
     idToken?: string
   }

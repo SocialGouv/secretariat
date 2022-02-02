@@ -33,8 +33,11 @@ const Page = ({
       {/* <SWRConfig value={{ fallback }}> */}
       {/* {session && ( */}
       <main>
+        <h2>Github</h2>
         <GithubUsersLoader />
+        <h2>Matomo</h2>
         <MatomoUsersLoader />
+        <h2>Sentry</h2>
         <SentryUsersLoader />
       </main>
       {/* )} */}

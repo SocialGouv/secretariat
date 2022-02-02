@@ -1,3 +1,10 @@
+interface GithubTeam {
+  name: string
+  slug: string
+  avatarUrl: string
+  description: string
+}
+
 interface GithubUser {
   id: string
   login: string

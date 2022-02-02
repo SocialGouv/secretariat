@@ -1,7 +1,10 @@
 import jwt from "jsonwebtoken"
 import type { SignOptions } from "jsonwebtoken"
 
-export function getJwt(role: string = "user", teams: string[] = []): string {
+export function getJwt(
+  role: string = "anonymous",
+  teams: string[] = []
+): string {
   const options: SignOptions = {
     algorithm: "RS512",
     expiresIn: "30d",
@@ -14,6 +17,5 @@ export function getJwt(role: string = "user", teams: string[] = []): string {
     },
   }
 
-  const token = jwt.sign(claim, process.env.HASURA_JWT_KEY || "", options)
-  return token
+  return jwt.sign(claim, process.env.HASURA_JWT_KEY || "", options)
 }

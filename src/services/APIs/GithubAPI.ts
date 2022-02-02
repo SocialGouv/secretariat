@@ -1,10 +1,13 @@
 import AbstractServiceAPI from "@/services/APIs/AbstractServiceAPI"
+import { getJwt } from "@/utils/jwt"
 import { request, gql } from "graphql-request"
 
 class GithubAPI extends AbstractServiceAPI {
   serviceName = "github"
 
   async fetchData(): Promise<object> {
+    const jwt = getJwt("admin")
+
     const githubUsersList = []
     const githubUsersQuery = gql`
       query GetGithubUsers($cursor: String) {
@@ -33,8 +36,11 @@ class GithubAPI extends AbstractServiceAPI {
       },
     } = await request(
       process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
-      githubUsersQuery
+      githubUsersQuery,
+      {},
+      { Authorization: `Bearer ${jwt}` }
     )
+
     githubUsersList.push(...githubUsersPage)
 
     while (hasNextPage) {
@@ -48,7 +54,8 @@ class GithubAPI extends AbstractServiceAPI {
       } = await request(
         process.env.NEXT_PUBLIC_HASURA_URL ?? "undefined",
         githubUsersQuery,
-        { cursor: endCursor }
+        { cursor: endCursor },
+        { Authorization: `Bearer ${jwt}` }
       ))
       githubUsersList.push(...githubUsersPage)
     }

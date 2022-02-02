@@ -17,13 +17,13 @@ const getUserTeamsQuery = gql`
 `
 
 const getUserTeams = async (login: string) => {
-  const token = getJwt()
+  const jwt = getJwt("admin")
 
   const {
     organization: {
       teams: { nodes: teams },
     },
-  } = await fetcher(getUserTeamsQuery, token, { login })
+  } = await fetcher(getUserTeamsQuery, jwt, { login })
 
   return teams.map((team: GithubTeam) => team.slug)
 }

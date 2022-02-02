@@ -1,32 +1,20 @@
 import useSWR from "swr"
-import { request, gql } from "graphql-request"
 
 import fetcher from "@/utils/fetcher"
+import useToken from "@/services/token"
 import Users from "@/components/sentry-users"
 import Loader from "@/components/common/loader"
-
-import useToken from "@/services/token"
-
-const getSentryUsersQuery = gql`
-  query getSentryUsers {
-    services {
-      sentry
-    }
-  }
-`
-
-export const getSentryUsers = async () => {
-  const data = await fetcher(getSentryUsersQuery)
-
-  return data
-}
+import { getSentryUsers } from "@/queries/index"
 
 const useSentryUsers = () => {
   const [token] = useToken()
 
-  const { data, error, isValidating } = useSWR("sentry", () =>
-    fetcher(getSentryUsersQuery, token)
+  const { data, error } = useSWR(
+    token ? [getSentryUsers, token] : null,
+    fetcher
   )
+
+  console.log("useGithubUsers:", data, error)
 
   return Array.isArray(data) ? data : data?.services[0].sentry
 }

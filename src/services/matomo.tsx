@@ -1,34 +1,20 @@
 import useSWR from "swr"
-import { request, gql } from "graphql-request"
 
 import fetcher from "@/utils/fetcher"
-import MatomoUsers from "@/components/matomo-users"
-import Loader from "@/components/common/loader"
-
 import useToken from "@/services/token"
-
-const getMatomoUsersQuery = gql`
-  query getMatomoUsers {
-    services {
-      matomo
-    }
-  }
-`
-
-export const getMatomoUsers = async () => {
-  const data = await fetcher(getMatomoUsersQuery)
-
-  return data
-}
+import Loader from "@/components/common/loader"
+import MatomoUsers from "@/components/matomo-users"
+import { getMatomoUsers } from "@/queries/index"
 
 const useMatomoUsers = () => {
   const [token] = useToken()
 
-  const { data, error, isValidating } = useSWR("matomo", () =>
-    fetcher(getMatomoUsersQuery, token)
+  const { data, error } = useSWR(
+    token ? [getMatomoUsers, token] : null,
+    fetcher
   )
 
-  console.log("DATA MATOMO", data)
+  console.log("useMatomoUsers:", data, error)
 
   return Array.isArray(data) ? data : data?.services[0].matomo
 }

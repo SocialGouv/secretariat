@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: SocialGouv/actions/autodevops-deactivate@gary-van-woerkens-patch-1
+    - uses: SocialGouv/actions/autodevops-deactivate@v1
       with:
         kube-config: ${{ secrets.KUBECONFIG }}
         rancherId: ${{ secrets.RANCHER_PROJECT_ID }}

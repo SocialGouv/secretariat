@@ -26,11 +26,7 @@ jobs:
       - name: Get branch slug
         run: |
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
-          echo $BRANCH_NAME
-          BRANCH_NAME=${BRANCH_NAME#refs/tags/}
-          echo $BRANCH_NAME
           BRANCH_SLUG=$(npx @socialgouv/env-slug ${BRANCH_NAME})
-          echo $BRANCH_SLUG
           echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
 
       - name: Use autodevops build and register

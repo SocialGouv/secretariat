@@ -29,6 +29,8 @@ jobs:
           project: ${{ env.project }}
           imageName: ${{ env.project }}/app
           token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
+            NEXT_PUBLIC_HASURA_URL="https://hasura-secretariat-beta.dev.fabrique.social.gouv.fr/v1/graphql"
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

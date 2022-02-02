@@ -1,5 +1,7 @@
 # Rebuild the source code only when needed
 FROM node:16.13-alpine AS builder
+ARG NEXT_PUBLIC_HASURA_URL
+ENV NEXT_PUBLIC_HASURA_URL $NEXT_PUBLIC_HASURA_URL
 WORKDIR /app
 COPY . .
 RUN yarn install --frozen-lockfile

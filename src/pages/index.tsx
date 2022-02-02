@@ -1,7 +1,7 @@
 import { SWRConfig } from "swr"
 import type { GetStaticProps } from "next"
 
-import { getGitHubUsers, GithubUsersLoader } from "@/services/github"
+import { GithubUsersLoader } from "@/services/github"
 import { getMatomoUsers, MatomoUsersLoader } from "@/services/matomo"
 import { getSentryUsers, SentryUsersLoader } from "@/services/sentry"
 import Auth from "@/components/auth"

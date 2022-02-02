@@ -19,11 +19,11 @@ const getGitHubUsersQuery = gql`
   }
 `
 
-export const getGitHubUsers = async () => {
-  const data = await fetcher(getGitHubUsersQuery)
+// export const getGitHubUsers = async () => {
+//   const data = await fetcher(getGitHubUsersQuery)
 
-  return data
-}
+//   return data
+// }
 
 const useGithubUsers = () => {
   const [token] = useToken()
@@ -31,9 +31,9 @@ const useGithubUsers = () => {
   const { data, error, isValidating } = useSWR("github", () =>
     fetcher(getGitHubUsersQuery, token)
   )
-  console.log("DATA GITHUB", data)
+  console.log("DATA GITHUB", data, token, Array.isArray(data))
 
-  return Array.isArray(data) ? data : data?.services[0].github.members
+  return Array.isArray(data) ? data : data?.services[0].github
 }
 
 export const GithubUsersLoader = () => {

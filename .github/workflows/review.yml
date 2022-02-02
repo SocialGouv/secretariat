@@ -23,6 +23,16 @@ jobs:
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
+      - name: Get branch slug
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          echo $BRANCH_NAME
+          BRANCH_NAME=${BRANCH_NAME#refs/tags/}
+          echo $BRANCH_NAME
+          BRANCH_SLUG=$(npx @socialgouv/env-slug ${BRANCH_NAME})
+          echo $BRANCH_SLUG
+          echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
+
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
@@ -30,7 +40,7 @@ jobs:
           imageName: ${{ env.project }}/app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-beta.dev.fabrique.social.gouv.fr/v1/graphql
+            NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-${{ env.BRANCH_SLUG }}.dev.fabrique.social.gouv.fr/v1/graphql
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

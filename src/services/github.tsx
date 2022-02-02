@@ -31,7 +31,7 @@ const useGithubUsers = () => {
   const { data, error, isValidating } = useSWR("github", () =>
     fetcher(getGitHubUsersQuery, token)
   )
-  console.log("DATA GITHUB", data, token, Array.isArray(data))
+  console.log("DATA GITHUB", data)
 
   return Array.isArray(data) ? data : data?.services[0].github
 }

@@ -9,7 +9,7 @@ abstract class AbstractServiceAPI {
     return data
   }
 
-  async fetchDataAndUpdateDatabase() {
+  async fetchDataAndUpdateDatabase(jwt: string) {
     const data = this.formatData(await this.fetchData())
 
     if (!process.env.NEXT_PUBLIC_HASURA_URL) {
@@ -28,7 +28,10 @@ abstract class AbstractServiceAPI {
           }
         }
       `,
-      { data }
+      { data },
+      {
+        Authorization: `Bearer ${jwt}`,
+      }
     )
   }
 }

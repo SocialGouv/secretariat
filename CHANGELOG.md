@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/SocialGouv/secretariat/compare/v1.0.1...v1.0.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* Hasura PG url ([5ce88e8](https://github.com/SocialGouv/secretariat/commit/5ce88e837e64ef9744d13dbb0fe97da8e76eb72a))
+
 ## [1.0.1](https://github.com/SocialGouv/secretariat/compare/v1.0.0...v1.0.1) (2022-02-02)
 
 

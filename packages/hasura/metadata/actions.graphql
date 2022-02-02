@@ -1,0 +1,14 @@
+input SampleInput {
+  username: String!
+  password: String!
+}
+
+type SampleOutput {
+  accessToken: String!
+}
+
+type ExpressResponse {
+  status: String!
+  message: Int!
+}
+

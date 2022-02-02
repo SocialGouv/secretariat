@@ -1,4 +1,0 @@
-
-# dont include jobs on deploys
-components = ["!jobs", "!_namespace", "*"]
-require = ["ts-node/register"]

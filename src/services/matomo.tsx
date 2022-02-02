@@ -5,6 +5,8 @@ import fetcher from "@/utils/fetcher"
 import MatomoUsers from "@/components/matomo-users"
 import Loader from "@/components/common/loader"
 
+import useToken from "@/services/token"
+
 const getMatomoUsersQuery = gql`
   query getMatomoUsers {
     services {
@@ -20,8 +22,10 @@ export const getMatomoUsers = async () => {
 }
 
 const useMatomoUsers = () => {
+  const [token] = useToken()
+
   const { data, error, isValidating } = useSWR("matomo", () =>
-    fetcher(getMatomoUsersQuery)
+    fetcher(getMatomoUsersQuery, token)
   )
 
   console.log("DATA MATOMO", data)

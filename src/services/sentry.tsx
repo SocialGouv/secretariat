@@ -5,6 +5,8 @@ import fetcher from "@/utils/fetcher"
 import Users from "@/components/sentry-users"
 import Loader from "@/components/common/loader"
 
+import useToken from "@/services/token"
+
 const getSentryUsersQuery = gql`
   query getSentryUsers {
     services {
@@ -20,8 +22,10 @@ export const getSentryUsers = async () => {
 }
 
 const useSentryUsers = () => {
+  const [token] = useToken()
+
   const { data, error, isValidating } = useSWR("sentry", () =>
-    fetcher(getSentryUsersQuery)
+    fetcher(getSentryUsersQuery, token)
   )
 
   return Array.isArray(data) ? data : data?.services[0].sentry

@@ -62,6 +62,7 @@ jobs:
           environment: 'dev'
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+          koskoChartsVersion: 7f319b6d41c11ee843522e2db96dadb01e8dec7d
 
   ##############################################################################
   ## DEPLOY BACKEND

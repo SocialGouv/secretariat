@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/SocialGouv/secretariat/compare/v1.0.2...v1.0.3) (2022-02-02)
+
+
+### Bug Fixes
+
+* Wainting for PG vars ([bf26ec3](https://github.com/SocialGouv/secretariat/commit/bf26ec3397cabd6530c8482b11362770dce5845e))
+
 ## [1.0.2](https://github.com/SocialGouv/secretariat/compare/v1.0.1...v1.0.2) (2022-02-02)
 
 

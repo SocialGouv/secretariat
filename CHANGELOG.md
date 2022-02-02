@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SocialGouv/secretariat/compare/v1.0.0...v1.0.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* Add env to hasura preprod register ([721d57b](https://github.com/SocialGouv/secretariat/commit/721d57ba5317ac1423158af831798f99b5097780))
+
 # 1.0.0 (2022-02-02)
 
 

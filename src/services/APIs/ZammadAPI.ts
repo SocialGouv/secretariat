@@ -1,21 +1,19 @@
 import AbstractServiceAPI from "@/services/APIs/AbstractServiceAPI"
 
 class ZammadAPI extends AbstractServiceAPI {
-  serviceName = "zammad"
+  service_name = "zammad"
 
-  async fetchData(): Promise<object> {
-    if (!process.env.ZAMMAD_API_TOKEN) {
-      throw ReferenceError(
-        "Could not find ZAMMAD_API_TOKEN environment variable"
-      )
-    }
+  constructor() {
+    super(["ZAMMAD_API_TOKEN"])
+  }
 
+  async fetch_data(): Promise<object> {
     const response = await fetch(
       "https://pastek.fabrique.social.gouv.fr/api/v1/users",
       {
         method: "GET",
         headers: {
-          Authorization: process.env.ZAMMAD_API_TOKEN,
+          Authorization: process.env.ZAMMAD_API_TOKEN as string,
         },
       }
     )

@@ -7,6 +7,7 @@ import SentryAPI from "@/services/APIs/SentryAPI"
 import OVHAPI from "@/services/APIs/OVHAPI"
 import ZammadAPI from "@/services/APIs/ZammadAPI"
 import { getJwt } from "@/utils/jwt"
+import NextcloudAPI from "@/services/APIs/NextcloudAPI"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
@@ -18,11 +19,12 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the JWT needed to query Hasura with update privileges
   const jwt = getJwt("webhook")
 
-  new GithubAPI().fetchDataAndUpdateDatabase(jwt)
-  new MatomoAPI().fetchDataAndUpdateDatabase(jwt)
-  new SentryAPI().fetchDataAndUpdateDatabase(jwt)
-  new OVHAPI().fetchDataAndUpdateDatabase(jwt)
-  new ZammadAPI().fetchDataAndUpdateDatabase(jwt)
+  new GithubAPI().fetch_data_and_update_database(jwt)
+  new MatomoAPI().fetch_data_and_update_database(jwt)
+  new SentryAPI().fetch_data_and_update_database(jwt)
+  new OVHAPI().fetch_data_and_update_database(jwt)
+  new ZammadAPI().fetch_data_and_update_database(jwt)
+  new NextcloudAPI().fetch_data_and_update_database(jwt)
 
   res.status(200).send("OK")
 }

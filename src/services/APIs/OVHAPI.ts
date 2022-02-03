@@ -1,26 +1,24 @@
 import AbstractServiceAPI from "@/services/APIs/AbstractServiceAPI"
 
 class OVHAPI extends AbstractServiceAPI {
-  serviceName = "ovh"
+  service_name = "ovh"
 
-  formatData(data: string[]): object {
+  constructor() {
+    super([
+      "OVH_APP_KEY",
+      "OVH_APP_SECRET",
+      "OVH_CONSUMER_KEY",
+      "OVH_SERVICE_NAME",
+    ])
+  }
+
+  format_data(data: string[]): object {
     return data.map((email) => ({
       email,
     }))
   }
 
-  async fetchData(): Promise<object> {
-    for (let envKey of [
-      "OVH_APP_KEY",
-      "OVH_APP_SECRET",
-      "OVH_CONSUMER_KEY",
-      "OVH_SERVICE_NAME",
-    ]) {
-      if (!process.env[envKey]) {
-        throw ReferenceError(`Could not find ${envKey} environment variable`)
-      }
-    }
-
+  async fetch_data(): Promise<object> {
     const ovh = require("ovh")({
       endpoint: "ovh-eu",
       appKey: process.env.OVH_APP_KEY,

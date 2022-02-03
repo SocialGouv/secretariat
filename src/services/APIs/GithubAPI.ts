@@ -4,9 +4,9 @@ import { getJwt } from "@/utils/jwt"
 import { request, gql } from "graphql-request"
 
 class GithubAPI extends AbstractServiceAPI {
-  serviceName = "github"
+  service_name = "github"
 
-  async fetchData(): Promise<object> {
+  async fetch_data(): Promise<object> {
     const jwt = getJwt("admin")
 
     const githubUsersList = []

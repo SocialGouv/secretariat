@@ -1,15 +1,13 @@
 import AbstractServiceAPI from "@/services/APIs/AbstractServiceAPI"
 
 class MatomoAPI extends AbstractServiceAPI {
-  serviceName = "matomo"
+  service_name = "matomo"
 
-  async fetchData(): Promise<object> {
-    if (!process.env.MATOMO_API_TOKEN) {
-      throw ReferenceError(
-        "Could not find MATOMO_API_TOKEN environment variable"
-      )
-    }
+  constructor() {
+    super(["MATOMO_API_TOKEN"])
+  }
 
+  async fetch_data(): Promise<object> {
     const response = await fetch(
       "https://matomo.fabrique.social.gouv.fr/index.php",
       {

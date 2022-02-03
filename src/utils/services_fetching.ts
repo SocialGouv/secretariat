@@ -5,6 +5,7 @@ import { gql } from "graphql-request"
 export const SERVICES = [
   "github",
   "matomo",
+  "mattermost",
   "nextcloud",
   "ovh",
   "sentry",

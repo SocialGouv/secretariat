@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply
+      flex
+      flex-col
+      text-base
+      font-sans
+      font-normal
+      antialiased
+      min-h-screen
+      text-gray-700;
+  
+    text-size-adjust: 100%;
+    text-rendering: optimizeSpeed;
+  }
+  
+  #__next { /* stylelint-disable-line */
+    @apply flex flex-col flex-1;
+  
+    & > .container {
+      @apply flex flex-1 mx-auto pt-40;
+    }
+  }
+
+  h1 {
+    @apply text-xl font-bold;
+  }
+
+  h2 {
+    @apply text-lg font-bold;
+  }
+
+  h3 {
+    @apply font-bold;
+  }
+  
+  @font-face {
+    font-style: normal;
+    font-display: swap;
+    font-weight: normal;
+    font-family: Marianne;
+    src: local("Marianne Regular"), url("/fonts/Marianne/Marianne-Regular.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    font-family: Marianne;
+    src: local("Marianne Bold"), url("/fonts/Marianne/Marianne-Bold.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-style: normal;
+    font-display: swap;
+    font-weight: normal;
+    font-family: Spectral;
+    src: local("Spectral"), url("/fonts/Spectral/Spectral-Regular.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    font-family: Spectral;
+    src: local("Spectral"), url("/fonts/Spectral/Spectral-Bold.ttf") format("truetype");
+  }  
+}

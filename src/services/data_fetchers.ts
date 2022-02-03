@@ -54,6 +54,20 @@ export const github = async (): Promise<FetchedData> => {
   return data
 }
 
+export const mattermost = async (): Promise<FetchedData> => {
+  check_env(["MATTERMOST_API_TOKEN"])
+  const response = await fetch(
+    "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.MATTERMOST_API_TOKEN}`,
+      },
+    }
+  )
+  return response.json()
+}
+
 export const matomo = async (): Promise<FetchedData> => {
   check_env(["MATOMO_API_TOKEN"])
   const response = await fetch(

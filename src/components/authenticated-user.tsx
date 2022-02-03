@@ -13,7 +13,7 @@ const AuthenticatedUser = () => {
         ></div>
         <div>
           <div>{session.user.name}</div>
-          <button className="link text-xs" onClick={() => signOut()}>
+          <button className="link text-sm" onClick={() => signOut()}>
             Déconnexion
           </button>
         </div>

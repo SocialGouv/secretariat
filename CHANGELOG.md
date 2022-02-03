@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/SocialGouv/secretariat/compare/v1.0.5...v1.1.0) (2022-02-03)
+
+
+### Features
+
+* **design:** Add tailwindcss ([#26](https://github.com/SocialGouv/secretariat/issues/26)) ([bb03568](https://github.com/SocialGouv/secretariat/commit/bb03568097aa810c23dcc8e2f2ab883baee6d88a))
+
 ## [1.0.5](https://github.com/SocialGouv/secretariat/compare/v1.0.4...v1.0.5) (2022-02-02)
 
 

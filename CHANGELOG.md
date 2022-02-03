@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/SocialGouv/secretariat/compare/v1.2.0...v1.3.0) (2022-02-03)
+
+
+### Features
+
+* **navigation:** Add aside menu ([#28](https://github.com/SocialGouv/secretariat/issues/28)) ([67845fb](https://github.com/SocialGouv/secretariat/commit/67845fb00fda710975d28b00d7b0170de39f2b86))
+
 # [1.2.0](https://github.com/SocialGouv/secretariat/compare/v1.1.0...v1.2.0) (2022-02-03)
 
 

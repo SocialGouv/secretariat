@@ -4,51 +4,54 @@ import { check_env } from "@/utils/services_fetching"
 import { gql } from "graphql-request"
 import { FetchedData } from "@/utils/services_fetching"
 
-export const github = async (): Promise<FetchedData> => {
-  const jwt = getJwt("admin")
-  const githubUsersList = []
-  const githubUsersQuery = gql`
-    query GetGithubUsers($cursor: String) {
-      organization(login: "SocialGouv") {
-        membersWithRole(first: 100, after: $cursor) {
-          nodes {
-            id
-            name
-            email
-            login
-          }
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
+const githubUsersQuery = gql`
+  query GetGithubUsers($cursor: String) {
+    organization(login: "SocialGouv") {
+      membersWithRole(first: 100, after: $cursor) {
+        nodes {
+          id
+          name
+          email
+          login
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
-  `
-  let {
+  }
+`
+const fetch_github_page = async (jwt: string, cursor?: string) => {
+  const params = cursor ? { cursor } : {}
+  const {
     organization: {
       membersWithRole: {
-        nodes: githubUsersPage,
-        pageInfo: { hasNextPage, endCursor },
+        nodes: users_page,
+        pageInfo: { hasNextPage: has_next_page, endCursor: end_cursor },
       },
     },
-  } = await fetcher(githubUsersQuery, jwt)
+  } = await fetcher(githubUsersQuery, jwt, params)
 
-  githubUsersList.push(...githubUsersPage)
+  return { users_page, has_next_page, end_cursor }
+}
 
-  while (hasNextPage) {
-    ;({
-      organization: {
-        membersWithRole: {
-          nodes: githubUsersPage,
-          pageInfo: { hasNextPage, endCursor },
-        },
-      },
-    } = await fetcher(githubUsersQuery, jwt, { cursor: endCursor }))
-    githubUsersList.push(...githubUsersPage)
+export const github = async (): Promise<FetchedData> => {
+  const jwt = getJwt("admin")
+  const data = []
+
+  let { users_page, has_next_page, end_cursor } = await fetch_github_page(jwt)
+  data.push(...users_page)
+
+  while (has_next_page) {
+    ;({ users_page, has_next_page, end_cursor } = await fetch_github_page(
+      jwt,
+      end_cursor
+    ))
+    data.push(...users_page)
   }
 
-  return githubUsersList
+  return data
 }
 
 export const matomo = async (): Promise<FetchedData> => {

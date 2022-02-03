@@ -1,0 +1,11 @@
+.authenticated-user {
+  @apply flex items-center;
+
+  & > div:first-child {
+    @apply mr-2;
+  }
+
+  & > div:last-child {
+    @apply text-sm leading-4 -mt-0.5;
+  }
+}

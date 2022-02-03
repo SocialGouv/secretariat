@@ -1,0 +1,27 @@
+header {
+  @apply shadow-lg fixed top-0 z-30 bg-white right-0 left-0;
+
+  .container {
+    @apply flex py-5 items-center mx-auto;
+
+    & > a {
+      @apply flex text-gray-700;
+
+      .title {
+        @apply flex flex-col justify-center px-8;
+      }
+    }
+
+    nav {
+      @apply flex flex-1 items-center justify-end;
+
+      & > * {
+        @apply border-r border-gray-400 px-5;
+
+        &:last-child {
+          @apply border-r-0 pr-0;
+        }
+      }
+    }
+  }
+}

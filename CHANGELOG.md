@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/SocialGouv/secretariat/compare/v1.4.0...v1.4.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* mattermost secret ([#33](https://github.com/SocialGouv/secretariat/issues/33)) ([62a532c](https://github.com/SocialGouv/secretariat/commit/62a532c61f09b2c04c471c5c870b9d57de15cf12))
+
 # [1.4.0](https://github.com/SocialGouv/secretariat/compare/v1.3.0...v1.4.0) (2022-02-03)
 
 

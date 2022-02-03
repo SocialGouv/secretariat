@@ -3,3 +3,7 @@
 @use "./components/common/authenticated-user.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
+
+aside {
+  @apply pr-10 mr-10 border border-y-0 border-l-0;
+}

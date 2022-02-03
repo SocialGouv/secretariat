@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/SocialGouv/secretariat/compare/v1.3.0...v1.4.0) (2022-02-03)
+
+
+### Bug Fixes
+
+* unused auth.tsx ([#31](https://github.com/SocialGouv/secretariat/issues/31)) ([d9306eb](https://github.com/SocialGouv/secretariat/commit/d9306eb9bc979dfa00566ea88741e5d99b866cf8))
+
+
+### Features
+
+* mattermost data fetcher ([#32](https://github.com/SocialGouv/secretariat/issues/32)) ([b5584e5](https://github.com/SocialGouv/secretariat/commit/b5584e515c3a624d696ad0c02756c873072a4faa))
+
 # [1.3.0](https://github.com/SocialGouv/secretariat/compare/v1.2.0...v1.3.0) (2022-02-03)
 
 

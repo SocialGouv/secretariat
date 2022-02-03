@@ -1,20 +1,9 @@
-import { gql } from "graphql-request"
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
-
-const getUserTeamsQuery = gql`
-  query getUserTeams($login: String!) {
-    organization(login: "socialgouv") {
-      teams(first: 100, userLogins: [$login]) {
-        nodes {
-          slug
-        }
-      }
-    }
-  }
-`
+import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
 
 const getUserTeams = async (login: string) => {
   const jwt = getJwt("admin")

@@ -1,47 +1,35 @@
-import { SWRConfig } from "swr"
-import type { GetStaticProps } from "next"
+import { useSession } from "next-auth/react"
 
+import Login from "@/components/login"
 import { GithubUsersLoader } from "@/services/github"
-import { getMatomoUsers, MatomoUsersLoader } from "@/services/matomo"
-import { getSentryUsers, SentryUsersLoader } from "@/services/sentry"
-import Auth from "@/components/auth"
+import { MatomoUsersLoader } from "@/services/matomo"
+import { SentryUsersLoader } from "@/services/sentry"
 
-import { useSession, signIn, signOut } from "next-auth/react"
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const githubUsers = await getGitHubUsers()
-//   const matomoUsers = await getMatomoUsers()
-//   const sentryUsers = await getSentryUsers()
-
-//   return {
-//     props: {
-//       fallback: { githubUsers, matomoUsers, sentryUsers },
-//     },
-//   }
-// }
-
-const Page = ({
-  fallback,
-}: {
-  fallback: Record<"users", GithubUser[] | MatomoUser[] | SentryUser[]>
-}) => {
+const Page = () => {
   const { data: session } = useSession()
+
+  if (!session) {
+    return (
+      <div className="container">
+        <main>
+          <Login />
+        </main>
+      </div>
+    )
+  }
 
   return (
     <div className="container">
-      <Auth />
-      {/* <SWRConfig value={{ fallback }}> */}
-      {/* {session && ( */}
       <main>
         <h2>Github</h2>
         <GithubUsersLoader />
+        <br />
         <h2>Matomo</h2>
         <MatomoUsersLoader />
+        <br />
         <h2>Sentry</h2>
         <SentryUsersLoader />
       </main>
-      {/* )} */}
-      {/* </SWRConfig> */}
     </div>
   )
 }

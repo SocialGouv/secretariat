@@ -23,13 +23,13 @@ const Menu = () => (
       </Link>
     </li>
     <li>
-      <Link href="/service/mattermost">
-        <a>Mattermost</a>
+      <Link href="/service/zammad">
+        <a>Pastek</a>
       </Link>
     </li>
     <li>
-      <Link href="/service/pastek">
-        <a>Pastek</a>
+      <Link href="/service/mattermost">
+        <a>Mattermost</a>
       </Link>
     </li>
     <li>

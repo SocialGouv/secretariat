@@ -1,6 +1,10 @@
 import { useRouter } from "next/router"
 import { MatomoUsersLoader } from "@/services/matomo"
 import { SentryUsersLoader } from "@/services/sentry"
+import { MattermostUsersLoader } from "@/services/mattermost"
+import { OVHUsersLoader } from "@/services/ovh"
+import { NextCloudUsersLoader } from "@/services/nextcloud"
+import { ZammadUsersLoader } from "@/services/zammad"
 
 interface Services {
   [key: string]: Service
@@ -22,19 +26,19 @@ const services = {
   },
   ovh: {
     name: "OVH",
-    Component: MatomoUsersLoader,
+    Component: OVHUsersLoader,
   },
   mattermost: {
     name: "Mattermost",
-    Component: MatomoUsersLoader,
+    Component: MattermostUsersLoader,
   },
-  pastek: {
-    name: "pastek",
-    Component: MatomoUsersLoader,
+  zammad: {
+    name: "Pastek",
+    Component: ZammadUsersLoader,
   },
   nextcloud: {
     name: "NextCloud",
-    Component: MatomoUsersLoader,
+    Component: NextCloudUsersLoader,
   },
 } as Services
 

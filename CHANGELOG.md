@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/SocialGouv/secretariat/compare/v1.1.0...v1.2.0) (2022-02-03)
+
+
+### Features
+
+* nextcloud service ([#30](https://github.com/SocialGouv/secretariat/issues/30)) ([cb982d8](https://github.com/SocialGouv/secretariat/commit/cb982d8b67fe68df23375b4d36945b1137f58d30))
+
 ## [1.1.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.1.0...v1.1.1-beta.1) (2022-02-03)
 
 

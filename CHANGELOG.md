@@ -1,3 +1,10 @@
+## [1.1.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.1.0...v1.1.1-beta.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* unused files ([4b7c6e6](https://github.com/SocialGouv/secretariat/commit/4b7c6e6f08e94dcd8ae7b185b824c57d5a6b9a59))
+
 # [1.1.0](https://github.com/SocialGouv/secretariat/compare/v1.0.5...v1.1.0) (2022-02-03)
 
 

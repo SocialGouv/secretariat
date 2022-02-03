@@ -1,12 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next"
-
-import { reqIsGithub } from "@/services/github"
-import GithubAPI from "@/services/APIs/GithubAPI"
-import MatomoAPI from "@/services/APIs/MatomoAPI"
-import SentryAPI from "@/services/APIs/SentryAPI"
-import OVHAPI from "@/services/APIs/OVHAPI"
-import ZammadAPI from "@/services/APIs/ZammadAPI"
 import { getJwt } from "@/utils/jwt"
+import { fetch_and_update_services } from "@/utils/services_fetching"
+import type { NextApiRequest, NextApiResponse } from "next"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
@@ -18,11 +12,7 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the JWT needed to query Hasura with update privileges
   const jwt = getJwt("webhook")
 
-  new GithubAPI().fetchDataAndUpdateDatabase(jwt)
-  new MatomoAPI().fetchDataAndUpdateDatabase(jwt)
-  new SentryAPI().fetchDataAndUpdateDatabase(jwt)
-  new OVHAPI().fetchDataAndUpdateDatabase(jwt)
-  new ZammadAPI().fetchDataAndUpdateDatabase(jwt)
+  fetch_and_update_services(jwt)
 
   res.status(200).send("OK")
 }

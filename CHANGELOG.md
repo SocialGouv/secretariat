@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/SocialGouv/secretariat/compare/v1.6.0...v1.6.1) (2022-02-07)
+
+
+### Bug Fixes
+
+* Display nextcloud users ([#37](https://github.com/SocialGouv/secretariat/issues/37)) ([463b48e](https://github.com/SocialGouv/secretariat/commit/463b48e769683615097907f9832302e292ebddf5))
+
 # [1.6.0](https://github.com/SocialGouv/secretariat/compare/v1.5.0...v1.6.0) (2022-02-07)
 
 

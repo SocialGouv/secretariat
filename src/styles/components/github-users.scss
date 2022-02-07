@@ -1,0 +1,13 @@
+.github-users {
+  @apply flex flex-1;
+
+  .selected-user {
+    @apply
+      p-4
+      ml-4
+      flex-1
+      sticky
+      shadow
+      bg-blue-100;
+  }
+}

@@ -19,6 +19,7 @@ const Page = () => {
   return (
     <main>
       <h2>Github</h2>
+      <br />
       <GithubUsersLoader />
     </main>
   )

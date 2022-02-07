@@ -1,13 +1,49 @@
-const Users = ({ users = [] }: { users: GithubUser[] }) => (
-  <ul className="users">
-    {users.map(({ email, login }, i) => (
-      <li key={i}>
-        <a>
-          {login} (email: {email})
-        </a>
-      </li>
-    ))}
-  </ul>
-)
+import Image from "next/image"
+import { useState } from "react"
+
+const Users = ({ users = [] }: { users: GithubUser[] }) => {
+  const [selectedUser, setSelectedUser] = useState<GithubUser>()
+
+  return (
+    <div className="github-users">
+      <ul className="user-list">
+        {users.map((user, i) => (
+          <li
+            key={i}
+            className={`tile${
+              selectedUser && selectedUser.login === user.login
+                ? " selected"
+                : ""
+            }`}
+            onClick={() => setSelectedUser(user)}
+          >
+            <div className="user">
+              <Image
+                alt="user avatar"
+                src={user.avatarUrl}
+                width={48}
+                height={48}
+              />
+              <div className="info">
+                <h3>
+                  {user.name || user.login}{" "}
+                  {user.name && <span>({user.login})</span>}
+                </h3>
+                <div className="email">{user.email}</div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {selectedUser && (
+        <div className="selected-user">
+          <div>Nom: {selectedUser.name}</div>
+          <div>Login: {selectedUser.login}</div>
+          <div>Email: {selectedUser.email}</div>
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default Users

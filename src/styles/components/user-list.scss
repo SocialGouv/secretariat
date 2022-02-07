@@ -1,0 +1,21 @@
+.user-list {
+
+  .tile {
+
+    .user {
+      @apply flex flex-row;
+
+      .info {
+        @apply ml-2;
+
+        h3 span {
+          @apply font-normal text-sm;
+        }
+
+        .email {
+          @apply text-sm;
+        }
+      }
+    }
+  }
+}

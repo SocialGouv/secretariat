@@ -24,6 +24,46 @@ export const getMatomoUsers = gql`
   }
 `
 
+export const getOVHUsers = gql`
+  query getOVHUsers {
+    services {
+      ovh
+    }
+  }
+`
+
+export const getZammadUsers = gql`
+  query getZammadUsers {
+    services {
+      zammad
+    }
+  }
+`
+
+export const getMattermostUsers = gql`
+  query getMattermostUsers {
+    services {
+      mattermost
+    }
+  }
+`
+
+export const getNextCloudUsers = gql`
+  query getNextCloudUsers {
+    services {
+      nextcloud
+    }
+  }
+`
+
+export const getOVHCUsers = gql`
+  query getOVHUsers {
+    services {
+      nextcloud
+    }
+  }
+`
+
 export const getUserTeams = gql`
   query getUserTeams($login: String!) {
     organization(login: "socialgouv") {

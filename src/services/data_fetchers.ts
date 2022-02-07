@@ -13,6 +13,7 @@ const githubUsersQuery = gql`
           name
           email
           login
+          avatarUrl
         }
         pageInfo {
           hasNextPage

@@ -7,17 +7,18 @@ interface GithubTeam {
 
 interface GithubUser {
   id: string
+  name: string
   login: string
   email: string
-  name: string
+  avatarUrl: string
 }
 
 interface MatomoUser {
   login: string
   email: string
-  superuser_access: string
-  date_registered: date
   uses_2fa: boolean
+  date_registered: date
+  superuser_access: string
 }
 
 interface SentryUser {

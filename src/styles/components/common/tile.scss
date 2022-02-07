@@ -1,0 +1,19 @@
+.tile {
+  @apply
+    p-4
+    mb-4
+    border-t
+    border-x
+    shadow-sm
+    border-b-2
+    bg-gray-200
+    cursor-pointer
+    border-t-gray-300
+    border-x-gray-300
+    border-b-blue-500
+    hover:bg-gray-300;
+
+  &.selected {
+    @apply bg-white shadow-none;
+  }
+}

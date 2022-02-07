@@ -15,7 +15,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN yarn build:production
+RUN yarn build
 
 # Production image, copy all the files and run next
 FROM node:16.13-alpine AS runner

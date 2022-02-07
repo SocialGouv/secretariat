@@ -1,8 +1,8 @@
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
-import { check_env } from "@/utils/services_fetching"
+import { checkEnv } from "@/utils/services-fetching"
 import { gql } from "graphql-request"
-import { FetchedData } from "@/utils/services_fetching"
+import { FetchedData } from "@/utils/services-fetching"
 
 const githubUsersQuery = gql`
   query GetGithubUsers($cursor: String) {
@@ -23,7 +23,7 @@ const githubUsersQuery = gql`
     }
   }
 `
-const fetch_github_page = async (jwt: string, cursor?: string) => {
+const fetchGithubPage = async (jwt: string, cursor?: string) => {
   const params = cursor ? { cursor } : {}
   const {
     organization: {
@@ -41,11 +41,11 @@ export const github = async (): Promise<FetchedData> => {
   const jwt = getJwt("admin")
   const data = []
 
-  let { users_page, has_next_page, end_cursor } = await fetch_github_page(jwt)
+  let { users_page, has_next_page, end_cursor } = await fetchGithubPage(jwt)
   data.push(...users_page)
 
   while (has_next_page) {
-    ;({ users_page, has_next_page, end_cursor } = await fetch_github_page(
+    ;({ users_page, has_next_page, end_cursor } = await fetchGithubPage(
       jwt,
       end_cursor
     ))
@@ -56,7 +56,7 @@ export const github = async (): Promise<FetchedData> => {
 }
 
 export const mattermost = async (): Promise<FetchedData> => {
-  check_env(["MATTERMOST_API_TOKEN"])
+  checkEnv(["MATTERMOST_API_TOKEN"])
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
     {
@@ -70,7 +70,7 @@ export const mattermost = async (): Promise<FetchedData> => {
 }
 
 export const matomo = async (): Promise<FetchedData> => {
-  check_env(["MATOMO_API_TOKEN"])
+  checkEnv(["MATOMO_API_TOKEN"])
   const response = await fetch(
     "https://matomo.fabrique.social.gouv.fr/index.php",
     {
@@ -85,7 +85,7 @@ export const matomo = async (): Promise<FetchedData> => {
 }
 
 export const nextcloud = async (): Promise<FetchedData> => {
-  check_env(["NEXTCLOUD_API_LOGIN", "NEXTCLOUD_API_SECRET"])
+  checkEnv(["NEXTCLOUD_API_LOGIN", "NEXTCLOUD_API_SECRET"])
   const response = await fetch(
     "https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users",
     {
@@ -108,7 +108,7 @@ export const nextcloud = async (): Promise<FetchedData> => {
 }
 
 export const ovh = async (): Promise<FetchedData> => {
-  check_env([
+  checkEnv([
     "OVH_APP_KEY",
     "OVH_APP_SECRET",
     "OVH_CONSUMER_KEY",
@@ -132,7 +132,7 @@ export const ovh = async (): Promise<FetchedData> => {
 }
 
 export const sentry = async (): Promise<FetchedData> => {
-  check_env(["SENTRY_API_TOKEN"])
+  checkEnv(["SENTRY_API_TOKEN"])
   const response = await fetch(
     "https://sentry.fabrique.social.gouv.fr/api/0/organizations/incubateur/users/",
     {
@@ -146,7 +146,7 @@ export const sentry = async (): Promise<FetchedData> => {
 }
 
 export const zammad = async (): Promise<FetchedData> => {
-  check_env(["ZAMMAD_API_TOKEN"])
+  checkEnv(["ZAMMAD_API_TOKEN"])
   const response = await fetch(
     "https://pastek.fabrique.social.gouv.fr/api/v1/users",
     {

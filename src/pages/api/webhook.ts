@@ -1,5 +1,5 @@
 import { getJwt } from "@/utils/jwt"
-import { fetch_and_update_services } from "@/utils/services_fetching"
+import { fetchAndUpdateServices } from "@/utils/services-fetching"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,7 +12,7 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the JWT needed to query Hasura with update privileges
   const jwt = getJwt("webhook")
 
-  fetch_and_update_services(jwt)
+  fetchAndUpdateServices(jwt)
 
   res.status(200).send("OK")
 }

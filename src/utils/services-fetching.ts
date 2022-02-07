@@ -1,4 +1,4 @@
-import * as data_fetchers from "@/services/data_fetchers"
+import * as data_fetchers from "@/services/data-fetchers"
 import fetcher from "@/utils/fetcher"
 import { gql } from "graphql-request"
 
@@ -14,7 +14,7 @@ export const SERVICES = [
 
 export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
 
-export const check_env = (env_vars: string[]) => {
+export const checkEnv = (env_vars: string[]) => {
   env_vars.forEach((env_var) => {
     if (!process.env[env_var]) {
       throw ReferenceError(`Could not find ${env_var} environment variable`)
@@ -22,12 +22,12 @@ export const check_env = (env_vars: string[]) => {
   })
 }
 
-export const update_db_with_data = (
+export const updateDbWithData = (
   service_name: string,
   data: FetchedData,
   jwt: string
 ) => {
-  check_env(["NEXT_PUBLIC_HASURA_URL"])
+  checkEnv(["NEXT_PUBLIC_HASURA_URL"])
 
   fetcher(
     gql`
@@ -44,9 +44,9 @@ export const update_db_with_data = (
   )
 }
 
-export const fetch_and_update_services = (jwt: string) => {
+export const fetchAndUpdateServices = (jwt: string) => {
   SERVICES.forEach(async (service_name) => {
     const data = await data_fetchers[service_name]()
-    update_db_with_data(service_name, data, jwt)
+    updateDbWithData(service_name, data, jwt)
   })
 }

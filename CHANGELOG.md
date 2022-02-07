@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/SocialGouv/secretariat/compare/v1.4.1...v1.5.0) (2022-02-07)
+
+
+### Features
+
+* **navigation:** Links to services ([#34](https://github.com/SocialGouv/secretariat/issues/34)) ([48fa80e](https://github.com/SocialGouv/secretariat/commit/48fa80e67074cdccd3b169d570ae4b3ed94a633c))
+
 ## [1.4.1](https://github.com/SocialGouv/secretariat/compare/v1.4.0...v1.4.1) (2022-02-03)
 
 

@@ -1,10 +1,14 @@
 import { useRouter } from "next/router"
+import { useSession } from "next-auth/react"
+
+import Menu from "@/components/menu"
+import Login from "@/components/login"
+import { OVHUsersLoader } from "@/services/ovh"
 import { MatomoUsersLoader } from "@/services/matomo"
 import { SentryUsersLoader } from "@/services/sentry"
-import { MattermostUsersLoader } from "@/services/mattermost"
-import { OVHUsersLoader } from "@/services/ovh"
-import { NextCloudUsersLoader } from "@/services/nextcloud"
 import { ZammadUsersLoader } from "@/services/zammad"
+import { NextCloudUsersLoader } from "@/services/nextcloud"
+import { MattermostUsersLoader } from "@/services/mattermost"
 
 interface Services {
   [key: string]: Service
@@ -44,17 +48,31 @@ const services = {
 
 const Page = () => {
   const { query } = useRouter()
+  const { data: session } = useSession()
   const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
 
-  if (slug) {
+  if (!session) {
+    return (
+      <div className="container">
+        <main>
+          <Login />
+        </main>
+      </div>
+    )
+  } else if (slug) {
     const { name, Component } = services[slug]
 
     return (
-      <main>
-        <h2>{name}</h2>
-        <br />
-        <Component />
-      </main>
+      <div className="container">
+        <aside>
+          <div className="sticky-container">
+            <Menu />
+          </div>
+        </aside>
+        <main>
+          <Component />
+        </main>
+      </div>
     )
   }
 

@@ -3,6 +3,7 @@ import { useState } from "react"
 
 const Users = ({ users = [] }: { users: GithubUser[] }) => {
   const [selectedUser, setSelectedUser] = useState<GithubUser>()
+  console.log("USERS", users)
 
   return (
     <div className="github-users">
@@ -37,9 +38,13 @@ const Users = ({ users = [] }: { users: GithubUser[] }) => {
       </ul>
       {selectedUser && (
         <div className="selected-user">
-          <div>Nom: {selectedUser.name}</div>
-          <div>Login: {selectedUser.login}</div>
-          <div>Email: {selectedUser.email}</div>
+          <div className="sticky-container">
+            <div className="user-profile">
+              <div>Nom: {selectedUser.name}</div>
+              <div>Login: {selectedUser.login}</div>
+              <div>Email: {selectedUser.email}</div>
+            </div>
+          </div>
         </div>
       )}
     </div>

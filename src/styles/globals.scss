@@ -7,8 +7,43 @@
 @use "./components/logo.scss";
 @use "./components/header.scss";
 
+html, body {
+  @apply h-full flex overflow-hidden;
+}
+
+body {
+  @apply flex flex-1 overflow-hidden;
+}
+
+#__next { /* stylelint-disable-line */
+  @apply flex flex-col flex-1 overflow-hidden;
+
+  & > .page {
+    @apply flex-1 overflow-auto mt-28;
+
+    & > .container {
+      @apply flex mx-auto;
+    }
+  }
+}
+
 aside {
-  @apply pr-10 mr-10 border border-y-0 border-l-0;
+
+  .sticky-container {
+    @apply sticky top-0 pt-10;
+
+    ul {
+      @apply border border-y-0 border-l-0 pb-2 pt-2 pr-4 mr-10;
+
+      li {
+        @apply py-2 pl-2 pr-6 hover:bg-beige;
+
+        &.selected {
+          @apply bg-gray-200 font-bold;
+        }
+      }
+    }
+  }
 }
 
 main {

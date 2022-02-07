@@ -1,28 +1,9 @@
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
 import { checkEnv } from "@/utils/services-fetching"
-import { gql } from "graphql-request"
 import { FetchedData } from "@/utils/services-fetching"
+import { getRemoteGithubUsers } from "@/queries/index"
 
-const githubUsersQuery = gql`
-  query GetGithubUsers($cursor: String) {
-    organization(login: "SocialGouv") {
-      membersWithRole(first: 100, after: $cursor) {
-        nodes {
-          id
-          name
-          email
-          login
-          avatarUrl
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-  }
-`
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
   const params = cursor ? { cursor } : {}
   const {
@@ -32,7 +13,7 @@ const fetchGithubPage = async (jwt: string, cursor?: string) => {
         pageInfo: { hasNextPage, endCursor },
       },
     },
-  } = await fetcher(githubUsersQuery, jwt, params)
+  } = await fetcher(getRemoteGithubUsers, jwt, params)
 
   return { usersPage, hasNextPage, endCursor }
 }

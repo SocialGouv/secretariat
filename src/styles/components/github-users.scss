@@ -1,13 +1,21 @@
 .github-users {
   @apply flex flex-1;
 
+  .user-list {
+    @apply mt-10;
+  }
+
   .selected-user {
-    @apply
-      p-4
-      ml-4
-      flex-1
-      sticky
-      shadow
-      bg-blue-100;
+    @apply ml-10 flex-1;
+
+    .sticky-container {
+      @apply sticky top-0 pt-10;
+
+      .user-profile {
+        @apply p-4 shadow border border-gray-300;
+
+        height: 600px;
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react"
 
+import Menu from "@/components/menu"
 import Login from "@/components/login"
 import { GithubUsersLoader } from "@/services/github"
 
@@ -17,11 +18,16 @@ const Page = () => {
   }
 
   return (
-    <main>
-      <h2>Github</h2>
-      <br />
-      <GithubUsersLoader />
-    </main>
+    <div className="container">
+      <aside>
+        <div className="sticky-container">
+          <Menu />
+        </div>
+      </aside>
+      <main>
+        <GithubUsersLoader />
+      </main>
+    </div>
   )
 }
 

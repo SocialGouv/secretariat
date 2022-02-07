@@ -17,14 +17,6 @@
     text-size-adjust: 100%;
     text-rendering: optimizeSpeed;
   }
-  
-  #__next { /* stylelint-disable-line */
-    @apply flex flex-col flex-1;
-  
-    & > .container {
-      @apply flex flex-1 mx-auto pt-40;
-    }
-  }
 
   h1 {
     @apply text-xl font-bold;

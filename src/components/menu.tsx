@@ -33,7 +33,7 @@ const Menu = () => (
       </Link>
     </li>
     <li>
-      <Link href="/service/nextCloud">
+      <Link href="/service/nextcloud">
         <a>NextCloud</a>
       </Link>
     </li>

@@ -26,3 +26,19 @@ interface SentryUser {
   name: string
   email: string
 }
+
+interface NextCloudUser {
+  login: string
+}
+
+interface OVHUser {
+  email: string
+}
+
+interface ZammadUser {
+  email: string
+}
+
+interface MattermostUser {
+  email: string
+}

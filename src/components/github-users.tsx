@@ -3,6 +3,7 @@ import { useState } from "react"
 
 const Users = ({ users = [] }: { users: GithubUser[] }) => {
   const [selectedUser, setSelectedUser] = useState<GithubUser>()
+  console.log("USERS", users)
 
   return (
     <div className="github-users">

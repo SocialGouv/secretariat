@@ -1,13 +1,13 @@
 import { useRouter } from "next/router"
 
-const Users = ({ users = [] }: { users: MatomoUser[] }) => {
+const Users = ({ users = [] }: { users: NextCloudUser[] }) => {
   const { query } = useRouter()
 
   return (
     <ul className="users">
-      {users.map(({ email }, i) => (
+      {users.map(({ login }, i) => (
         <li key={i}>
-          <a>{email}</a>
+          <a>{login}</a>
         </li>
       ))}
     </ul>

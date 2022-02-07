@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-const Users = ({ users = [] }: { users: MatomoUser[] }) => {
+const Users = ({ users = [] }: { users: OVHUser[] }) => {
   const { query } = useRouter()
 
   return (

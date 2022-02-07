@@ -1,3 +1,10 @@
+## [1.5.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.5.0...v1.5.1-beta.1) (2022-02-07)
+
+
+### Bug Fixes
+
+* official Dockerfile from Next ([dfead21](https://github.com/SocialGouv/secretariat/commit/dfead2169e0fcaf47303d36cb9cf0d5642735821))
+
 # [1.5.0](https://github.com/SocialGouv/secretariat/compare/v1.4.1...v1.5.0) (2022-02-07)
 
 

@@ -95,3 +95,17 @@ export const getRemoteGithubUsers = gql`
     }
   }
 `
+
+export const getRemoteGithubTeams = gql`
+  query GetRemoteGithubTeams($userLogins: [String!]) {
+    organization(login: "SocialGouv") {
+      teams(userLogins: $userLogins, first: 100) {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+`

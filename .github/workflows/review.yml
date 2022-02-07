@@ -30,7 +30,7 @@ jobs:
           echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
 
       - name: Use autodevops build and register
-        uses: SocialGouv/actions/autodevops-build-register@v1
+        uses: SocialGouv/actions/autodevops-build-register@refacto-relative-uses
         with:
           project: ${{ env.project }}
           imageName: ${{ env.project }}/app
@@ -49,7 +49,7 @@ jobs:
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
       - name: Use autodevops build and register
-        uses: SocialGouv/actions/autodevops-build-register@v1
+        uses: SocialGouv/actions/autodevops-build-register@refacto-relative-uses
         with:
           project: ${{ env.project }}
           dockerfile: ./packages/hasura/Dockerfile
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use autodevops manifests generation
-        uses: SocialGouv/actions/autodevops-manifests@v1
+        uses: SocialGouv/actions/autodevops-manifests@refacto-relative-uses
         with:
           environment: 'dev'
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
@@ -80,7 +80,7 @@ jobs:
     needs: [register-app, register-hasura, manifests]
     steps:
       - name: Use autodevops deployment
-        uses: SocialGouv/actions/autodevops-deploy@v1
+        uses: SocialGouv/actions/autodevops-deploy@refacto-relative-uses
         with:
           environment: 'dev'
           token: ${{ secrets.GITHUB_TOKEN }}

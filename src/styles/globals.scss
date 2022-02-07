@@ -1,9 +1,16 @@
+@use "./components/common/tile.scss";
 @use "./components/common/anchor.scss";
 @use "./components/common/button.scss";
-@use "./components/common/authenticated-user.scss";
+@use "./components/authenticated-user.scss";
+@use "./components/user-list.scss";
+@use "./components/github-users.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
 
 aside {
   @apply pr-10 mr-10 border border-y-0 border-l-0;
+}
+
+main {
+  @apply flex-1;
 }

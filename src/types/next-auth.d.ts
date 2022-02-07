@@ -3,24 +3,24 @@ import NextAuth from "next-auth"
 declare module "next-auth" {
   interface Session {
     user: {
-      teams: string[]
+      id: number
       role: string
       name: string
       login: string
       email: string
-      id: number
       image: string
+      teams: string[]
     }
   }
 
   interface User {
     id: string
     role: Role
-    teams: string[]
     name: string
     login: string
-    image: string
     email: string
+    image: string
+    teams: string[]
   }
 }
 

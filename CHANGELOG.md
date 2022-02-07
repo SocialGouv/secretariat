@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/SocialGouv/secretariat/compare/v1.5.0...v1.6.0) (2022-02-07)
+
+
+### Features
+
+* Dockerfile from Next ([#39](https://github.com/SocialGouv/secretariat/issues/39)) ([4134fc6](https://github.com/SocialGouv/secretariat/commit/4134fc66d2fa59f8034c2d50de642a0f9c130580))
+
 ## [1.5.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.5.0...v1.5.1-beta.1) (2022-02-07)
 
 

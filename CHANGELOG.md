@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/SocialGouv/secretariat/compare/v1.6.1...v1.7.0) (2022-02-08)
+
+
+### Features
+
+* Fetch whole users ([#40](https://github.com/SocialGouv/secretariat/issues/40)) ([b32c5a8](https://github.com/SocialGouv/secretariat/commit/b32c5a80661f61a5df867611d0cfb9620c6c7d8d))
+
 ## [1.6.1](https://github.com/SocialGouv/secretariat/compare/v1.6.0...v1.6.1) (2022-02-07)
 
 

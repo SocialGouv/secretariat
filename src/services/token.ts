@@ -1,13 +1,9 @@
-import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 const useToken = (): [string] => {
-  const { data = {} } = useSWR("/api/jwt", fetcher, {
-    revalidateOnFocus: false,
-  })
-
-  const { token } = data
+  const { data: { token } = {} } = useSWRImmutable("/api/jwt", fetcher)
 
   return [token]
 }

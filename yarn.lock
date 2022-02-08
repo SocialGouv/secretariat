@@ -2104,6 +2104,11 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
+spinthatshit@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/spinthatshit/-/spinthatshit-1.0.4.tgz#daa33ab87af77fda04d83ad91b0418b9557c0461"
+  integrity sha1-2qM6uHr3f9oE2DrZGwQYuVV8BGE=
+
 string.prototype.matchall@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/string.prototype.matchall/-/string.prototype.matchall-4.0.6.tgz#5abb5dabc94c7b0ea2380f65ba610b3a544b15fa"

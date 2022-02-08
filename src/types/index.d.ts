@@ -39,7 +39,12 @@ interface NextCloudUser {
 }
 
 interface OVHUser {
-  email: string
+  login: string
+  lastName: string
+  firstName: string
+  creationDate: Date
+  displayName: string
+  primaryEmailAddress: string
 }
 
 interface ZammadUser {

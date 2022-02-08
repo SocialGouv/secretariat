@@ -6,8 +6,6 @@ const Menu = () => {
     query: { slug },
   } = useRouter()
 
-  console.log("SLUG", slug)
-
   return (
     <ul className="menu">
       <li className={!slug ? "selected" : ""}>

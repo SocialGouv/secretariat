@@ -53,7 +53,7 @@ export const github = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
           teams: { nodes: teamsList },
         },
       } = await fetcher(getRemoteGithubTeams, jwt, { userLogins: user.login })
-      console.log(`fetching teams for Github user ${index + 1}/${users.length}`)
+      console.log(`fetched teams for Github user ${index + 1}/${users.length}`)
       return { ...user, teams: teamsList }
     })
   )
@@ -140,14 +140,22 @@ export const nextcloud = async (
       const {
         ocs: { data: user },
       } = await fetchNextcloudUser(login)
-      console.log(`fetching Nextcloud user ${index + 1}/${logins.length}`)
+      console.log(`fetched Nextcloud user ${index + 1}/${logins.length}`)
       return user
     })
   )
   return users
 }
 
-export const ovh = async (): Promise<FetchedData> => {
+const fetchOvhUser = async (ovh: any, email: string) => {
+  const user = await ovh.requestPromised(
+    "GET",
+    `/email/pro/${process.env.OVH_SERVICE_NAME}/account/${email}`
+  )
+  return user
+}
+
+export const ovh = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
   checkEnv([
     "OVH_APP_KEY",
     "OVH_APP_SECRET",
@@ -161,14 +169,21 @@ export const ovh = async (): Promise<FetchedData> => {
     consumerKey: process.env.OVH_CONSUMER_KEY,
   })
 
-  const response = await ovh.requestPromised(
+  const emails = await ovh.requestPromised(
     "GET",
     `/email/pro/${process.env.OVH_SERVICE_NAME}/account`
   )
-  const data = response.map((email: string) => ({
-    email,
-  }))
-  return data
+
+  // OVH only sends us a list of emails, we need to query each user's details
+  const users: Record<string, unknown>[] = await Promise.all(
+    emails.map(async (email: string, index: number) => {
+      await delay(index * msDelay)
+      const user = await fetchOvhUser(ovh, email)
+      console.log(`fetched OVH user ${index + 1}/${emails.length}`)
+      return user
+    })
+  )
+  return users
 }
 
 export const sentry = async (): Promise<FetchedData> => {

@@ -1,6 +1,6 @@
 import { checkEnv } from "@/services/data-fetchers"
 import { getJwt } from "@/utils/jwt"
-import { fetchAndUpdateServices } from "@/utils/services-fetching"
+import { fetchAndUpdateServices } from "@/services/data-fetchers"
 import { createHmac, timingSafeEqual } from "crypto"
 import type { NextApiRequest, NextApiResponse } from "next"
 

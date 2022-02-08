@@ -25,10 +25,17 @@ interface SentryUser {
   id: string
   name: string
   email: string
+  role: string
+  dateCreated: Date
+  user: {
+    avatarUrl: string
+  }
 }
 
 interface NextCloudUser {
-  login: string
+  id: string
+  email: string
+  displayname: string
 }
 
 interface OVHUser {
@@ -37,8 +44,14 @@ interface OVHUser {
 
 interface ZammadUser {
   email: string
+  login: string
+  lastname: string
+  firstname: string
 }
 
 interface MattermostUser {
   email: string
+  username: string
+  last_name: string
+  first_name: string
 }

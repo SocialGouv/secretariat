@@ -3,7 +3,6 @@ import { useState } from "react"
 
 const Users = ({ users = [] }: { users: GithubUser[] }) => {
   const [selectedUser, setSelectedUser] = useState<GithubUser>()
-  console.log("USERS", users)
 
   return (
     <div className="github-users">
@@ -20,10 +19,10 @@ const Users = ({ users = [] }: { users: GithubUser[] }) => {
           >
             <div className="user">
               <Image
-                alt="user avatar"
-                src={user.avatarUrl}
                 width={48}
                 height={48}
+                alt="user avatar"
+                src={user.avatarUrl}
               />
               <div className="info">
                 <h3>

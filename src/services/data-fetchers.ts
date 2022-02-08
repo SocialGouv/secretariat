@@ -1,12 +1,44 @@
+import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
-import { checkEnv } from "@/utils/services-fetching"
-import { FetchedData } from "@/utils/services-fetching"
-import { getRemoteGithubUsers, getRemoteGithubTeams } from "@/queries/index"
-import { setTimeout } from "timers/promises"
+import { gql } from "graphql-request"
 import pMap from "p-map"
+import { setTimeout } from "timers/promises"
 
 const DEFAULT_DELAY = 100
+
+export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
+
+// Each service fetcher requires some credentials or a token to work
+export const checkEnv = (envVars: string[]) => {
+  envVars.forEach((envVar) => {
+    if (!process.env[envVar]) {
+      throw ReferenceError(`Could not find ${envVar} environment variable`)
+    }
+  })
+}
+
+export const updateDbWithData = (
+  serviceName: string,
+  data: FetchedData,
+  jwt: string
+) => {
+  checkEnv(["NEXT_PUBLIC_HASURA_URL"])
+
+  fetcher(
+    gql`
+      mutation UpdateData($data: jsonb!) {
+        update_services(where: {}, _set: { ${serviceName}: $data }) {
+          returning {
+            id
+          }
+        }
+      }
+`,
+    jwt,
+    { data }
+  )
+}
 
 // We have too many users to receive them all in the first page
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
@@ -212,4 +244,31 @@ export const zammad = async (): Promise<FetchedData> => {
     }
   )
   return response.json()
+}
+
+const SERVICES = [
+  "github",
+  "matomo",
+  "mattermost",
+  "nextcloud",
+  "ovh",
+  "sentry",
+  "zammad",
+] as const
+
+const servicesFetchers = {
+  github,
+  matomo,
+  mattermost,
+  nextcloud,
+  ovh,
+  sentry,
+  zammad,
+}
+
+export const fetchAndUpdateServices = (jwt: string) => {
+  SERVICES.forEach(async (serviceName) => {
+    const data = await servicesFetchers[serviceName]()
+    updateDbWithData(serviceName, data, jwt)
+  })
 }

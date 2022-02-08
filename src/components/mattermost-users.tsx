@@ -42,10 +42,14 @@ const Users = ({ users = [] }: { users: MattermostUser[] }) => {
           <div className="sticky-container">
             <div className="user-profile">
               <div>
-                Nom: {selectedUser.first_name} {selectedUser.last_name}
+                Nom:{" "}
+                {selectedUser.first_name
+                  ? `${selectedUser.first_name} ${selectedUser.last_name}`
+                  : selectedUser.username}
               </div>
-              <div>username: {selectedUser.username}</div>
               <div>Email: {selectedUser.email}</div>
+              <div>ID: {selectedUser.id}</div>
+              <div>Date de création: {selectedUser.create_at}</div>
             </div>
           </div>
         </div>

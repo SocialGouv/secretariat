@@ -42,10 +42,15 @@ const Users = ({ users = [] }: { users: OVHUser[] }) => {
           <div className="sticky-container">
             <div className="user-profile">
               <div>
-                Nom: {selectedUser.firstName} {selectedUser.lastName}
+                Nom:{" "}
+                {selectedUser.firstName
+                  ? `${selectedUser.firstName} ${selectedUser.lastName}`
+                  : selectedUser.displayName}
               </div>
               <div>Login: {selectedUser.login}</div>
               <div>Email: {selectedUser.primaryEmailAddress}</div>
+              <div>ID: {selectedUser.id}</div>
+              <div>Date de création: {selectedUser.creationDate}</div>
             </div>
           </div>
         </div>

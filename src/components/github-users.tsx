@@ -42,6 +42,7 @@ const Users = ({ users = [] }: { users: GithubUser[] }) => {
               <div>Nom: {selectedUser.name}</div>
               <div>Login: {selectedUser.login}</div>
               <div>Email: {selectedUser.email}</div>
+              <div>ID: {selectedUser.id}</div>
             </div>
           </div>
         </div>

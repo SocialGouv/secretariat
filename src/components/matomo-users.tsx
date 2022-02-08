@@ -36,9 +36,11 @@ const Users = ({ users = [] }: { users: MatomoUser[] }) => {
         <div className="selected-user">
           <div className="sticky-container">
             <div className="user-profile">
-              {/* <div>Nom: {selectedUser.name}</div> */}
               <div>Login: {selectedUser.login}</div>
               <div>Email: {selectedUser.email}</div>
+              <div>Date de création: {selectedUser.date_registered}</div>
+              <div>2FA acitvé: {selectedUser.uses_2fa ? "oui" : "non"}</div>
+              <div>Super User: {selectedUser.superuser_access}</div>
             </div>
           </div>
         </div>

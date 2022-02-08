@@ -1,8 +1,7 @@
 interface GithubTeam {
+  id: string
   name: string
   slug: string
-  avatarUrl: string
-  description: string
 }
 
 interface GithubUser {
@@ -11,6 +10,7 @@ interface GithubUser {
   login: string
   email: string
   avatarUrl: string
+  teams: GithubTeam[]
 }
 
 interface MatomoUser {
@@ -35,10 +35,12 @@ interface SentryUser {
 interface NextCloudUser {
   id: string
   email: string
+  lastLogin: string
   displayname: string
 }
 
 interface OVHUser {
+  id: string
   login: string
   lastName: string
   firstName: string
@@ -50,12 +52,15 @@ interface OVHUser {
 interface ZammadUser {
   email: string
   login: string
+  created_at: Date
   lastname: string
   firstname: string
 }
 
 interface MattermostUser {
+  id: string
   email: string
+  create_at: Date
   username: string
   last_name: string
   first_name: string

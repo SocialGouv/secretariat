@@ -11,9 +11,7 @@ const Users = ({ users = [] }: { users: SentryUser[] }) => {
           <li
             key={i}
             className={`tile${
-              selectedUser && selectedUser.email === user.email
-                ? " selected"
-                : ""
+              selectedUser && selectedUser.id === user.id ? " selected" : ""
             }`}
             onClick={() => setSelectedUser(user)}
           >
@@ -22,16 +20,30 @@ const Users = ({ users = [] }: { users: SentryUser[] }) => {
                 width={48}
                 height={48}
                 alt="user avatar"
-                src={user.user.avatarUrl}
+                src="/images/avatar.jpeg"
               />
               <div className="info">
-                <h3>{user.name}</h3>
+                <h3>
+                  {user.name} {user.name && <span>({user.id})</span>}
+                </h3>
                 <div className="email">{user.email}</div>
               </div>
             </div>
           </li>
         ))}
       </ul>
+      {selectedUser && (
+        <div className="selected-user">
+          <div className="sticky-container">
+            <div className="user-profile">
+              <div>Nom: {selectedUser.name}</div>
+              <div>Email: {selectedUser.email}</div>
+              <div>ID: {selectedUser.id}</div>
+              <div>Date de création: {selectedUser.dateCreated}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

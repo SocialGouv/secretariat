@@ -38,8 +38,9 @@ const Users = ({ users = [] }: { users: NextCloudUser[] }) => {
           <div className="sticky-container">
             <div className="user-profile">
               <div>Nom: {selectedUser.displayname}</div>
-              <div>id: {selectedUser.id}</div>
               <div>Email: {selectedUser.email}</div>
+              <div>ID: {selectedUser.id}</div>
+              <div>Dernière connexion: {selectedUser.lastLogin}</div>
             </div>
           </div>
         </div>

@@ -43,6 +43,7 @@ const Users = ({ users = [] }: { users: ZammadUser[] }) => {
               </div>
               <div>Login: {selectedUser.login}</div>
               <div>Email: {selectedUser.email}</div>
+              <div>Date de création: {selectedUser.created_at}</div>
             </div>
           </div>
         </div>

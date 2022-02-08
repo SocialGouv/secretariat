@@ -7,8 +7,6 @@ import { setTimeout } from "timers/promises"
 
 const DEFAULT_DELAY = 100
 
-export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
-
 // Each service fetcher requires some credentials or a token to work
 export const checkEnv = (envVars: string[]) => {
   envVars.forEach((envVar) => {
@@ -16,28 +14,6 @@ export const checkEnv = (envVars: string[]) => {
       throw ReferenceError(`Could not find ${envVar} environment variable`)
     }
   })
-}
-
-export const updateDbWithData = (
-  serviceName: string,
-  data: FetchedData,
-  jwt: string
-) => {
-  checkEnv(["NEXT_PUBLIC_HASURA_URL"])
-
-  fetcher(
-    gql`
-      mutation UpdateData($data: jsonb!) {
-        update_services(where: {}, _set: { ${serviceName}: $data }) {
-          returning {
-            id
-          }
-        }
-      }
-`,
-    jwt,
-    { data }
-  )
 }
 
 // We have too many users to receive them all in the first page
@@ -235,7 +211,7 @@ export const sentry = async (): Promise<FetchedData> => {
 export const zammad = async (): Promise<FetchedData> => {
   checkEnv(["ZAMMAD_API_TOKEN"])
   const response = await fetch(
-    "https://pastek.fabrique.social.gouv.fr/api/v1/users",
+    "https://pastek.fabrique.social.gouv.fr/api/v1/users/search?query=role_ids:*+AND+active:true",
     {
       method: "GET",
       headers: {
@@ -266,7 +242,31 @@ const servicesFetchers = {
   zammad,
 }
 
-export const fetchAndUpdateServices = (jwt: string) => {
+type FetchedData = Record<string, unknown> | Record<string, unknown>[]
+
+const updateDbWithData = (
+  serviceName: string,
+  data: FetchedData,
+  jwt: string
+) => {
+  checkEnv(["NEXT_PUBLIC_HASURA_URL"])
+
+  fetcher(
+    gql`
+      mutation UpdateData($data: jsonb!) {
+        update_services(where: {}, _set: { ${serviceName}: $data }) {
+          returning {
+            id
+          }
+        }
+      }
+`,
+    jwt,
+    { data }
+  )
+}
+
+export const fetchAndUpdateServices = async (jwt: string) => {
   SERVICES.forEach(async (serviceName) => {
     const data = await servicesFetchers[serviceName]()
     updateDbWithData(serviceName, data, jwt)

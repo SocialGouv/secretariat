@@ -1,29 +1,19 @@
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
 import { checkEnv } from "@/utils/services-fetching"
-import { gql } from "graphql-request"
 import { FetchedData } from "@/utils/services-fetching"
+import { getRemoteGithubUsers, getRemoteGithubTeams } from "@/queries/index"
 
-const githubUsersQuery = gql`
-  query GetGithubUsers($cursor: String) {
-    organization(login: "SocialGouv") {
-      membersWithRole(first: 100, after: $cursor) {
-        nodes {
-          id
-          name
-          email
-          login
-          avatarUrl
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-  }
-`
+const DEFAULT_DELAY = 100
+
+// Used to `await delay(ms)` before queries we want to delay
+const delay = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+// We have too many users to receive them all in the first page
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
+  // if it is the query for the first page, we don't have a cursor
   const params = cursor ? { cursor } : {}
   const {
     organization: {
@@ -32,27 +22,42 @@ const fetchGithubPage = async (jwt: string, cursor?: string) => {
         pageInfo: { hasNextPage, endCursor },
       },
     },
-  } = await fetcher(githubUsersQuery, jwt, params)
+  } = await fetcher(getRemoteGithubUsers, jwt, params)
 
   return { usersPage, hasNextPage, endCursor }
 }
 
-export const github = async (): Promise<FetchedData> => {
+export const github = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
+  // accessing an Hasura remote schema requires admin rights
   const jwt = getJwt("admin")
-  const data = []
 
+  const users = []
   let { usersPage, hasNextPage, endCursor } = await fetchGithubPage(jwt)
-  data.push(...usersPage)
+  users.push(...usersPage)
 
   while (hasNextPage) {
+    await delay(msDelay) // so that we don't spam the remote API
     ;({ usersPage, hasNextPage, endCursor } = await fetchGithubPage(
       jwt,
       endCursor
     ))
-    data.push(...usersPage)
+    users.push(...usersPage)
   }
 
-  return data
+  // Update each user with its teams
+  const usersWithTeams = Promise.all(
+    users.map(async (user, index) => {
+      await delay(index * msDelay)
+      const {
+        organization: {
+          teams: { nodes: teamsList },
+        },
+      } = await fetcher(getRemoteGithubTeams, jwt, { userLogins: user.login })
+      console.log(`fetching teams for Github user ${index + 1}/${users.length}`)
+      return { ...user, teams: teamsList }
+    })
+  )
+  return usersWithTeams
 }
 
 export const mattermost = async (): Promise<FetchedData> => {
@@ -84,7 +89,26 @@ export const matomo = async (): Promise<FetchedData> => {
   return response.json()
 }
 
-export const nextcloud = async (): Promise<FetchedData> => {
+const fetchNextcloudUser = async (login: string) => {
+  const user = await fetch(
+    `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users/${login}`,
+    {
+      method: "GET",
+      headers: {
+        "OCS-APIRequest": " true",
+        Accept: " application/json",
+        Authorization: `Basic ${Buffer.from(
+          `${process.env.NEXTCLOUD_API_LOGIN}:${process.env.NEXTCLOUD_API_SECRET}`
+        ).toString("base64")}`,
+      },
+    }
+  )
+  return user.json()
+}
+
+export const nextcloud = async (
+  msDelay = DEFAULT_DELAY
+): Promise<FetchedData> => {
   checkEnv(["NEXTCLOUD_API_LOGIN", "NEXTCLOUD_API_SECRET"])
   const response = await fetch(
     "https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users",
@@ -100,11 +124,27 @@ export const nextcloud = async (): Promise<FetchedData> => {
     }
   )
 
-  const rawData = await response.json()
-  const data = rawData.ocs.data.users.map((login: string) => {
-    return { login }
-  })
-  return data
+  // Nextcloud only sends us a list of logins, we need to query each user's details
+  const {
+    ocs: {
+      data: { users: logins },
+    },
+  }: {
+    ocs: {
+      data: { users: string[] }
+    }
+  } = await response.json()
+  const users = await Promise.all(
+    logins.map(async (login: string, index: number) => {
+      await delay(index * msDelay)
+      const {
+        ocs: { data: user },
+      } = await fetchNextcloudUser(login)
+      console.log(`fetching Nextcloud user ${index + 1}/${logins.length}`)
+      return user
+    })
+  )
+  return users
 }
 
 export const ovh = async (): Promise<FetchedData> => {

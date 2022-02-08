@@ -14,6 +14,7 @@ export const SERVICES = [
 
 export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
 
+// Each service fetcher requires some credentials or a token to work
 export const checkEnv = (envVars: string[]) => {
   envVars.forEach((envVar) => {
     if (!process.env[envVar]) {

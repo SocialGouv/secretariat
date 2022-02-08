@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/SocialGouv/secretariat/compare/v1.7.2...v1.7.3) (2022-02-08)
+
+
+### Bug Fixes
+
+* OVH users details ([#43](https://github.com/SocialGouv/secretariat/issues/43)) ([9153453](https://github.com/SocialGouv/secretariat/commit/9153453830f9845e0c0bca25d5dbdbda812a0cbe))
+
 ## [1.7.2](https://github.com/SocialGouv/secretariat/compare/v1.7.1...v1.7.2) (2022-02-08)
 
 

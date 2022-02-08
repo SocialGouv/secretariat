@@ -6,16 +6,18 @@
       @apply flex flex-row;
 
       .info {
-        @apply ml-2;
+        @apply flex-1 ml-2;
 
         min-width: 0;
 
-        h3 span {
-          @apply font-normal text-sm;
-
+        h3 {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+
+          & > span {
+            @apply font-normal text-sm;
+          }
         }
 
         .email {

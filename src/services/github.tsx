@@ -8,6 +8,7 @@ import useToken from "@/services/token"
 import Users from "@/components/github-users"
 import Loader from "@/components/common/loader"
 import { getGitHubUsers } from "@/queries/index"
+import { checkEnv } from "@/utils/services-fetching"
 
 const useGithubUsers = () => {
   const [token] = useToken()
@@ -32,11 +33,12 @@ export const GithubUsersLoader = () => {
 }
 
 export const reqIsGithub = (req: NextApiRequest) => {
+  checkEnv(["GITHUB_WEBHOOK_SECRET"])
   const payload = JSON.stringify(req.body)
   const sig = req.headers["x-hub-signature"] || ""
   const hmac = crypto.createHmac(
     "sha1",
-    process.env.GITHUB_WEBHOOK_SECRET ?? "undefined"
+    process.env.GITHUB_WEBHOOK_SECRET as string
   )
   const digest = Buffer.from(
     "sha1=" + hmac.update(payload).digest("hex"),

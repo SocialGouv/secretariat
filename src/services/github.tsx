@@ -25,6 +25,7 @@ const useGithubUsers = () => {
 
 export const GithubUsersLoader = () => {
   const users = useGithubUsers()
+  console.log("GithubUsersLoader", users)
 
   if (!users) return <Loader />
   if (!users.length) return <div>Aucun utilisateur pour le moment...</div>

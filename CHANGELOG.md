@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/SocialGouv/secretariat/compare/v1.7.3...v1.7.4) (2022-02-08)
+
+
+### Bug Fixes
+
+* Add loader css ([#44](https://github.com/SocialGouv/secretariat/issues/44)) ([9dd2508](https://github.com/SocialGouv/secretariat/commit/9dd2508cb3e24b93303a70e096e7913bb7f6eabf))
+
 ## [1.7.3](https://github.com/SocialGouv/secretariat/compare/v1.7.2...v1.7.3) (2022-02-08)
 
 

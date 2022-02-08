@@ -3,13 +3,9 @@ import { getJwt } from "@/utils/jwt"
 import { checkEnv } from "@/utils/services-fetching"
 import { FetchedData } from "@/utils/services-fetching"
 import { getRemoteGithubUsers, getRemoteGithubTeams } from "@/queries/index"
+import { setTimeout } from "timers/promises"
 
-const DEFAULT_DELAY = 100
-
-// Used to `await delay(ms)` before queries we want to delay
-const delay = (ms: number) => {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+const DEFAULT_DELAY = 2000
 
 // We have too many users to receive them all in the first page
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
@@ -36,7 +32,7 @@ export const github = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
   users.push(...usersPage)
 
   while (hasNextPage) {
-    await delay(msDelay) // so that we don't spam the remote API
+    await setTimeout(msDelay) // so that we don't spam the remote API
     ;({ usersPage, hasNextPage, endCursor } = await fetchGithubPage(
       jwt,
       endCursor
@@ -47,7 +43,7 @@ export const github = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
   // Update each user with its teams
   const usersWithTeams = Promise.all(
     users.map(async (user, index) => {
-      await delay(index * msDelay)
+      await setTimeout(index * msDelay)
       const {
         organization: {
           teams: { nodes: teamsList },
@@ -136,7 +132,7 @@ export const nextcloud = async (
   } = await response.json()
   const users = await Promise.all(
     logins.map(async (login: string, index: number) => {
-      await delay(index * msDelay)
+      await setTimeout(index * msDelay)
       const {
         ocs: { data: user },
       } = await fetchNextcloudUser(login)
@@ -177,7 +173,7 @@ export const ovh = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
   // OVH only sends us a list of emails, we need to query each user's details
   const users: Record<string, unknown>[] = await Promise.all(
     emails.map(async (email: string, index: number) => {
-      await delay(index * msDelay)
+      await setTimeout(index * msDelay)
       const user = await fetchOvhUser(ovh, email)
       console.log(`fetched OVH user ${index + 1}/${emails.length}`)
       return user

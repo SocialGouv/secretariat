@@ -50,6 +50,7 @@ interface OVHUser {
 }
 
 interface ZammadUser {
+  id: string
   email: string
   login: string
   created_at: Date

@@ -1,54 +1,34 @@
-import Image from "next/image"
 import { useState } from "react"
 
-const Users = ({ users = [] }: { users: GithubUser[] }) => {
+import useGithubUsers from "@/services/github"
+import Loader from "@/components/common/loader"
+import UserList from "@/components/users/user-list"
+import UserProfile from "@/components/users/user-profile"
+
+const GithubUsers = () => {
+  const users = useGithubUsers()
   const [selectedUser, setSelectedUser] = useState<GithubUser>()
+
+  if (!users) return <Loader />
+  if (!users.length) return <div>Aucun utilisateur pour le moment...</div>
 
   return (
     <div className="github-users">
-      <ul className="user-list">
-        {users.map((user, i) => (
-          <li
-            key={i}
-            className={`tile${
-              selectedUser && selectedUser.login === user.login
-                ? " selected"
-                : ""
-            }`}
-            onClick={() => setSelectedUser(user)}
-          >
-            <div className="user">
-              <Image
-                width={48}
-                height={48}
-                alt="user avatar"
-                src={user.avatarUrl}
-              />
-              <div className="info">
-                <h3>
-                  {user.name || user.login}{" "}
-                  {user.name && <span>({user.login})</span>}
-                </h3>
-                <div className="email">{user.email}</div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <UserList
+        users={users}
+        onSelect={setSelectedUser}
+        selectedUser={selectedUser}
+      />
       {selectedUser && (
-        <div className="selected-user">
-          <div className="sticky-container">
-            <div className="user-profile">
-              <div>Nom: {selectedUser.name}</div>
-              <div>Login: {selectedUser.login}</div>
-              <div>Email: {selectedUser.email}</div>
-              <div>ID: {selectedUser.id}</div>
-            </div>
-          </div>
-        </div>
+        <UserProfile>
+          <div>Nom: {selectedUser.name}</div>
+          <div>Login: {selectedUser.login}</div>
+          <div>Email: {selectedUser.email}</div>
+          <div>ID: {selectedUser.id}</div>
+        </UserProfile>
       )}
     </div>
   )
 }
 
-export default Users
+export default GithubUsers

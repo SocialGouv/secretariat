@@ -6,11 +6,14 @@ import { getRemoteGithubUsers, getRemoteGithubTeams } from "@/queries/index"
 
 const DEFAULT_DELAY = 100
 
+// Used to `await delay(ms)` before queries we want to delay
 const delay = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+// We have too many users to receive them all in the first page
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
+  // if it is the query for the first page, we don't have a cursor
   const params = cursor ? { cursor } : {}
   const {
     organization: {
@@ -25,14 +28,15 @@ const fetchGithubPage = async (jwt: string, cursor?: string) => {
 }
 
 export const github = async (msDelay = DEFAULT_DELAY): Promise<FetchedData> => {
+  // accessing an Hasura remote schema requires admin rights
   const jwt = getJwt("admin")
-  const users = []
 
+  const users = []
   let { usersPage, hasNextPage, endCursor } = await fetchGithubPage(jwt)
   users.push(...usersPage)
 
   while (hasNextPage) {
-    await delay(msDelay)
+    await delay(msDelay) // so that we don't spam the remote API
     ;({ usersPage, hasNextPage, endCursor } = await fetchGithubPage(
       jwt,
       endCursor
@@ -120,6 +124,7 @@ export const nextcloud = async (
     }
   )
 
+  // Nextcloud only sends us a list of logins, we need to query each user's details
   const {
     ocs: {
       data: { users: logins },

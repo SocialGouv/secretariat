@@ -14,7 +14,7 @@ const useSentryUsers = () => {
     fetcher
   )
 
-  console.log("useGithubUsers:", data, error)
+  console.log("useSentryUsers:", data, error)
 
   return Array.isArray(data) ? data : data?.services[0].sentry
 }

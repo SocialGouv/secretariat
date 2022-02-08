@@ -8,12 +8,22 @@
       .info {
         @apply ml-2;
 
+        min-width: 0;
+
         h3 span {
           @apply font-normal text-sm;
+
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         .email {
           @apply text-sm;
+
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }

@@ -1,12 +1,12 @@
 .github-users {
-  @apply flex flex-1;
+  @apply grid grid-cols-2;
 
   .user-list {
     @apply mt-10;
   }
 
   .selected-user {
-    @apply ml-10 flex-1;
+    @apply ml-10;
 
     .sticky-container {
       @apply sticky top-0 pt-10;

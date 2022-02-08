@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/SocialGouv/secretariat/compare/v1.7.0...v1.7.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* use checkEnv before using env var ([#41](https://github.com/SocialGouv/secretariat/issues/41)) ([08775c2](https://github.com/SocialGouv/secretariat/commit/08775c27a67599b4f654ec743ee8ff2ea0a44727))
+
 # [1.7.0](https://github.com/SocialGouv/secretariat/compare/v1.6.1...v1.7.0) (2022-02-08)
 
 

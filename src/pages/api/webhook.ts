@@ -1,14 +1,13 @@
-import { checkEnv } from "@/services/data-fetchers"
-import { getJwt } from "@/utils/jwt"
 import { fetchAndUpdateServices } from "@/services/data-fetchers"
+import { GITHUB_WEBHOOK_SECRET } from "@/utils/env"
+import { getJwt } from "@/utils/jwt"
 import { createHmac, timingSafeEqual } from "crypto"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 const reqIsGithub = (req: NextApiRequest) => {
-  checkEnv(["GITHUB_WEBHOOK_SECRET"])
   const payload = JSON.stringify(req.body)
   const sig = req.headers["x-hub-signature"] || ""
-  const hmac = createHmac("sha1", process.env.GITHUB_WEBHOOK_SECRET as string)
+  const hmac = createHmac("sha1", GITHUB_WEBHOOK_SECRET as string)
   const digest = Buffer.from(
     "sha1=" + hmac.update(payload).digest("hex"),
     "utf8"

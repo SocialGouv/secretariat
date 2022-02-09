@@ -17,3 +17,7 @@ node_modules/
 
 # yarn
 yarn-error.log
+
+# JWT keys
+jwtRS512.key
+jwtRS512.key.pub

@@ -16,8 +16,9 @@ const GithubUsers = () => {
     <div className="github-users">
       <UserList
         users={users}
-        onSelect={setSelectedUser}
         selectedUser={selectedUser}
+        getUserData={(user) => user as User}
+        onSelect={(user) => setSelectedUser(user as GithubUser)}
       />
       {selectedUser && (
         <UserProfile>

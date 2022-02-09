@@ -1,24 +1,20 @@
 import Image from "next/image"
 
-const UserItem = ({
-  name,
-  email,
-  login,
-  avatarUrl,
-}: {
-  name: string
-  login: string
-  email: string
-  avatarUrl: string
-}) => {
+const UserItem = ({ user }: { user: User }) => {
   return (
     <div className="user">
-      <Image width={48} height={48} alt="user avatar" src={avatarUrl} />
+      <Image
+        width={48}
+        height={48}
+        alt="user avatar"
+        src={user.avatarUrl || "/images/avatar.jpeg"}
+      />
       <div className="info">
         <h3>
-          {name || login} {name && <span>({login})</span>}
+          {user.name || user.login}{" "}
+          {user.name && user.login && <span>({user.login})</span>}
         </h3>
-        <div className="email">{email}</div>
+        <div className="email">{user.email}</div>
       </div>
     </div>
   )

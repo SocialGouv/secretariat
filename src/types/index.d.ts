@@ -1,3 +1,10 @@
+interface User {
+  name: string
+  email: string
+  login?: string
+  avatarUrl?: string
+}
+
 interface GithubTeam {
   id: string
   name: string
@@ -14,20 +21,20 @@ interface GithubUser {
 }
 
 interface MatomoUser {
+  id: string
   login: string
   email: string
   uses_2fa: boolean
   date_registered: date
-  superuser_access: string
 }
 
 interface SentryUser {
   id: string
   name: string
   email: string
-  role: string
   dateCreated: Date
   user: {
+    has2fa: boolean
     avatarUrl: string
   }
 }

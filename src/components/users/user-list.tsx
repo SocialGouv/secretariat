@@ -1,14 +1,48 @@
-import { Dispatch, SetStateAction } from "react"
 import UserItem from "./user-item"
 
 export const UserList = ({
   users,
   onSelect,
+  getUserData,
   selectedUser,
 }: {
-  users: GithubUser[]
-  selectedUser?: GithubUser
-  onSelect: Dispatch<SetStateAction<GithubUser | undefined>>
+  users:
+    | GithubUser[]
+    | MatomoUser[]
+    | SentryUser[]
+    | OVHUser[]
+    | ZammadUser[]
+    | NextCloudUser[]
+    | MattermostUser[]
+  selectedUser?:
+    | GithubUser
+    | MatomoUser
+    | SentryUser
+    | OVHUser
+    | ZammadUser
+    | MattermostUser
+    | NextCloudUser
+  getUserData: (
+    user:
+      | GithubUser
+      | MatomoUser
+      | SentryUser
+      | OVHUser
+      | ZammadUser
+      | MattermostUser
+      | NextCloudUser
+  ) => User
+  onSelect: (
+    user:
+      | GithubUser
+      | MatomoUser
+      | SentryUser
+      | OVHUser
+      | ZammadUser
+      | MattermostUser
+      | NextCloudUser
+      | undefined
+  ) => void
 }) => {
   return (
     <ul className="user-list">
@@ -20,12 +54,7 @@ export const UserList = ({
           }`}
           onClick={() => onSelect(user)}
         >
-          <UserItem
-            name={user.name}
-            email={user.email}
-            login={user.login}
-            avatarUrl={user.avatarUrl}
-          />
+          <UserItem user={getUserData(user)} />
         </li>
       ))}
     </ul>

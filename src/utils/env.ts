@@ -5,9 +5,6 @@ const checkEnv = (name: string) => {
   return process.env[name] as string
 }
 
-// Hasura backend's URL
-export const NEXT_PUBLIC_HASURA_URL = checkEnv("NEXT_PUBLIC_HASURA_URL")
-
 // Private key to sign JWTs for Hasura
 export const HASURA_JWT_KEY = checkEnv("HASURA_JWT_KEY")
 

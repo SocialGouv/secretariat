@@ -13,6 +13,7 @@ import {
 } from "@/utils/env"
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
+import { randomUUID } from "crypto"
 import { gql } from "graphql-request"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
@@ -95,11 +96,10 @@ export const matomo = async (): Promise<FetchedData> => {
     }
   )
   const users: Record<string, unknown>[] = await response.json()
-  const usersWithIds = users.map((user, index) => {
-    user.id = index.toString()
-    return user
-  })
-  return usersWithIds
+  return users.map((user) => ({
+    ...user,
+    id: randomUUID(),
+  }))
 }
 
 const fetchNextcloudUser = async (login: string) => {

@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/SocialGouv/secretariat/compare/v1.7.5...v1.7.6) (2022-02-09)
+
+
+### Bug Fixes
+
+* generate id for matomo users ([#50](https://github.com/SocialGouv/secretariat/issues/50)) ([d1ba0c3](https://github.com/SocialGouv/secretariat/commit/d1ba0c30b79746392e4591bec4171d9073c6a315))
+
 ## [1.7.5](https://github.com/SocialGouv/secretariat/compare/v1.7.4...v1.7.5) (2022-02-09)
 
 

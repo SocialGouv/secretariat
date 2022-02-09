@@ -94,7 +94,12 @@ export const matomo = async (): Promise<FetchedData> => {
       body: `module=API&method=UsersManager.getUsers&format=json&token_auth=${MATOMO_API_TOKEN}`,
     }
   )
-  return response.json()
+  const users: Record<string, unknown>[] = await response.json()
+  const usersWithIds = users.map((user, index) => {
+    user.id = index.toString()
+    return user
+  })
+  return usersWithIds
 }
 
 const fetchNextcloudUser = async (login: string) => {

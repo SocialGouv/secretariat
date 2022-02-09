@@ -1,9 +1,9 @@
-import NextAuth from "next-auth"
-import GithubProvider from "next-auth/providers/github"
-
+import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
+import { GITHUB_ID, GITHUB_SECRET, NEXTAUTH_SECRET } from "@/utils/env"
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
-import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
+import NextAuth from "next-auth"
+import GithubProvider from "next-auth/providers/github"
 
 const getUserTeams = async (login: string) => {
   const jwt = getJwt("admin")
@@ -18,11 +18,11 @@ const getUserTeams = async (login: string) => {
 }
 
 export default NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: NEXTAUTH_SECRET,
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
       profile: (profile) => {
         return {
           teams: [],

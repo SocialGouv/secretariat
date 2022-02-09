@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/SocialGouv/secretariat/compare/v1.7.4...v1.7.5) (2022-02-09)
+
+
+### Bug Fixes
+
+* filter zammad users ([#47](https://github.com/SocialGouv/secretariat/issues/47)) ([50ca06b](https://github.com/SocialGouv/secretariat/commit/50ca06b8f6368698ed9453628c2b50f95985d9b3))
+
 ## [1.7.4](https://github.com/SocialGouv/secretariat/compare/v1.7.3...v1.7.4) (2022-02-08)
 
 

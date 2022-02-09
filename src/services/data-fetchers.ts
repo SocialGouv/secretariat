@@ -216,7 +216,7 @@ export const sentry = async (): Promise<FetchedData> => {
     {
       method: "GET",
       headers: {
-        Authorization: SENTRY_API_TOKEN,
+        Authorization: `Bearer ${SENTRY_API_TOKEN}`,
       },
     }
   )
@@ -229,7 +229,7 @@ export const zammad = async (): Promise<FetchedData> => {
     {
       method: "GET",
       headers: {
-        Authorization: ZAMMAD_API_TOKEN,
+        Authorization: `Bearer ${ZAMMAD_API_TOKEN}`,
       },
     }
   )

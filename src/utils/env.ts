@@ -23,7 +23,8 @@ export const NEXTCLOUD_API_LOGIN = checkEnv("NEXTCLOUD_API_LOGIN")
 export const NEXTCLOUD_API_SECRET = checkEnv("NEXTCLOUD_API_SECRET")
 export const MATTERMOST_API_TOKEN = checkEnv("MATTERMOST_API_TOKEN")
 
-export const GITHUB_WEBHOOK_SECRET = "" // TODO
+// Github sends this to authenticate its webhook
+export const GITHUB_WEBHOOK_SECRET = checkEnv("GITHUB_WEBHOOK_SECRET")
 
 // Github auth provider
 export const GITHUB_ID = checkEnv("GITHUB_ID")

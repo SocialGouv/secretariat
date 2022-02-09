@@ -7,7 +7,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 const reqIsGithub = (req: NextApiRequest) => {
   const payload = JSON.stringify(req.body)
   const sig = req.headers["x-hub-signature"] || ""
-  const hmac = createHmac("sha1", GITHUB_WEBHOOK_SECRET as string)
+  const hmac = createHmac("sha1", GITHUB_WEBHOOK_SECRET)
   const digest = Buffer.from(
     "sha1=" + hmac.update(payload).digest("hex"),
     "utf8"

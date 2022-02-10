@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/SocialGouv/secretariat/compare/v1.7.7...v1.7.8) (2022-02-10)
+
+
+### Bug Fixes
+
+* User list css ([#52](https://github.com/SocialGouv/secretariat/issues/52)) ([cb5bbdf](https://github.com/SocialGouv/secretariat/commit/cb5bbdf1c1f52525fad230f2dc3e7dd90749ce18))
+
 ## [1.7.7](https://github.com/SocialGouv/secretariat/compare/v1.7.6...v1.7.7) (2022-02-10)
 
 

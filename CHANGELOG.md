@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/SocialGouv/secretariat/compare/v1.7.6...v1.7.7) (2022-02-10)
+
+
+### Bug Fixes
+
+* Display all info about selected user ([#45](https://github.com/SocialGouv/secretariat/issues/45)) ([3132f86](https://github.com/SocialGouv/secretariat/commit/3132f865cadda42f41d430e70d8d72f1b6853664))
+
 ## [1.7.6](https://github.com/SocialGouv/secretariat/compare/v1.7.5...v1.7.6) (2022-02-09)
 
 

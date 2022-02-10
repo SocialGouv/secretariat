@@ -1,39 +1,41 @@
-import Image from "next/image"
 import { useState } from "react"
 
-const Users = ({ users = [] }: { users: SentryUser[] }) => {
+import useSentryUsers from "@/services/sentry"
+import Loader from "@/components/common/loader"
+import UserList from "@/components/users/user-list"
+import UserProfile from "@/components/users/user-profile"
+
+const SentryUsers = () => {
+  const users = useSentryUsers()
   const [selectedUser, setSelectedUser] = useState<SentryUser>()
+
+  if (!users) return <Loader />
+  if (!users.length) return <div>Aucun utilisateur pour le moment...</div>
 
   return (
     <div className="github-users">
-      <ul className="user-list">
-        {users.map((user, i) => (
-          <li
-            key={i}
-            className={`tile${
-              selectedUser && selectedUser.email === user.email
-                ? " selected"
-                : ""
-            }`}
-            onClick={() => setSelectedUser(user)}
-          >
-            <div className="user">
-              <Image
-                width={48}
-                height={48}
-                alt="user avatar"
-                src={user.user.avatarUrl}
-              />
-              <div className="info">
-                <h3>{user.name}</h3>
-                <div className="email">{user.email}</div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <UserList
+        users={users}
+        selectedUser={selectedUser}
+        getUserData={(user) => {
+          const {
+            user: { avatarUrl },
+          } = user as SentryUser
+          return { avatarUrl, ...user } as User
+        }}
+        onSelect={(user) => setSelectedUser(user as SentryUser)}
+      />
+      {selectedUser && (
+        <UserProfile>
+          <div>Nom: {selectedUser.name}</div>
+          <div>Email: {selectedUser.email}</div>
+          <div>ID: {selectedUser.id}</div>
+          <div>Date de création: {selectedUser.dateCreated}</div>
+          <div>2FA activé: {selectedUser.user.has2fa ? "oui" : "non"}</div>
+        </UserProfile>
+      )}
     </div>
   )
 }
 
-export default Users
+export default SentryUsers

@@ -1,8 +1,23 @@
+interface User {
+  name: string
+  email: string
+  login?: string
+  avatarUrl?: string
+}
+
+type MixedUser =
+  | GithubUser
+  | MatomoUser
+  | SentryUser
+  | NextCloudUser
+  | OVHUser
+  | MattermostUser
+  | ZammadUser
+
 interface GithubTeam {
+  id: string
   name: string
   slug: string
-  avatarUrl: string
-  description: string
 }
 
 interface GithubUser {
@@ -11,23 +26,24 @@ interface GithubUser {
   login: string
   email: string
   avatarUrl: string
+  teams: GithubTeam[]
 }
 
 interface MatomoUser {
+  id: string
   login: string
   email: string
   uses_2fa: boolean
   date_registered: date
-  superuser_access: string
 }
 
 interface SentryUser {
   id: string
   name: string
   email: string
-  role: string
   dateCreated: Date
   user: {
+    has2fa: boolean
     avatarUrl: string
   }
 }
@@ -35,10 +51,12 @@ interface SentryUser {
 interface NextCloudUser {
   id: string
   email: string
+  lastLogin: string
   displayname: string
 }
 
 interface OVHUser {
+  id: string
   login: string
   lastName: string
   firstName: string
@@ -48,14 +66,18 @@ interface OVHUser {
 }
 
 interface ZammadUser {
+  id: string
   email: string
   login: string
+  created_at: Date
   lastname: string
   firstname: string
 }
 
 interface MattermostUser {
+  id: string
   email: string
+  create_at: Date
   username: string
   last_name: string
   first_name: string

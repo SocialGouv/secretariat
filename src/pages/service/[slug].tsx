@@ -3,12 +3,12 @@ import { useSession } from "next-auth/react"
 
 import Menu from "@/components/menu"
 import Login from "@/components/login"
-import { OVHUsersLoader } from "@/services/ovh"
-import { MatomoUsersLoader } from "@/services/matomo"
-import { SentryUsersLoader } from "@/services/sentry"
-import { ZammadUsersLoader } from "@/services/zammad"
-import { NextCloudUsersLoader } from "@/services/nextcloud"
-import { MattermostUsersLoader } from "@/services/mattermost"
+import OVHUsers from "@/components/ovh-users"
+import MatomoUsers from "@/components/matomo-users"
+import SentryUsers from "@/components/sentry-users"
+import ZammadUsers from "@/components/zammad-users"
+import NextCloudUsers from "@/components/nextcloud-users"
+import MattermostUsers from "@/components/mattermost-users"
 
 interface Services {
   [key: string]: Service
@@ -22,27 +22,27 @@ interface Service {
 const services = {
   matomo: {
     name: "Matomo",
-    Component: MatomoUsersLoader,
+    Component: MatomoUsers,
   },
   sentry: {
     name: "Sentry",
-    Component: SentryUsersLoader,
+    Component: SentryUsers,
   },
   ovh: {
     name: "OVH",
-    Component: OVHUsersLoader,
-  },
-  mattermost: {
-    name: "Mattermost",
-    Component: MattermostUsersLoader,
+    Component: OVHUsers,
   },
   zammad: {
     name: "Pastek",
-    Component: ZammadUsersLoader,
+    Component: ZammadUsers,
+  },
+  mattermost: {
+    name: "Mattermost",
+    Component: MattermostUsers,
   },
   nextcloud: {
     name: "NextCloud",
-    Component: NextCloudUsersLoader,
+    Component: NextCloudUsers,
   },
 } as Services
 

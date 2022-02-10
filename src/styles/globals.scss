@@ -2,11 +2,13 @@
 @use "./components/common/anchor.scss";
 @use "./components/common/button.scss";
 @use "./components/common/loader.scss";
+@use "./components/common/callout.scss";
 @use "./components/authenticated-user.scss";
 @use "./components/user-list.scss";
-@use "./components/github-users.scss";
+@use "./components/users.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
+@use "./components/login.scss";
 
 html, body {
   @apply h-full flex overflow-hidden;
@@ -49,4 +51,8 @@ aside {
 
 main {
   @apply flex-1;
+
+  .loader {
+    height: 100%;
+  }
 }

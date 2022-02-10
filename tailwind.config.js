@@ -4,6 +4,10 @@ const colors = {
   error: "#e10600",
   success: "#008941",
   beige: "#f9f8f6",
+  brown: {
+    600: "#c08c65",
+    900: "#f7ecdb",
+  },
   red: {
     300: "#f7bfc3",
     500: "#e1000f",

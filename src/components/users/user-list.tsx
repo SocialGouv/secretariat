@@ -1,6 +1,6 @@
 import UserItem from "./user-item"
 
-export const UserList = ({
+const UserList = ({
   users,
   onSelect,
   getUserData,

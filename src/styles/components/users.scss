@@ -1,4 +1,4 @@
-.github-users {
+.users {
   @apply grid grid-cols-2;
 
   .user-list {
@@ -17,5 +17,13 @@
         height: 600px;
       }
     }
+  }
+}
+
+.no-users {
+  @apply h-full flex flex-col justify-center;
+
+  .callout {
+    @apply mx-10;
   }
 }

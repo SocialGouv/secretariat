@@ -6,43 +6,10 @@ export const UserList = ({
   getUserData,
   selectedUser,
 }: {
-  users:
-    | GithubUser[]
-    | MatomoUser[]
-    | SentryUser[]
-    | OVHUser[]
-    | ZammadUser[]
-    | NextCloudUser[]
-    | MattermostUser[]
-  selectedUser?:
-    | GithubUser
-    | MatomoUser
-    | SentryUser
-    | OVHUser
-    | ZammadUser
-    | MattermostUser
-    | NextCloudUser
-  getUserData: (
-    user:
-      | GithubUser
-      | MatomoUser
-      | SentryUser
-      | OVHUser
-      | ZammadUser
-      | MattermostUser
-      | NextCloudUser
-  ) => User
-  onSelect: (
-    user:
-      | GithubUser
-      | MatomoUser
-      | SentryUser
-      | OVHUser
-      | ZammadUser
-      | MattermostUser
-      | NextCloudUser
-      | undefined
-  ) => void
+  users: MixedUser[]
+  selectedUser?: MixedUser
+  getUserData: (user: MixedUser) => User
+  onSelect: (user: MixedUser | undefined) => void
 }) => {
   return (
     <ul className="user-list">

@@ -5,6 +5,15 @@ interface User {
   avatarUrl?: string
 }
 
+type MixedUser =
+  | GithubUser
+  | MatomoUser
+  | SentryUser
+  | NextCloudUser
+  | OVHUser
+  | MattermostUser
+  | ZammadUser
+
 interface GithubTeam {
   id: string
   name: string

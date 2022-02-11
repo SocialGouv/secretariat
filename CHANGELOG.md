@@ -1,3 +1,10 @@
+## [1.7.11](https://github.com/SocialGouv/secretariat/compare/v1.7.10...v1.7.11) (2022-02-11)
+
+
+### Bug Fixes
+
+* Add jest tests ([#55](https://github.com/SocialGouv/secretariat/issues/55)) ([d9ab348](https://github.com/SocialGouv/secretariat/commit/d9ab348dcec0142a98820a1d506e0b2056180860))
+
 ## [1.7.10](https://github.com/SocialGouv/secretariat/compare/v1.7.9...v1.7.10) (2022-02-11)
 
 

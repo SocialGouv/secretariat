@@ -1,0 +1,15 @@
+table:
+  name: services_count
+  schema: public
+select_permissions:
+- permission:
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    filter: {}
+  role: user

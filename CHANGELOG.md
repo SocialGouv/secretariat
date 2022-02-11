@@ -1,3 +1,10 @@
+## [1.7.12](https://github.com/SocialGouv/secretariat/compare/v1.7.11...v1.7.12) (2022-02-11)
+
+
+### Bug Fixes
+
+* Display users count ([#54](https://github.com/SocialGouv/secretariat/issues/54)) ([3c16a24](https://github.com/SocialGouv/secretariat/commit/3c16a2455a7bb7a637334a19664a45e627239252))
+
 ## [1.7.11](https://github.com/SocialGouv/secretariat/compare/v1.7.10...v1.7.11) (2022-02-11)
 
 

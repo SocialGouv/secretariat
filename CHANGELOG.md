@@ -1,3 +1,10 @@
+## [1.7.15](https://github.com/SocialGouv/secretariat/compare/v1.7.14...v1.7.15) (2022-02-11)
+
+
+### Bug Fixes
+
+* Add services count view ([#60](https://github.com/SocialGouv/secretariat/issues/60)) ([a83903f](https://github.com/SocialGouv/secretariat/commit/a83903f59adb4309faf89938cf1285e937a4c6e9))
+
 ## [1.7.14](https://github.com/SocialGouv/secretariat/compare/v1.7.13...v1.7.14) (2022-02-11)
 
 

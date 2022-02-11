@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/SocialGouv/secretariat/compare/v1.7.12...v1.7.13) (2022-02-11)
+
+
+### Bug Fixes
+
+* mattermost paging ([#58](https://github.com/SocialGouv/secretariat/issues/58)) ([9f46c0a](https://github.com/SocialGouv/secretariat/commit/9f46c0af994e7655e202243cbcab07560902354c))
+
 ## [1.7.12](https://github.com/SocialGouv/secretariat/compare/v1.7.11...v1.7.12) (2022-02-11)
 
 

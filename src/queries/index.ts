@@ -109,3 +109,17 @@ export const getRemoteGithubTeams = gql`
     }
   }
 `
+
+export const getServicesCount = gql`
+  query getServicesCount {
+    services_count {
+      github
+      matomo
+      mattermost
+      nextcloud
+      ovh
+      sentry
+      zammad
+    }
+  }
+`

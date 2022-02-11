@@ -1,3 +1,10 @@
+## [1.7.14](https://github.com/SocialGouv/secretariat/compare/v1.7.13...v1.7.14) (2022-02-11)
+
+
+### Bug Fixes
+
+* Add code coverage ([#57](https://github.com/SocialGouv/secretariat/issues/57)) ([6d25394](https://github.com/SocialGouv/secretariat/commit/6d253946225724c509740819898f38f6b0542356))
+
 ## [1.7.13](https://github.com/SocialGouv/secretariat/compare/v1.7.12...v1.7.13) (2022-02-11)
 
 

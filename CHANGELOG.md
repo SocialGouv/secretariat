@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/SocialGouv/secretariat/compare/v1.7.8...v1.7.9) (2022-02-11)
+
+
+### Bug Fixes
+
+* Floating user profile ([#53](https://github.com/SocialGouv/secretariat/issues/53)) ([50f8bcd](https://github.com/SocialGouv/secretariat/commit/50f8bcd10107371292b0f32ed9935b13e25325f2))
+
 ## [1.7.8](https://github.com/SocialGouv/secretariat/compare/v1.7.7...v1.7.8) (2022-02-10)
 
 

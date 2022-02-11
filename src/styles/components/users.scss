@@ -6,15 +6,15 @@
   }
 
   .selected-user {
-    @apply ml-10;
+    @apply flex flex-col ml-10;
 
     .sticky-container {
-      @apply sticky top-0 pt-10;
+      @apply flex flex-col sticky top-0 pt-10;
+
+      height: calc(100vh - 9rem);
 
       .user-profile {
-        @apply p-4 shadow border border-gray-300;
-
-        height: 600px;
+        @apply flex-1 p-4 shadow border border-gray-300 overflow-auto;
       }
     }
   }

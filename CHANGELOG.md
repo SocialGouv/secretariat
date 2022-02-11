@@ -1,3 +1,10 @@
+## [1.7.10](https://github.com/SocialGouv/secretariat/compare/v1.7.9...v1.7.10) (2022-02-11)
+
+
+### Bug Fixes
+
+* Preprod github auth secret ([62a6c60](https://github.com/SocialGouv/secretariat/commit/62a6c6071d32676ad845a38f26664984db630920))
+
 ## [1.7.9](https://github.com/SocialGouv/secretariat/compare/v1.7.8...v1.7.9) (2022-02-11)
 
 

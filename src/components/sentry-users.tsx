@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Users from "@/components/users/index"
 import useSentryUsers from "@/services/sentry"
@@ -8,6 +8,12 @@ import UserProfile from "@/components/users/user-profile"
 const SentryUsers = () => {
   const users = useSentryUsers()
   const [selectedUser, setSelectedUser] = useState<SentryUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Users from "@/components/users/index"
 import useMatomoUsers from "@/services/matomo"
@@ -8,6 +8,12 @@ import UserProfile from "@/components/users/user-profile"
 const MatomoUsers = () => {
   const users = useMatomoUsers()
   const [selectedUser, setSelectedUser] = useState<MatomoUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

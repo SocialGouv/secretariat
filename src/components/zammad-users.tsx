@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Users from "@/components/users/index"
 import useZammadUsers from "@/services/zammad"
@@ -8,6 +8,12 @@ import UserProfile from "@/components/users/user-profile"
 const ZammadUsers = () => {
   const users = useZammadUsers()
   const [selectedUser, setSelectedUser] = useState<ZammadUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

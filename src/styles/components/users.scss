@@ -6,7 +6,7 @@
   }
 
   .selected-user {
-    @apply flex flex-col ml-10;
+    @apply flex flex-col ml-6;
 
     .sticky-container {
       @apply flex flex-col sticky top-0 pt-10;
@@ -14,7 +14,15 @@
       height: calc(100vh - 9rem);
 
       .user-profile {
-        @apply flex-1 p-4 shadow border border-gray-300 overflow-auto;
+        @apply
+          p-4
+          border
+          flex-1
+          shadow-sm
+          border-l-2
+          overflow-auto
+          border-gray-300
+          border-l-blue-500;
       }
     }
   }

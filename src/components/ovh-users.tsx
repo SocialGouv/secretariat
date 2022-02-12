@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import useOVHUsers from "@/services/ovh"
 import Users from "@/components/users/index"
@@ -8,6 +8,12 @@ import UserProfile from "@/components/users/user-profile"
 const OVHUsers = () => {
   const users = useOVHUsers()
   const [selectedUser, setSelectedUser] = useState<OVHUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

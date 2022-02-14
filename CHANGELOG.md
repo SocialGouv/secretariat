@@ -1,3 +1,11 @@
+## [1.7.17-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.7.16...v1.7.17-beta.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* accumulator ([e56af9a](https://github.com/SocialGouv/secretariat/commit/e56af9a35d26bfe09054aa9d87a494921f9bee57))
+* matomo paging ([fe2bdb6](https://github.com/SocialGouv/secretariat/commit/fe2bdb611bb9d8931057630bcf8da3bc17efa9dc))
+
 ## [1.7.16](https://github.com/SocialGouv/secretariat/compare/v1.7.15...v1.7.16) (2022-02-14)
 
 

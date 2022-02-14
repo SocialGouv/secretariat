@@ -24,6 +24,14 @@ const GithubUserProfile = ({ user }: { user: GithubUser }) => (
       <li>
         <strong>ID</strong>: {user.id}
       </li>
+      <li>
+        <br />
+        {user.teams.map((team, i) => (
+          <div key={i} className="tag">
+            {team.name}
+          </div>
+        ))}
+      </li>
     </ul>
     <h3 className="mt-4">Matomo</h3>
     <hr className="my-2" />

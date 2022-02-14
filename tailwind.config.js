@@ -5,8 +5,10 @@ const colors = {
   success: "#008941",
   beige: "#f9f8f6",
   brown: {
+    425: "#845d48",
     600: "#c08c65",
     900: "#f7ecdb",
+    925: "#f3e2d9",
   },
   red: {
     300: "#f7bfc3",

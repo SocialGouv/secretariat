@@ -1,3 +1,10 @@
+## [1.7.16](https://github.com/SocialGouv/secretariat/compare/v1.7.15...v1.7.16) (2022-02-14)
+
+
+### Bug Fixes
+
+* Autoload profile data ([#61](https://github.com/SocialGouv/secretariat/issues/61)) ([352e177](https://github.com/SocialGouv/secretariat/commit/352e1770dec587c65ab89a0444af51d7bfddb730))
+
 ## [1.7.15](https://github.com/SocialGouv/secretariat/compare/v1.7.14...v1.7.15) (2022-02-11)
 
 

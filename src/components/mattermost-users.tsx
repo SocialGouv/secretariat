@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Users from "@/components/users/index"
 import UserList from "@/components/users/user-list"
@@ -8,6 +8,12 @@ import UserProfile from "@/components/users/user-profile"
 const MattermostUsers = () => {
   const users = useMattermostUsers()
   const [selectedUser, setSelectedUser] = useState<MattermostUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

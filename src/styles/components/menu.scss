@@ -1,0 +1,19 @@
+ul.menu {
+  @apply border border-y-0 border-l-0 pb-2 pt-2 pr-6 mr-6 w-48;
+
+  li {
+    @apply py-2 pl-2 pr-2 hover:bg-beige;
+
+    &.selected {
+      @apply bg-gray-200 font-bold;
+    }
+
+    a {
+      @apply flex justify-between items-center;
+
+      span {
+        @apply text-sm;
+      }
+    }
+  }
+}

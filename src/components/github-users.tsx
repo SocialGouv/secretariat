@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Users from "@/components/users/index"
 import useGithubUsers from "@/services/github"
@@ -109,6 +109,12 @@ const GithubUserProfile = ({ user }: { user: GithubUser }) => (
 const GithubUsers = () => {
   const users = useGithubUsers()
   const [selectedUser, setSelectedUser] = useState<GithubUser>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
 
   return (
     <Users users={users}>

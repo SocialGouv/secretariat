@@ -15,13 +15,6 @@ const Menu = () => {
   } = useRouter()
 
   const counts = useServicesCount()
-  // const ovhUsers = useOVHUsers()
-  // const githubUsers = useGithubUsers()
-  // const matomoUsers = useMatomoUsers()
-  // const sentryUsers = useSentryUsers()
-  // const zammadUsers = useZammadUsers()
-  // const nextCloudUsers = useNextCloudUsers()
-  // const mattermostUsers = useMattermostUsers()
 
   return (
     <ul className="menu">

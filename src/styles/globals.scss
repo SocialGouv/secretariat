@@ -5,6 +5,7 @@
 @use "./components/common/callout.scss";
 @use "./components/authenticated-user.scss";
 @use "./components/user-list.scss";
+@use "./components/menu.scss";
 @use "./components/users.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
@@ -31,21 +32,8 @@ body {
 }
 
 aside {
-
   .sticky-container {
     @apply sticky top-0 pt-10;
-
-    ul {
-      @apply border border-y-0 border-l-0 pb-2 pt-2 pr-4 mr-10;
-
-      li {
-        @apply py-2 pl-2 pr-6 hover:bg-beige;
-
-        &.selected {
-          @apply bg-gray-200 font-bold;
-        }
-      }
-    }
   }
 }
 

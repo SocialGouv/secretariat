@@ -1,3 +1,11 @@
+## [1.7.19](https://github.com/SocialGouv/secretariat/compare/v1.7.18...v1.7.19) (2022-02-14)
+
+
+### Bug Fixes
+
+* nextcloud pagination ([#66](https://github.com/SocialGouv/secretariat/issues/66)) ([4efe92f](https://github.com/SocialGouv/secretariat/commit/4efe92fe2a65168ef0985b5d19847e1eb7e35963))
+* zammad pagination ([#67](https://github.com/SocialGouv/secretariat/issues/67)) ([d694a96](https://github.com/SocialGouv/secretariat/commit/d694a96d70b15f9da8f532e3c81d2e33332f9d17))
+
 ## [1.7.18](https://github.com/SocialGouv/secretariat/compare/v1.7.17...v1.7.18) (2022-02-14)
 
 

@@ -4,4 +4,7 @@ module.exports = {
   images: {
     domains: ["avatars.githubusercontent.com", "secure.gravatar.com"],
   },
+  experimental: {
+    outputStandalone: true,
+  },
 }

@@ -1,1 +1,15 @@
+Dockerfile
+.dockerignore
 node_modules
+npm-debug.log
+README.md
+.next
+packages
+.github
+__tests__
+.socialgouv
+sonar-project.properties
+.git
+.gitignore
+docker-compose.yaml
+jest.config.js

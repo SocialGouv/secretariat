@@ -1,3 +1,10 @@
+## [1.7.18](https://github.com/SocialGouv/secretariat/compare/v1.7.17...v1.7.18) (2022-02-14)
+
+
+### Bug Fixes
+
+* Add sharp to load remote domain images ([f40a56b](https://github.com/SocialGouv/secretariat/commit/f40a56b18a273b94399745b0d7b3174796511597))
+
 ## [1.7.17](https://github.com/SocialGouv/secretariat/compare/v1.7.16...v1.7.17) (2022-02-14)
 
 

@@ -1,3 +1,10 @@
+## [1.7.17](https://github.com/SocialGouv/secretariat/compare/v1.7.16...v1.7.17) (2022-02-14)
+
+
+### Bug Fixes
+
+* matomo pagination ([#63](https://github.com/SocialGouv/secretariat/issues/63)) ([fcfc41f](https://github.com/SocialGouv/secretariat/commit/fcfc41fcb6fc9f568ccfb7c0480384d402a399e3))
+
 ## [1.7.16](https://github.com/SocialGouv/secretariat/compare/v1.7.15...v1.7.16) (2022-02-14)
 
 

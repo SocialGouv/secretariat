@@ -38,14 +38,8 @@ jobs:
     - name: Run tests
       run: yarn test --coverage
 
-    # - name: Publish code coverage
-    #   uses: codecov/codecov-action@v2
-    #   with:
-    #     fail_ci_if_error: true
-    #     token: ${{ secrets.CODECOV_TOKEN }}
-
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

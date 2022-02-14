@@ -1,8 +1,22 @@
 import { MATOMO_API_TOKEN } from "@/utils/env"
 import { randomUUID } from "crypto"
-import { FetchedData } from "../fetch"
+import { setTimeout } from "timers/promises"
+import { DEFAULT_DELAY } from "../fetch"
 
-export const fetchMatomoUsers = async (): Promise<FetchedData> => {
+const PAGE_SIZE = 100 // maximum for Matomo's API
+
+const formatUsers = (users: Record<string, unknown>[]) => {
+  return users.map((user) => ({
+    ...user,
+    id: randomUUID(),
+  }))
+}
+
+export const fetchMatomoUsers = async (
+  users: Record<string, unknown>[] = [],
+  page: number = 0,
+  msDelay = DEFAULT_DELAY
+): Promise<Record<string, unknown>[]> => {
   const response = await fetch(
     "https://matomo.fabrique.social.gouv.fr/index.php",
     {
@@ -10,12 +24,16 @@ export const fetchMatomoUsers = async (): Promise<FetchedData> => {
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
-      body: `module=API&method=UsersManager.getUsers&format=json&token_auth=${MATOMO_API_TOKEN}`,
+      body: `module=API&method=UsersManager.getUsers&filter_limit=${PAGE_SIZE}&filter_offset=${
+        PAGE_SIZE * page
+      }&format=json&token_auth=${MATOMO_API_TOKEN}`,
     }
   )
-  const users: Record<string, unknown>[] = await response.json()
-  return users.map((user) => ({
-    ...user,
-    id: randomUUID(),
-  }))
+  const usersPage: Record<string, unknown>[] = await response.json()
+  if (usersPage.length === 0) {
+    return formatUsers(users)
+  } else {
+    await setTimeout(msDelay) // so that we don't spam the remote API
+    return fetchMatomoUsers([...users, ...usersPage], page + 1, msDelay)
+  }
 }

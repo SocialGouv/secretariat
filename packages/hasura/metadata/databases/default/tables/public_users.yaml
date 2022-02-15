@@ -1,3 +1,43 @@
 table:
   name: users
   schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+  role: webhook
+select_permissions:
+- permission:
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    - updated_at
+    - id
+    filter: {}
+  role: webhook
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    filter: {}
+  role: webhook

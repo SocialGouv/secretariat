@@ -63,21 +63,19 @@ const emailMatchers: Record<string, string> = {
   ovh: "primaryEmailAddress",
 } as const
 
-const idMatchers: Record<string, string> = {
-  github: "id",
-  matomo: "id",
-  zammad: "id",
-  sentry: "id",
-  nextcloud: "id",
-  mattermost: "id",
-  ovh: "id",
-} as const
-
 const updateUsersTable = (
   users: Record<string, unknown>[],
   serviceName: string,
   jwt: string
 ) => {
+  const getServiceUsers = gql`
+    query getServiceUsers($_contains: jsonb) {
+      users(where: { ${serviceName}: { _contains: $_contains } }) {
+        id
+      }
+    }
+  `
+
   const matchUserInServices = gql`
     query matchUsersInServices($_or: [users_bool_exp!]) {
       users(where: { _or: $_or }) {
@@ -104,19 +102,44 @@ const updateUsersTable = (
 
   users.forEach(async (user) => {
     const email = user[emailMatchers[serviceName]]
-    const id = user[idMatchers[serviceName]]
-    const { users: matchingRows } = await fetcher(matchUserInServices, jwt, {
-      _or: SERVICES.map((service) => ({
-        [service]: { _contains: { [emailMatchers[service]]: email } },
-      })),
-    })
-    if (matchingRows.length === 0) {
-      await fetcher(addUser, jwt, { user: { [serviceName]: user } })
-    } else {
-      await fetcher(updateUser, jwt, {
-        id: matchingRows[0].id,
-        _set: { [serviceName]: user },
+
+    if (!email) {
+      // if we don't have the email
+      const { users: matchingIdUsers } = await fetcher(getServiceUsers, jwt, {
+        _contains: { id: user.id },
       })
+      if (matchingIdUsers.length === 0) {
+        // if there's not row with this id for the given service, insert the user
+        await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+      } else if (matchingIdUsers.length === 1) {
+        // if there's one, update the user
+        await fetcher(updateUser, jwt, {
+          _set: { [serviceName]: user },
+        })
+      } else {
+        // this is not supposed to happen
+        console.error("More than one row had this id", matchingIdUsers)
+      }
+    } else {
+      // if we have the email
+      const { users: matchingRows } = await fetcher(matchUserInServices, jwt, {
+        _or: SERVICES.map((service) => ({
+          [service]: { _contains: { [emailMatchers[service]]: email } },
+        })),
+      })
+      if (matchingRows.length === 0) {
+        // no row have the same email on any service, create the user
+        await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+      } else if (matchingRows.length === 1) {
+        // an row have the same email on a service, update the user
+        await fetcher(updateUser, jwt, {
+          id: matchingRows[0].id,
+          _set: { [serviceName]: user },
+        })
+      } else {
+        // this is not supposed to happen ?
+        console.error("More than one row had this email", matchingRows)
+      }
     }
   })
 }

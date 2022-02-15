@@ -1,7 +1,7 @@
 import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY, FetchedData } from "../fetch"
+import { DEFAULT_DELAY } from "../fetch"
 
 const PAGE_SIZE = 100 // not sure about the real max for Nextcloud's API
 
@@ -26,7 +26,7 @@ export const fetchNextcloudUsers = async (
   logins: string[] = [],
   page = 0,
   msDelay = DEFAULT_DELAY
-): Promise<FetchedData> => {
+): Promise<Record<string, unknown>[]> => {
   const response = await fetch(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users?limit=${PAGE_SIZE}&offset=${
       page * PAGE_SIZE

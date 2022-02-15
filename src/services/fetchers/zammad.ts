@@ -1,6 +1,6 @@
 import { ZAMMAD_API_TOKEN } from "@/utils/env"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY, FetchedData } from "../fetch"
+import { DEFAULT_DELAY } from "../fetch"
 
 const PAGE_SIZE = 200
 
@@ -8,7 +8,7 @@ export const fetchZammadUsers = async (
   users: Record<string, unknown>[] = [],
   page = 1,
   msDelay = DEFAULT_DELAY
-): Promise<FetchedData> => {
+): Promise<Record<string, unknown>[]> => {
   const response = await fetch(
     `https://pastek.fabrique.social.gouv.fr/api/v1/users/search?query=role_ids:*+AND+active:true&per_page=${PAGE_SIZE}&page=${page}`,
     {

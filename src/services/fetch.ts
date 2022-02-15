@@ -30,12 +30,9 @@ const servicesFetchers = {
   zammad: fetchZammadUsers,
 }
 
-// export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
-export type FetchedData = Record<string, unknown>[]
-
 const updateDbWithData = (
   serviceName: string,
-  data: FetchedData,
+  data: Record<string, unknown>[],
   jwt: string
 ) => {
   fetcher(

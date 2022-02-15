@@ -54,7 +54,7 @@ const updateDbWithData = (
 }
 
 const keys: Record<string, string> = {
-  github: "id",
+  github: "email",
   matomo: "email",
   zammad: "email",
   sentry: "email",
@@ -65,11 +65,10 @@ const keys: Record<string, string> = {
 
 const getServicesToMatch = (value: string, serviceName: string) => {
   const services = []
-  const matcher = keys[serviceName]
 
   for (const service in keys) {
     if (service !== serviceName) {
-      services.push({ [service]: { _contains: { [matcher]: value } } })
+      services.push({ [service]: { _contains: { [keys[service]]: value } } })
     }
   }
 

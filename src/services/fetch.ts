@@ -8,15 +8,15 @@ import { fetchOvhUsers } from "./fetchers/ovh"
 import { fetchZammadUsers } from "./fetchers/zammad"
 import { fetchSentryUsers } from "./fetchers/sentry"
 
-export const DEFAULT_DELAY = 0
+export const DEFAULT_DELAY = 800
 
 const SERVICES = [
-  "github",
+  // "github",
   "matomo",
   "mattermost",
-  "nextcloud",
-  "ovh",
-  "sentry",
+  // "nextcloud",
+  // "ovh",
+  // "sentry",
   "zammad",
 ] as const
 
@@ -77,6 +77,13 @@ const updateUsersTable = (
     query matchUsersInServices($_or: [users_bool_exp!]) {
       users(where: { _or: $_or }) {
         id
+        github
+        matomo
+        zammad
+        sentry
+        nextcloud
+        mattermost
+        ovh
       }
     }
   `
@@ -111,6 +118,7 @@ const updateUsersTable = (
       } else if (matchingIdUsers.length === 1) {
         // if there's one, update the user
         await fetcher(updateUser, jwt, {
+          id: matchingIdUsers[0].id,
           _set: { [serviceName]: user },
         })
       } else {
@@ -119,11 +127,26 @@ const updateUsersTable = (
       }
     } else {
       // if we have the email
+      if (email === "perrine.garnault@benextcompany.com") {
+        console.log(serviceName)
+
+        console.log(
+          "fetcher params",
+          JSON.stringify({
+            _or: SERVICES.map((service) => ({
+              [service]: { _contains: { [emailMatchers[service]]: email } },
+            })),
+          })
+        )
+      }
       const { users: matchingRows } = await fetcher(matchUserInServices, jwt, {
         _or: SERVICES.map((service) => ({
           [service]: { _contains: { [emailMatchers[service]]: email } },
         })),
       })
+      if (email === "perrine.garnault@benextcompany.com") {
+        console.log("MATCHING ROWS LEN", matchingRows.length)
+      }
       if (matchingRows.length === 0) {
         // no row have the same email on any service, create the user
         await fetcher(addUser, jwt, { user: { [serviceName]: user } })
@@ -135,16 +158,22 @@ const updateUsersTable = (
         })
       } else {
         // this is not supposed to happen ?
-        console.error("More than one row had this email", matchingRows)
+        console.error("More than one row had this email")
       }
     }
   })
 }
 
 export const fetchAndUpdateServices = async (jwt: string) => {
-  SERVICES.forEach(async (serviceName) => {
-    const data = await servicesFetchers[serviceName]()
-    updateUsersTable(data, serviceName, jwt)
-    updateDbWithData(serviceName, data, jwt)
-  })
+  const dataByService: Record<string, Record<string, unknown>[]> = {}
+  await Promise.all(
+    SERVICES.map(async (serviceName) => {
+      const data = await servicesFetchers[serviceName]()
+      dataByService[serviceName] = data
+      updateDbWithData(serviceName, data, jwt)
+    })
+  )
+  for (const service of Object.keys(dataByService)) {
+    updateUsersTable(dataByService[service], service, jwt)
+  }
 }

@@ -98,7 +98,7 @@ const updateUsersTable = (
   `
 
   const updateUser = gql`
-    mutation MyMutation($id: uuid, $_set: users_set_input) {
+    mutation updateUser($id: uuid!, $_set: users_set_input!) {
       update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
         id
       }
@@ -117,19 +117,20 @@ const updateUsersTable = (
 
   users.forEach(async (user) => {
     const value = user[matcher] as string
-    const existingUsers = await fetcher(getServiceUsers, jwt, {
+    const { users: existingUsers } = await fetcher(getServiceUsers, jwt, {
       _contains: { [matcher]: value },
     })
-    console.log("got existing users", existingUsers)
+
     if (!existingUsers.length) {
-      console.log("EXISTING USER NOT FOUND")
       const params = getServicesToMatch(value, serviceName)
-      console.log("params", params)
-      const existingUserInService = await fetcher(matchUserInServices, jwt, {
-        _or: params,
-      })
+      const { users: existingUserInService } = await fetcher(
+        matchUserInServices,
+        jwt,
+        {
+          _or: params,
+        }
+      )
       if (!existingUserInService.length) {
-        console.log("EXISTING USER IN SERVICE NOT FOUND")
         await fetcher(addUser, jwt, { user: { [serviceName]: user } })
       } else {
         console.log("EXISTING USER IN SERVICE FOUND", existingUserInService[0])

@@ -8,7 +8,7 @@ import { fetchOvhUsers } from "./fetchers/ovh"
 import { fetchZammadUsers } from "./fetchers/zammad"
 import { fetchSentryUsers } from "./fetchers/sentry"
 
-export const DEFAULT_DELAY = 100
+export const DEFAULT_DELAY = 0
 
 const SERVICES = [
   "github",
@@ -53,7 +53,7 @@ const updateDbWithData = (
   )
 }
 
-const keys: Record<string, string> = {
+const emailMatchers: Record<string, string> = {
   github: "email",
   matomo: "email",
   zammad: "email",
@@ -61,33 +61,23 @@ const keys: Record<string, string> = {
   nextcloud: "email",
   mattermost: "email",
   ovh: "primaryEmailAddress",
-}
+} as const
 
-const getServicesToMatch = (value: string, serviceName: string) => {
-  const services = []
-
-  for (const service in keys) {
-    if (service !== serviceName) {
-      services.push({ [service]: { _contains: { [keys[service]]: value } } })
-    }
-  }
-
-  return services
-}
+const idMatchers: Record<string, string> = {
+  github: "id",
+  matomo: "id",
+  zammad: "id",
+  sentry: "id",
+  nextcloud: "id",
+  mattermost: "id",
+  ovh: "id",
+} as const
 
 const updateUsersTable = (
   users: Record<string, unknown>[],
   serviceName: string,
   jwt: string
 ) => {
-  let matchingCount = 0
-  const getServiceUsers = gql`
-    query getServiceUsers($_contains: jsonb) {
-      users(where: { ${serviceName}: { _contains: $_contains } }) {
-        id
-      }
-    }
-  `
   const matchUserInServices = gql`
     query matchUsersInServices($_or: [users_bool_exp!]) {
       users(where: { _or: $_or }) {
@@ -112,44 +102,23 @@ const updateUsersTable = (
     }
   `
 
-  const matcher = keys[serviceName]
-
   users.forEach(async (user) => {
-    const value = user[matcher] as string
-    const { users: existingUsers } = await fetcher(getServiceUsers, jwt, {
-      _contains: { [matcher]: value },
+    const email = user[emailMatchers[serviceName]]
+    const id = user[idMatchers[serviceName]]
+    const { users: matchingRows } = await fetcher(matchUserInServices, jwt, {
+      _or: SERVICES.map((service) => ({
+        [service]: { _contains: { [emailMatchers[service]]: email } },
+      })),
     })
-
-    if (!existingUsers.length) {
-      const params = getServicesToMatch(value, serviceName)
-      const { users: existingUserInService } = await fetcher(
-        matchUserInServices,
-        jwt,
-        {
-          _or: params,
-        }
-      )
-      if (!existingUserInService.length) {
-        await fetcher(addUser, jwt, { user: { [serviceName]: user } })
-      } else {
-        console.log("EXISTING USER IN SERVICE FOUND", existingUserInService[0])
-        matchingCount++
-        await fetcher(updateUser, jwt, {
-          id: existingUserInService[0].id,
-          _set: { [serviceName]: user },
-        })
-        // menage...
-      }
+    if (matchingRows.length === 0) {
+      await fetcher(addUser, jwt, { user: { [serviceName]: user } })
     } else {
-      console.log("EXISTING USER FOUND", existingUsers[0])
       await fetcher(updateUser, jwt, {
-        id: existingUsers[0].id,
+        id: matchingRows[0].id,
         _set: { [serviceName]: user },
       })
     }
   })
-
-  console.log("matchingCount", matchingCount)
 }
 
 export const fetchAndUpdateServices = async (jwt: string) => {

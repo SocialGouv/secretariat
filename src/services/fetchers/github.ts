@@ -1,5 +1,5 @@
 import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
-import { DEFAULT_DELAY, FetchedData } from "@/services/fetch"
+import { DEFAULT_DELAY } from "@/services/fetch"
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
 import pMap from "p-map"
@@ -22,7 +22,7 @@ const fetchGithubPage = async (jwt: string, cursor?: string) => {
 
 export const fetchGithubUsers = async (
   msDelay = DEFAULT_DELAY
-): Promise<FetchedData> => {
+): Promise<Record<string, unknown>[]> => {
   // accessing an Hasura remote schema requires admin rights
   const jwt = getJwt("admin")
 

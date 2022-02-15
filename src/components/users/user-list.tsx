@@ -8,7 +8,7 @@ const UserList = ({
 }: {
   users: MixedUser[]
   selectedUser?: MixedUser
-  getUserData: (user: MixedUser) => User
+  getUserData: (user: MixedUser) => MixedUser
   onSelect: (user: MixedUser | undefined) => void
 }) => {
   return (

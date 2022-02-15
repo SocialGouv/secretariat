@@ -21,7 +21,14 @@ const Menu = () => {
       <li className={!slug ? "selected" : ""}>
         <Link href="/">
           <a>
-            Users <span>({counts?.github})</span>
+            Users <span>(0)</span>
+          </a>
+        </Link>
+      </li>
+      <li className={slug === "github" ? "selected" : ""}>
+        <Link href="/service/github">
+          <a>
+            Github <span>({counts?.github})</span>
           </a>
         </Link>
       </li>

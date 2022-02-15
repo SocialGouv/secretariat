@@ -52,6 +52,37 @@ const updateDbWithData = (
   )
 }
 
+const updateUsersTable = (
+  users: MixedUser[],
+  serviceName: string,
+  jwt: string
+) => {
+  const getServiceUsers = gql`
+    query getServiceUsers($_contains: jsonb) {
+      users(where: { ${serviceName}: { _contains: $_contains } }) {
+        id
+      }
+    }
+  `
+  const matchUsersInServices = gql`
+    query matchUsersInServices($_or: [users_bool_exp!]) {
+      users(where: { _or: $_or }) {
+        id
+      }
+    }
+  `
+
+  users.forEach(async (user) => {
+    const existingUsers = await fetcher(getServiceUsers, jwt, {
+      _contains: { id: user.id },
+    })
+    console.log("got existing users", existingUsers)
+    if (!existingUsers) {
+      const
+    }
+  })
+}
+
 export const fetchAndUpdateServices = async (jwt: string) => {
   SERVICES.forEach(async (serviceName) => {
     const data = await servicesFetchers[serviceName]()

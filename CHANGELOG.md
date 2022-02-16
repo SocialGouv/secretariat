@@ -1,3 +1,10 @@
+## [1.7.21](https://github.com/SocialGouv/secretariat/compare/v1.7.20...v1.7.21) (2022-02-16)
+
+
+### Bug Fixes
+
+* **k8s:** use pg-user secret ([#72](https://github.com/SocialGouv/secretariat/issues/72)) ([a3e6728](https://github.com/SocialGouv/secretariat/commit/a3e6728bc8ac995935f4fa0cb68655750b8406ce))
+
 ## [1.7.20](https://github.com/SocialGouv/secretariat/compare/v1.7.19...v1.7.20) (2022-02-16)
 
 

@@ -2,8 +2,8 @@ name: Tests
 
 on:
   push:
-    branches-ignore:
-      - 'master'
+    tags-ignore:
+      - v*
 
 concurrency:
   cancel-in-progress: true

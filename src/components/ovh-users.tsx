@@ -35,7 +35,6 @@ const OVHUsers = () => {
         {selectedUser && (
           <UserProfile>
             <div>
-              {" "}
               Nom:{" "}
               {selectedUser.firstName
                 ? `${selectedUser.firstName} ${selectedUser.lastName}`

@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react"
 import Menu from "@/components/menu"
 import Login from "@/components/login"
 import OVHUsers from "@/components/ovh-users"
+import GithubUsers from "@/components/github-users"
 import MatomoUsers from "@/components/matomo-users"
 import SentryUsers from "@/components/sentry-users"
 import ZammadUsers from "@/components/zammad-users"
@@ -20,6 +21,10 @@ interface Service {
 }
 
 const services = {
+  github: {
+    name: "Github",
+    Component: GithubUsers,
+  },
   matomo: {
     name: "Matomo",
     Component: MatomoUsers,

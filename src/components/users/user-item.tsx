@@ -16,6 +16,15 @@ const UserItem = ({ user }: { user: User }) => {
         </h3>
         <div className="email">{user.email}</div>
       </div>
+      <div className="services">
+        {user.github && <div>github</div>}
+        {user.matomo && <div>matomo</div>}
+        {user.mattermost && <div>mattermost</div>}
+        {user.nextcloud && <div>nextcloud</div>}
+        {user.zammad && <div>zammad</div>}
+        {user.ovh && <div>ovh</div>}
+        {user.sentry && <div>sentry</div>}
+      </div>
     </div>
   )
 }

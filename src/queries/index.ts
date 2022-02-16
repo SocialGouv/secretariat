@@ -128,6 +128,7 @@ export const getRemoteGithubTeams = gql`
 export const getServicesCount = gql`
   query getServicesCount {
     services_count {
+      users
       github
       matomo
       mattermost

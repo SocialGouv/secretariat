@@ -1,13 +1,7 @@
-import useGithubUsers from "@/services/github"
-import useMatomoUsers from "@/services/matomo"
-import useMattermostUsers from "@/services/mattermost"
-import useNextCloudUsers from "@/services/nextcloud"
-import useOVHUsers from "@/services/ovh"
-import useSentryUsers from "@/services/sentry"
-import useServicesCount from "@/services/services-count"
-import useZammadUsers from "@/services/zammad"
 import Link from "next/link"
 import { useRouter } from "next/router"
+
+import useServicesCount from "@/services/services-count"
 
 const Menu = () => {
   const {
@@ -21,7 +15,7 @@ const Menu = () => {
       <li className={!slug ? "selected" : ""}>
         <Link href="/">
           <a>
-            Users <span>(0)</span>
+            Users <span>({counts?.users})</span>
           </a>
         </Link>
       </li>

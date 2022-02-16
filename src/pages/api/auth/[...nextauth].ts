@@ -5,6 +5,8 @@ import { getJwt } from "@/utils/jwt"
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
+const AuthorizedTeams = ["sre", "ops"]
+
 const getUserTeams = async (login: string) => {
   const jwt = getJwt("admin")
 
@@ -46,7 +48,9 @@ export default NextAuth({
       if (user) {
         const { login } = user
         const teams = await getUserTeams(login)
-        const role = teams.includes("sre") ? "user" : "anonymous"
+        const role = AuthorizedTeams.some((team) => teams.includes(team))
+          ? "user"
+          : "anonymous"
         return { ...token, login, teams, role }
       }
       return token

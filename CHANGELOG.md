@@ -1,3 +1,10 @@
+## [1.7.20](https://github.com/SocialGouv/secretariat/compare/v1.7.19...v1.7.20) (2022-02-16)
+
+
+### Bug Fixes
+
+* add OPS to authorised teams ([#74](https://github.com/SocialGouv/secretariat/issues/74)) ([13d5a0a](https://github.com/SocialGouv/secretariat/commit/13d5a0ae4053080ba9001a54c90964c1f3350108))
+
 ## [1.7.19](https://github.com/SocialGouv/secretariat/compare/v1.7.18...v1.7.19) (2022-02-14)
 
 

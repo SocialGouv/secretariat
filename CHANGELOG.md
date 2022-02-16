@@ -1,3 +1,16 @@
+# [1.8.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.7.19...v1.8.0-beta.1) (2022-02-16)
+
+
+### Bug Fixes
+
+* matcher ([90ab871](https://github.com/SocialGouv/secretariat/commit/90ab871b282d84573921c442a938f7b433cfb27b))
+
+
+### Features
+
+* new users table ([edd3ba5](https://github.com/SocialGouv/secretariat/commit/edd3ba5fcdd827a25c40be3ff6fe14b5b8c99a4a))
+* new users table ([#71](https://github.com/SocialGouv/secretariat/issues/71)) ([0560b58](https://github.com/SocialGouv/secretariat/commit/0560b585d3ff87cdfe58f5c95e56b453ec363edc))
+
 ## [1.7.19](https://github.com/SocialGouv/secretariat/compare/v1.7.18...v1.7.19) (2022-02-14)
 
 

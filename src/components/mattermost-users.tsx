@@ -28,7 +28,7 @@ const MattermostUsers = () => {
               email,
               login: username,
               name: first_name && `${first_name} ${last_name}`,
-            }
+            } as User
           }}
           onSelect={(user) => setSelectedUser(user as MattermostUser)}
         />

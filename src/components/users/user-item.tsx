@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-const UserItem = ({ user }: { user: MixedUser }) => {
+const UserItem = ({ user }: { user: User }) => {
   return (
     <div className="user">
       <Image

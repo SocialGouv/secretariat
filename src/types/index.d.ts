@@ -1,17 +1,17 @@
 interface User {
-  id: string
-  name: string
+  id?: string
+  name?: string
   email: string
   login?: string
   avatarUrl?: string
-  teams: GithubTeam[]
-  github: GithubUser
-  matomo: MatomoUser
-  mattermost: MattermostUser
-  nextcloud: NextCloudUser
-  ovh: OVHUser
-  sentry: SentryUser
-  zammad: ZammadUser
+  teams?: GithubTeam[]
+  github?: GithubUser
+  matomo?: MatomoUser
+  mattermost?: MattermostUser
+  nextcloud?: NextCloudUser
+  ovh?: OVHUser
+  sentry?: SentryUser
+  zammad?: ZammadUser
 }
 
 interface GithubTeam {
@@ -83,12 +83,12 @@ interface MattermostUser {
   first_name: string
 }
 
-interface MixedUser
-  extends User,
-    GithubUser,
-    MattermostUser,
-    MatomoUser,
-    NextCloudUser,
-    SentryUser,
-    OVHUser,
-    ZammadUser {}
+type MixedUser =
+  | User
+  | GithubUser
+  | MatomoUser
+  | SentryUser
+  | NextCloudUser
+  | OVHUser
+  | MattermostUser
+  | ZammadUser

@@ -1,5 +1,20 @@
 import { gql } from "graphql-request"
 
+export const getUsers = gql`
+  query MyQuery {
+    users {
+      id
+      github
+      matomo
+      mattermost
+      nextcloud
+      ovh
+      sentry
+      zammad
+    }
+  }
+`
+
 export const getGitHubUsers = gql`
   query getGithubUsers {
     services {
@@ -113,6 +128,7 @@ export const getRemoteGithubTeams = gql`
 export const getServicesCount = gql`
   query getServicesCount {
     services_count {
+      users
       github
       matomo
       mattermost

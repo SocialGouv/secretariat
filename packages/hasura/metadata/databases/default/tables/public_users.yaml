@@ -27,6 +27,19 @@ select_permissions:
     - updated_at
     - id
     filter: {}
+  role: user
+- permission:
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    - updated_at
+    - id
+    filter: {}
   role: webhook
 update_permissions:
 - permission:

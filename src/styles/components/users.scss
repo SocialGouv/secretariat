@@ -23,6 +23,18 @@
           overflow-auto
           border-gray-300
           border-l-blue-500;
+
+        h3 {
+          @apply flex mt-4 items-center;
+
+          .icon {
+            @apply flex mt-1 relative;
+          }
+
+          .title {
+            @apply ml-1;
+          }
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react"
 
 import Menu from "@/components/menu"
 import Login from "@/components/login"
-import GithubUsers from "@/components/github-users"
+import AllUsers from "@/components/all-users"
 
 const Page = () => {
   const { data: session } = useSession()
@@ -25,7 +25,7 @@ const Page = () => {
         </div>
       </aside>
       <main>
-        <GithubUsers />
+        <AllUsers />
       </main>
     </div>
   )

@@ -28,6 +28,14 @@
           text-overflow: ellipsis;
         }
       }
+
+      .services {
+        @apply flex flex-col;
+
+        div {
+          @apply ml-1;
+        }
+      }
     }
   }
 }

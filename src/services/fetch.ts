@@ -5,19 +5,19 @@ import { fetchMatomoUsers } from "./fetchers/matomo"
 import { fetchMattermostUsers } from "./fetchers/mattermost"
 import { fetchNextcloudUsers } from "./fetchers/nextcloud"
 import { fetchOvhUsers } from "./fetchers/ovh"
-import { fetchZammadUsers } from "./fetchers/zammad"
 import { fetchSentryUsers } from "./fetchers/sentry"
+import { fetchZammadUsers } from "./fetchers/zammad"
 
 export const DEFAULT_DELAY = 800
 
 const SERVICES = [
-  // "github",
-  "matomo",
+  "github",
+  // "matomo",
   "mattermost",
   // "nextcloud",
-  // "ovh",
-  // "sentry",
-  "zammad",
+  "ovh",
+  "sentry",
+  // "zammad",
 ] as const
 
 const servicesFetchers = {
@@ -60,7 +60,7 @@ const emailMatchers: Record<string, string> = {
   ovh: "primaryEmailAddress",
 } as const
 
-const updateUsersTable = (
+const updateUsersTable = async (
   users: Record<string, unknown>[],
   serviceName: string,
   jwt: string
@@ -104,76 +104,69 @@ const updateUsersTable = (
     }
   `
 
-  users.forEach(async (user) => {
-    const email = user[emailMatchers[serviceName]]
+  await Promise.all(
+    users.map(async (user) => {
+      const email = user[emailMatchers[serviceName]]
 
-    if (!email) {
-      // if we don't have the email
-      const { users: matchingIdUsers } = await fetcher(getServiceUsers, jwt, {
-        _contains: { id: user.id },
-      })
-      if (matchingIdUsers.length === 0) {
-        // if there's not row with this id for the given service, insert the user
-        await fetcher(addUser, jwt, { user: { [serviceName]: user } })
-      } else if (matchingIdUsers.length === 1) {
-        // if there's one, update the user
-        await fetcher(updateUser, jwt, {
-          id: matchingIdUsers[0].id,
-          _set: { [serviceName]: user },
+      if (!email) {
+        // if we don't have the email
+        const { users: matchingIdUsers } = await fetcher(getServiceUsers, jwt, {
+          _contains: { id: user.id },
         })
+        if (matchingIdUsers.length === 0) {
+          // if there's not row with this id for the given service, insert the user
+          await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+        } else if (matchingIdUsers.length === 1) {
+          // if there's one, update the user
+          await fetcher(updateUser, jwt, {
+            id: matchingIdUsers[0].id,
+            _set: { [serviceName]: user },
+          })
+        } else {
+          // this is not supposed to happen
+          console.error("More than one row had this id", matchingIdUsers)
+        }
       } else {
-        // this is not supposed to happen
-        console.error("More than one row had this id", matchingIdUsers)
-      }
-    } else {
-      // if we have the email
-      if (email === "perrine.garnault@benextcompany.com") {
-        console.log(serviceName)
-
-        console.log(
-          "fetcher params",
-          JSON.stringify({
+        // if we have the email
+        const { users: matchingRows } = await fetcher(
+          matchUserInServices,
+          jwt,
+          {
             _or: SERVICES.map((service) => ({
               [service]: { _contains: { [emailMatchers[service]]: email } },
             })),
-          })
+          }
         )
+        if (matchingRows.length === 0) {
+          // no row have the same email on any service, create the user
+          await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+        } else if (matchingRows.length === 1) {
+          // an row have the same email on a service, update the user
+          await fetcher(updateUser, jwt, {
+            id: matchingRows[0].id,
+            _set: { [serviceName]: user },
+          })
+        } else {
+          // this is not supposed to happen ?
+          console.error("More than one row had this email")
+        }
       }
-      const { users: matchingRows } = await fetcher(matchUserInServices, jwt, {
-        _or: SERVICES.map((service) => ({
-          [service]: { _contains: { [emailMatchers[service]]: email } },
-        })),
-      })
-      if (email === "perrine.garnault@benextcompany.com") {
-        console.log("MATCHING ROWS LEN", matchingRows.length)
-      }
-      if (matchingRows.length === 0) {
-        // no row have the same email on any service, create the user
-        await fetcher(addUser, jwt, { user: { [serviceName]: user } })
-      } else if (matchingRows.length === 1) {
-        // an row have the same email on a service, update the user
-        await fetcher(updateUser, jwt, {
-          id: matchingRows[0].id,
-          _set: { [serviceName]: user },
-        })
-      } else {
-        // this is not supposed to happen ?
-        console.error("More than one row had this email")
-      }
-    }
-  })
+    })
+  )
 }
 
 export const fetchAndUpdateServices = async (jwt: string) => {
-  const dataByService: Record<string, Record<string, unknown>[]> = {}
+  // store all fetched data to update users table sequentially afterwards
+  const usersByService: Record<string, Record<string, unknown>[]> = {}
   await Promise.all(
     SERVICES.map(async (serviceName) => {
-      const data = await servicesFetchers[serviceName]()
-      dataByService[serviceName] = data
-      updateDbWithData(serviceName, data, jwt)
+      const users = await servicesFetchers[serviceName]()
+      usersByService[serviceName] = users
+      updateDbWithData(serviceName, users, jwt)
     })
   )
-  for (const service of Object.keys(dataByService)) {
-    updateUsersTable(dataByService[service], service, jwt)
+  for (const service of Object.keys(usersByService)) {
+    // update users table for each service sequentially to detect possible merges
+    await updateUsersTable(usersByService[service], service, jwt)
   }
 }

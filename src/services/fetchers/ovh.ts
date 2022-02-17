@@ -6,19 +6,34 @@ import {
 } from "@/utils/env"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY, FetchedData } from "../fetch"
+import { DEFAULT_DELAY } from "../fetch"
+
+const fetcherOvh = async (
+  ovh: any,
+  verb: string,
+  url: string,
+  emptyValue: any
+) => {
+  try {
+    return ovh.requestPromised(verb, url)
+  } catch (error) {
+    console.error("Error while fetching OVH: ", error)
+    return emptyValue
+  }
+}
 
 const fetchOvhUser = async (ovh: any, email: string) => {
-  const user = await ovh.requestPromised(
+  return fetcherOvh(
+    ovh,
     "GET",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
+    {}
   )
-  return user
 }
 
 export const fetchOvhUsers = async (
   msDelay = DEFAULT_DELAY
-): Promise<FetchedData> => {
+): Promise<Record<string, unknown>[]> => {
   const ovh = require("ovh")({
     endpoint: "ovh-eu",
     appKey: OVH_APP_KEY,
@@ -26,9 +41,11 @@ export const fetchOvhUsers = async (
     consumerKey: OVH_CONSUMER_KEY,
   })
 
-  const emails = await ovh.requestPromised(
+  const emails = await fetcherOvh(
+    ovh,
     "GET",
-    `/email/pro/${OVH_SERVICE_NAME}/account`
+    `/email/pro/${OVH_SERVICE_NAME}/account`,
+    []
   )
 
   // OVH only sends us a list of emails, we need to query each user's details

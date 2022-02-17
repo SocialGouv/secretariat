@@ -10,6 +10,7 @@ select_permissions:
     - nextcloud
     - ovh
     - sentry
+    - users
     - zammad
     filter: {}
   role: user

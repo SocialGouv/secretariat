@@ -5,19 +5,19 @@ import { fetchMatomoUsers } from "./fetchers/matomo"
 import { fetchMattermostUsers } from "./fetchers/mattermost"
 import { fetchNextcloudUsers } from "./fetchers/nextcloud"
 import { fetchOvhUsers } from "./fetchers/ovh"
-import { fetchZammadUsers } from "./fetchers/zammad"
 import { fetchSentryUsers } from "./fetchers/sentry"
+import { fetchZammadUsers } from "./fetchers/zammad"
 
-export const DEFAULT_DELAY = 100
+export const DEFAULT_DELAY = 800
 
 const SERVICES = [
   "github",
-  "matomo",
+  // "matomo",
   "mattermost",
-  "nextcloud",
+  // "nextcloud",
   "ovh",
   "sentry",
-  "zammad",
+  // "zammad",
 ] as const
 
 const servicesFetchers = {
@@ -30,11 +30,9 @@ const servicesFetchers = {
   zammad: fetchZammadUsers,
 }
 
-export type FetchedData = Record<string, unknown> | Record<string, unknown>[]
-
 const updateDbWithData = (
   serviceName: string,
-  data: FetchedData,
+  data: Record<string, unknown>[],
   jwt: string
 ) => {
   fetcher(
@@ -52,9 +50,123 @@ const updateDbWithData = (
   )
 }
 
+const emailMatchers: Record<string, string> = {
+  github: "email",
+  matomo: "email",
+  zammad: "email",
+  sentry: "email",
+  nextcloud: "email",
+  mattermost: "email",
+  ovh: "primaryEmailAddress",
+} as const
+
+const updateUsersTable = async (
+  users: Record<string, unknown>[],
+  serviceName: string,
+  jwt: string
+) => {
+  const getServiceUsers = gql`
+    query getServiceUsers($_contains: jsonb) {
+      users(where: { ${serviceName}: { _contains: $_contains } }) {
+        id
+      }
+    }
+  `
+
+  const matchUserInServices = gql`
+    query matchUsersInServices($_or: [users_bool_exp!]) {
+      users(where: { _or: $_or }) {
+        id
+        github
+        matomo
+        zammad
+        sentry
+        nextcloud
+        mattermost
+        ovh
+      }
+    }
+  `
+
+  const updateUser = gql`
+    mutation updateUser($id: uuid!, $_set: users_set_input!) {
+      update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
+        id
+      }
+    }
+  `
+
+  const addUser = gql`
+    mutation AddUser($user: users_insert_input!) {
+      insert_users_one(object: $user) {
+        id
+      }
+    }
+  `
+
+  await Promise.all(
+    users.map(async (user) => {
+      const email = user[emailMatchers[serviceName]]
+
+      if (!email) {
+        // if we don't have the email
+        const { users: matchingIdUsers } = await fetcher(getServiceUsers, jwt, {
+          _contains: { id: user.id },
+        })
+        if (matchingIdUsers.length === 0) {
+          // if there's not row with this id for the given service, insert the user
+          await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+        } else if (matchingIdUsers.length === 1) {
+          // if there's one, update the user
+          await fetcher(updateUser, jwt, {
+            id: matchingIdUsers[0].id,
+            _set: { [serviceName]: user },
+          })
+        } else {
+          // this is not supposed to happen
+          console.error("More than one row had this id", matchingIdUsers)
+        }
+      } else {
+        // if we have the email
+        const { users: matchingRows } = await fetcher(
+          matchUserInServices,
+          jwt,
+          {
+            _or: SERVICES.map((service) => ({
+              [service]: { _contains: { [emailMatchers[service]]: email } },
+            })),
+          }
+        )
+        if (matchingRows.length === 0) {
+          // no row have the same email on any service, create the user
+          await fetcher(addUser, jwt, { user: { [serviceName]: user } })
+        } else if (matchingRows.length === 1) {
+          // an row have the same email on a service, update the user
+          await fetcher(updateUser, jwt, {
+            id: matchingRows[0].id,
+            _set: { [serviceName]: user },
+          })
+        } else {
+          // this is not supposed to happen ?
+          console.error("More than one row had this email")
+        }
+      }
+    })
+  )
+}
+
 export const fetchAndUpdateServices = async (jwt: string) => {
-  SERVICES.forEach(async (serviceName) => {
-    const data = await servicesFetchers[serviceName]()
-    updateDbWithData(serviceName, data, jwt)
-  })
+  // store all fetched data to update users table sequentially afterwards
+  const usersByService: Record<string, Record<string, unknown>[]> = {}
+  await Promise.all(
+    SERVICES.map(async (serviceName) => {
+      const users = await servicesFetchers[serviceName]()
+      usersByService[serviceName] = users
+      updateDbWithData(serviceName, users, jwt)
+    })
+  )
+  for (const service of Object.keys(usersByService)) {
+    // update users table for each service sequentially to detect possible merges
+    await updateUsersTable(usersByService[service], service, jwt)
+  }
 }

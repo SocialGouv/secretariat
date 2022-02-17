@@ -1,12 +1,13 @@
 import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
+import fetcher from "@/utils/rest-fetcher"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY, FetchedData } from "../fetch"
+import { DEFAULT_DELAY } from "../fetch"
 
 const PAGE_SIZE = 100 // not sure about the real max for Nextcloud's API
 
 const fetchNextcloudUser = async (login: string) => {
-  const user = await fetch(
+  const response = await fetcher(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users/${login}`,
     {
       method: "GET",
@@ -19,15 +20,15 @@ const fetchNextcloudUser = async (login: string) => {
       },
     }
   )
-  return user.json()
+  return response ? response.json() : {}
 }
 
 export const fetchNextcloudUsers = async (
   logins: string[] = [],
   page = 0,
   msDelay = DEFAULT_DELAY
-): Promise<FetchedData> => {
-  const response = await fetch(
+): Promise<Record<string, unknown>[]> => {
+  const response = await fetcher(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users?limit=${PAGE_SIZE}&offset=${
       page * PAGE_SIZE
     }`,
@@ -47,7 +48,7 @@ export const fetchNextcloudUsers = async (
     ocs: {
       data: { users: loginsPage },
     },
-  } = await response.json()
+  } = response ? await response.json() : { ocs: { data: { users: [] } } }
 
   if (loginsPage.length === 0) {
     // Nextcloud only sends us a list of logins, we need to query each user's details

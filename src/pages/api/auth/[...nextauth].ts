@@ -42,7 +42,7 @@ export default NextAuth({
     async signIn({ user }) {
       const { login } = user
       const teams = await getUserTeams(login)
-      return teams.includes("sre")
+      return AuthorizedTeams.some((team) => teams.includes(team))
     },
     async jwt({ token, user }) {
       if (user) {

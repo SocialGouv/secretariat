@@ -1,10 +1,10 @@
 import { SENTRY_API_TOKEN } from "@/utils/env"
-import fetcherRest from "@/utils/fetcher-rest"
+import fetcher from "@/utils/rest-fetcher"
 
 export const fetchSentryUsers = async (): Promise<
   Record<string, unknown>[]
 > => {
-  const response = await fetcherRest(
+  const response = await fetcher(
     "https://sentry.fabrique.social.gouv.fr/api/0/organizations/incubateur/users/",
     {
       method: "GET",

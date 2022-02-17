@@ -1,5 +1,5 @@
 import { MATTERMOST_API_TOKEN } from "@/utils/env"
-import fetcherRest from "@/utils/fetcher-rest"
+import fetcher from "@/utils/rest-fetcher"
 import { setTimeout } from "timers/promises"
 import { DEFAULT_DELAY } from "../fetch"
 
@@ -10,7 +10,7 @@ export const fetchMattermostUsers = async (
   page: number = 0,
   msDelay = DEFAULT_DELAY
 ): Promise<Record<string, unknown>[]> => {
-  const response = await fetcherRest(
+  const response = await fetcher(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/users?page=${page}&per_page=${PAGE_SIZE}&active=true`,
     {
       method: "GET",

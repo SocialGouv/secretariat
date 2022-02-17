@@ -23,13 +23,12 @@ const fetcherOvh = async (
 }
 
 const fetchOvhUser = async (ovh: any, email: string) => {
-  const user = await fetcherOvh(
+  return await fetcherOvh(
     ovh,
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {}
   )
-  return user
 }
 
 export const fetchOvhUsers = async (

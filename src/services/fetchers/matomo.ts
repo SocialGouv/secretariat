@@ -1,5 +1,5 @@
 import { MATOMO_API_TOKEN } from "@/utils/env"
-import fetcherRest from "@/utils/fetcher-rest"
+import fetcher from "@/utils/rest-fetcher"
 import { randomUUID } from "crypto"
 import { setTimeout } from "timers/promises"
 import { DEFAULT_DELAY } from "../fetch"
@@ -18,7 +18,7 @@ export const fetchMatomoUsers = async (
   page: number = 0,
   msDelay = DEFAULT_DELAY
 ): Promise<Record<string, unknown>[]> => {
-  const response = await fetcherRest(
+  const response = await fetcher(
     "https://matomo.fabrique.social.gouv.fr/index.php",
     {
       method: "POST",

@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/SocialGouv/secretariat/compare/v1.7.22...v1.8.0) (2022-02-17)
+
+
+### Features
+
+* new users table ([#75](https://github.com/SocialGouv/secretariat/issues/75)) ([6d2cbdc](https://github.com/SocialGouv/secretariat/commit/6d2cbdc936151384cae84bba50382249dce9f0f5))
+
 # [1.8.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.7.22...v1.8.0-beta.1) (2022-02-17)
 
 

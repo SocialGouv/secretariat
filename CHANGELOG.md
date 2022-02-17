@@ -115,6 +115,20 @@
 
 ### Bug Fixes
 
+* Bump version ([1ba63f6](https://github.com/SocialGouv/secretariat/commit/1ba63f665d0c9b52d0e1c502739d028cf2fa33aa))
+* matcher ([ffdb1c5](https://github.com/SocialGouv/secretariat/commit/ffdb1c56c2d85e53c0c8324ac7624825e515cc5a))
+
+
+### Features
+
+* new users table ([10983f1](https://github.com/SocialGouv/secretariat/commit/10983f12f01e22bde3423ec3b1363ddb06ac5222))
+* new users table ([#71](https://github.com/SocialGouv/secretariat/issues/71)) ([bbb13a2](https://github.com/SocialGouv/secretariat/commit/bbb13a2e1ffae2c7236b2db9f3a0dcd65ae12a4b)), closes [#76](https://github.com/SocialGouv/secretariat/issues/76)
+
+# [1.8.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.7.22...v1.8.0-beta.1) (2022-02-17)
+
+
+### Bug Fixes
+
 * matcher ([ffdb1c5](https://github.com/SocialGouv/secretariat/commit/ffdb1c56c2d85e53c0c8324ac7624825e515cc5a))
 
 

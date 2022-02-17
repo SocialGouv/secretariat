@@ -1,3 +1,10 @@
+## [1.7.22](https://github.com/SocialGouv/secretariat/compare/v1.7.21...v1.7.22) (2022-02-17)
+
+
+### Bug Fixes
+
+* Authentication for OPS team ([02aabec](https://github.com/SocialGouv/secretariat/commit/02aabecec8995feb1ca4e6bd4aa67ca92fc70bb3))
+
 ## [1.7.21](https://github.com/SocialGouv/secretariat/compare/v1.7.20...v1.7.21) (2022-02-16)
 
 

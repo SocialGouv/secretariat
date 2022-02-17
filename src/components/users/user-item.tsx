@@ -1,5 +1,25 @@
 import Image from "next/image"
 
+const GithubIcon = () => (
+  <Image src={"/images/github.png"} height={32} width={32} />
+)
+const MatomoIcon = () => (
+  <Image src={"/images/matomo.png"} height={32} width={32} />
+)
+const SentryIcon = () => (
+  <Image src={"/images/sentry.png"} height={32} width={32} />
+)
+const MattermostIcon = () => (
+  <Image src={"/images/mattermost.svg"} height={32} width={32} />
+)
+const ZammadIcon = () => (
+  <Image src={"/images/zammad.png"} height={32} width={32} />
+)
+const NextCloudIcon = () => (
+  <Image src={"/images/nextcloud.png"} height={32} width={32} />
+)
+const OVHIcon = () => <Image src={"/images/ovh.png"} height={32} width={32} />
+
 const UserItem = ({ user }: { user: User }) => {
   return (
     <div className="user">
@@ -17,13 +37,13 @@ const UserItem = ({ user }: { user: User }) => {
         <div className="email">{user.email}</div>
       </div>
       <div className="services">
-        {user.github && <div>github</div>}
-        {user.matomo && <div>matomo</div>}
-        {user.mattermost && <div>mattermost</div>}
-        {user.nextcloud && <div>nextcloud</div>}
-        {user.zammad && <div>zammad</div>}
-        {user.ovh && <div>ovh</div>}
-        {user.sentry && <div>sentry</div>}
+        {user.github && <GithubIcon />}
+        {user.matomo && <MatomoIcon />}
+        {user.mattermost && <MattermostIcon />}
+        {user.nextcloud && <NextCloudIcon />}
+        {user.zammad && <ZammadIcon />}
+        {user.ovh && <OVHIcon />}
+        {user.sentry && <SentryIcon />}
       </div>
     </div>
   )

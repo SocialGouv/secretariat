@@ -15,7 +15,7 @@ const fetcherOvh = async (
   emptyValue: any
 ) => {
   try {
-    return await ovh.requestPromised(verb, url)
+    return ovh.requestPromised(verb, url)
   } catch (error) {
     console.error("Error while fetching OVH: ", error)
     return emptyValue
@@ -23,7 +23,7 @@ const fetcherOvh = async (
 }
 
 const fetchOvhUser = async (ovh: any, email: string) => {
-  return await fetcherOvh(
+  return fetcherOvh(
     ovh,
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,

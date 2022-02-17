@@ -2,13 +2,16 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 import useUsers from "@/services/users"
+import OVHLogo from "./common/logo/ovh"
+import GithubLogo from "./common/logo/github"
+import SentryLogo from "./common/logo/sentry"
+import MatomoLogo from "./common/logo/matomo"
+import ZammadLogo from "./common/logo/zammad"
+import NextCloudLogo from "./common/logo/nextcloud"
 import UsersTemplate from "@/components/users/index"
+import MattermostLogo from "./common/logo/mattermost"
 import UserListTemplate from "@/components/users/user-list"
 import UserProfileTemplate from "@/components/users/user-profile"
-import SentryLogo from "./common/logo/sentry"
-import MattermostLogo from "./common/logo/mattermost"
-import GithubLogo from "./common/logo/github"
-import OVHLogo from "./common/logo/ovh"
 
 const GithubUserInfo = ({ user }: { user: GithubUser }) => (
   <>
@@ -43,7 +46,12 @@ const GithubUserInfo = ({ user }: { user: GithubUser }) => (
 
 const MatomoUserInfo = ({ user }: { user: MatomoUser }) => (
   <>
-    <h3>Matomo</h3>
+    <h3>
+      <div className="icon">
+        <MatomoLogo />
+      </div>
+      <div className="title">Matomo</div>
+    </h3>
     <hr className="my-2" />
     <ul className="text-sm">
       <li>
@@ -157,7 +165,12 @@ const OVHUserInfo = ({ user }: { user: OVHUser }) => (
 
 const NextCloudUserInfo = ({ user }: { user: NextCloudUser }) => (
   <>
-    <h3>NextCloud</h3>
+    <h3>
+      <div className="icon">
+        <NextCloudLogo />
+      </div>
+      <div className="title">NextCloud</div>
+    </h3>
     <hr className="my-2" />
     <ul className="text-sm">
       <li>
@@ -178,7 +191,12 @@ const NextCloudUserInfo = ({ user }: { user: NextCloudUser }) => (
 
 const ZammadUserInfo = ({ user }: { user: ZammadUser }) => (
   <>
-    <h3>Pastek</h3>
+    <h3>
+      <div className="icon">
+        <ZammadLogo />
+      </div>
+      <div className="title">Pastek</div>
+    </h3>
     <hr className="my-2" />
     <ul className="text-sm">
       <li>
@@ -235,7 +253,15 @@ const Users = () => {
           users={users}
           selectedUser={selectedUser}
           getUserData={(user) => {
-            const { mattermost, sentry } = user as User
+            const {
+              matomo,
+              mattermost,
+              sentry,
+              zammad,
+              nextcloud,
+              github,
+              ovh,
+            } = user as User
             if (mattermost) {
               const { username, first_name, last_name, email } = mattermost
               return {
@@ -250,10 +276,27 @@ const Users = () => {
                 email,
                 user: { avatarUrl },
               } = sentry
+              return { email, name, avatarUrl, ...user } as User
+            } else if (zammad) {
+              const { firstname, lastname, email } = zammad
               return {
                 email,
-                name,
-                avatarUrl,
+                name: firstname && `${firstname} ${lastname}`,
+              } as User
+            } else if (matomo) {
+              const { login, email } = matomo
+              return { login, email, ...user } as User
+            } else if (nextcloud) {
+              const { displayname, email } = nextcloud
+              return { name: displayname, email, ...user } as User
+            } else if (github) {
+              const { name, login, email, avatarUrl } = github
+              return { name, login, email, avatarUrl, ...user } as User
+            } else if (ovh) {
+              const { displayName, primaryEmailAddress } = ovh
+              return {
+                name: displayName,
+                email: primaryEmailAddress,
                 ...user,
               } as User
             }

@@ -10,7 +10,7 @@ const GithubLogo = ({ size = "m" }: { size?: string }) => (
   <Image
     alt="github logo"
     width={sizes[size].width}
-    src={"/images/github.png"}
+    src={"/images/github.svg"}
     height={sizes[size].height}
   />
 )

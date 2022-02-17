@@ -11,7 +11,7 @@ const MattermostLogo = ({ size = "m" }: { size?: string }) => (
     alt="mattermost logo"
     width={sizes[size].width}
     height={sizes[size].height}
-    src={"/images/mattermost.png"}
+    src={"/images/mattermost.svg"}
   />
 )
 

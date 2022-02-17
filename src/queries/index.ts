@@ -1,7 +1,7 @@
 import { gql } from "graphql-request"
 
 export const getUsers = gql`
-  query MyQuery {
+  query getUsers {
     users {
       id
       github

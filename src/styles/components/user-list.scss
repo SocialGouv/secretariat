@@ -3,37 +3,41 @@
   .tile {
 
     .user {
-      @apply flex flex-row;
+      @apply flex flex-col;
 
-      .info {
-        @apply flex-1 ml-2;
+      .details {
+        @apply flex flex-row;
 
-        min-width: 0;
-
-        h3 {
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-
-          & > span {
-            @apply font-normal text-sm;
+        .info {
+          @apply flex-1 ml-2;
+  
+          min-width: 0;
+  
+          h3 {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+  
+            & > span {
+              @apply font-normal text-sm;
+            }
           }
-        }
-
-        .email {
-          @apply text-sm;
-
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+  
+          .email {
+            @apply text-sm;
+  
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
       }
 
       .services {
-        @apply flex flex-col;
+        @apply flex flex-row justify-end;
 
-        div {
-          @apply ml-1;
+        & > div {
+          @apply flex justify-center ml-2;
         }
       }
     }

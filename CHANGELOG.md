@@ -1,3 +1,10 @@
+# [1.8.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.8.0-beta.1...v1.8.0-beta.2) (2022-02-17)
+
+
+### Bug Fixes
+
+* update users table sequentially ([11f3905](https://github.com/SocialGouv/secretariat/commit/11f39055cb2bdfaddc5ccbbd15a0bc491f590136))
+
 # [1.8.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.7.19...v1.8.0-beta.1) (2022-02-16)
 
 

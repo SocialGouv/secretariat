@@ -5,6 +5,7 @@
   "registry": "ghcr",
   "hasura": {
     "exposed": true,
+    "containerPort": 8080,
     "resources": {
       "limits": {
         "cpu": "500m",

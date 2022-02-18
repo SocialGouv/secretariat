@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/SocialGouv/secretariat/compare/v1.8.0...v1.8.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* Display services icons ([#78](https://github.com/SocialGouv/secretariat/issues/78)) ([d9bf247](https://github.com/SocialGouv/secretariat/commit/d9bf2472f6f0a0381df98eb07d4f6ae223bced04))
+
 # [1.8.0](https://github.com/SocialGouv/secretariat/compare/v1.7.22...v1.8.0) (2022-02-17)
 
 

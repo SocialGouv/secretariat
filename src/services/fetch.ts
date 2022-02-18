@@ -12,12 +12,12 @@ export const DEFAULT_DELAY = 800
 
 const SERVICES = [
   "github",
-  // "matomo",
+  "matomo",
   "mattermost",
-  // "nextcloud",
+  "nextcloud",
   "ovh",
   "sentry",
-  // "zammad",
+  "zammad",
 ] as const
 
 const servicesFetchers = {

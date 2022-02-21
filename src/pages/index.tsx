@@ -2,6 +2,7 @@ import { useSession } from "next-auth/react"
 
 import Menu from "@/components/menu"
 import Login from "@/components/login"
+import Search from "@/components/search"
 import AllUsers from "@/components/all-users"
 
 const Page = () => {
@@ -25,6 +26,7 @@ const Page = () => {
         </div>
       </aside>
       <main>
+        <Search />
         <AllUsers />
       </main>
     </div>

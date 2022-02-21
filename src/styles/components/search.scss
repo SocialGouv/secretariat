@@ -1,0 +1,7 @@
+.search {
+  @apply flex mt-10 bg-red-100;
+
+  input {
+    @apply flex-1;
+  }
+}

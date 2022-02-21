@@ -1,0 +1,17 @@
+input[type="text"] {
+  @apply
+    py-2
+    px-4
+    border
+    rounded-t
+    border-x-0
+    border-t-0
+    border-b-2
+    bg-gray-200
+    border-gray-600;
+
+  &.disabled,
+  &:disabled {
+    @apply border-gray-400;
+  }
+}

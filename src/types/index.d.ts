@@ -50,7 +50,7 @@ interface SentryUser {
 
 interface NextCloudUser {
   id: string
-  email: string
+  email?: string
   lastLogin: string
   displayname: string
 }

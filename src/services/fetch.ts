@@ -8,7 +8,7 @@ import {
   updateServices,
   updateUser,
 } from "../queries"
-import { detectWarnings } from "./detect-warnings"
+import { detectWarnings } from "../utils/detect-warnings"
 import { fetchMatomoUsers } from "./fetchers/matomo"
 import { fetchMattermostUsers } from "./fetchers/mattermost"
 import { fetchNextcloudUsers } from "./fetchers/nextcloud"

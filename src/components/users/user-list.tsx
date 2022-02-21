@@ -1,12 +1,12 @@
 import UserItem from "./user-item"
 
 const UserList = ({
-  users,
   onSelect,
+  users = [],
   getUserData,
   selectedUser,
 }: {
-  users: MixedUser[]
+  users?: MixedUser[]
   selectedUser?: MixedUser
   getUserData: (user: MixedUser) => User
   onSelect: (user: MixedUser | undefined) => void

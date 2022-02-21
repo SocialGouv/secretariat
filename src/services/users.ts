@@ -71,48 +71,81 @@ const getMatomoData = ({
   name: login,
 })
 
-const mapServiceData: Middleware = (useSWRNext) => {
-  return (key, fetcher, config) => {
-    const swr = useSWRNext(key, fetcher, config)
+// const mapServiceData: Middleware = (useSWRNext) => {
+//   return (key, fetcher, config) => {
+//     const swr = useSWRNext(key, fetcher, config)
 
-    if (swr.data) {
-      swr.data.users.forEach((user: User, i: number) => {
-        const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } =
-          user
-        const data = mattermost
-          ? getMattermostData(mattermost)
-          : sentry
-          ? getSentryData(sentry)
-          : zammad
-          ? getZammadData(zammad)
-          : matomo
-          ? getMatomoData(matomo)
-          : nextcloud
-          ? getNextCloudData(nextcloud)
-          : github
-          ? getGithubData(github)
-          : ovh
-          ? getOVHData(ovh)
-          : {}
-        swr.data.users[i] = { ...data, ...user }
-      })
-    }
+//     // const mapServices = async () => {
+//     //   const data = await fetcher(key)
+//     // }
 
-    return swr
-  }
+//     if (swr.data) {
+//       const { data } = swr
+//       const { users } = data as Record<"users", User[]>
+//       users.forEach((user: User, i: number) => {
+//         const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } =
+//           user
+//         const serviceData = mattermost
+//           ? getMattermostData(mattermost)
+//           : sentry
+//           ? getSentryData(sentry)
+//           : zammad
+//           ? getZammadData(zammad)
+//           : matomo
+//           ? getMatomoData(matomo)
+//           : nextcloud
+//           ? getNextCloudData(nextcloud)
+//           : github
+//           ? getGithubData(github)
+//           : ovh
+//           ? getOVHData(ovh)
+//           : {}
+//         users[i] = { ...serviceData, ...user }
+//       })
+//     }
+
+//     return swr
+//   }
+// }
+
+const mapUsers = (users: User[]): User[] => {
+  return users.map((user) => {
+    const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } = user
+    const serviceData = mattermost
+      ? getMattermostData(mattermost)
+      : sentry
+      ? getSentryData(sentry)
+      : zammad
+      ? getZammadData(zammad)
+      : matomo
+      ? getMatomoData(matomo)
+      : nextcloud
+      ? getNextCloudData(nextcloud)
+      : github
+      ? getGithubData(github)
+      : ovh
+      ? getOVHData(ovh)
+      : {}
+    return { ...serviceData, ...user }
+  })
 }
 
 const useUsers = () => {
   const [token] = useToken()
   // const { query } = useSearch()
 
-  const { data } = useSWR(token ? [getUsers, token] : null, fetcher, {
-    use: [mapServiceData],
+  const getMappedUsers = async (query: string, token: string) => {
+    const data = await fetcher(query, token)
+    return Promise.resolve(mapUsers(data.users))
+  }
+
+  const { data } = useSWR(token ? [getUsers, token] : null, getMappedUsers, {
+    use: [],
   })
 
-  if (!data) return
+  // if (!data) return
 
-  const users = Array.isArray(data) ? data : data?.users
+  // const users = Array.isArray(data) ? data : data?.users
 
   // if (query?.length) {
   //   const regex = new RegExp(query, "g")
@@ -123,7 +156,7 @@ const useUsers = () => {
   //   })
   // }
 
-  return users
+  return data
 }
 
 export const useFilteredUsers = () => {
@@ -131,10 +164,10 @@ export const useFilteredUsers = () => {
   const { query } = useSearch()
 
   const { data } = useSWR(users ? `users/search/${query}` : null, () => {
-    if (query?.length) {
+    if (users && query?.length) {
       const regex = new RegExp(query, "g")
       return users.filter((user: User) => {
-        if (user.email.match(regex) || user.name?.match(regex)) {
+        if (user.email?.match(regex) || user.name?.match(regex)) {
           return true
         }
       })
@@ -162,7 +195,7 @@ export const usePagedUsers = () => {
       console.log("EXEC PAGING")
 
       // return Promise.resolve(users.slice(0, (page || 1) * 20))
-      return users.slice(0, (page || 1) * 20)
+      return users && users.slice(0, (page || 1) * 20)
     }
   )
   console.log("usePagedUsers", data, users?.length)

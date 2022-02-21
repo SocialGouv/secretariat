@@ -4,7 +4,7 @@ const Users = ({
   users,
   children,
 }: {
-  users: MixedUser[]
+  users?: MixedUser[]
   children: JSX.Element
 }) => {
   return (

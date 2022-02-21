@@ -1,5 +1,16 @@
 .search {
-  @apply flex mt-10 bg-red-100;
+  @apply flex relative;
+
+  &::before {
+    top: 0.75rem;
+    right: 0.75rem;
+    line-height: 1;
+    font-size: 1rem;
+    content: "\F0D1";
+    font-weight: bold;
+    position: absolute;
+    font-family: remixicon, sans-serif !important;
+  }
 
   input {
     @apply flex-1;

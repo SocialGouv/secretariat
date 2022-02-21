@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react"
 
 import Header from "@/components/header"
 
+import "remixicon/fonts/remixicon.css"
 import "@/styles/tailwind.scss"
 import "@/styles/globals.scss"
 

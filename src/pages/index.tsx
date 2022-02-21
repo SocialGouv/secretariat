@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react"
 
-import Menu from "@/components/menu"
+import { StickyMenu } from "@/components/menu"
 import Login from "@/components/login"
-import Search from "@/components/search"
+import { StickySearch } from "@/components/search"
 import AllUsers from "@/components/all-users"
 
 const Page = () => {
@@ -21,12 +21,10 @@ const Page = () => {
   return (
     <div className="container">
       <aside>
-        <div className="sticky-container">
-          <Menu />
-        </div>
+        <StickyMenu />
       </aside>
       <main>
-        <Search />
+        <StickySearch />
         <AllUsers />
       </main>
     </div>

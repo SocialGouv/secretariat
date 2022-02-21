@@ -1,7 +1,5 @@
-interface User {
+interface BasicUser {
   id?: string
-  name?: string
-  email: string
   login?: string
   avatarUrl?: string
   teams?: GithubTeam[]
@@ -13,6 +11,18 @@ interface User {
   sentry?: SentryUser
   zammad?: ZammadUser
 }
+
+interface UserWithName extends BasicUser {
+  email?: string
+  name: string
+}
+
+interface UserWithEmail extends BasicUser {
+  email: string
+  name?: string
+}
+
+type User = UserWithEmail | UserWithName
 
 interface GithubTeam {
   id: string

@@ -2,11 +2,6 @@ import useSearch from "@/services/search"
 
 const Search = () => {
   const { query, mutate } = useSearch()
-  // const [search, setSearch] = useState("")
-
-  // const handleChange = (value: string) => {
-  // mutate("search", Promise.resolve(value))
-  // }
 
   return (
     <div className="search">
@@ -14,12 +9,17 @@ const Search = () => {
         type="text"
         name="search"
         value={query}
-        // onChange={(e) => console.log(e.target.value)}
         onChange={(e) => mutate(e.target.value)}
         placeholder="recherche par nom ou par email"
       />
     </div>
   )
 }
+
+export const StickySearch = () => (
+  <div className="sticky top-0 pt-10 z-10 bg-white">
+    <Search />
+  </div>
+)
 
 export default Search

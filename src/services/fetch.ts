@@ -1,6 +1,6 @@
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import fetcher from "@/utils/fetcher"
-import SERVICES from "@/utils/services-list"
+import SERVICES from "@/utils/SERVICES"
 import {
   addUser,
   getServiceUsers,

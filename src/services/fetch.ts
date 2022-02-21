@@ -103,7 +103,7 @@ const updateOrInsertUser = async (
   }
 }
 
-const updateUsersTable = async (
+const updateUsers = async (
   users: Record<string, unknown>[],
   serviceName: string,
   jwt: string
@@ -130,7 +130,7 @@ export const fetchAndUpdateServices = async (jwt: string) => {
 
   for (const serviceName in usersByService) {
     // update users table for each service sequentially to detect possible merges
-    await updateUsersTable(usersByService[serviceName], serviceName, jwt)
+    await updateUsers(usersByService[serviceName], serviceName, jwt)
     console.log(`updated users table with ${serviceName} data`)
   }
   console.log("updated users table with all services data")

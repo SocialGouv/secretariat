@@ -12,7 +12,7 @@ const useGithubUsers = () => {
     fetcher
   )
 
-  console.log("useGithubUsers:", data, error, token)
+  console.log("useGithubUsers:", data, error)
 
   return Array.isArray(data) ? data : data?.services[0].github
 }

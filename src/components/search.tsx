@@ -1,6 +1,4 @@
 import useSearch from "@/services/search"
-import { useState } from "react"
-import { mutate } from "swr"
 
 const Search = () => {
   const { query, mutate } = useSearch()

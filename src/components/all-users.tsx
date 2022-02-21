@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-import useUsers, { usePagedUsers } from "@/services/users"
+import useUsers, { useFilteredUsers, usePagedUsers } from "@/services/users"
 import OVHLogo from "./common/logo/ovh"
 import GithubLogo from "./common/logo/github"
 import SentryLogo from "./common/logo/sentry"
@@ -239,6 +239,10 @@ const UserProfile = ({ user }: { user: User }) => (
 const Users = () => {
   // const users = useUsers()
   const users = usePagedUsers()
+  // const users = useFilteredUsers()
+  console.log("USERS VIEW", users?.length)
+
+  // const users = useFilteredUsers()
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {

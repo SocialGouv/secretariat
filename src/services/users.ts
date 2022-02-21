@@ -1,4 +1,5 @@
 import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 import type { Middleware, SWRHook } from "swr"
 
 import fetcher from "@/utils/fetcher"
@@ -103,7 +104,7 @@ const mapServiceData: Middleware = (useSWRNext) => {
 
 const useUsers = () => {
   const [token] = useToken()
-  const { query } = useSearch()
+  // const { query } = useSearch()
 
   const { data } = useSWR(token ? [getUsers, token] : null, fetcher, {
     use: [mapServiceData],
@@ -125,11 +126,46 @@ const useUsers = () => {
   return users
 }
 
-export const usePagedUsers = () => {
+export const useFilteredUsers = () => {
   const users = useUsers()
-  const { data } = useSWR(users ? "users/page/1" : null, () =>
-    Promise.resolve(users.slice(0, 20))
+  const { query } = useSearch()
+
+  const { data } = useSWR(users ? `users/search/${query}` : null, () => {
+    if (query?.length) {
+      const regex = new RegExp(query, "g")
+      return users.filter((user: User) => {
+        if (user.email.match(regex) || user.name?.match(regex)) {
+          return true
+        }
+      })
+    }
+    return users
+  })
+
+  console.log("useFilteredUsers", data, query)
+
+  return { users: data, query }
+}
+
+export const usePaging = () => {
+  const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
+  console.log("usePaging", data)
+  return { page: data, mutate }
+}
+
+export const usePagedUsers = () => {
+  const { page } = usePaging()
+  const { users, query } = useFilteredUsers()
+  const { data } = useSWR(
+    users ? `users/search/${query}/page/${page}` : null,
+    () => {
+      console.log("EXEC PAGING")
+
+      // return Promise.resolve(users.slice(0, (page || 1) * 20))
+      return users.slice(0, (page || 1) * 20)
+    }
   )
+  console.log("usePagedUsers", data, users?.length)
   return data
 }
 

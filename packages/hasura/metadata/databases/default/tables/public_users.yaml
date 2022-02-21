@@ -12,6 +12,7 @@ insert_permissions:
     - nextcloud
     - ovh
     - sentry
+    - warning
     - zammad
   role: webhook
 select_permissions:
@@ -31,14 +32,15 @@ select_permissions:
 - permission:
     columns:
     - github
+    - id
     - matomo
     - mattermost
     - nextcloud
     - ovh
     - sentry
-    - zammad
     - updated_at
-    - id
+    - warning
+    - zammad
     filter: {}
   role: webhook
 update_permissions:
@@ -51,6 +53,7 @@ update_permissions:
     - nextcloud
     - ovh
     - sentry
+    - warning
     - zammad
     filter: {}
   role: webhook

@@ -92,3 +92,12 @@ type MixedUser =
   | OVHUser
   | MattermostUser
   | ZammadUser
+
+type ServiceName =
+  | "github"
+  | "mattermost"
+  | "sentry"
+  | "zammad"
+  | "nextcloud"
+  | "matomo"
+  | "ovh"

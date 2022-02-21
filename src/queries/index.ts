@@ -139,3 +139,63 @@ export const getServicesCount = gql`
     }
   }
 `
+
+export const updateServices = (serviceName: string) => {
+  return gql`
+    mutation updateServices($data: jsonb!) {
+      update_services(where: {}, _set: { ${serviceName}: $data }) {
+        returning {
+          id
+        }
+      }
+    }
+  `
+}
+
+export const getServiceUsers = (serviceName: string) => {
+  return gql`
+    query getServiceUsers($_contains: jsonb) {
+      users(where: { ${serviceName}: { _contains: $_contains } }) {
+        id
+        github
+        matomo
+        mattermost
+        nextcloud
+        ovh
+        sentry
+        zammad
+      }
+    }
+  `
+}
+
+export const matchUserInServices = gql`
+  query matchUsersInServices($_or: [users_bool_exp!]) {
+    users(where: { _or: $_or }) {
+      id
+      github
+      matomo
+      zammad
+      sentry
+      nextcloud
+      mattermost
+      ovh
+    }
+  }
+`
+
+export const updateUser = gql`
+  mutation updateUser($id: uuid!, $_set: users_set_input!) {
+    update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
+      id
+    }
+  }
+`
+
+export const addUser = gql`
+  mutation AddUser($user: users_insert_input!) {
+    insert_users_one(object: $user) {
+      id
+    }
+  }
+`

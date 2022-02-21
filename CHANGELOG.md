@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/SocialGouv/secretariat/compare/v1.8.1...v1.9.0) (2022-02-21)
+
+
+### Features
+
+* warning detection system ([#89](https://github.com/SocialGouv/secretariat/issues/89)) ([b131da6](https://github.com/SocialGouv/secretariat/commit/b131da6cb2c9c0141c4ea55ac8071355b0b03851))
+
 ## [1.8.1](https://github.com/SocialGouv/secretariat/compare/v1.8.0...v1.8.1) (2022-02-18)
 
 

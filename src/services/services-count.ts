@@ -12,7 +12,7 @@ const useServicesCount = () => {
     fetcher
   )
 
-  console.log("useServicesCount:", data, error, token)
+  data && console.log("useServicesCount:", data, error)
 
   return Array.isArray(data) ? data : data?.services_count[0]
 }

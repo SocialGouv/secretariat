@@ -72,4 +72,10 @@ const Menu = () => {
   )
 }
 
+export const StickyMenu = () => (
+  <div className="sticky-container">
+    <Menu />
+  </div>
+)
+
 export default Menu

@@ -1,12 +1,18 @@
-import Loader from "@/components/common/loader"
+import { useEffect, useState } from "react"
 
-const Users = ({
-  users,
-  children,
-}: {
-  users: MixedUser[]
-  children: JSX.Element
-}) => {
+import Loader from "@/components/common/loader"
+import UserList from "@/components/users/user-list"
+import UserProfile from "@/components/users/user-profile"
+
+const Users = ({ users }: { users?: User[] }) => {
+  const [selectedUser, setSelectedUser] = useState<User>()
+
+  useEffect(() => {
+    if (users && users.length) {
+      setSelectedUser(users[0])
+    }
+  }, [users])
+
   return (
     <>
       {!users ? (
@@ -16,7 +22,14 @@ const Users = ({
           <div className="callout">Aucun utilisateur pour le moment...</div>
         </div>
       ) : (
-        <div className="users">{children}</div>
+        <div className="users">
+          <UserList
+            users={users}
+            selectedUser={selectedUser}
+            onSelect={(user) => setSelectedUser(user)}
+          />
+          {selectedUser && <UserProfile user={selectedUser} />}
+        </div>
       )}
     </>
   )

@@ -1,16 +1,16 @@
 import UserItem from "./user-item"
 
 const UserList = ({
-  users,
   onSelect,
-  getUserData,
+  users = [],
   selectedUser,
 }: {
-  users: MixedUser[]
-  selectedUser?: MixedUser
-  getUserData: (user: MixedUser) => User
-  onSelect: (user: MixedUser | undefined) => void
+  users?: User[]
+  selectedUser?: User
+  onSelect: (user: User | undefined) => void
 }) => {
+  console.log("SELECTED USER", selectedUser)
+
   return (
     <ul className="user-list">
       {users.map((user, i) => (
@@ -21,11 +21,10 @@ const UserList = ({
           }`}
           onClick={() => onSelect(user)}
         >
-          <UserItem user={getUserData(user)} />
+          <UserItem user={user} />
         </li>
       ))}
     </ul>
   )
 }
-
 export default UserList

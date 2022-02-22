@@ -55,6 +55,9 @@ module.exports = {
         bold: ["Marianne", "arial", "sans-serif"],
         sans: ["Marianne", "arial", "sans-serif"],
       },
+      boxShadow: {
+        input: "inset 0 -2px 0 0 #6a6a6a",
+      },
     },
   },
   variants: {

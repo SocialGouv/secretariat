@@ -17,7 +17,7 @@ jobs:
   ##############################################################################
   register-app:
     name: Build & Register app
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get project name
         run: |
@@ -43,7 +43,7 @@ jobs:
   ##############################################################################
   register-hasura:
     name: Build & Register Hasura
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get project name
         run: |
@@ -62,7 +62,7 @@ jobs:
   ##############################################################################
   manifests:
     name: Generate k8s manifests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Use autodevops manifests generation
         uses: SocialGouv/actions/autodevops-manifests@v1
@@ -76,7 +76,7 @@ jobs:
   ##############################################################################
   deploy:
     name: Deploy review branch
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [register-app, register-hasura, manifests]
     steps:
       - name: Use autodevops deployment

@@ -24,7 +24,7 @@ jobs:
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
       - name: Use autodevops build and register
-        uses: SocialGouv/actions/autodevops-build-register@secretariat-no-cache
+        uses: SocialGouv/actions/autodevops-build-register@v1
         with:
           environment: preprod
           project: ${{ env.project }}

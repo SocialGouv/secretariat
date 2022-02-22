@@ -7,24 +7,7 @@ input[type="text"] {
     bg-gray-200
     shadow-input;
 
-  // color: #1e1e1e;
-  // background-color: #f0f0f0;
-  // outline-color: var(#2a7ffe);
-  // outline-offset: 2px;
-  // outline-width: 2px;
-  // box-shadow: inset 0 -2px 0 0 #6a6a6a;
-  // display: block;
-  // width: 100%;
-  // border: 0;
-  // border-radius: 0.25rem 0.25rem 0 0;
-  // font-size: 1rem;
-  // line-height: 1.5rem;
-  // padding: 0.5rem 1rem;
-  // -webkit-appearance: none;
-  // -moz-appearance: none;
-  // appearance: none;
-
-    &.disabled,
+  &.disabled,
   &:disabled {
     @apply border-gray-400;
   }

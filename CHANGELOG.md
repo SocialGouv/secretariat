@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/SocialGouv/secretariat/compare/v1.10.0...v1.10.1) (2022-02-22)
+
+
+### Bug Fixes
+
+* Reduce space between search and users ([e7ab90d](https://github.com/SocialGouv/secretariat/commit/e7ab90d4590dce9777c044896b85665f20e4f415))
+
 # [1.10.0](https://github.com/SocialGouv/secretariat/compare/v1.9.0...v1.10.0) (2022-02-22)
 
 

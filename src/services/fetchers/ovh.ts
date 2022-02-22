@@ -6,7 +6,6 @@ import {
 } from "@/utils/env"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY } from "../fetch"
 
 const fetcherOvh = async (
   ovh: any,
@@ -32,7 +31,7 @@ const fetchOvhUser = async (ovh: any, email: string) => {
 }
 
 export const fetchOvhUsers = async (
-  msDelay = DEFAULT_DELAY
+  msDelay: number
 ): Promise<Record<string, unknown>[]> => {
   const ovh = require("ovh")({
     endpoint: "ovh-eu",

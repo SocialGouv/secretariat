@@ -120,7 +120,7 @@ export const fetchAndUpdateServices = async (jwt: string) => {
   const usersByService: Record<string, Record<string, unknown>[]> = {}
   await Promise.all(
     SERVICES.map(async (serviceName) => {
-      const users = await servicesFetchers[serviceName]()
+      const users = await servicesFetchers[serviceName](DEFAULT_DELAY)
       usersByService[serviceName] = users
       fetcher(updateServices(serviceName), jwt, { data: users })
       console.log(`fetched ${serviceName} data`)

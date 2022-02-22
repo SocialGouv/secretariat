@@ -1,6 +1,6 @@
 const checkEnv = (name: string) => {
   if (!process.env[name]) {
-    throw ReferenceError(`Could not find ${name} environment variable`)
+    console.error(`Could not find ${name} environment variable`)
   }
   return process.env[name] as string
 }

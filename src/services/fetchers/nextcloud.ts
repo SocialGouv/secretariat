@@ -2,7 +2,6 @@ import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
 import fetcher from "@/utils/rest-fetcher"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY } from "../fetch"
 
 const PAGE_SIZE = 100 // not sure about the real max for Nextcloud's API
 
@@ -24,9 +23,9 @@ const fetchNextcloudUser = async (login: string) => {
 }
 
 export const fetchNextcloudUsers = async (
+  msDelay: number,
   logins: string[] = [],
-  page = 0,
-  msDelay = DEFAULT_DELAY
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users?limit=${PAGE_SIZE}&offset=${
@@ -66,6 +65,6 @@ export const fetchNextcloudUsers = async (
     )
   } else {
     await setTimeout(msDelay) // so that we don't spam the remote API
-    return fetchNextcloudUsers([...logins, ...loginsPage], page + 1, msDelay)
+    return fetchNextcloudUsers(msDelay, [...logins, ...loginsPage], page + 1)
   }
 }

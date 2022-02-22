@@ -2,7 +2,6 @@ import { MATOMO_API_TOKEN } from "@/utils/env"
 import fetcher from "@/utils/rest-fetcher"
 import { randomUUID } from "crypto"
 import { setTimeout } from "timers/promises"
-import { DEFAULT_DELAY } from "../fetch"
 
 const PAGE_SIZE = 100 // maximum for Matomo's API
 
@@ -14,9 +13,9 @@ const formatUsers = (users: Record<string, unknown>[]) => {
 }
 
 export const fetchMatomoUsers = async (
+  msDelay: number,
   users: Record<string, unknown>[] = [],
-  page: number = 0,
-  msDelay = DEFAULT_DELAY
+  page: number = 0
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
     "https://matomo.fabrique.social.gouv.fr/index.php",
@@ -35,6 +34,6 @@ export const fetchMatomoUsers = async (
     return formatUsers(users)
   } else {
     await setTimeout(msDelay) // so that we don't spam the remote API
-    return fetchMatomoUsers([...users, ...usersPage], page + 1, msDelay)
+    return fetchMatomoUsers(msDelay, [...users, ...usersPage], page + 1)
   }
 }

@@ -92,8 +92,8 @@ const mapUsers = (users: User[]): User[] => {
       : ({} as UserMapping)
 
     if (!serviceData.avatarUrl) {
-      if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
-      else if (github) serviceData.avatarUrl = github.avatarUrl
+      if (github) serviceData.avatarUrl = github.avatarUrl
+      else if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
     }
     return { ...serviceData, ...user }
   })

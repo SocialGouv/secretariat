@@ -1,5 +1,5 @@
 import fetcher from "@/utils/rest-fetcher"
-import { fetchMatomoUsers } from "@/services/fetchers/matomo"
+import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
 
 jest.mock("@/utils/rest-fetcher")
 
@@ -10,9 +10,6 @@ it("should return a list of fetched users", async () => {
     )
     .mockResolvedValue(Promise.resolve({ json: () => Promise.resolve([]) }))
 
-  const result = await fetchMatomoUsers()
-  expect(result).toHaveLength(3)
-  for (const user of result) {
-    expect(user).toHaveProperty("id")
-  }
+  const result = await fetchMattermostUsers()
+  expect(result).toMatchObject([{}, {}, {}])
 })

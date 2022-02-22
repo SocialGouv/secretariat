@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/SocialGouv/secretariat/compare/v1.9.0...v1.10.0) (2022-02-22)
+
+
+### Features
+
+* add user search ([#88](https://github.com/SocialGouv/secretariat/issues/88)) ([55c8160](https://github.com/SocialGouv/secretariat/commit/55c8160a935689689c5cbba19ee3cdc20db6b0da))
+
 # [1.9.0](https://github.com/SocialGouv/secretariat/compare/v1.8.1...v1.9.0) (2022-02-21)
 
 

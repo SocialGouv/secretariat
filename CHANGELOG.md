@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/SocialGouv/secretariat/compare/v1.11.0...v1.12.0) (2022-02-22)
+
+
+### Bug Fixes
+
+* Catch as many users avatars as possible ([#92](https://github.com/SocialGouv/secretariat/issues/92)) ([4a74567](https://github.com/SocialGouv/secretariat/commit/4a74567033b3196763e885ec7445d15ff3915f64))
+
+
+### Features
+
+* Add bottom users list button to load more items ([#94](https://github.com/SocialGouv/secretariat/issues/94)) ([bf22e64](https://github.com/SocialGouv/secretariat/commit/bf22e64125e2759677710dfb29396e1c906e5938))
+
 # [1.11.0](https://github.com/SocialGouv/secretariat/compare/v1.10.1...v1.11.0) (2022-02-22)
 
 

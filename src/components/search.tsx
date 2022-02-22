@@ -1,16 +1,28 @@
+import { useMemo, useState } from "react"
+import debounceFn from "debounce-fn"
+
 import useSearch from "@/services/search"
 
 const Search = () => {
-  const { query, mutate } = useSearch()
+  const { setQuery } = useSearch()
+  const [value, setValue] = useState("")
+
+  const updateSearch = useMemo(
+    () => debounceFn(setQuery, { wait: 500 }),
+    [setQuery]
+  )
 
   return (
     <div className="search">
       <input
         type="text"
         name="search"
-        value={query}
-        onChange={(e) => mutate(e.target.value)}
+        value={value}
         placeholder="recherche par nom ou par email"
+        onChange={(e) => {
+          setValue(e.target.value)
+          updateSearch(e.target.value)
+        }}
       />
     </div>
   )

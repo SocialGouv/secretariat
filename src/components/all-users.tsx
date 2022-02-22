@@ -238,12 +238,7 @@ const UserProfile = ({ user }: { user: User }) => (
 )
 
 const Users = () => {
-  // const users = useUsers()
   const users = usePagedUsers()
-  // const users = useFilteredUsers()
-  console.log("USERS VIEW", users?.length)
-
-  // const users = useFilteredUsers()
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {
@@ -256,64 +251,11 @@ const Users = () => {
     <>
       <UsersTemplate users={users}>
         <>
-          {/* <div className="sticky top-0 pt-10 z-10 bg-white">
-            <Search />
-          </div> */}
           <div className="list-profile">
             <UserListTemplate
               users={users}
               selectedUser={selectedUser}
               getUserData={(user) => user as User}
-              // getUserData={(user) => {
-              //   const {
-              //     matomo,
-              //     mattermost,
-              //     sentry,
-              //     zammad,
-              //     nextcloud,
-              //     github,
-              //     ovh,
-              //   } = user as User
-              //   if (mattermost) {
-              //     const { username, first_name, last_name, email } = mattermost
-              //     return {
-              //       email,
-              //       login: username,
-              //       name: first_name && `${first_name} ${last_name}`,
-              //       ...user,
-              //     } as User
-              //   } else if (sentry) {
-              //     const {
-              //       name,
-              //       email,
-              //       user: { avatarUrl },
-              //     } = sentry
-              //     return { email, name, avatarUrl, ...user } as User
-              //   } else if (zammad) {
-              //     const { firstname, lastname, email } = zammad
-              //     return {
-              //       email,
-              //       name: firstname && `${firstname} ${lastname}`,
-              //     } as User
-              //   } else if (matomo) {
-              //     const { login, email } = matomo
-              //     return { login, email, ...user } as User
-              //   } else if (nextcloud) {
-              //     const { displayname, email } = nextcloud
-              //     return { name: displayname, email, ...user } as User
-              //   } else if (github) {
-              //     const { name, login, email, avatarUrl } = github
-              //     return { name, login, email, avatarUrl, ...user } as User
-              //   } else if (ovh) {
-              //     const { displayName, primaryEmailAddress } = ovh
-              //     return {
-              //       name: displayName,
-              //       email: primaryEmailAddress,
-              //       ...user,
-              //     } as User
-              //   }
-              //   return user as User
-              // }}
               onSelect={(user) => setSelectedUser(user as User)}
             />
             {selectedUser && <UserProfile user={selectedUser} />}

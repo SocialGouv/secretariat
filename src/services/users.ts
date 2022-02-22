@@ -175,14 +175,11 @@ export const useFilteredUsers = () => {
     return users
   })
 
-  console.log("useFilteredUsers", data, query)
-
   return { users: data, query }
 }
 
 export const usePaging = () => {
   const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
-  console.log("usePaging", data)
   return { page: data, mutate }
 }
 
@@ -192,13 +189,9 @@ export const usePagedUsers = () => {
   const { data } = useSWR(
     users ? `users/search/${query}/page/${page}` : null,
     () => {
-      console.log("EXEC PAGING")
-
-      // return Promise.resolve(users.slice(0, (page || 1) * 20))
       return users && users.slice(0, (page || 1) * 20)
     }
   )
-  console.log("usePagedUsers", data, users?.length)
   return data
 }
 

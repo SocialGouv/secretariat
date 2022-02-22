@@ -26,6 +26,13 @@ const Menu = () => {
           </a>
         </Link>
       </li>
+      <li className={slug === "mattermost" ? "selected" : ""}>
+        <Link href="/service/mattermost">
+          <a>
+            Mattermost <span>({counts?.mattermost})</span>
+          </a>
+        </Link>
+      </li>
       <li className={slug === "matomo" ? "selected" : ""}>
         <Link href="/service/matomo">
           <a>
@@ -51,13 +58,6 @@ const Menu = () => {
         <Link href="/service/zammad">
           <a>
             Pastek <span>({counts?.zammad})</span>
-          </a>
-        </Link>
-      </li>
-      <li className={slug === "mattermost" ? "selected" : ""}>
-        <Link href="/service/mattermost">
-          <a>
-            Mattermost <span>({counts?.mattermost})</span>
           </a>
         </Link>
       </li>

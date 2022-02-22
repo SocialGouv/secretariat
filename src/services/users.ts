@@ -134,17 +134,24 @@ export const useFilteredUsers = () => {
 }
 
 export const usePaging = () => {
+  const pageSize = 20
   const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
-  return { page: data, setPage: mutate }
+  return { page: data, setPage: mutate, pageSize }
 }
 
 export const usePagedUsers = () => {
-  const { page } = usePaging()
+  const { page, pageSize } = usePaging()
   const { users, query } = useFilteredUsers()
+  console.log(
+    "PageSize",
+    pageSize,
+    users?.slice(0, (page || 1) * pageSize).length
+  )
+
   const { data } = useSWR(
     users ? `users/search/${query}/page/${page}` : null,
     () => {
-      return users && users.slice(0, (page || 1) * 20)
+      return users && users.slice(0, (page || 1) * pageSize)
     }
   )
   return data

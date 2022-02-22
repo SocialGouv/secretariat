@@ -5,12 +5,18 @@ import useToken from "@/services/token"
 import useSearch from "@/services/search"
 import { getUsers } from "@/queries/index"
 
+interface UserMapping {
+  email: string
+  name: string
+  avatarUrl?: string
+}
+
 const getMattermostData = ({
   email,
   username,
   last_name,
   first_name,
-}: MattermostUser): { email: string; name: string } => ({
+}: MattermostUser): UserMapping => ({
   email,
   name: first_name ? `${first_name} ${last_name}` : username,
 })
@@ -19,7 +25,7 @@ const getSentryData = ({
   name,
   email,
   user: { avatarUrl },
-}: SentryUser): { email: string; name: string; avatarUrl: string } => ({
+}: SentryUser): UserMapping => ({
   email,
   name,
   avatarUrl,
@@ -29,7 +35,7 @@ const getZammadData = ({
   email,
   lastname,
   firstname,
-}: ZammadUser): { email: string; name: string } => ({
+}: ZammadUser): UserMapping => ({
   email,
   name: `${firstname} ${lastname}`,
 })
@@ -37,7 +43,7 @@ const getZammadData = ({
 const getNextCloudData = ({
   email,
   displayname,
-}: NextCloudUser): { email: string; name: string } => ({
+}: NextCloudUser): UserMapping => ({
   email: email ?? "",
   name: displayname,
 })
@@ -47,7 +53,7 @@ const getGithubData = ({
   login,
   email,
   avatarUrl,
-}: GithubUser): { email: string; name: string; avatarUrl: string } => ({
+}: GithubUser): UserMapping => ({
   email,
   avatarUrl,
   name: name ?? login,
@@ -56,15 +62,12 @@ const getGithubData = ({
 const getOVHData = ({
   displayName,
   primaryEmailAddress,
-}: OVHUser): { email: string; name: string } => ({
+}: OVHUser): UserMapping => ({
   name: displayName,
   email: primaryEmailAddress,
 })
 
-const getMatomoData = ({
-  login,
-  email,
-}: MatomoUser): { email: string; name: string } => ({
+const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
   email,
   name: login,
 })
@@ -86,7 +89,12 @@ const mapUsers = (users: User[]): User[] => {
       ? getGithubData(github)
       : ovh
       ? getOVHData(ovh)
-      : {}
+      : ({} as UserMapping)
+
+    if (!serviceData.avatarUrl) {
+      if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
+      else if (github) serviceData.avatarUrl = github.avatarUrl
+    }
     return { ...serviceData, ...user }
   })
 }

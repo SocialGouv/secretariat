@@ -1,8 +1,5 @@
 .users {
-
-  .list-profile {
-    @apply grid grid-cols-2;
-  }
+  @apply grid grid-cols-2;
 
   .user-list {
     @apply mt-10;

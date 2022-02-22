@@ -1,20 +1,18 @@
 import useSWR from "swr"
 
-import fetcher from "@/utils/fetcher"
-import useToken from "@/services/token"
-import { getGitHubUsers } from "@/queries/index"
+import { useFilteredUsers } from "@/services/users"
 
 const useGithubUsers = () => {
-  const [token] = useToken()
+  const { query, users } = useFilteredUsers()
 
-  const { data, error } = useSWR(
-    token ? [getGitHubUsers, token] : null,
-    fetcher
+  const { data } = useSWR(users ? `github-users/${query}` : null, () =>
+    users?.reduce(
+      (users, user) => (user.github && users.push(user), users),
+      [] as User[]
+    )
   )
 
-  console.log("useGithubUsers:", data, error)
-
-  return Array.isArray(data) ? data : data?.services[0].github
+  return data
 }
 
 export default useGithubUsers

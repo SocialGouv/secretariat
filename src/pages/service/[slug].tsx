@@ -1,60 +1,25 @@
 import { useRouter } from "next/router"
 import { useSession } from "next-auth/react"
 
-import Menu from "@/components/menu"
 import Login from "@/components/login"
-import OVHUsers from "@/components/ovh-users"
-import GithubUsers from "@/components/github-users"
-import MatomoUsers from "@/components/matomo-users"
-import SentryUsers from "@/components/sentry-users"
-import ZammadUsers from "@/components/zammad-users"
-import NextCloudUsers from "@/components/nextcloud-users"
-import MattermostUsers from "@/components/mattermost-users"
+import Users from "@/components/users/index"
+import { StickyMenu } from "@/components/menu"
+import useServiceUsers from "@/services/service-users"
 
-interface Services {
-  [key: string]: Service
-}
-
-interface Service {
-  name: string
-  Component: () => JSX.Element
-}
-
-const services = {
-  github: {
-    name: "Github",
-    Component: GithubUsers,
-  },
-  matomo: {
-    name: "Matomo",
-    Component: MatomoUsers,
-  },
-  sentry: {
-    name: "Sentry",
-    Component: SentryUsers,
-  },
-  ovh: {
-    name: "OVH",
-    Component: OVHUsers,
-  },
-  zammad: {
-    name: "Pastek",
-    Component: ZammadUsers,
-  },
-  mattermost: {
-    name: "Mattermost",
-    Component: MattermostUsers,
-  },
-  nextcloud: {
-    name: "NextCloud",
-    Component: NextCloudUsers,
-  },
-} as Services
+type Service =
+  | "matomo"
+  | "sentry"
+  | "github"
+  | "nextcloud"
+  | "zammad"
+  | "ovh"
+  | "mattermost"
 
 const Page = () => {
   const { query } = useRouter()
   const { data: session } = useSession()
   const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
+  const users = useServiceUsers(slug as Service)
 
   if (!session) {
     return (
@@ -65,17 +30,13 @@ const Page = () => {
       </div>
     )
   } else if (slug) {
-    const { name, Component } = services[slug]
-
     return (
       <div className="container">
         <aside>
-          <div className="sticky-container">
-            <Menu />
-          </div>
+          <StickyMenu />
         </aside>
         <main>
-          <Component />
+          <Users users={users}></Users>
         </main>
       </div>
     )

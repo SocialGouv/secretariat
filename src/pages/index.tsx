@@ -1,12 +1,14 @@
 import { useSession } from "next-auth/react"
 
-import { StickyMenu } from "@/components/menu"
 import Login from "@/components/login"
+import Users from "@/components/users/index"
+import { StickyMenu } from "@/components/menu"
+import { usePagedUsers } from "@/services/users"
 import { StickySearch } from "@/components/search"
-import AllUsers from "@/components/all-users"
 
 const Page = () => {
   const { data: session } = useSession()
+  const users = usePagedUsers()
 
   if (!session) {
     return (
@@ -25,7 +27,7 @@ const Page = () => {
       </aside>
       <main>
         <StickySearch />
-        <AllUsers />
+        <Users users={users}></Users>
       </main>
     </div>
   )

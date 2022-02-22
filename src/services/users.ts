@@ -135,7 +135,7 @@ export const useFilteredUsers = () => {
 
 export const usePaging = () => {
   const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
-  return { page: data, mutate }
+  return { page: data, setPage: mutate }
 }
 
 export const usePagedUsers = () => {

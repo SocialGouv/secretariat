@@ -12,7 +12,7 @@ const OVHLogo = ({ size = "m" }: { size?: string }) => (
   <Image
     title="OVH"
     alt="ovh logo"
-    src={"/images/ovh.png"}
+    src={"/images/ovh.svg"}
     width={sizes[size].width}
     height={sizes[size].height}
   />

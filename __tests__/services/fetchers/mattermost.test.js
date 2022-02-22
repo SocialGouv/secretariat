@@ -13,3 +13,10 @@ it("should return a list of fetched users", async () => {
   const result = await fetchMattermostUsers()
   expect(result).toMatchObject([{}, {}, {}])
 })
+
+it("should return an empty list if no response", async () => {
+  fetcher.mockResolvedValue(Promise.resolve(null))
+
+  const result = await fetchMattermostUsers()
+  expect(result).toMatchObject([])
+})

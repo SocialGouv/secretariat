@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/SocialGouv/secretariat/compare/v1.10.1...v1.11.0) (2022-02-22)
+
+
+### Features
+
+* Add footer ([93f95be](https://github.com/SocialGouv/secretariat/commit/93f95be698dbd1c19b5b9d28d26bde4a47e36e6d))
+
 ## [1.10.1](https://github.com/SocialGouv/secretariat/compare/v1.10.0...v1.10.1) (2022-02-22)
 
 

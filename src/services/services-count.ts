@@ -12,8 +12,6 @@ const useServicesCount = () => {
     fetcher
   )
 
-  data && console.log("useServicesCount:", data, error)
-
   return Array.isArray(data) ? data : data?.services_count[0]
 }
 

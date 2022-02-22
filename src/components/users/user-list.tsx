@@ -8,23 +8,20 @@ const UserList = ({
   users?: User[]
   selectedUser?: User
   onSelect: (user: User | undefined) => void
-}) => {
-  console.log("SELECTED USER", selectedUser)
+}) => (
+  <ul className="user-list">
+    {users.map((user, i) => (
+      <li
+        key={i}
+        className={`tile${
+          selectedUser && selectedUser.id === user.id ? " selected" : ""
+        }`}
+        onClick={() => onSelect(user)}
+      >
+        <UserItem user={user} />
+      </li>
+    ))}
+  </ul>
+)
 
-  return (
-    <ul className="user-list">
-      {users.map((user, i) => (
-        <li
-          key={i}
-          className={`tile${
-            selectedUser && selectedUser.id === user.id ? " selected" : ""
-          }`}
-          onClick={() => onSelect(user)}
-        >
-          <UserItem user={user} />
-        </li>
-      ))}
-    </ul>
-  )
-}
 export default UserList

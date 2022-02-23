@@ -12,6 +12,8 @@ RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:16.13-alpine AS builder
+ARG GITHUB_SHA
+ENV GITHUB_SHA $GITHUB_SHA
 ARG NEXT_PUBLIC_HASURA_URL
 ENV NEXT_PUBLIC_HASURA_URL $NEXT_PUBLIC_HASURA_URL
 WORKDIR /app

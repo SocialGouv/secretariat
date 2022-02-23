@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/SocialGouv/secretariat/compare/v1.13.0...v1.14.0) (2022-02-23)
+
+
+### Features
+
+* add custom 404 page ([#96](https://github.com/SocialGouv/secretariat/issues/96)) ([09b75cf](https://github.com/SocialGouv/secretariat/commit/09b75cf65dd5b87475e76801e4a1637be187cba9))
+
 # [1.13.0](https://github.com/SocialGouv/secretariat/compare/v1.12.0...v1.13.0) (2022-02-23)
 
 

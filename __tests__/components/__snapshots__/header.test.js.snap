@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div
+      class="container"
+    >
+      <a
+        href="/"
+      >
+        <div
+          class="logo"
+        >
+          République
+          <br />
+          Française
+        </div>
+        <div
+          class="title"
+        >
+          <h1>
+            Secretariat
+          </h1>
+          <p>
+            Gestion des comptes et services @SocialGouv
+          </p>
+        </div>
+      </a>
+      <nav />
+    </div>
+  </header>
+</div>
+`;

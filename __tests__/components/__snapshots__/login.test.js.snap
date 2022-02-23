@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage 1`] = `
+<div>
+  <div
+    class="login"
+  >
+    Pour vous authentifier, cliquez sur le bouton bleu juste en dessous, là:
+     
+    <br />
+     
+    <br />
+    <button
+      class="primary"
+    >
+      Connexion
+    </button>
+  </div>
+</div>
+`;

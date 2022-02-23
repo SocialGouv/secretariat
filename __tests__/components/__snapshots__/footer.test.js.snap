@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage 1`] = `
+<div>
+  <footer>
+    <div
+      class="container"
+    >
+      <div
+        class="flex-1"
+      >
+        <div
+          class="logo big"
+        >
+          République
+          <br />
+          Française
+        </div>
+      </div>
+      <div
+        class="info"
+      >
+        <p>
+          <strong>
+            Secretariat
+          </strong>
+           est une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
+        </p>
+        <p>
+          Pour en savoir plus sur l'utilisation de
+           
+          <strong>
+            Secretariat
+          </strong>
+          , visitez le
+           
+          <a
+            href="https://github.com/SocialGouv/www/wiki/Inscrire-son-%C3%A9quipe-au-standup"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            wiki
+          </a>
+          .
+        </p>
+        <p
+          class="flex"
+        >
+          <i
+            class="ri-github-fill ri-2x relative top-px mr-1"
+          />
+          version 
+          0.0.42
+           (
+          <a
+            href="https://github.com/SocialGouv/secretariat/tree/2f7c23024eeb820ed67aef00bc40e7955111cbf4"
+            rel="noreferrer"
+            target="_blank"
+          >
+            2f7c2302
+          </a>
+          )
+        </p>
+      </div>
+    </div>
+    <div
+      class="links"
+    >
+      <a
+        href="https://www.fabrique.social.gouv.fr/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        La Fabrique Numérique
+      </a>
+      <a
+        href="/legal"
+      >
+        Mentions légales
+      </a>
+      <a
+        href="#"
+      >
+        Paramètres d'affichage
+      </a>
+    </div>
+  </footer>
+</div>
+`;

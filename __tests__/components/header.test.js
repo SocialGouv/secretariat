@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react"
 import { render } from "@testing-library/react"
 
-import Home from "../src/pages/index"
+import Header from "../../src/components/header"
 
 // https://github.com/nextauthjs/next-auth/issues/775
 jest.mock("next-auth/react", () => ({
@@ -10,6 +10,6 @@ jest.mock("next-auth/react", () => ({
 
 it("renders homepage", () => {
   useSession.mockReturnValueOnce([false, false])
-  const { container } = render(<Home />)
+  const { container } = render(<Header />)
   expect(container).toMatchSnapshot()
 })

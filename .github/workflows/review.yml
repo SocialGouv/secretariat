@@ -64,6 +64,10 @@ jobs:
     name: Generate k8s manifests
     runs-on: self-hosted
     steps:
+      - name: get node version
+        run: |
+          which node
+          which yarn
       - name: Use autodevops manifests generation
         uses: SocialGouv/actions/autodevops-manifests@v1
         with:

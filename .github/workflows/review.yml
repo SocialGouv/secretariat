@@ -19,13 +19,6 @@ jobs:
     name: Build & Register app
     runs-on: self-hosted
     steps:
-      - name: Get env info
-        run: |
-          whoami
-          whereis node
-          which node
-          whereis yarn
-          which yarn
       - name: Get project name
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
@@ -71,11 +64,6 @@ jobs:
     name: Generate k8s manifests
     runs-on: self-hosted
     steps:
-      - name: get node version
-        run: |
-          whoami
-          which node
-          which yarn
       - name: Use autodevops manifests generation
         uses: SocialGouv/actions/autodevops-manifests@v1
         with:
@@ -84,7 +72,7 @@ jobs:
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
 
   ##############################################################################
-  ## DEPLOY BACKEND
+  ## DEPLOY
   ##############################################################################
   deploy:
     name: Deploy review branch

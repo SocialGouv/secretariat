@@ -1,4 +1,4 @@
-import { usePaging } from "@/services/users"
+import { useFilteredUsers, usePaging } from "@/services/users"
 import UserItem from "./user-item"
 
 const UserList = ({
@@ -10,7 +10,8 @@ const UserList = ({
   selectedUser?: User
   onSelect: (user: User | undefined) => void
 }) => {
-  const { page = 1, setPage } = usePaging()
+  const { users: totalUsers } = useFilteredUsers()
+  const { page = 1, setPage, pageSize } = usePaging()
 
   return (
     <div className="user-list">
@@ -29,7 +30,8 @@ const UserList = ({
       </ul>
       <button
         onClick={() => setPage(page + 1)}
-        className="primary w-full flex justify-center"
+        className="primary"
+        disabled={totalUsers?.length || 0 > pageSize ? false : true}
       >
         Afficher plus d&apos;utilisateurs
       </button>

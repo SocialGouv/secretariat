@@ -8,232 +8,179 @@ import ZammadLogo from "@/components/common/logo/zammad"
 import NextCloudLogo from "@/components/common/logo/nextcloud"
 import MattermostLogo from "@/components/common/logo/mattermost"
 
-const GithubUserInfo = ({ user }: { user: GithubUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <GithubLogo />
-      </div>
-      <div className="title">Github</div>
-    </h3>
+const ServiceHeader = ({
+  title,
+  children,
+}: {
+  title: string
+  children: JSX.Element
+}) => (
+  <h3>
+    <div className="icon">{children}</div>
+    <div className="title">{title}</div>
+  </h3>
+)
+
+const InfoTable = ({ user }: { user: MixedUser }) => (
+  <table>
+    <tbody>
+      {Object.entries(user).map(([key, value], i) => (
+        <tr key={i}>
+          <td>{key}</td>
+          <td>{value}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+)
+
+const GithubUserInfo = ({
+  user: { avatarUrl, teams, ...info },
+}: {
+  user: GithubUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="Github">
+      <GithubLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Login</strong>: {user.login}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <br />
-        {user.teams?.map((team, i) => (
-          <div key={i} className="tag">
-            {team.name}
-          </div>
-        ))}
-      </li>
-    </ul>
-  </>
+    <InfoTable user={info} />
+    <div className="mt-4">
+      {teams?.map((team, i) => (
+        <div key={i} className="tag">
+          {team.name}
+        </div>
+      ))}
+    </div>
+  </div>
 )
 
 const MatomoUserInfo = ({ user }: { user: MatomoUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <MatomoLogo />
-      </div>
-      <div className="title">Matomo</div>
-    </h3>
+  <div className="service">
+    <ServiceHeader title="Matomo">
+      <MatomoLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Login</strong>: {user.login}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <strong>Date de création</strong>: {user.date_registered}
-      </li>
-      <li>
-        <strong>2FA acitvé</strong>: {user.uses_2fa ? "oui" : "non"}
-      </li>
-    </ul>
-  </>
+    <InfoTable user={user} />
+  </div>
 )
 
-const SentryUserInfo = ({ user }: { user: SentryUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <SentryLogo />
-      </div>
-      <div className="title">Sentry</div>
-    </h3>
+const SentryUserInfo = ({
+  user: { user, projects, flags, ...info },
+}: {
+  user: SentryUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="Sentry">
+      <SentryLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Nom</strong>: {user.name}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <strong>Date de création</strong>: {user.dateCreated}
-      </li>
-      <li>
-        <strong>2FA activé</strong>: {user.user.has2fa ? "oui" : "non"}
-      </li>
-    </ul>
-  </>
+    <InfoTable user={{ ...info, uses_2fa: user.has2fa }} />
+  </div>
 )
 
-const MattermostUserInfo = ({ user }: { user: MattermostUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <MattermostLogo />
-      </div>
-      <div className="title">Mattermost</div>
-    </h3>
+const MattermostUserInfo = ({
+  user: { first_name, last_name, email, id, create_at, username },
+}: {
+  user: MattermostUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="Mattermost">
+      <MattermostLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Nom</strong>:{" "}
-        {user.first_name
-          ? `${user.first_name} ${user.last_name}`
-          : user.username}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <strong>Date de création</strong>: {user.create_at}
-      </li>
-    </ul>
-  </>
+    <InfoTable
+      user={{ username, first_name, last_name, email, id, create_at }}
+    />
+  </div>
 )
 
-const OVHUserInfo = ({ user }: { user: OVHUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <OVHLogo />
-      </div>
-      <div className="title">OVH</div>
-    </h3>
+const OVHUserInfo = ({
+  user: {
+    id,
+    login,
+    lastName,
+    firstName,
+    creationDate,
+    displayName,
+    primaryEmailAddress,
+  },
+}: {
+  user: OVHUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="OVH">
+      <OVHLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Nom</strong>:{" "}
-        {user.firstName
-          ? `${user.firstName} ${user.lastName}`
-          : user.displayName}{" "}
-      </li>
-      <li>
-        <strong>Login</strong>: {user.login}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.primaryEmailAddress}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <strong>Date de création</strong>: {user.creationDate}
-      </li>
-    </ul>
-  </>
+    <InfoTable
+      user={{
+        id,
+        login,
+        lastName,
+        firstName,
+        creationDate,
+        displayName,
+        primaryEmailAddress,
+      }}
+    />
+  </div>
 )
 
-const NextCloudUserInfo = ({ user }: { user: NextCloudUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <NextCloudLogo />
-      </div>
-      <div className="title">NextCloud</div>
-    </h3>
+const NextCloudUserInfo = ({
+  user: { id, email, lastLogin, displayname },
+}: {
+  user: NextCloudUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="NextCloud">
+      <NextCloudLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Nom</strong>: {user.displayname}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>ID</strong>: {user.id}
-      </li>
-      <li>
-        <strong>Dernière connexion</strong>: {user.lastLogin}
-      </li>
-    </ul>
-  </>
+    <InfoTable user={{ id, email, lastLogin, displayname }} />
+  </div>
 )
 
-const ZammadUserInfo = ({ user }: { user: ZammadUser }) => (
-  <>
-    <h3>
-      <div className="icon">
-        <ZammadLogo />
-      </div>
-      <div className="title">Pastek</div>
-    </h3>
+const ZammadUserInfo = ({
+  user: { id, email, login, created_at, lastname, firstname },
+}: {
+  user: ZammadUser
+}) => (
+  <div className="service">
+    <ServiceHeader title="Pastek">
+      <ZammadLogo />
+    </ServiceHeader>
     <hr className="my-2" />
-    <ul className="text-sm">
-      <li>
-        <strong>Nom</strong>: {user.firstname} {user.lastname}
-      </li>
-      <li>
-        <strong>Login</strong>: {user.login}
-      </li>
-      <li>
-        <strong>Email</strong>: {user.email}
-      </li>
-      <li>
-        <strong>Date de création</strong>: {user.created_at}
-      </li>
-    </ul>
-  </>
+    <InfoTable user={{ id, email, login, created_at, lastname, firstname }} />
+  </div>
 )
 
 const UserProfile = ({ user }: { user: User }) => (
   <div className="selected-user">
     <div className="sticky-container">
       <div className="user-profile">
-        <div className="flex items-center mb-4">
+        <div className="header">
           <Image
             width={48}
             height={48}
             alt="user avatar"
             src={user.avatarUrl || "/images/avatar.jpeg"}
           />
-          <h2 className="ml-4">{user.name}</h2>
+          <h2>{user.name}</h2>
         </div>
-        {user.github ? <GithubUserInfo user={user.github} /> : <></>}
-        {user.matomo ? <MatomoUserInfo user={user.matomo} /> : <></>}
-        {user.mattermost ? (
-          <MattermostUserInfo user={user.mattermost} />
-        ) : (
-          <></>
-        )}
-        {user.sentry ? <SentryUserInfo user={user.sentry} /> : <></>}
-        {user.ovh ? <OVHUserInfo user={user.ovh} /> : <></>}
-        {user.nextcloud ? <NextCloudUserInfo user={user.nextcloud} /> : <></>}
-        {user.zammad ? <ZammadUserInfo user={user.zammad} /> : <></>}
+        <div className="services">
+          {user.github ? <GithubUserInfo user={user.github} /> : <></>}
+          {user.mattermost ? (
+            <MattermostUserInfo user={user.mattermost} />
+          ) : (
+            <></>
+          )}
+          {user.matomo ? <MatomoUserInfo user={user.matomo} /> : <></>}
+          {user.sentry ? <SentryUserInfo user={user.sentry} /> : <></>}
+          {user.ovh ? <OVHUserInfo user={user.ovh} /> : <></>}
+          {user.nextcloud ? <NextCloudUserInfo user={user.nextcloud} /> : <></>}
+          {user.zammad ? <ZammadUserInfo user={user.zammad} /> : <></>}
+        </div>
       </div>
     </div>
   </div>

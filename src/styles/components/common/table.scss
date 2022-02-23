@@ -1,0 +1,23 @@
+table {
+  @apply table-auto border-collapse w-full;
+
+  thead {
+    tr {
+      @apply bg-beige;
+
+      th {
+        @apply p-2 border-b-2 border-gray-600 text-gray-700;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      @apply even:bg-beige;
+    }
+  }
+
+  td {
+    @apply border-r last:border-0 p-2;
+  }
+}

@@ -29,41 +29,27 @@ const UserItem = ({ user }: { user: User }) => {
         </div>
       </div>
       <div className="services">
-        {user.github && (
-          <div>
-            <GithubLogo size="s" />
-          </div>
-        )}
-        {user.matomo && (
-          <div>
-            <MatomoLogo size="s" />
-          </div>
-        )}
-        {user.mattermost && (
-          <div>
-            <MattermostLogo size="s" />
-          </div>
-        )}
-        {user.nextcloud && (
-          <div>
-            <NextCloudLogo size="s" />
-          </div>
-        )}
-        {user.zammad && (
-          <div>
-            <ZammadLogo size="s" />
-          </div>
-        )}
-        {user.ovh && (
-          <div>
-            <OVHLogo size="s" />
-          </div>
-        )}
-        {user.sentry && (
-          <div>
-            <SentryLogo size="s" />
-          </div>
-        )}
+        <div className={user.zammad ? "" : "opacity-25"}>
+          <ZammadLogo size="s" />
+        </div>
+        <div className={user.nextcloud ? "" : "opacity-25"}>
+          <NextCloudLogo size="s" />
+        </div>
+        <div className={user.ovh ? "" : "opacity-25"}>
+          <OVHLogo size="s" />
+        </div>
+        <div className={user.sentry ? "" : "opacity-25"}>
+          <SentryLogo size="s" />
+        </div>
+        <div className={user.matomo ? "" : "opacity-25"}>
+          <MatomoLogo size="s" />
+        </div>
+        <div className={user.mattermost ? "" : "opacity-25"}>
+          <MattermostLogo size="s" />
+        </div>
+        <div className={user.github ? "" : "opacity-25"}>
+          <GithubLogo size="s" />
+        </div>
       </div>
     </div>
   )

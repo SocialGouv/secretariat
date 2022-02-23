@@ -52,6 +52,8 @@ interface SentryUser {
   name: string
   email: string
   dateCreated: Date
+  projects: string[]
+  flags: Record<string, boolean>
   user: {
     has2fa: boolean
     avatarUrl: string

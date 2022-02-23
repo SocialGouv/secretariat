@@ -8,7 +8,7 @@ a.btn {
     leading-4
     inline-block
     cursor-pointer
-    disabled:cursor-default;
+    disabled:cursor-not-allowed;
 
   &.primary {
     @apply
@@ -18,7 +18,10 @@ a.btn {
       bg-blue-500
       active:shadow-sm
       hover:bg-blue-400
-      active:bg-blue-300;
+      active:bg-blue-300
+      disabled:shadow-none
+      disabled:bg-gray-200
+      disabled:text-gray-600;
   }
 
   &.link {

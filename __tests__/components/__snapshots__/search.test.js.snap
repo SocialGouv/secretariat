@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage 1`] = `
+<div>
+  <div
+    class="search"
+  >
+    <input
+      name="search"
+      placeholder="recherche par nom ou par email"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

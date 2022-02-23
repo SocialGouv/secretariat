@@ -33,7 +33,7 @@ const Footer = () => (
             href={`${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}/tree/${process.env.NEXT_PUBLIC_APP_VERSION_COMMIT}`}
             rel="noreferrer"
           >
-            {process.env.NEXT_PUBLIC_APP_VERSION_COMMIT}
+            {process.env.NEXT_PUBLIC_APP_VERSION_COMMIT?.substring(0, 8)}
           </a>
           )
         </p>

@@ -142,11 +142,6 @@ export const usePaging = () => {
 export const usePagedUsers = () => {
   const { page, pageSize } = usePaging()
   const { users, query } = useFilteredUsers()
-  console.log(
-    "PageSize",
-    pageSize,
-    users?.slice(0, (page || 1) * pageSize).length
-  )
 
   const { data } = useSWR(
     users ? `users/search/${query}/page/${page}` : null,

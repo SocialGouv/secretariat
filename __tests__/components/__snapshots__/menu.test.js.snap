@@ -35,6 +35,19 @@ exports[`renders homepage 1`] = `
       class=""
     >
       <a
+        href="/service/mattermost"
+      >
+        Mattermost 
+        <span>
+          (
+          )
+        </span>
+      </a>
+    </li>
+    <li
+      class=""
+    >
+      <a
         href="/service/matomo"
       >
         Matomo 
@@ -77,19 +90,6 @@ exports[`renders homepage 1`] = `
         href="/service/zammad"
       >
         Pastek 
-        <span>
-          (
-          )
-        </span>
-      </a>
-    </li>
-    <li
-      class=""
-    >
-      <a
-        href="/service/mattermost"
-      >
-        Mattermost 
         <span>
           (
           )

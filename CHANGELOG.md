@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/SocialGouv/secretariat/compare/v1.14.0...v1.14.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* Update tests ([c17d403](https://github.com/SocialGouv/secretariat/commit/c17d40364c2fe0c4bfef4a434af98b8567d4d6be))
+
 # [1.14.0](https://github.com/SocialGouv/secretariat/compare/v1.13.0...v1.14.0) (2022-02-23)
 
 

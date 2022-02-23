@@ -66,6 +66,7 @@ jobs:
     steps:
       - name: get node version
         run: |
+          whoami
           which node
           which yarn
       - name: Use autodevops manifests generation

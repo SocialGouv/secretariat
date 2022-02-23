@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/SocialGouv/secretariat/compare/v1.12.0...v1.13.0) (2022-02-23)
+
+
+### Features
+
+* Better user services display ([#95](https://github.com/SocialGouv/secretariat/issues/95)) ([be1d6c1](https://github.com/SocialGouv/secretariat/commit/be1d6c13f07f667601f15cb9c3c3f55f7d59a87b))
+
 # [1.12.0](https://github.com/SocialGouv/secretariat/compare/v1.11.0...v1.12.0) (2022-02-22)
 
 

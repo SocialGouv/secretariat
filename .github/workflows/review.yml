@@ -52,7 +52,7 @@ jobs:
             GITHUB_SHA=${GITHUB_SHA}
             NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-${{ env.BRANCH_SLUG }}.dev.fabrique.social.gouv.fr/v1/graphql
         env:
-          GITHUB_SHA=${GITHUB_SHA}
+          GITHUB_SHA: ${GITHUB_SHA}
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

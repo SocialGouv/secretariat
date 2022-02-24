@@ -49,10 +49,11 @@ jobs:
           imageName: secretariat/app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            GITHUB_SHA=$GITHUB_SHA
+            GITHUB_SHA_2=$GITHUB_SHA
+            GITHUB_SHA_2=${{ env.GITHUB_SHA }}
             NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-${{ env.BRANCH_SLUG }}.dev.fabrique.social.gouv.fr/v1/graphql
         env:
-          GITHUB_SHA: ${GITHUB_SHA}
+          GITHUB_SHA: ${{ env.GITHUB_SHA }}
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

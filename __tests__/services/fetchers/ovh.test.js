@@ -24,5 +24,5 @@ it("should return an empty list on catch", async () => {
   }))
 
   const result = await fetchOvhUsers()
-  expect(result).toMatchObject([])
+  expect(result).toStrictEqual([])
 })

@@ -9,12 +9,12 @@ it("should return a list of fetched users", async () => {
   )
 
   const result = await fetchSentryUsers()
-  expect(result).toMatchObject([{}, {}, {}])
+  expect(result).toStrictEqual([{}, {}, {}])
 })
 
 it("should return an empty list if no response", async () => {
   fetcher.mockResolvedValue(Promise.resolve(null))
 
   const result = await fetchSentryUsers()
-  expect(result).toMatchObject([])
+  expect(result).toStrictEqual([])
 })

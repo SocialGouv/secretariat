@@ -21,5 +21,5 @@ it("should return an empty list if no response", async () => {
   fetcher.mockResolvedValue(Promise.resolve(null))
 
   const result = await fetchMatomoUsers()
-  expect(result).toMatchObject([])
+  expect(result).toStrictEqual([])
 })

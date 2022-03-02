@@ -19,16 +19,11 @@ jobs:
     name: Build & Register app
     runs-on: ubuntu-latest
     steps:
-      - name: Get project name
-        run: |
-          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
           environment: preprod
-          project: ${{ env.project }}
-          imageName: ${{ env.project }}/app
+          imageName: secretariat/app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
             NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-preprod.dev.fabrique.social.gouv.fr/v1/graphql
@@ -40,33 +35,14 @@ jobs:
     name: Build & Register Hasura
     runs-on: ubuntu-latest
     steps:
-      - name: Get project name
-        run: |
-          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
           environment: preprod
-          project: ${{ env.project }}
           dockerfile: ./packages/hasura/Dockerfile
           dockercontext: ./packages/hasura
           token: ${{ secrets.GITHUB_TOKEN }}
-          imageName: ${{ env.project }}/hasura
-
-  ##############################################################################
-  ## GENERATE KUBERNETES MANIFESTS
-  ##############################################################################
-  manifests:
-    name: Generate k8s manifests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use autodevops manifests generation
-        uses: SocialGouv/actions/autodevops-manifests@v1
-        with:
-          environment: preprod
-          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
-          socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
-          pgUserSecretPrefix: pg-user
+          imageName: secretariat/hasura
 
   ##############################################################################
   ## DEPLOY BACKEND
@@ -74,11 +50,13 @@ jobs:
   deploy:
     name: Deploy review branch
     runs-on: ubuntu-latest
-    needs: [register-app, register-hasura, manifests]
+    needs: [register-app, register-hasura]
     steps:
       - name: Use autodevops deployment
-        uses: SocialGouv/actions/autodevops-deploy@v1
+        uses: SocialGouv/actions/autodevops-helm-deploy@v1
         with:
           environment: preprod
           token: ${{ secrets.GITHUB_TOKEN }}
           kubeconfig: ${{ secrets.KUBECONFIG }}
+          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}

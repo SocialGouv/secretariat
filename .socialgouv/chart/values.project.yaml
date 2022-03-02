@@ -8,6 +8,7 @@ app:
         name: app
   probesPath: /healthz
   replicas: 2
+  imagePackage: app
 
 hasura:
   envFrom:

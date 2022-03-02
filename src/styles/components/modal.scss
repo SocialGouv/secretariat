@@ -1,0 +1,55 @@
+.ReactModalPortal {
+
+  .ReactModal__Overlay {
+    @apply flex justify-center items-center mt-28 bg-red-100 z-10;
+  }
+
+  .ReactModal__Content {
+    @apply relative -translate-y-1/4;
+    position: relative !important;
+
+    .close {
+      @apply absolute right-0 top-2;
+    }
+
+    .users {
+      @apply flex items-center  ;
+
+      & > .user {
+        @apply flex-1 bg-beige;
+      }
+
+      & > i {
+        @apply text-2xl mx-6;
+      }
+    }
+
+    // .users {
+    //   @apply flex;
+
+    //   .user {
+    //     @apply flex-1;
+
+    //     .details {
+    //       @apply flex;
+
+    //       .info {
+    //         @apply ml-2;
+    //       }
+    //     }
+
+    //     .services {
+    //       @apply flex;
+
+    //       & > div {
+    //         @apply mr-2;
+    //       }
+    //     }
+    //   }
+    // }
+
+    .buttons {
+      @apply flex justify-between;
+    }
+  }
+}

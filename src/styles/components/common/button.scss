@@ -24,6 +24,17 @@ a.btn {
       disabled:text-gray-600;
   }
 
+  &.secondary {
+    @apply
+      shadow
+      border
+      text-blue-500
+      border-blue-500
+      active:shadow-sm
+      hover:bg-hover
+      active:bg-hover;
+  }
+
   &.link {
     @apply p-0 underline text-red-500;
   }

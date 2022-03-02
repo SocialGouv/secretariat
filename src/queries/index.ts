@@ -15,6 +15,21 @@ export const getUsers = gql`
   }
 `
 
+export const getUserById = gql`
+  query getUserById($id: uuid!) {
+    users(where: { id: { _eq: $id } }) {
+      id
+      ovh
+      matomo
+      zammad
+      github
+      sentry
+      nextcloud
+      mattermost
+    }
+  }
+`
+
 export const getGitHubUsers = gql`
   query getGithubUsers {
     services {
@@ -195,6 +210,14 @@ export const updateUser = gql`
 export const addUser = gql`
   mutation AddUser($user: users_insert_input!) {
     insert_users_one(object: $user) {
+      id
+    }
+  }
+`
+
+export const deleteUser = gql`
+  mutation deleteUser($id: uuid!) {
+    delete_users_by_pk(id: $id) {
       id
     }
   }

@@ -3,7 +3,8 @@ import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import useToken from "@/services/token"
 import useSearch from "@/services/search"
-import { getUsers } from "@/queries/index"
+import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
+import { getJwt } from "@/utils/jwt"
 
 interface UserMapping {
   email: string
@@ -97,6 +98,48 @@ const mapUsers = (users: User[]): User[] => {
     }
     return { ...serviceData, ...user }
   })
+}
+
+export const haveSimilarServices = (a: User, b: User) => {
+  return (
+    (a.matomo && b.matomo) ||
+    (a.mattermost && b.mattermost) ||
+    (a.github && b.github) ||
+    (a.zammad && b.zammad) ||
+    (a.nextcloud && b.nextcloud) ||
+    (a.ovh && b.ovh) ||
+    (a.sentry && b.sentry)
+  )
+}
+
+export const mergeUsers = async (
+  a: User,
+  b: User,
+  token: string
+): Promise<User | undefined> => {
+  console.log("mergeUsers 1", a, b)
+  const {
+    users: [userA],
+  } = await fetcher(getUserById, token, { id: a.id })
+  const {
+    users: [userB],
+  } = await fetcher(getUserById, token, { id: b.id })
+  console.log("usersA", userA)
+  console.log("usersB", userB)
+
+  if (userA && userB && !haveSimilarServices(userA, userB)) {
+    Object.keys(userA).forEach(
+      (key) => userA[key] === null && delete userA[key]
+    )
+    const user = { ...userB, ...userA }
+    const { id, ..._set } = user
+    console.log("mergeUsers 2", user)
+    await fetcher(updateUser, token, { id, _set })
+    await fetcher(deleteUser, token, { id: userB.id })
+    return user
+  }
+
+  return undefined
 }
 
 const useUsers = () => {

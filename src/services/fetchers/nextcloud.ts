@@ -19,7 +19,11 @@ const fetchNextcloudUser = async (login: string) => {
       },
     }
   )
-  return response ? response.json() : {}
+  return response
+    ? response.json()
+    : {
+        ocs: { data: {} },
+      }
 }
 
 export const fetchNextcloudUsers = async (

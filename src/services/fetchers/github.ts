@@ -39,7 +39,7 @@ export const fetchGithubUsers = async (
   }
 
   // Update each user with its teams
-  const usersWithTeams = pMap(
+  return pMap(
     users,
     async (user, index) => {
       const {
@@ -53,5 +53,4 @@ export const fetchGithubUsers = async (
     },
     { concurrency: 1 }
   )
-  return usersWithTeams
 }

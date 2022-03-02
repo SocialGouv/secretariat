@@ -13,7 +13,7 @@ it("should return a list of fetched users", async () => {
         organization: {
           membersWithRole: {
             nodes: [{}, {}, {}],
-            pageInfo: { hasNextPage: true, endCursor: "" },
+            pageInfo: { hasNextPage: true, endCursor: "cursor" },
           },
         },
       })

@@ -1,0 +1,5 @@
+app:
+  replicas: 1
+
+hasura:
+  replicas: 1

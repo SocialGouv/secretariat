@@ -16,11 +16,17 @@ it("should return a list of fetched users", async () => {
       })
     )
     .mockResolvedValue(
-      Promise.resolve({ json: () => Promise.resolve({ ocs: { data: {} } }) })
+      Promise.resolve({
+        json: () => Promise.resolve({ ocs: { data: { login: "login" } } }),
+      })
     )
 
   const result = await fetchNextcloudUsers()
-  expect(result).toStrictEqual([{}, {}, {}])
+  expect(result).toStrictEqual([
+    { login: "login" },
+    { login: "login" },
+    { login: "login" },
+  ])
 })
 
 it("should return an empty list if no response", async () => {
@@ -28,4 +34,22 @@ it("should return an empty list if no response", async () => {
 
   const result = await fetchNextcloudUsers()
   expect(result).toStrictEqual([])
+})
+
+it("should return empty users if no response for users query", async () => {
+  fetcher
+    .mockResolvedValueOnce(
+      Promise.resolve({
+        json: () => Promise.resolve({ ocs: { data: { users: ["", "", ""] } } }),
+      })
+    )
+    .mockResolvedValueOnce(
+      Promise.resolve({
+        json: () => Promise.resolve({ ocs: { data: { users: [] } } }),
+      })
+    )
+    .mockResolvedValue(Promise.resolve(null))
+
+  const result = await fetchNextcloudUsers()
+  expect(result).toStrictEqual([{}, {}, {}])
 })

@@ -3,3 +3,10 @@ app:
 
 hasura:
   replicas: 1
+  envFrom:
+    - secretRef:
+        name: hasura
+    - secretRef:
+        name: pg-user-{{ .Values.global.branchSlug }}
+    - configMapRef:
+        name: hasura-configmap

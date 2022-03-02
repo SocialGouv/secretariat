@@ -1,4 +1,10 @@
 import { fetchGithubUsers } from "@/services/fetchers/github"
+import { fetchMatomoUsers } from "@/services/fetchers/matomo"
+import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
+import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
+import { fetchOvhUsers } from "@/services/fetchers/ovh"
+import { fetchSentryUsers } from "@/services/fetchers/sentry"
+import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import fetcher from "@/utils/fetcher"
 import SERVICES from "@/utils/SERVICES"
 import {
@@ -9,12 +15,6 @@ import {
   updateUser,
 } from "../queries"
 import { detectWarnings } from "../utils/detect-warnings"
-import { fetchMatomoUsers } from "./fetchers/matomo"
-import { fetchMattermostUsers } from "./fetchers/mattermost"
-import { fetchNextcloudUsers } from "./fetchers/nextcloud"
-import { fetchOvhUsers } from "./fetchers/ovh"
-import { fetchSentryUsers } from "./fetchers/sentry"
-import { fetchZammadUsers } from "./fetchers/zammad"
 
 export const DEFAULT_DELAY = 800
 
@@ -56,7 +56,7 @@ const updateOrInsertUser = async (
       }
     )
     if (matchingIdUsers.length === 0) {
-      // if there's not row with this id for the given service, insert the user
+      // if there's no row with this id for the given service, insert the user
       const newUserEntry = { [serviceName]: user }
       await fetcher(addUser, jwt, {
         user: { [serviceName]: user, warning: detectWarnings(newUserEntry) },

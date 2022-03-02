@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import Logo from "@/components/common/logo"
+import Logo from "@/components/common/site-logo"
 
 const Footer = () => (
   <footer>

@@ -4,7 +4,6 @@ import fetcher from "@/utils/fetcher"
 import useToken from "@/services/token"
 import useSearch from "@/services/search"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
-import { getJwt } from "@/utils/jwt"
 
 interface UserMapping {
   email: string

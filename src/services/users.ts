@@ -113,29 +113,30 @@ export const haveSimilarServices = (a: User, b: User) => {
 }
 
 export const mergeUsers = async (
-  a: User,
-  b: User,
+  { id: idToKeep }: User,
+  { id: idToDrop }: User,
   token: string
 ): Promise<User | undefined> => {
-  console.log("mergeUsers 1", a, b)
+  console.log("mergeUsers 1", idToKeep, idToDrop)
   const {
-    users: [userA],
-  } = await fetcher(getUserById, token, { id: a.id })
+    users: [userToKeep],
+  } = await fetcher(getUserById, token, { id: idToKeep })
   const {
-    users: [userB],
-  } = await fetcher(getUserById, token, { id: b.id })
-  console.log("usersA", userA)
-  console.log("usersB", userB)
+    users: [userToDrop],
+  } = await fetcher(getUserById, token, { id: idToDrop })
 
-  if (userA && userB && !haveSimilarServices(userA, userB)) {
-    Object.keys(userA).forEach(
-      (key) => userA[key] === null && delete userA[key]
+  if (
+    userToKeep &&
+    userToDrop &&
+    !haveSimilarServices(userToKeep, userToDrop)
+  ) {
+    Object.keys(userToKeep).forEach(
+      (key) => userToKeep[key] === null && delete userToKeep[key]
     )
-    const user = { ...userB, ...userA }
+    const user = { ...userToDrop, ...userToKeep }
     const { id, ..._set } = user
-    console.log("mergeUsers 2", user)
     await fetcher(updateUser, token, { id, _set })
-    await fetcher(deleteUser, token, { id: userB.id })
+    await fetcher(deleteUser, token, { id: userToDrop.id })
     return user
   }
 

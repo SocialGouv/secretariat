@@ -56,7 +56,7 @@ const updateOrInsertUser = async (
       }
     )
     if (matchingIdUsers.length === 0) {
-      // if there's not row with this id for the given service, insert the user
+      // if there's no row with this id for the given service, insert the user
       const newUserEntry = { [serviceName]: user }
       await fetcher(addUser, jwt, {
         user: { [serviceName]: user, warning: detectWarnings(newUserEntry) },

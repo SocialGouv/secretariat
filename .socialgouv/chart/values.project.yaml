@@ -6,6 +6,9 @@ app:
   envFrom:
     - secretRef:
         name: app
+  env:
+    - name: NEXTAUTH_URL
+      value: https://{{ .Values.global.host }}
   probesPath: /healthz
   replicas: 2
   imagePackage: app

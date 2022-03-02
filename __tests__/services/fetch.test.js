@@ -1,3 +1,4 @@
+import { DEFAULT_DELAY, fetchAndUpdateServices } from "@/services/fetch"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import { fetchMatomoUsers } from "@/services/fetchers/matomo"
 import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
@@ -5,8 +6,6 @@ import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
 import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
-import { DEFAULT_DELAY, fetchAndUpdateServices } from "@/services/fetch"
-import fetcher from "@/utils/fetcher"
 
 const servicesFetchers = {
   github: fetchGithubUsers,
@@ -21,7 +20,7 @@ const servicesFetchers = {
 jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
-jest.mock("@/utils/fetcher")
+jest.mock("@/utils/fetcher", () => jest.fn(() => Promise.resolve(null)))
 
 jest.mock("@/services/fetchers/github", () => ({
   fetchGithubUsers: jest.fn(() => []),
@@ -50,7 +49,6 @@ it("should not be too low to avoid spamming remote APIs", () => {
 })
 
 it("should call every fetcher", async () => {
-  fetcher.mockResolvedValue(Promise.resolve(null))
   await fetchAndUpdateServices("jwt")
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     expect(serviceFetcher).toHaveBeenCalled()

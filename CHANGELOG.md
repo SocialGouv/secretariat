@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/SocialGouv/secretariat/compare/v1.14.1...v1.15.0) (2022-03-02)
+
+
+### Features
+
+* merge users ([#105](https://github.com/SocialGouv/secretariat/issues/105)) ([65ecc40](https://github.com/SocialGouv/secretariat/commit/65ecc40180bf70a6208614d2bfedfd52210cb0c2))
+
 ## [1.14.1](https://github.com/SocialGouv/secretariat/compare/v1.14.0...v1.14.1) (2022-02-23)
 
 

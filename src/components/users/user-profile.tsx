@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useDrop } from "react-dnd"
 
 import OVHLogo from "@/components/common/logo/ovh"
 import GithubLogo from "@/components/common/logo/github"
@@ -7,6 +8,7 @@ import MatomoLogo from "@/components/common/logo/matomo"
 import ZammadLogo from "@/components/common/logo/zammad"
 import NextCloudLogo from "@/components/common/logo/nextcloud"
 import MattermostLogo from "@/components/common/logo/mattermost"
+import { haveSimilarServices } from "@/services/users"
 
 const ServiceHeader = ({
   title,
@@ -155,35 +157,71 @@ const ZammadUserInfo = ({
   </div>
 )
 
-const UserProfile = ({ user }: { user: User }) => (
-  <div className="selected-user">
-    <div className="sticky-container">
-      <div className="user-profile">
-        <div className="header">
-          <Image
-            width={48}
-            height={48}
-            alt="user avatar"
-            src={user.avatarUrl || "/images/avatar.jpeg"}
-          />
-          <h2>{user.name}</h2>
-        </div>
-        <div className="services">
-          {user.github ? <GithubUserInfo user={user.github} /> : <></>}
-          {user.mattermost ? (
-            <MattermostUserInfo user={user.mattermost} />
-          ) : (
-            <></>
-          )}
-          {user.matomo ? <MatomoUserInfo user={user.matomo} /> : <></>}
-          {user.sentry ? <SentryUserInfo user={user.sentry} /> : <></>}
-          {user.ovh ? <OVHUserInfo user={user.ovh} /> : <></>}
-          {user.nextcloud ? <NextCloudUserInfo user={user.nextcloud} /> : <></>}
-          {user.zammad ? <ZammadUserInfo user={user.zammad} /> : <></>}
+const UserProfile = ({
+  user,
+  onUserDrop,
+}: {
+  user: User
+  onUserDrop: (user: User) => User
+}) => {
+  const [{ canDrop, isOver }, drop] = useDrop(
+    () => ({
+      accept: "user",
+      drop: onUserDrop,
+      canDrop: (item) => !haveSimilarServices(item, user),
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop(),
+      }),
+    }),
+    [user]
+  )
+
+  const backgroundColor = canDrop
+    ? isOver
+      ? "#e8edff"
+      : "#f4f6ff"
+    : "transparent"
+
+  return (
+    <div className="selected-user">
+      <div className="sticky-container">
+        <div
+          ref={drop}
+          role={"Profile"}
+          className="user-profile"
+          style={{ backgroundColor }}
+        >
+          <div className="header">
+            <Image
+              width={48}
+              height={48}
+              alt="user avatar"
+              src={user.avatarUrl || "/images/avatar.jpeg"}
+            />
+            <h2>{user.name}</h2>
+          </div>
+          <div className="services">
+            {user.github ? <GithubUserInfo user={user.github} /> : <></>}
+            {user.mattermost ? (
+              <MattermostUserInfo user={user.mattermost} />
+            ) : (
+              <></>
+            )}
+            {user.matomo ? <MatomoUserInfo user={user.matomo} /> : <></>}
+            {user.sentry ? <SentryUserInfo user={user.sentry} /> : <></>}
+            {user.ovh ? <OVHUserInfo user={user.ovh} /> : <></>}
+            {user.nextcloud ? (
+              <NextCloudUserInfo user={user.nextcloud} />
+            ) : (
+              <></>
+            )}
+            {user.zammad ? <ZammadUserInfo user={user.zammad} /> : <></>}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default UserProfile

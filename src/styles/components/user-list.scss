@@ -1,45 +1,46 @@
 .user-list {
 
   .tile {
+    @apply mb-4;
+  }
+}
 
-    .user {
-      @apply flex flex-col;
+.user {
+  @apply flex flex-col p-4;
 
-      .details {
-        @apply flex flex-row;
+  .details {
+    @apply flex flex-row;
 
-        .info {
-          @apply flex-1 ml-2;
-  
-          min-width: 0;
-  
-          h3 {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-  
-            & > span {
-              @apply font-normal text-sm;
-            }
-          }
-  
-          .email {
-            @apply text-sm;
-  
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
+    .info {
+      @apply flex-1 ml-2;
+
+      min-width: 0;
+
+      h3 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        & > span {
+          @apply font-normal text-sm;
         }
       }
 
-      .services {
-        @apply flex flex-row justify-end;
+      .email {
+        @apply text-sm;
 
-        & > div {
-          @apply flex justify-center ml-2;
-        }
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
+    }
+  }
+
+  .services {
+    @apply flex flex-row justify-end;
+
+    & > div {
+      @apply flex justify-center ml-2;
     }
   }
 }

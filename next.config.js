@@ -6,7 +6,9 @@ module.exports = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
+    dangerouslyAllowSVG: true,
     domains: ["avatars.githubusercontent.com", "secure.gravatar.com"],
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
     outputStandalone: true,

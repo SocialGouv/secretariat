@@ -1,5 +1,5 @@
 interface BasicUser {
-  id?: string
+  id: string
   login?: string
   avatarUrl?: string
   teams?: GithubTeam[]

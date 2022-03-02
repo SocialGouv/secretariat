@@ -45,6 +45,18 @@ select_permissions:
   role: webhook
 update_permissions:
 - permission:
+    check: {}
+    columns:
+    - github
+    - matomo
+    - mattermost
+    - nextcloud
+    - ovh
+    - sentry
+    - zammad
+    filter: {}
+  role: user
+- permission:
     check: null
     columns:
     - github
@@ -57,3 +69,7 @@ update_permissions:
     - zammad
     filter: {}
   role: webhook
+delete_permissions:
+- permission:
+    filter: {}
+  role: user

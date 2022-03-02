@@ -4,6 +4,7 @@ const colors = {
   error: "#e10600",
   success: "#008941",
   beige: "#f9f8f6",
+  hover: "#e0e0e0",
   brown: {
     425: "#845d48",
     600: "#c08c65",
@@ -11,6 +12,7 @@ const colors = {
     925: "#f3e2d9",
   },
   red: {
+    100: "#fff4f3",
     300: "#f7bfc3",
     500: "#e1000f",
   },

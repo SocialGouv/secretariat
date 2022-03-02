@@ -13,7 +13,7 @@ table {
 
   tbody {
     tr {
-      @apply even:bg-beige;
+      @apply even:bg-beige odd:bg-white;
     }
   }
 

@@ -3,7 +3,8 @@ import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import useToken from "@/services/token"
 import useSearch from "@/services/search"
-import { getUsers } from "@/queries/index"
+import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
+import { getJwt } from "@/utils/jwt"
 
 interface UserMapping {
   email: string
@@ -97,6 +98,49 @@ const mapUsers = (users: User[]): User[] => {
     }
     return { ...serviceData, ...user }
   })
+}
+
+export const haveSimilarServices = (a: User, b: User) => {
+  return (
+    (a.matomo && b.matomo) ||
+    (a.mattermost && b.mattermost) ||
+    (a.github && b.github) ||
+    (a.zammad && b.zammad) ||
+    (a.nextcloud && b.nextcloud) ||
+    (a.ovh && b.ovh) ||
+    (a.sentry && b.sentry)
+  )
+}
+
+export const mergeUsers = async (
+  { id: idToKeep }: User,
+  { id: idToDrop }: User,
+  token: string
+): Promise<User | undefined> => {
+  console.log("mergeUsers 1", idToKeep, idToDrop)
+  const {
+    users: [userToKeep],
+  } = await fetcher(getUserById, token, { id: idToKeep })
+  const {
+    users: [userToDrop],
+  } = await fetcher(getUserById, token, { id: idToDrop })
+
+  if (
+    userToKeep &&
+    userToDrop &&
+    !haveSimilarServices(userToKeep, userToDrop)
+  ) {
+    Object.keys(userToKeep).forEach(
+      (key) => userToKeep[key] === null && delete userToKeep[key]
+    )
+    const user = { ...userToDrop, ...userToKeep }
+    const { id, ..._set } = user
+    await fetcher(updateUser, token, { id, _set })
+    await fetcher(deleteUser, token, { id: userToDrop.id })
+    return user
+  }
+
+  return undefined
 }
 
 const useUsers = () => {

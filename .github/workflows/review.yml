@@ -60,7 +60,6 @@ jobs:
         uses: SocialGouv/actions/autodevops-helm-deploy@v1
         with:
           environment: 'dev'
-          imageName: secretariat
           token: ${{ secrets.GITHUB_TOKEN }}
           kubeconfig: ${{ secrets.KUBECONFIG }}
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}

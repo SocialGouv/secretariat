@@ -8,7 +8,6 @@ const useServicesCount = () => {
   const [token] = useToken()
 
   const { data } = useSWR(token ? [getServicesCount, token] : null, fetcher)
-  console.log("data", data)
 
   if (data) {
     return Object.entries(

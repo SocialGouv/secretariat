@@ -163,7 +163,7 @@ export const useFilteredUsers = () => {
 
   const { data } = useSWR(users ? `users/search/${query}` : null, () => {
     if (users && query?.length) {
-      const regex = new RegExp(query, "g")
+      const regex = new RegExp(query, "gi")
       return users.filter((user: User) => {
         if (user.email?.match(regex) || user.name?.match(regex)) {
           return true

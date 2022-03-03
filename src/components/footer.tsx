@@ -25,8 +25,8 @@ const Footer = () => (
           </a>
           .
         </p>
-        <p className="flex">
-          <i className="ri-github-fill ri-2x relative top-px mr-1" />
+        <p className="flex items-center">
+          <i className="ri-github-fill ri-xl relative top-px mr-1" />
           version {process.env.NEXT_PUBLIC_APP_VERSION} (
           <a
             target="_blank"

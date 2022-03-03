@@ -44,10 +44,10 @@ exports[`renders homepage 1`] = `
           .
         </p>
         <p
-          class="flex"
+          class="flex items-center"
         >
           <i
-            class="ri-github-fill ri-2x relative top-px mr-1"
+            class="ri-github-fill ri-xl relative top-px mr-1"
           />
           version 
           0.0.42

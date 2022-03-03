@@ -116,7 +116,6 @@ export const mergeUsers = async (
   { id: idToDrop }: User,
   token: string
 ): Promise<User | undefined> => {
-  console.log("mergeUsers 1", idToKeep, idToDrop)
   const {
     users: [userToKeep],
   } = await fetcher(getUserById, token, { id: idToKeep })
@@ -163,7 +162,7 @@ export const useFilteredUsers = () => {
 
   const { data } = useSWR(users ? `users/search/${query}` : null, () => {
     if (users && query?.length) {
-      const regex = new RegExp(query, "g")
+      const regex = new RegExp(query, "gi")
       return users.filter((user: User) => {
         if (user.email?.match(regex) || user.name?.match(regex)) {
           return true

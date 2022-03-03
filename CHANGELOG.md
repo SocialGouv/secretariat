@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/SocialGouv/secretariat/compare/v1.15.0...v1.15.1) (2022-03-03)
+
+
+### Bug Fixes
+
+* Use GITHUB_SHA to display footer app version ([#99](https://github.com/SocialGouv/secretariat/issues/99)) ([ed0a913](https://github.com/SocialGouv/secretariat/commit/ed0a91359861467fdfd00f53fb8a0be6c309a45c))
+
 # [1.15.0](https://github.com/SocialGouv/secretariat/compare/v1.14.1...v1.15.0) (2022-03-02)
 
 

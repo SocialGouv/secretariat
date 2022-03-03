@@ -13,7 +13,7 @@ jest.mock("next/router", () => ({
   },
 }))
 
-it("renders homepage", () => {
+it("renders menu", () => {
   const { container } = render(<Menu />)
   expect(container).toMatchSnapshot()
 })

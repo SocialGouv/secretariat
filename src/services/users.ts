@@ -178,7 +178,7 @@ export const useFilteredUsers = () => {
 export const usePaging = () => {
   const pageSize = 20
   const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
-  console.log("usePaging", data, pageSize)
+
   return { page: data, setPage: mutate, pageSize }
 }
 

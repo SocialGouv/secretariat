@@ -13,8 +13,6 @@ const UserList = ({
   const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
 
-  console.log("UserList", page, pageSize, filteredUsers)
-
   return (
     <div className="user-list">
       <ul>

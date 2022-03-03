@@ -39,15 +39,15 @@ jobs:
           echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
           echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
 
-      - name: Debug SHA
-        run: |
-          echo 'GITHUB_SHA_1 ${{ env.GITHUB_SHA }}'
-          echo GITHUB_SHA_2 ${GITHUB_SHA}
-          echo GITHUB_SHA_ENV_1 ${GITHUB_SHA_ENV_1}
-          echo GITHUB_SHA_ENV_2 ${GITHUB_SHA_ENV_2}
-        env:
-          GITHUB_SHA_ENV_1: ${{ env.GITHUB_SHA }}
-          GITHUB_SHA_ENV_2: ${GITHUB_SHA}
+      # - name: Debug SHA
+      #   run: |
+      #     echo 'GITHUB_SHA_1 ${{ env.GITHUB_SHA }}'
+      #     echo GITHUB_SHA_2 ${GITHUB_SHA}
+      #     echo GITHUB_SHA_ENV_1 ${GITHUB_SHA_ENV_1}
+      #     echo GITHUB_SHA_ENV_2 ${GITHUB_SHA_ENV_2}
+      #   env:
+      #     GITHUB_SHA_ENV_1: ${{ env.GITHUB_SHA }}
+      #     GITHUB_SHA_ENV_2: ${GITHUB_SHA}
 
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
@@ -55,11 +55,10 @@ jobs:
           imageName: secretariat/app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            GITHUB_SHA=$GITHUB_SHA
-            GITHUB_SHA_2=${{ env.GITHUB_SHA }}
+            GITHUB_SHA=${{ env.GITHUB_SHA }}
             NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-${{ env.BRANCH_SLUG }}.dev.fabrique.social.gouv.fr/v1/graphql
-        env:
-          GITHUB_SHA: ${{ env.GITHUB_SHA }}
+        # env:
+        #   GITHUB_SHA: ${{ env.GITHUB_SHA }}
 
   ##############################################################################
   ## BUILD AND REGISTER HASURA IMAGE

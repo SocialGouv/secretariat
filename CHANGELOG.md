@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/SocialGouv/secretariat/compare/v1.15.1...v1.15.2) (2022-03-03)
+
+
+### Bug Fixes
+
+* footer version ([176e1b2](https://github.com/SocialGouv/secretariat/commit/176e1b216ea039cd3c7a3323f837157407b3143f))
+
 ## [1.15.1](https://github.com/SocialGouv/secretariat/compare/v1.15.0...v1.15.1) (2022-03-03)
 
 

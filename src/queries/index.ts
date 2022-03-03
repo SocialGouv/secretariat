@@ -142,15 +142,45 @@ export const getRemoteGithubTeams = gql`
 
 export const getServicesCount = gql`
   query getServicesCount {
-    services_count {
-      users
-      github
-      matomo
-      mattermost
-      nextcloud
-      ovh
-      sentry
-      zammad
+    all: users_aggregate {
+      aggregate {
+        count
+      }
+    }
+    github: users_aggregate(distinct_on: github) {
+      aggregate {
+        count
+      }
+    }
+    matomo: users_aggregate(distinct_on: matomo) {
+      aggregate {
+        count
+      }
+    }
+    mattermost: users_aggregate(distinct_on: mattermost) {
+      aggregate {
+        count
+      }
+    }
+    nextcloud: users_aggregate(distinct_on: nextcloud) {
+      aggregate {
+        count
+      }
+    }
+    ovh: users_aggregate(distinct_on: ovh) {
+      aggregate {
+        count
+      }
+    }
+    zammad: users_aggregate(distinct_on: zammad) {
+      aggregate {
+        count
+      }
+    }
+    sentry: users_aggregate(distinct_on: sentry) {
+      aggregate {
+        count
+      }
     }
   }
 `

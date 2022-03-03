@@ -16,7 +16,7 @@ const Menu = () => {
       <li className={!slug ? "selected" : ""}>
         <Link href="/">
           <a>
-            Users <span>({counts?.users})</span>
+            Users <span>({counts ? counts.all : 0})</span>
           </a>
         </Link>
       </li>

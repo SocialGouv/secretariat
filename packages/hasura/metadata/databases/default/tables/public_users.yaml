@@ -17,6 +17,7 @@ insert_permissions:
   role: webhook
 select_permissions:
 - permission:
+    allow_aggregations: true
     columns:
     - github
     - matomo

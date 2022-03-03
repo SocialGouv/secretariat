@@ -14,6 +14,7 @@ exports[`renders homepage 1`] = `
         Users 
         <span>
           (
+          0
           )
         </span>
       </a>

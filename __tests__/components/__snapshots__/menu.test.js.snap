@@ -24,22 +24,11 @@ exports[`renders homepage 1`] = `
       <a
         href="/service/github"
       >
-        Github 
+        github
+         
         <span>
           (
-          )
-        </span>
-      </a>
-    </li>
-    <li
-      class=""
-    >
-      <a
-        href="/service/mattermost"
-      >
-        Mattermost 
-        <span>
-          (
+          0
           )
         </span>
       </a>
@@ -50,9 +39,11 @@ exports[`renders homepage 1`] = `
       <a
         href="/service/matomo"
       >
-        Matomo 
+        matomo
+         
         <span>
           (
+          0
           )
         </span>
       </a>
@@ -61,37 +52,13 @@ exports[`renders homepage 1`] = `
       class=""
     >
       <a
-        href="/service/sentry"
+        href="/service/mattermost"
       >
-        Sentry 
+        mattermost
+         
         <span>
           (
-          )
-        </span>
-      </a>
-    </li>
-    <li
-      class=""
-    >
-      <a
-        href="/service/ovh"
-      >
-        OVH 
-        <span>
-          (
-          )
-        </span>
-      </a>
-    </li>
-    <li
-      class=""
-    >
-      <a
-        href="/service/zammad"
-      >
-        Pastek 
-        <span>
-          (
+          0
           )
         </span>
       </a>
@@ -102,9 +69,56 @@ exports[`renders homepage 1`] = `
       <a
         href="/service/nextcloud"
       >
-        NextCloud 
+        nextcloud
+         
         <span>
           (
+          0
+          )
+        </span>
+      </a>
+    </li>
+    <li
+      class=""
+    >
+      <a
+        href="/service/ovh"
+      >
+        ovh
+         
+        <span>
+          (
+          0
+          )
+        </span>
+      </a>
+    </li>
+    <li
+      class=""
+    >
+      <a
+        href="/service/sentry"
+      >
+        sentry
+         
+        <span>
+          (
+          0
+          )
+        </span>
+      </a>
+    </li>
+    <li
+      class=""
+    >
+      <a
+        href="/service/zammad"
+      >
+        zammad
+         
+        <span>
+          (
+          0
           )
         </span>
       </a>

@@ -21,7 +21,6 @@ const Users = ({ users }: { users?: User[] }) => {
   }, [users])
 
   const handleUserDrop = (user: User) => {
-    // console.log("Drop Zone, USER:", user)
     setDroppedUser(user)
     return user
   }
@@ -32,7 +31,6 @@ const Users = ({ users }: { users?: User[] }) => {
 
       if (user) {
         setDroppedUser(undefined)
-        // remove dopped user from list?
         // trigger a refresh ?
       }
     }

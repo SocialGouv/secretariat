@@ -17,20 +17,12 @@ const UserList = ({
     <div className="user-list">
       <ul>
         {users.map((user, i) => (
-          // <li
-          //   key={i}
-          //   onClick={() => onSelect(user)}
-          //   className={`tile${
-          //     selectedUser && selectedUser.id === user.id ? " selected" : ""
-          //   }`}
-          // >
           <UserItem
             key={i}
             user={user}
             onClick={() => onSelect(user)}
             selected={selectedUser?.id === user.id}
           />
-          // </li>
         ))}
       </ul>
       <button

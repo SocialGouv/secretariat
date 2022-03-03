@@ -27,7 +27,7 @@ const Page = () => {
       </aside>
       <main>
         <StickySearch />
-        <Users users={users}></Users>
+        <Users users={users} />
       </main>
     </div>
   )

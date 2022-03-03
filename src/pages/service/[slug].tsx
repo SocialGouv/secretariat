@@ -6,20 +6,11 @@ import Users from "@/components/users/index"
 import { StickyMenu } from "@/components/menu"
 import useServiceUsers from "@/services/service-users"
 
-type Service =
-  | "matomo"
-  | "sentry"
-  | "github"
-  | "nextcloud"
-  | "zammad"
-  | "ovh"
-  | "mattermost"
-
 const Page = () => {
   const { query } = useRouter()
   const { data: session } = useSession()
   const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
-  const users = useServiceUsers(slug as Service)
+  const users = useServiceUsers(slug as ServiceName)
 
   if (!session) {
     return (
@@ -36,7 +27,7 @@ const Page = () => {
           <StickyMenu />
         </aside>
         <main>
-          <Users users={users}></Users>
+          <Users users={users} />
         </main>
       </div>
     )

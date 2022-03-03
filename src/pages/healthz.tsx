@@ -1,2 +1,2 @@
-const Page = () => <div>Bonjour</div>
+const Page = () => <div>It Works!</div>
 export default Page

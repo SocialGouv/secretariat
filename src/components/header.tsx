@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import Logo from "@/components/common/logo"
+import Logo from "@/components/common/site-logo"
 import AuthenticatedUser from "@/components/authenticated-user"
 
 const Header = () => (
@@ -16,12 +16,6 @@ const Header = () => (
         </a>
       </Link>
       <nav>
-        {/* <Link href="/stat">
-          <a>
-            <i className="ri-bar-chart-fill" />
-            Statistiques
-          </a>
-        </Link> */}
         <AuthenticatedUser />
       </nav>
     </div>

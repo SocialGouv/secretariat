@@ -1,4 +1,4 @@
-const Logo = ({ big = false }: { big?: boolean }) => (
+const SiteLogo = ({ big = false }: { big?: boolean }) => (
   <div className={`logo${big ? " big" : ""}`}>
     République
     <br />
@@ -6,4 +6,4 @@ const Logo = ({ big = false }: { big?: boolean }) => (
   </div>
 )
 
-export default Logo
+export default SiteLogo

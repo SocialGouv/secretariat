@@ -116,7 +116,6 @@ export const mergeUsers = async (
   { id: idToDrop }: User,
   token: string
 ): Promise<User | undefined> => {
-  console.log("mergeUsers 1", idToKeep, idToDrop)
   const {
     users: [userToKeep],
   } = await fetcher(getUserById, token, { id: idToKeep })

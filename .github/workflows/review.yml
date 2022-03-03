@@ -37,6 +37,7 @@ jobs:
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           BRANCH_SLUG=$(npx @socialgouv/env-slug ${BRANCH_NAME})
           echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
+          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
 
       - name: Debug SHA
         run: |
@@ -47,7 +48,6 @@ jobs:
         env:
           GITHUB_SHA_ENV_1: ${{ env.GITHUB_SHA }}
           GITHUB_SHA_ENV_2: ${GITHUB_SHA}
-          GITHUB_SHA_ENV_3: ${{ GITHUB_SHA }}
 
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1

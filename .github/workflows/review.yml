@@ -32,7 +32,7 @@ jobs:
     name: Build & Register app
     runs-on: self-hosted
     steps:
-      - name: Get branch slug
+      - name: Get branch slug and commit sha
         run: |
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           BRANCH_SLUG=$(npx @socialgouv/env-slug ${BRANCH_NAME})

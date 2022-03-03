@@ -1,6 +1,6 @@
 const { version } = require("./package.json")
 
-const commitSha = process.env.CI_COMMIT_SHA || "dev"
+const commitSha = process.env.GITHUB_SHA || "dev"
 
 module.exports = {
   swcMinify: true,

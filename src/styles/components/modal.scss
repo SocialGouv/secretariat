@@ -2,10 +2,23 @@
 
   .ReactModal__Overlay {
     @apply flex justify-center items-center mt-28 bg-red-100 z-10;
+
+    background-color: rgba(255, 255, 255, 0.9) !important;
+
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+
+  .ReactModal__Overlay--after-open{
+    opacity: 1;
+  }
+
+  .ReactModal__Overlay--before-close{
+      opacity: 0;
   }
 
   .ReactModal__Content {
-    @apply relative -translate-y-1/4;
+    @apply relative -translate-y-1/4 shadow-lg;
     position: relative !important;
 
     .close {

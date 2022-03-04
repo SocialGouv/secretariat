@@ -10,7 +10,7 @@ const UserList = ({
   selectedUser?: User
   onSelect: (user: User | undefined) => void
 }) => {
-  const { users: totalUsers } = useFilteredUsers()
+  const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
 
   return (
@@ -26,9 +26,9 @@ const UserList = ({
         ))}
       </ul>
       <button
-        onClick={() => setPage(page + 1)}
         className="primary"
-        disabled={totalUsers?.length || 0 > pageSize ? false : true}
+        onClick={() => setPage(page + 1)}
+        disabled={(filteredUsers?.length || 0) > pageSize ? false : true}
       >
         Afficher plus d&apos;utilisateurs
       </button>

@@ -27,7 +27,7 @@ const ConfirmModal = ({
     <h2>Fusionner deux comptes utilisateurs</h2>
     <br />
     <p>
-      Permettez-moi de vous suggérez de réfléchir à la conséquence de vos actes.
+      Permettez-moi de vous suggérer de réfléchir à la conséquence de vos actes.
     </p>
     <p>Etes-vous certain de vouloir faire cela, franchement ?</p>
     <br />
@@ -49,7 +49,9 @@ const ConfirmModal = ({
     <br />
     <br />
     <div className="buttons">
-      <button className="secondary">Je renonce</button>
+      <button className="secondary" onClick={onRequestClose}>
+        Je renonce
+      </button>
       <button className="primary" onClick={onConfirm}>
         Allez go !
       </button>

@@ -8,8 +8,13 @@ jest.mock("next-auth/react", () => ({
   useSession: jest.fn(),
 }))
 
+const users = [
+  { id: 1, name: "user1", email: "user1@paradise.sky" },
+  { id: 2, name: "user2", email: "user1@paradise.sky" },
+]
+
 it("renders users", () => {
   useSession.mockReturnValueOnce([false, false])
-  const { container } = render(<Users />)
+  const { container } = render(<Users users={users} />)
   expect(container).toMatchSnapshot()
 })

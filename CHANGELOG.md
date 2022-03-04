@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/SocialGouv/secretariat/compare/v1.15.2...v1.15.3) (2022-03-04)
+
+
+### Bug Fixes
+
+* animated modal ([#119](https://github.com/SocialGouv/secretariat/issues/119)) ([0a40009](https://github.com/SocialGouv/secretariat/commit/0a40009ae920b48d9e8af640943d3811f37eb086))
+
 ## [1.15.2](https://github.com/SocialGouv/secretariat/compare/v1.15.1...v1.15.2) (2022-03-03)
 
 

@@ -1,3 +1,10 @@
+## [1.15.4-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.15.4-beta.1...v1.15.4-beta.2) (2022-03-07)
+
+
+### Reverts
+
+* Revert both fake commits ([9cf77e4](https://github.com/SocialGouv/secretariat/commit/9cf77e43e857b44aee934232e435db172722c33d))
+
 ## [1.15.4-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.15.3...v1.15.4-beta.1) (2022-03-07)
 
 

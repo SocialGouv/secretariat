@@ -29,6 +29,7 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   const jwt = getJwt("webhook")
 
   fetchAndUpdateServices(jwt)
+  console.log("fake")
 
   res.status(200).send("OK")
 }

@@ -1,5 +1,5 @@
 ul.menu {
-  @apply border border-y-0 border-l-0 pb-2 pt-2 pr-6 mr-6 w-48;
+  @apply border border-y-0 border-l-0 pb-2 pt-2 pr-6 mr-6 w-52;
 
   li {
     @apply py-2 pl-2 pr-2 hover:bg-beige;
@@ -9,7 +9,7 @@ ul.menu {
     }
 
     a {
-      @apply flex justify-between items-center;
+      @apply flex justify-between items-center capitalize;
 
       span {
         @apply text-sm;

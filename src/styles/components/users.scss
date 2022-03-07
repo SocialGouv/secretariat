@@ -34,14 +34,18 @@
 
           h2 {
             @apply ml-4;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
 
         .services {
-          @apply flex-1 overflow-auto p-4;
+          @apply flex flex-col flex-1 overflow-auto p-4;
 
           .service {
-            @apply pb-8;
+            @apply flex flex-col pb-8;
 
             &:last-child {
               @apply pb-0;
@@ -55,17 +59,66 @@
               }
     
               .title {
-                @apply ml-1;
+                @apply ml-1 capitalize;
               }
             }
-          }
-        }
 
-        table {
-          @apply text-xs;
+            .info-table {
+              @apply text-xs;
 
-          tr > td:first-child {
-            @apply font-bold;
+              .contents {
+
+                & > div {
+                  @apply p-1;
+                }
+
+                & > div:first-child {
+                  @apply font-bold;
+                }
+
+                & > div:last-child {
+                  @apply truncate;
+                }
+
+                &:nth-child(odd) > div {
+                  @apply bg-beige;
+                }
+              }
+            }
+
+            // .table {
+            //   @apply text-xs flex-1;
+
+            //   .table-row {
+            //     @apply odd:bg-beige;
+
+            //     .table-cell {
+            //       @apply p-1 first:font-bold first:bg-red-100;
+
+            //       & > div {
+            //         @apply max-w-0 truncate;
+            //       }
+            //       // &::last-child {
+            //       //   width: 100%;
+            //       //   min-width: 1px;
+            //       // }
+            //     }
+            //   }
+            // }
+
+            // table {
+            //   @apply text-xs flex-1;
+    
+            //   tr {
+            //     & > td {
+            //       @apply first:font-bold first:whitespace-nowrap;
+
+            //       .toto {
+            //         @apply bg-red-100 truncate w-full;
+            //       }
+            //     }
+            //   }
+            // }
           }
         }
       }

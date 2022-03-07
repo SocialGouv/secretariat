@@ -11,7 +11,6 @@ import {
   addUser,
   getServiceUsers,
   matchUserInServices,
-  updateServices,
   updateUser,
 } from "../queries"
 import { detectWarnings } from "../utils/detect-warnings"
@@ -122,7 +121,6 @@ export const fetchAndUpdateServices = async (jwt: string) => {
     SERVICES.map(async (serviceName) => {
       const users = await servicesFetchers[serviceName](DEFAULT_DELAY)
       usersByService[serviceName] = users
-      fetcher(updateServices(serviceName), jwt, { data: users })
       console.log(`fetched ${serviceName} data`)
     })
   )

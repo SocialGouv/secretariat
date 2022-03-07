@@ -27,7 +27,6 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get the JWT needed to query Hasura with update privileges
   const jwt = getJwt("webhook")
-  console.log("fake")
 
   fetchAndUpdateServices(jwt)
 

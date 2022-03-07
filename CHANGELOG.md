@@ -1,3 +1,10 @@
+## [1.15.4-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.15.3...v1.15.4-beta.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* remove unused services table ([#120](https://github.com/SocialGouv/secretariat/issues/120)) ([df79243](https://github.com/SocialGouv/secretariat/commit/df79243a5e34ff8bb1d04107cb1033daab2aeba3))
+
 ## [1.15.3](https://github.com/SocialGouv/secretariat/compare/v1.15.2...v1.15.3) (2022-03-04)
 
 

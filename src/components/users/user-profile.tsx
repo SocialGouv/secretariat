@@ -6,7 +6,7 @@ import ServiceLogo from "../common/service-logo"
 import SERVICES from "@/utils/SERVICES"
 
 const InfoTable = ({ user }: { user: MixedUser }) => (
-  <div className="info-table grid grid-flow-row-dense grid-cols-2">
+  <div className="info-table grid grid-flow-row grid-cols-3">
     {Object.entries(user).map(([key, value], i) => (
       <div key={i} className="contents">
         <div>{key}</div>
@@ -15,36 +15,6 @@ const InfoTable = ({ user }: { user: MixedUser }) => (
     ))}
   </div>
 )
-
-// const InfoTable = ({ user }: { user: MixedUser }) => (
-//   <div className="table w-full">
-//     <div className="table-row-group">
-//       {Object.entries(user).map(([key, value], i) => (
-//         <div key={i} className="table-row">
-//           <div className="table-cell">{key}</div>
-//           <div className="table-cell">
-//             <div>{value}</div>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// )
-
-// const InfoTable = ({ user }: { user: MixedUser }) => (
-//   <table>
-//     <tbody>
-//       {Object.entries(user).map(([key, value], i) => (
-//         <tr key={i}>
-//           <td>{key}</td>
-//           <td>
-//             <div className="toto">{value}</div>
-//           </td>
-//         </tr>
-//       ))}
-//     </tbody>
-//   </table>
-// )
 
 const GithubUserInfo = ({
   user: { avatarUrl, teams, ...info },

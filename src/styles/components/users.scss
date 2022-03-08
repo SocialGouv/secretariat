@@ -69,15 +69,11 @@
               .contents {
 
                 & > div {
-                  @apply p-1;
+                  @apply p-1 truncate;
                 }
 
                 & > div:first-child {
                   @apply font-bold;
-                }
-
-                & > div:last-child {
-                  @apply truncate;
                 }
 
                 &:nth-child(odd) > div {
@@ -85,40 +81,6 @@
                 }
               }
             }
-
-            // .table {
-            //   @apply text-xs flex-1;
-
-            //   .table-row {
-            //     @apply odd:bg-beige;
-
-            //     .table-cell {
-            //       @apply p-1 first:font-bold first:bg-red-100;
-
-            //       & > div {
-            //         @apply max-w-0 truncate;
-            //       }
-            //       // &::last-child {
-            //       //   width: 100%;
-            //       //   min-width: 1px;
-            //       // }
-            //     }
-            //   }
-            // }
-
-            // table {
-            //   @apply text-xs flex-1;
-    
-            //   tr {
-            //     & > td {
-            //       @apply first:font-bold first:whitespace-nowrap;
-
-            //       .toto {
-            //         @apply bg-red-100 truncate w-full;
-            //       }
-            //     }
-            //   }
-            // }
           }
         }
       }

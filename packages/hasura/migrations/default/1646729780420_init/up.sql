@@ -1,5 +1,5 @@
 SET check_function_bodies = false;
-CREATE OR REPLACE FUNCTION public.set_current_timestamp_updated_at() RETURNS trigger
+CREATE FUNCTION public.set_current_timestamp_updated_at() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 DECLARE

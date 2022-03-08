@@ -10,7 +10,7 @@ app:
     - name: NEXTAUTH_URL
       value: https://{{ .Values.global.host }}
   probesPath: /healthz
-  replicas: 2
+  replicas: 1
   imagePackage: app
 
 hasura:

@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/SocialGouv/secretariat/compare/v1.15.3...v1.15.4) (2022-03-10)
+
+
+### Bug Fixes
+
+* warning as text ([#129](https://github.com/SocialGouv/secretariat/issues/129)) ([b679eaf](https://github.com/SocialGouv/secretariat/commit/b679eaf8baad01b677300244fef61fd4be6e8eb9))
+
 ## [1.15.4-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.15.4-beta.1...v1.15.4-beta.2) (2022-03-07)
 
 

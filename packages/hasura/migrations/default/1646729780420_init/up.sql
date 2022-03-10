@@ -20,7 +20,7 @@ CREATE TABLE public.users (
     zammad jsonb,
     nextcloud jsonb,
     ovh jsonb,
-    warning integer DEFAULT 0 NOT NULL
+    warning text
 );
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);

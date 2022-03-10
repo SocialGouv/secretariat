@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/SocialGouv/secretariat/compare/v1.15.4...v1.16.0) (2022-03-10)
+
+
+### Features
+
+* Remove side menu ([#130](https://github.com/SocialGouv/secretariat/issues/130)) ([37732db](https://github.com/SocialGouv/secretariat/commit/37732dbbe92fa4df807a93ce110c9ead5dd68217))
+
 ## [1.15.4](https://github.com/SocialGouv/secretariat/compare/v1.15.3...v1.15.4) (2022-03-10)
 
 

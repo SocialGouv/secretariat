@@ -15,10 +15,10 @@ const Users = ({ users }: { users?: User[] }) => {
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {
-    if (users && users.length) {
+    if (!selectedUser && users && users.length) {
       setSelectedUser(users[0])
     }
-  }, [users])
+  }, [users, selectedUser])
 
   const handleUserDrop = (user: User) => {
     setDroppedUser(user)

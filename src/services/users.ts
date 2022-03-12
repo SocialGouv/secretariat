@@ -4,6 +4,8 @@ import fetcher from "@/utils/fetcher"
 import useToken from "@/services/token"
 import useSearch from "@/services/search"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
+import { isString } from "util"
+import useFilters from "./filters"
 
 interface UserMapping {
   email: string
@@ -159,20 +161,63 @@ const useUsers = () => {
 export const useFilteredUsers = () => {
   const users = useUsers()
   const { query } = useSearch()
+  const { filters } = useFilters()
 
-  const { data } = useSWR(users ? `users/search/${query}` : null, () => {
-    if (users && query?.length) {
-      const regex = new RegExp(query, "gi")
-      return users.filter((user: User) => {
-        if (user.email?.match(regex) || user.name?.match(regex)) {
+  // On my quest to trigger Sonar "smells"
+  const searchInValues = (user: User, regex: RegExp): boolean => {
+    const { id, ...data } = user
+    const values = Object.values(data)
+    return !!values
+      .filter((value) => value && typeof value === "string")
+      .concat(
+        values
+          .filter((value) => value && typeof value === "object")
+          .reduce(
+            (arr, obj) =>
+              arr.concat(
+                Object.values(obj).filter(
+                  (value) => value && typeof value === "string"
+                )
+              ),
+            []
+          )
+      )
+      .join(" ")
+      .match(regex)
+  }
+
+  const matchServices = (user: User): boolean => {
+    if (filters) {
+      for (const [key, value] of Object.entries(filters)) {
+        if (value && user[key as keyof User]) {
           return true
         }
-      })
+      }
     }
-    return users
-  })
+    return false
+  }
 
-  return { users: data, query }
+  const { data } = useSWR(
+    users ? `users/search/${JSON.stringify(filters)}/${query}` : null,
+    () => {
+      console.log(
+        "GET USERS",
+        query,
+        filters,
+        `users/search/${JSON.stringify(filters)}/${query}`
+      )
+
+      if (users) {
+        const regex = new RegExp(query || "", "gi")
+        return users.filter(
+          (user: User) => matchServices(user) && searchInValues(user, regex)
+        )
+      }
+      return users
+    }
+  )
+
+  return { users: data, query, filters }
 }
 
 export const usePaging = () => {
@@ -184,10 +229,12 @@ export const usePaging = () => {
 
 export const usePagedUsers = () => {
   const { page, pageSize } = usePaging()
-  const { users, query } = useFilteredUsers()
+  const { users, query, filters } = useFilteredUsers()
 
   const { data } = useSWR(
-    users ? `users/search/${query}/page/${page}` : null,
+    users
+      ? `users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
+      : null,
     () => {
       return users && users.slice(0, (page || 1) * pageSize)
     }

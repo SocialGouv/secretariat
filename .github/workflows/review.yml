@@ -17,7 +17,7 @@ jobs:
   ##############################################################################
   create-db:
     name: Create postgres database
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
     - uses: SocialGouv/actions/autodevops-create-db@v1
@@ -30,7 +30,7 @@ jobs:
   ##############################################################################
   register-app:
     name: Build & Register app
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get branch slug and commit sha
         run: |
@@ -53,7 +53,7 @@ jobs:
   ##############################################################################
   register-hasura:
     name: Build & Register Hasura
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
@@ -68,7 +68,7 @@ jobs:
   ##############################################################################
   deploy:
     name: Deploy review branch
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [register-app, register-hasura, create-db]
     steps:
       - name: Use autodevops deployment

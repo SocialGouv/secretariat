@@ -2,7 +2,7 @@
   @apply grid grid-cols-2;
 
   .user-list {
-    @apply mt-6;
+    // @apply mt-6;
 
     button {
       @apply w-full flex justify-center;
@@ -13,9 +13,9 @@
     @apply flex flex-col ml-6;
 
     .sticky-container {
-      @apply flex flex-col sticky top-20 pt-6;
+      @apply flex flex-col sticky top-36;
 
-      height: calc(100vh - 13.5rem);
+      height: calc(100vh - 17rem);
 
       .user-profile {
         @apply
@@ -75,6 +75,8 @@
 
 .no-users {
   @apply h-full flex flex-col justify-center;
+
+  height: calc(100vh - 32rem);
 
   .callout {
     @apply mx-10;

@@ -1,9 +1,9 @@
 import { useSession } from "next-auth/react"
 
 import Login from "@/components/login"
+import Search from "@/components/search"
 import Users from "@/components/users/index"
 import { usePagedUsers } from "@/services/users"
-import { StickySearch } from "@/components/search"
 
 const Page = () => {
   const { data: session } = useSession()
@@ -22,7 +22,7 @@ const Page = () => {
   return (
     <div className="container">
       <main>
-        <StickySearch />
+        <Search />
         <Users users={users} />
       </main>
     </div>

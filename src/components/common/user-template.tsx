@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 import SERVICES from "@/utils/SERVICES"
-import ServiceLogo from "./service-logo"
+import ServiceLogo from "@/components/common/service-logo"
 
 const UserTemplate = ({ user }: { user: User }) => (
   <div className="user">

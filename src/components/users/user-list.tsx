@@ -28,7 +28,7 @@ const UserList = ({
       <button
         className="primary"
         onClick={() => setPage(page + 1)}
-        disabled={(filteredUsers?.length || 0) > pageSize ? false : true}
+        disabled={(filteredUsers?.length || 0) > pageSize * page ? false : true}
       >
         Afficher plus d&apos;utilisateurs
       </button>

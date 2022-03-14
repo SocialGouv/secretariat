@@ -1,18 +1,39 @@
 .search {
-  @apply flex relative;
+  @apply sticky top-0 pt-10 z-10 bg-gradient-to-b from-white via-white;
 
-  &::before {
-    top: 0.75rem;
-    right: 0.75rem;
-    line-height: 1;
-    font-size: 1rem;
-    content: "\F0D1";
-    font-weight: bold;
-    position: absolute;
-    font-family: remixicon, sans-serif !important;
+  .search-field {
+    @apply flex relative;
+  
+    &::before {
+      top: 0.75rem;
+      left: 0.75rem;
+      line-height: 1;
+      font-size: 1rem;
+      content: "\F0D1";
+      font-weight: bold;
+      position: absolute;
+      font-family: remixicon, sans-serif !important;
+    }
+  
+    input {
+      @apply flex-1 pl-9;
+    }
   }
 
-  input {
-    @apply flex-1;
+  .filters {
+    @apply flex justify-between pt-2 pb-8 bg-gradient-to-b from-white via-white;
+
+    .counts {
+      @apply text-sm;
+    }
+
+    .services {
+      @apply flex;
+
+      .service {
+        @apply mr-2 cursor-pointer;
+      }
+    }
   }
 }
+

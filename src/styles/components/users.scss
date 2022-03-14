@@ -34,14 +34,18 @@
 
           h2 {
             @apply ml-4;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
 
         .services {
-          @apply flex-1 overflow-auto p-4;
+          @apply flex flex-col flex-1 overflow-auto p-4;
 
           .service {
-            @apply pb-8;
+            @apply flex flex-col pb-8;
 
             &:last-child {
               @apply pb-0;
@@ -55,17 +59,28 @@
               }
     
               .title {
-                @apply ml-1;
+                @apply ml-1 capitalize;
               }
             }
-          }
-        }
 
-        table {
-          @apply text-xs;
+            .info-table {
+              @apply text-xs;
 
-          tr > td:first-child {
-            @apply font-bold;
+              .contents {
+
+                & > div {
+                  @apply p-1 truncate;
+                }
+
+                & > div:first-child {
+                  @apply font-bold;
+                }
+
+                &:nth-child(odd) > div {
+                  @apply bg-beige;
+                }
+              }
+            }
           }
         }
       }

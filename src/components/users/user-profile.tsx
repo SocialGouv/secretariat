@@ -6,16 +6,14 @@ import ServiceLogo from "../common/service-logo"
 import SERVICES from "@/utils/SERVICES"
 
 const InfoTable = ({ user }: { user: MixedUser }) => (
-  <table>
-    <tbody>
-      {Object.entries(user).map(([key, value], i) => (
-        <tr key={i}>
-          <td>{key}</td>
-          <td>{value}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <div className="info-table grid grid-flow-row grid-cols-3">
+    {Object.entries(user).map(([key, value], i) => (
+      <div key={i} className="contents">
+        <div>{key}</div>
+        <div className="col-span-2">{value}</div>
+      </div>
+    ))}
+  </div>
 )
 
 const GithubUserInfo = ({

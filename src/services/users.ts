@@ -75,30 +75,33 @@ const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
 })
 
 const mapUsers = (users: User[]): User[] => {
-  return users.map((user) => {
-    const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } = user
-    const serviceData = mattermost
-      ? getMattermostData(mattermost)
-      : sentry
-      ? getSentryData(sentry)
-      : zammad
-      ? getZammadData(zammad)
-      : matomo
-      ? getMatomoData(matomo)
-      : nextcloud
-      ? getNextCloudData(nextcloud)
-      : github
-      ? getGithubData(github)
-      : ovh
-      ? getOVHData(ovh)
-      : ({} as UserMapping)
+  return users
+    .map((user) => {
+      const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } =
+        user
+      const serviceData = mattermost
+        ? getMattermostData(mattermost)
+        : sentry
+        ? getSentryData(sentry)
+        : zammad
+        ? getZammadData(zammad)
+        : matomo
+        ? getMatomoData(matomo)
+        : nextcloud
+        ? getNextCloudData(nextcloud)
+        : github
+        ? getGithubData(github)
+        : ovh
+        ? getOVHData(ovh)
+        : ({} as UserMapping)
 
-    if (!serviceData.avatarUrl) {
-      if (github) serviceData.avatarUrl = github.avatarUrl
-      else if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
-    }
-    return { ...serviceData, ...user }
-  })
+      if (!serviceData.avatarUrl) {
+        if (github) serviceData.avatarUrl = github.avatarUrl
+        else if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
+      }
+      return { ...serviceData, ...user }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 export const haveSimilarServices = (a: User, b: User) => {

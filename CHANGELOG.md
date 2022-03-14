@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/SocialGouv/secretariat/compare/v1.16.0...v1.17.0) (2022-03-14)
+
+
+### Features
+
+* add services filters ([#134](https://github.com/SocialGouv/secretariat/issues/134)) ([6714a73](https://github.com/SocialGouv/secretariat/commit/6714a735de948e16898a1b1027340de0136f6dcf))
+
 # [1.16.0](https://github.com/SocialGouv/secretariat/compare/v1.15.4...v1.16.0) (2022-03-10)
 
 

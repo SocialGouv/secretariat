@@ -28,7 +28,11 @@ html, body {
 }
 
 body {
-  @apply flex flex-1 overflow-hidden;
+  @apply
+  flex
+  flex-1
+  overflow-hidden
+  dark:bg-gray-750;
 }
 
 #__next { /* stylelint-disable-line */

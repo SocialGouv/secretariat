@@ -6,7 +6,12 @@ table {
       @apply bg-beige;
 
       th {
-        @apply p-2 border-b-2 border-gray-600 text-gray-700;
+        @apply
+          p-2
+          border-b-2
+          text-gray-700
+          border-gray-600
+          dark:text-gray-200;
       }
     }
   }

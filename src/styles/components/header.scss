@@ -1,11 +1,20 @@
 header {
-  @apply shadow-lg fixed top-0 z-30 bg-white right-0 left-0;
+  @apply
+  z-30
+  fixed
+  top-0
+  left-0
+  right-0
+  bg-white
+  shadow-lg
+  dark:bg-gray-800
+  dark:text-gray-200;
 
   .container {
     @apply flex py-5 items-center mx-auto;
 
     & > a {
-      @apply flex text-gray-700;
+      @apply flex text-gray-700 dark:text-gray-200;
 
       .title {
         @apply flex flex-col justify-center px-8;

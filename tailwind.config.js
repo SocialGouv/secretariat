@@ -42,6 +42,7 @@ const colors = {
   },
   gray: {
     800: "#1e1e1e",
+    750: "#2a2a2a",
     700: "#383838",
     600: "#6a6a6a",
     500: "#9c9c9c",
@@ -53,6 +54,7 @@ const colors = {
 }
 
 module.exports = {
+  // darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
@@ -81,6 +83,7 @@ module.exports = {
       boxShadow: ["active"],
       cursor: ["disabled"],
       borderWidth: ["last"],
+      gradientColorStops: ["dark"],
       backgroundColor: ["odd", "even", "active"],
     },
   },

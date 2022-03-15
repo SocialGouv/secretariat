@@ -1,5 +1,14 @@
 .search {
-  @apply sticky top-0 pt-10 z-10 bg-gradient-to-b from-white via-white;
+  @apply
+    z-10
+    top-0
+    pt-10
+    sticky
+    bg-gradient-to-b
+    from-white
+    via-white
+    dark:via-gray-800
+    dark:via-gray-800;
 
   .search-field {
     @apply flex relative;
@@ -21,7 +30,16 @@
   }
 
   .filters {
-    @apply flex justify-between pt-2 pb-8 bg-gradient-to-b from-white via-white;
+    @apply
+      flex
+      pt-2
+      pb-8
+      justify-between
+      bg-gradient-to-b
+      from-white
+      via-white
+      dark:via-gray-800
+      dark:via-gray-800;
 
     .counts {
       @apply text-sm;

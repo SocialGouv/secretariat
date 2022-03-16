@@ -6,6 +6,7 @@
 @use "./components/common/loader.scss";
 @use "./components/common/callout.scss";
 @use "./components/common/table.scss";
+@use "./components/common/datepicker.scss";
 @use "./components/authenticated-user.scss";
 @use "./components/user-last-update.scss";
 @use "./components/user-list.scss";
@@ -18,6 +19,8 @@
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
+@use "./components/users/user-profile.scss";
+@use "./components/users/user-arrival-departure.scss";
 
 html, body {
   @apply h-full flex overflow-hidden;
@@ -49,6 +52,6 @@ main {
   @apply flex-1;
 
   .loader {
-    height: 100%;
+    height: calc(100vh - 33.5rem);
   }
 }

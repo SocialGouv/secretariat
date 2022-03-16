@@ -8,6 +8,9 @@ const userFragment = gql`
     matomo
     sentry
     zammad
+    warning
+    arrival
+    departure
     nextcloud
     mattermost
     updated_at

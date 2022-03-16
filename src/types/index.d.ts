@@ -1,6 +1,8 @@
 interface BasicUser {
   id: string
   login?: string
+  arrival?: Date
+  departure?: Date
   avatarUrl?: string
   teams?: GithubTeam[]
   github?: GithubUser
@@ -11,6 +13,7 @@ interface BasicUser {
   sentry?: SentryUser
   zammad?: ZammadUser
   updated_at?: Date
+  warning?: string
 }
 
 interface UserWithName extends BasicUser {

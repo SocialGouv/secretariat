@@ -19,15 +19,18 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - arrival
+    - departure
     - github
+    - id
     - matomo
     - mattermost
     - nextcloud
     - ovh
     - sentry
-    - zammad
     - updated_at
-    - id
+    - warning
+    - zammad
     filter: {}
   role: user
 - permission:
@@ -48,6 +51,8 @@ update_permissions:
 - permission:
     check: {}
     columns:
+    - arrival
+    - departure
     - github
     - matomo
     - mattermost

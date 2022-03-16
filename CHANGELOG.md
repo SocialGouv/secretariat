@@ -1,3 +1,15 @@
+# [1.18.0](https://github.com/SocialGouv/secretariat/compare/v1.17.0...v1.18.0) (2022-03-16)
+
+
+### Bug Fixes
+
+* set height of loader ([#136](https://github.com/SocialGouv/secretariat/issues/136)) ([983a120](https://github.com/SocialGouv/secretariat/commit/983a120cb9fa8b4e0382c469b757e70a7e83acd9))
+
+
+### Features
+
+* add user arrival/departure dates ([#135](https://github.com/SocialGouv/secretariat/issues/135)) ([0140aff](https://github.com/SocialGouv/secretariat/commit/0140afffd4e2ee1b70227eea4bac9f2412bc0196))
+
 # [1.17.0](https://github.com/SocialGouv/secretariat/compare/v1.16.0...v1.17.0) (2022-03-14)
 
 

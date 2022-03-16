@@ -4,6 +4,7 @@ import { useDrop } from "react-dnd"
 import { haveSimilarServices } from "@/services/users"
 import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
+import UserLastUpdate from "./user-last-update"
 
 const UserProfile = ({
   user,
@@ -48,6 +49,7 @@ const UserProfile = ({
               src={user.avatarUrl || "/images/avatar.jpeg"}
             />
             <h2>{user.name}</h2>
+            <UserLastUpdate date={user.updated_at} />
           </div>
           <UserArrivalDeparture user={user} />
           <UserServices user={user} />

@@ -12,6 +12,7 @@ interface BasicUser {
   ovh?: OVHUser
   sentry?: SentryUser
   zammad?: ZammadUser
+  updated_at?: Date
   warning?: string
 }
 

@@ -544,6 +544,13 @@ exports[`renders users 1`] = `
             <h2>
               user1
             </h2>
+            <div
+              class="user-last-update"
+            >
+              <i>
+                aucune mise à jour
+              </i>
+            </div>
           </div>
           <div
             class="user-arrival-departure"

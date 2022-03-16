@@ -1,24 +1,23 @@
-.ReactModalPortal {
-
-  .ReactModal__Overlay {
+.ReactModalPortal { /* stylelint-disable-line */
+  .ReactModal__Overlay { /* stylelint-disable-line */
     @apply flex justify-center items-center mt-28 bg-red-100 z-10;
 
-    background-color: rgba(255, 255, 255, 0.9) !important;
-
+    background-color: rgb(255 255 255 / 90%) !important;
     opacity: 0;
     transition: opacity 300ms ease-in-out;
   }
 
-  .ReactModal__Overlay--after-open{
+  .ReactModal__Overlay--after-open { /* stylelint-disable-line */
     opacity: 1;
   }
 
-  .ReactModal__Overlay--before-close{
+  .ReactModal__Overlay--before-close { /* stylelint-disable-line */
       opacity: 0;
   }
 
-  .ReactModal__Content {
+  .ReactModal__Content { /* stylelint-disable-line */
     @apply relative -translate-y-1/4 shadow-lg;
+
     position: relative !important;
 
     .close {
@@ -36,30 +35,6 @@
         @apply text-2xl mx-6;
       }
     }
-
-    // .users {
-    //   @apply flex;
-
-    //   .user {
-    //     @apply flex-1;
-
-    //     .details {
-    //       @apply flex;
-
-    //       .info {
-    //         @apply ml-2;
-    //       }
-    //     }
-
-    //     .services {
-    //       @apply flex;
-
-    //       & > div {
-    //         @apply mr-2;
-    //       }
-    //     }
-    //   }
-    // }
 
     .buttons {
       @apply flex justify-between;

@@ -4,6 +4,7 @@ import { useDrop } from "react-dnd"
 import { haveSimilarServices } from "@/services/users"
 import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
+import UserLastUpdate from "./user-last-update"
 
 const UserProfile = ({
   user,

@@ -30,7 +30,7 @@
           border-l-blue-500;
 
         .header {
-          @apply flex items-center border-b p-4 shadow-sm;
+          @apply flex items-center border-b p-4 shadow-sm relative;
 
           h2 {
             @apply ml-4;

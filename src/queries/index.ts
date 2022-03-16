@@ -1,33 +1,35 @@
 import { gql } from "graphql-request"
 
+const userFragment = gql`
+  fragment userFields on users {
+    id
+    ovh
+    github
+    matomo
+    sentry
+    zammad
+    nextcloud
+    mattermost
+    updated_at
+  }
+`
+
 export const getUsers = gql`
   query getUsers {
     users {
-      id
-      github
-      matomo
-      mattermost
-      nextcloud
-      ovh
-      sentry
-      zammad
+      ...userFields
     }
   }
+  ${userFragment}
 `
 
 export const getUserById = gql`
   query getUserById($id: uuid!) {
     users(where: { id: { _eq: $id } }) {
-      id
-      ovh
-      matomo
-      zammad
-      github
-      sentry
-      nextcloud
-      mattermost
+      ...userFields
     }
   }
+  ${userFragment}
 `
 
 export const getUserTeams = gql`
@@ -125,32 +127,20 @@ export const getServiceUsers = (serviceName: string) => {
   return gql`
     query getServiceUsers($_contains: jsonb) {
       users(where: { ${serviceName}: { _contains: $_contains } }) {
-        id
-        github
-        matomo
-        mattermost
-        nextcloud
-        ovh
-        sentry
-        zammad
+        ...userFields
       }
     }
+    ${userFragment}
   `
 }
 
 export const matchUserInServices = gql`
   query matchUsersInServices($_or: [users_bool_exp!]) {
     users(where: { _or: $_or }) {
-      id
-      github
-      matomo
-      zammad
-      sentry
-      nextcloud
-      mattermost
-      ovh
+      ...userFields
     }
   }
+  ${userFragment}
 `
 
 export const updateUser = gql`

@@ -4,6 +4,7 @@ import { useDrop } from "react-dnd"
 import { haveSimilarServices } from "@/services/users"
 import ServiceLogo from "../common/service-logo"
 import SERVICES from "@/utils/SERVICES"
+import UserLastUpdate from "./user-last-update"
 
 const InfoTable = ({ user }: { user: MixedUser }) => (
   <div className="info-table grid grid-flow-row grid-cols-3">
@@ -163,6 +164,7 @@ const UserProfile = ({
               src={user.avatarUrl || "/images/avatar.jpeg"}
             />
             <h2>{user.name}</h2>
+            <UserLastUpdate date={user.updated_at} />
           </div>
           <div className="services">
             {SERVICES.reduce(

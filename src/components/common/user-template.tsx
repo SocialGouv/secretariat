@@ -11,7 +11,7 @@ const UserTemplate = ({ user }: { user: User }) => (
           width={48}
           height={48}
           alt="user avatar"
-          src={user.avatarUrl || "/images/avatar.jpeg"}
+          src={user.avatarUrl || "/images/user-avatar.svg"}
         />
       </div>
       <div className="info">

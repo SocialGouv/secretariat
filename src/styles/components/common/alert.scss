@@ -1,0 +1,11 @@
+.alert {
+  @apply flex border border-red-600 items-center;
+
+  i {
+    @apply bg-red-600 text-white p-2 text-2xl;
+  }
+
+  & > div {
+    @apply flex flex-1 items-center pl-2 text-sm;
+  }
+}

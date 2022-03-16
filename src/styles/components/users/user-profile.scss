@@ -22,6 +22,10 @@
     }
   }
 
+  .user-warning {
+    @apply mx-4 mt-2;
+  }
+
   .services {
     @apply flex flex-col flex-1 overflow-auto p-4;
 

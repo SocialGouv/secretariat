@@ -5,6 +5,7 @@ import { haveSimilarServices } from "@/services/users"
 import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
 import UserLastUpdate from "./user-last-update"
+import UserWarning from "./user-warning"
 
 const UserProfile = ({
   user,
@@ -52,6 +53,7 @@ const UserProfile = ({
             <UserLastUpdate date={user.updated_at} />
           </div>
           <UserArrivalDeparture user={user} />
+          <UserWarning type={user.warning} />
           <UserServices user={user} />
         </div>
       </div>

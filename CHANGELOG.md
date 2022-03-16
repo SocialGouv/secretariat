@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/SocialGouv/secretariat/compare/v1.18.0...v1.19.0) (2022-03-16)
+
+
+### Features
+
+* display user last update ([#137](https://github.com/SocialGouv/secretariat/issues/137)) ([b2b4562](https://github.com/SocialGouv/secretariat/commit/b2b4562ef4e296e43448b5e3d049f7448c7120b5))
+
 # [1.18.0](https://github.com/SocialGouv/secretariat/compare/v1.17.0...v1.18.0) (2022-03-16)
 
 

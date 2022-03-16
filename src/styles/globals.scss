@@ -51,6 +51,6 @@ main {
   @apply flex-1;
 
   .loader {
-    height: 100%;
+    height: calc(100vh - 33.5rem);
   }
 }

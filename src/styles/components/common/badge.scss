@@ -1,0 +1,17 @@
+.badge {
+  @apply rounded inline-block text-xs font-bold py-1 px-2 uppercase relative;
+
+  &.warning {
+    @apply text-warning-425 bg-warning-950 pl-5;
+
+    &::before {
+      top: 0.45rem;
+      left: 0.35rem;
+      line-height: 1;
+      font-size: 12px;
+      content: "\EA20";
+      position: absolute;
+      font-family: remixicon, sans-serif !important;
+    }
+  }
+}

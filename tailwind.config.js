@@ -11,6 +11,10 @@ const colors = {
     900: "#f7ecdb",
     925: "#f3e2d9",
   },
+  warning: {
+    950: "#ffe9e6",
+    425: "#b34000",
+  },
   red: {
     100: "#fff4f3",
     300: "#f7bfc3",

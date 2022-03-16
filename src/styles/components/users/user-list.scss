@@ -29,11 +29,19 @@
     }
   }
 
-  .services {
-    @apply flex flex-row justify-end;
+  .alerts-services {
+    @apply flex justify-between mt-2;
 
-    & > div {
-      @apply flex justify-center ml-2;
+    &.no-alert {
+      @apply justify-end;
+    }
+
+    .services {
+      @apply flex flex-row justify-end items-center;
+  
+      & > div {
+        @apply flex justify-center ml-2;
+      }
     }
   }
 }

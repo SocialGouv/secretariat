@@ -1,4 +1,5 @@
 @use "./components/common/tag.scss";
+@use "./components/common/badge.scss";
 @use "./components/common/input.scss";
 @use "./components/common/tile.scss";
 @use "./components/common/anchor.scss";
@@ -8,18 +9,18 @@
 @use "./components/common/table.scss";
 @use "./components/common/datepicker.scss";
 @use "./components/authenticated-user.scss";
-@use "./components/user-last-update.scss";
-@use "./components/user-list.scss";
 @use "./components/menu.scss";
 @use "./components/search.scss";
-@use "./components/users.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
 @use "./components/footer.scss";
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
+@use "./components/users/user-list.scss";
+@use "./components/users/users-view.scss";
 @use "./components/users/user-profile.scss";
+@use "./components/users/user-last-update.scss";
 @use "./components/users/user-arrival-departure.scss";
 
 html, body {

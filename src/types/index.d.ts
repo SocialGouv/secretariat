@@ -1,6 +1,8 @@
 interface BasicUser {
   id: string
   login?: string
+  arrival?: Date
+  departure?: Date
   avatarUrl?: string
   teams?: GithubTeam[]
   github?: GithubUser
@@ -10,6 +12,7 @@ interface BasicUser {
   ovh?: OVHUser
   sentry?: SentryUser
   zammad?: ZammadUser
+  warning?: string
 }
 
 interface UserWithName extends BasicUser {

@@ -1,0 +1,30 @@
+.user-arrival-departure {
+  @apply
+    m-4
+    p-2
+    grid
+    gap-x-2
+    text-sm
+    bg-beige
+    grid-cols-2;
+
+  input {
+    width: 100%;
+  }
+
+  .display-date {
+    @apply
+      p-2
+      flex
+      border
+      items-center
+      justify-center
+      cursor-pointer
+      border-gray-100
+      hover:border-gray-300;
+    
+    i {
+      @apply relative top-px;
+    }
+  }
+}

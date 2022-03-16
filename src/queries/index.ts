@@ -11,6 +11,9 @@ export const getUsers = gql`
       ovh
       sentry
       zammad
+      warning
+      arrival
+      departure
     }
   }
 `
@@ -26,6 +29,9 @@ export const getUserById = gql`
       sentry
       nextcloud
       mattermost
+      warning
+      arrival
+      departure
     }
   }
 `

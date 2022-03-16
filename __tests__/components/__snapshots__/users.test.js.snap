@@ -546,6 +546,32 @@ exports[`renders users 1`] = `
             </h2>
           </div>
           <div
+            class="user-arrival-departure"
+          >
+            <div
+              class="date-field"
+            >
+              <div
+                class="display-date"
+              >
+                <i>
+                  aucune date
+                </i>
+              </div>
+            </div>
+            <div
+              class="date-field"
+            >
+              <div
+                class="display-date"
+              >
+                <i>
+                  aucune date
+                </i>
+              </div>
+            </div>
+          </div>
+          <div
             class="services"
           />
         </div>

@@ -3,9 +3,8 @@ import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import useToken from "@/services/token"
 import useSearch from "@/services/search"
+import useFilters from "@/services/filters"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
-import { isString } from "util"
-import useFilters from "./filters"
 
 interface UserMapping {
   email: string

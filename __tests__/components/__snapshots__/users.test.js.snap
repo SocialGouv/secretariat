@@ -587,6 +587,9 @@ exports[`renders users 1`] = `
             </div>
           </div>
           <div
+            class="user-warning"
+          />
+          <div
             class="services"
           />
         </div>

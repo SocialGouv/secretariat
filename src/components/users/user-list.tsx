@@ -12,7 +12,6 @@ const UserList = ({
 }) => {
   const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
-  console.log("PAGE SIZE", pageSize)
 
   return (
     <div className="user-list">

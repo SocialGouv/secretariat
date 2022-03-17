@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/SocialGouv/secretariat/compare/v1.19.0...v1.19.1) (2022-03-17)
+
+
+### Bug Fixes
+
+* change user avatar ([#139](https://github.com/SocialGouv/secretariat/issues/139)) ([e9bd573](https://github.com/SocialGouv/secretariat/commit/e9bd573f1336e87530f5f142e4ed94daf6821583))
+
 # [1.19.0](https://github.com/SocialGouv/secretariat/compare/v1.18.0...v1.19.0) (2022-03-16)
 
 

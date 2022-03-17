@@ -5,10 +5,9 @@ header {
   top-0
   left-0
   right-0
-  bg-white
   shadow-lg
-  dark:bg-gray-800
-  dark:text-gray-200;
+  bg-grey-1000-main
+  dark:bg-grey-125-main;
 
   .container {
     @apply flex py-5 items-center mx-auto;

@@ -1,6 +1,6 @@
 .ReactModalPortal { /* stylelint-disable-line */
   .ReactModal__Overlay { /* stylelint-disable-line */
-    @apply flex justify-center items-center mt-28 bg-red-100 z-10;
+    @apply flex justify-center items-center mt-28 bg-red-marianne-100-main z-10;
 
     background-color: rgb(255 255 255 / 90%) !important;
     opacity: 0;
@@ -25,10 +25,13 @@
     }
 
     .users {
-      @apply flex items-center  ;
+      @apply flex items-center;
 
       & > .user {
-        @apply flex-1 bg-beige;
+        @apply
+        flex-1
+        bg-grey-975-main
+        dark:bg-grey-75-main;
       }
 
       & > i {

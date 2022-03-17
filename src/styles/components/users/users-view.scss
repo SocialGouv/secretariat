@@ -5,19 +5,35 @@
     .tile {
       @apply
         mb-4
-        border-t
-        border-x
+        border
         shadow-sm
-        border-b-2
-        bg-beige
+        border-l-2
         cursor-pointer
-        border-t-gray-200
-        border-x-gray-200
-        border-b-blue-500
-        hover:bg-gray-200;
+
+        bg-grey-1000-active
+        dark:bg-grey-50-active
+        hover:bg-grey-1000-hover
+        dark:hover:bg-grey-50-hover
+
+        border-grey-925-active
+        dark:border-grey-125-main
+        hover:border-grey-925-hover
+        dark:hover:border-grey-125-hover
+
+        border-l-grey-200-active
+        hover:border-l-grey-200-hover
+        dark:border-l-grey-850-active
+        dark:hover:border-l-grey-850-hover;
 
       &.selected {
-        @apply bg-white shadow-none;
+        @apply
+          shadow-none
+          bg-grey-1000-main
+          dark:bg-grey-50-main
+          border-grey-925-main
+          dark:border-grey-125-main
+          border-l-blue-france-113-main
+          dark:border-l-blue-france-625-main;
       }
     }
 

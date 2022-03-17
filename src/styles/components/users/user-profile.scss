@@ -8,7 +8,7 @@
     border-l-2
     overflow-auto
     border-gray-300
-    border-l-blue-500;
+    border-l-blue-france-113-main;
 
   .header {
     @apply flex items-center border-b p-4 shadow-sm relative;
@@ -61,7 +61,7 @@
           }
 
           &:nth-child(odd) > div {
-            @apply bg-beige;
+            @apply bg-grey-975-main dark:bg-grey-75-main;
           }
         }
       }

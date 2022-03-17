@@ -3,7 +3,7 @@ table {
 
   thead {
     tr {
-      @apply bg-beige;
+      @apply bg-grey-975-main;
 
       th {
         @apply
@@ -18,7 +18,11 @@ table {
 
   tbody {
     tr {
-      @apply even:bg-beige odd:bg-white;
+      @apply
+        even:bg-grey-975-main
+        odd:bg-grey-1000-main
+        dark:even:bg-grey-75-main
+        dark:odd:bg-grey-50-main;
     }
   }
 

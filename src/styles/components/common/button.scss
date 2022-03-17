@@ -3,7 +3,6 @@ a.btn {
   @apply
     px-4
     py-3
-    flex
     relative
     leading-4
     inline-block
@@ -14,11 +13,14 @@ a.btn {
     @apply
       shadow
       font-bold
-      text-white
-      bg-blue-500
+      text-grey-1000-main
+      bg-blue-france-113-main
+      dark:bg-blue-france-625-main
       active:shadow-sm
-      hover:bg-blue-400
-      active:bg-blue-300
+      hover:bg-blue-france-113-hover
+      dark:hover:bg-blue-france-625-hover
+      active:bg-blue-france-113-active
+      dark:active:bg-blue-france-625-active
       disabled:shadow-none
       disabled:bg-gray-200
       disabled:text-gray-600;
@@ -28,15 +30,15 @@ a.btn {
     @apply
       shadow
       border
-      text-blue-500
-      border-blue-500
+      text-blue-france-113-main
+      border-blue-france-113-main
       active:shadow-sm
-      hover:bg-hover
-      active:bg-hover;
+      hover:bg-gray-300
+      active:bg-gray-300;
   }
 
   &.link {
-    @apply p-0 underline text-red-500;
+    @apply p-0 underline text-red-marianne-472-main;
   }
 
   &.sm {

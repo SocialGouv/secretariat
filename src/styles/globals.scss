@@ -9,7 +9,6 @@
 @use "./components/common/alert.scss";
 @use "./components/common/datepicker.scss";
 @use "./components/authenticated-user.scss";
-@use "./components/menu.scss";
 @use "./components/search.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
@@ -32,7 +31,10 @@ body {
   flex
   flex-1
   overflow-hidden
-  dark:bg-gray-750;
+  bg-grey-1000-main
+  text-grey-50-main
+  dark:bg-grey-125-main
+  dark:text-grey-1000-main;
 }
 
 #__next { /* stylelint-disable-line */

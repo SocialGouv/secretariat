@@ -46,7 +46,7 @@ const UserProfile = ({
               width={48}
               height={48}
               alt="user avatar"
-              src={user.avatarUrl || "/images/avatar.jpeg"}
+              src={user.avatarUrl || "/images/user-avatar.svg"}
             />
             <h2>{user.name}</h2>
             <UserLastUpdate date={user.updated_at} />

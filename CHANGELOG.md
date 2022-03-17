@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/SocialGouv/secretariat/compare/v1.19.1...v1.20.0) (2022-03-17)
+
+
+### Features
+
+* display user warnings ([#138](https://github.com/SocialGouv/secretariat/issues/138)) ([7d7d95c](https://github.com/SocialGouv/secretariat/commit/7d7d95cccb23946cd1bd06b76c9d31b45cb0d781))
+
 ## [1.19.1](https://github.com/SocialGouv/secretariat/compare/v1.19.0...v1.19.1) (2022-03-17)
 
 

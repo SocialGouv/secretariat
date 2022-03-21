@@ -1,3 +1,10 @@
+## [1.16.1-beta.3](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.2...v1.16.1-beta.3) (2022-03-21)
+
+
+### Bug Fixes
+
+* removed verbose install ([caa9662](https://github.com/SocialGouv/secretariat/commit/caa9662b4244a64dc371272a893e9eac1a968677))
+
 ## [1.16.1-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.1...v1.16.1-beta.2) (2022-03-21)
 
 

@@ -1,14 +1,30 @@
 .badge {
-  @apply rounded inline-block text-xs font-bold py-1 px-2 uppercase relative;
+  @apply
+    px-1.5
+    py-0.5
+    rounded
+    text-sm
+    flex-row
+    font-bold
+    uppercase
+    max-w-full
+    inline-flex
+    items-center;
 
   &.warning {
-    @apply text-warning-425-main bg-warning-950-main pl-5;
+    @apply
+    pl-6
+    relative
+    bg-warning-950-main
+    text-warning-425-main
+    dark:bg-warning-125-main
+    dark:text-warning-625-main;
 
     &::before {
-      top: 0.45rem;
+      top: 0.25rem;
       left: 0.35rem;
       line-height: 1;
-      font-size: 12px;
+      font-size: 16px;
       content: "\EA20";
       position: absolute;
       font-family: remixicon, sans-serif !important;

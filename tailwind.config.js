@@ -1,6 +1,4 @@
 const colors = {
-  // white: "#fff",
-  beige: "#f9f8f6",
   gray: {
     100: "#F8F8F8",
     200: "#F0F0F0",
@@ -423,6 +421,7 @@ module.exports = {
     textColor: colors,
     borderColor: colors,
     backgroundColor: colors,
+    gradientColorStops: colors,
     fontFamily: {
       bold: ["Marianne", "arial", "sans-serif"],
       sans: ["Marianne", "arial", "sans-serif"],
@@ -437,6 +436,7 @@ module.exports = {
       // },
       boxShadow: {
         input: "inset 0 -2px 0 0 #6a6a6a",
+        "input-dark": "inset 0 -2px 0 0 #e7e7e7",
       },
     },
   },
@@ -447,7 +447,7 @@ module.exports = {
       boxShadow: ["active"],
       cursor: ["disabled"],
       borderWidth: ["last"],
-      gradientColorStops: ["dark"],
+      // gradientColorStops: ["dark"],
       backgroundColor: ["odd", "even", "active"],
     },
   },

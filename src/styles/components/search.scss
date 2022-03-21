@@ -5,10 +5,10 @@
     pt-10
     sticky
     bg-gradient-to-b
-    from-white
-    via-white
-    dark:via-gray-800
-    dark:via-gray-800;
+    from-grey-1000-main
+    via-grey-1000-main
+    dark:from-grey-50-main
+    dark:via-grey-50-main;
 
   .search-field {
     @apply flex relative;
@@ -36,10 +36,10 @@
       pb-8
       justify-between
       bg-gradient-to-b
-      from-white
-      via-white
-      dark:via-gray-800
-      dark:via-gray-800;
+      from-grey-1000-main
+      via-grey-1000-main
+      dark:from-grey-50-main
+      dark:via-grey-50-main;
 
     .counts {
       @apply text-sm;

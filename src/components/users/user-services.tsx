@@ -95,7 +95,6 @@ const ServiceInfo = ({
       </div>
       <div className="title">{service}</div>
     </h3>
-    <hr className="my-2" />
     {service === "github" && user.github && (
       <GithubUserInfo user={user.github} />
     )}

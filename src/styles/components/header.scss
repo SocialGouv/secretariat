@@ -7,13 +7,16 @@ header {
   right-0
   shadow-lg
   bg-grey-1000-main
-  dark:bg-grey-125-main;
+  dark:bg-grey-75-main;
 
   .container {
     @apply flex py-5 items-center mx-auto;
 
     & > a {
-      @apply flex text-gray-700 dark:text-gray-200;
+      @apply
+      flex
+      text-gray-700
+      dark:text-gray-200;
 
       .title {
         @apply flex flex-col justify-center px-8;

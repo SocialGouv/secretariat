@@ -5,18 +5,26 @@
 @layer base {
   body {
     @apply
-      flex
-      flex-col
       text-base
       font-sans
       font-normal
       antialiased
       min-h-screen
-      text-gray-700
-      dark:text-gray-200;
+      
+      bg-grey-1000-main
+      dark:bg-grey-50-main
+    
+      text-grey-200-main
+      dark:text-grey-850-main;
   
     text-size-adjust: 100%;
-    text-rendering: optimizespeed;
+    text-rendering: optimizelegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply
+      text-grey-50-main
+      dark:text-grey-1000-main;
   }
 
   h1 {
@@ -30,36 +38,76 @@
   h3 {
     @apply font-bold;
   }
-  
+
   @font-face {
-    font-style: normal;
-    font-display: swap;
-    font-weight: normal;
-    font-family: Marianne;
-    src: local("Marianne Regular"), url("/fonts/Marianne/Marianne-Regular.woff2") format("woff2");
-  }
-  
-  @font-face {
-    font-weight: bold;
-    font-style: normal;
     font-display: swap;
     font-family: Marianne;
-    src: local("Marianne Bold"), url("/fonts/Marianne/Marianne-Bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/Marianne/Marianne-Light.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Light.woff") format("woff")
   }
   
   @font-face {
-    font-style: normal;
     font-display: swap;
-    font-weight: normal;
-    font-family: Spectral;
-    src: local("Spectral"), url("/fonts/Spectral/Spectral-Regular.ttf") format("truetype");
+    font-family: Marianne;
+    font-style: italic;
+    font-weight: 300;
+    src: url("/fonts/Marianne/Marianne-Light_Italic.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Light_Italic.woff") format("woff")
   }
   
   @font-face {
-    font-weight: bold;
+    font-display: swap;
+    font-family: Marianne;
     font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Marianne/Marianne-Regular.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Regular.woff") format("woff")
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: Marianne;
+    font-style: italic;
+    font-weight: 400;
+    src: url("/fonts/Marianne/Marianne-Regular_Italic.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Regular_Italic.woff") format("woff")
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: Marianne;
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/Marianne/Marianne-Bold.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Bold.woff") format("woff")
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: Marianne;
+    font-style: italic;
+    font-weight: 700;
+    src: url("/fonts/Marianne/Marianne-Bold_Italic.woff2") format("woff2"),
+      url("/fonts/Marianne/Marianne-Bold_Italic.woff") format("woff")
+  }
+  
+  @font-face {
     font-display: swap;
     font-family: Spectral;
-    src: local("Spectral"), url("/fonts/Spectral/Spectral-Bold.ttf") format("truetype");
-  }  
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Spectral/Spectral-Regular.woff2") format("woff2"),
+      url("/fonts/Spectral/Spectral-Regular.woff") format("woff")
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: Spectral;
+    font-style: normal;
+    font-weight: 900;
+    src: url("/fonts/Spectral/Spectral-ExtraBold.woff2") format("woff2"),
+      url("/fonts/Spectral/Spectral-ExtraBold.woff") format("woff")
+  }
 }

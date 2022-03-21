@@ -16,7 +16,8 @@
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
-@use "./components/users/user-list.scss";
+@use "./components/users/user-item.scss";
+@use "./components/users/user-header.scss";
 @use "./components/users/users-view.scss";
 @use "./components/users/user-profile.scss";
 @use "./components/users/user-last-update.scss";
@@ -30,11 +31,8 @@ body {
   @apply
   flex
   flex-1
-  overflow-hidden
-  bg-grey-1000-main
-  text-grey-50-main
-  dark:bg-grey-125-main
-  dark:text-grey-1000-main;
+  flex-col
+  overflow-hidden;
 }
 
 #__next { /* stylelint-disable-line */
@@ -61,4 +59,12 @@ main {
   .loader {
     height: calc(100vh - 33.5rem);
   }
+}
+
+path {
+  @apply fill-red-600 dark:fill-lime-500;
+}
+
+.totototo {
+  fill: none;
 }

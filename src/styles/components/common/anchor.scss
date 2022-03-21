@@ -1,18 +1,36 @@
 a {
-  @apply text-blue-france-113-main;
+  @apply
+    outline-none
+    decoration-0;
+
+  &:link {
+    @apply text-blue-france-113-main;
+  }
+  
+  &:visited {
+    @apply text-blue-france-113-main;
+  }
+  
+  &:focus, &:hover {
+    @apply text-blue-france-113-hover;
+  }
+  
+  &:active {
+    @apply text-blue-france-113-active;
+  }
+
+  &[target="_blank"] {
+    &::after {
+      top: 2px;
+      left: 1px;
+      content: "\ecaf";
+      font-style: normal;
+      position: relative;
+      font-family: remixicon, sans-serif !important;
+    }
+  }
 
   i {
     @apply relative top-0.5 mr-1;
-  }
-}
-
-a[target="_blank"] {
-  &::after {
-    top: 2px;
-    left: 1px;
-    content: "\ecaf";
-    font-style: normal;
-    position: relative;
-    font-family: remixicon, sans-serif !important;
   }
 }

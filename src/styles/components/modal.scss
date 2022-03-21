@@ -1,34 +1,54 @@
 .ReactModalPortal { /* stylelint-disable-line */
-  .ReactModal__Overlay { /* stylelint-disable-line */
-    @apply flex justify-center items-center mt-28 bg-red-100 z-10;
+  .modal-overlay {
+    @apply
+      flex
+      z-10
+      mt-28
+      fixed
+      inset-0
+      opacity-0
+      ease-in-out
+      items-center
+      duration-300
+      justify-center
+      transition-opacity
+      bg-grey-1000-main/90
+      dark:bg-grey-50-main/90;
 
-    background-color: rgb(255 255 255 / 90%) !important;
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-  }
+    &[class*="--after-open"] {
+      opacity: 1;
+    }
 
-  .ReactModal__Overlay--after-open { /* stylelint-disable-line */
-    opacity: 1;
-  }
-
-  .ReactModal__Overlay--before-close { /* stylelint-disable-line */
+    &[class*="--before-close"] {
       opacity: 0;
+    }
   }
 
-  .ReactModal__Content { /* stylelint-disable-line */
-    @apply relative -translate-y-1/4 shadow-lg;
-
-    position: relative !important;
+  .modal {
+    @apply
+      p-4
+      rounded
+      relative
+      shadow-lg
+      outline-none
+      -translate-y-1/4
+      bg-grey-1000-main
+      dark:bg-grey-75-main
+      border-grey-925-main
+      dark:border-grey-125-main;
 
     .close {
       @apply absolute right-0 top-2;
     }
 
     .users {
-      @apply flex items-center  ;
+      @apply flex items-center;
 
       & > .user {
-        @apply flex-1 bg-beige;
+        @apply
+          flex-1
+          bg-grey-950-main
+          dark:bg-grey-100-main;
       }
 
       & > i {

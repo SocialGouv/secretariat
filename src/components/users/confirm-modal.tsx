@@ -1,6 +1,6 @@
 import Modal from "react-modal"
 
-import UserTemplate from "@/components/common/user-template"
+import UserTemplate from "@/components/users/user-template"
 
 const ConfirmModal = ({
   isOpen,
@@ -17,9 +17,11 @@ const ConfirmModal = ({
 }) => (
   <Modal
     isOpen={isOpen}
+    className="modal"
     ariaHideApp={false}
     onRequestClose={onRequestClose}
     contentLabel="Merge Users Modal"
+    overlayClassName="modal-overlay"
   >
     <button className="close" onClick={onRequestClose}>
       <i className="ri-close-line"></i>

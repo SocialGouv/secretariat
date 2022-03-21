@@ -1,0 +1,19 @@
+.user {
+  @apply flex flex-col p-4;
+
+  .alerts-services {
+    @apply flex justify-between mt-2;
+
+    &.no-alert {
+      @apply justify-end;
+    }
+
+    .services {
+      @apply flex flex-row justify-end items-center;
+  
+      & > div {
+        @apply flex justify-center ml-2;
+      }
+    }
+  }
+}

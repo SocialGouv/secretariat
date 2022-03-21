@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd"
 
-import UserTemplate from "@/components/common/user-template"
+import UserTemplate from "@/components/users/user-template"
 
 const UserItem = ({
   user,

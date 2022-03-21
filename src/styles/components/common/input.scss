@@ -5,11 +5,15 @@ input[type="search"] {
     px-4
     border-0
     rounded-t
-    bg-gray-200
-    shadow-input;
+    shadow-input
+    dark:shadow-input-dark
+    bg-grey-950-main
+    dark:bg-grey-100-main;
 
   &.disabled,
   &:disabled {
-    @apply border-gray-400;
+    @apply
+    border-grey-200-main
+    dark:border-grey-850-main;
   }
 }

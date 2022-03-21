@@ -6,6 +6,7 @@ import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
 import UserLastUpdate from "./user-last-update"
 import UserWarning from "./user-warning"
+import UserHeader from "./user-header"
 
 const UserProfile = ({
   user,
@@ -27,11 +28,11 @@ const UserProfile = ({
     [user]
   )
 
-  const backgroundColor = canDrop
-    ? isOver
-      ? "#e8edff"
-      : "#f4f6ff"
-    : "transparent"
+  // const backgroundColor = canDrop
+  //   ? isOver
+  //     ? "#e8edff"
+  //     : "#f4f6ff"
+  //   : "transparent"
 
   return (
     <div className="selected-user">
@@ -40,16 +41,17 @@ const UserProfile = ({
           ref={drop}
           role={"Profile"}
           className="user-profile"
-          style={{ backgroundColor }}
+          // style={{ backgroundColor }}
         >
           <div className="header">
-            <Image
+            <UserHeader user={user} />
+            {/* <Image
               width={48}
               height={48}
               alt="user avatar"
               src={user.avatarUrl || "/images/user-avatar.svg"}
             />
-            <h2>{user.name}</h2>
+            <h2>{user.name}</h2> */}
             <UserLastUpdate date={user.updated_at} />
           </div>
           <UserArrivalDeparture user={user} />

@@ -9,7 +9,6 @@
 @use "./components/common/alert.scss";
 @use "./components/common/datepicker.scss";
 @use "./components/authenticated-user.scss";
-@use "./components/menu.scss";
 @use "./components/search.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
@@ -17,7 +16,8 @@
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
-@use "./components/users/user-list.scss";
+@use "./components/users/user-item.scss";
+@use "./components/users/user-header.scss";
 @use "./components/users/users-view.scss";
 @use "./components/users/user-profile.scss";
 @use "./components/users/user-last-update.scss";
@@ -28,7 +28,11 @@ html, body {
 }
 
 body {
-  @apply flex flex-1 overflow-hidden;
+  @apply
+  flex
+  flex-1
+  flex-col
+  overflow-hidden;
 }
 
 #__next { /* stylelint-disable-line */
@@ -55,4 +59,12 @@ main {
   .loader {
     height: calc(100vh - 33.5rem);
   }
+}
+
+path {
+  @apply fill-red-600 dark:fill-lime-500;
+}
+
+.totototo {
+  fill: none;
 }

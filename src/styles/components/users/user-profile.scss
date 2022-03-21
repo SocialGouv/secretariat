@@ -7,18 +7,26 @@
     shadow-sm
     border-l-2
     overflow-auto
-    border-gray-300
-    border-l-blue-500;
+    bg-grey-1000-main
+    dark:bg-grey-75-main
+    border-grey-925-main
+    dark:border-grey-125-main
+    border-l-blue-france-113-main
+    dark:border-l-blue-france-625-main;
 
   .header {
-    @apply flex items-center border-b p-4 shadow-sm relative;
+    @apply
+      p-4
+      flex
+      border-b
+      relative
+      shadow-sm
+      items-center
+      border-b-grey-925-main
+      dark:border-b-grey-125-main;
 
     h2 {
-      @apply ml-4;
-
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      @apply ml-4 truncate;
     }
   }
 
@@ -27,7 +35,12 @@
   }
 
   .services {
-    @apply flex flex-col flex-1 overflow-auto p-4;
+    @apply
+      p-4
+      flex
+      flex-1
+      flex-col
+      overflow-auto;
 
     .service {
       @apply flex flex-col pb-8;
@@ -37,7 +50,14 @@
       }
 
       h3 {
-        @apply flex items-center;
+        @apply
+        flex
+        pb-2
+        mb-2
+        border-b
+        items-center
+        border-b-grey-925-main
+        dark:border-b-grey-125-main;
 
         .icon {
           @apply flex;
@@ -61,7 +81,9 @@
           }
 
           &:nth-child(odd) > div {
-            @apply bg-beige;
+            @apply
+              bg-grey-975-main
+              dark:bg-grey-75-main;
           }
         }
       }

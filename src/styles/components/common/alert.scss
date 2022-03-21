@@ -1,8 +1,18 @@
 .alert {
-  @apply flex border border-red-600 items-center;
+  @apply
+  flex
+  border
+  items-center
+  border-warning-625-main
+  dark:border-warning-425-main;
 
   i {
-    @apply bg-red-600 text-white p-2 text-2xl;
+    @apply 
+    p-2
+    text-2xl
+    text-grey-1000-main
+    bg-warning-625-main
+    dark:bg-warning-425-main
   }
 
   & > div {

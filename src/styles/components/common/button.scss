@@ -3,7 +3,6 @@ a.btn {
   @apply
     px-4
     py-3
-    flex
     relative
     leading-4
     inline-block
@@ -14,29 +13,62 @@ a.btn {
     @apply
       shadow
       font-bold
-      text-white
-      bg-blue-500
       active:shadow-sm
-      hover:bg-blue-400
-      active:bg-blue-300
       disabled:shadow-none
-      disabled:bg-gray-200
-      disabled:text-gray-600;
+      
+      text-grey-1000-main
+      dark:text-grey-50-main
+      hover:text-grey-1000-hover
+      dark:hover:text-grey-50-hover
+      active:text-grey-1000-active
+      dark:active:text-grey-50-active
+      
+      bg-blue-france-113-main
+      dark:bg-blue-france-625-main
+      hover:bg-blue-france-113-hover
+      dark:hover:bg-blue-france-625-hover
+      active:bg-blue-france-113-active
+      dark:active:bg-blue-france-625-active
+      
+      disabled:bg-grey-925-main
+      dark:disabled:bg-grey-125-main
+      disabled:text-grey-625-main
+      dark:disabled:text-grey-425-main
+      ;
   }
 
   &.secondary {
     @apply
       shadow
       border
-      text-blue-500
-      border-blue-500
       active:shadow-sm
-      hover:bg-hover
-      active:bg-hover;
+      hover:bg-grey-1000-hover
+      dark:hover:bg-grey-50-hover
+      active:bg-grey-1000-active
+      dark:active:bg-grey-50-active
+
+      border-blue-france-113-main
+      dark:border-blue-france-625-main
+      hover:border-blue-france-113-hover
+      dark:hover:border-blue-france-625-hover
+      active:border-blue-france-113-active
+      dark:active:border-blue-france-625-active
+
+      text-blue-france-113-main
+      dark:text-blue-france-625-main
+      hover:text-blue-france-113-hover
+      dark:hover:text-blue-france-625-hover
+      active:text-blue-france-113-active
+      dark:active:text-blue-france-625-active
+      ;
   }
 
   &.link {
-    @apply p-0 underline text-red-500;
+    @apply
+      p-0
+      underline
+      text-blue-france-113-main
+      dark:text-blue-france-625-main;
   }
 
   &.sm {

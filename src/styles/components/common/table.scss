@@ -3,17 +3,26 @@ table {
 
   thead {
     tr {
-      @apply bg-beige;
+      @apply bg-grey-975-main;
 
       th {
-        @apply p-2 border-b-2 border-gray-600 text-gray-700;
+        @apply
+          p-2
+          border-b-2
+          text-gray-700
+          border-gray-600
+          dark:text-gray-200;
       }
     }
   }
 
   tbody {
     tr {
-      @apply even:bg-beige odd:bg-white;
+      @apply
+        even:bg-grey-975-main
+        odd:bg-grey-1000-main
+        dark:even:bg-grey-75-main
+        dark:odd:bg-grey-50-main;
     }
   }
 

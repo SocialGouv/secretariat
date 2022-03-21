@@ -1,3 +1,10 @@
+## [1.16.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.16.0...v1.16.1-beta.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* node version ([db6636f](https://github.com/SocialGouv/secretariat/commit/db6636fec2c44bf760feb53504882b95651de3c4))
+
 # [1.16.0](https://github.com/SocialGouv/secretariat/compare/v1.15.4...v1.16.0) (2022-03-10)
 
 

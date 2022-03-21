@@ -1,3 +1,10 @@
+## [1.16.1-beta.6](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.5...v1.16.1-beta.6) (2022-03-21)
+
+
+### Bug Fixes
+
+* alpine ([76c695c](https://github.com/SocialGouv/secretariat/commit/76c695c9fb97740eb97015d64c47e89f94767f96))
+
 ## [1.16.1-beta.5](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.4...v1.16.1-beta.5) (2022-03-21)
 
 

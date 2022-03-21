@@ -1,3 +1,10 @@
+## [1.16.1-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.1...v1.16.1-beta.2) (2022-03-21)
+
+
+### Bug Fixes
+
+* verbose yarn ([da55d95](https://github.com/SocialGouv/secretariat/commit/da55d95342f701417ed281666cee1a555586dcde))
+
 ## [1.16.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.16.0...v1.16.1-beta.1) (2022-03-21)
 
 

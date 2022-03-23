@@ -1,3 +1,15 @@
+## [1.16.1-beta.9](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.8...v1.16.1-beta.9) (2022-03-23)
+
+
+### Bug Fixes
+
+* node version LTS ([094c106](https://github.com/SocialGouv/secretariat/commit/094c1069b581b644bd9fcc1da76a2b64e52a2fb0))
+
+
+### Reverts
+
+* Revert "Revert "fix: restore node version"" ([40efbcb](https://github.com/SocialGouv/secretariat/commit/40efbcb120fd47a08c78848ba46b8baee1e6c1a8))
+
 ## [1.16.1-beta.8](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.7...v1.16.1-beta.8) (2022-03-22)
 
 

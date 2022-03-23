@@ -148,14 +148,12 @@ export const mergeUsers = async (
 const useUsers = () => {
   const [token] = useToken()
 
-  const getMappedUsers = async (query: string, token: string) => {
-    const data = await fetcher(query, token)
+  const getMappedUsers = async () => {
+    const data = await fetcher(getUsers, token)
     return Promise.resolve(mapUsers(data.users))
   }
 
-  const { data } = useSWR(token ? [getUsers, token] : null, getMappedUsers, {
-    use: [],
-  })
+  const { data } = useSWR(token ? "/users" : null, getMappedUsers)
 
   return data
 }
@@ -189,8 +187,8 @@ export const useFilteredUsers = () => {
   }
 
   const matchServices = (user: User): boolean => {
-    if (filters) {
-      for (const [key, value] of Object.entries(filters)) {
+    if (filters?.services) {
+      for (const [key, value] of Object.entries(filters.services)) {
         if (value && user[key as keyof User]) {
           return true
         }
@@ -200,15 +198,10 @@ export const useFilteredUsers = () => {
   }
 
   const { data } = useSWR(
-    users ? `users/search/${JSON.stringify(filters)}/${query}` : null,
+    users && filters
+      ? `/users/filters/${JSON.stringify(filters)}/search/${query}`
+      : null,
     () => {
-      console.log(
-        "GET USERS",
-        query,
-        filters,
-        `users/search/${JSON.stringify(filters)}/${query}`
-      )
-
       if (users) {
         const regex = new RegExp(query || "", "gi")
         return users.filter(
@@ -235,7 +228,7 @@ export const usePagedUsers = () => {
 
   const { data } = useSWR(
     users
-      ? `users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
+      ? `/users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
       : null,
     () => {
       return users && users.slice(0, (page || 1) * pageSize)

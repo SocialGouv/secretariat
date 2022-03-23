@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 import SERVICES from "@/utils/SERVICES"
 import Badge from "@/components/common/badge"
 import UserHeader from "@/components/users/user-header"

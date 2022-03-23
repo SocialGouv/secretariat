@@ -415,25 +415,30 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    fontFamily: {
-      spectral: ["Spectral", "serif"],
-    },
-    textColor: colors,
-    borderColor: colors,
-    backgroundColor: colors,
-    gradientColorStops: colors,
-    fontFamily: {
-      bold: ["Marianne", "arial", "sans-serif"],
-      sans: ["Marianne", "arial", "sans-serif"],
-    },
+    // colors,
+    // fontFamily: {
+    //   spectral: ["Spectral", "serif"],
+    // },
+
+    // textColor: colors,
+    // borderColor: colors,
+    // backgroundColor: colors,
+    // gradientColorStops: colors,
+    // fontFamily: {
+    //   spectral: ["Spectral", "serif"],
+    //   bold: ["Marianne", "arial", "sans-serif"],
+    //   sans: ["Marianne", "arial", "sans-serif"],
+    // },
     extend: {
-      // textColor: colors,
-      // borderColor: colors,
-      // backgroundColor: colors,
-      // fontFamily: {
-      //   bold: ["Marianne", "arial", "sans-serif"],
-      //   sans: ["Marianne", "arial", "sans-serif"],
-      // },
+      textColor: colors,
+      borderColor: colors,
+      backgroundColor: colors,
+      gradientColorStops: colors,
+      fontFamily: {
+        spectral: ["Spectral", "serif"],
+        bold: ["Marianne", "arial", "sans-serif"],
+        sans: ["Marianne", "arial", "sans-serif"],
+      },
       boxShadow: {
         input: "inset 0 -2px 0 0 #6a6a6a",
         "input-dark": "inset 0 -2px 0 0 #e7e7e7",

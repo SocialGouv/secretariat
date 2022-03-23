@@ -347,65 +347,6 @@ const colors = {
     821: { main: "#d0c3b7", hover: "#eae5e1", active: "#f4f2f0" },
     702: { main: "#aea397", hover: "#d5cabd", active: "#e2dbd4" },
   },
-  // white: "#ffffff",
-  // info: "#0762c8",
-  // focus: "#2a7ffe",
-  // error: "#e10600",
-  // success: "#008941",
-  // beige: "#f9f8f6",
-  // hover: "#e0e0e0",
-  // brown: {
-  //   425: "#845d48",
-  //   600: "#c08c65",
-  //   900: "#f7ecdb",
-  //   925: "#f3e2d9",
-  // },
-  // warning: {
-  //   950: "#ffe9e6",
-  //   425: "#b34000",
-  // },
-  // red: {
-  //   100: "#fff4f3",
-  //   300: "#f7bfc3",
-  //   500: "#e1000f",
-  // },
-  // indigo: {
-  //   300: "#9a9aff",
-  //   200: "#ececff",
-  //   100: "#f5f5ff",
-  // },
-  // blue: {
-  //   75: "#1b1b35", // dark
-  //   113: "#000091",
-  //   100: "#21213f", // dark
-  //   125: "#272747", // dark
-  //   200: "#313178", // dark
-  //   525: "#6a6af4", // dark/light
-  //   625: "#8585f6", // dark
-  //   850: "#cacafb",
-  //   925: "#e3e3fd",
-  //   950: "#ececfe",
-  //   975: "#f5f5fe",
-  // },
-  // ecume: {
-  //   247: "#2f4077",
-  //   400: "#465f9d",
-  //   850: "#bfccfb",
-  //   925: "#dee5fd",
-  //   950: "#e9edfe",
-  //   975: "#f4f6fe",
-  // },
-  // gray: {
-  //   800: "#1e1e1e",
-  //   750: "#2a2a2a",
-  //   700: "#383838",
-  //   600: "#6a6a6a",
-  //   500: "#9c9c9c",
-  //   400: "#cecece",
-  //   300: "#e7e7e7",
-  //   200: "#f0f0f0",
-  //   100: "#f8f8f8",
-  // },
 }
 
 module.exports = {
@@ -415,20 +356,6 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    // colors,
-    // fontFamily: {
-    //   spectral: ["Spectral", "serif"],
-    // },
-
-    // textColor: colors,
-    // borderColor: colors,
-    // backgroundColor: colors,
-    // gradientColorStops: colors,
-    // fontFamily: {
-    //   spectral: ["Spectral", "serif"],
-    //   bold: ["Marianne", "arial", "sans-serif"],
-    //   sans: ["Marianne", "arial", "sans-serif"],
-    // },
     extend: {
       textColor: colors,
       borderColor: colors,
@@ -452,7 +379,6 @@ module.exports = {
       boxShadow: ["active"],
       cursor: ["disabled"],
       borderWidth: ["last"],
-      // gradientColorStops: ["dark"],
       backgroundColor: ["odd", "even", "active"],
     },
   },

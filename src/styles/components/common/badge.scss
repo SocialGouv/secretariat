@@ -1,7 +1,5 @@
 .badge {
   @apply
-    px-1.5
-    py-0.5
     rounded
     text-sm
     flex-row
@@ -9,24 +7,28 @@
     uppercase
     max-w-full
     inline-flex
-    items-center;
+    items-center
+    leading-6;
 
   &.warning {
     @apply
-    pl-6
-    relative
+    px-2
     bg-warning-950-main
     text-warning-425-main
     dark:bg-warning-125-main
     dark:text-warning-625-main;
 
     &::before {
-      top: 0.25rem;
-      left: 0.35rem;
-      line-height: 1;
-      font-size: 16px;
+      @apply text-base mr-1 -ml-1;
+
+      // top: 0.25rem;
+      // left: 0.35rem;
+      // line-height: 1;
+      // font-size: 16px;
+      font-weight: 400;
       content: "\EA20";
-      position: absolute;
+
+      // position: absolute;
       font-family: remixicon, sans-serif !important;
     }
   }

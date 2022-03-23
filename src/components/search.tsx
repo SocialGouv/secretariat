@@ -1,11 +1,10 @@
 import debounceFn from "debounce-fn"
 import { useMemo, useState } from "react"
 
-import SERVICES from "@/utils/SERVICES"
 import useSearch from "@/services/search"
-import ServiceLogo from "@/components/common/service-logo"
-import { useFilteredUsers } from "@/services/users"
 import useFilters from "@/services/filters"
+import { useFilteredUsers } from "@/services/users"
+import ServiceLogo from "@/components/common/service-logo"
 
 const Count = () => {
   const { users: filteredUsers } = useFilteredUsers()
@@ -19,21 +18,32 @@ const Count = () => {
 }
 
 const Filters = () => {
-  const { filters: services, setFilters: setServices } = useFilters()
+  const { filters, setFilters } = useFilters()
 
   return (
     <div className="filters">
       <div className="services">
-        {Object.keys(services || []).map((service, i) => (
+        {Object.keys(filters?.services || []).map((service, i) => (
           <div
             key={i}
             className={`service ${
-              services && services[service] ? "" : " opacity-25"
+              filters?.services && filters.services[service]
+                ? ""
+                : " opacity-25"
             }`}
             onClick={() =>
-              setServices({
-                ...services,
-                [service]: !(services && services[service]),
+              filters?.services &&
+              (Object.values(filters.services || {}).filter(
+                (service) => service === true
+              ).length > 1 ||
+                !filters.services[service]) &&
+              setFilters({
+                dates: filters.dates,
+                alerts: filters.alerts,
+                services: {
+                  ...filters.services,
+                  [service]: !(filters.services && filters.services[service]),
+                },
               })
             }
           >

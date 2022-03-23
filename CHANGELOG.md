@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/SocialGouv/secretariat/compare/v1.21.0...v1.21.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* Custom colors ([#141](https://github.com/SocialGouv/secretariat/issues/141)) ([f35a83f](https://github.com/SocialGouv/secretariat/commit/f35a83fdf48543efd5e29475a90f1b809deebee6))
+
 # [1.21.0](https://github.com/SocialGouv/secretariat/compare/v1.20.0...v1.21.0) (2022-03-21)
 
 

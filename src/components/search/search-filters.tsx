@@ -1,23 +1,8 @@
-import debounceFn from "debounce-fn"
-import { useMemo, useState } from "react"
-
-import useSearch from "@/services/search"
 import useFilters from "@/services/filters"
-import { useFilteredUsers } from "@/services/users"
+import SearchCount from "@/components/search/search-count"
 import ServiceLogo from "@/components/common/service-logo"
 
-const Count = () => {
-  const { users: filteredUsers } = useFilteredUsers()
-  return (
-    <div className="counts">
-      <div>
-        <strong>{filteredUsers?.length}</strong> comptes utilisateurs
-      </div>
-    </div>
-  )
-}
-
-const Filters = () => {
+const SearchFilters = () => {
   const { filters, setFilters } = useFilters()
 
   return (
@@ -51,41 +36,9 @@ const Filters = () => {
           </div>
         ))}
       </div>
-      <Count />
+      <SearchCount />
     </div>
   )
 }
 
-const SearchField = () => {
-  const { setQuery } = useSearch()
-  const [value, setValue] = useState("")
-
-  const updateSearch = useMemo(
-    () => debounceFn(setQuery, { wait: 500 }),
-    [setQuery]
-  )
-
-  return (
-    <div className="search-field">
-      <input
-        type="search"
-        name="search"
-        value={value}
-        placeholder="recherche par nom ou par email"
-        onChange={(e) => {
-          setValue(e.target.value)
-          updateSearch(e.target.value)
-        }}
-      />
-    </div>
-  )
-}
-
-const Search = () => (
-  <div className="search">
-    <SearchField />
-    <Filters />
-  </div>
-)
-
-export default Search
+export default SearchFilters

@@ -59,7 +59,7 @@ const UserArrivalDeparture = ({ user }: { user: User }) => {
               <strong>{format(new Date(user.arrival), "dd/MM/Y")}</strong>
             </>
           ) : (
-            <i>aucune date</i>
+            <i>aucune date d&apos;arrivée</i>
           )
         }
         date={user.arrival && new Date(user.arrival)}
@@ -73,7 +73,7 @@ const UserArrivalDeparture = ({ user }: { user: User }) => {
               <strong>{format(new Date(user.departure), "dd/MM/Y")}</strong>
             </>
           ) : (
-            <i>aucune date</i>
+            <i>aucune date de départ</i>
           )
         }
         date={user.departure && new Date(user.departure)}

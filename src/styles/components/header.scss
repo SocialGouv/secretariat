@@ -1,6 +1,5 @@
 header {
-  @apply
-  z-30
+  @apply z-30
   fixed
   top-0
   left-0
@@ -13,8 +12,7 @@ header {
     @apply flex py-5 items-center mx-auto;
 
     & > a {
-      @apply
-      flex
+      @apply flex
       text-gray-700
       dark:text-gray-200;
 

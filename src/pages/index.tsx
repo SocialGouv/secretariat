@@ -12,7 +12,7 @@ const Page = () => {
   if (!session) {
     return (
       <div className="container">
-        <main>
+        <main className="px-6">
           <Login />
         </main>
       </div>

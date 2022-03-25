@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react"
 
 import Login from "@/components/login"
+import Users from "@/components/users"
 import Search from "@/components/search"
-import Users from "@/components/users/index"
 import { usePagedUsers } from "@/services/users"
 
 const Page = () => {

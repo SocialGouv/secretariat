@@ -164,7 +164,7 @@ export const useFilteredUsers = () => {
   const { filters } = useFilters()
 
   // On my quest to trigger Sonar "smells"
-  const searchInValues = (user: User, regex: RegExp): boolean => {
+  const matchSearchQuery = (user: User, regex: RegExp): boolean => {
     const { id, ...data } = user
     const values = Object.values(data)
     return !!values
@@ -197,6 +197,20 @@ export const useFilteredUsers = () => {
     return false
   }
 
+  const matchAlerts = (user: User): boolean => {
+    if (filters?.alerts) {
+      return !!user.warning?.length
+    }
+    return true
+  }
+
+  const matchExpiry = (user: User): boolean => {
+    if (filters?.expiry && user.departure) {
+      return new Date(user.departure).getTime() < filters.expiry.getTime()
+    }
+    return true
+  }
+
   const { data } = useSWR(
     users && filters
       ? `/users/filters/${JSON.stringify(filters)}/search/${query}`
@@ -205,7 +219,11 @@ export const useFilteredUsers = () => {
       if (users) {
         const regex = new RegExp(query || "", "gi")
         return users.filter(
-          (user: User) => matchServices(user) && searchInValues(user, regex)
+          (user: User) =>
+            matchServices(user) &&
+            matchSearchQuery(user, regex) &&
+            matchAlerts(user) &&
+            matchExpiry(user)
         )
       }
       return users

@@ -24,7 +24,6 @@ const DateField = ({
         <DatePicker
           selected={date}
           autoFocus={true}
-          // shouldCloseOnSelect={true}
           onBlur={() => setIsEditing(false)}
           onChange={(date) => {
             onChange(date)
@@ -45,7 +44,7 @@ const UserArrivalDeparture = ({ user }: { user: User }) => {
   const [token] = useToken()
 
   const handleChange = async (date: Record<string, Date | null>) => {
-    const { id, email, name, warning, ...data } = user
+    const { id, email, name, warning, updated_at, ...data } = user
     await fetcher(updateUser, token, { id, _set: { ...data, ...date } })
   }
 
@@ -59,7 +58,7 @@ const UserArrivalDeparture = ({ user }: { user: User }) => {
               <strong>{format(new Date(user.arrival), "dd/MM/Y")}</strong>
             </>
           ) : (
-            <i>aucune date</i>
+            <i>aucune date d&apos;arrivée</i>
           )
         }
         date={user.arrival && new Date(user.arrival)}
@@ -73,7 +72,7 @@ const UserArrivalDeparture = ({ user }: { user: User }) => {
               <strong>{format(new Date(user.departure), "dd/MM/Y")}</strong>
             </>
           ) : (
-            <i>aucune date</i>
+            <i>aucune date de départ</i>
           )
         }
         date={user.departure && new Date(user.departure)}

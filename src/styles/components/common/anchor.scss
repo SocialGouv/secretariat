@@ -4,15 +4,22 @@ a {
     decoration-0;
 
   &:link {
-    @apply text-blue-france-113-main;
+    @apply
+      text-blue-france-113-main
+      dark:text-blue-france-625-main;
   }
   
   &:visited {
-    @apply text-blue-france-113-main;
+    @apply
+      text-blue-france-113-main
+      dark:text-blue-france-625-main;
   }
   
   &:focus, &:hover {
-    @apply text-blue-france-113-hover;
+    @apply
+      text-blue-france-113-hover
+      dark:text-blue-france-625-hover
+      ;
   }
   
   &:active {

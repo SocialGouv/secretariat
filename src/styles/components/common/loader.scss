@@ -1,6 +1,5 @@
 @use "../../../../node_modules/spinthatshit/src/loaders.scss" as spinthatshit;
 
-
 .loader {
   @apply flex flex-1 justify-center items-center;
 
@@ -31,6 +30,40 @@
         $color: #000091,
         $border-size: 10px,
       );
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .loader {
+    &.sm {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 24px,
+          $color: #8585f6,
+          $border-size: 4px,
+        );
+      }
+    }
+  
+    &.md {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 48px,
+          $color: #8585f6,
+          $border-size: 7px,
+        );
+      }
+    }
+  
+    &.lg {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 96px,
+          $color: #8585f6,
+          $border-size: 10px,
+        );
+      }
     }
   }
 }

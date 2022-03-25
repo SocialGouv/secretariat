@@ -1,5 +1,9 @@
 footer { /* stylelint-disable-line */
-  @apply border-t-2 border-blue-france-113-main mt-10;
+  @apply
+    mt-10
+    border-t-2
+    border-blue-france-113-main
+    dark:border-blue-france-625-main;
 
   .container {
     @apply flex mx-auto py-8;
@@ -20,10 +24,10 @@ footer { /* stylelint-disable-line */
       @apply
         px-4
         border-r
-        text-gray-500
-        border-gray-400
+        first:pl-0
         last:border-0
-        first:pl-0;
+        text-gray-500
+        border-gray-400;
     }
   }
 }

@@ -362,6 +362,7 @@ module.exports = {
       backgroundColor: colors,
       gradientColorStops: colors,
       fontFamily: {
+        arial: ["arial", "sans-serif"],
         spectral: ["Spectral", "serif"],
         bold: ["Marianne", "arial", "sans-serif"],
         sans: ["Marianne", "arial", "sans-serif"],

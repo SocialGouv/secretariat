@@ -2,7 +2,7 @@
   @apply flex flex-col p-4;
 
   .alerts-services {
-    @apply flex justify-between mt-2;
+    @apply flex justify-between items-baseline mt-2;
 
     &.no-alert {
       @apply justify-end;

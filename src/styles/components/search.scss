@@ -34,6 +34,7 @@
       flex
       pt-2
       pb-8
+      items-baseline
       justify-between
       bg-gradient-to-b
       from-grey-1000-main
@@ -41,16 +42,32 @@
       dark:from-grey-50-main
       dark:via-grey-50-main;
 
-    .counts {
-      @apply text-sm;
-    }
-
-    .services {
+    .actions {
       @apply flex;
 
-      .service {
-        @apply mr-2 cursor-pointer;
+      .alerts {
+        @apply ml-4;
+
+        .badge {
+          @apply text-xs cursor-pointer;
+
+          &::before {
+            @apply text-sm;
+          }
+        }
       }
+
+      .services {
+        @apply flex;
+  
+        .service {
+          @apply mr-2 cursor-pointer;
+        }
+      }
+    }
+
+    .counts {
+      @apply text-sm;
     }
   }
 }

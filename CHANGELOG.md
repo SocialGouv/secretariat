@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/SocialGouv/secretariat/compare/v1.21.1...v1.22.0) (2022-03-25)
+
+
+### Features
+
+* add alerts and dates filters ([#143](https://github.com/SocialGouv/secretariat/issues/143)) ([67c48b8](https://github.com/SocialGouv/secretariat/commit/67c48b87d1790a581a727f38a58edca54577b78a))
+
 ## [1.21.1](https://github.com/SocialGouv/secretariat/compare/v1.21.0...v1.21.1) (2022-03-23)
 
 

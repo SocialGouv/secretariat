@@ -215,12 +215,21 @@ exports[`renders search 1`] = `
           </div>
         </div>
         <div
-          class="alerts"
+          class="alert-filter"
         >
           <p
             class="badge warning disabled"
           >
             Alerte
+          </p>
+        </div>
+        <div
+          class="expiry-filter"
+        >
+          <p
+            class="badge expiry disabled"
+          >
+            Expiration
           </p>
         </div>
       </div>

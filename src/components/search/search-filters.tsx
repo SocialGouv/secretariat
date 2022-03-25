@@ -2,7 +2,6 @@ import useFilters from "@/services/filters"
 import Badge from "@/components/common/badge"
 import SearchCount from "@/components/search/search-count"
 import ServiceLogo from "@/components/common/service-logo"
-import { useState } from "react"
 
 const SearchFilters = () => {
   const { filters, setFilters } = useFilters()
@@ -30,6 +29,15 @@ const SearchFilters = () => {
     }
   }
 
+  const handleExpiryClick = () => {
+    if (filters) {
+      setFilters({
+        ...filters,
+        expiry: filters.expiry ? null : new Date(),
+      })
+    }
+  }
+
   return (
     <div className="filters">
       <div className="actions">
@@ -48,10 +56,16 @@ const SearchFilters = () => {
             </div>
           ))}
         </div>
-        <div className="alerts" onClick={() => handleAlertsClick()}>
+        <div className="alert-filter" onClick={() => handleAlertsClick()}>
           <Badge
-            type={`warning${filters?.alerts ? "" : " disabled"}`}
             label="Alerte"
+            type={`warning${filters?.alerts ? "" : " disabled"}`}
+          />
+        </div>
+        <div className="expiry-filter" onClick={() => handleExpiryClick()}>
+          <Badge
+            label="Expiration"
+            type={`expiry${filters?.expiry ? "" : " disabled"}`}
           />
         </div>
       </div>

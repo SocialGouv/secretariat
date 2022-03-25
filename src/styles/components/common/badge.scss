@@ -28,12 +28,28 @@
     }
   }
 
+  &.expiry {
+    @apply
+      px-2
+      bg-yellow-moutarde-950-main
+      text-yellow-moutarde-348-main
+      dark:bg-yellow-moutarde-125-main
+      dark:text-yellow-moutarde-850-main;
+
+    &::before {
+      @apply text-base mr-1 -ml-1;
+
+      font-weight: 400;
+      content: "\EB24";
+      font-family: remixicon, sans-serif !important;
+    }
+  }
+
   &.disabled {
     @apply
       bg-grey-925-main
-      dark:bg-grey-125-main
       text-grey-625-main
-      dark:text-grey-425-main
-      ;
+      dark:bg-grey-125-main
+      dark:text-grey-425-main;
   }
 }

@@ -204,6 +204,13 @@ export const useFilteredUsers = () => {
     return true
   }
 
+  const matchExpiry = (user: User): boolean => {
+    if (filters?.expiry && user.departure) {
+      return new Date(user.departure).getTime() < filters.expiry.getTime()
+    }
+    return true
+  }
+
   const { data } = useSWR(
     users && filters
       ? `/users/filters/${JSON.stringify(filters)}/search/${query}`
@@ -215,7 +222,8 @@ export const useFilteredUsers = () => {
           (user: User) =>
             matchServices(user) &&
             matchSearchQuery(user, regex) &&
-            matchAlerts(user)
+            matchAlerts(user) &&
+            matchExpiry(user)
         )
       }
       return users

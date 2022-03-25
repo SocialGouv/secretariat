@@ -1,11 +1,11 @@
-import useSWR, { mutate } from "swr"
+import useSWR from "swr"
 import SERVICES from "@/utils/SERVICES"
-import { usePaging } from "./users"
+import { usePaging } from "@/services/users"
 
 interface Filters {
   alerts: boolean
+  expiry: Date | null
   services: Record<string, boolean>
-  dates: { arrival?: Date; departure?: Date }
 }
 
 const useFilters = () => {
@@ -16,13 +16,9 @@ const useFilters = () => {
     {} as Record<string, boolean>
   )
 
-  const { data: filters, mutate } = useSWR("filters", null, {
-    fallbackData: {
-      services,
-      dates: {},
-      alerts: false,
-    },
-  })
+  const fallbackData = { services, alerts: false, expiry: null } as Filters
+
+  const { data: filters, mutate } = useSWR("filters", null, { fallbackData })
 
   const setFilters = (filters: Filters) => {
     setPage(1)

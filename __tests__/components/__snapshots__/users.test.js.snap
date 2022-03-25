@@ -588,7 +588,7 @@ exports[`renders users 1`] = `
                 class="display-date"
               >
                 <i>
-                  aucune date
+                  aucune date d'arrivée
                 </i>
               </div>
             </div>
@@ -599,7 +599,7 @@ exports[`renders users 1`] = `
                 class="display-date"
               >
                 <i>
-                  aucune date
+                  aucune date de départ
                 </i>
               </div>
             </div>

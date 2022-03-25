@@ -34,3 +34,37 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .loader {
+    &.sm {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 24px,
+          $color: #8585f6,
+          $border-size: 4px,
+        );
+      }
+    }
+  
+    &.md {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 48px,
+          $color: #8585f6,
+          $border-size: 7px,
+        );
+      }
+    }
+  
+    &.lg {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 96px,
+          $color: #8585f6,
+          $border-size: 10px,
+        );
+      }
+    }
+  }
+}

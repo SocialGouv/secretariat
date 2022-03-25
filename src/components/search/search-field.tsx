@@ -18,7 +18,7 @@ const SearchField = () => {
         type="search"
         name="search"
         value={value}
-        placeholder="recherche par nom ou par email"
+        placeholder="chercher un compte utilisateur..."
         onChange={(e) => {
           setValue(e.target.value)
           updateSearch(e.target.value)

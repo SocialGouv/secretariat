@@ -10,7 +10,7 @@ exports[`renders search 1`] = `
     >
       <input
         name="search"
-        placeholder="recherche par nom ou par email"
+        placeholder="chercher un compte utilisateur..."
         type="search"
         value=""
       />

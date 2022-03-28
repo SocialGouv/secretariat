@@ -12,8 +12,7 @@
     border-grey-925-main
     dark:border-grey-125-main
     border-l-blue-france-113-main
-    dark:border-l-blue-france-625-main
-    ;
+    dark:border-l-blue-france-625-main;
 
   .header {
     @apply
@@ -32,63 +31,66 @@
   }
 
   .content {
-    @apply overflow-auto;
-
-    .user-warning {
-      @apply mx-4 mt-2;
-    }
-  }
-
-  .services {
     @apply
       p-4
-      flex
-      flex-1
-      flex-col;
-
-    .service {
-      @apply flex flex-col pb-8;
-
-      &:last-child {
-        @apply pb-0;
-      }
-
-      h3 {
-        @apply
+      grid
+      gap-4
+      grid-cols-1
+      overflow-auto;
+    
+    .services {
+      @apply
         flex
-        pb-2
-        mb-2
-        border-b
-        items-center
-        border-b-grey-925-main
-        dark:border-b-grey-125-main;
-
-        .icon {
-          @apply flex;
+        gap-4
+        flex-1
+        flex-col;
+  
+      .service {
+        @apply
+          flex
+          flex-col;
+  
+        h3 {
+          @apply
+            flex
+            pb-2
+            mb-2
+            border-b
+            items-center
+            border-b-grey-925-main
+            dark:border-b-grey-125-main;
+  
+          .icon {
+            @apply flex;
+          }
+  
+          .title {
+            @apply ml-1 capitalize;
+          }
+        }
+  
+        .info-table {
+          @apply text-xs;
+  
+          .contents {
+            & > div {
+              @apply p-1 truncate;
+            }
+  
+            & > div:first-child {
+              @apply font-bold;
+            }
+  
+            &:nth-child(odd) > div {
+              @apply
+                bg-grey-975-main
+                dark:bg-grey-75-main;
+            }
+          }
         }
 
-        .title {
-          @apply ml-1 capitalize;
-        }
-      }
-
-      .info-table {
-        @apply text-xs;
-
-        .contents {
-          & > div {
-            @apply p-1 truncate;
-          }
-
-          & > div:first-child {
-            @apply font-bold;
-          }
-
-          &:nth-child(odd) > div {
-            @apply
-              bg-grey-975-main
-              dark:bg-grey-75-main;
-          }
+        .teams {
+          @apply mt-2;
         }
       }
     }

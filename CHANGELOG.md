@@ -1,3 +1,10 @@
+## [1.23.5](https://github.com/SocialGouv/secretariat/compare/v1.23.4...v1.23.5) (2022-03-28)
+
+
+### Bug Fixes
+
+* user profile scroll ([#154](https://github.com/SocialGouv/secretariat/issues/154)) ([6de5bd0](https://github.com/SocialGouv/secretariat/commit/6de5bd0c3639cf5bba1e17ad37384c998a726ea2))
+
 ## [1.23.4](https://github.com/SocialGouv/secretariat/compare/v1.23.3...v1.23.4) (2022-03-28)
 
 

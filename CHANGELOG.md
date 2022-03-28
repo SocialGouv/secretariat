@@ -1,3 +1,10 @@
+## [1.23.7](https://github.com/SocialGouv/secretariat/compare/v1.23.6...v1.23.7) (2022-03-28)
+
+
+### Bug Fixes
+
+* user profile display ([#156](https://github.com/SocialGouv/secretariat/issues/156)) ([43e0135](https://github.com/SocialGouv/secretariat/commit/43e0135b63814a416c530a39f92528f9a63d62ef))
+
 ## [1.23.6](https://github.com/SocialGouv/secretariat/compare/v1.23.5...v1.23.6) (2022-03-28)
 
 

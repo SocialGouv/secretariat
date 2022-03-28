@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
 import useToken from "@/services/token"
-import { mergeUsers } from "@/services/users"
+import { mergeUsers, mutateUser } from "@/services/users"
 import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
 import UserProfile from "@/components/users/user-profile"
@@ -28,7 +28,22 @@ const Users = () => {
 
   const handleUserDrop = (user: User) => {
     setDroppedUser(user)
-    return user
+  }
+
+  const handleUserEdit = async (user: User) => {
+    // const { id, email, name, warning, updated_at, ...data } = user
+    // await fetcher(updateUser, token, { id, _set: { ...data, ...date } })
+    if (pagedUsers) {
+      await mutateUser(user, token)
+      let updatedUser = pagedUsers?.find(
+        (pagedUser) => pagedUser.id === user.id
+      )
+      updatedUser = user
+      setPagedUsers([...pagedUsers], false)
+      setSelectedUser(user)
+      mutate("/users")
+      // setSelectedUser(user)
+    }
   }
 
   const handleConfirm = async () => {
@@ -72,7 +87,11 @@ const Users = () => {
               onSelect={(user) => setSelectedUser(user)}
             />
             {selectedUser && (
-              <UserProfile user={selectedUser} onUserDrop={handleUserDrop} />
+              <UserProfile
+                user={selectedUser}
+                onUserDrop={handleUserDrop}
+                onUserEdit={handleUserEdit}
+              />
             )}
           </div>
         </DndProvider>

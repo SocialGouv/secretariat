@@ -5,6 +5,9 @@ const UserWarning = ({ type }: { type?: string }) => (
     {type === "alone_service" && (
       <Alert message="Cet utilisateur n'est constitué que d'un seul service." />
     )}
+    {type === "missing_services" && (
+      <Alert message="Cet utilisateur n'a pas de compte Github ou Mattermost." />
+    )}
   </div>
 )
 

@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/SocialGouv/secretariat/compare/v1.23.1...v1.23.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* data refresh on user drop ([#150](https://github.com/SocialGouv/secretariat/issues/150)) ([e8f91b1](https://github.com/SocialGouv/secretariat/commit/e8f91b168433009e9aa6cd9ff202952e4fce1c15))
+
 ## [1.23.1](https://github.com/SocialGouv/secretariat/compare/v1.23.0...v1.23.1) (2022-03-28)
 
 

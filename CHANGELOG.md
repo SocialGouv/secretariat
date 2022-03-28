@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/SocialGouv/secretariat/compare/v1.23.0...v1.23.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* expiry filter ([#151](https://github.com/SocialGouv/secretariat/issues/151)) ([0f4295f](https://github.com/SocialGouv/secretariat/commit/0f4295f22cea013a23f74722c2474eaeb2ba546a))
+
 # [1.23.0](https://github.com/SocialGouv/secretariat/compare/v1.22.0...v1.23.0) (2022-03-28)
 
 

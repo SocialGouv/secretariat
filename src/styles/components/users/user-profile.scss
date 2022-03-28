@@ -31,8 +31,12 @@
     }
   }
 
-  .user-warning {
-    @apply mx-4 mt-2;
+  .content {
+    @apply overflow-auto;
+
+    .user-warning {
+      @apply mx-4 mt-2;
+    }
   }
 
   .services {
@@ -40,8 +44,7 @@
       p-4
       flex
       flex-1
-      flex-col
-      overflow-auto;
+      flex-col;
 
     .service {
       @apply flex flex-col pb-8;

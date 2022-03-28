@@ -43,9 +43,11 @@ const UserProfile = ({
             <UserHeader user={user} />
             <UserLastUpdate date={user.updated_at} />
           </div>
-          <UserArrivalDeparture user={user} onChange={onUserEdit} />
-          <UserWarning type={user.warning} />
-          <UserServices user={user} />
+          <div className="content">
+            <UserArrivalDeparture user={user} onChange={onUserEdit} />
+            {user.warning && <UserWarning type={user.warning} />}
+            <UserServices user={user} />
+          </div>
         </div>
       </div>
     </div>

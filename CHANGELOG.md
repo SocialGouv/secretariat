@@ -1,3 +1,10 @@
+# [1.23.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.23.0-beta.1...v1.23.0-beta.2) (2022-03-28)
+
+
+### Features
+
+* frontend departure warning ([a142d3b](https://github.com/SocialGouv/secretariat/commit/a142d3b983b841a32d2c737d83dd768ad8729be3))
+
 # [1.23.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.22.0...v1.23.0-beta.1) (2022-03-28)
 
 

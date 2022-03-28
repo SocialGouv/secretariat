@@ -6,6 +6,8 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
+    - arrival
+    - departure
     - github
     - matomo
     - mattermost
@@ -35,6 +37,8 @@ select_permissions:
   role: user
 - permission:
     columns:
+    - arrival
+    - departure
     - github
     - id
     - matomo
@@ -65,6 +69,8 @@ update_permissions:
 - permission:
     check: null
     columns:
+    - arrival
+    - departure
     - github
     - matomo
     - mattermost

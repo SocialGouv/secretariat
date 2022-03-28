@@ -163,7 +163,6 @@ export const useFilteredUsers = () => {
   const { query } = useSearch()
   const { filters } = useFilters()
 
-  // On my quest to trigger Sonar "smells"
   const matchSearchQuery = (user: User, regex: RegExp): boolean => {
     const { id, ...data } = user
     const values = Object.values(data)

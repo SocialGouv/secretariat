@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { useDrop } from "react-dnd"
 
 import { haveSimilarServices } from "@/services/users"
@@ -28,11 +27,7 @@ const UserProfile = ({
     [user]
   )
 
-  // const backgroundColor = canDrop
-  //   ? isOver
-  //     ? "#e8edff"
-  //     : "#f4f6ff"
-  //   : "transparent"
+  const dropClass = canDrop ? (isOver ? "drop-over" : "drop-allowed") : ""
 
   return (
     <div className="selected-user">
@@ -40,18 +35,10 @@ const UserProfile = ({
         <div
           ref={drop}
           role={"Profile"}
-          className="user-profile"
-          // style={{ backgroundColor }}
+          className={`user-profile ${dropClass}`}
         >
           <div className="header">
             <UserHeader user={user} />
-            {/* <Image
-              width={48}
-              height={48}
-              alt="user avatar"
-              src={user.avatarUrl || "/images/user-avatar.svg"}
-            />
-            <h2>{user.name}</h2> */}
             <UserLastUpdate date={user.updated_at} />
           </div>
           <UserArrivalDeparture user={user} />

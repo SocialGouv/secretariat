@@ -139,7 +139,7 @@ export const mergeUsers = async (
     const { id, updated_at, warning, ..._set } = user
     await fetcher(updateUser, token, { id, _set })
     await fetcher(deleteUser, token, { id: userToDrop.id })
-    return user
+    return mapUsers([user])[0]
   }
 
   return undefined

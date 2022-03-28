@@ -34,12 +34,13 @@ const Users = () => {
   const handleConfirm = async () => {
     if (selectedUser && droppedUser) {
       const newUsers = pagedUsers?.filter(
-        (user) => user.id !== selectedUser.id || user.id !== droppedUser.id
+        (user) => user.id !== selectedUser.id && user.id !== droppedUser.id
       )
       console.log("COUNT", pagedUsers?.length, newUsers?.length)
 
       // setPagedUsers(newUsers, false)
       const user = await mergeUsers(selectedUser, droppedUser, token)
+      console.log("MERGED USER", user)
 
       if (newUsers && user) {
         setPagedUsers([...newUsers, user], false)

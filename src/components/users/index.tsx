@@ -31,36 +31,30 @@ const Users = () => {
   }
 
   const handleUserEdit = async (user: User) => {
-    // const { id, email, name, warning, updated_at, ...data } = user
-    // await fetcher(updateUser, token, { id, _set: { ...data, ...date } })
     if (pagedUsers) {
       await mutateUser(user, token)
-      let updatedUser = pagedUsers?.find(
-        (pagedUser) => pagedUser.id === user.id
-      )
-      updatedUser = user
-      setPagedUsers([...pagedUsers], false)
-      setSelectedUser(user)
-      mutate("/users")
-      // setSelectedUser(user)
+      refreshUser(user, pagedUsers)
     }
   }
 
   const handleConfirm = async () => {
     if (selectedUser && droppedUser) {
-      const newUsers = pagedUsers?.filter(
-        (user) => user.id !== selectedUser.id && user.id !== droppedUser.id
-      )
-
       const user = await mergeUsers(selectedUser, droppedUser, token)
+      const newUsers = pagedUsers?.filter((user) => user.id !== droppedUser.id)
 
       if (newUsers && user) {
         setDroppedUser(undefined)
-        setPagedUsers([...newUsers, user], false)
-        setSelectedUser(user)
-        mutate("/users")
+        refreshUser(user, newUsers)
       }
     }
+  }
+
+  const refreshUser = (user: User, users: User[]) => {
+    const index = users.findIndex((pagedUser) => pagedUser.id === user.id)
+    users[index] = user
+    setPagedUsers([...users], false)
+    setSelectedUser(user)
+    mutate("/users")
   }
 
   return (

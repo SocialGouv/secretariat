@@ -36,21 +36,14 @@ const Users = () => {
       const newUsers = pagedUsers?.filter(
         (user) => user.id !== selectedUser.id && user.id !== droppedUser.id
       )
-      console.log("COUNT", pagedUsers?.length, newUsers?.length)
 
-      // setPagedUsers(newUsers, false)
       const user = await mergeUsers(selectedUser, droppedUser, token)
-      console.log("MERGED USER", user)
 
       if (newUsers && user) {
-        setPagedUsers([...newUsers, user], false)
-        mutate("/users")
-      }
-
-      if (user) {
         setDroppedUser(undefined)
-        // mutate("/users")
-        // trigger a refresh ?
+        setPagedUsers([...newUsers, user], false)
+        setSelectedUser(user)
+        mutate("/users")
       }
     }
   }

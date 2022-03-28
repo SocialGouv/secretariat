@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/SocialGouv/secretariat/compare/v1.22.0...v1.23.0) (2022-03-28)
+
+
+### Features
+
+* warnings ([#149](https://github.com/SocialGouv/secretariat/issues/149)) ([bfa30e7](https://github.com/SocialGouv/secretariat/commit/bfa30e7cda8d61b2cd84d8debe4aee20dbfb098b))
+
 # [1.23.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.23.0-beta.1...v1.23.0-beta.2) (2022-03-28)
 
 

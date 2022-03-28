@@ -1,3 +1,10 @@
+## [1.23.3](https://github.com/SocialGouv/secretariat/compare/v1.23.2...v1.23.3) (2022-03-28)
+
+
+### Bug Fixes
+
+* scroll to top on search ([#152](https://github.com/SocialGouv/secretariat/issues/152)) ([dea0b31](https://github.com/SocialGouv/secretariat/commit/dea0b3184fa62b4f8a67684ea39e3473689323f5))
+
 ## [1.23.2](https://github.com/SocialGouv/secretariat/compare/v1.23.1...v1.23.2) (2022-03-28)
 
 

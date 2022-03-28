@@ -25,7 +25,9 @@ const UserItem = ({
       ref={drag}
       role="User"
       onClick={onClick}
-      className={`tile${selected ? " selected" : ""}`}
+      className={`tile${selected ? " selected" : ""}${
+        isDragging ? " dragging" : ""
+      }`}
     >
       <UserTemplate user={user} />
     </li>

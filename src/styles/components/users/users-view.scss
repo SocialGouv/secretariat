@@ -6,6 +6,7 @@
       @apply
         mb-4
         border
+        relative
         shadow-sm
         border-l-2
         cursor-pointer
@@ -34,6 +35,25 @@
           dark:border-grey-125-main
           border-l-blue-france-113-main
           dark:border-l-blue-france-625-main;
+      }
+
+      &.dragging {
+        @apply
+          border-l
+          border-dashed
+          border-l-grey-925-active;
+
+        &::before {
+          @apply
+            z-10
+            top-0
+            left-0
+            right-0
+            bottom-0
+            absolute
+            content-[""]
+            bg-grey-1000-hover;
+        }
       }
     }
 

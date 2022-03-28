@@ -243,7 +243,7 @@ export const usePagedUsers = () => {
   const { page, pageSize } = usePaging()
   const { users, query, filters } = useFilteredUsers()
 
-  const { data } = useSWR(
+  const { data, mutate } = useSWR(
     users
       ? `/users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
       : null,
@@ -251,7 +251,9 @@ export const usePagedUsers = () => {
       return users && users.slice(0, (page || 1) * pageSize)
     }
   )
-  return data
+  console.log("usePagedUsers", data?.length)
+
+  return { pagedUsers: data, setPagedUsers: mutate }
 }
 
 export default useUsers

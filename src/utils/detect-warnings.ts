@@ -11,7 +11,7 @@ const noAloneServices = (userEntry: Record<string, unknown>) => {
     (key) => key !== "id" && userEntry[key] !== null
   ) as ServiceName[]
   return services.length === 1 && FORBIDDEN_ALONE_SERVICES.includes(services[0])
-    ? "no_alone_services"
+    ? "alone_service"
     : null
 }
 

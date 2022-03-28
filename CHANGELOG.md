@@ -1,3 +1,10 @@
+# [1.23.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.22.0...v1.23.0-beta.1) (2022-03-28)
+
+
+### Features
+
+* departure date warning ([0f710b2](https://github.com/SocialGouv/secretariat/commit/0f710b265c6c6eedb81236119ec6df159709caaa))
+
 # [1.22.0](https://github.com/SocialGouv/secretariat/compare/v1.21.1...v1.22.0) (2022-03-25)
 
 

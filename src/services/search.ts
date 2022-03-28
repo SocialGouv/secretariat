@@ -6,6 +6,8 @@ const useSearch = () => {
   const { data, mutate } = useSWR("search", null, { fallbackData: "" })
 
   const setQuery = (filters: string) => {
+    console.log("setQuery", filters)
+
     setPage(1)
     mutate(filters)
   }

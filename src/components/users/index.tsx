@@ -9,7 +9,11 @@ import UserList from "@/components/users/user-list"
 import UserProfile from "@/components/users/user-profile"
 import ConfirmModal from "@/components/users/confirm-modal"
 
+import useSWR, { useSWRConfig } from "swr"
+
 const Users = ({ users }: { users?: User[] }) => {
+  const { mutate } = useSWRConfig()
+
   const [token] = useToken()
   const [droppedUser, setDroppedUser] = useState<User>()
   const [selectedUser, setSelectedUser] = useState<User>()
@@ -31,6 +35,7 @@ const Users = ({ users }: { users?: User[] }) => {
 
       if (user) {
         setDroppedUser(undefined)
+        mutate("/users")
         // trigger a refresh ?
       }
     }

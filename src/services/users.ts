@@ -136,7 +136,7 @@ export const mergeUsers = async (
       (key) => userToKeep[key] === null && delete userToKeep[key]
     )
     const user = { ...userToDrop, ...userToKeep }
-    const { id, ..._set } = user
+    const { id, updated_at, warning, ..._set } = user
     await fetcher(updateUser, token, { id, _set })
     await fetcher(deleteUser, token, { id: userToDrop.id })
     return user

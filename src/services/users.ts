@@ -136,7 +136,7 @@ export const mergeUsers = async (
       (key) => userToKeep[key] === null && delete userToKeep[key]
     )
     const user = { ...userToDrop, ...userToKeep }
-    const { id, ..._set } = user
+    const { id, updated_at, warning, ..._set } = user
     await fetcher(updateUser, token, { id, _set })
     await fetcher(deleteUser, token, { id: userToDrop.id })
     return user
@@ -163,7 +163,6 @@ export const useFilteredUsers = () => {
   const { query } = useSearch()
   const { filters } = useFilters()
 
-  // On my quest to trigger Sonar "smells"
   const matchSearchQuery = (user: User, regex: RegExp): boolean => {
     const { id, ...data } = user
     const values = Object.values(data)
@@ -244,7 +243,7 @@ export const usePagedUsers = () => {
   const { page, pageSize } = usePaging()
   const { users, query, filters } = useFilteredUsers()
 
-  const { data } = useSWR(
+  const { data, mutate } = useSWR(
     users
       ? `/users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
       : null,
@@ -252,7 +251,9 @@ export const usePagedUsers = () => {
       return users && users.slice(0, (page || 1) * pageSize)
     }
   )
-  return data
+  console.log("usePagedUsers", data?.length)
+
+  return { pagedUsers: data, setPagedUsers: mutate }
 }
 
 export default useUsers

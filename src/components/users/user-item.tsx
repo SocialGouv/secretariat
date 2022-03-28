@@ -14,13 +14,6 @@ const UserItem = ({
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "user",
     item: user,
-    // end: (item, monitor) => {
-    //   const dropResult = monitor.getDropResult<User>()
-    //   if (item && dropResult) {
-    //     // console.log("Dopped Item, USER", item)
-    //     // alert(`You dropped ${item.name} into ${dropResult.name}!`)
-    //   }
-    // },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
       handlerId: monitor.getHandlerId(),
@@ -32,7 +25,9 @@ const UserItem = ({
       ref={drag}
       role="User"
       onClick={onClick}
-      className={`tile${selected ? " selected" : ""}`}
+      className={`tile${selected ? " selected" : ""}${
+        isDragging ? " dragging" : ""
+      }`}
     >
       <UserTemplate user={user} />
     </li>

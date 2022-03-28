@@ -3,11 +3,9 @@ import { useSession } from "next-auth/react"
 import Login from "@/components/login"
 import Users from "@/components/users"
 import Search from "@/components/search"
-import { usePagedUsers } from "@/services/users"
 
 const Page = () => {
   const { data: session } = useSession()
-  const users = usePagedUsers()
 
   if (!session) {
     return (
@@ -23,7 +21,7 @@ const Page = () => {
     <div className="container">
       <main>
         <Search />
-        <Users users={users} />
+        <Users />
       </main>
     </div>
   )

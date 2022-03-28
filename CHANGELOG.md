@@ -1,3 +1,10 @@
+## [1.23.4](https://github.com/SocialGouv/secretariat/compare/v1.23.3...v1.23.4) (2022-03-28)
+
+
+### Bug Fixes
+
+* user fields permissions ([#153](https://github.com/SocialGouv/secretariat/issues/153)) ([07bf4c3](https://github.com/SocialGouv/secretariat/commit/07bf4c342fd4bfa2e1449f8393577f3b86deb4aa))
+
 ## [1.23.3](https://github.com/SocialGouv/secretariat/compare/v1.23.2...v1.23.3) (2022-03-28)
 
 

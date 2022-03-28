@@ -1,3 +1,10 @@
+## [1.16.1-beta.10](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.9...v1.16.1-beta.10) (2022-03-28)
+
+
+### Bug Fixes
+
+* node minor version ([2578534](https://github.com/SocialGouv/secretariat/commit/2578534f649f8ee337153381813cdcf9994051d7))
+
 ## [1.16.1-beta.9](https://github.com/SocialGouv/secretariat/compare/v1.16.1-beta.8...v1.16.1-beta.9) (2022-03-23)
 
 

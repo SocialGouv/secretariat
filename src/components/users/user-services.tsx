@@ -19,7 +19,7 @@ const GithubUserInfo = ({
 }) => (
   <>
     <InfoTable user={info} />
-    <div className="mt-4">
+    <div className="teams">
       {teams?.map((team, i) => (
         <div key={i} className="tag">
           {team.name}

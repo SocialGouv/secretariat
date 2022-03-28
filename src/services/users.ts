@@ -262,7 +262,6 @@ export const usePagedUsers = () => {
       return users && users.slice(0, (page || 1) * pageSize)
     }
   )
-  console.log("usePagedUsers", data?.length)
 
   return { pagedUsers: data, setPagedUsers: mutate }
 }

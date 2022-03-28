@@ -204,10 +204,13 @@ export const useFilteredUsers = () => {
   }
 
   const matchExpiry = (user: User): boolean => {
-    if (filters?.expiry && user.departure) {
+    if (!filters?.expiry) {
+      return true
+    }
+    if (user.departure) {
       return new Date(user.departure).getTime() < filters.expiry.getTime()
     }
-    return true
+    return false
   }
 
   const { data } = useSWR(

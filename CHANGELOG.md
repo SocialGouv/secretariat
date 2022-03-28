@@ -1,3 +1,10 @@
+## [1.23.6](https://github.com/SocialGouv/secretariat/compare/v1.23.5...v1.23.6) (2022-03-28)
+
+
+### Bug Fixes
+
+* change warning wording ([#155](https://github.com/SocialGouv/secretariat/issues/155)) ([884747c](https://github.com/SocialGouv/secretariat/commit/884747cd03eebf7b1265d298add1b3ef9122b109))
+
 ## [1.23.5](https://github.com/SocialGouv/secretariat/compare/v1.23.4...v1.23.5) (2022-03-28)
 
 

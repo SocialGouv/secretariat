@@ -522,7 +522,7 @@ exports[`renders users 1`] = `
         class="sticky-container"
       >
         <div
-          class="user-profile"
+          class="user-profile "
           role="Profile"
         >
           <div

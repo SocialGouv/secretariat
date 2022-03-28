@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
 import useToken from "@/services/token"
-import { mergeUsers } from "@/services/users"
+import { mergeUsers, mutateUser } from "@/services/users"
 import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
 import UserProfile from "@/components/users/user-profile"
@@ -28,30 +28,33 @@ const Users = () => {
 
   const handleUserDrop = (user: User) => {
     setDroppedUser(user)
-    return user
+  }
+
+  const handleUserEdit = async (user: User) => {
+    if (pagedUsers) {
+      await mutateUser(user, token)
+      refreshUser(user, pagedUsers)
+    }
   }
 
   const handleConfirm = async () => {
     if (selectedUser && droppedUser) {
-      const newUsers = pagedUsers?.filter(
-        (user) => user.id !== selectedUser.id || user.id !== droppedUser.id
-      )
-      console.log("COUNT", pagedUsers?.length, newUsers?.length)
-
-      // setPagedUsers(newUsers, false)
       const user = await mergeUsers(selectedUser, droppedUser, token)
+      const newUsers = pagedUsers?.filter((user) => user.id !== droppedUser.id)
 
       if (newUsers && user) {
-        setPagedUsers([...newUsers, user], false)
-        mutate("/users")
-      }
-
-      if (user) {
         setDroppedUser(undefined)
-        // mutate("/users")
-        // trigger a refresh ?
+        refreshUser(user, newUsers)
       }
     }
+  }
+
+  const refreshUser = (user: User, users: User[]) => {
+    const index = users.findIndex((pagedUser) => pagedUser.id === user.id)
+    users[index] = user
+    setPagedUsers([...users], false)
+    setSelectedUser(user)
+    mutate("/users")
   }
 
   return (
@@ -78,7 +81,11 @@ const Users = () => {
               onSelect={(user) => setSelectedUser(user)}
             />
             {selectedUser && (
-              <UserProfile user={selectedUser} onUserDrop={handleUserDrop} />
+              <UserProfile
+                user={selectedUser}
+                onUserDrop={handleUserDrop}
+                onUserEdit={handleUserEdit}
+              />
             )}
           </div>
         </DndProvider>

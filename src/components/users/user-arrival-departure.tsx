@@ -40,12 +40,17 @@ const DateField = ({
   )
 }
 
-const UserArrivalDeparture = ({ user }: { user: User }) => {
+const UserArrivalDeparture = ({
+  user,
+  onChange,
+}: {
+  user: User
+  onChange: (user: User) => void
+}) => {
   const [token] = useToken()
 
   const handleChange = async (date: Record<string, Date | null>) => {
-    const { id, email, name, warning, updated_at, ...data } = user
-    await fetcher(updateUser, token, { id, _set: { ...data, ...date } })
+    onChange({ ...user, ...date })
   }
 
   return (

@@ -10,9 +10,11 @@ import UserHeader from "./user-header"
 const UserProfile = ({
   user,
   onUserDrop,
+  onUserEdit,
 }: {
   user: User
-  onUserDrop: (user: User) => User
+  onUserDrop: (user: User) => void
+  onUserEdit: (user: User) => void
 }) => {
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
@@ -41,7 +43,7 @@ const UserProfile = ({
             <UserHeader user={user} />
             <UserLastUpdate date={user.updated_at} />
           </div>
-          <UserArrivalDeparture user={user} />
+          <UserArrivalDeparture user={user} onChange={onUserEdit} />
           <UserWarning type={user.warning} />
           <UserServices user={user} />
         </div>

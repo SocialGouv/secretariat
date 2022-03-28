@@ -115,6 +115,14 @@ export const haveSimilarServices = (a: User, b: User) => {
   )
 }
 
+export const mutateUser = async (
+  user: User,
+  token: string
+): Promise<User | undefined> => {
+  const { id, avatarUrl, email, name, warning, updated_at, ...data } = user
+  return await fetcher(updateUser, token, { id, _set: data })
+}
+
 export const mergeUsers = async (
   { id: idToKeep }: User,
   { id: idToDrop }: User,
@@ -139,7 +147,7 @@ export const mergeUsers = async (
     const { id, updated_at, warning, ..._set } = user
     await fetcher(updateUser, token, { id, _set })
     await fetcher(deleteUser, token, { id: userToDrop.id })
-    return user
+    return mapUsers([user])[0]
   }
 
   return undefined

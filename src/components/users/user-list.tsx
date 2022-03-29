@@ -1,7 +1,7 @@
 import UserItem from "./user-item"
-import usePaging from "@/services/use-paging"
-import useFilteredUsers from "@/services/use-filtered-users"
-import { haveSimilarServices } from "@/services/use-users"
+import usePaging from "@/hooks/use-paging"
+import useFilteredUsers from "@/hooks/use-filtered-users"
+import { haveSimilarServices } from "@/hooks/use-users"
 
 const UserList = ({
   onSelect,

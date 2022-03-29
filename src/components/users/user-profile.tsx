@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd"
 
-import { haveSimilarServices } from "@/services/use-users"
+import { haveSimilarServices } from "@/hooks/use-users"
 import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
 import UserLastUpdate from "./user-last-update"

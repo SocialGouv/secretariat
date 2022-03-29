@@ -1,11 +1,6 @@
 import { useState } from "react"
-import DatePicker from "react-datepicker"
-
-import fetcher from "@/utils/fetcher"
-import useToken from "@/services/token"
-import { updateUser } from "@/queries/index"
-
 import { format } from "date-fns"
+import DatePicker from "react-datepicker"
 
 const DateField = ({
   date,
@@ -47,8 +42,6 @@ const UserArrivalDeparture = ({
   user: User
   onChange: (user: User) => void
 }) => {
-  const [token] = useToken()
-
   const handleChange = async (date: Record<string, Date | null>) => {
     onChange({ ...user, ...date })
   }

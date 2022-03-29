@@ -3,14 +3,14 @@ import { DndProvider } from "react-dnd"
 import { useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
-import useToken from "@/services/token"
+import useToken from "@/hooks/use-token"
 import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
 import UserProfile from "@/components/users/user-profile"
 import ConfirmModal from "@/components/users/confirm-modal"
-import { mergeUsers, mutateUser } from "@/services/use-users"
+import { mergeUsers, mutateUser } from "@/hooks/use-users"
 
-import { usePagedUsers } from "@/services/use-paged-users"
+import { usePagedUsers } from "@/hooks/use-paged-users"
 
 const Users = () => {
   const { mutate } = useSWRConfig()

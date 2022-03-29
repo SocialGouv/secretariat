@@ -1,4 +1,4 @@
-import useFilteredUsers from "@/services/use-filtered-users"
+import useFilteredUsers from "@/hooks/use-filtered-users"
 
 const SearchCount = () => {
   const { users: filteredUsers } = useFilteredUsers()

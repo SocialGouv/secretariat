@@ -1,8 +1,7 @@
 import useSWR from "swr"
-import { createHash } from "crypto"
 
 import fetcher from "@/utils/fetcher"
-import useToken from "@/services/token"
+import useToken from "@/hooks/use-token"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
 
 interface UserMapping {

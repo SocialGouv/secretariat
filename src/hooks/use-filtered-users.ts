@@ -1,8 +1,8 @@
 import useSWR from "swr"
 
-import useUsers from "@/services/use-users"
-import useSearch from "@/services/use-search"
-import useFilters from "@/services/use-filters"
+import useUsers from "@/hooks/use-users"
+import useSearch from "@/hooks/use-search"
+import useFilters from "@/hooks/use-filters"
 
 const useFilteredUsers = () => {
   const users = useUsers()

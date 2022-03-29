@@ -1,7 +1,7 @@
 import useSWR from "swr"
 
-import usePaging from "./use-paging"
-import useFilteredUsers from "./use-filtered-users"
+import usePaging from "@/hooks/use-paging"
+import useFilteredUsers from "@/hooks/use-filtered-users"
 
 export const usePagedUsers = () => {
   const { page, pageSize } = usePaging()

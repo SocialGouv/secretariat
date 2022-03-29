@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/SocialGouv/secretariat/compare/v1.24.0...v1.24.1) (2022-03-29)
+
+
+### Bug Fixes
+
+* users drag and drop ([#159](https://github.com/SocialGouv/secretariat/issues/159)) ([439b3b2](https://github.com/SocialGouv/secretariat/commit/439b3b27f39369d8b51422546b76a508df6c30b0))
+
 # [1.24.0](https://github.com/SocialGouv/secretariat/compare/v1.23.7...v1.24.0) (2022-03-29)
 
 

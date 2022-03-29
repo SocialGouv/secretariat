@@ -30,7 +30,7 @@ const UserList = ({
             dropped={droppedUser?.id === user.id}
             selected={selectedUser?.id === user.id}
             hasSimilarServices={
-              selectedUser && haveSimilarServices(user, selectedUser)
+              !!selectedUser && !!haveSimilarServices(user, selectedUser)
             }
           />
         ))}

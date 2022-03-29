@@ -13,28 +13,18 @@ const UserItem = ({
   selected: boolean
   onClick: () => void
 }) => {
-  const [{ isDragging, canDrag }, drag] = useDrag(() => ({
-    type: "user",
+  const [{ isDragging }, drag] = useDrag(() => ({
     item: user,
-    // options: {
-    //   dropEffect: "move",
-    // },
-    // end: (user: User, monitor) => {
-    //   console.log("user", user, monitor.didDrop())
-    //   drag.
-    // },
-    canDrag: () => !selected,
+    type: "user",
+    canDrag: !selected,
     collect: (monitor) => ({
-      // didDrop: monitor.didDrop(),
-      canDrag: monitor.canDrag(),
       isDragging: monitor.isDragging(),
-      // handlerId: monitor.getHandlerId(),
     }),
   }))
 
   const classes = []
   if (selected) classes.push("selected")
-  if (canDrag) classes.push("draggable")
+  if (!selected) classes.push("draggable")
   if (isDragging || dropped) classes.push("dragging")
 
   return (

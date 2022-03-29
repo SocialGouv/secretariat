@@ -364,6 +364,7 @@ module.exports = {
       fontFamily: {
         arial: ["arial", "sans-serif"],
         spectral: ["Spectral", "serif"],
+        remix: ["remixicon", "sans-serif"],
         bold: ["Marianne", "arial", "sans-serif"],
         sans: ["Marianne", "arial", "sans-serif"],
       },

@@ -4,9 +4,11 @@ import UserItem from "./user-item"
 const UserList = ({
   onSelect,
   users = [],
+  droppedUser,
   selectedUser,
 }: {
   users?: User[]
+  droppedUser?: User
   selectedUser?: User
   onSelect: (user: User | undefined) => void
 }) => {
@@ -21,6 +23,7 @@ const UserList = ({
             key={i}
             user={user}
             onClick={() => onSelect(user)}
+            dropped={droppedUser?.id === user.id}
             selected={selectedUser?.id === user.id}
           />
         ))}

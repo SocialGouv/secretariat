@@ -77,6 +77,7 @@ const Users = () => {
             />
             <UserList
               users={pagedUsers}
+              droppedUser={droppedUser}
               selectedUser={selectedUser}
               onSelect={(user) => setSelectedUser(user)}
             />

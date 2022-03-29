@@ -4,6 +4,10 @@
   .alerts-services {
     @apply flex justify-between items-baseline mt-2;
 
+    .badge {
+      @apply mr-2
+    }
+
     &.no-alert {
       @apply justify-end;
     }

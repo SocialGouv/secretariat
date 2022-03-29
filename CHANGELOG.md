@@ -1,3 +1,24 @@
+## [1.24.2](https://github.com/SocialGouv/secretariat/compare/v1.24.1...v1.24.2) (2022-03-29)
+
+
+### Bug Fixes
+
+* smooth refresh ([#161](https://github.com/SocialGouv/secretariat/issues/161)) ([dd501d8](https://github.com/SocialGouv/secretariat/commit/dd501d873b2293a562bb9304f35f22a6a7a1c997))
+
+## [1.24.1](https://github.com/SocialGouv/secretariat/compare/v1.24.0...v1.24.1) (2022-03-29)
+
+
+### Bug Fixes
+
+* users drag and drop ([#159](https://github.com/SocialGouv/secretariat/issues/159)) ([439b3b2](https://github.com/SocialGouv/secretariat/commit/439b3b27f39369d8b51422546b76a508df6c30b0))
+
+# [1.24.0](https://github.com/SocialGouv/secretariat/compare/v1.23.7...v1.24.0) (2022-03-29)
+
+
+### Features
+
+* expiry badge on user items ([#158](https://github.com/SocialGouv/secretariat/issues/158)) ([dff220a](https://github.com/SocialGouv/secretariat/commit/dff220a7d3be231c8adda93b957d7621e738f3b7))
+
 ## [1.23.7](https://github.com/SocialGouv/secretariat/compare/v1.23.6...v1.23.7) (2022-03-28)
 
 

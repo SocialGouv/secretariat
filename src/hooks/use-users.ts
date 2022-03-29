@@ -1,9 +1,7 @@
 import useSWR from "swr"
 
 import fetcher from "@/utils/fetcher"
-import useToken from "@/services/token"
-import useSearch from "@/services/search"
-import useFilters from "@/services/filters"
+import useToken from "@/hooks/use-token"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
 
 interface UserMapping {
@@ -161,109 +159,9 @@ const useUsers = () => {
     return Promise.resolve(mapUsers(data.users))
   }
 
-  const { data } = useSWR(token ? "/users" : null, getMappedUsers)
+  const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)
 
-  return data
-}
-
-export const useFilteredUsers = () => {
-  const users = useUsers()
-  const { query } = useSearch()
-  const { filters } = useFilters()
-
-  const matchSearchQuery = (user: User, regex: RegExp): boolean => {
-    const { id, ...data } = user
-    const values = Object.values(data)
-    return !!values
-      .filter((value) => value && typeof value === "string")
-      .concat(
-        values
-          .filter((value) => value && typeof value === "object")
-          .reduce(
-            (arr, obj) =>
-              arr.concat(
-                Object.values(obj).filter(
-                  (value) => value && typeof value === "string"
-                )
-              ),
-            []
-          )
-      )
-      .join(" ")
-      .match(regex)
-  }
-
-  const matchServices = (user: User): boolean => {
-    if (filters?.services) {
-      for (const [key, value] of Object.entries(filters.services)) {
-        if (value && user[key as keyof User]) {
-          return true
-        }
-      }
-    }
-    return false
-  }
-
-  const matchAlerts = (user: User): boolean => {
-    if (filters?.alerts) {
-      return !!user.warning?.length
-    }
-    return true
-  }
-
-  const matchExpiry = (user: User): boolean => {
-    if (!filters?.expiry) {
-      return true
-    }
-    if (user.departure) {
-      return new Date(user.departure).getTime() < filters.expiry.getTime()
-    }
-    return false
-  }
-
-  const { data } = useSWR(
-    users && filters
-      ? `/users/filters/${JSON.stringify(filters)}/search/${query}`
-      : null,
-    () => {
-      if (users) {
-        const regex = new RegExp(query || "", "gi")
-        return users.filter(
-          (user: User) =>
-            matchServices(user) &&
-            matchSearchQuery(user, regex) &&
-            matchAlerts(user) &&
-            matchExpiry(user)
-        )
-      }
-      return users
-    }
-  )
-
-  return { users: data, query, filters }
-}
-
-export const usePaging = () => {
-  const pageSize = 20
-  const { data, mutate } = useSWR("paging", null, { fallbackData: 1 })
-
-  return { page: data, setPage: mutate, pageSize }
-}
-
-export const usePagedUsers = () => {
-  const { page, pageSize } = usePaging()
-  const { users, query, filters } = useFilteredUsers()
-
-  const { data, mutate } = useSWR(
-    users
-      ? `/users/filters/${JSON.stringify(filters)}/search/${query}/page/${page}`
-      : null,
-    () => {
-      return users && users.slice(0, (page || 1) * pageSize)
-    }
-  )
-
-  return { pagedUsers: data, setPagedUsers: mutate }
+  return users
 }
 
 export default useUsers

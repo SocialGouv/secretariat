@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd"
 
-import { haveSimilarServices } from "@/services/users"
+import { haveSimilarServices } from "@/hooks/use-users"
 import UserServices from "@/components/users/user-services"
 import UserArrivalDeparture from "./user-arrival-departure"
 import UserLastUpdate from "./user-last-update"
@@ -19,7 +19,10 @@ const UserProfile = ({
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
       accept: "user",
-      drop: onUserDrop,
+      drop: (user: User) => {
+        onUserDrop(user)
+        return user
+      },
       canDrop: (item) => !haveSimilarServices(item, user),
       collect: (monitor) => ({
         isOver: monitor.isOver(),

@@ -1,4 +1,3 @@
-import useToken from "@/services/token"
 import { format } from "date-fns"
 import { useState } from "react"
 import DatePicker from "react-datepicker"
@@ -43,8 +42,6 @@ const UserArrivalDeparture = ({
   user: User
   onChange: (user: User) => void
 }) => {
-  const [token] = useToken()
-
   const handleChange = async (date: Record<string, Date | null>) => {
     // Applying timezone shift so that the day won't change later
     for (const key of Object.keys(date)) {

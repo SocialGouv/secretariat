@@ -1,12 +1,16 @@
-import { useFilteredUsers, usePaging } from "@/services/users"
 import UserItem from "./user-item"
+import usePaging from "@/hooks/use-paging"
+import useFilteredUsers from "@/hooks/use-filtered-users"
+import { haveSimilarServices } from "@/hooks/use-users"
 
 const UserList = ({
   onSelect,
   users = [],
+  droppedUser,
   selectedUser,
 }: {
   users?: User[]
+  droppedUser?: User
   selectedUser?: User
   onSelect: (user: User | undefined) => void
 }) => {
@@ -21,7 +25,11 @@ const UserList = ({
             key={i}
             user={user}
             onClick={() => onSelect(user)}
+            dropped={droppedUser?.id === user.id}
             selected={selectedUser?.id === user.id}
+            hasSimilarServices={
+              !!selectedUser && !!haveSimilarServices(user, selectedUser)
+            }
           />
         ))}
       </ul>

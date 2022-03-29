@@ -1,5 +1,6 @@
 import useSWR from "swr"
-import { usePaging } from "./users"
+
+import usePaging from "@/hooks/use-paging"
 
 const useSearch = () => {
   const { setPage } = usePaging()

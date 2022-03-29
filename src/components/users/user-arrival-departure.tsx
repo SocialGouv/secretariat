@@ -1,11 +1,7 @@
+import useToken from "@/services/token"
+import { format } from "date-fns"
 import { useState } from "react"
 import DatePicker from "react-datepicker"
-
-import fetcher from "@/utils/fetcher"
-import useToken from "@/services/token"
-import { updateUser } from "@/queries/index"
-
-import { format } from "date-fns"
 
 const DateField = ({
   date,
@@ -50,6 +46,12 @@ const UserArrivalDeparture = ({
   const [token] = useToken()
 
   const handleChange = async (date: Record<string, Date | null>) => {
+    // Hasura seems to shift the hours by one when receiving the date, so putting hours at midday
+    for (const key of Object.keys(date)) {
+      if (date[key] !== null) {
+        date[key]?.setHours(12)
+      }
+    }
     onChange({ ...user, ...date })
   }
 

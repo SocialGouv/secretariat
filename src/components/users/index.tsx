@@ -1,20 +1,20 @@
+import { useSWRConfig } from "swr"
 import { DndProvider } from "react-dnd"
 import { useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
-import useToken from "@/services/token"
-import { mergeUsers, mutateUser } from "@/services/users"
+import useToken from "@/hooks/use-token"
 import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
 import UserProfile from "@/components/users/user-profile"
 import ConfirmModal from "@/components/users/confirm-modal"
+import { mergeUsers, mutateUser } from "@/hooks/use-users"
 
-import useSWR, { useSWRConfig } from "swr"
-import { usePagedUsers } from "@/services/users"
+import { usePagedUsers } from "@/hooks/use-paged-users"
 
 const Users = () => {
-  const { pagedUsers, setPagedUsers } = usePagedUsers()
   const { mutate } = useSWRConfig()
+  const { pagedUsers } = usePagedUsers()
 
   const [token] = useToken()
   const [droppedUser, setDroppedUser] = useState<User>()
@@ -31,30 +31,17 @@ const Users = () => {
   }
 
   const handleUserEdit = async (user: User) => {
-    if (pagedUsers) {
-      await mutateUser(user, token)
-      refreshUser(user, pagedUsers)
-    }
+    await mutateUser(user, token)
+    mutate("/users")
   }
 
   const handleConfirm = async () => {
-    if (selectedUser && droppedUser) {
-      const user = await mergeUsers(selectedUser, droppedUser, token)
-      const newUsers = pagedUsers?.filter((user) => user.id !== droppedUser.id)
-
-      if (newUsers && user) {
-        setDroppedUser(undefined)
-        refreshUser(user, newUsers)
-      }
+    if (pagedUsers && selectedUser && droppedUser) {
+      const updatedUser = await mergeUsers(selectedUser, droppedUser, token)
+      setSelectedUser(updatedUser)
+      mutate("/users")
+      setDroppedUser(undefined)
     }
-  }
-
-  const refreshUser = (user: User, users: User[]) => {
-    const index = users.findIndex((pagedUser) => pagedUser.id === user.id)
-    users[index] = user
-    setPagedUsers([...users], false)
-    setSelectedUser(user)
-    mutate("/users")
   }
 
   return (

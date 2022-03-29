@@ -14,9 +14,10 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
   moduleNameMapper: {
-    "@/queries/(.*)": "<rootDir>/src/queries/$1",
+    "@/hooks/(.*)": "<rootDir>/src/hooks/$1",
     "@/utils/(.*)": "<rootDir>/src/utils/$1",
     "@/styles/(.*)": "<rootDir>/src/styles/$1",
+    "@/queries/(.*)": "<rootDir>/src/queries/$1",
     "@/services/(.*)": "<rootDir>/src/services/$1",
     "@/components/(.*)": "<rootDir>/src/components/$1",
   },

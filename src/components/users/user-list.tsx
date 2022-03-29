@@ -1,4 +1,8 @@
-import { useFilteredUsers, usePaging } from "@/services/users"
+import {
+  haveSimilarServices,
+  useFilteredUsers,
+  usePaging,
+} from "@/services/users"
 import UserItem from "./user-item"
 
 const UserList = ({
@@ -25,6 +29,9 @@ const UserList = ({
             onClick={() => onSelect(user)}
             dropped={droppedUser?.id === user.id}
             selected={selectedUser?.id === user.id}
+            hasSimilarServices={
+              selectedUser && haveSimilarServices(user, selectedUser)
+            }
           />
         ))}
       </ul>

@@ -7,16 +7,20 @@ const UserItem = ({
   onClick,
   dropped,
   selected,
+  hasSimilarServices,
 }: {
   user: User
   dropped: boolean
   selected: boolean
   onClick: () => void
+  hasSimilarServices: boolean
 }) => {
+  const draggable = !selected && !hasSimilarServices
+
   const [{ isDragging }, drag] = useDrag(() => ({
     item: user,
     type: "user",
-    canDrag: !selected,
+    canDrag: draggable,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -24,7 +28,7 @@ const UserItem = ({
 
   const classes = []
   if (selected) classes.push("selected")
-  if (!selected) classes.push("draggable")
+  if (draggable) classes.push("draggable")
   if (isDragging || dropped) classes.push("dragging")
 
   return (

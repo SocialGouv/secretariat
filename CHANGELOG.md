@@ -1,3 +1,10 @@
+## [1.24.2](https://github.com/SocialGouv/secretariat/compare/v1.24.1...v1.24.2) (2022-03-29)
+
+
+### Bug Fixes
+
+* smooth refresh ([#161](https://github.com/SocialGouv/secretariat/issues/161)) ([dd501d8](https://github.com/SocialGouv/secretariat/commit/dd501d873b2293a562bb9304f35f22a6a7a1c997))
+
 ## [1.24.1](https://github.com/SocialGouv/secretariat/compare/v1.24.0...v1.24.1) (2022-03-29)
 
 

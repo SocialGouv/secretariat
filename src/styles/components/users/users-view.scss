@@ -52,7 +52,34 @@
             bottom-0
             absolute
             content-[""]
-            bg-grey-1000-hover;
+            bg-grey-1000-main;
+        }
+      }
+
+      &.draggable {
+        .drag-handler {
+          @apply
+            w-4
+            h-4
+            z-10
+            top-3
+            right-3
+            absolute
+            text-base
+            font-bold
+            font-remix
+            cursor-move
+            whitespace-pre-wrap
+            text-grey-625-active
+            hover:text-grey-625-main
+            ;
+
+          &::before {
+            @apply content-["\EF78\A\EF78"];
+          }
+
+          line-height: 0.5rem;
+          text-shadow: 0 1px 1px #fff;
         }
       }
     }

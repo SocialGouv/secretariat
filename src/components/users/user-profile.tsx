@@ -19,7 +19,10 @@ const UserProfile = ({
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
       accept: "user",
-      drop: onUserDrop,
+      drop: (user: User) => {
+        onUserDrop(user)
+        return user
+      },
       canDrop: (item) => !haveSimilarServices(item, user),
       collect: (monitor) => ({
         isOver: monitor.isOver(),

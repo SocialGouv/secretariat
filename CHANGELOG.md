@@ -1,3 +1,10 @@
+## [1.24.3](https://github.com/SocialGouv/secretariat/compare/v1.24.2...v1.24.3) (2022-03-29)
+
+
+### Bug Fixes
+
+* date shift ([#157](https://github.com/SocialGouv/secretariat/issues/157)) ([f27e4bf](https://github.com/SocialGouv/secretariat/commit/f27e4bf17da192a0d2dd76cbdce30eecbaf08191))
+
 ## [1.24.2](https://github.com/SocialGouv/secretariat/compare/v1.24.1...v1.24.2) (2022-03-29)
 
 

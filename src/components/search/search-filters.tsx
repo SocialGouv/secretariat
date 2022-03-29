@@ -1,4 +1,4 @@
-import useFilters from "@/services/filters"
+import useFilters from "@/services/use-filters"
 import Badge from "@/components/common/badge"
 import SearchCount from "@/components/search/search-count"
 import ServiceLogo from "@/components/common/service-logo"

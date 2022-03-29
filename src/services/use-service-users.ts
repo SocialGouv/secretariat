@@ -1,6 +1,5 @@
 import useSWR from "swr"
-
-import { useFilteredUsers } from "@/services/users"
+import useFilteredUsers from "@/services/use-filtered-users"
 
 const useServiceUsers = (service?: keyof User) => {
   const { query, users } = useFilteredUsers()

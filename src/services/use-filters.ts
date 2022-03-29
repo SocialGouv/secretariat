@@ -1,6 +1,7 @@
 import useSWR from "swr"
+
 import SERVICES from "@/utils/SERVICES"
-import { usePaging } from "@/services/users"
+import usePaging from "./use-paging"
 
 interface Filters {
   alerts: boolean

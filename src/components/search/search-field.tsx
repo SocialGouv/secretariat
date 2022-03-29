@@ -1,7 +1,7 @@
 import debounceFn from "debounce-fn"
 import { useEffect, useRef, useState } from "react"
 
-import useSearch from "@/services/search"
+import useSearch from "@/services/use-search"
 
 const SearchField = () => {
   const { setQuery } = useSearch()

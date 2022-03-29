@@ -46,10 +46,13 @@ const UserArrivalDeparture = ({
   const [token] = useToken()
 
   const handleChange = async (date: Record<string, Date | null>) => {
-    // Hasura seems to shift the hours by one when receiving the date, so putting hours at midday
+    // Applying timezone shift so that the day won't change later
     for (const key of Object.keys(date)) {
       if (date[key] !== null) {
-        date[key]?.setHours(12)
+        const currentDate = date[key] as Date
+        date[key] = new Date(
+          currentDate.getTime() - currentDate.getTimezoneOffset() * 60000
+        )
       }
     }
     onChange({ ...user, ...date })

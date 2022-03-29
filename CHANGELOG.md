@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/SocialGouv/secretariat/compare/v1.23.7...v1.24.0) (2022-03-29)
+
+
+### Features
+
+* expiry badge on user items ([#158](https://github.com/SocialGouv/secretariat/issues/158)) ([dff220a](https://github.com/SocialGouv/secretariat/commit/dff220a7d3be231c8adda93b957d7621e738f3b7))
+
 ## [1.23.7](https://github.com/SocialGouv/secretariat/compare/v1.23.6...v1.23.7) (2022-03-28)
 
 

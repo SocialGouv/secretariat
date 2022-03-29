@@ -1,5 +1,5 @@
-import { useState } from "react"
 import { format } from "date-fns"
+import { useState } from "react"
 import DatePicker from "react-datepicker"
 
 const DateField = ({
@@ -43,6 +43,15 @@ const UserArrivalDeparture = ({
   onChange: (user: User) => void
 }) => {
   const handleChange = async (date: Record<string, Date | null>) => {
+    // Applying timezone shift so that the day won't change later
+    for (const key of Object.keys(date)) {
+      if (date[key] !== null) {
+        const currentDate = date[key] as Date
+        date[key] = new Date(
+          currentDate.getTime() - currentDate.getTimezoneOffset() * 60000
+        )
+      }
+    }
     onChange({ ...user, ...date })
   }
 

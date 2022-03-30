@@ -31,6 +31,7 @@ const Users = () => {
   }
 
   const handleUserEdit = async (user: User) => {
+    setSelectedUser(user)
     await mutateUser(user, token)
     mutate("/users")
   }

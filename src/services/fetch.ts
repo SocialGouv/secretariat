@@ -167,8 +167,8 @@ const updateUsers = async (
 ) => {
   await Promise.all(
     users.map(async (user) => {
-      await updateOrInsertUser(user, serviceName, jwt)
-      // await updateOrInsertService(user, serviceName, jwt)
+      // await updateOrInsertUser(user, serviceName, jwt)
+      await updateOrInsertService(user, serviceName, jwt)
     })
   )
 }

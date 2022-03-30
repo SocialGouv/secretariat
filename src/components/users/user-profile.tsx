@@ -49,7 +49,7 @@ const UserProfile = ({
           <div className="content">
             <UserArrivalDeparture user={user} onChange={onUserEdit} />
             {user.warning && <UserWarning type={user.warning} />}
-            <UserServices user={user} />
+            <UserServices services={user.services} />
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import { usePagedUsers } from "@/hooks/use-paged-users"
 const Users = () => {
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
+  console.log("pagedUsers", pagedUsers)
 
   const [token] = useToken()
   const [droppedUser, setDroppedUser] = useState<User>()

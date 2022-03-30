@@ -1,128 +1,169 @@
 import useSWR from "swr"
 
 import fetcher from "@/utils/fetcher"
+import SERVICES from "@/utils/SERVICES"
 import useToken from "@/hooks/use-token"
-import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
 import { detectWarnings } from "@/utils/detect-warnings"
+import { deleteUser, getUserById, getUsers2, updateUser } from "@/queries/index"
 
+const DEFAULT_AVATAR_URL = "/images/user-avatar.svg"
 interface UserMapping {
   email: string
   name: string
   avatarUrl?: string
 }
 
-const getMattermostData = ({
-  email,
-  username,
-  last_name,
-  first_name,
-}: MattermostUser): UserMapping => ({
-  email,
-  name: first_name ? `${first_name} ${last_name}` : username,
-})
+// const getMattermostData = ({
+//   email,
+//   username,
+//   last_name,
+//   first_name,
+// }: MattermostUser): UserMapping => ({
+//   email,
+//   name: first_name ? `${first_name} ${last_name}` : username,
+// })
 
-const getSentryData = ({
-  name,
-  email,
-  user: { avatarUrl },
-}: SentryUser): UserMapping => ({
-  email,
-  name,
-  avatarUrl,
-})
+// const getSentryData = ({
+//   name,
+//   email,
+//   user: { avatarUrl },
+// }: SentryServiceAccount): UserMapping => ({
+//   email,
+//   name,
+//   avatarUrl,
+// })
 
-const getZammadData = ({
-  email,
-  lastname,
-  firstname,
-}: ZammadUser): UserMapping => ({
-  email,
-  name: `${firstname} ${lastname}`,
-})
+// const getZammadData = ({
+//   email,
+//   lastname,
+//   firstname,
+// }: ZammadUser): UserMapping => ({
+//   email,
+//   name: `${firstname} ${lastname}`,
+// })
 
-const getNextCloudData = ({
-  email,
-  displayname,
-}: NextCloudUser): UserMapping => ({
-  email: email ?? "",
-  name: displayname,
-})
+// const getNextCloudData = ({
+//   email,
+//   displayname,
+// }: NextCloudUser): UserMapping => ({
+//   email: email ?? "",
+//   name: displayname,
+// })
 
-const getGithubData = ({
-  name,
-  login,
-  email,
-  avatarUrl,
-}: GithubUser): UserMapping => ({
-  email,
-  avatarUrl,
-  name: name ?? login,
-})
+// const getGithubData = ({
+//   name,
+//   login,
+//   email,
+//   avatarUrl,
+// }: GithubUser): UserMapping => ({
+//   email,
+//   avatarUrl,
+//   name: name ?? login,
+// })
 
-const getOVHData = ({
-  displayName,
-  primaryEmailAddress,
-}: OVHUser): UserMapping => ({
-  name: displayName,
-  email: primaryEmailAddress,
-})
+// const getOVHData = ({
+//   displayName,
+//   primaryEmailAddress,
+// }: OVHUser): UserMapping => ({
+//   name: displayName,
+//   email: primaryEmailAddress,
+// })
 
-const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
-  email,
-  name: login,
-})
+// const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
+//   email,
+//   name: login,
+// })
 
-const getUserWarning = (user: User) => {
-  return detectWarnings(
-    user as unknown as Record<string, Record<string, unknown>>
-  )
+// const getDataFrom: Record<ServiceName, (...args: any[]) => UserMapping> = {
+type getDataFromType = {
+  [SN in ServiceName]: (
+    serviceAccount: ServiceAccountsMapping[SN]
+  ) => UserMapping
+}
+
+const getDataFrom: getDataFromType = {
+  matomo: ({ data: { login, email } }) => ({
+    email,
+    name: login,
+  }),
+  ovh: ({ data: { displayName, primaryEmailAddress } }) => ({
+    name: displayName,
+    email: primaryEmailAddress,
+  }),
+  github: ({ data: { name, login, email, avatarUrl } }) => ({
+    email,
+    avatarUrl,
+    name: name ?? login,
+  }),
+  nextcloud: ({ data: { email, displayname } }) => ({
+    email: email ?? "",
+    name: displayname,
+  }),
+  zammad: ({ data: { email, lastname, firstname } }) => ({
+    email,
+    name: `${firstname} ${lastname}`,
+  }),
+  sentry: ({
+    data: {
+      name,
+      email,
+      user: { avatarUrl },
+    },
+  }) => ({
+    email,
+    name,
+    avatarUrl,
+  }),
+  mattermost: ({ data: { email, username, last_name, first_name } }) => ({
+    email,
+    name: first_name ? `${first_name} ${last_name}` : username,
+  }),
+}
+
+const getDataFromServiceAccounts = (services: ServiceAccount[]) => {
+  for (const SERVICE of SERVICES) {
+    for (const serviceAccount of services) {
+      if (serviceAccount.type === SERVICE) {
+        return getDataFrom[serviceAccount.type](serviceAccount as never)
+      }
+    }
+  }
+  return {} as UserMapping
+}
+
+const getAvatarUrl = (services: ServiceAccount[]) => {
+  const githubAccount = services.find(
+    ({ type }) => type === "github"
+  ) as GithubServiceAccount
+  if (githubAccount) return githubAccount.data.avatarUrl
+  const sentryAccount = services.find(
+    ({ type }) => type === "github"
+  ) as SentryServiceAccount
+  if (sentryAccount) return sentryAccount.data.user.avatarUrl
+  return DEFAULT_AVATAR_URL
 }
 
 const mapUsers = (users: User[]): User[] => {
   return users
     .map((user) => {
-      const { matomo, mattermost, sentry, zammad, nextcloud, github, ovh } =
-        user
-      const serviceData = mattermost
-        ? getMattermostData(mattermost)
-        : sentry
-        ? getSentryData(sentry)
-        : zammad
-        ? getZammadData(zammad)
-        : matomo
-        ? getMatomoData(matomo)
-        : nextcloud
-        ? getNextCloudData(nextcloud)
-        : github
-        ? getGithubData(github)
-        : ovh
-        ? getOVHData(ovh)
-        : ({} as UserMapping)
+      const { services } = user
+      const data = getDataFromServiceAccounts(services)
 
-      if (!serviceData.avatarUrl) {
-        if (github) serviceData.avatarUrl = github.avatarUrl
-        else if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
+      if (!data.avatarUrl) {
+        data.avatarUrl = getAvatarUrl(services)
       }
 
-      user.warning = detectWarnings(
-        user as unknown as Record<string, Record<string, unknown>>
-      )
+      user.warning = detectWarnings(user)
 
-      return { ...serviceData, ...user }
+      return { ...data, ...user }
     })
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 export const haveSimilarServices = (a: User, b: User) => {
-  return (
-    (a.matomo && b.matomo) ||
-    (a.mattermost && b.mattermost) ||
-    (a.github && b.github) ||
-    (a.zammad && b.zammad) ||
-    (a.nextcloud && b.nextcloud) ||
-    (a.ovh && b.ovh) ||
-    (a.sentry && b.sentry)
-  )
+  const servicesA = a.services.map((service) => service.type)
+  const servicesB = b.services.map((service) => service.type)
+  return servicesA.filter((value) => servicesB.includes(value)).length
 }
 
 export const mutateUser = async (
@@ -167,8 +208,12 @@ const useUsers = () => {
   const [token] = useToken()
 
   const getMappedUsers = async () => {
-    const data = await fetcher(getUsers, token)
-    return Promise.resolve(mapUsers(data.users))
+    const data = await fetcher(getUsers2, token)
+    console.log("MAIN", data)
+    const mappedUsers = mapUsers(data.users2)
+    console.log({ mappedUsers })
+
+    return Promise.resolve(mappedUsers)
   }
 
   const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)

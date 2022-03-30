@@ -33,6 +33,21 @@ export const getUsers = gql`
   ${userFragment}
 `
 
+export const getUsers2 = gql`
+  query getUsers {
+    users2 {
+      id
+      departure
+      arrival
+      services {
+        id
+        type
+        data
+      }
+    }
+  }
+`
+
 export const getUserById = gql`
   query getUserById($id: uuid!) {
     users(where: { id: { _eq: $id } }) {

@@ -18,6 +18,22 @@ insert_permissions:
 select_permissions:
 - permission:
     columns:
+    - arrival
+    - departure
+    - id
+    - updated_at
+    filter: {}
+  role: user
+- permission:
+    columns:
     - id
     filter: {}
   role: webhook
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - arrival
+    - departure
+    filter: {}
+  role: user

@@ -52,7 +52,7 @@ const SearchFilters = () => {
                   : " opacity-25"
               }`}
             >
-              <ServiceLogo service={service as ServiceName} size="sm" />
+              <ServiceLogo name={service as ServiceName} size="sm" />
             </div>
           ))}
         </div>

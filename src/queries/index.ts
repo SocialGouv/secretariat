@@ -177,3 +177,40 @@ export const deleteUser = gql`
     }
   }
 `
+
+export const getServicesMatchingId = gql`
+  query getServicesMatchingId($idKeyValue: jsonb!, $serviceName: String!) {
+    services(
+      where: { data: { _contains: $idKeyValue }, type: { _eq: $serviceName } }
+    ) {
+      id
+    }
+  }
+`
+
+export const insertUser2 = gql`
+  mutation insertUser2 {
+    insert_users2_one(object: {}) {
+      id
+    }
+  }
+`
+
+export const insertService = gql`
+  mutation insertService($service: services_insert_input!) {
+    insert_services_one(object: $service) {
+      id
+    }
+  }
+`
+
+export const updateService = gql`
+  mutation updateService($serviceId: uuid!, $serviceData: jsonb!) {
+    update_services_by_pk(
+      pk_columns: { id: $serviceId }
+      _set: { data: $serviceData }
+    ) {
+      id
+    }
+  }
+`

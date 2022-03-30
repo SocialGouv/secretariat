@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/SocialGouv/secretariat/compare/v1.24.4...v1.25.0) (2022-03-30)
+
+
+### Features
+
+* new data model ([#163](https://github.com/SocialGouv/secretariat/issues/163)) ([1e7147a](https://github.com/SocialGouv/secretariat/commit/1e7147acaef7a0778d2386af6fe51b84c8c79ae8))
+
 ## [1.24.4](https://github.com/SocialGouv/secretariat/compare/v1.24.3...v1.24.4) (2022-03-30)
 
 

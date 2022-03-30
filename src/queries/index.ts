@@ -16,7 +16,6 @@ const userServicesFragment = gql`
 const userFragment = gql`
   fragment userFields on users {
     id
-    warning
     arrival
     departure
     updated_at

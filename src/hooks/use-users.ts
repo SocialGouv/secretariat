@@ -3,6 +3,7 @@ import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import useToken from "@/hooks/use-token"
 import { deleteUser, getUserById, getUsers, updateUser } from "@/queries/index"
+import { detectWarnings } from "@/utils/detect-warnings"
 
 interface UserMapping {
   email: string
@@ -71,6 +72,12 @@ const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
   name: login,
 })
 
+const getUserWarning = (user: User) => {
+  return detectWarnings(
+    user as unknown as Record<string, Record<string, unknown>>
+  )
+}
+
 const mapUsers = (users: User[]): User[] => {
   return users
     .map((user) => {
@@ -96,6 +103,11 @@ const mapUsers = (users: User[]): User[] => {
         if (github) serviceData.avatarUrl = github.avatarUrl
         else if (sentry) serviceData.avatarUrl = sentry.user.avatarUrl
       }
+
+      user.warning = detectWarnings(
+        user as unknown as Record<string, Record<string, unknown>>
+      )
+
       return { ...serviceData, ...user }
     })
     .sort((a, b) => a.name.localeCompare(b.name))

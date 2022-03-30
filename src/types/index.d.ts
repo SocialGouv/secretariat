@@ -13,7 +13,7 @@ interface BasicUser {
   sentry?: SentryUser
   zammad?: ZammadUser
   updated_at?: Date
-  warning?: string
+  warning?: "alone_service" | "missing_services" | null
 }
 
 interface UserWithName extends BasicUser {

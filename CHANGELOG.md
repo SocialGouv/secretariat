@@ -1,3 +1,10 @@
+## [1.24.4](https://github.com/SocialGouv/secretariat/compare/v1.24.3...v1.24.4) (2022-03-30)
+
+
+### Bug Fixes
+
+* user template ([#162](https://github.com/SocialGouv/secretariat/issues/162)) ([8f0810c](https://github.com/SocialGouv/secretariat/commit/8f0810cf16c4aa9630373a63463ecdb5c243dd71))
+
 ## [1.24.3](https://github.com/SocialGouv/secretariat/compare/v1.24.2...v1.24.3) (2022-03-29)
 
 

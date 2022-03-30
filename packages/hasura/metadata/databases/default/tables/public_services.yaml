@@ -1,0 +1,31 @@
+table:
+  name: services
+  schema: public
+object_relationships:
+- name: users2
+  using:
+    foreign_key_constraint_on: user_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - data
+    - type
+    - user_id
+  role: webhook
+select_permissions:
+- permission:
+    columns:
+    - data
+    - id
+    - type
+    filter: {}
+  role: webhook
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - data
+    filter: {}
+  role: webhook

@@ -9,8 +9,12 @@ import fetcher from "@/utils/fetcher"
 import SERVICES from "@/utils/SERVICES"
 import {
   addUser,
+  getServicesMatchingId,
   getServiceUsers,
+  insertService,
+  insertUser2,
   matchUserInServices,
+  updateService,
   updateUser,
 } from "../queries"
 import { detectWarnings } from "../utils/detect-warnings"
@@ -102,6 +106,60 @@ const updateOrInsertUser = async (
   }
 }
 
+const stats = { insertions: 0, updates: 0, error: 0 }
+const servicesIdFields: Record<string, string> = {
+  github: "id",
+  matomo: "email", // This API does not return any unique ID in entries
+  zammad: "id",
+  sentry: "id",
+  nextcloud: "id",
+  mattermost: "id",
+  ovh: "id",
+}
+
+const updateOrInsertService = async (
+  serviceData: Record<string, unknown>,
+  serviceName: string,
+  jwt: string
+) => {
+  const idField = servicesIdFields[serviceName]
+  const { services: servicesMatchingId } = await fetcher(
+    getServicesMatchingId,
+    jwt,
+    {
+      idKeyValue: { [idField]: serviceData[idField] },
+      serviceName,
+    }
+  )
+  if (servicesMatchingId.length === 0) {
+    // This is a new service entry, we have to insert it into the table
+
+    // First, create an associated user entry
+    const {
+      insert_users2_one: { id: userId },
+    } = await fetcher(insertUser2, jwt)
+
+    // Then, create the service entry
+    await fetcher(insertService, jwt, {
+      service: { data: serviceData, user_id: userId, type: serviceName },
+    })
+    stats.insertions += 1
+  } else if (servicesMatchingId.length === 1) {
+    // We have to update a service entry
+    await fetcher(updateService, jwt, {
+      serviceId: servicesMatchingId[0].id,
+      serviceData,
+    })
+    stats.updates += 1
+  } else {
+    console.error(
+      "Got multiple matches with a service's primary key field and service name",
+      servicesMatchingId
+    )
+    stats.error += 1
+  }
+}
+
 const updateUsers = async (
   users: Record<string, unknown>[],
   serviceName: string,
@@ -110,6 +168,7 @@ const updateUsers = async (
   await Promise.all(
     users.map(async (user) => {
       await updateOrInsertUser(user, serviceName, jwt)
+      // await updateOrInsertService(user, serviceName, jwt)
     })
   )
 }
@@ -132,4 +191,8 @@ export const fetchAndUpdateServices = async (jwt: string) => {
     console.log(`updated users table with ${serviceName} data`)
   }
   console.log("updated users table with all services data")
+  console.log(stats)
+  stats.error = 0
+  stats.insertions = 0
+  stats.updates = 0
 }

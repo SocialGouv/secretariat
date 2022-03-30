@@ -11,7 +11,7 @@ const ratios = {
 }
 
 const sizes: Record<string, number> = {
-  sm: 16,
+  sm: 18,
   md: 22,
   lg: 24,
 }

@@ -40,7 +40,7 @@ const UserItem = ({
       role="User"
       ref={drag}
       onClick={onClick}
-      className={`tile ${classes.join(" ")}`}
+      className={`user-item ${classes.join(" ")}`}
     >
       <div className="drag-handler"></div>
       <UserTemplate user={user} />

@@ -8,7 +8,7 @@ const UserTemplate = ({ user }: { user: User }) => {
     user.departure && new Date(user.departure).getTime() < new Date().getTime()
 
   return (
-    <div className="user">
+    <div className="user-template">
       <UserHeader user={user} />
       <div
         className={`alerts-services${

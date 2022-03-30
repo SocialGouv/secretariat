@@ -1,0 +1,23 @@
+.user-template {
+  @apply flex flex-col p-4;
+
+  .alerts-services {
+    @apply flex justify-between items-center mt-2 min-h-[26px];
+
+    .badge {
+      @apply mr-2 text-xs;
+    }
+
+    &.no-alert {
+      @apply justify-end;
+    }
+
+    .services {
+      @apply flex flex-row justify-end items-center;
+  
+      & > div {
+        @apply flex justify-center ml-2;
+      }
+    }
+  }
+}

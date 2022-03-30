@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/SocialGouv/secretariat/compare/v1.25.0...v1.25.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* move warning check to front-end ([#164](https://github.com/SocialGouv/secretariat/issues/164)) ([a3f01aa](https://github.com/SocialGouv/secretariat/commit/a3f01aa735fc2de1635b89f5cc4676aa3fed0854))
+
 # [1.25.0](https://github.com/SocialGouv/secretariat/compare/v1.24.4...v1.25.0) (2022-03-30)
 
 

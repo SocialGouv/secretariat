@@ -213,3 +213,28 @@ export const updateService = gql`
     }
   }
 `
+
+export const deleteServices = gql`
+  mutation deleteServices($existingServicesIds: [uuid!]) {
+    delete_services(where: { id: { _nin: $existingServicesIds } }) {
+      returning {
+        users2 {
+          id
+          services_aggregate {
+            aggregate {
+              count
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const deleteUsers = gql`
+  mutation deleteServices($userIds: [uuid!] = "") {
+    delete_users2(where: { id: { _in: $userIds } }) {
+      affected_rows
+    }
+  }
+`

@@ -37,3 +37,7 @@ update_permissions:
     - departure
     filter: {}
   role: user
+delete_permissions:
+- permission:
+    filter: {}
+  role: user

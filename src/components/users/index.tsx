@@ -6,18 +6,15 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import useToken from "@/hooks/use-token"
 import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
-import UserProfile from "@/components/users/user-profile"
-import ConfirmModal from "@/components/users/confirm-modal"
-import { mergeUsers, mutateUser } from "@/hooks/use-users"
-
 import { usePagedUsers } from "@/hooks/use-paged-users"
+import UserProfile from "@/components/users/user-profile"
+import { mergeUsers, mutateUser } from "@/hooks/use-users"
+import ConfirmModal from "@/components/users/confirm-modal"
 
 const Users = () => {
+  const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
-  console.log("pagedUsers", pagedUsers)
-
-  const [token] = useToken()
   const [droppedUser, setDroppedUser] = useState<User>()
   const [selectedUser, setSelectedUser] = useState<User>()
 

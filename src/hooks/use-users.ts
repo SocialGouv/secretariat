@@ -4,7 +4,11 @@ import fetcher from "@/utils/fetcher"
 import SERVICES from "@/utils/SERVICES"
 import useToken from "@/hooks/use-token"
 import { detectWarnings } from "@/utils/detect-warnings"
-import { deleteUser, getUserById, getUsers2, updateUser } from "@/queries/index"
+import {
+  getUsers2,
+  updateUser2,
+  mergeUsers as mergeUsersQuery,
+} from "@/queries/index"
 
 const DEFAULT_AVATAR_URL = "/images/user-avatar.svg"
 interface UserMapping {
@@ -13,68 +17,6 @@ interface UserMapping {
   avatarUrl?: string
 }
 
-// const getMattermostData = ({
-//   email,
-//   username,
-//   last_name,
-//   first_name,
-// }: MattermostUser): UserMapping => ({
-//   email,
-//   name: first_name ? `${first_name} ${last_name}` : username,
-// })
-
-// const getSentryData = ({
-//   name,
-//   email,
-//   user: { avatarUrl },
-// }: SentryServiceAccount): UserMapping => ({
-//   email,
-//   name,
-//   avatarUrl,
-// })
-
-// const getZammadData = ({
-//   email,
-//   lastname,
-//   firstname,
-// }: ZammadUser): UserMapping => ({
-//   email,
-//   name: `${firstname} ${lastname}`,
-// })
-
-// const getNextCloudData = ({
-//   email,
-//   displayname,
-// }: NextCloudUser): UserMapping => ({
-//   email: email ?? "",
-//   name: displayname,
-// })
-
-// const getGithubData = ({
-//   name,
-//   login,
-//   email,
-//   avatarUrl,
-// }: GithubUser): UserMapping => ({
-//   email,
-//   avatarUrl,
-//   name: name ?? login,
-// })
-
-// const getOVHData = ({
-//   displayName,
-//   primaryEmailAddress,
-// }: OVHUser): UserMapping => ({
-//   name: displayName,
-//   email: primaryEmailAddress,
-// })
-
-// const getMatomoData = ({ login, email }: MatomoUser): UserMapping => ({
-//   email,
-//   name: login,
-// })
-
-// const getDataFrom: Record<ServiceName, (...args: any[]) => UserMapping> = {
 type getDataFromType = {
   [SN in ServiceName]: (
     serviceAccount: ServiceAccountsMapping[SN]
@@ -143,20 +85,22 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
   return DEFAULT_AVATAR_URL
 }
 
+const mapUser = (user: User): User => {
+  const { services } = user
+  const data = getDataFromServiceAccounts(services)
+
+  if (!data.avatarUrl) {
+    data.avatarUrl = getAvatarUrl(services)
+  }
+
+  user.warning = detectWarnings(user)
+
+  return { ...user, ...data }
+}
+
 const mapUsers = (users: User[]): User[] => {
   return users
-    .map((user) => {
-      const { services } = user
-      const data = getDataFromServiceAccounts(services)
-
-      if (!data.avatarUrl) {
-        data.avatarUrl = getAvatarUrl(services)
-      }
-
-      user.warning = detectWarnings(user)
-
-      return { ...data, ...user }
-    })
+    .map((user) => mapUser(user))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
@@ -170,38 +114,24 @@ export const mutateUser = async (
   user: User,
   token: string
 ): Promise<User | undefined> => {
-  const { id, avatarUrl, email, name, warning, updated_at, ...data } = user
-  return await fetcher(updateUser, token, { id, _set: data })
+  const { id, arrival, departure } = user
+  return await fetcher(updateUser2, token, { id, _set: { arrival, departure } })
 }
 
 export const mergeUsers = async (
-  { id: idToKeep }: User,
-  { id: idToDrop }: User,
+  userToKeep: User,
+  userToDrop: User,
   token: string
-): Promise<User | undefined> => {
-  const {
-    users: [userToKeep],
-  } = await fetcher(getUserById, token, { id: idToKeep })
-  const {
-    users: [userToDrop],
-  } = await fetcher(getUserById, token, { id: idToDrop })
+): Promise<User> => {
+  await fetcher(mergeUsersQuery, token, {
+    userToKeepId: userToKeep.id,
+    userToDropId: userToDrop.id,
+  })
 
-  if (
-    userToKeep &&
-    userToDrop &&
-    !haveSimilarServices(userToKeep, userToDrop)
-  ) {
-    Object.keys(userToKeep).forEach(
-      (key) => userToKeep[key] === null && delete userToKeep[key]
-    )
-    const user = { ...userToDrop, ...userToKeep }
-    const { id, updated_at, warning, ..._set } = user
-    await fetcher(updateUser, token, { id, _set })
-    await fetcher(deleteUser, token, { id: userToDrop.id })
-    return mapUsers([user])[0]
-  }
-
-  return undefined
+  return mapUser({
+    ...userToKeep,
+    services: userToKeep.services.concat(userToDrop.services),
+  })
 }
 
 const useUsers = () => {
@@ -209,11 +139,7 @@ const useUsers = () => {
 
   const getMappedUsers = async () => {
     const data = await fetcher(getUsers2, token)
-    console.log("MAIN", data)
-    const mappedUsers = mapUsers(data.users2)
-    console.log({ mappedUsers })
-
-    return Promise.resolve(mappedUsers)
+    return Promise.resolve(mapUsers(data.users2))
   }
 
   const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)

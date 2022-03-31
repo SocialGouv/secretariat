@@ -16,7 +16,8 @@ const UserItem = ({
   onClick: () => void
   hasSimilarServices: boolean
 }) => {
-  const draggable = !selected && !hasSimilarServices
+  // const draggable = !selected && !hasSimilarServices
+  const draggable = !selected
 
   const [{ isDragging }, drag] = useDrag(
     () => ({

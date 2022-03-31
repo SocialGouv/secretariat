@@ -1,6 +1,6 @@
 import { useSWRConfig } from "swr"
 import { DndProvider } from "react-dnd"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
 import useToken from "@/hooks/use-token"
@@ -27,9 +27,9 @@ const Users = () => {
     }
   }, [pagedUsers, selectedUser])
 
-  const handleUserDrop = (user: User) => {
-    setDroppedUser(user)
-  }
+  // const handleUserDrop = (user: User) => {
+  //   setDroppedUser(user)
+  // }
 
   const handleUserEdit = async (user: User) => {
     setSelectedUser(user)
@@ -37,14 +37,20 @@ const Users = () => {
     mutate("/users")
   }
 
-  const handleConfirm = async () => {
+  const handleConfirm = useCallback(async () => {
     if (pagedUsers && selectedUser && droppedUser) {
       const updatedUser = await mergeUsers(selectedUser, droppedUser, token)
       setSelectedUser(updatedUser)
       mutate("/users")
       setDroppedUser(undefined)
     }
-  }
+  }, [droppedUser, mutate, pagedUsers, selectedUser, token])
+
+  useEffect(() => {
+    if (droppedUser) {
+      handleConfirm()
+    }
+  }, [droppedUser, handleConfirm])
 
   return (
     <>
@@ -57,13 +63,13 @@ const Users = () => {
       ) : (
         <DndProvider backend={HTML5Backend}>
           <div className="users-view">
-            <ConfirmModal
+            {/* <ConfirmModal
               isOpen={!!droppedUser}
               onConfirm={handleConfirm}
               droppedUser={droppedUser}
               selectedUser={selectedUser}
               onRequestClose={() => setDroppedUser(undefined)}
-            />
+            /> */}
             <UserList
               users={pagedUsers}
               droppedUser={droppedUser}
@@ -73,7 +79,7 @@ const Users = () => {
             {selectedUser && (
               <UserProfile
                 user={selectedUser}
-                onUserDrop={handleUserDrop}
+                onUserDrop={setDroppedUser}
                 onUserEdit={handleUserEdit}
               />
             )}

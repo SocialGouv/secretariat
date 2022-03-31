@@ -23,7 +23,8 @@ const UserProfile = ({
         onUserDrop(user)
         return user
       },
-      canDrop: (item) => !haveSimilarServices(item, user),
+      // canDrop: (item) => !haveSimilarServices(item, user),
+      canDrop: (item) => item.id !== user.id,
       collect: (monitor) => ({
         isOver: monitor.isOver(),
         canDrop: monitor.canDrop(),

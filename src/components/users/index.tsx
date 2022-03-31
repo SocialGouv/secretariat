@@ -9,7 +9,6 @@ import UserList from "@/components/users/user-list"
 import { usePagedUsers } from "@/hooks/use-paged-users"
 import UserProfile from "@/components/users/user-profile"
 import { mergeUsers, mutateUser } from "@/hooks/use-users"
-import ConfirmModal from "@/components/users/confirm-modal"
 
 const Users = () => {
   const [token] = useToken()
@@ -26,10 +25,6 @@ const Users = () => {
       }
     }
   }, [pagedUsers, selectedUser])
-
-  // const handleUserDrop = (user: User) => {
-  //   setDroppedUser(user)
-  // }
 
   const handleUserEdit = async (user: User) => {
     setSelectedUser(user)
@@ -63,13 +58,6 @@ const Users = () => {
       ) : (
         <DndProvider backend={HTML5Backend}>
           <div className="users-view">
-            {/* <ConfirmModal
-              isOpen={!!droppedUser}
-              onConfirm={handleConfirm}
-              droppedUser={droppedUser}
-              selectedUser={selectedUser}
-              onRequestClose={() => setDroppedUser(undefined)}
-            /> */}
             <UserList
               users={pagedUsers}
               droppedUser={droppedUser}

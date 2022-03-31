@@ -1,39 +1,33 @@
 import { useDrag } from "react-dnd"
 
 import UserTemplate from "@/components/users/user-template"
-import { useEffect, useState } from "react"
 
 const UserItem = ({
   user,
   onClick,
   dropped,
   selected,
-  hasSimilarServices,
 }: {
   user: User
   dropped: boolean
   selected: boolean
   onClick: () => void
-  hasSimilarServices: boolean
 }) => {
-  // const draggable = !selected && !hasSimilarServices
-  const draggable = !selected
-
   const [{ isDragging }, drag] = useDrag(
     () => ({
       item: user,
       type: "user",
-      canDrag: draggable,
+      canDrag: !selected,
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
     }),
-    [user, draggable]
+    [user, selected]
   )
 
   const classes = []
   if (selected) classes.push("selected")
-  if (draggable) classes.push("draggable")
+  if (!selected) classes.push("draggable")
   if (isDragging || dropped) classes.push("dragging")
 
   return (

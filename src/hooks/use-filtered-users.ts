@@ -6,8 +6,6 @@ import useFilters from "@/hooks/use-filters"
 
 const useFilteredUsers = () => {
   const users = useUsers()
-  console.log({ users })
-
   const { query } = useSearch()
   const { filters } = useFilters()
 

@@ -62,7 +62,10 @@ const updateOrInsertUser = async (
       // if there's no row with this id for the given service, insert the user
       const newUserEntry = { [serviceName]: user }
       await fetcher(addUser, jwt, {
-        user: { [serviceName]: user, warning: detectWarnings(newUserEntry) },
+        user: {
+          [serviceName]: user,
+          warning: detectWarnings(newUserEntry as unknown as User),
+        },
       })
     } else if (matchingIdUsers.length === 1) {
       // if there's one, update the user
@@ -90,7 +93,10 @@ const updateOrInsertUser = async (
       // no row have the same email on any service, create the user
       const newUserEntry = { [serviceName]: user }
       await fetcher(addUser, jwt, {
-        user: { [serviceName]: user, warning: detectWarnings(newUserEntry) },
+        user: {
+          [serviceName]: user,
+          warning: detectWarnings(newUserEntry as unknown as User),
+        },
       })
     } else if (matchingEmailUsers.length === 1) {
       // a row have the same email on a service, update the user
@@ -167,8 +173,8 @@ const updateUsers = async (
 ) => {
   await Promise.all(
     users.map(async (user) => {
-      await updateOrInsertUser(user, serviceName, jwt)
-      // await updateOrInsertService(user, serviceName, jwt)
+      // await updateOrInsertUser(user, serviceName, jwt)
+      await updateOrInsertService(user, serviceName, jwt)
     })
   )
 }

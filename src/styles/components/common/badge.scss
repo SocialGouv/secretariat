@@ -14,10 +14,10 @@
   &.warning {
     @apply
       px-2
-      bg-warning-950-main
-      text-warning-425-main
-      dark:bg-warning-125-main
-      dark:text-warning-625-main;
+      bg-yellow-moutarde-950-main
+      text-yellow-moutarde-348-main
+      dark:bg-yellow-moutarde-125-main
+      dark:text-yellow-moutarde-850-main;
 
     &::before {
       @apply text-base mr-1 -ml-1;
@@ -31,10 +31,10 @@
   &.expiry {
     @apply
       px-2
-      bg-yellow-moutarde-950-main
-      text-yellow-moutarde-348-main
-      dark:bg-yellow-moutarde-125-main
-      dark:text-yellow-moutarde-850-main;
+      bg-warning-950-main
+      text-warning-425-main
+      dark:bg-warning-125-main
+      dark:text-warning-625-main;
 
     &::before {
       @apply text-base mr-1 -ml-1;

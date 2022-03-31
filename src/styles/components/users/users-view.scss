@@ -8,10 +8,17 @@
   }
 
   .selected-user {
-    @apply flex flex-col ml-6;
+    @apply
+      flex
+      ml-6
+      flex-col;
 
     .sticky-container {
-      @apply flex flex-col sticky top-36;
+      @apply
+        flex
+        sticky
+        top-36
+        flex-col;
 
       height: calc(100vh - 17rem);
 

@@ -28,7 +28,7 @@ export const getUsersToMerge = gql`
 
 export const mergeUsers = gql`
   mutation updateServicesUser($userToKeepId: uuid!, $userToDropId: uuid!) {
-    updateRows: update_services(
+    updatedRows: update_services(
       where: { user_id: { _eq: $userToDropId } }
       _set: { user_id: $userToKeepId }
     ) {
@@ -36,14 +36,6 @@ export const mergeUsers = gql`
     }
     deletedUser: delete_users2_by_pk(id: $userToDropId) {
       id
-      departure
-      arrival
-      updated_at
-      services {
-        id
-        data
-        type
-      }
     }
   }
 `
@@ -84,16 +76,10 @@ export const getUsers = gql`
 export const getUsers2 = gql`
   query getUsers {
     users2 {
-      id
-      departure
-      arrival
-      services {
-        id
-        type
-        data
-      }
+      ...userFields
     }
   }
+  ${userFragment2}
 `
 
 export const getUserById = gql`

@@ -1,50 +1,73 @@
 import { useDrag } from "react-dnd"
+import { useSpring, animated } from "react-spring"
 
 import UserTemplate from "@/components/users/user-template"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef } from "react"
 
 const UserItem = ({
   user,
   onClick,
   dropped,
   selected,
-  hasSimilarServices,
+  onRemove,
 }: {
   user: User
   dropped: boolean
   selected: boolean
   onClick: () => void
-  hasSimilarServices: boolean
+  onRemove: () => void
 }) => {
-  const draggable = !selected && !hasSimilarServices
+  const ref = useRef(null)
+  const [styles, spring] = useSpring(() => ({}))
+
+  const onRemoveCallback = useCallback(onRemove, [onRemove])
+
+  useEffect(() => {
+    if (ref && ref.current) {
+      const el = ref.current as HTMLElement
+      spring.update({
+        config: { duration: 200 },
+        to: [{ opacity: 0 }, { height: 0 }],
+        from: { opacity: 1, height: el.offsetHeight },
+        onRest: () => !el.clientHeight && onRemoveCallback(),
+      })
+    }
+  }, [ref, spring, onRemoveCallback])
+
+  useEffect(() => {
+    if (dropped) spring.start()
+  }, [dropped, spring])
 
   const [{ isDragging }, drag] = useDrag(
     () => ({
       item: user,
       type: "user",
-      canDrag: draggable,
+      canDrag: !selected,
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
     }),
-    [user, draggable]
+    [user, selected]
   )
 
   const classes = []
   if (selected) classes.push("selected")
-  if (draggable) classes.push("draggable")
+  if (!selected) classes.push("draggable")
   if (isDragging || dropped) classes.push("dragging")
 
   return (
-    <li
+    <animated.li
+      ref={ref}
       role="User"
-      ref={drag}
+      style={styles}
       onClick={onClick}
-      className={`user-item ${classes.join(" ")}`}
+      className="user-item"
     >
-      <div className="drag-handler"></div>
-      <UserTemplate user={user} />
-    </li>
+      <div className={`user ${classes.join(" ")}`} ref={drag}>
+        <div className="drag-handler"></div>
+        <UserTemplate user={user} />
+      </div>
+    </animated.li>
   )
 }
 

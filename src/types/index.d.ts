@@ -1,33 +1,3 @@
-// interface BasicUser {
-//   id: string
-//   login?: string
-//   arrival?: Date
-//   departure?: Date
-//   avatarUrl?: string
-//   teams?: GithubTeam[]
-//   github?: GithubUser
-//   matomo?: MatomoUser
-//   mattermost?: MattermostUser
-//   nextcloud?: NextCloudUser
-//   ovh?: OVHUser
-//   sentry?: SentryUser
-//   zammad?: ZammadUser
-//   updated_at?: Date
-//   warning?: string
-// }
-
-// interface UserWithName extends BasicUser {
-//   email?: string
-//   name: string
-// }
-
-// interface UserWithEmail extends BasicUser {
-//   email: string
-//   name?: string
-// }
-
-// type User = UserWithEmail | UserWithName
-
 interface User {
   id: string
   name: string
@@ -146,33 +116,3 @@ interface ServiceAccountsMapping {
 
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
-
-// type ServiceAccount =
-//   | GithubServiceAccount
-//   | MatomoServiceAccount
-//   | SentryServiceAccount
-//   | NextCloudServiceAccount
-//   | OVHServiceAccount
-//   | MattermostServiceAccount
-//   | ZammadServiceAccount
-
-// type Initial<ServiceAccount extends ServiceAccountX = ServiceAccountX> = Pick<"name", ServiceAccount>
-
-// type MixedUser =
-//   | User
-//   | GithubUser
-//   | MatomoUser
-//   | SentryUser
-//   | NextCloudUser
-//   | OVHUser
-//   | MattermostUser
-//   | ZammadUser
-
-// type ServiceName =
-//   | "github"
-//   | "mattermost"
-//   | "sentry"
-//   | "zammad"
-//   | "nextcloud"
-//   | "matomo"
-//   | "ovh"

@@ -104,11 +104,11 @@ const mapUsers = (users: User[]): User[] => {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
-export const haveSimilarServices = (a: User, b: User) => {
-  const servicesA = a.services.map((service) => service.type)
-  const servicesB = b.services.map((service) => service.type)
-  return servicesA.filter((value) => servicesB.includes(value)).length
-}
+// export const haveSimilarServices = (a: User, b: User) => {
+//   const servicesA = a.services.map((service) => service.type)
+//   const servicesB = b.services.map((service) => service.type)
+//   return servicesA.filter((value) => servicesB.includes(value)).length
+// }
 
 export const mutateUser = async (
   user: User,

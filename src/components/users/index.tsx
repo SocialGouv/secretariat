@@ -32,20 +32,38 @@ const Users = () => {
     mutate("/users")
   }
 
-  const handleConfirm = useCallback(async () => {
-    if (pagedUsers && selectedUser && droppedUser) {
-      const updatedUser = await mergeUsers(selectedUser, droppedUser, token)
+  // const handleConfirm = useCallback(async () => {
+  //   if (pagedUsers && selectedUser && droppedUser) {
+  //     const updatedUser = await mergeUsers(selectedUser, droppedUser, token)
+  //     setSelectedUser(updatedUser)
+  //     mutate("/users")
+  //     setDroppedUser(undefined)
+  //   }
+  // }, [droppedUser, mutate, pagedUsers, selectedUser, token])
+
+  // useEffect(() => {
+  //   if (droppedUser) {
+  //     handleConfirm()
+  //   }
+  // }, [droppedUser, handleConfirm])
+
+  const handleUserRemoval = async (user: User) => {
+    if (pagedUsers && selectedUser) {
+      console.log("!!! handleUserRemoval !!!")
+      console.log(
+        "USER TO KEEP",
+        selectedUser.name,
+        selectedUser.id,
+        selectedUser
+      )
+      console.log("USER TO DROP", user.name, user.id, user)
+
+      setDroppedUser(undefined)
+      const updatedUser = await mergeUsers(selectedUser, user, token)
       setSelectedUser(updatedUser)
       mutate("/users")
-      setDroppedUser(undefined)
     }
-  }, [droppedUser, mutate, pagedUsers, selectedUser, token])
-
-  useEffect(() => {
-    if (droppedUser) {
-      handleConfirm()
-    }
-  }, [droppedUser, handleConfirm])
+  }
 
   return (
     <>
@@ -62,7 +80,8 @@ const Users = () => {
               users={pagedUsers}
               droppedUser={droppedUser}
               selectedUser={selectedUser}
-              onSelect={(user) => setSelectedUser(user)}
+              onUserSelect={(user) => setSelectedUser(user)}
+              onUserRemove={(user) => handleUserRemoval(user)}
             />
             {selectedUser && (
               <UserProfile

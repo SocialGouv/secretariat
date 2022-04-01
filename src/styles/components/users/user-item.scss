@@ -1,81 +1,87 @@
 .user-item {
-  @apply
-    mb-4
-    border
-    relative
-    shadow-sm
-    border-l-2
-    cursor-pointer
+   @apply flex;
 
-    bg-grey-975-main
-    dark:bg-grey-50-active
-    hover:bg-grey-950-main
-    dark:hover:bg-grey-50-hover
-
-    border-grey-925-main
-    dark:border-grey-125-main
-    hover:border-grey-975-hover
-    dark:hover:border-grey-125-hover
-
-    border-l-grey-200-active
-    hover:border-l-grey-200-hover
-    dark:border-l-grey-850-active
-    dark:hover:border-l-grey-850-hover;
-
-  &.selected {
+  .user {
     @apply
-      shadow-none
-      bg-grey-1000-main
-      dark:bg-grey-100-main
+      mb-4
+      flex-1
+      border
+      relative
+      shadow-sm
+      border-l-2
+      cursor-pointer
+
+      bg-grey-975-main
+      dark:bg-grey-50-active
+      hover:bg-grey-950-main
+      dark:hover:bg-grey-50-hover
+
       border-grey-925-main
       dark:border-grey-125-main
-      border-l-blue-france-113-main
-      dark:border-l-blue-france-625-main;
-  }
+      hover:border-grey-975-hover
+      dark:hover:border-grey-125-hover
 
-  &.dragging {
-    @apply
-      border-l
-      border-dashed
-      border-l-grey-925-active;
+      border-l-grey-200-active
+      hover:border-l-grey-200-hover
+      dark:border-l-grey-850-active
+      dark:hover:border-l-grey-850-hover;
 
-    &::before {
+    &.selected {
       @apply
-        z-20
-        top-0
-        left-0
-        right-0
-        bottom-0
-        absolute
-        content-[""]
-        bg-grey-1000-main;
+        shadow-none
+        bg-grey-1000-main
+        dark:bg-grey-100-main
+        border-grey-925-main
+        dark:border-grey-125-main
+        border-l-blue-france-113-main
+        dark:border-l-blue-france-625-main;
     }
-  }
 
-  &.draggable {
-    .drag-handler {
+    &.dragging {
       @apply
-        w-4
-        h-4
-        z-10
-        top-3
-        right-3
-        absolute
-        text-base
-        font-bold
-        font-remix
-        cursor-move
-        whitespace-pre-wrap
-        text-grey-625-active
-        hover:text-grey-625-main
-        ;
+        border-l
+        shadow-none
+        border-dashed
+        border-l-grey-925-active;
 
       &::before {
-        @apply content-["\EF78\A\EF78"];
+        @apply
+          z-20
+          top-0
+          left-0
+          right-0
+          bottom-0
+          absolute
+          content-[""]
+          bg-grey-1000-main;
       }
+    }
 
-      line-height: 0.5rem;
-      text-shadow: 0 1px 1px #fff;
+    &.draggable {
+      .drag-handler {
+        @apply
+          w-4
+          h-4
+          z-10
+          top-3
+          right-3
+          absolute
+          text-base
+          font-bold
+          font-remix
+          cursor-move
+          whitespace-pre-wrap
+          text-grey-625-active
+          hover:text-grey-625-main
+          ;
+
+        &::before {
+          @apply content-["\EF78\A\EF78"];
+        }
+
+        line-height: 0.5rem;
+        text-shadow: 0 1px 1px #fff;
+      }
     }
   }
 }

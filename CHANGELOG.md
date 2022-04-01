@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/SocialGouv/secretariat/compare/v1.25.1...v1.26.0) (2022-04-01)
+
+
+### Features
+
+* unattach user service account ([#169](https://github.com/SocialGouv/secretariat/issues/169)) ([a5053bf](https://github.com/SocialGouv/secretariat/commit/a5053bfd117de2440ec75e4279086bb7da2fe0fa))
+
 ## [1.25.1](https://github.com/SocialGouv/secretariat/compare/v1.25.0...v1.25.1) (2022-03-30)
 
 

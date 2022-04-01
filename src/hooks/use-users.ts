@@ -139,6 +139,7 @@ const useUsers = () => {
 
   const getMappedUsers = async () => {
     const data = await fetcher(getUsers2, token)
+    console.log("---> USE USERS", data.users2.length)
     return Promise.resolve(mapUsers(data.users2))
   }
 

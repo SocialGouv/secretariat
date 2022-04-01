@@ -23,7 +23,7 @@ const UserList = ({
       <ul>
         {users.map((user, i) => (
           <UserItem
-            key={i}
+            key={user.id}
             user={user}
             onClick={() => onUserSelect(user)}
             onRemove={() => onUserRemove(user)}

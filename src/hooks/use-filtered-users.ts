@@ -68,6 +68,7 @@ const useFilteredUsers = () => {
   const regex = new RegExp(query || "", "gi")
 
   const getData = () => {
+    console.log("---> USE FILTERED USERS", users?.length)
     if (users) {
       return users.filter(
         (user: User) =>

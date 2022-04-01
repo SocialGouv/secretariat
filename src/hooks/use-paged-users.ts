@@ -9,9 +9,7 @@ export const usePagedUsers = () => {
 
   const key = { users, filters, query, page }
 
-  const getData = () =>
-    console.log("---> USE PAGED USERS", users?.length) ||
-    users?.slice(0, (page || 1) * pageSize)
+  const getData = () => users?.slice(0, (page || 1) * pageSize)
 
   const { data, mutate } = useSWR(users ? key : null, getData, {
     fallbackData: getData(),

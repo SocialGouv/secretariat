@@ -2,12 +2,12 @@ interface User {
   id: string
   name: string
   email: string
-  arrival?: Date
-  departure?: Date
-  updated_at: Date
+  arrival?: string
+  departure?: string
+  updated_at: string
   avatarUrl: string
   services: ServiceAccount[]
-  warning?: "alone_service" | "missing_services" | null
+  warning?: "alone_service" | "missing_services" | "no_departure_date" | null
 }
 
 interface GithubTeam {

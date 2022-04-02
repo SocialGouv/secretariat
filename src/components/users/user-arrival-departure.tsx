@@ -1,90 +1,54 @@
-import { format } from "date-fns"
-import { useState } from "react"
-import DatePicker from "react-datepicker"
-
-const DateField = ({
-  date,
-  onChange,
-  displayValue,
-}: {
-  displayValue: string | JSX.Element
-  date: Date | undefined
-  onChange: (date: Date | null) => void
-}) => {
-  const [isEditing, setIsEditing] = useState(false)
-
-  return (
-    <div className="date-field">
-      {isEditing ? (
-        <DatePicker
-          selected={date}
-          autoFocus={true}
-          onBlur={() => setIsEditing(false)}
-          onChange={(date) => {
-            onChange(date)
-            setIsEditing(false)
-          }}
-          onClickOutside={() => setIsEditing(false)}
-        />
-      ) : (
-        <div className="display-date" onClick={() => setIsEditing(true)}>
-          {displayValue}
-        </div>
-      )}
-    </div>
-  )
-}
+import { useEffect, useState } from "react"
 
 const UserArrivalDeparture = ({
-  user,
+  arrival,
+  departure,
   onChange,
 }: {
-  user: User
-  onChange: (user: User) => void
+  arrival?: string
+  departure?: string
+  onChange: (dates: Record<"arrival" | "departure", string | undefined>) => void
 }) => {
-  const handleChange = async (date: Record<string, Date | null>) => {
-    // Applying timezone shift so that the day won't change later
-    for (const key of Object.keys(date)) {
-      if (date[key] !== null) {
-        const currentDate = date[key] as Date
-        date[key] = new Date(
-          currentDate.getTime() - currentDate.getTimezoneOffset() * 60000
-        )
-      }
-    }
-    onChange({ ...user, ...date })
+  const [a, setArrival] = useState(arrival)
+  const [d, setDeparture] = useState(departure)
+
+  const handleChange = async (
+    dates: Record<"arrival" | "departure", string | undefined>
+  ) => {
+    setArrival(dates.arrival)
+    setDeparture(dates.departure)
+    onChange(dates)
   }
+
+  useEffect(() => {
+    setArrival(arrival)
+    setDeparture(departure)
+  }, [arrival, departure])
 
   return (
     <div className="user-arrival-departure">
-      <DateField
-        displayValue={
-          user.arrival ? (
-            <>
-              <i className="ri-calendar-event-fill"></i>&nbsp;Arrivée le&nbsp;
-              <strong>{format(new Date(user.arrival), "dd/MM/Y")}</strong>
-            </>
-          ) : (
-            <i>aucune date d&apos;arrivée</i>
-          )
-        }
-        date={user.arrival && new Date(user.arrival)}
-        onChange={(date) => handleChange({ arrival: date })}
-      />
-      <DateField
-        displayValue={
-          user.departure ? (
-            <>
-              <i className="ri-calendar-event-fill"></i>&nbsp;Départ le&nbsp;
-              <strong>{format(new Date(user.departure), "dd/MM/Y")}</strong>
-            </>
-          ) : (
-            <i>aucune date de départ</i>
-          )
-        }
-        date={user.departure && new Date(user.departure)}
-        onChange={(date) => handleChange({ departure: date })}
-      />
+      <label htmlFor="arrival">
+        Arrivée:
+        <input
+          value={a || ""}
+          type="date"
+          id="arrival"
+          onChange={(e) =>
+            handleChange({ arrival: e.target.value, departure: d })
+          }
+        />
+      </label>
+      <label htmlFor="departure">
+        Départ:
+        <input
+          value={d || ""}
+          type="date"
+          id="departure"
+          onChange={(e) =>
+            handleChange({ arrival: a, departure: e.target.value })
+          }
+        />
+      </label>
     </div>
   )
 }

@@ -20,7 +20,15 @@ const containsSpecificServices = (user: User) => {
     : "missing_services"
 }
 
-const ACTIVE_RULES = [containsMultipleServices, containsSpecificServices]
+const hasNoDepartureDate = (user: User) => {
+  return !!user.departure ? null : "no_departure_date"
+}
+
+const ACTIVE_RULES = [
+  hasNoDepartureDate,
+  containsMultipleServices,
+  containsSpecificServices,
+]
 
 export const detectWarnings = (user: User) => {
   const warning = ACTIVE_RULES.map((ruleFunction) => ruleFunction(user)).find(

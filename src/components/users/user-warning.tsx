@@ -8,7 +8,7 @@ const UserWarning = ({ type }: { type?: string }) => (
     {type === "missing_services" && (
       <Alert message="Cet utilisateur n'a pas de compte Github ou Mattermost." />
     )}
-    {type === "missing_departure" && (
+    {type === "no_departure_date" && (
       <Alert message="Cet utilisateur n'a pas de date de départ." />
     )}
   </div>

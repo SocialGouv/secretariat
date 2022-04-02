@@ -6,7 +6,7 @@
       mb-4
       flex-1
       relative
-      cursor-pointer
+      select-none
       ;
 
     // @apply
@@ -51,6 +51,7 @@
     &.draggable {
       @apply
         shadow
+        cursor-pointer
         transition-all
         hover:shadow-lg
         bg-grey-975-main

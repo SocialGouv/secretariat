@@ -85,13 +85,16 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
   return DEFAULT_AVATAR_URL
 }
 
-const mapUser = (user: User): User => {
+export const mapUser = (user: User): User => {
   const { services } = user
   const data = getDataFromServiceAccounts(services)
 
   if (!data.avatarUrl) {
     data.avatarUrl = getAvatarUrl(services)
   }
+
+  // if (user.arrival) user.arrival = new Date(user.arrival)
+  // if (user.departure) user.departure = new Date(user.departure)
 
   user.warning = detectWarnings(user)
 

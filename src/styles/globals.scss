@@ -43,7 +43,7 @@ body {
   @apply flex flex-col flex-1 overflow-hidden;
 
   & > .page {
-    @apply flex-1 overflow-auto mt-28;
+    @apply flex-1 overflow-auto mt-28 scroll-smooth;
 
     // & > .container {
     //   @apply flex mx-auto;

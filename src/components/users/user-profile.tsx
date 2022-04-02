@@ -40,8 +40,12 @@ const UserProfile = ({
         <UserLastUpdate date={user.updated_at} />
       </div>
       <div className="content">
-        <UserArrivalDeparture user={user} onChange={onUserEdit} />
         {user.warning && <UserWarning type={user.warning} />}
+        <UserArrivalDeparture
+          arrival={user.arrival}
+          departure={user.departure}
+          onChange={(dates) => onUserEdit({ ...user, ...dates })}
+        />
         <UserServices services={user.services} />
       </div>
     </div>

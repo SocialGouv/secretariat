@@ -19,11 +19,16 @@
       @apply
         flex-1
         rounded-r-none
-        placeholder:italic;
+        shadow-input-blue
+        placeholder:italic
+        dark:shadow-input-blue-dark;
     }
 
     button {
-      @apply rounded-r;
+      @apply
+        border-b
+        rounded-r
+        border-blue-france-113-main;
     }
   }
 

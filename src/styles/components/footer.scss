@@ -18,7 +18,14 @@ footer { /* stylelint-disable-line */
   }
 
   .links {
-    @apply container py-5 mx-auto border-t border-gray-400 text-xs;
+    @apply
+      py-5
+      mx-auto
+      text-xs
+      border-t
+      container
+      items-baseline
+      border-gray-400;
 
     a {
       @apply

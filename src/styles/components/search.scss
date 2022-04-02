@@ -11,22 +11,19 @@
     dark:via-grey-50-main;
 
   .search-field {
-    @apply flex relative;
-  
-    &::before {
-      @apply
-        top-3
-        left-3
-        absolute
-        text-base
-        font-bold
-        font-remix
-        leading-none
-        content-["\F0D1"];
-    }
-  
+    @apply
+      flex
+      relative;
+
     input {
-      @apply flex-1 pl-9;
+      @apply
+        flex-1
+        rounded-r-none
+        placeholder:italic;
+    }
+
+    button {
+      @apply rounded-r;
     }
   }
 

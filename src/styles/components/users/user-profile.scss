@@ -1,18 +1,23 @@
 .user-profile {
   @apply
     flex
-    border
-    flex-1
     flex-col
-    shadow-sm
-    border-l-2
-    overflow-auto
-    bg-grey-1000-main
-    dark:bg-grey-75-main
-    border-grey-925-main
-    dark:border-grey-125-main
-    border-l-blue-france-113-main
-    dark:border-l-blue-france-625-main;
+    overflow-auto;
+
+  // @apply
+  //   flex
+  //   border
+  //   flex-1
+  //   flex-col
+  //   shadow-sm
+  //   border-l-2
+  //   overflow-auto
+  //   bg-grey-1000-main
+  //   dark:bg-grey-75-main
+  //   border-grey-925-main
+  //   dark:border-grey-125-main
+  //   border-l-blue-france-113-main
+  //   dark:border-l-blue-france-625-main;
 
   .header {
     @apply

@@ -3,27 +3,24 @@ import { useSession } from "next-auth/react"
 import Login from "@/components/login"
 import Users from "@/components/users"
 import Search from "@/components/search"
+import Loader from "@/components/common/loader"
 
 const Page = () => {
   const { data: session } = useSession()
 
-  if (!session) {
-    return (
-      <div className="container">
-        <main>
-          <Login />
-        </main>
-      </div>
-    )
-  }
-
   return (
-    <div className="container">
-      <main>
-        <Search />
-        <Users />
-      </main>
-    </div>
+    <main>
+      {session === undefined ? (
+        <Loader size="lg" />
+      ) : session === null ? (
+        <Login />
+      ) : (
+        <>
+          <Search />
+          <Users />
+        </>
+      )}
+    </main>
   )
 }
 

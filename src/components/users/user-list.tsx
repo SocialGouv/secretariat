@@ -1,6 +1,7 @@
 import UserItem from "./user-item"
 import usePaging from "@/hooks/use-paging"
 import useFilteredUsers from "@/hooks/use-filtered-users"
+import Loader from "../common/loader"
 
 const UserList = ({
   users = [],
@@ -20,25 +21,33 @@ const UserList = ({
 
   return (
     <div className="user-list">
-      <ul>
-        {users.map((user, i) => (
-          <UserItem
-            key={user.id}
-            user={user}
-            onClick={() => onUserSelect(user)}
-            onRemove={() => onUserRemove(user)}
-            dropped={droppedUser?.id === user.id}
-            selected={selectedUser?.id === user.id}
-          />
-        ))}
-      </ul>
-      <button
-        className="primary"
-        onClick={() => setPage(page + 1)}
-        disabled={(filteredUsers?.length || 0) > pageSize * page ? false : true}
-      >
-        Afficher plus d&apos;utilisateurs
-      </button>
+      {!filteredUsers ? (
+        <Loader size="lg" />
+      ) : (
+        <>
+          <ul>
+            {users.map((user, i) => (
+              <UserItem
+                key={user.id}
+                user={user}
+                onClick={() => onUserSelect(user)}
+                onRemove={() => onUserRemove(user)}
+                dropped={droppedUser?.id === user.id}
+                selected={selectedUser?.id === user.id}
+              />
+            ))}
+          </ul>
+          <button
+            className="primary"
+            onClick={() => setPage(page + 1)}
+            disabled={
+              (filteredUsers?.length || 0) > pageSize * page ? false : true
+            }
+          >
+            Afficher plus d&apos;utilisateurs
+          </button>
+        </>
+      )}
     </div>
   )
 }

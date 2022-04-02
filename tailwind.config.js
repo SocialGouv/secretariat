@@ -369,8 +369,10 @@ module.exports = {
         sans: ["Marianne", "arial", "sans-serif"],
       },
       boxShadow: {
-        input: "inset 0 -2px 0 0 #6a6a6a",
-        "input-dark": "inset 0 -2px 0 0 #e7e7e7",
+        box: "inset .25rem 0 0 0 #000091",
+        "box-dark": "inset .25rem 0 0 0 #9a9aff",
+        input: "inset 0 -2px 0 0 #000091",
+        "input-dark": "inset 0 -2px 0 0 #9a9aff",
       },
     },
   },

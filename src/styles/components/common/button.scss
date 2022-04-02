@@ -76,4 +76,19 @@ a.btn {
   i {
     @apply relative top-px mr-1;
   }
+
+  &.icon {
+    @apply
+      py-0
+      px-2
+      flex
+      text-2xl
+      font-normal
+      items-center
+      justify-center;
+
+    i {
+      @apply mr-0;
+    }
+  }
 }

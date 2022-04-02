@@ -34,23 +34,15 @@ const UserProfile = ({
   const dropClass = canDrop ? (isOver ? "drop-over" : "drop-allowed") : ""
 
   return (
-    <div className="selected-user">
-      <div className="sticky-container">
-        <div
-          ref={drop}
-          role={"Profile"}
-          className={`user-profile ${dropClass}`}
-        >
-          <div className="header">
-            <UserHeader user={user} />
-            <UserLastUpdate date={user.updated_at} />
-          </div>
-          <div className="content">
-            <UserArrivalDeparture user={user} onChange={onUserEdit} />
-            {user.warning && <UserWarning type={user.warning} />}
-            <UserServices services={user.services} />
-          </div>
-        </div>
+    <div ref={drop} role={"Profile"} className={`user-profile ${dropClass}`}>
+      <div className="header">
+        <UserHeader user={user} />
+        <UserLastUpdate date={user.updated_at} />
+      </div>
+      <div className="content">
+        <UserArrivalDeparture user={user} onChange={onUserEdit} />
+        {user.warning && <UserWarning type={user.warning} />}
+        <UserServices services={user.services} />
       </div>
     </div>
   )

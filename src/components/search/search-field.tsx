@@ -16,11 +16,12 @@ const SearchField = () => {
         type="search"
         name="search"
         value={value}
-        placeholder="chercher un compte utilisateur..."
-        onChange={(e) => {
-          setValue(e.target.value)
-        }}
+        placeholder="Rechercher"
+        onChange={(e) => setValue(e.target.value)}
       />
+      <button className="primary icon">
+        <i className="ri-search-line"></i>
+      </button>
     </div>
   )
 }

@@ -16,8 +16,10 @@ const UserDefaultAvatar = () => (
 const UserAvatar = ({ url }: { url: string }) => (
   <>
     {url ? (
-      <Image width={40} height={40} alt="user avatar" src={url} />
+      // <div className="avatar-img">
+      <Image width={44} height={44} alt="user avatar" src={url} />
     ) : (
+      // </div>
       <UserDefaultAvatar />
     )}
   </>

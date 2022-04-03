@@ -1,20 +1,16 @@
 .authenticated-user {
   @apply flex items-center;
 
-  .avatar {
+  img {
+    @apply rounded-sm;
+  }
+
+  .user-name-links {
     @apply
-      w-10
-      h-10
-      shadow
-      rounded
-      bg-cover;
-  }
-
-  & > div:first-child {
-    @apply mr-2;
-  }
-
-  & > div:last-child {
-    @apply leading-4;
+      flex
+      ml-2
+      flex-col
+      items-start
+      justify-center;
   }
 }

@@ -5,36 +5,56 @@ footer { /* stylelint-disable-line */
     border-blue-france-113-main
     dark:border-blue-france-625-main;
 
-  .container {
-    @apply flex mx-auto py-8;
+  .footer-content {
+    @apply
+      px-8
+      mx-auto
+      container;
 
-    .info {
-      @apply flex-1 text-justify text-sm flex flex-col justify-center;
+    .logo-info {
+      @apply flex py-8;
 
-      p {
-        @apply mb-4 last:mb-0;
+      .logo {
+        @apply flex-1;
+      }
+
+      .info {
+        @apply
+          flex
+          flex-1
+          text-sm
+          flex-col
+          text-justify
+          justify-center;
+  
+        p {
+          @apply mb-4 last:mb-0;
+        }
       }
     }
-  }
 
-  .links {
-    @apply
-      py-5
-      mx-auto
-      text-xs
-      border-t
-      container
-      items-baseline
-      border-gray-400;
-
-    a {
+    .links {
       @apply
-        px-4
-        border-r
-        first:pl-0
-        last:border-0
-        text-gray-500
-        border-gray-400;
+        py-5
+        mx-auto
+        text-xs
+        border-t
+        container
+        items-baseline
+        border-grey-850-main
+        dark:border-gray-500;
+  
+      a {
+        @apply
+          px-4
+          border-r
+          first:pl-0
+          last:border-0
+          text-gray-600
+          dark:text-gray-300
+          border-grey-850-main
+          dark:border-gray-500;
+      }
     }
   }
 }

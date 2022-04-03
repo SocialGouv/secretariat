@@ -9,8 +9,14 @@ header {
     bg-grey-1000-main
     dark:bg-grey-75-main;
 
-  .container {
-    @apply flex py-5 items-center mx-auto;
+  .header-content {
+    @apply
+      flex
+      py-5
+      px-6
+      mx-auto
+      container
+      items-center;
 
     & > a {
       @apply

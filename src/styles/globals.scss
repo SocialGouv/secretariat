@@ -44,10 +44,6 @@ body {
 
   & > .page {
     @apply flex-1 overflow-auto mt-28 scroll-smooth;
-
-    // & > .container {
-    //   @apply flex mx-auto;
-    // }
   }
 }
 
@@ -59,13 +55,11 @@ aside {
 
 main {
   @apply
+    px-6
     flex-1
     mx-auto
     container;
 
-  // .loader {
-  //   height: calc(100vh - 33.5rem);
-  // }
   & > .loader {
     height: calc(100vh - 9.5rem);
   }

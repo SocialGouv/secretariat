@@ -5,7 +5,7 @@ import AuthenticatedUser from "@/components/authenticated-user"
 
 const Header = () => (
   <header className="header">
-    <div className="container">
+    <div className="header-content">
       <Link href="/">
         <a>
           <Logo />

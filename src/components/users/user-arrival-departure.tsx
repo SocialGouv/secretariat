@@ -3,8 +3,10 @@ import { useEffect, useState } from "react"
 const UserArrivalDeparture = ({
   arrival,
   departure,
+  expired,
   onChange,
 }: {
+  expired: boolean
   arrival?: string
   departure?: string
   onChange: (dates: Record<"arrival" | "departure", string | undefined>) => void
@@ -40,13 +42,14 @@ const UserArrivalDeparture = ({
           />
         </div>
       </div>
-      <div className="date">
+      <div className={`date${expired ? " expired" : ""}`}>
         <label htmlFor="departure">Date de départ:</label>
         <div className="date-field">
           <input
             value={d || ""}
             type="date"
             id="departure"
+            className={`${expired ? "error" : ""}`}
             onChange={(e) =>
               handleChange({ arrival: a, departure: e.target.value })
             }

@@ -16,6 +16,10 @@ input[type="search"] {
     dark:shadow-input-dark
     dark:bg-grey-100-main;
 
+  &.error {
+    @apply shadow-input-error;
+  }
+
   &.disabled,
   &:disabled {
     @apply

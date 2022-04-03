@@ -44,6 +44,12 @@ const UserProfile = ({
         <UserArrivalDeparture
           arrival={user.arrival}
           departure={user.departure}
+          expired={
+            !!(
+              user.departure &&
+              new Date(user.departure).getTime() < new Date().getTime()
+            )
+          }
           onChange={(dates) => onUserEdit({ ...user, ...dates })}
         />
         <UserServices services={user.services} />

@@ -22,6 +22,10 @@
       sm:items-center
       xl:justify-center;
 
+    &.expired {
+      @apply text-error-425-main;
+    }
+
     label {
       @apply
         text-xs

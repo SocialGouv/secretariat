@@ -1,0 +1,43 @@
+.user-selected {
+  @apply
+    flex
+    ml-6
+    flex-col;
+
+  .sticky-container {
+    @apply
+      flex
+      sticky
+      top-36
+      flex-col;
+
+    height: calc(100vh - 17rem);
+
+    & > div.drop-allowed {
+      @apply bg-yellow-50;
+    }
+
+    & > div.drop-over {
+      @apply bg-yellow-100;
+    }
+  }
+
+  .no-user-selected {
+    @apply
+      flex
+      top-0
+      left-0
+      right-0
+      bottom-0
+      absolute
+      items-center
+      justify-center;
+
+    & > div {
+      @apply
+        p-4
+        italic
+        bg-grey-950-main;
+    }
+  }
+}

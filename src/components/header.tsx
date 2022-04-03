@@ -5,13 +5,13 @@ import AuthenticatedUser from "@/components/authenticated-user"
 
 const Header = () => (
   <header className="header">
-    <div className="container">
+    <div className="header-content">
       <Link href="/">
         <a>
           <Logo />
           <div className="title">
             <h1>Secretariat</h1>
-            <p>Gestion des comptes et services @SocialGouv</p>
+            <p>Gestion des comptes de services @SocialGouv</p>
           </div>
         </a>
       </Link>

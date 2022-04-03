@@ -3,9 +3,32 @@
 exports[`renders users 1`] = `
 <div>
   <div
-    class="loader lg"
+    class="users-view"
   >
-    <div />
+    <div
+      class="user-list"
+    >
+      <div
+        class="loader lg"
+      >
+        <div />
+      </div>
+    </div>
+    <div
+      class="user-selected"
+    >
+      <div
+        class="box sticky-container"
+      >
+        <div
+          class="no-user-selected"
+        >
+          <div>
+            Aucun utilisateur sélectionné.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

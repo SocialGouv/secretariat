@@ -1,0 +1,23 @@
+::-webkit-calendar-picker-indicator {
+  @apply z-10 opacity-0;
+}
+
+.date-field {
+  @apply
+    flex
+    relative
+    items-center;
+
+  &::before {
+    @apply
+      w-4
+      h-4
+      right-5
+      absolute
+      text-base
+      font-remix
+      font-normal
+      leading-none
+      content-["\EB27"];
+  }
+}

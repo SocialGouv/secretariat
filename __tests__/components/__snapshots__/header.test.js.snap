@@ -6,7 +6,7 @@ exports[`renders header 1`] = `
     class="header"
   >
     <div
-      class="container"
+      class="header-content"
     >
       <a
         href="/"
@@ -25,7 +25,7 @@ exports[`renders header 1`] = `
             Secretariat
           </h1>
           <p>
-            Gestion des comptes et services @SocialGouv
+            Gestion des comptes de services @SocialGouv
           </p>
         </div>
       </a>

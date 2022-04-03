@@ -10,7 +10,6 @@ import {
   mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
 
-const DEFAULT_AVATAR_URL = "/images/user-avatar.svg"
 interface UserMapping {
   email: string
   name: string
@@ -82,10 +81,10 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
     ({ type }) => type === "github"
   ) as SentryServiceAccount
   if (sentryAccount) return sentryAccount.data.user.avatarUrl
-  return DEFAULT_AVATAR_URL
+  return undefined
 }
 
-const mapUser = (user: User): User => {
+export const mapUser = (user: User): User => {
   const { services } = user
   const data = getDataFromServiceAccounts(services)
 
@@ -103,12 +102,6 @@ const mapUsers = (users: User[]): User[] => {
     .map((user) => mapUser(user))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
-
-// export const haveSimilarServices = (a: User, b: User) => {
-//   const servicesA = a.services.map((service) => service.type)
-//   const servicesB = b.services.map((service) => service.type)
-//   return servicesA.filter((value) => servicesB.includes(value)).length
-// }
 
 export const mutateUser = async (
   user: User,

@@ -6,6 +6,10 @@
 
     .badge {
       @apply mr-2 text-xs;
+
+      &.icon {
+        @apply mr-0;
+      }
     }
 
     &.no-alert {

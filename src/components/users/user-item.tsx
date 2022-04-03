@@ -29,7 +29,7 @@ const UserItem = ({
         config: { duration: 200 },
         to: [{ opacity: 0 }, { height: 0 }],
         from: { opacity: 1, height: el.offsetHeight },
-        onRest: () => !el.clientHeight && onRemoveCallback(),
+        onRest: () => el.offsetHeight === 0 && onRemoveCallback(),
       })
     }
   }, [ref, spring, onRemoveCallback])
@@ -63,7 +63,7 @@ const UserItem = ({
       onClick={onClick}
       className="user-item"
     >
-      <div className={`user ${classes.join(" ")}`} ref={drag}>
+      <div className={`user box ${classes.join(" ")}`} ref={drag}>
         <div className="drag-handler"></div>
         <UserTemplate user={user} />
       </div>

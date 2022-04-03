@@ -10,10 +10,17 @@ exports[`renders search 1`] = `
     >
       <input
         name="search"
-        placeholder="chercher un compte utilisateur..."
+        placeholder="Rechercher"
         type="search"
         value=""
       />
+      <button
+        class="primary icon"
+      >
+        <i
+          class="ri-search-line"
+        />
+      </button>
     </div>
     <div
       class="filters"
@@ -219,6 +226,7 @@ exports[`renders search 1`] = `
         >
           <p
             class="badge warning disabled"
+            title=""
           >
             Alerte
           </p>
@@ -228,6 +236,7 @@ exports[`renders search 1`] = `
         >
           <p
             class="badge expiry disabled"
+            title=""
           >
             Expiration
           </p>

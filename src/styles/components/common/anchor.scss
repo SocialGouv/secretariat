@@ -18,8 +18,7 @@ a {
   &:focus, &:hover {
     @apply
       text-blue-france-113-hover
-      dark:text-blue-france-625-hover
-      ;
+      dark:text-blue-france-625-hover;
   }
   
   &:active {
@@ -28,16 +27,19 @@ a {
 
   &[target="_blank"] {
     &::after {
-      top: 2px;
-      left: 1px;
-      content: "\ecaf";
-      font-style: normal;
-      position: relative;
-      font-family: remixicon, sans-serif !important;
+      @apply
+        top-0.5
+        left-px
+        relative
+        font-remix
+        content-["\ECAF"];
     }
   }
 
   i {
-    @apply relative top-0.5 mr-1;
+    @apply
+      mr-1
+      top-0.5
+      relative;
   }
 }

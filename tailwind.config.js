@@ -357,6 +357,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: colors,
       textColor: colors,
       borderColor: colors,
       backgroundColor: colors,
@@ -371,6 +372,9 @@ module.exports = {
       boxShadow: {
         input: "inset 0 -2px 0 0 #6a6a6a",
         "input-dark": "inset 0 -2px 0 0 #e7e7e7",
+        "input-error": "inset 0 -2px 0 0 #ce0500",
+        "input-blue": "inset 0 -2px 0 0 #000091",
+        "input-blue-dark": "inset 0 -2px 0 0 #9a9aff",
       },
     },
   },

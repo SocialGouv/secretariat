@@ -25,7 +25,7 @@ exports[`renders header 1`] = `
             Secretariat
           </h1>
           <p>
-            Gestion des comptes et services @SocialGouv
+            Gestion des comptes de services @SocialGouv
           </p>
         </div>
       </a>

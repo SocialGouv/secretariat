@@ -1,25 +1,31 @@
 .user-arrival-departure {
   @apply
-    grid
+    flex
     my-2
-    gap-x-4
     text-sm
+    gap-y-2
+    flex-col
     sm:gap-y-2
-    xl:grid-cols-2
-    lg:grid-cols-2;
+    sm:flex-col
+    md:gap-x-4
+    md:flex-col
+    lg:flex-row
+    lg:justify-center;
 
   .date {
     @apply
       flex
-      xl:gap-2
-      md:flex-row
-      xl:flex-row
+      flex-row
+      items-center
       sm:flex-row
+      sm:items-center
+      md:flex-row
+      md:items-center
       lg:flex-col
       lg:items-start
+      xl:gap-2
+      xl:flex-row
       xl:items-center
-      md:items-center
-      sm:items-center
       xl:justify-center;
 
     &.expired {
@@ -29,8 +35,9 @@
     label {
       @apply
         text-xs
-        md:flex-1
+        flex-1
         sm:flex-1
+        md:flex-1
         lg:flex-none;
     }
   }

@@ -357,6 +357,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: colors,
       textColor: colors,
       borderColor: colors,
       backgroundColor: colors,

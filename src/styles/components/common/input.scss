@@ -1,3 +1,7 @@
+input[type="date"] {
+  font-family: monospace;
+}
+
 input[type="text"],
 input[type="date"],
 input[type="search"] {
@@ -17,5 +21,31 @@ input[type="search"] {
     @apply
     border-grey-200-main
     dark:border-grey-850-main;
+  }
+}
+
+::-webkit-calendar-picker-indicator {
+  // background: none;
+  @apply z-10 opacity-0;
+}
+
+label {
+  @apply
+    flex
+    relative
+    items-center
+    leading-none;
+
+  &::before {
+    @apply
+      w-4
+      h-4
+      right-5
+      absolute
+      text-base
+      font-remix
+      font-normal
+      leading-none
+      content-["\EB27"];
   }
 }

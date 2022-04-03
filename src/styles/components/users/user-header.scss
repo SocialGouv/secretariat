@@ -3,10 +3,30 @@
 
   .avatar {
     @apply flex;
+
+    img {
+      @apply rounded-sm;
+    }
+
+    svg {
+      @apply
+      w-10
+      h-10
+      flex
+      items-center
+      justify-center
+      fill-blue-france-113-main
+      dark:fill-blue-france-625-main;
+    }
   }
 
   .info {
-    @apply flex-1 ml-2;
+    @apply
+      flex
+      ml-2
+      flex-1
+      flex-col
+      justify-center;
 
     min-width: 0;
 

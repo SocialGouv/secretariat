@@ -38,6 +38,12 @@
         shadow-none
         ;
 
+      // .avatar {
+      //   svg {
+      //     @apply dark:fill-blue-france-625-main;
+      //   }
+      // }
+
       // @apply
       //   shadow-none
       //   bg-grey-1000-main
@@ -56,9 +62,28 @@
         hover:shadow-lg
         bg-grey-975-main
         border-l-grey-425-main
+        dark:bg-grey-75-main
+        dark:border-l-grey-525-main
         hover:bg-grey-1000-main
         hover:border-l-blue-france-113-main
-        ;
+        hover:dark:bg-grey-100-main
+        hover:dark:border-l-blue-france-625-main;
+
+      .avatar {
+        svg {
+          @apply
+            fill-grey-425-main
+            dark:fill-grey-525-main;
+        }
+      }
+
+      &:hover .avatar {
+        svg {
+          @apply
+            fill-blue-france-113-main
+            dark:fill-blue-france-625-main;
+        }
+      }
 
     //   .drag-handler {
     //     @apply

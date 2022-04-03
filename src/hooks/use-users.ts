@@ -82,7 +82,7 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
     ({ type }) => type === "github"
   ) as SentryServiceAccount
   if (sentryAccount) return sentryAccount.data.user.avatarUrl
-  return DEFAULT_AVATAR_URL
+  return undefined
 }
 
 export const mapUser = (user: User): User => {

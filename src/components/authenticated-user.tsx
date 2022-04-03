@@ -7,8 +7,8 @@ const AuthenticatedUser = () => {
     return (
       <div className="authenticated-user">
         <div
+          className="avatar"
           title={session.user.name}
-          className="w-8 h-8 bg-cover rounded shadow"
           style={{ backgroundImage: `url(${session.user.image})` }}
         ></div>
         <div>

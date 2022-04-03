@@ -1,6 +1,15 @@
 .authenticated-user {
   @apply flex items-center;
 
+  .avatar {
+    @apply
+      w-10
+      h-10
+      shadow
+      rounded
+      bg-cover;
+  }
+
   & > div:first-child {
     @apply mr-2;
   }

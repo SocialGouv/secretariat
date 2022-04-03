@@ -23,28 +23,3 @@ input[type="search"] {
     dark:border-grey-850-main;
   }
 }
-
-::-webkit-calendar-picker-indicator {
-  @apply z-10 opacity-0;
-}
-
-label {
-  @apply
-    flex
-    relative
-    items-center
-    leading-none;
-
-  &::before {
-    @apply
-      w-4
-      h-4
-      right-5
-      absolute
-      text-base
-      font-remix
-      font-normal
-      leading-none
-      content-["\EB27"];
-  }
-}

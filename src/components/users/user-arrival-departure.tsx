@@ -27,9 +27,9 @@ const UserArrivalDeparture = ({
 
   return (
     <div className="user-arrival-departure">
-      <div className="date-field">
-        <label htmlFor="arrival">
-          Arrivée:
+      <div className="date">
+        <label htmlFor="arrival">Date d&apos;arrivée:</label>
+        <div className="date-field">
           <input
             value={a || ""}
             type="date"
@@ -38,11 +38,11 @@ const UserArrivalDeparture = ({
               handleChange({ arrival: e.target.value, departure: d })
             }
           />
-        </label>
+        </div>
       </div>
-      <div className="date-field">
-        <label htmlFor="departure">
-          Départ:
+      <div className="date">
+        <label htmlFor="departure">Date de départ:</label>
+        <div className="date-field">
           <input
             value={d || ""}
             type="date"
@@ -51,7 +51,7 @@ const UserArrivalDeparture = ({
               handleChange({ arrival: a, departure: e.target.value })
             }
           />
-        </label>
+        </div>
       </div>
     </div>
   )

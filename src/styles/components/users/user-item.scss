@@ -6,52 +6,10 @@
       mb-4
       flex-1
       relative
-      select-none
-      ;
-
-    // @apply
-    //   mb-4
-    //   flex-1
-    //   border
-    //   relative
-    //   shadow-sm
-    //   border-l-2
-    //   cursor-pointer
-
-    //   bg-grey-975-main
-    //   dark:bg-grey-50-active
-    //   hover:bg-grey-950-main
-    //   dark:hover:bg-grey-50-hover
-
-    //   border-grey-925-main
-    //   dark:border-grey-125-main
-    //   hover:border-grey-975-hover
-    //   dark:hover:border-grey-125-hover
-
-    //   border-l-grey-200-active
-    //   hover:border-l-grey-200-hover
-    //   dark:border-l-grey-850-active
-    //   dark:hover:border-l-grey-850-hover;
+      select-none;
 
     &.selected {
-      @apply
-        shadow-none
-        ;
-
-      // .avatar {
-      //   svg {
-      //     @apply dark:fill-blue-france-625-main;
-      //   }
-      // }
-
-      // @apply
-      //   shadow-none
-      //   bg-grey-1000-main
-      //   dark:bg-grey-100-main
-      //   border-grey-925-main
-      //   dark:border-grey-125-main
-      //   border-l-blue-france-113-main
-      //   dark:border-l-blue-france-625-main;
+      @apply shadow-none;
     }
 
     &.draggable {

@@ -84,53 +84,10 @@
             dark:fill-blue-france-625-main;
         }
       }
-
-    //   .drag-handler {
-    //     @apply
-    //       w-4
-    //       h-4
-    //       z-10
-    //       top-3
-    //       right-3
-    //       absolute
-    //       text-base
-    //       font-bold
-    //       font-remix
-    //       cursor-move
-    //       whitespace-pre-wrap
-    //       text-grey-625-active
-    //       hover:text-grey-625-main
-    //       ;
-
-    //     &::before {
-    //       @apply content-["\EF78\A\EF78"];
-    //     }
-
-    //     line-height: 0.5rem;
-    //     text-shadow: 0 1px 1px #fff;
-    //   }
     }
 
     &.dragging {
       @apply transition-none opacity-0;
-
-    //   @apply
-    //     border-l
-    //     shadow-none
-    //     border-dashed
-    //     border-l-grey-925-active;
-
-    //   &::before {
-    //     @apply
-    //       z-20
-    //       top-0
-    //       left-0
-    //       right-0
-    //       bottom-0
-    //       absolute
-    //       content-[""]
-    //       bg-grey-1000-main;
-    //   }
     }
   }
 }

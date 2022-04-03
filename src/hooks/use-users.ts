@@ -10,7 +10,6 @@ import {
   mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
 
-const DEFAULT_AVATAR_URL = "/images/user-avatar.svg"
 interface UserMapping {
   email: string
   name: string
@@ -93,9 +92,6 @@ export const mapUser = (user: User): User => {
     data.avatarUrl = getAvatarUrl(services)
   }
 
-  // if (user.arrival) user.arrival = new Date(user.arrival)
-  // if (user.departure) user.departure = new Date(user.departure)
-
   user.warning = detectWarnings(user)
 
   return { ...user, ...data }
@@ -106,12 +102,6 @@ const mapUsers = (users: User[]): User[] => {
     .map((user) => mapUser(user))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
-
-// export const haveSimilarServices = (a: User, b: User) => {
-//   const servicesA = a.services.map((service) => service.type)
-//   const servicesB = b.services.map((service) => service.type)
-//   return servicesA.filter((value) => servicesB.includes(value)).length
-// }
 
 export const mutateUser = async (
   user: User,

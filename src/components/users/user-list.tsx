@@ -1,7 +1,7 @@
-import UserItem from "./user-item"
 import usePaging from "@/hooks/use-paging"
+import Loader from "@/components/common/loader"
+import UserItem from "@/components/users/user-item"
 import useFilteredUsers from "@/hooks/use-filtered-users"
-import Loader from "../common/loader"
 
 const UserList = ({
   users = [],

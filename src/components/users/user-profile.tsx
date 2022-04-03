@@ -1,10 +1,10 @@
 import { useDrop } from "react-dnd"
 
+import UserHeader from "@/components/users/user-header"
+import UserWarning from "@/components/users/user-warning"
 import UserServices from "@/components/users/user-services"
-import UserArrivalDeparture from "./user-arrival-departure"
-import UserLastUpdate from "./user-last-update"
-import UserWarning from "./user-warning"
-import UserHeader from "./user-header"
+import UserLastUpdate from "@/components/users/user-last-update"
+import UserArrivalDeparture from "@/components/users/user-arrival-departure"
 
 const UserProfile = ({
   user,

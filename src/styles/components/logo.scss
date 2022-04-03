@@ -1,5 +1,5 @@
 .logo {
-  @apply font-bold transform uppercase font-bold;
+  @apply transform uppercase font-bold;
 
   font-size: 0.7875rem;
   line-height: 1.0318em;
@@ -35,18 +35,32 @@
     font-size: 21px;
 
     &::before {
-      height: 1.25rem;
-      width: 3.4375rem;
-      margin-bottom: 0.4167rem;
-      background-position: 0 -0.0782rem, 0 0, 0 0;
-      background-size: 3.4375rem 1.4063rem, 3.4375rem 1.25rem, 0;
+      width: 2.75rem;
+      height: 1rem;
+      margin-bottom: 0.3333rem;
+      background-position: 0 -0.0625rem, 0 0, 0 0;
+      background-size: 2.75rem 1.125rem, 2.75rem 1rem, 0;
     }
 
     &::after {
-      min-width: 3.2813rem;
-      padding-top: 2.7605rem;
-      background-size: 6.5625rem 4.6875rem;
-      background-position: 0 calc(100% + 2.3438rem);
+      min-width: 2.625rem;
+      padding-top: 2.2083rem;
+      background-size: 5.25rem 3.75rem;
+      background-position: 0 calc(100% + 1.875rem);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    &::after {
+      background-position: -1.9688rem 100%;
+    }
+
+    &.big {
+      &::after {
+        background-position: -2.625rem 100%;
+      }
     }
   }
 }

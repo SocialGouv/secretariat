@@ -226,6 +226,7 @@ exports[`renders search 1`] = `
         >
           <p
             class="badge warning disabled"
+            title=""
           >
             Alerte
           </p>
@@ -235,6 +236,7 @@ exports[`renders search 1`] = `
         >
           <p
             class="badge expiry disabled"
+            title=""
           >
             Expiration
           </p>

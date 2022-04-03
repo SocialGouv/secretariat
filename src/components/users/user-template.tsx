@@ -16,8 +16,8 @@ const UserTemplate = ({ user }: { user: User }) => {
         }`}
       >
         <div>
-          {user.warning && <Badge type="warning" label="Alerte" />}
-          {userIsExpired && <Badge type="expiry" label="Expiration" />}
+          {user.warning && <Badge type="warning" title="alerte" />}
+          {userIsExpired && <Badge type="expiry" title="expiration" />}
         </div>
         <div className="services">
           {SERVICES.map((service, i) => (

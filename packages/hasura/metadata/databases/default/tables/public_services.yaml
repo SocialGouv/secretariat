@@ -19,11 +19,26 @@ select_permissions:
     allow_aggregations: true
     columns:
     - data
+    - type
+    - updated_at
+    - id
+    - user_id
+    filter: {}
+  role: user
+- permission:
+    columns:
+    - data
     - id
     - type
     filter: {}
   role: webhook
 update_permissions:
+- permission:
+    check: null
+    columns:
+    - user_id
+    filter: {}
+  role: user
 - permission:
     check: null
     columns:

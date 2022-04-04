@@ -1,5 +1,45 @@
 import { gql } from "graphql-request"
 
+const userFragment2 = gql`
+  fragment userFields on users2 {
+    id
+    departure
+    arrival
+    updated_at
+    services {
+      id
+      data
+      type
+    }
+  }
+`
+
+export const getUsersToMerge = gql`
+  query getUsersToMerge($idToKeep: uuid!, $idToDrop: uuid!) {
+    userToKeep: users2(where: { id: { _eq: $idToKeep } }) {
+      ...userFields
+    }
+    userToDrop: users2(where: { id: { _eq: $idToDrop } }) {
+      ...userFields
+    }
+  }
+  ${userFragment2}
+`
+
+export const mergeUsers = gql`
+  mutation updateServicesUser($userToKeepId: uuid!, $userToDropId: uuid!) {
+    updatedRows: update_services(
+      where: { user_id: { _eq: $userToDropId } }
+      _set: { user_id: $userToKeepId }
+    ) {
+      affected_rows
+    }
+    deletedUser: delete_users2_by_pk(id: $userToDropId) {
+      id
+    }
+  }
+`
+
 const userServicesFragment = gql`
   fragment userServicesFields on users {
     id
@@ -31,6 +71,15 @@ export const getUsers = gql`
     }
   }
   ${userFragment}
+`
+
+export const getUsers2 = gql`
+  query getUsers {
+    users2 {
+      ...userFields
+    }
+  }
+  ${userFragment2}
 `
 
 export const getUserById = gql`
@@ -156,6 +205,14 @@ export const matchUserInServices = gql`
 export const updateUser = gql`
   mutation updateUser($id: uuid!, $_set: users_set_input!) {
     update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
+      id
+    }
+  }
+`
+
+export const updateUser2 = gql`
+  mutation updateUser2($id: uuid!, $_set: users2_set_input!) {
+    update_users2_by_pk(pk_columns: { id: $id }, _set: $_set) {
       id
     }
   }

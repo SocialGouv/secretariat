@@ -1,5 +1,6 @@
 .badge {
   @apply
+    px-2
     rounded
     text-sm
     flex-row
@@ -11,37 +12,42 @@
     inline-flex
     items-center;
 
-  &.warning {
+  &::before {
     @apply
-      px-2
-      bg-warning-950-main
-      text-warning-425-main
-      dark:bg-warning-125-main
-      dark:text-warning-625-main;
-
-    &::before {
-      @apply text-base mr-1 -ml-1;
-
-      font-weight: 400;
-      content: "\EA20";
-      font-family: remixicon, sans-serif !important;
-    }
+      mr-1
+      -ml-1
+      text-base
+      font-remix
+      font-normal;
   }
 
-  &.expiry {
+  &.warning {
     @apply
-      px-2
       bg-yellow-moutarde-950-main
       text-yellow-moutarde-348-main
       dark:bg-yellow-moutarde-125-main
       dark:text-yellow-moutarde-850-main;
 
     &::before {
-      @apply text-base mr-1 -ml-1;
+      @apply content-["\EA21"];
+    }
+  }
 
-      font-weight: 400;
-      content: "\EB24";
-      font-family: remixicon, sans-serif !important;
+  &.expiry {
+    @apply
+      bg-warning-950-main
+      text-warning-425-main
+      dark:bg-warning-125-main
+      dark:text-warning-625-main;
+
+    &::before {
+      @apply content-["\EB27"];
+    }
+  }
+
+  &.icon {
+    &::before {
+      @apply mx-0;
     }
   }
 

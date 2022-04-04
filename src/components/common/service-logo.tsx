@@ -17,18 +17,18 @@ const sizes: Record<string, number> = {
 }
 
 const ServiceLogo = ({
-  service,
+  name,
   size = "md",
 }: {
-  service: ServiceName
+  name: ServiceName
   size?: "sm" | "md" | "lg"
 }) => (
   <Image
-    title={service}
+    title={name}
     height={sizes[size]}
-    alt={`${service} logo`}
-    width={sizes[size] * ratios[service]}
-    src={`/images/${service}.svg#icon-logo`}
+    alt={`${name} logo`}
+    width={sizes[size] * ratios[name]}
+    src={`/images/${name}.svg#icon-logo`}
   />
 )
 

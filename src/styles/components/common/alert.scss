@@ -1,21 +1,55 @@
 .alert {
   @apply
-  flex
-  border
-  items-center
-  border-warning-625-main
-  dark:border-warning-425-main;
+    flex
+    border
+    text-sm
+    items-center;
 
   i {
     @apply 
-    p-2
-    text-2xl
-    text-grey-1000-main
-    bg-warning-625-main
-    dark:bg-warning-425-main
+      px-1
+      mr-2
+      text-2xl
+      text-grey-1000-main;
   }
 
-  & > div {
-    @apply flex flex-1 items-center pl-2 text-sm;
+  &.warning {
+    @apply
+      border-yellow-moutarde-850-main;
+
+    i {
+      @apply
+      bg-yellow-moutarde-850-main;
+    }
+  }
+
+  &.info {
+    @apply
+      border-info-425-main;
+
+    i {
+      @apply
+      bg-info-425-main;
+    }
+  }
+
+  &.error {
+    @apply
+      border-error-425-main;
+
+    i {
+      @apply
+      bg-error-425-main;
+    }
+  }
+
+  &.success {
+    @apply
+      border-success-425-main;
+
+    i {
+      @apply
+      bg-success-425-main;
+    }
   }
 }

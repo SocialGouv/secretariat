@@ -1,4 +1,9 @@
+input[type="date"] {
+  font-family: monospace;
+}
+
 input[type="text"],
+input[type="date"],
 input[type="search"] {
   @apply
     py-2
@@ -6,9 +11,14 @@ input[type="search"] {
     border-0
     rounded-t
     shadow-input
-    dark:shadow-input-dark
+    outline-none
     bg-grey-950-main
+    dark:shadow-input-dark
     dark:bg-grey-100-main;
+
+  &.error {
+    @apply shadow-input-error;
+  }
 
   &.disabled,
   &:disabled {

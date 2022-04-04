@@ -1,3 +1,17 @@
+## [1.26.1](https://github.com/SocialGouv/secretariat/compare/v1.26.0...v1.26.1) (2022-04-03)
+
+
+### Bug Fixes
+
+* Improve look and feel ([#170](https://github.com/SocialGouv/secretariat/issues/170)) ([77d4709](https://github.com/SocialGouv/secretariat/commit/77d4709dcd83a4488555045d96ec9882050012ea))
+
+# [1.26.0](https://github.com/SocialGouv/secretariat/compare/v1.25.1...v1.26.0) (2022-04-01)
+
+
+### Features
+
+* unattach user service account ([#169](https://github.com/SocialGouv/secretariat/issues/169)) ([a5053bf](https://github.com/SocialGouv/secretariat/commit/a5053bfd117de2440ec75e4279086bb7da2fe0fa))
+
 ## [1.25.1](https://github.com/SocialGouv/secretariat/compare/v1.25.0...v1.25.1) (2022-03-30)
 
 

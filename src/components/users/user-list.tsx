@@ -1,45 +1,53 @@
-import UserItem from "./user-item"
 import usePaging from "@/hooks/use-paging"
+import Loader from "@/components/common/loader"
+import UserItem from "@/components/users/user-item"
 import useFilteredUsers from "@/hooks/use-filtered-users"
-import { haveSimilarServices } from "@/hooks/use-users"
 
 const UserList = ({
-  onSelect,
   users = [],
   droppedUser,
   selectedUser,
+  onUserSelect,
+  onUserRemove,
 }: {
   users?: User[]
   droppedUser?: User
   selectedUser?: User
-  onSelect: (user: User | undefined) => void
+  onUserSelect: (user: User) => void
+  onUserRemove: (user: User) => void
 }) => {
   const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
 
   return (
     <div className="user-list">
-      <ul>
-        {users.map((user, i) => (
-          <UserItem
-            key={i}
-            user={user}
-            onClick={() => onSelect(user)}
-            dropped={droppedUser?.id === user.id}
-            selected={selectedUser?.id === user.id}
-            hasSimilarServices={
-              !!selectedUser && !!haveSimilarServices(user, selectedUser)
+      {!filteredUsers ? (
+        <Loader size="lg" />
+      ) : (
+        <>
+          <ul>
+            {users.map((user, i) => (
+              <UserItem
+                key={user.id}
+                user={user}
+                onClick={() => onUserSelect(user)}
+                onRemove={() => onUserRemove(user)}
+                dropped={droppedUser?.id === user.id}
+                selected={selectedUser?.id === user.id}
+              />
+            ))}
+          </ul>
+          <button
+            className="primary"
+            onClick={() => setPage(page + 1)}
+            disabled={
+              (filteredUsers?.length || 0) > pageSize * page ? false : true
             }
-          />
-        ))}
-      </ul>
-      <button
-        className="primary"
-        onClick={() => setPage(page + 1)}
-        disabled={(filteredUsers?.length || 0) > pageSize * page ? false : true}
-      >
-        Afficher plus d&apos;utilisateurs
-      </button>
+          >
+            Afficher plus d&apos;utilisateurs
+          </button>
+        </>
+      )}
     </div>
   )
 }

@@ -1,37 +1,3 @@
 .users-view {
   @apply grid grid-cols-2;
-
-  .user-list {
-    button {
-      @apply w-full flex justify-center;
-    }
-  }
-
-  .selected-user {
-    @apply flex flex-col ml-6;
-
-    .sticky-container {
-      @apply flex flex-col sticky top-36;
-
-      height: calc(100vh - 17rem);
-
-      & > div.drop-allowed {
-        @apply bg-yellow-50;
-      }
-
-      & > div.drop-over {
-        @apply bg-yellow-100;
-      }
-    }
-  }
-}
-
-.no-users {
-  @apply h-full flex flex-col justify-center;
-
-  height: calc(100vh - 33.5rem);
-
-  .callout {
-    @apply mx-10;
-  }
 }

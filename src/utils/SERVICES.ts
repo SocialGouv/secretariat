@@ -1,11 +1,11 @@
 const SERVICES: ServiceName[] = [
-  "github",
-  "matomo",
   "mattermost",
-  "nextcloud",
-  "ovh",
   "sentry",
   "zammad",
+  "matomo",
+  "nextcloud",
+  "github",
+  "ovh",
 ]
 
 export default SERVICES

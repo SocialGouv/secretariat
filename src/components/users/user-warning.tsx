@@ -3,13 +3,22 @@ import Alert from "@/components/common/alert"
 const UserWarning = ({ type }: { type?: string }) => (
   <div className="user-warning">
     {type === "alone_service" && (
-      <Alert message="Cet utilisateur n'est attaché qu'a un seul service." />
+      <Alert
+        type="warning"
+        message="Cet utilisateur n'est attaché qu'a un seul service."
+      />
     )}
     {type === "missing_services" && (
-      <Alert message="Cet utilisateur n'a pas de compte Github ou Mattermost." />
+      <Alert
+        type="warning"
+        message="Cet utilisateur n'a pas de compte Github ou Mattermost."
+      />
     )}
-    {type === "missing_departure" && (
-      <Alert message="Cet utilisateur n'a pas de date de départ." />
+    {type === "no_departure_date" && (
+      <Alert
+        type="warning"
+        message="Cet utilisateur n'a pas de date de départ."
+      />
     )}
   </div>
 )

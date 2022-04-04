@@ -5,9 +5,10 @@
 @use "./components/common/button.scss";
 @use "./components/common/loader.scss";
 @use "./components/common/callout.scss";
+@use "./components/common/date-field.scss";
 @use "./components/common/table.scss";
 @use "./components/common/alert.scss";
-@use "./components/common/datepicker.scss";
+@use "./components/common/box.scss";
 @use "./components/authenticated-user.scss";
 @use "./components/search.scss";
 @use "./components/logo.scss";
@@ -20,7 +21,9 @@
 @use "./components/users/user-template.scss";
 @use "./components/users/user-header.scss";
 @use "./components/users/users-view.scss";
+@use "./components/users/user-list.scss";
 @use "./components/users/user-profile.scss";
+@use "./components/users/user-selected.scss";
 @use "./components/users/user-last-update.scss";
 @use "./components/users/user-arrival-departure.scss";
 
@@ -40,11 +43,7 @@ body {
   @apply flex flex-col flex-1 overflow-hidden;
 
   & > .page {
-    @apply flex-1 overflow-auto mt-28;
-
-    & > .container {
-      @apply flex mx-auto;
-    }
+    @apply flex-1 overflow-auto mt-28 scroll-smooth;
   }
 }
 
@@ -55,9 +54,13 @@ aside {
 }
 
 main {
-  @apply flex-1;
+  @apply
+    px-6
+    flex-1
+    mx-auto
+    container;
 
-  .loader {
-    height: calc(100vh - 33.5rem);
+  & > .loader {
+    height: calc(100vh - 9.5rem);
   }
 }

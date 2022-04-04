@@ -1,32 +1,14 @@
-interface BasicUser {
+interface User {
   id: string
-  login?: string
-  arrival?: Date
-  departure?: Date
-  avatarUrl?: string
-  teams?: GithubTeam[]
-  github?: GithubUser
-  matomo?: MatomoUser
-  mattermost?: MattermostUser
-  nextcloud?: NextCloudUser
-  ovh?: OVHUser
-  sentry?: SentryUser
-  zammad?: ZammadUser
-  updated_at?: Date
-  warning?: "alone_service" | "missing_services" | null
-}
-
-interface UserWithName extends BasicUser {
-  email?: string
   name: string
-}
-
-interface UserWithEmail extends BasicUser {
   email: string
-  name?: string
+  arrival?: string
+  departure?: string
+  updated_at: string
+  avatarUrl: string
+  services: ServiceAccount[]
+  warning?: "alone_service" | "missing_services" | "no_departure_date" | null
 }
-
-type User = UserWithEmail | UserWithName
 
 interface GithubTeam {
   id: string
@@ -34,86 +16,103 @@ interface GithubTeam {
   slug: string
 }
 
-interface GithubUser {
+interface BasicServiceAccount {
   id: string
-  name: string
-  login: string
-  email: string
-  avatarUrl: string
-  teams: GithubTeam[]
+  type: ServiceName
 }
 
-interface MatomoUser {
-  id: string
-  login: string
-  email: string
-  uses_2fa: boolean
-  date_registered: date
-}
-
-interface SentryUser {
-  id: string
-  name: string
-  email: string
-  dateCreated: Date
-  projects: string[]
-  flags: Record<string, boolean>
-  user: {
-    has2fa: boolean
+interface GithubServiceAccount extends BasicServiceAccount {
+  type: "github"
+  data: {
+    name: string
+    login: string
+    email: string
     avatarUrl: string
+    teams: GithubTeam[]
   }
 }
 
-interface NextCloudUser {
-  id: string
-  email?: string
-  lastLogin: string
-  displayname: string
+interface MatomoServiceAccount extends BasicServiceAccount {
+  type: "matomo"
+  data: {
+    login: string
+    email: string
+    uses_2fa: boolean
+    date_registered: date
+  }
 }
 
-interface OVHUser {
-  id: string
-  login: string
-  lastName: string
-  firstName: string
-  creationDate: Date
-  displayName: string
-  primaryEmailAddress: string
+interface SentryServiceAccount extends BasicServiceAccount {
+  type: "sentry"
+  data: {
+    name: string
+    email: string
+    dateCreated: Date
+    projects: string[]
+    flags: Record<string, boolean>
+    user: {
+      has2fa: boolean
+      avatarUrl: string
+    }
+  }
 }
 
-interface ZammadUser {
-  id: string
-  email: string
-  login: string
-  created_at: Date
-  lastname: string
-  firstname: string
+interface NextCloudServiceAccount extends BasicServiceAccount {
+  type: "nextcloud"
+  data: {
+    id: string
+    email: string
+    lastLogin: string
+    displayname: string
+  }
 }
 
-interface MattermostUser {
-  id: string
-  email: string
-  create_at: Date
-  username: string
-  last_name: string
-  first_name: string
+interface OVHServiceAccount extends BasicServiceAccount {
+  type: "ovh"
+  data: {
+    id: string
+    login: string
+    lastName: string
+    firstName: string
+    creationDate: Date
+    displayName: string
+    primaryEmailAddress: string
+  }
 }
 
-type MixedUser =
-  | User
-  | GithubUser
-  | MatomoUser
-  | SentryUser
-  | NextCloudUser
-  | OVHUser
-  | MattermostUser
-  | ZammadUser
+interface ZammadServiceAccount extends BasicServiceAccount {
+  type: "zammad"
+  data: {
+    id: string
+    email: string
+    login: string
+    created_at: Date
+    lastname: string
+    firstname: string
+  }
+}
 
-type ServiceName =
-  | "github"
-  | "mattermost"
-  | "sentry"
-  | "zammad"
-  | "nextcloud"
-  | "matomo"
-  | "ovh"
+interface MattermostServiceAccount extends BasicServiceAccount {
+  type: "mattermost"
+  data: {
+    id: string
+    email: string
+    create_at: Date
+    username: string
+    last_name: string
+    first_name: string
+  }
+}
+
+interface ServiceAccountsMapping {
+  github: GithubServiceAccount
+  matomo: MatomoServiceAccount
+  sentry: SentryServiceAccount
+  nextcloud: NextCloudServiceAccount
+  ovh: OVHServiceAccount
+  zammad: ZammadServiceAccount
+  mattermost: MattermostServiceAccount
+}
+
+type ServiceName = keyof ServiceAccountsMapping
+type ServiceAccount = ServiceAccountsMapping[ServiceName]

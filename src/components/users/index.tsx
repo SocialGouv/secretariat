@@ -4,82 +4,58 @@ import { useEffect, useState } from "react"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
 import useToken from "@/hooks/use-token"
-import Loader from "@/components/common/loader"
 import UserList from "@/components/users/user-list"
-import UserProfile from "@/components/users/user-profile"
-import ConfirmModal from "@/components/users/confirm-modal"
-import { mergeUsers, mutateUser } from "@/hooks/use-users"
-
 import { usePagedUsers } from "@/hooks/use-paged-users"
+import { mapUser, mergeUsers, mutateUser } from "@/hooks/use-users"
+import UserSelected from "@/components/users/user-selected"
 
 const Users = () => {
+  const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
-
-  const [token] = useToken()
   const [droppedUser, setDroppedUser] = useState<User>()
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {
-    if (!selectedUser && pagedUsers && pagedUsers.length) {
-      setSelectedUser(pagedUsers[0])
+    if (pagedUsers && pagedUsers.length) {
+      const user = pagedUsers[0]
+      if (!selectedUser || user.id === selectedUser.id) {
+        setSelectedUser(pagedUsers[0])
+      }
     }
   }, [pagedUsers, selectedUser])
 
-  const handleUserDrop = (user: User) => {
-    setDroppedUser(user)
-  }
-
   const handleUserEdit = async (user: User) => {
-    setSelectedUser(user)
+    setSelectedUser(mapUser(user))
     await mutateUser(user, token)
     mutate("/users")
   }
 
-  const handleConfirm = async () => {
-    if (pagedUsers && selectedUser && droppedUser) {
-      const updatedUser = await mergeUsers(selectedUser, droppedUser, token)
+  const handleUserRemoval = async (user: User) => {
+    if (pagedUsers && selectedUser) {
+      const updatedUser = await mergeUsers(selectedUser, user, token)
       setSelectedUser(updatedUser)
       mutate("/users")
-      setDroppedUser(undefined)
     }
   }
 
   return (
-    <>
-      {!pagedUsers ? (
-        <Loader size="lg" />
-      ) : !pagedUsers.length ? (
-        <div className="no-users">
-          <div className="callout">Aucun utilisateur pour le moment...</div>
-        </div>
-      ) : (
-        <DndProvider backend={HTML5Backend}>
-          <div className="users-view">
-            <ConfirmModal
-              isOpen={!!droppedUser}
-              onConfirm={handleConfirm}
-              droppedUser={droppedUser}
-              selectedUser={selectedUser}
-              onRequestClose={() => setDroppedUser(undefined)}
-            />
-            <UserList
-              users={pagedUsers}
-              droppedUser={droppedUser}
-              selectedUser={selectedUser}
-              onSelect={(user) => setSelectedUser(user)}
-            />
-            {selectedUser && (
-              <UserProfile
-                user={selectedUser}
-                onUserDrop={handleUserDrop}
-                onUserEdit={handleUserEdit}
-              />
-            )}
-          </div>
-        </DndProvider>
-      )}
-    </>
+    <DndProvider backend={HTML5Backend}>
+      <div className="users-view">
+        <UserList
+          users={pagedUsers}
+          droppedUser={droppedUser}
+          selectedUser={selectedUser}
+          onUserSelect={(user) => setSelectedUser(user)}
+          onUserRemove={(user) => handleUserRemoval(user)}
+        />
+        <UserSelected
+          user={selectedUser}
+          onUserDrop={setDroppedUser}
+          onUserEdit={handleUserEdit}
+        />
+      </div>
+    </DndProvider>
   )
 }
 

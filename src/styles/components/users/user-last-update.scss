@@ -1,3 +1,8 @@
 .user-last-update {
-  @apply absolute text-xs right-4 bottom-2 italic;
+  @apply
+    italic
+    text-xs
+    right-4
+    bottom-2
+    absolute;
 }

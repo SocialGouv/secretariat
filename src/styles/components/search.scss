@@ -11,21 +11,25 @@
     dark:via-grey-50-main;
 
   .search-field {
-    @apply flex relative;
-  
-    &::before {
-      top: 0.75rem;
-      left: 0.75rem;
-      line-height: 1;
-      font-size: 1rem;
-      content: "\F0D1";
-      font-weight: bold;
-      position: absolute;
-      font-family: remixicon, sans-serif !important;
-    }
-  
+    @apply
+      flex
+      relative;
+
     input {
-      @apply flex-1 pl-9;
+      @apply
+        flex-1
+        rounded-r-none
+        shadow-input-blue
+        placeholder:italic
+        dark:shadow-input-blue-dark;
+    }
+
+    button {
+      @apply
+        border-b
+        rounded-r
+        border-blue-france-113-main
+        dark:border-blue-france-625-main;
     }
   }
 
@@ -33,7 +37,7 @@
     @apply
       flex
       pt-2
-      pb-8
+      pb-9
       items-center
       justify-between
       bg-gradient-to-b

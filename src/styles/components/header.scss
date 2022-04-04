@@ -1,22 +1,28 @@
 header {
   @apply
-  z-30
-  fixed
-  top-0
-  left-0
-  right-0
-  shadow-lg
-  bg-grey-1000-main
-  dark:bg-grey-75-main;
+    z-30
+    fixed
+    top-0
+    left-0
+    right-0
+    shadow-lg
+    bg-grey-1000-main
+    dark:bg-grey-75-main;
 
-  .container {
-    @apply flex py-5 items-center mx-auto;
+  .header-content {
+    @apply
+      flex
+      py-5
+      px-6
+      mx-auto
+      container
+      items-center;
 
     & > a {
       @apply
-      flex
-      text-gray-700
-      dark:text-gray-200;
+        flex
+        text-gray-700
+        dark:text-gray-200;
 
       .title {
         @apply flex flex-col justify-center px-8;

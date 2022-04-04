@@ -1,11 +1,10 @@
 import { useDrop } from "react-dnd"
 
-import { haveSimilarServices } from "@/hooks/use-users"
+import UserHeader from "@/components/users/user-header"
+import UserWarning from "@/components/users/user-warning"
 import UserServices from "@/components/users/user-services"
-import UserArrivalDeparture from "./user-arrival-departure"
-import UserLastUpdate from "./user-last-update"
-import UserWarning from "./user-warning"
-import UserHeader from "./user-header"
+import UserLastUpdate from "@/components/users/user-last-update"
+import UserArrivalDeparture from "@/components/users/user-arrival-departure"
 
 const UserProfile = ({
   user,
@@ -23,7 +22,7 @@ const UserProfile = ({
         onUserDrop(user)
         return user
       },
-      canDrop: (item) => !haveSimilarServices(item, user),
+      canDrop: (item) => item.id !== user.id,
       collect: (monitor) => ({
         isOver: monitor.isOver(),
         canDrop: monitor.canDrop(),
@@ -35,23 +34,25 @@ const UserProfile = ({
   const dropClass = canDrop ? (isOver ? "drop-over" : "drop-allowed") : ""
 
   return (
-    <div className="selected-user">
-      <div className="sticky-container">
-        <div
-          ref={drop}
-          role={"Profile"}
-          className={`user-profile ${dropClass}`}
-        >
-          <div className="header">
-            <UserHeader user={user} />
-            <UserLastUpdate date={user.updated_at} />
-          </div>
-          <div className="content">
-            <UserArrivalDeparture user={user} onChange={onUserEdit} />
-            {user.warning && <UserWarning type={user.warning} />}
-            <UserServices user={user} />
-          </div>
-        </div>
+    <div ref={drop} role={"Profile"} className={`user-profile ${dropClass}`}>
+      <div className="header">
+        <UserHeader user={user} />
+        <UserLastUpdate date={user.updated_at} />
+      </div>
+      <div className="content">
+        {user.warning && <UserWarning type={user.warning} />}
+        <UserArrivalDeparture
+          arrival={user.arrival}
+          departure={user.departure}
+          expired={
+            !!(
+              user.departure &&
+              new Date(user.departure).getTime() < new Date().getTime()
+            )
+          }
+          onChange={(dates) => onUserEdit({ ...user, ...dates })}
+        />
+        <UserServices services={user.services} />
       </div>
     </div>
   )

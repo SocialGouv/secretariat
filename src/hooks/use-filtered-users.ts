@@ -34,7 +34,7 @@ const useFilteredUsers = () => {
   const matchServices = (user: User): boolean => {
     if (filters?.services) {
       for (const [key, value] of Object.entries(filters.services)) {
-        if (value && user[key as keyof User]) {
+        if (value && user.services.find((service) => service.type === key)) {
           return true
         }
       }

@@ -2,25 +2,12 @@
 
 exports[`renders homepage 1`] = `
 <div>
-  <div
-    class="container"
-  >
-    <main>
-      <div
-        class="login"
-      >
-        Pour vous authentifier, cliquez sur le bouton bleu juste en dessous, là:
-         
-        <br />
-         
-        <br />
-        <button
-          class="primary"
-        >
-          Connexion
-        </button>
-      </div>
-    </main>
-  </div>
+  <main>
+    <div
+      class="loader lg"
+    >
+      <div />
+    </div>
+  </main>
 </div>
 `;

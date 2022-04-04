@@ -1,11 +1,16 @@
 .authenticated-user {
   @apply flex items-center;
 
-  & > div:first-child {
-    @apply mr-2;
+  img {
+    @apply rounded-sm;
   }
 
-  & > div:last-child {
-    @apply leading-4;
+  .user-name-links {
+    @apply
+      flex
+      ml-2
+      flex-col
+      items-start
+      justify-center;
   }
 }

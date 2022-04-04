@@ -1,3 +1,10 @@
+## [1.26.8](https://github.com/SocialGouv/secretariat/compare/v1.26.7...v1.26.8) (2022-04-04)
+
+
+### Bug Fixes
+
+* Update NEXTAUTH_SECRET ([2158023](https://github.com/SocialGouv/secretariat/commit/2158023ba944b5d239252f5120152355e4d83e96))
+
 ## [1.26.7](https://github.com/SocialGouv/secretariat/compare/v1.26.6...v1.26.7) (2022-04-04)
 
 

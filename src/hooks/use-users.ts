@@ -87,7 +87,6 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
 export const mapUser = (user: User): User => {
   const { services } = user
   const data = getDataFromServiceAccounts(services)
-  console.log("user data", data)
 
   if (!data.avatarUrl) {
     data.avatarUrl = getAvatarUrl(services)
@@ -99,13 +98,9 @@ export const mapUser = (user: User): User => {
 }
 
 const mapUsers = (users: User[]): User[] => {
-  console.log("got users", users)
-
-  const u = users
+  return users
     .map((user) => mapUser(user))
     .sort((a, b) => a.name.localeCompare(b.name))
-  console.log("returning users", u)
-  return u
 }
 
 export const mutateUser = async (

@@ -34,15 +34,14 @@ delete_permissions:
 - permission:
     filter: {}
   role: webhook
+- permission:
+    filter: {}
+  role: user
 update_permissions:
 - permission:
     check: null
     columns:
     - arrival
     - departure
-    filter: {}
-  role: user
-delete_permissions:
-- permission:
     filter: {}
   role: user

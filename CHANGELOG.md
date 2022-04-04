@@ -1,3 +1,10 @@
+## [1.26.5](https://github.com/SocialGouv/secretariat/compare/v1.26.4...v1.26.5) (2022-04-04)
+
+
+### Bug Fixes
+
+* Enable app ssl cert ([8bb5c43](https://github.com/SocialGouv/secretariat/commit/8bb5c43333e32d7c5d0176fe8457ba31e8a367f0))
+
 ## [1.26.4](https://github.com/SocialGouv/secretariat/compare/v1.26.3...v1.26.4) (2022-04-04)
 
 

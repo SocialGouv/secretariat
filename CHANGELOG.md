@@ -1,3 +1,10 @@
+## [1.26.3-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.26.2...v1.26.3-beta.1) (2022-04-04)
+
+
+### Bug Fixes
+
+* log ([9b2da2d](https://github.com/SocialGouv/secretariat/commit/9b2da2dd9b97a500ff9e1e58a7ef21c631c216b4))
+
 ## [1.26.2](https://github.com/SocialGouv/secretariat/compare/v1.26.1...v1.26.2) (2022-04-04)
 
 

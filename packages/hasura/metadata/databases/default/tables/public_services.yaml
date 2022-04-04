@@ -26,6 +26,7 @@ select_permissions:
     filter: {}
   role: user
 - permission:
+    allow_aggregations: true
     columns:
     - data
     - id

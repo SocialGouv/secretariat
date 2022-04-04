@@ -26,17 +26,11 @@ select_permissions:
     filter: {}
   role: user
 - permission:
+    allow_aggregations: true
     columns:
     - id
     filter: {}
   role: webhook
-delete_permissions:
-- permission:
-    filter: {}
-  role: webhook
-- permission:
-    filter: {}
-  role: user
 update_permissions:
 - permission:
     check: null
@@ -45,3 +39,10 @@ update_permissions:
     - departure
     filter: {}
   role: user
+delete_permissions:
+- permission:
+    filter: {}
+  role: user
+- permission:
+    filter: {}
+  role: webhook

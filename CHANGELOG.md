@@ -1,3 +1,10 @@
+# [1.27.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.27.0-beta.1...v1.27.0-beta.2) (2022-04-04)
+
+
+### Bug Fixes
+
+* sync test ([41a4ab2](https://github.com/SocialGouv/secretariat/commit/41a4ab2b7d0059e541402e32f7d7366a93a42916))
+
 # [1.27.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.26.1...v1.27.0-beta.1) (2022-04-04)
 
 

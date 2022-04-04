@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/SocialGouv/secretariat/compare/v1.26.1...v1.26.2) (2022-04-04)
+
+
+### Bug Fixes
+
+* webhook2 ([#171](https://github.com/SocialGouv/secretariat/issues/171)) ([6bdfeee](https://github.com/SocialGouv/secretariat/commit/6bdfeeea82106c38c8b01b78a97f45dcb8c3dae6)), closes [#166](https://github.com/SocialGouv/secretariat/issues/166)
+
 # [1.27.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.27.0-beta.1...v1.27.0-beta.2) (2022-04-04)
 
 

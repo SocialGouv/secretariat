@@ -16,7 +16,7 @@ import {
   updateService,
 } from "../queries"
 
-const DEFAULT_DELAY = 800
+export const DEFAULT_DELAY = 800
 
 const servicesFetchers: Record<ServiceName, any> = {
   github: fetchGithubUsers,

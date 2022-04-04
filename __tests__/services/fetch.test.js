@@ -20,7 +20,9 @@ const servicesFetchers = {
 jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
-jest.mock("@/utils/fetcher", () => jest.fn(() => Promise.resolve(null)))
+jest.mock("@/utils/fetcher", () =>
+  jest.fn(() => Promise.resolve({ delete_services: { returning: [] } }))
+)
 
 jest.mock("@/services/fetchers/github", () => ({
   fetchGithubUsers: jest.fn(() => []),

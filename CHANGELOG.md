@@ -1,3 +1,10 @@
+## [1.26.7](https://github.com/SocialGouv/secretariat/compare/v1.26.6...v1.26.7) (2022-04-04)
+
+
+### Bug Fixes
+
+* Add prod chart file ([adde380](https://github.com/SocialGouv/secretariat/commit/adde38082c621a8e9f38faaa219bf677a7c2fc6a))
+
 ## [1.26.6](https://github.com/SocialGouv/secretariat/compare/v1.26.5...v1.26.6) (2022-04-04)
 
 

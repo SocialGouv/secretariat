@@ -4,6 +4,14 @@
 ### Bug Fixes
 
 * Add production workflow ([ee64a6d](https://github.com/SocialGouv/secretariat/commit/ee64a6dd37dcb223b60e385cbd00dd278b53791e))
+* Bump version ([86f5735](https://github.com/SocialGouv/secretariat/commit/86f5735de62254e57cd59ba0313d80707f5bd50e))
+
+## [1.26.3-alpha.1](https://github.com/SocialGouv/secretariat/compare/v1.26.2...v1.26.3-alpha.1) (2022-04-04)
+
+
+### Bug Fixes
+
+* Add production workflow ([ee64a6d](https://github.com/SocialGouv/secretariat/commit/ee64a6dd37dcb223b60e385cbd00dd278b53791e))
 
 ## [1.26.3-alpha.1](https://github.com/SocialGouv/secretariat/compare/v1.26.2...v1.26.3-alpha.1) (2022-04-04)
 

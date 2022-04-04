@@ -1,6 +1,6 @@
 import { gql } from "graphql-request"
 
-const userFragment2 = gql`
+const userFragment = gql`
   fragment userFields on users {
     id
     departure
@@ -12,18 +12,6 @@ const userFragment2 = gql`
       type
     }
   }
-`
-
-export const getUsersToMerge = gql`
-  query getUsersToMerge($idToKeep: uuid!, $idToDrop: uuid!) {
-    userToKeep: users(where: { id: { _eq: $idToKeep } }) {
-      ...userFields
-    }
-    userToDrop: users(where: { id: { _eq: $idToDrop } }) {
-      ...userFields
-    }
-  }
-  ${userFragment2}
 `
 
 export const mergeUsers = gql`
@@ -53,29 +41,9 @@ const userServicesFragment = gql`
   }
 `
 
-const userFragment = gql`
-  fragment userFields on users {
-    id
-    arrival
-    departure
-    updated_at
-    ...userServicesFields
-  }
-  ${userServicesFragment}
-`
-
 export const getUsers = gql`
   query getUsers {
     users {
-      ...userFields
-    }
-  }
-  ${userFragment2}
-`
-
-export const getUserById = gql`
-  query getUserById($id: uuid!) {
-    users(where: { id: { _eq: $id } }) {
       ...userFields
     }
   }
@@ -128,90 +96,9 @@ export const getRemoteGithubTeams = gql`
   }
 `
 
-export const getServicesCount = gql`
-  query getServicesCount {
-    all: users_aggregate {
-      aggregate {
-        count
-      }
-    }
-    github: users_aggregate(distinct_on: github) {
-      aggregate {
-        count
-      }
-    }
-    matomo: users_aggregate(distinct_on: matomo) {
-      aggregate {
-        count
-      }
-    }
-    mattermost: users_aggregate(distinct_on: mattermost) {
-      aggregate {
-        count
-      }
-    }
-    nextcloud: users_aggregate(distinct_on: nextcloud) {
-      aggregate {
-        count
-      }
-    }
-    ovh: users_aggregate(distinct_on: ovh) {
-      aggregate {
-        count
-      }
-    }
-    zammad: users_aggregate(distinct_on: zammad) {
-      aggregate {
-        count
-      }
-    }
-    sentry: users_aggregate(distinct_on: sentry) {
-      aggregate {
-        count
-      }
-    }
-  }
-`
-
-export const getServiceUsers = (serviceName: string) => {
-  return gql`
-    query getServiceUsers($_contains: jsonb) {
-      users(where: { ${serviceName}: { _contains: $_contains } }) {
-        ...userServicesFields
-      }
-    }
-    ${userServicesFragment}
-  `
-}
-
-export const matchUserInServices = gql`
-  query matchUsersInServices($_or: [users_bool_exp!]) {
-    users(where: { _or: $_or }) {
-      ...userServicesFields
-    }
-  }
-  ${userServicesFragment}
-`
-
 export const updateUser = gql`
   mutation updateUser($id: uuid!, $_set: users_set_input!) {
     update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
-      id
-    }
-  }
-`
-
-export const addUser = gql`
-  mutation AddUser($user: users_insert_input!) {
-    insert_users_one(object: $user) {
-      id
-    }
-  }
-`
-
-export const deleteUser = gql`
-  mutation deleteUser($id: uuid!) {
-    delete_users_by_pk(id: $id) {
       id
     }
   }

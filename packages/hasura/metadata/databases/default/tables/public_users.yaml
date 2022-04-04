@@ -1,19 +1,19 @@
 table:
   name: users
   schema: public
+array_relationships:
+- name: services
+  using:
+    foreign_key_constraint_on:
+      column: user_id
+      table:
+        name: services
+        schema: public
 insert_permissions:
 - permission:
     backend_only: false
     check: {}
-    columns:
-    - github
-    - matomo
-    - mattermost
-    - nextcloud
-    - ovh
-    - sentry
-    - warning
-    - zammad
+    columns: []
   role: webhook
 select_permissions:
 - permission:
@@ -21,61 +21,28 @@ select_permissions:
     columns:
     - arrival
     - departure
-    - github
     - id
-    - matomo
-    - mattermost
-    - nextcloud
-    - ovh
-    - sentry
     - updated_at
-    - warning
-    - zammad
     filter: {}
   role: user
 - permission:
+    allow_aggregations: true
     columns:
-    - github
     - id
-    - matomo
-    - mattermost
-    - nextcloud
-    - ovh
-    - sentry
-    - updated_at
-    - warning
-    - zammad
     filter: {}
   role: webhook
 update_permissions:
 - permission:
-    check: {}
+    check: null
     columns:
     - arrival
     - departure
-    - github
-    - matomo
-    - mattermost
-    - nextcloud
-    - ovh
-    - sentry
-    - zammad
     filter: {}
   role: user
-- permission:
-    check: null
-    columns:
-    - github
-    - matomo
-    - mattermost
-    - nextcloud
-    - ovh
-    - sentry
-    - warning
-    - zammad
-    filter: {}
-  role: webhook
 delete_permissions:
 - permission:
     filter: {}
   role: user
+- permission:
+    filter: {}
+  role: webhook

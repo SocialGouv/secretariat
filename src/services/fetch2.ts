@@ -95,13 +95,18 @@ const updateUsers = async (
   jwt: string
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
-  await Promise.all(
-    users.map(async (user) => {
-      existingServicesIds.push(
-        await updateOrInsertService(user, serviceName, jwt)
-      )
-    })
-  )
+  // await Promise.all(
+  //   users.map(async (user) => {
+  //     existingServicesIds.push(
+  //       await updateOrInsertService(user, serviceName, jwt)
+  //     )
+  //   })
+  // )
+  for (const userKey in users) {
+    existingServicesIds.push(
+      await updateOrInsertService(users[userKey], serviceName, jwt)
+    )
+  }
   return existingServicesIds
 }
 

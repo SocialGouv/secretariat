@@ -17,6 +17,7 @@ insert_permissions:
   role: webhook
 select_permissions:
 - permission:
+    allow_aggregations: true
     columns:
     - arrival
     - departure
@@ -27,6 +28,10 @@ select_permissions:
 - permission:
     columns:
     - id
+    filter: {}
+  role: webhook
+delete_permissions:
+- permission:
     filter: {}
   role: webhook
 update_permissions:

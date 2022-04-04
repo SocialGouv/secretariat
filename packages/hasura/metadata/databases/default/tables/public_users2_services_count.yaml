@@ -1,0 +1,3 @@
+table:
+  name: users2_services_count
+  schema: public

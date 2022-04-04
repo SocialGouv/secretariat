@@ -16,6 +16,7 @@ insert_permissions:
   role: webhook
 select_permissions:
 - permission:
+    allow_aggregations: true
     columns:
     - data
     - type
@@ -42,5 +43,9 @@ update_permissions:
     check: null
     columns:
     - data
+    filter: {}
+  role: webhook
+delete_permissions:
+- permission:
     filter: {}
   role: webhook

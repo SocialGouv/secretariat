@@ -1,3 +1,10 @@
+## [1.26.6](https://github.com/SocialGouv/secretariat/compare/v1.26.5...v1.26.6) (2022-04-04)
+
+
+### Bug Fixes
+
+* Add prod chart values ([a5b221e](https://github.com/SocialGouv/secretariat/commit/a5b221e6f883aabf5c5c3564f0a91d34590fdf1f))
+
 ## [1.26.5](https://github.com/SocialGouv/secretariat/compare/v1.26.4...v1.26.5) (2022-04-04)
 
 

@@ -1,3 +1,10 @@
+## [1.26.4](https://github.com/SocialGouv/secretariat/compare/v1.26.3...v1.26.4) (2022-04-04)
+
+
+### Bug Fixes
+
+* remove useless yaml file ([b4e563c](https://github.com/SocialGouv/secretariat/commit/b4e563c41838b796a56daf8a65157e1d912040f5))
+
 ## [1.26.3](https://github.com/SocialGouv/secretariat/compare/v1.26.2...v1.26.3) (2022-04-04)
 
 

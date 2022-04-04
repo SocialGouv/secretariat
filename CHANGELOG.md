@@ -1,3 +1,17 @@
+# [1.27.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.27.0-beta.1...v1.27.0-beta.2) (2022-04-04)
+
+
+### Bug Fixes
+
+* sync test ([41a4ab2](https://github.com/SocialGouv/secretariat/commit/41a4ab2b7d0059e541402e32f7d7366a93a42916))
+
+# [1.27.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.26.1...v1.27.0-beta.1) (2022-04-04)
+
+
+### Features
+
+* different files and clear deleted services entries ([#166](https://github.com/SocialGouv/secretariat/issues/166)) ([78dc256](https://github.com/SocialGouv/secretariat/commit/78dc25614999c3aebaacdfd5c2c8a7298c104b6f))
+
 ## [1.26.1](https://github.com/SocialGouv/secretariat/compare/v1.26.0...v1.26.1) (2022-04-03)
 
 

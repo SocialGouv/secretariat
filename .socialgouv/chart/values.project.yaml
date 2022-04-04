@@ -12,6 +12,7 @@ app:
   probesPath: /healthz
   replicas: 2
   imagePackage: app
+  certSecretName: app-crt
 
 hasura:
   envFrom:

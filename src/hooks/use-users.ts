@@ -5,8 +5,8 @@ import SERVICES from "@/utils/SERVICES"
 import useToken from "@/hooks/use-token"
 import { detectWarnings } from "@/utils/detect-warnings"
 import {
-  getUsers2,
-  updateUser2,
+  getUsers,
+  updateUser,
   mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
 
@@ -87,7 +87,6 @@ const getAvatarUrl = (services: ServiceAccount[]) => {
 export const mapUser = (user: User): User => {
   const { services } = user
   const data = getDataFromServiceAccounts(services)
-  console.log("user data", data)
 
   if (!data.avatarUrl) {
     data.avatarUrl = getAvatarUrl(services)
@@ -99,13 +98,9 @@ export const mapUser = (user: User): User => {
 }
 
 const mapUsers = (users: User[]): User[] => {
-  console.log("got users", users)
-
-  const u = users
+  return users
     .map((user) => mapUser(user))
     .sort((a, b) => a.name.localeCompare(b.name))
-  console.log("returning users", u)
-  return u
 }
 
 export const mutateUser = async (
@@ -113,7 +108,7 @@ export const mutateUser = async (
   token: string
 ): Promise<User | undefined> => {
   const { id, arrival, departure } = user
-  return await fetcher(updateUser2, token, { id, _set: { arrival, departure } })
+  return await fetcher(updateUser, token, { id, _set: { arrival, departure } })
 }
 
 export const mergeUsers = async (
@@ -136,8 +131,8 @@ const useUsers = () => {
   const [token] = useToken()
 
   const getMappedUsers = async () => {
-    const data = await fetcher(getUsers2, token)
-    return Promise.resolve(mapUsers(data.users2))
+    const data = await fetcher(getUsers, token)
+    return Promise.resolve(mapUsers(data.users))
   }
 
   const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)

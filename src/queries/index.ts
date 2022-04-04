@@ -1,7 +1,7 @@
 import { gql } from "graphql-request"
 
 const userFragment2 = gql`
-  fragment userFields on users2 {
+  fragment userFields on users {
     id
     departure
     arrival
@@ -16,10 +16,10 @@ const userFragment2 = gql`
 
 export const getUsersToMerge = gql`
   query getUsersToMerge($idToKeep: uuid!, $idToDrop: uuid!) {
-    userToKeep: users2(where: { id: { _eq: $idToKeep } }) {
+    userToKeep: users(where: { id: { _eq: $idToKeep } }) {
       ...userFields
     }
-    userToDrop: users2(where: { id: { _eq: $idToDrop } }) {
+    userToDrop: users(where: { id: { _eq: $idToDrop } }) {
       ...userFields
     }
   }
@@ -34,7 +34,7 @@ export const mergeUsers = gql`
     ) {
       affected_rows
     }
-    deletedUser: delete_users2_by_pk(id: $userToDropId) {
+    deletedUser: delete_users_by_pk(id: $userToDropId) {
       id
     }
   }
@@ -67,15 +67,6 @@ const userFragment = gql`
 export const getUsers = gql`
   query getUsers {
     users {
-      ...userFields
-    }
-  }
-  ${userFragment}
-`
-
-export const getUsers2 = gql`
-  query getUsers {
-    users2 {
       ...userFields
     }
   }
@@ -210,14 +201,6 @@ export const updateUser = gql`
   }
 `
 
-export const updateUser2 = gql`
-  mutation updateUser2($id: uuid!, $_set: users2_set_input!) {
-    update_users2_by_pk(pk_columns: { id: $id }, _set: $_set) {
-      id
-    }
-  }
-`
-
 export const addUser = gql`
   mutation AddUser($user: users_insert_input!) {
     insert_users_one(object: $user) {
@@ -244,9 +227,9 @@ export const getServicesMatchingId = gql`
   }
 `
 
-export const insertUser2 = gql`
-  mutation insertUser2 {
-    insert_users2_one(object: {}) {
+export const insertUser = gql`
+  mutation insertUser {
+    insert_users_one(object: {}) {
       id
     }
   }
@@ -275,7 +258,7 @@ export const deleteServices = gql`
   mutation deleteServices($existingServicesIds: [uuid!]) {
     delete_services(where: { id: { _nin: $existingServicesIds } }) {
       returning {
-        users2 {
+        users {
           id
           services_aggregate {
             aggregate {
@@ -290,7 +273,7 @@ export const deleteServices = gql`
 
 export const deleteUsers = gql`
   mutation deleteServices($userIds: [uuid!] = "") {
-    delete_users2(where: { id: { _in: $userIds } }) {
+    delete_users(where: { id: { _in: $userIds } }) {
       affected_rows
     }
   }

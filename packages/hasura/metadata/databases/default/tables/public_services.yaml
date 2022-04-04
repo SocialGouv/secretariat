@@ -2,7 +2,7 @@ table:
   name: services
   schema: public
 object_relationships:
-- name: users2
+- name: users
   using:
     foreign_key_constraint_on: user_id
 insert_permissions:

@@ -1,3 +1,10 @@
+## [1.26.14](https://github.com/SocialGouv/secretariat/compare/v1.26.13...v1.26.14) (2022-04-05)
+
+
+### Bug Fixes
+
+* update hasura jwt key ([50b91aa](https://github.com/SocialGouv/secretariat/commit/50b91aa57301ad8cc6e514fe0809bcb110b5e164))
+
 ## [1.26.13](https://github.com/SocialGouv/secretariat/compare/v1.26.12...v1.26.13) (2022-04-05)
 
 

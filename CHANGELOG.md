@@ -1,3 +1,10 @@
+## [1.26.10](https://github.com/SocialGouv/secretariat/compare/v1.26.9...v1.26.10) (2022-04-05)
+
+
+### Bug Fixes
+
+* set deps static fixed verions ([9e4805a](https://github.com/SocialGouv/secretariat/commit/9e4805ab562fd89649a9c1b8710f0eb00d63a784))
+
 ## [1.26.9](https://github.com/SocialGouv/secretariat/compare/v1.26.8...v1.26.9) (2022-04-04)
 
 

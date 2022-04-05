@@ -1,3 +1,10 @@
+## [1.26.11](https://github.com/SocialGouv/secretariat/compare/v1.26.10...v1.26.11) (2022-04-05)
+
+
+### Bug Fixes
+
+* update yarn lock ([180bd18](https://github.com/SocialGouv/secretariat/commit/180bd1882fd7a410996a0fb3b725e78471d90f79))
+
 ## [1.26.10](https://github.com/SocialGouv/secretariat/compare/v1.26.9...v1.26.10) (2022-04-05)
 
 

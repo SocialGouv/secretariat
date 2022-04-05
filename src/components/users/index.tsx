@@ -17,11 +17,8 @@ const Users = () => {
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {
-    if (pagedUsers && pagedUsers.length) {
-      const user = pagedUsers[0]
-      if (!selectedUser || user.id === selectedUser.id) {
-        setSelectedUser(pagedUsers[0])
-      }
+    if (pagedUsers && pagedUsers.length && !selectedUser) {
+      setSelectedUser(pagedUsers[0])
     }
   }, [pagedUsers, selectedUser])
 

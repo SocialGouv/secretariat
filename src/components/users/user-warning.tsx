@@ -1,11 +1,11 @@
 import Alert from "@/components/common/alert"
 
-const UserWarning = ({ type }: { type?: string }) => (
+const UserWarning = ({ type }: { type: Warning }) => (
   <div className="user-warning">
     {type === "alone_service" && (
       <Alert
         type="warning"
-        message="Cet utilisateur n'est attaché qu'a un seul service."
+        message="Cet utilisateur n'est attaché qu'à un seul service."
       />
     )}
     {type === "missing_services" && (

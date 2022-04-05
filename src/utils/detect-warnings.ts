@@ -30,9 +30,8 @@ const ACTIVE_RULES = [
   containsSpecificServices,
 ]
 
-export const detectWarnings = (user: User) => {
-  const warning = ACTIVE_RULES.map((ruleFunction) => ruleFunction(user)).find(
+export const detectWarnings = (user: User): Warning[] => {
+  return ACTIVE_RULES.map((ruleFunction) => ruleFunction(user)).filter(
     (warning) => warning !== null
-  )
-  return warning ? warning : null
+  ) as Warning[]
 }

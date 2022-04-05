@@ -44,7 +44,7 @@ const useFilteredUsers = () => {
 
   const matchAlerts = (user: User): boolean => {
     if (filters?.alerts) {
-      return !!user.warning?.length
+      return user.warnings.length > 0
     }
     return true
   }

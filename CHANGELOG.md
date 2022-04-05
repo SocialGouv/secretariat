@@ -1,3 +1,31 @@
+## [1.26.12](https://github.com/SocialGouv/secretariat/compare/v1.26.11...v1.26.12) (2022-04-05)
+
+
+### Bug Fixes
+
+* update nextauth ([47971c6](https://github.com/SocialGouv/secretariat/commit/47971c6aa61b913bff9753a65a14af8e766877a5))
+
+## [1.26.11](https://github.com/SocialGouv/secretariat/compare/v1.26.10...v1.26.11) (2022-04-05)
+
+
+### Bug Fixes
+
+* update yarn lock ([180bd18](https://github.com/SocialGouv/secretariat/commit/180bd1882fd7a410996a0fb3b725e78471d90f79))
+
+## [1.26.10](https://github.com/SocialGouv/secretariat/compare/v1.26.9...v1.26.10) (2022-04-05)
+
+
+### Bug Fixes
+
+* set deps static fixed verions ([9e4805a](https://github.com/SocialGouv/secretariat/commit/9e4805ab562fd89649a9c1b8710f0eb00d63a784))
+
+## [1.26.9](https://github.com/SocialGouv/secretariat/compare/v1.26.8...v1.26.9) (2022-04-04)
+
+
+### Bug Fixes
+
+* Update NEXTAUTH_SECRET ([3ce8a62](https://github.com/SocialGouv/secretariat/commit/3ce8a62bba56bf66b82151daafa00db25f876f35))
+
 ## [1.26.8](https://github.com/SocialGouv/secretariat/compare/v1.26.7...v1.26.8) (2022-04-04)
 
 

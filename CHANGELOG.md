@@ -1,3 +1,10 @@
+## [1.26.15](https://github.com/SocialGouv/secretariat/compare/v1.26.14...v1.26.15) (2022-04-05)
+
+
+### Bug Fixes
+
+* update github secrets ([c0a9f28](https://github.com/SocialGouv/secretariat/commit/c0a9f28afe8153643dc305f679ae0d093d19360c))
+
 ## [1.26.14](https://github.com/SocialGouv/secretariat/compare/v1.26.13...v1.26.14) (2022-04-05)
 
 

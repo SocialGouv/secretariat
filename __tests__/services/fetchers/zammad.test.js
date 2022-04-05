@@ -11,7 +11,7 @@ it("should return a list of fetched users", async () => {
     .mockResolvedValue(Promise.resolve({ json: () => Promise.resolve([]) }))
 
   const result = await fetchZammadUsers()
-  expect(result).toStrictEqual([{}, {}, {}])
+  expect(result).toStrictEqual([{ groups: [] }, { groups: [] }, { groups: [] }])
 })
 
 it("should return an empty list if no response", async () => {

@@ -1,4 +1,7 @@
 import ServiceLogo from "@/components/common/service-logo"
+import { insertUser, updateService } from "@/queries/index"
+import useToken from "@/hooks/use-token"
+import fetcher from "@/utils/fetcher"
 
 const InfoTable = ({
   data,
@@ -96,22 +99,64 @@ const ZammadUserInfo = ({
   account: ZammadServiceAccount
 }) => <InfoTable data={{ id, email, login, created_at, lastname, firstname }} />
 
-const UserServiceInfo = ({ account }: { account: ServiceAccount }) => (
-  <div className="service">
-    <h3>
-      <div className="icon">
-        <ServiceLogo name={account.type} />
-      </div>
-      <div className="title">{account.type}</div>
-    </h3>
-    {account.type === "github" && <GithubUserInfo account={account} />}
-    {account.type === "matomo" && <InfoTable data={account.data} />}
-    {account.type === "sentry" && <SentryUserInfo account={account} />}
-    {account.type === "mattermost" && <MattermostUserInfo account={account} />}
-    {account.type === "ovh" && <OVHUserInfo account={account} />}
-    {account.type === "nextcloud" && <NextCloudUserInfo account={account} />}
-    {account.type === "zammad" && <ZammadUserInfo account={account} />}
-  </div>
-)
+const UserServiceInfo = ({
+  account,
+  isSingleAccount,
+  onDetachAccount,
+}: {
+  account: ServiceAccount
+  isSingleAccount: boolean
+  onDetachAccount: (account: ServiceAccount) => void
+}) => {
+  const [token] = useToken()
+
+  const handleUnmergeButton = async (account: ServiceAccount) => {
+    if (isSingleAccount) {
+      return
+    }
+
+    // Create a new user for the unmerged account
+    const {
+      insert_users_one: { id: userId },
+    } = await fetcher(insertUser, token)
+
+    // Change the account's foreign key
+    await fetcher(updateService, token, {
+      serviceId: account.id,
+      service: { user_id: userId },
+    })
+
+    // Refresh selected user and users list
+    onDetachAccount(account)
+  }
+
+  return (
+    <div className="service">
+      <h3>
+        <div className="icon">
+          <ServiceLogo name={account.type} />
+        </div>
+        <div className="title">{account.type}</div>
+        {!isSingleAccount && (
+          <button
+            className="secondary"
+            onClick={(_) => handleUnmergeButton(account)}
+          >
+            Détacher
+          </button>
+        )}
+      </h3>
+      {account.type === "github" && <GithubUserInfo account={account} />}
+      {account.type === "matomo" && <InfoTable data={account.data} />}
+      {account.type === "sentry" && <SentryUserInfo account={account} />}
+      {account.type === "mattermost" && (
+        <MattermostUserInfo account={account} />
+      )}
+      {account.type === "ovh" && <OVHUserInfo account={account} />}
+      {account.type === "nextcloud" && <NextCloudUserInfo account={account} />}
+      {account.type === "zammad" && <ZammadUserInfo account={account} />}
+    </div>
+  )
+}
 
 export default UserServiceInfo

@@ -244,11 +244,8 @@ export const insertService = gql`
 `
 
 export const updateService = gql`
-  mutation updateService($serviceId: uuid!, $serviceData: jsonb!) {
-    update_services_by_pk(
-      pk_columns: { id: $serviceId }
-      _set: { data: $serviceData }
-    ) {
+  mutation updateService($serviceId: uuid!, $service: services_set_input!) {
+    update_services_by_pk(pk_columns: { id: $serviceId }, _set: $service) {
       id
     }
   }

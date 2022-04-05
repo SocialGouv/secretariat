@@ -4,10 +4,12 @@ const UserSelected = ({
   user,
   onUserDrop,
   onUserEdit,
+  onAccountsChanged,
 }: {
   user?: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
+  onAccountsChanged: (user: User) => void
 }) => (
   <div className="user-selected">
     <div className="box sticky-container">
@@ -16,6 +18,7 @@ const UserSelected = ({
           user={user}
           onUserDrop={onUserDrop}
           onUserEdit={onUserEdit}
+          onAccountsChanged={onAccountsChanged}
         />
       ) : (
         <div className="no-user-selected">

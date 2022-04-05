@@ -31,6 +31,11 @@ const Users = () => {
     mutate("/users")
   }
 
+  const handleAccountsChanged = async (user: User) => {
+    setSelectedUser(mapUser(user))
+    mutate("/users")
+  }
+
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
       const updatedUser = await mergeUsers(selectedUser, user, token)
@@ -53,6 +58,7 @@ const Users = () => {
           user={selectedUser}
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
+          onAccountsChanged={(user) => handleAccountsChanged(user)}
         />
       </div>
     </DndProvider>

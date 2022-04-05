@@ -44,6 +44,7 @@
         h3 {
           @apply
             flex
+            justify-between
             pb-2
             mb-2
             border-b
@@ -51,6 +52,12 @@
             border-b-grey-925-main
             dark:border-b-grey-125-main;
   
+          .leftContainer {
+            @apply
+              flex
+              flex-row
+          }
+            
           .icon {
             @apply flex;
           }

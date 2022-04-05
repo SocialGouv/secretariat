@@ -133,10 +133,12 @@ const UserServiceInfo = ({
   return (
     <div className="service">
       <h3>
-        <div className="icon">
-          <ServiceLogo name={account.type} />
+        <div className="leftContainer">
+          <div className="icon">
+            <ServiceLogo name={account.type} />
+          </div>
+          <div className="title">{account.type}</div>
         </div>
-        <div className="title">{account.type}</div>
         {!isSingleAccount && (
           <button
             className="secondary"

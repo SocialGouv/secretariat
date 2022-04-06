@@ -92,7 +92,7 @@ export const mapUser = (user: User): User => {
     data.avatarUrl = getAvatarUrl(services)
   }
 
-  user.warning = detectWarnings(user)
+  user.warnings = detectWarnings(user)
 
   return { ...user, ...data }
 }

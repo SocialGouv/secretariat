@@ -7,8 +7,10 @@ interface User {
   updated_at: string
   avatarUrl: string
   services: ServiceAccount[]
-  warning?: "alone_service" | "missing_services" | "no_departure_date" | null
+  warnings: Warning[]
 }
+
+type Warning = "alone_service" | "missing_services" | "no_departure_date"
 
 interface GithubTeam {
   id: string

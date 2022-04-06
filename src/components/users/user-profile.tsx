@@ -40,7 +40,9 @@ const UserProfile = ({
         <UserLastUpdate date={user.updated_at} />
       </div>
       <div className="content">
-        {user.warning && <UserWarning type={user.warning} />}
+        {user.warnings.map((warning) => (
+          <UserWarning key={warning} type={warning} />
+        ))}
         <UserArrivalDeparture
           arrival={user.arrival}
           departure={user.departure}

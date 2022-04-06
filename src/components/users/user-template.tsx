@@ -12,11 +12,11 @@ const UserTemplate = ({ user }: { user: User }) => {
       <UserHeader user={user} />
       <div
         className={`alerts-services${
-          user.warning || userIsExpired ? "" : " no-alert"
+          user.warnings.length > 0 || userIsExpired ? "" : " no-alert"
         }`}
       >
         <div>
-          {user.warning && <Badge type="warning" title="alerte" />}
+          {user.warnings.length > 0 && <Badge type="warning" title="alerte" />}
           {userIsExpired && <Badge type="expiry" title="expiration" />}
         </div>
         <div className="services">

@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/SocialGouv/secretariat/compare/v1.26.17...v1.27.0) (2022-04-06)
+
+
+### Features
+
+* unmerge feature ([#179](https://github.com/SocialGouv/secretariat/issues/179)) ([a9cf1f3](https://github.com/SocialGouv/secretariat/commit/a9cf1f36ca2b4a5ac5a023af6babc89e5ac9785d))
+
 ## [1.26.17](https://github.com/SocialGouv/secretariat/compare/v1.26.16...v1.26.17) (2022-04-06)
 
 

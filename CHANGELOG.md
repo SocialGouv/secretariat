@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/SocialGouv/secretariat/compare/v1.27.1...v1.27.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* remove unused prod option ([a664c25](https://github.com/SocialGouv/secretariat/commit/a664c25461590bcac302dbddf91f52e217a66262))
+
 ## [1.27.1](https://github.com/SocialGouv/secretariat/compare/v1.27.0...v1.27.1) (2022-04-06)
 
 

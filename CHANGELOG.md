@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/SocialGouv/secretariat/compare/v1.27.0...v1.27.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* API secrets without quotes ([b7741b9](https://github.com/SocialGouv/secretariat/commit/b7741b901e687902431f11f2b2b1ebd0abb7e6d1))
+
 # [1.27.0](https://github.com/SocialGouv/secretariat/compare/v1.26.17...v1.27.0) (2022-04-06)
 
 

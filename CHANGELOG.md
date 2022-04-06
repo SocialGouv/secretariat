@@ -1,3 +1,10 @@
+## [1.27.3](https://github.com/SocialGouv/secretariat/compare/v1.27.2...v1.27.3) (2022-04-06)
+
+
+### Bug Fixes
+
+* secrets encryption ([8241c27](https://github.com/SocialGouv/secretariat/commit/8241c27b02a6818759d099163c0fbf2726260bd5))
+
 ## [1.27.2](https://github.com/SocialGouv/secretariat/compare/v1.27.1...v1.27.2) (2022-04-06)
 
 

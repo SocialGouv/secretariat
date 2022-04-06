@@ -141,10 +141,11 @@ const UserServiceInfo = ({
         </div>
         {!isSingleAccount && (
           <button
-            className="secondary"
+            title="détacher"
+            className="secondary sm icon"
             onClick={(_) => handleUnmergeButton(account)}
           >
-            Détacher
+            <i className="ri-eject-fill"></i>
           </button>
         )}
       </h3>

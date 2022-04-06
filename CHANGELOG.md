@@ -1,3 +1,10 @@
+## [1.26.16](https://github.com/SocialGouv/secretariat/compare/v1.26.15...v1.26.16) (2022-04-06)
+
+
+### Bug Fixes
+
+* new github oauth app ([2f4c208](https://github.com/SocialGouv/secretariat/commit/2f4c20811bcbf143ef03c4fbab9febc6cc5d9ad6))
+
 ## [1.26.15](https://github.com/SocialGouv/secretariat/compare/v1.26.14...v1.26.15) (2022-04-05)
 
 

@@ -2,7 +2,7 @@
   "name": "secretariat",
   "version": "1.26.16",
   "engines": {
-    "node": "16.13"
+    "node": ">=16"
   },
   "private": true,
   "repository": "git@github.com:SocialGouv/secretariat.git",

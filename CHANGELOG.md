@@ -1,3 +1,10 @@
+## [1.27.5](https://github.com/SocialGouv/secretariat/compare/v1.27.4...v1.27.5) (2022-04-06)
+
+
+### Bug Fixes
+
+* prod ssl cert ([30d5691](https://github.com/SocialGouv/secretariat/commit/30d56913a8a7631c2375627512b21fbb1395d62e))
+
 ## [1.27.4](https://github.com/SocialGouv/secretariat/compare/v1.27.3...v1.27.4) (2022-04-06)
 
 

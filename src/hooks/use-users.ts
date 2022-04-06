@@ -129,7 +129,6 @@ export const mergeUsers = async (
 
 const useUsers = () => {
   const [token] = useToken()
-  console.log("TOKEN", token)
 
   const getMappedUsers = async () => {
     const data = await fetcher(getUsers, token)

@@ -75,7 +75,7 @@ const updateOrInsertService = async (
       update_services_by_pk: { id: serviceId },
     } = await fetcher(updateService, jwt, {
       serviceId: servicesMatchingId[0].id,
-      serviceData,
+      service: { data: serviceData },
     })
     stats.updates += 1
     return serviceId

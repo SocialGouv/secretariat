@@ -14,6 +14,11 @@ insert_permissions:
     backend_only: false
     check: {}
     columns: []
+  role: user
+- permission:
+    backend_only: false
+    check: {}
+    columns: []
   role: webhook
 select_permissions:
 - permission:

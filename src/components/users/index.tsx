@@ -17,17 +17,19 @@ const Users = () => {
   const [selectedUser, setSelectedUser] = useState<User>()
 
   useEffect(() => {
-    if (pagedUsers && pagedUsers.length) {
-      const user = pagedUsers[0]
-      if (!selectedUser || user.id === selectedUser.id) {
-        setSelectedUser(pagedUsers[0])
-      }
+    if (pagedUsers && pagedUsers.length && !selectedUser) {
+      setSelectedUser(pagedUsers[0])
     }
   }, [pagedUsers, selectedUser])
 
   const handleUserEdit = async (user: User) => {
     setSelectedUser(mapUser(user))
     await mutateUser(user, token)
+    mutate("/users")
+  }
+
+  const handleAccountsChanged = async (user: User) => {
+    setSelectedUser(mapUser(user))
     mutate("/users")
   }
 
@@ -53,6 +55,7 @@ const Users = () => {
           user={selectedUser}
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
+          onAccountsChanged={(user) => handleAccountsChanged(user)}
         />
       </div>
     </DndProvider>

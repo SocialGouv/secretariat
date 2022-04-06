@@ -87,8 +87,12 @@ a.btn {
       items-center
       justify-center;
 
+    &.sm {
+      @apply text-base px-1 leading-5;
+    }
+
     i {
-      @apply mr-0 leading-[1px];
+      @apply mr-0;
     }
   }
 }

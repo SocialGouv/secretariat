@@ -1,3 +1,10 @@
+## [1.27.6-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.27.5...v1.27.6-beta.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency graphql-request to v4 ([#21](https://github.com/SocialGouv/secretariat/issues/21)) ([a6faa05](https://github.com/SocialGouv/secretariat/commit/a6faa05c28919dc5963871b3b4e7f23541fd1d10))
+
 ## [1.27.5](https://github.com/SocialGouv/secretariat/compare/v1.27.4...v1.27.5) (2022-04-06)
 
 

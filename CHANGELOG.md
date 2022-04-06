@@ -1,3 +1,10 @@
+## [1.26.17](https://github.com/SocialGouv/secretariat/compare/v1.26.16...v1.26.17) (2022-04-06)
+
+
+### Bug Fixes
+
+* both warning and expiry badges ([#180](https://github.com/SocialGouv/secretariat/issues/180)) ([bbaa056](https://github.com/SocialGouv/secretariat/commit/bbaa0563e812deeca15497911786143db379af25))
+
 ## [1.26.16](https://github.com/SocialGouv/secretariat/compare/v1.26.15...v1.26.16) (2022-04-06)
 
 

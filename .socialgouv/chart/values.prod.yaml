@@ -1,0 +1,2 @@
+app:
+  certSecretName: app-crt

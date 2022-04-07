@@ -34,7 +34,7 @@
     "react-spring": "9.4.4",
     "remixicon": "2.5.0",
     "sass": "1.49.7",
-    "sharp": "0.30.1",
+    "sharp": "0.30.3",
     "spinthatshit": "1.0.4",
     "swr": "1.2.0"
   },

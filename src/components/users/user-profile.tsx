@@ -10,21 +10,26 @@ const UserProfile = ({
   user,
   onUserDrop,
   onUserEdit,
-  onAccountsChanged,
-}: {
+  onAccountDetach,
+}: // onAccountsChanged,
+{
   user: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
-  onAccountsChanged: (user: User) => void
+  onAccountDetach: (user: User, account: ServiceAccount) => void
+  // onAccountsChanged: (user: User) => void
 }) => {
-  const handleDetachAccount = (detachedAccount: ServiceAccount) => {
-    onAccountsChanged({
-      ...user,
-      services: user.services.filter(
-        (account) => !isEqual(account, detachedAccount)
-      ),
-    })
-  }
+  // const handleDetachAccount = (detachedAccount: ServiceAccount) => {
+  //   onAccountsChanged({
+  //     ...user,
+  //     services: user.services.filter(
+  //       (account) => !isEqual(account, detachedAccount)
+  //     ),
+  //   })
+  // }
+
+  const handleDetachAccount = (account: ServiceAccount) =>
+    onAccountDetach(user, account)
 
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
@@ -67,6 +72,7 @@ const UserProfile = ({
         />
         <UserServices
           services={user.services}
+          // onDetachAccount={onUserEdit}
           onDetachAccount={handleDetachAccount}
         />
       </div>

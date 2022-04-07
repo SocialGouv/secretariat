@@ -4,12 +4,14 @@ const UserSelected = ({
   user,
   onUserDrop,
   onUserEdit,
-  onAccountsChanged,
+  // onAccountsChanged,
+  onAccountDetach,
 }: {
   user?: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
-  onAccountsChanged: (user: User) => void
+  // onAccountsChanged: (user: User) => void
+  onAccountDetach: (user: User, account: ServiceAccount) => void
 }) => (
   <div className="user-selected">
     <div className="box sticky-container">
@@ -18,7 +20,8 @@ const UserSelected = ({
           user={user}
           onUserDrop={onUserDrop}
           onUserEdit={onUserEdit}
-          onAccountsChanged={onAccountsChanged}
+          onAccountDetach={onAccountDetach}
+          // onAccountsChanged={onAccountsChanged}
         />
       ) : (
         <div className="no-user-selected">

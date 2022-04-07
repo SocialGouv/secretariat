@@ -6,7 +6,9 @@ import useToken from "@/hooks/use-token"
 import { detectWarnings } from "@/utils/detect-warnings"
 import {
   getUsers,
+  insertUser,
   updateUser,
+  updateService,
   mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
 
@@ -125,6 +127,23 @@ export const mergeUsers = async (
     ...userToKeep,
     services: userToKeep.services.concat(userToDrop.services),
   })
+}
+
+export const detachServiceAccount = async (
+  account: ServiceAccount,
+  token: string
+): Promise<User> => {
+  const { insert_users_one: user } = await fetcher(insertUser, token)
+  console.log("INSERTED USER", user)
+
+  await fetcher(updateService, token, {
+    serviceId: account.id,
+    service: { user_id: user.id },
+  })
+
+  user.services.push(account)
+
+  return user
 }
 
 const useUsers = () => {

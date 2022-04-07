@@ -28,18 +28,18 @@ export const mergeUsers = gql`
   }
 `
 
-const userServicesFragment = gql`
-  fragment userServicesFields on users {
-    id
-    ovh
-    github
-    matomo
-    sentry
-    zammad
-    nextcloud
-    mattermost
-  }
-`
+// const userServicesFragment = gql`
+//   fragment userServicesFields on users {
+//     id
+//     ovh
+//     github
+//     matomo
+//     sentry
+//     zammad
+//     nextcloud
+//     mattermost
+//   }
+// `
 
 export const getUsers = gql`
   query getUsers {
@@ -117,9 +117,10 @@ export const getServicesMatchingId = gql`
 export const insertUser = gql`
   mutation insertUser {
     insert_users_one(object: {}) {
-      id
+      ...userFields
     }
   }
+  ${userFragment}
 `
 
 export const insertService = gql`

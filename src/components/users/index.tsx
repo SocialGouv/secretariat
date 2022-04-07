@@ -28,9 +28,13 @@ const Users = () => {
     mutate("/users")
   }
 
-  const handleAccountsChanged = async (user: User) => {
-    setSelectedUser(mapUser(user))
-    mutate("/users")
+  // const handleAccountsChanged = async (user: User) => {
+  //   setSelectedUser(mapUser(user))
+  //   mutate("/users")
+  // }
+
+  const handleAccountDetach = async (user: User, account: ServiceAccount) => {
+    console.log("handleAccountDetach:", user, account)
   }
 
   const handleUserRemoval = async (user: User) => {
@@ -55,7 +59,8 @@ const Users = () => {
           user={selectedUser}
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
-          onAccountsChanged={(user) => handleAccountsChanged(user)}
+          onAccountDetach={handleAccountDetach}
+          // onAccountsChanged={(user) => handleAccountsChanged(user)}
         />
       </div>
     </DndProvider>

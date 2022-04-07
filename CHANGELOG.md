@@ -1,3 +1,10 @@
+## [1.27.8](https://github.com/SocialGouv/secretariat/compare/v1.27.7...v1.27.8) (2022-04-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sass to v1.50.0 ([#194](https://github.com/SocialGouv/secretariat/issues/194)) ([d000830](https://github.com/SocialGouv/secretariat/commit/d000830db761851d9b730b57179846696ede0fd5))
+
 ## [1.27.7](https://github.com/SocialGouv/secretariat/compare/v1.27.6...v1.27.7) (2022-04-07)
 
 

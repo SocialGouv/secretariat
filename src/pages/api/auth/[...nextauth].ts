@@ -1,9 +1,10 @@
-import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
-import { GITHUB_ID, GITHUB_SECRET, NEXTAUTH_SECRET } from "@/utils/env"
-import fetcher from "@/utils/fetcher"
-import { getJwt } from "@/utils/jwt"
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+
+import { getJwt } from "@/utils/jwt"
+import fetcher from "@/utils/fetcher"
+import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
+import { GITHUB_ID, GITHUB_SECRET, NEXTAUTH_SECRET } from "@/utils/env"
 
 const AuthorizedTeams = ["sre", "ops", "core-team"]
 

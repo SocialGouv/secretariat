@@ -5,7 +5,7 @@ import { getJwt } from "@/utils/jwt"
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
-const AuthorizedTeams = ["sre", "ops"]
+const AuthorizedTeams = ["sre", "ops", "core-team"]
 
 const getUserTeams = async (login: string) => {
   const jwt = getJwt("admin")

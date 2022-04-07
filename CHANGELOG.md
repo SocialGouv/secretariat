@@ -1,3 +1,11 @@
+## [1.27.6-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.27.5...v1.27.6-beta.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* Remove useless dependencies ([209b14a](https://github.com/SocialGouv/secretariat/commit/209b14adf8c05b2b34e4640266ad87a842385d38))
+* Use fixed react-dnd version ([3a75fc0](https://github.com/SocialGouv/secretariat/commit/3a75fc08574fe456e1a1bab324f76d7325187aea))
+
 ## [1.27.5](https://github.com/SocialGouv/secretariat/compare/v1.27.4...v1.27.5) (2022-04-06)
 
 

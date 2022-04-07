@@ -1,3 +1,10 @@
+## [1.27.11](https://github.com/SocialGouv/secretariat/compare/v1.27.10...v1.27.11) (2022-04-07)
+
+
+### Bug Fixes
+
+* Add core-team to authorised teams list ([#195](https://github.com/SocialGouv/secretariat/issues/195)) ([b125611](https://github.com/SocialGouv/secretariat/commit/b125611a02760c00d4e4b47841cb74de228c1cac))
+
 ## [1.27.10](https://github.com/SocialGouv/secretariat/compare/v1.27.9...v1.27.10) (2022-04-07)
 
 

@@ -2,27 +2,13 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/types/*": [
-        "types/*"
-      ],
-      "@/hooks/*": [
-        "hooks/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/queries/*": [
-        "queries/*"
-      ],
-      "@/services/*": [
-        "services/*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ]
+      "@/types/*": ["types/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/utils/*": ["utils/*"],
+      "@/styles/*": ["styles/*"],
+      "@/queries/*": ["queries/*"],
+      "@/services/*": ["services/*"],
+      "@/components/*": ["components/*"]
     },
     "target": "es5",
     "lib": [

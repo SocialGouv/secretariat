@@ -1,3 +1,10 @@
+## [1.27.7](https://github.com/SocialGouv/secretariat/compare/v1.27.6...v1.27.7) (2022-04-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency swr to v1.2.2 ([#190](https://github.com/SocialGouv/secretariat/issues/190)) ([1b71d85](https://github.com/SocialGouv/secretariat/commit/1b71d85428dcacaf6aabfb5b73c3c88fde92589c))
+
 ## [1.27.6](https://github.com/SocialGouv/secretariat/compare/v1.27.5...v1.27.6) (2022-04-07)
 
 

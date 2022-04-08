@@ -1,5 +1,4 @@
 import { useDrop } from "react-dnd"
-import isEqual from "lodash.isequal"
 import UserHeader from "@/components/users/user-header"
 import UserWarning from "@/components/users/user-warning"
 import UserServices from "@/components/users/user-services"

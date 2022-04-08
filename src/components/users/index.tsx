@@ -24,7 +24,6 @@ const Users = () => {
 
   useEffect(() => {
     if (pagedUsers && pagedUsers.length && !selectedUser) {
-      console.log("SET SELECTED USER ON LOAD", pagedUsers[0])
       setSelectedUser(pagedUsers[0])
     }
   }, [pagedUsers, selectedUser, setSelectedUser])
@@ -37,7 +36,6 @@ const Users = () => {
 
   const handleAccountsChange = async (user: User, account: ServiceAccount) => {
     const services = selectedUser?.services.filter((a) => a.id !== account.id)
-    console.log("handleAccountsChanged", user.services, account, services)
     if (selectedUser && services) {
       // setSelectedUser(mapUser({ ...selectedUser, services }))
       await detachUserServiceAccount(account, token)

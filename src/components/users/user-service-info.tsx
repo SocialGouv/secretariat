@@ -1,10 +1,6 @@
 import { useSpring, animated, useSpringRef } from "react-spring"
 
 import ServiceLogo from "@/components/common/service-logo"
-import { insertUser, updateService } from "@/queries/index"
-import useToken from "@/hooks/use-token"
-import fetcher from "@/utils/fetcher"
-import { useCallback, useEffect, useRef, useState } from "react"
 
 const InfoTable = ({
   data,
@@ -111,7 +107,6 @@ const UserServiceInfo = ({
   isSingleAccount: boolean
   onDetachAccount: (account: ServiceAccount) => void
 }) => {
-  // const [token] = useToken()
   const ref = useSpringRef()
 
   const [styles, spring] = useSpring(() => ({

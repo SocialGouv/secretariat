@@ -19,8 +19,6 @@ const UserSelected = ({
     if (users && users.length && selectedUser) {
       const user = users.find((u) => u.id === selectedUser.id)
       if (user) {
-        console.log("REFRESH USER", user)
-
         setSelectedUser(user)
       }
     }

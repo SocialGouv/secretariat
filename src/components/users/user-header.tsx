@@ -29,9 +29,7 @@ const UserHeader = ({ user }: { user: User }) => (
       <UserAvatar url={user?.avatarUrl} />
     </div>
     <div className="info">
-      <h3>
-        {user.name} <span className="text-xs">({user.id})</span>
-      </h3>
+      <h3>{user.name}</h3>
       <div className="email">{user.email}</div>
     </div>
   </div>

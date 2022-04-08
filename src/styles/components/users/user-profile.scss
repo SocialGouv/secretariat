@@ -8,17 +8,11 @@
   .header {
     @apply
       p-4
-      flex
       border-b
       relative
       shadow-sm
-      items-center
       border-b-grey-925-main
       dark:border-b-grey-125-main;
-
-    h2 {
-      @apply ml-4 truncate;
-    }
   }
 
   .content {
@@ -32,7 +26,6 @@
     .services {
       @apply
         flex
-        gap-4
         flex-1
         flex-col;
   
@@ -44,31 +37,31 @@
         h3 {
           @apply
             flex
-            justify-between
             pb-2
             mb-2
             border-b
             items-center
+            justify-between
             border-b-grey-925-main
             dark:border-b-grey-125-main;
   
-          .leftContainer {
+          .icon-title {
             @apply
               flex
-              flex-row
-          }
-            
-          .icon {
-            @apply flex;
-          }
-  
-          .title {
-            @apply ml-1 capitalize;
+              flex-row;
+
+            .icon {
+              @apply flex;
+            }
+    
+            .title {
+              @apply ml-1 capitalize;
+            }
           }
         }
   
         .info-table {
-          @apply text-xs;
+          @apply text-xs mb-4;
   
           .contents {
             & > div {

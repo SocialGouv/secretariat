@@ -1,24 +1,29 @@
 import { useDrag } from "react-dnd"
 import { useSpring, animated } from "react-spring"
+import { useCallback, useEffect, useRef, useState } from "react"
 
+import useSelectedUser from "@/hooks/use-selected-user"
 import UserTemplate from "@/components/users/user-template"
-import { useCallback, useEffect, useRef } from "react"
 
 const UserItem = ({
   user,
   onClick,
   dropped,
-  selected,
   onRemove,
 }: {
   user: User
   dropped: boolean
-  selected: boolean
   onClick: () => void
   onRemove: () => void
 }) => {
   const ref = useRef(null)
+  const { selectedUser } = useSelectedUser()
+  const [selected, setSelected] = useState(false)
   const [styles, spring] = useSpring(() => ({}))
+
+  useEffect(() => {
+    if (user && selectedUser) setSelected(selectedUser.id === user.id)
+  }, [user, selectedUser])
 
   const onRemoveCallback = useCallback(onRemove, [onRemove])
 

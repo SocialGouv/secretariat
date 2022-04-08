@@ -1,5 +1,4 @@
 import { useDrop } from "react-dnd"
-import isEqual from "lodash.isequal"
 import UserHeader from "@/components/users/user-header"
 import UserWarning from "@/components/users/user-warning"
 import UserServices from "@/components/users/user-services"
@@ -10,20 +9,15 @@ const UserProfile = ({
   user,
   onUserDrop,
   onUserEdit,
-  onAccountsChanged,
+  onAccountsChange,
 }: {
   user: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
-  onAccountsChanged: (user: User) => void
+  onAccountsChange: (user: User, account: ServiceAccount) => void
 }) => {
-  const handleDetachAccount = (detachedAccount: ServiceAccount) => {
-    onAccountsChanged({
-      ...user,
-      services: user.services.filter(
-        (account) => !isEqual(account, detachedAccount)
-      ),
-    })
+  const handleDetachAccount = (account: ServiceAccount) => {
+    onAccountsChange(user, account)
   }
 
   const [{ canDrop, isOver }, drop] = useDrop(

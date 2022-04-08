@@ -10,10 +10,10 @@ const UserServices = ({
   const isSingleAccount = !(services.length > 1)
   return (
     <div className="services">
-      {services.map((service, i) => (
+      {services.map((account, i) => (
         <UserServiceInfo
-          key={i}
-          account={service}
+          key={account.id}
+          account={account}
           isSingleAccount={isSingleAccount}
           onDetachAccount={onDetachAccount}
         />

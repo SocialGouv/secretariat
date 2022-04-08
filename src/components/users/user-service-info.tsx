@@ -1,7 +1,6 @@
+import { useSpring, animated, useSpringRef } from "react-spring"
+
 import ServiceLogo from "@/components/common/service-logo"
-import { insertUser, updateService } from "@/queries/index"
-import useToken from "@/hooks/use-token"
-import fetcher from "@/utils/fetcher"
 
 const InfoTable = ({
   data,
@@ -108,32 +107,20 @@ const UserServiceInfo = ({
   isSingleAccount: boolean
   onDetachAccount: (account: ServiceAccount) => void
 }) => {
-  const [token] = useToken()
+  const ref = useSpringRef()
 
-  const handleUnmergeButton = async (account: ServiceAccount) => {
-    if (isSingleAccount) {
-      return
-    }
-
-    // Create a new user for the unmerged account
-    const {
-      insert_users_one: { id: userId },
-    } = await fetcher(insertUser, token)
-
-    // Change the account's foreign key
-    await fetcher(updateService, token, {
-      serviceId: account.id,
-      service: { user_id: userId },
-    })
-
-    // Refresh selected user and users list
-    onDetachAccount(account)
-  }
+  const [styles, spring] = useSpring(() => ({
+    ref,
+    config: { duration: 200 },
+    from: { height: "100%", opacity: 1 },
+    to: [{ opacity: 0 }, { height: "0" }],
+    onRest: () => onDetachAccount(account),
+  }))
 
   return (
-    <div className="service">
+    <animated.div style={styles} className="service">
       <h3>
-        <div className="leftContainer">
+        <div className="icon-title">
           <div className="icon">
             <ServiceLogo name={account.type} />
           </div>
@@ -143,7 +130,7 @@ const UserServiceInfo = ({
           <button
             title="détacher"
             className="secondary sm icon"
-            onClick={(_) => handleUnmergeButton(account)}
+            onClick={() => spring.start()}
           >
             <i className="ri-eject-fill"></i>
           </button>
@@ -158,7 +145,7 @@ const UserServiceInfo = ({
       {account.type === "ovh" && <OVHUserInfo account={account} />}
       {account.type === "nextcloud" && <NextCloudUserInfo account={account} />}
       {account.type === "zammad" && <ZammadUserInfo account={account} />}
-    </div>
+    </animated.div>
   )
 }
 

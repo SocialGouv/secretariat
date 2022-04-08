@@ -6,13 +6,11 @@ import useFilteredUsers from "@/hooks/use-filtered-users"
 const UserList = ({
   users = [],
   droppedUser,
-  selectedUser,
   onUserSelect,
   onUserRemove,
 }: {
   users?: User[]
   droppedUser?: User
-  selectedUser?: User
   onUserSelect: (user: User) => void
   onUserRemove: (user: User) => void
 }) => {
@@ -28,12 +26,11 @@ const UserList = ({
           <ul>
             {users.map((user, i) => (
               <UserItem
-                key={user.id}
                 user={user}
+                key={user.id}
                 onClick={() => onUserSelect(user)}
                 onRemove={() => onUserRemove(user)}
                 dropped={droppedUser?.id === user.id}
-                selected={selectedUser?.id === user.id}
               />
             ))}
           </ul>

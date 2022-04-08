@@ -45,9 +45,10 @@ const Users = () => {
 
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
+      await mergeUsers(selectedUser, user, token)
       // const updatedUser = await mergeUsers(selectedUser, user, token)
       // setSelectedUser(updatedUser)
-      // mutate("/users")
+      mutate("/users")
     }
   }
 

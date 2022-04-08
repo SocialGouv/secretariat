@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders error alert 1`] = `
+<div>
+  <div
+    class="alert error"
+  >
+    <i
+      class="ri-close-circle-fill"
+    />
+    This is a error alert.
+  </div>
+</div>
+`;
+
+exports[`renders info alert 1`] = `
+<div>
+  <div
+    class="alert info"
+  >
+    <i
+      class="ri-information-fill"
+    />
+    This is a info alert.
+  </div>
+</div>
+`;
+
+exports[`renders success alert 1`] = `
+<div>
+  <div
+    class="alert success"
+  >
+    <i
+      class="ri-checkbox-circle-fill"
+    />
+    This is a success alert.
+  </div>
+</div>
+`;
+
+exports[`renders warning alert 1`] = `
+<div>
+  <div
+    class="alert warning"
+  >
+    <i
+      class="ri-alert-fill"
+    />
+    This is a warning alert.
+  </div>
+</div>
+`;

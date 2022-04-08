@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders disabled badge 1`] = `
+<div>
+  <p
+    class="badge disabled"
+    title="disabled"
+  >
+    disabled
+  </p>
+</div>
+`;
+
+exports[`renders expiry badge 1`] = `
+<div>
+  <p
+    class="badge expiry"
+    title="expiry"
+  >
+    expiry
+  </p>
+</div>
+`;
+
+exports[`renders warning badge 1`] = `
+<div>
+  <p
+    class="badge warning"
+    title="warning"
+  >
+    warning
+  </p>
+</div>
+`;

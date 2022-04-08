@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders large loader 1`] = `
+<div>
+  <div
+    class="loader large"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`renders medium loader 1`] = `
+<div>
+  <div
+    class="loader md"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`renders small loader 1`] = `
+<div>
+  <div
+    class="loader sm"
+  >
+    <div />
+  </div>
+</div>
+`;

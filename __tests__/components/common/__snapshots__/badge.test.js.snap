@@ -22,6 +22,15 @@ exports[`renders expiry badge 1`] = `
 </div>
 `;
 
+exports[`renders icon warning badge 1`] = `
+<div>
+  <p
+    class="badge warning icon"
+    title="icon badge"
+  />
+</div>
+`;
+
 exports[`renders warning badge 1`] = `
 <div>
   <p

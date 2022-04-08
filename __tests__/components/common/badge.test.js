@@ -22,3 +22,8 @@ it("renders disabled badge", () => {
   )
   expect(container).toMatchSnapshot()
 })
+
+it("renders icon warning badge", () => {
+  const { container } = render(<Badge type="warning" title="icon badge" />)
+  expect(container).toMatchSnapshot()
+})

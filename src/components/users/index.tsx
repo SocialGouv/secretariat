@@ -6,21 +6,28 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import useToken from "@/hooks/use-token"
 import UserList from "@/components/users/user-list"
 import { usePagedUsers } from "@/hooks/use-paged-users"
-import { mapUser, mergeUsers, mutateUser } from "@/hooks/use-users"
+import useSelectedUser from "@/hooks/use-selected-user"
 import UserSelected from "@/components/users/user-selected"
+import {
+  detachUserServiceAccount,
+  mapUser,
+  mergeUsers,
+  mutateUser,
+} from "@/hooks/use-users"
 
 const Users = () => {
   const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
   const [droppedUser, setDroppedUser] = useState<User>()
-  const [selectedUser, setSelectedUser] = useState<User>()
+  const { selectedUser, setSelectedUser } = useSelectedUser()
 
   useEffect(() => {
     if (pagedUsers && pagedUsers.length && !selectedUser) {
+      console.log("SET SELECTED USER ON LOAD", pagedUsers[0])
       setSelectedUser(pagedUsers[0])
     }
-  }, [pagedUsers, selectedUser])
+  }, [pagedUsers, selectedUser, setSelectedUser])
 
   const handleUserEdit = async (user: User) => {
     setSelectedUser(mapUser(user))
@@ -28,15 +35,20 @@ const Users = () => {
     mutate("/users")
   }
 
-  const handleAccountsChanged = async (user: User) => {
-    setSelectedUser(mapUser(user))
-    mutate("/users")
+  const handleAccountsChange = async (user: User, account: ServiceAccount) => {
+    const services = selectedUser?.services.filter((a) => a.id !== account.id)
+    console.log("handleAccountsChanged", user.services, account, services)
+    if (selectedUser && services) {
+      // setSelectedUser(mapUser({ ...selectedUser, services }))
+      await detachUserServiceAccount(account, token)
+      mutate("/users")
+    }
   }
 
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
       const updatedUser = await mergeUsers(selectedUser, user, token)
-      setSelectedUser(updatedUser)
+      // setSelectedUser(updatedUser)
       mutate("/users")
     }
   }
@@ -47,15 +59,15 @@ const Users = () => {
         <UserList
           users={pagedUsers}
           droppedUser={droppedUser}
-          selectedUser={selectedUser}
           onUserSelect={(user) => setSelectedUser(user)}
           onUserRemove={(user) => handleUserRemoval(user)}
         />
         <UserSelected
-          user={selectedUser}
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
-          onAccountsChanged={(user) => handleAccountsChanged(user)}
+          onAccountsChange={(user, account) =>
+            handleAccountsChange(user, account)
+          }
         />
       </div>
     </DndProvider>

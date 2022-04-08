@@ -8,6 +8,8 @@ import {
   getUsers,
   updateUser,
   mergeUsers as mergeUsersQuery,
+  insertUser,
+  updateService,
 } from "@/queries/index"
 
 interface UserMapping {
@@ -124,6 +126,20 @@ export const mergeUsers = async (
   return mapUser({
     ...userToKeep,
     services: userToKeep.services.concat(userToDrop.services),
+  })
+}
+
+export const detachUserServiceAccount = async (
+  account: ServiceAccount,
+  token: string
+) => {
+  const {
+    insert_users_one: { id: userId },
+  } = await fetcher(insertUser, token)
+
+  await fetcher(updateService, token, {
+    serviceId: account.id,
+    service: { user_id: userId },
   })
 }
 

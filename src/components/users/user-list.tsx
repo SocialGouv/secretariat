@@ -2,20 +2,20 @@ import usePaging from "@/hooks/use-paging"
 import Loader from "@/components/common/loader"
 import UserItem from "@/components/users/user-item"
 import useFilteredUsers from "@/hooks/use-filtered-users"
+import useSelectedUser from "@/hooks/use-selected-user"
 
 const UserList = ({
   users = [],
   droppedUser,
-  selectedUser,
   onUserSelect,
   onUserRemove,
 }: {
   users?: User[]
   droppedUser?: User
-  selectedUser?: User
   onUserSelect: (user: User) => void
   onUserRemove: (user: User) => void
 }) => {
+  const { selectedUser } = useSelectedUser()
   const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
 

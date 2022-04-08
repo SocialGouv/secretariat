@@ -1,5 +1,9 @@
 .user-header {
-  @apply flex items-center flex-row mb-2;
+  @apply
+    flex
+    flex-1
+    items-center
+    flex-row mb-2;
 
   .avatar {
     @apply flex;
@@ -29,7 +33,7 @@
       flex-col
       justify-center;
 
-    h3 {
+    h2, h3 {
       @apply truncate;
 
       & > span {

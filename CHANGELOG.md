@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/SocialGouv/secretariat/compare/v1.27.6...v1.28.0) (2022-04-08)
+
+
+### Features
+
+* Accounts animation ([#202](https://github.com/SocialGouv/secretariat/issues/202)) ([c8c271a](https://github.com/SocialGouv/secretariat/commit/c8c271abfb43d9ef9c7e0b3df7f7d41fa0d57325))
+
 ## [1.27.6](https://github.com/SocialGouv/secretariat/compare/v1.27.5...v1.27.6) (2022-04-07)
 
 

@@ -10,7 +10,7 @@ const UserSelected = ({
 }: {
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
-  onAccountsChange: (user: User, account: ServiceAccount) => void
+  onAccountsChange: (account: ServiceAccount) => void
 }) => {
   const users = useUsers()
   const { selectedUser, setSelectedUser } = useSelectedUser()

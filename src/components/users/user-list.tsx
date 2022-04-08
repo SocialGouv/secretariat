@@ -16,6 +16,7 @@ const UserList = ({
 }) => {
   const { users: filteredUsers } = useFilteredUsers()
   const { page = 1, setPage, pageSize } = usePaging()
+  const disabled = (filteredUsers?.length || 0) > pageSize * page ? false : true
 
   return (
     <div className="user-list">
@@ -24,7 +25,7 @@ const UserList = ({
       ) : (
         <>
           <ul>
-            {users.map((user, i) => (
+            {users.map((user) => (
               <UserItem
                 user={user}
                 key={user.id}
@@ -36,10 +37,8 @@ const UserList = ({
           </ul>
           <button
             className="primary"
+            disabled={disabled}
             onClick={() => setPage(page + 1)}
-            disabled={
-              (filteredUsers?.length || 0) > pageSize * page ? false : true
-            }
           >
             Afficher plus d&apos;utilisateurs
           </button>

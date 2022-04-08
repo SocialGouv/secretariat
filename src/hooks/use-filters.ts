@@ -13,7 +13,7 @@ const useFilters = () => {
   const { setPage } = usePaging()
 
   const services = SERVICES.reduce(
-    (services, service) => ((services[service] = true), services),
+    (accounts, account) => ((accounts[account] = true), accounts),
     {} as Record<string, boolean>
   )
 
@@ -21,9 +21,9 @@ const useFilters = () => {
 
   const { data: filters, mutate } = useSWR("filters", null, { fallbackData })
 
-  const setFilters = (filters: Filters) => {
+  const setFilters = (newFilters: Filters) => {
     setPage(1)
-    mutate(filters)
+    mutate(newFilters)
   }
 
   return { filters, setFilters }

@@ -9,7 +9,7 @@ const SearchFilters = () => {
   const handleServiceClick = (service: string) => {
     if (filters) {
       const activeServices = Object.values(filters.services || {}).filter(
-        (service) => service === true
+        (s) => s === true
       )
       if (activeServices.length > 1 || !filters.services[service]) {
         setFilters({

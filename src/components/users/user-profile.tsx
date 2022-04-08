@@ -14,18 +14,14 @@ const UserProfile = ({
   user: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
-  onAccountsChange: (user: User, account: ServiceAccount) => void
+  onAccountsChange: (account: ServiceAccount) => void
 }) => {
-  const handleDetachAccount = (account: ServiceAccount) => {
-    onAccountsChange(user, account)
-  }
-
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
       accept: "user",
-      drop: (user: User) => {
-        onUserDrop(user)
-        return user
+      drop: (u: User) => {
+        onUserDrop(u)
+        return u
       },
       canDrop: (item) => item.id !== user.id,
       collect: (monitor) => ({
@@ -36,10 +32,14 @@ const UserProfile = ({
     [user]
   )
 
-  const dropClass = canDrop ? (isOver ? "drop-over" : "drop-allowed") : ""
+  const dropClass = isOver ? "drop-over" : "drop-allowed"
 
   return (
-    <div ref={drop} role={"Profile"} className={`user-profile ${dropClass}`}>
+    <div
+      ref={drop}
+      role={"Profile"}
+      className={`user-profile ${canDrop ? dropClass : ""}`}
+    >
       <div className="header">
         <UserHeader user={user} />
         <UserLastUpdate date={user.updated_at} />
@@ -61,7 +61,7 @@ const UserProfile = ({
         />
         <UserServices
           services={user.services}
-          onDetachAccount={handleDetachAccount}
+          onDetachAccount={onAccountsChange}
         />
       </div>
     </div>

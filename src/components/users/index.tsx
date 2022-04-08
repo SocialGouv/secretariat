@@ -34,7 +34,7 @@ const Users = () => {
     mutate("/users")
   }
 
-  const handleAccountsChange = async (user: User, account: ServiceAccount) => {
+  const handleAccountsChange = async (account: ServiceAccount) => {
     const services = selectedUser?.services.filter((a) => a.id !== account.id)
     if (selectedUser && services) {
       // setSelectedUser(mapUser({ ...selectedUser, services }))
@@ -64,9 +64,7 @@ const Users = () => {
         <UserSelected
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
-          onAccountsChange={(user, account) =>
-            handleAccountsChange(user, account)
-          }
+          onAccountsChange={(account) => handleAccountsChange(account)}
         />
       </div>
     </DndProvider>

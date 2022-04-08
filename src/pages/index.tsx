@@ -10,11 +10,9 @@ const Page = () => {
 
   return (
     <main>
-      {session === undefined ? (
-        <Loader size="lg" />
-      ) : session === null ? (
-        <Login />
-      ) : (
+      {session === undefined && <Loader size="lg" />}
+      {session === null && <Login />}
+      {session && (
         <>
           <Search />
           <Users />

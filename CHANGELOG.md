@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/SocialGouv/secretariat/compare/v1.28.0...v1.28.1) (2022-04-08)
+
+
+### Bug Fixes
+
+* enable user removal ([7f5a16e](https://github.com/SocialGouv/secretariat/commit/7f5a16ecbae01c5befeab3e24a4dbca0123d5fd6))
+
 # [1.28.0](https://github.com/SocialGouv/secretariat/compare/v1.27.6...v1.28.0) (2022-04-08)
 
 

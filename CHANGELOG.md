@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/SocialGouv/secretariat/compare/v1.28.2...v1.29.0) (2022-04-11)
+
+
+### Features
+
+* dark mode manual toggle ([#209](https://github.com/SocialGouv/secretariat/issues/209)) ([2cc278b](https://github.com/SocialGouv/secretariat/commit/2cc278be36606ed8a09907daaa5d95467611fb9d))
+
 ## [1.28.2](https://github.com/SocialGouv/secretariat/compare/v1.28.1...v1.28.2) (2022-04-11)
 
 

@@ -55,7 +55,7 @@ export const fetchNextcloudUsers = async (
 
   if (loginsPage.length === 0) {
     // Nextcloud only sends us a list of logins, we need to query each user's details
-    return pMap(
+    const users = await pMap(
       logins,
       async (login: string, index: number) => {
         const {
@@ -67,6 +67,7 @@ export const fetchNextcloudUsers = async (
       },
       { concurrency: 1 }
     )
+    return users.filter((user) => user.enabled)
   } else {
     await setTimeout(msDelay) // so that we don't spam the remote API
     return fetchNextcloudUsers(msDelay, [...logins, ...loginsPage], page + 1)

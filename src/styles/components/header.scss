@@ -32,6 +32,10 @@ header {
     nav {
       @apply flex flex-1 items-center justify-end;
 
+      .theme-toggle-button {
+        @apply text-2xl font-normal
+      }
+
       & > * {
         @apply border-r border-gray-400 px-5;
 

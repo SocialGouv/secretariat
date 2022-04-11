@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/SocialGouv/secretariat/compare/v1.28.1...v1.28.2) (2022-04-11)
+
+
+### Bug Fixes
+
+* fetch matomo sites ([#207](https://github.com/SocialGouv/secretariat/issues/207)) ([96d42d3](https://github.com/SocialGouv/secretariat/commit/96d42d398f8dc7cf07dda68d4309705e7d190233))
+
 ## [1.28.1](https://github.com/SocialGouv/secretariat/compare/v1.28.0...v1.28.1) (2022-04-08)
 
 

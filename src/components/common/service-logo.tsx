@@ -1,3 +1,4 @@
+import useIsDarkTheme from "@/hooks/use-is-dark-theme"
 import Image from "next/image"
 
 const ratios = {
@@ -22,14 +23,18 @@ const ServiceLogo = ({
 }: {
   name: ServiceName
   size?: "sm" | "md" | "lg"
-}) => (
-  <Image
-    title={name}
-    height={sizes[size]}
-    alt={`${name} logo`}
-    width={sizes[size] * ratios[name]}
-    src={`/images/${name}.svg#icon-logo`}
-  />
-)
+}) => {
+  const { isDarkTheme } = useIsDarkTheme()
+
+  return (
+    <Image
+      title={name}
+      height={sizes[size]}
+      alt={`${name} logo`}
+      width={sizes[size] * ratios[name]}
+      src={`/images/${isDarkTheme ? "light" : "dark"}/${name}.svg#icon-logo`}
+    />
+  )
+}
 
 export default ServiceLogo

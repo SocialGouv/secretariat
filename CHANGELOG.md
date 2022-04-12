@@ -1,3 +1,10 @@
+## [1.29.1](https://github.com/SocialGouv/secretariat/compare/v1.29.0...v1.29.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* display teams for zammad and matomo ([#211](https://github.com/SocialGouv/secretariat/issues/211)) ([59cc040](https://github.com/SocialGouv/secretariat/commit/59cc04025017c8b8045bb9e011276c124b3e377b))
+
 # [1.29.0](https://github.com/SocialGouv/secretariat/compare/v1.28.2...v1.29.0) (2022-04-11)
 
 

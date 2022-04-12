@@ -1,3 +1,10 @@
+## [1.29.2](https://github.com/SocialGouv/secretariat/compare/v1.29.1...v1.29.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* page title ([#210](https://github.com/SocialGouv/secretariat/issues/210)) ([11b3d90](https://github.com/SocialGouv/secretariat/commit/11b3d90575885d3361dda9a9f489b8d0bbeee50e))
+
 ## [1.29.1](https://github.com/SocialGouv/secretariat/compare/v1.29.0...v1.29.1) (2022-04-12)
 
 

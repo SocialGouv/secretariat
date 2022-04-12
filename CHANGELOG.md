@@ -1,3 +1,10 @@
+## [1.29.3](https://github.com/SocialGouv/secretariat/compare/v1.29.2...v1.29.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* some dark theme fixes ([#212](https://github.com/SocialGouv/secretariat/issues/212)) ([5f4564d](https://github.com/SocialGouv/secretariat/commit/5f4564dbe8105ec5ad75899f78d47b1fdaadf5b7))
+
 ## [1.29.2](https://github.com/SocialGouv/secretariat/compare/v1.29.1...v1.29.2) (2022-04-12)
 
 

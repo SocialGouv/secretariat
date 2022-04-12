@@ -18,6 +18,14 @@ interface GithubTeam {
   slug: string
 }
 
+interface MatomoSite {
+  name: string
+}
+
+interface ZammadGroup {
+  name: string
+}
+
 interface BasicServiceAccount {
   id: string
   type: ServiceName
@@ -41,6 +49,7 @@ interface MatomoServiceAccount extends BasicServiceAccount {
     email: string
     uses_2fa: boolean
     date_registered: date
+    sites: MatomoSite[]
   }
 }
 
@@ -91,6 +100,7 @@ interface ZammadServiceAccount extends BasicServiceAccount {
     created_at: Date
     lastname: string
     firstname: string
+    groups: ZammadGroup[]
   }
 }
 

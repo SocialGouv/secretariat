@@ -36,6 +36,25 @@ const GithubUserInfo = ({
   </>
 )
 
+const MatomoUserInfo = ({
+  account: {
+    data: { email, login, uses_2fa, date_registered, sites },
+  },
+}: {
+  account: MatomoServiceAccount
+}) => (
+  <>
+    <InfoTable data={{ email, login, uses_2fa, date_registered }}></InfoTable>
+    <div className="teams">
+      {sites?.map((site, index) => (
+        <div key={index} className="tag">
+          {site.name}
+        </div>
+      ))}
+    </div>
+  </>
+)
+
 const SentryUserInfo = ({
   account: {
     data: { user, projects, flags, ...info },
@@ -92,11 +111,22 @@ const NextCloudUserInfo = ({
 
 const ZammadUserInfo = ({
   account: {
-    data: { id, email, login, created_at, lastname, firstname },
+    data: { id, email, login, created_at, lastname, firstname, groups },
   },
 }: {
   account: ZammadServiceAccount
-}) => <InfoTable data={{ id, email, login, created_at, lastname, firstname }} />
+}) => (
+  <>
+    <InfoTable data={{ id, email, login, created_at, lastname, firstname }} />
+    <div className="teams">
+      {groups?.map((group, index) => (
+        <div key={index} className="tag">
+          {group.name}
+        </div>
+      ))}
+    </div>
+  </>
+)
 
 const UserServiceInfo = ({
   account,
@@ -137,7 +167,7 @@ const UserServiceInfo = ({
         )}
       </h3>
       {account.type === "github" && <GithubUserInfo account={account} />}
-      {account.type === "matomo" && <InfoTable data={account.data} />}
+      {account.type === "matomo" && <MatomoUserInfo account={account} />}
       {account.type === "sentry" && <SentryUserInfo account={account} />}
       {account.type === "mattermost" && (
         <MattermostUserInfo account={account} />

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import useIsDarkTheme from "@/hooks/use-is-dark-theme"
 
 const ThemeToggleButton = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState<boolean>()
+  const { isDarkTheme, setIsDarkTheme } = useIsDarkTheme()
 
   useEffect(() => {
     if (isDarkTheme !== undefined) {

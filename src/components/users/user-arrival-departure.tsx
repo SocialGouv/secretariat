@@ -39,6 +39,7 @@ const UserArrivalDeparture = ({
             onChange={(e) =>
               handleChange({ arrival: e.target.value, departure: d })
             }
+            required
           />
         </div>
       </div>
@@ -53,6 +54,7 @@ const UserArrivalDeparture = ({
             onChange={(e) =>
               handleChange({ arrival: a, departure: e.target.value })
             }
+            required
           />
         </div>
       </div>

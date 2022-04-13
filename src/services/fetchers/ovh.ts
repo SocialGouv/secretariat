@@ -7,7 +7,7 @@ import {
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
 
-const EXCLUDE_CONFIGURE_ME_ADDRESSES = false
+const EXCLUDE_CONFIGURE_ME_ADDRESSES = true
 
 const OvhFetcher = async (
   ovh: any,

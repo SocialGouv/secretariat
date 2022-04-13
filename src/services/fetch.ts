@@ -111,12 +111,19 @@ const updateUsers = async (
 }
 
 const clearDeletedServices = async (
-  existingServicesIds: string[],
+  existingServicesIds: Record<string, string[]>,
   jwt: string
 ) => {
-  const {
-    delete_services: { returning: affectedUsers },
-  } = await fetcher(deleteServices, jwt, { existingServicesIds })
+  const affectedUsers = []
+  for (const serviceName in existingServicesIds) {
+    const {
+      delete_services: { returning: affectedUsersForService },
+    } = await fetcher(deleteServices, jwt, {
+      existingServicesIds: existingServicesIds[serviceName],
+      serviceName,
+    })
+    affectedUsers.push(...affectedUsersForService)
+  }
   return affectedUsers
 }
 
@@ -139,13 +146,21 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-export const fetchAndUpdateServices = async (jwt: string) => {
-  const existingServicesIds: string[] = []
+export const fetchAndUpdateServices = async (
+  jwt: string,
+  enabledServices: ServiceName[] = SERVICES
+) => {
+  const existingServicesIds: Record<string, string[]> = {}
+  for (const serviceName of enabledServices) {
+    existingServicesIds[serviceName] = []
+  }
 
   await Promise.all(
-    SERVICES.map(async (serviceName) => {
+    enabledServices.map(async (serviceName) => {
       const users = await servicesFetchers[serviceName](DEFAULT_DELAY)
-      existingServicesIds.push(...(await updateUsers(users, serviceName, jwt)))
+      existingServicesIds[serviceName].push(
+        ...(await updateUsers(users, serviceName, jwt))
+      )
       console.log(`fetched and updated ${serviceName} data`)
     })
   )

@@ -49,7 +49,7 @@ const SearchFilters = () => {
               className={`service ${
                 filters?.services && filters.services[service]
                   ? ""
-                  : " opacity-25"
+                  : " opacity-25 dark:opacity-35"
               }`}
             >
               <ServiceLogo name={service as ServiceName} size="sm" />

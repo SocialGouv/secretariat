@@ -26,7 +26,7 @@ const UserTemplate = ({ user }: { user: User }) => {
               className={
                 user.services.find((s) => s.type === service)
                   ? ""
-                  : "opacity-25"
+                  : "opacity-25 dark:opacity-35"
               }
             >
               <ServiceLogo name={service} size="sm" />

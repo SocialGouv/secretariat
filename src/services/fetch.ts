@@ -28,7 +28,14 @@ const servicesFetchers: Record<ServiceName, any> = {
   zammad: fetchZammadUsers,
 }
 
-const stats = { insertions: 0, updates: 0, error: 0 }
+const stats = {
+  insertions: 0,
+  updates: 0,
+  errors: 0,
+  userDeletions: 0,
+  accountDeletions: 0,
+}
+
 const servicesIdFields: Record<ServiceName, string> = {
   github: "id",
   matomo: "email", // This API does not return any unique ID in entries
@@ -84,7 +91,7 @@ const updateOrInsertService = async (
       "Got multiple matches with a service's primary key field and service name",
       servicesMatchingId
     )
-    stats.error += 1
+    stats.errors += 1
     return ""
   }
 }
@@ -110,11 +117,6 @@ const clearDeletedServices = async (
   const {
     delete_services: { returning: affectedUsers },
   } = await fetcher(deleteServices, jwt, { existingServicesIds })
-  console.log(
-    `deleted ${affectedUsers.length} service ${
-      affectedUsers.length > 1 ? "entries" : "entry"
-    }`
-  )
   return affectedUsers
 }
 
@@ -127,11 +129,14 @@ const deleteOrphanUsers = async (
   }[],
   jwt: string
 ) => {
-  fetcher(deleteUsers, jwt, {
+  const {
+    delete_users: { affected_rows: deletedUsers },
+  } = await fetcher(deleteUsers, jwt, {
     userIds: affectedUsers
       .filter((user) => user.users.services_aggregate.aggregate.count === 0)
       .map((user) => user.users.id),
   })
+  return deletedUsers
 }
 
 export const fetchAndUpdateServices = async (jwt: string) => {
@@ -145,15 +150,16 @@ export const fetchAndUpdateServices = async (jwt: string) => {
     })
   )
 
-  console.log(
-    `got ${existingServicesIds.length} existing services ids, clearing potentially deleted services from database`
-  )
   const affectedUsers = await clearDeletedServices(existingServicesIds, jwt)
-  await deleteOrphanUsers(affectedUsers, jwt)
+  stats.accountDeletions = affectedUsers.length
+  const deletedUsers = await deleteOrphanUsers(affectedUsers, jwt)
+  stats.userDeletions = deletedUsers
 
   console.log("updated users table with all services data")
   console.log(stats)
-  stats.error = 0
+  stats.errors = 0
   stats.insertions = 0
   stats.updates = 0
+  stats.userDeletions = 0
+  stats.accountDeletions = 0
 }

@@ -14,11 +14,11 @@
     height: calc(100vh - 17rem);
 
     & > div.drop-allowed {
-      @apply bg-yellow-50;
+      @apply bg-yellow-50 dark:bg-yellow-tournesol-125-main;
     }
 
     & > div.drop-over {
-      @apply bg-yellow-100;
+      @apply bg-yellow-100 dark:bg-yellow-tournesol-125-hover;
     }
   }
 

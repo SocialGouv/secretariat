@@ -26,6 +26,7 @@
     .services {
       @apply
         flex
+        gap-4
         flex-1
         flex-col;
   
@@ -61,7 +62,7 @@
         }
   
         .info-table {
-          @apply text-xs mb-4;
+          @apply text-xs;
   
           .contents {
             & > div {

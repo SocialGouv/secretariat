@@ -1,3 +1,10 @@
+## [1.29.6](https://github.com/SocialGouv/secretariat/compare/v1.29.5...v1.29.6) (2022-04-13)
+
+
+### Bug Fixes
+
+* option to exclude ovh unconfigured addresses and better logging ([#218](https://github.com/SocialGouv/secretariat/issues/218)) ([d7c2164](https://github.com/SocialGouv/secretariat/commit/d7c216426f2d84db825fc478148b897c4eaeff93))
+
 ## [1.29.5](https://github.com/SocialGouv/secretariat/compare/v1.29.4...v1.29.5) (2022-04-13)
 
 

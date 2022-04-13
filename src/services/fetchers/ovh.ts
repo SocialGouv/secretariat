@@ -7,7 +7,9 @@ import {
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
 
-const fetcherOvh = async (
+const EXCLUDE_CONFIGURE_ME_ADDRESSES = false
+
+const OvhFetcher = async (
   ovh: any,
   verb: string,
   url: string,
@@ -22,7 +24,7 @@ const fetcherOvh = async (
 }
 
 const fetchOvhUser = async (ovh: any, email: string) => {
-  return fetcherOvh(
+  return OvhFetcher(
     ovh,
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
@@ -40,15 +42,19 @@ export const fetchOvhUsers = async (
     consumerKey: OVH_CONSUMER_KEY,
   })
 
-  const emails = await fetcherOvh(
+  const unfilteredEmails: string[] = await OvhFetcher(
     ovh,
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account`,
     []
   )
 
+  const emails = EXCLUDE_CONFIGURE_ME_ADDRESSES
+    ? unfilteredEmails.filter((email) => !email.endsWith("@configureme.me"))
+    : unfilteredEmails
+
   // OVH only sends us a list of emails, we need to query each user's details
-  const users = pMap(
+  const users = await pMap(
     emails,
     async (email: string, index: number) => {
       const user = await fetchOvhUser(ovh, email)

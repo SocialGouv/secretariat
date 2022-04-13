@@ -21,7 +21,14 @@ jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 jest.mock("@/utils/fetcher", () =>
-  jest.fn(() => Promise.resolve({ delete_services: { returning: [] } }))
+  jest
+    .fn()
+    .mockImplementationOnce(() =>
+      Promise.resolve({ delete_services: { returning: [] } })
+    )
+    .mockImplementation(() =>
+      Promise.resolve({ delete_users: { affected_rows: [] } })
+    )
 )
 
 jest.mock("@/services/fetchers/github", () => ({

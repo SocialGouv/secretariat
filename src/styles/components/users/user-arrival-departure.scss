@@ -29,7 +29,7 @@
       xl:justify-center;
 
     &.expired {
-      @apply text-error-425-main;
+      @apply text-error-425-main dark:text-error-625-main;
     }
 
     label {

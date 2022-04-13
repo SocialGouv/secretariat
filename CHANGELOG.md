@@ -1,3 +1,10 @@
+## [1.29.5](https://github.com/SocialGouv/secretariat/compare/v1.29.4...v1.29.5) (2022-04-13)
+
+
+### Bug Fixes
+
+* removed clear button with required attribute ([#217](https://github.com/SocialGouv/secretariat/issues/217)) ([188912d](https://github.com/SocialGouv/secretariat/commit/188912d8ca8b0f26d49b8ecca37cb612082c54ad))
+
 ## [1.29.4](https://github.com/SocialGouv/secretariat/compare/v1.29.3...v1.29.4) (2022-04-13)
 
 

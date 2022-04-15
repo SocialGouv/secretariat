@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import Logo from "@/components/common/site-logo"
+import ThemeToggleButton from "@/components/theme-toggle-button"
 
 const Footer = () => (
   <footer>
@@ -49,7 +50,7 @@ const Footer = () => (
         <Link href="/legal">
           <a>Mentions légales</a>
         </Link>
-        <a href="#">Paramètres d&apos;affichage</a>
+        <ThemeToggleButton />
       </div>
     </div>
   </footer>

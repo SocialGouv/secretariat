@@ -1,3 +1,10 @@
+## [1.29.7](https://github.com/SocialGouv/secretariat/compare/v1.29.6...v1.29.7) (2022-04-19)
+
+
+### Bug Fixes
+
+* move theme toggle to footer ([#222](https://github.com/SocialGouv/secretariat/issues/222)) ([d0f7101](https://github.com/SocialGouv/secretariat/commit/d0f7101e9b548804e894da5f1e965a6ba2fa3a99))
+
 ## [1.29.6](https://github.com/SocialGouv/secretariat/compare/v1.29.5...v1.29.6) (2022-04-13)
 
 

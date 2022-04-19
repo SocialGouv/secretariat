@@ -77,11 +77,11 @@ exports[`renders footer 1`] = `
         >
           Mentions légales
         </a>
-        <a
-          href="#"
-        >
-          Paramètres d'affichage
-        </a>
+        <button>
+          <i
+            class="theme-toggle-button ri-sun-line"
+          />
+        </button>
       </div>
     </div>
   </footer>

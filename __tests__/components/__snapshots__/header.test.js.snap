@@ -29,13 +29,7 @@ exports[`renders header 1`] = `
           </p>
         </div>
       </a>
-      <nav>
-        <button>
-          <i
-            class="theme-toggle-button ri-sun-line"
-          />
-        </button>
-      </nav>
+      <nav />
     </div>
   </header>
 </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import useIsDarkTheme from "@/hooks/use-is-dark-theme"
 
 const ThemeToggleButton = () => {
@@ -15,13 +15,19 @@ const ThemeToggleButton = () => {
     }
   }, [isDarkTheme])
 
+  const setIsDarkThemeCallback = useCallback(
+    () =>
+      setIsDarkTheme(
+        localStorage.isDarkTheme === "true" ||
+          (!("isDarkTheme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ),
+    [setIsDarkTheme]
+  )
+
   useEffect(() => {
-    setIsDarkTheme(
-      localStorage.isDarkTheme === "true" ||
-        (!("isDarkTheme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-    )
-  }, [])
+    setIsDarkThemeCallback()
+  }, [setIsDarkThemeCallback])
 
   return (
     <button onClick={() => setIsDarkTheme(!isDarkTheme)}>

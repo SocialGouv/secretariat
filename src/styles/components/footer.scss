@@ -35,7 +35,7 @@ footer { /* stylelint-disable-line */
 
     .links {
       @apply
-        py-5
+        py-4
         mx-auto
         text-xs
         border-t
@@ -54,6 +54,10 @@ footer { /* stylelint-disable-line */
           dark:text-gray-300
           border-grey-850-main
           dark:border-gray-500;
+      }
+
+      button {
+        @apply p-0 ml-4;
       }
     }
   }

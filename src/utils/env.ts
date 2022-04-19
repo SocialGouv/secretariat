@@ -12,6 +12,7 @@ export const ZAMMAD_API_TOKEN = process.env.ZAMMAD_API_TOKEN as string
 export const NEXTCLOUD_API_LOGIN = process.env.NEXTCLOUD_API_LOGIN as string
 export const NEXTCLOUD_API_SECRET = process.env.NEXTCLOUD_API_SECRET as string
 export const MATTERMOST_API_TOKEN = process.env.MATTERMOST_API_TOKEN as string
+export const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN as string
 
 // Github sends this to authenticate its webhook
 export const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET as string

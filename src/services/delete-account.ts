@@ -4,6 +4,10 @@ import {
   MATTERMOST_API_TOKEN,
   NEXTCLOUD_API_LOGIN,
   NEXTCLOUD_API_SECRET,
+  OVH_APP_KEY,
+  OVH_APP_SECRET,
+  OVH_CONSUMER_KEY,
+  OVH_SERVICE_NAME,
   SENTRY_API_TOKEN,
   ZAMMAD_API_TOKEN,
 } from "@/utils/env"
@@ -103,4 +107,24 @@ export const deleteSentryAccount = async (userID: string) => {
     }
   )
   return response ? response.status : 500
+}
+
+export const deleteOvhAccount = async (email: string) => {
+  const ovh = require("ovh")({
+    endpoint: "ovh-eu",
+    appKey: OVH_APP_KEY,
+    appSecret: OVH_APP_SECRET,
+    consumerKey: OVH_CONSUMER_KEY,
+  })
+
+  try {
+    ovh.requestPromised(
+      "DELETE",
+      `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+    )
+    return 200
+  } catch (error) {
+    console.error("Error while deleting OVH account:", error)
+    return 500
+  }
 }

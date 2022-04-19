@@ -1,12 +1,12 @@
+import { DndProvider } from "react-dnd"
 import { useSession } from "next-auth/react"
+import { HTML5Backend } from "react-dnd-html5-backend"
 import { render, waitFor } from "@testing-library/react"
 
 import UserProfile from "../../src/components/users/user-profile"
 
 // https://github.com/nextauthjs/next-auth/issues/775
-jest.mock("next-auth/react", () => ({
-  useSession: jest.fn(),
-}))
+jest.mock("next-auth/react", () => ({ useSession: jest.fn() }))
 
 const user = {
   id: "1",
@@ -26,9 +26,6 @@ const user = {
     },
   ],
 }
-
-import { DndProvider } from "react-dnd"
-import { HTML5Backend } from "react-dnd-html5-backend"
 
 it("renders user profile", async () => {
   useSession.mockReturnValueOnce([false, false])

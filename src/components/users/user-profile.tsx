@@ -16,6 +16,8 @@ const UserProfile = ({
   onUserEdit: (user: User) => void
   onAccountsChange: (account: ServiceAccount) => void
 }) => {
+  console.log("USER PROFILE", user)
+
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
       accept: "user",

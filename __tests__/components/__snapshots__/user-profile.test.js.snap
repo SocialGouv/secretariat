@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders user profile 1`] = `
+<div>
+  <div
+    class="user-profile "
+    role="Profile"
+  >
+    <div
+      class="header"
+    >
+      <div
+        class="user-header"
+      >
+        <div
+          class="avatar"
+        >
+          <svg
+            viewBox="0 0 28 28"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16,8a5,5,0,1,0,5,5A5,5,0,0,0,16,8Z"
+              transform="translate(-2 -2)"
+            />
+            <path
+              d="M16,2A14,14,0,1,0,30,16,14.0158,14.0158,0,0,0,16,2Zm7.9925,22.9258A5.0016,5.0016,0,0,0,19,20H13a5.0016,5.0016,0,0,0-4.9925,4.9258,12,12,0,1,1,15.985,0Z"
+              transform="translate(-2 -2)"
+            />
+          </svg>
+        </div>
+        <div
+          class="info"
+        >
+          <h3>
+            user1
+          </h3>
+          <div
+            class="email"
+          >
+            user1@paradise.sky
+          </div>
+        </div>
+      </div>
+      <div
+        class="user-last-update"
+      >
+        <i>
+          aucune mise à jour
+        </i>
+      </div>
+    </div>
+    <div
+      class="content"
+    >
+      <div
+        class="user-arrival-departure"
+      >
+        <div
+          class="date"
+        >
+          <label
+            for="arrival"
+          >
+            Date d'arrivée:
+          </label>
+          <div
+            class="date-field"
+          >
+            <input
+              id="arrival"
+              required=""
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="date"
+        >
+          <label
+            for="departure"
+          >
+            Date de départ:
+          </label>
+          <div
+            class="date-field"
+          >
+            <input
+              class=""
+              id="departure"
+              required=""
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="services"
+      >
+        <div
+          class="service"
+          style="height: 100%; opacity: 1;"
+        >
+          <h3>
+            <div
+              class="icon-title"
+            >
+              <div
+                class="icon"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2745.408%27%20height=%2722%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="nextcloud logo"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    title="nextcloud"
+                  />
+                  <noscript />
+                </span>
+              </div>
+              <div
+                class="title"
+              >
+                nextcloud
+              </div>
+            </div>
+          </h3>
+          <div
+            class="info-table grid grid-flow-row grid-cols-3"
+          >
+            <div
+              class="contents"
+            >
+              <div>
+                id
+              </div>
+              <div
+                class="col-span-2"
+              />
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                email
+              </div>
+              <div
+                class="col-span-2"
+              >
+                user1@paradise.sky
+              </div>
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                lastLogin
+              </div>
+              <div
+                class="col-span-2"
+              />
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                displayname
+              </div>
+              <div
+                class="col-span-2"
+              >
+                User 1
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders users 1`] = `
+<div>
+  <div
+    class="user-profile "
+    role="Profile"
+  >
+    <div
+      class="header"
+    >
+      <div
+        class="user-header"
+      >
+        <div
+          class="avatar"
+        >
+          <svg
+            viewBox="0 0 28 28"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16,8a5,5,0,1,0,5,5A5,5,0,0,0,16,8Z"
+              transform="translate(-2 -2)"
+            />
+            <path
+              d="M16,2A14,14,0,1,0,30,16,14.0158,14.0158,0,0,0,16,2Zm7.9925,22.9258A5.0016,5.0016,0,0,0,19,20H13a5.0016,5.0016,0,0,0-4.9925,4.9258,12,12,0,1,1,15.985,0Z"
+              transform="translate(-2 -2)"
+            />
+          </svg>
+        </div>
+        <div
+          class="info"
+        >
+          <h3>
+            user1
+          </h3>
+          <div
+            class="email"
+          >
+            user1@paradise.sky
+          </div>
+        </div>
+      </div>
+      <div
+        class="user-last-update"
+      >
+        <i>
+          aucune mise à jour
+        </i>
+      </div>
+    </div>
+    <div
+      class="content"
+    >
+      <div
+        class="user-arrival-departure"
+      >
+        <div
+          class="date"
+        >
+          <label
+            for="arrival"
+          >
+            Date d'arrivée:
+          </label>
+          <div
+            class="date-field"
+          >
+            <input
+              id="arrival"
+              required=""
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="date"
+        >
+          <label
+            for="departure"
+          >
+            Date de départ:
+          </label>
+          <div
+            class="date-field"
+          >
+            <input
+              class=""
+              id="departure"
+              required=""
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="services"
+      >
+        <div
+          class="service"
+          style="height: 100%; opacity: 1;"
+        >
+          <h3>
+            <div
+              class="icon-title"
+            >
+              <div
+                class="icon"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2745.408%27%20height=%2722%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="nextcloud logo"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    title="nextcloud"
+                  />
+                  <noscript />
+                </span>
+              </div>
+              <div
+                class="title"
+              >
+                nextcloud
+              </div>
+            </div>
+          </h3>
+          <div
+            class="info-table grid grid-flow-row grid-cols-3"
+          >
+            <div
+              class="contents"
+            >
+              <div>
+                id
+              </div>
+              <div
+                class="col-span-2"
+              />
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                email
+              </div>
+              <div
+                class="col-span-2"
+              >
+                user1@paradise.sky
+              </div>
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                lastLogin
+              </div>
+              <div
+                class="col-span-2"
+              />
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                displayname
+              </div>
+              <div
+                class="col-span-2"
+              >
+                User 1
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

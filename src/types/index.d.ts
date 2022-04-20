@@ -18,6 +18,10 @@ interface GithubTeam {
   slug: string
 }
 
+interface MattermostTeam {
+  name: string
+}
+
 interface MatomoSite {
   name: string
 }
@@ -113,6 +117,7 @@ interface MattermostServiceAccount extends BasicServiceAccount {
     username: string
     last_name: string
     first_name: string
+    teams: MattermostTeam[]
   }
 }
 

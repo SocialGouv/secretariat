@@ -65,12 +65,23 @@ const SentryUserInfo = ({
 
 const MattermostUserInfo = ({
   account: {
-    data: { id, first_name, last_name, email, create_at, username },
+    data: { id, first_name, last_name, email, create_at, username, teams },
   },
 }: {
   account: MattermostServiceAccount
 }) => (
-  <InfoTable data={{ username, first_name, last_name, email, id, create_at }} />
+  <>
+    <InfoTable
+      data={{ username, first_name, last_name, email, id, create_at }}
+    />
+    <div className="teams">
+      {teams?.map((team, index) => (
+        <div key={index} className="tag">
+          {team.name}
+        </div>
+      ))}
+    </div>
+  </>
 )
 
 const OVHUserInfo = ({

@@ -11,7 +11,7 @@ it("should return a list of fetched users", async () => {
     .mockResolvedValue(Promise.resolve({ json: () => Promise.resolve([]) }))
 
   const result = await fetchMattermostUsers()
-  expect(result).toStrictEqual([{}, {}, {}])
+  expect(result).toStrictEqual([{ teams: [] }, { teams: [] }, { teams: [] }])
 })
 
 it("should return an empty list if no response", async () => {

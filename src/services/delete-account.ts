@@ -110,6 +110,7 @@ export const deleteSentryAccount = async (userID: string) => {
 }
 
 export const deleteOvhAccount = async (email: string) => {
+  // Permanently deletes a user with its email
   const ovh = require("ovh")({
     endpoint: "ovh-eu",
     appKey: OVH_APP_KEY,

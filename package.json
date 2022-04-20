@@ -54,6 +54,7 @@
     "eslint-config-next": "12.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "jest": "27.5.1",
+    "node-mocks-http": "^1.11.0",
     "postcss": "8.4.6",
     "prettier": "2.5.1",
     "stylelint": "14.5.3",

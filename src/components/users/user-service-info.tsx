@@ -61,7 +61,18 @@ const SentryUserInfo = ({
   },
 }: {
   account: SentryServiceAccount
-}) => <InfoTable data={{ ...info, uses_2fa: user.has2fa }} />
+}) => (
+  <>
+    <InfoTable data={{ ...info, uses_2fa: user.has2fa }} />
+    <div className="teams">
+      {projects?.map((project, index) => (
+        <div key={index} className="tag">
+          {project}
+        </div>
+      ))}
+    </div>
+  </>
+)
 
 const MattermostUserInfo = ({
   account: {

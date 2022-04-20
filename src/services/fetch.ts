@@ -150,20 +150,28 @@ export const fetchAndUpdateServices = async (
   jwt: string,
   enabledServices: ServiceName[] = SERVICES
 ) => {
+  // Remember the users list for all services, to clean the deleted users afterwards
   const existingServicesIds: Record<string, string[]> = {}
   for (const serviceName of enabledServices) {
     existingServicesIds[serviceName] = []
   }
 
+  // Fetch data for all services asynchronously
+  const dataByService: Record<string, Record<string, unknown>[]> = {}
   await Promise.all(
     enabledServices.map(async (serviceName) => {
-      const users = await servicesFetchers[serviceName](DEFAULT_DELAY)
-      existingServicesIds[serviceName].push(
-        ...(await updateUsers(users, serviceName, jwt))
+      dataByService[serviceName] = await servicesFetchers[serviceName](
+        DEFAULT_DELAY
       )
-      console.log(`fetched and updated ${serviceName} data`)
     })
   )
+
+  // Update the DB synchronously
+  for (const serviceName of enabledServices) {
+    existingServicesIds[serviceName].push(
+      ...(await updateUsers(dataByService[serviceName], serviceName, jwt))
+    )
+  }
 
   const affectedUsers = await clearDeletedServices(existingServicesIds, jwt)
   stats.accountDeletions = affectedUsers.length

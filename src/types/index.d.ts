@@ -79,6 +79,7 @@ interface NextCloudServiceAccount extends BasicServiceAccount {
     email: string
     lastLogin: string
     displayname: string
+    groups: string[]
   }
 }
 

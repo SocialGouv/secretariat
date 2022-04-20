@@ -114,11 +114,22 @@ const OVHUserInfo = ({
 
 const NextCloudUserInfo = ({
   account: {
-    data: { id, email, lastLogin, displayname },
+    data: { id, email, lastLogin, displayname, groups },
   },
 }: {
   account: NextCloudServiceAccount
-}) => <InfoTable data={{ id, email, lastLogin, displayname }} />
+}) => (
+  <>
+    <InfoTable data={{ id, email, lastLogin, displayname }} />
+    <div className="teams">
+      {groups?.map((group, index) => (
+        <div key={index} className="tag">
+          {group}
+        </div>
+      ))}
+    </div>
+  </>
+)
 
 const ZammadUserInfo = ({
   account: {

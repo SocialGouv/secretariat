@@ -147,7 +147,9 @@ const useUsers = () => {
   const [token] = useToken()
 
   const getMappedUsers = async () => {
+    console.log("getMappedUsers, before fetch", token)
     const data = await fetcher(getUsers, token)
+    console.log("getMappedUsers, after fetch", data)
     return Promise.resolve(mapUsers(data.users))
   }
 

@@ -1,20 +1,28 @@
-import { useSession } from "next-auth/react"
-import { render } from "@testing-library/react"
+import { SWRConfig } from "swr"
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react"
 
 import Users from "../../src/components/users"
 
-// https://github.com/nextauthjs/next-auth/issues/775
-jest.mock("next-auth/react", () => ({
-  useSession: jest.fn(),
-}))
+describe("when users are loaded", () => {
+  let container
 
-const users = [
-  { id: 1, name: "user1", email: "user1@paradise.sky" },
-  { id: 2, name: "user2", email: "user1@paradise.sky" },
-]
+  beforeEach(async () => {
+    const rendered = render(
+      <SWRConfig value={{ provider: () => new Map(), dedupingInterval: 0 }}>
+        <Users />
+      </SWRConfig>
+    )
+    container = rendered.container
+    await waitForElementToBeRemoved(() =>
+      screen.getByText("Aucun utilisateur sélectionné.")
+    )
+  })
 
-it("renders users", () => {
-  useSession.mockReturnValueOnce([false, false])
-  const { container } = render(<Users users={users} />)
-  expect(container).toMatchSnapshot()
+  it("matches the snapshot", () => {
+    expect(container).toMatchSnapshot()
+  })
 })

@@ -7,6 +7,16 @@ import {
 
 import Users from "../../src/components/users"
 
+describe("when fetching data", () => {
+  const fetcher = (url) => fetch(url).then((r) => r.json())
+
+  it("should use the mocked server endpoints", async () => {
+    const data = await fetcher("http://localhost/test")
+    expect(data.length).toBeGreaterThan(0)
+    expect(data[0]).toBe("test result")
+  })
+})
+
 describe("when users are loaded", () => {
   let container
 

@@ -38,6 +38,9 @@ const users = [
 ]
 
 export const handlers = [
+  rest.get("http://localhost/test", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(["test result"]))
+  }),
   rest.get("http://localhost:3000/api/jwt", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ token: "1234" }))
   }),

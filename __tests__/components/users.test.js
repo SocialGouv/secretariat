@@ -28,8 +28,7 @@ describe("when users are loaded", () => {
     )
     container = rendered.container
     await waitForElementToBeRemoved(
-      await screen.getByText("Aucun utilisateur sélectionné."),
-      { timeout: 10000 }
+      await screen.getByText("Aucun utilisateur sélectionné.")
     )
   })
 

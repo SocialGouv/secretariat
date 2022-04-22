@@ -17,8 +17,8 @@ describe("when users are loaded", () => {
       </SWRConfig>
     )
     container = rendered.container
-    await waitForElementToBeRemoved(() =>
-      screen.getByText("Aucun utilisateur sélectionné.")
+    await waitForElementToBeRemoved(
+      await screen.getByText("Aucun utilisateur sélectionné.")
     )
   })
 

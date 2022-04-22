@@ -1,4 +1,4 @@
-import useSWRImmutable from "swr"
+import useSWRImmutable from "swr/immutable"
 
 const fetcher = (url: string) => {
   // Tests run in node environment where only absolute urls are supported

@@ -28,11 +28,11 @@ describe("when users are loaded", () => {
     )
     container = rendered.container
     await waitForElementToBeRemoved(
-      await screen.getByText("Aucun utilisateur sélectionné.")
+      screen.getByText("Aucun utilisateur sélectionné.")
     )
   })
 
-  it("matches the snapshot", () => {
+  it("should match the snapshot", () => {
     expect(container).toMatchSnapshot()
   })
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when users are loaded matches the snapshot 1`] = `
+exports[`when users are loaded should match the snapshot 1`] = `
 <div>
   <div
     class="users-view"

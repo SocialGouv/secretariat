@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useSession } from "next-auth/react"
 
 import Login from "@/components/login"
@@ -10,6 +11,9 @@ const Page = () => {
 
   return (
     <main>
+      <Head>
+        <title>Secrétariat</title>
+      </Head>
       {session === undefined && <Loader size="lg" />}
       {session === null && <Login />}
       {session && (

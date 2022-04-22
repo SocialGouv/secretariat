@@ -39,12 +39,15 @@ const users = [
 
 export const handlers = [
   rest.get("http://localhost/test", (req, res, ctx) => {
+    console.log("---> TEST HANDLER")
     return res(ctx.status(200), ctx.json(["test result"]))
   }),
   rest.get("http://localhost:3000/api/jwt", (req, res, ctx) => {
+    console.log("---> TOKEN HANDLER")
     return res(ctx.status(200), ctx.json({ token: "1234" }))
   }),
   graphql.query("getUsers", (req, res, ctx) => {
+    console.log("---> getUsers HANDLER")
     return res(ctx.data({ users }))
   }),
 ]

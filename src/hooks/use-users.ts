@@ -152,7 +152,7 @@ const useUsers = () => {
   }
 
   const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)
-  console.log("USE USERS", users)
+  console.log("USE USERS", token, users)
   return users
 }
 

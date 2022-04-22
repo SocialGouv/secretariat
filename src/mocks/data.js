@@ -173,7 +173,7 @@ const getGithubServiceAccount = (i) => ({
 const getMattermostServiceAccount = (i) => ({
   id: `mattermost-service-id-${i}`,
   data: {
-    id: "iy374oriefg85x968odkfhynfy",
+    id: "titiy374oto-toriKIUYg85x9-68odkfhynfy",
     email: `user${i}@paradise.sky`,
     roles: "system_user",
     locale: "en",

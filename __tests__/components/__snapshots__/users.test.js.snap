@@ -752,6 +752,9 @@ exports[`when users are loaded matches the snapshot 1`] = `
                     </div>
                   </div>
                 </div>
+                <div
+                  class="teams"
+                />
               </div>
             </div>
           </div>

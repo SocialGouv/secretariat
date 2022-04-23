@@ -1,15 +1,30 @@
-import { useSession } from "next-auth/react"
 import { render } from "@testing-library/react"
 
-import Home from "../src/pages/index"
+import Index from "../src/pages/index"
 
-// https://github.com/nextauthjs/next-auth/issues/775
-jest.mock("next-auth/react", () => ({
-  useSession: jest.fn(),
-}))
+jest.mock("next-auth/react", () => {
+  const originalModule = jest.requireActual("next-auth/react")
+
+  const mockSession = {
+    expires: new Date(Date.now() + 2 * 86400).toISOString(),
+    user: {
+      role: "user",
+      name: "John Doe",
+      login: "john-doe",
+      email: "john.doe@paradise.sky",
+      image: "https://avatars.githubusercontent.com/u/59922165?v=4",
+      teams: ["core-team", "fabrique", "sre", "covid-19", "admins-secretariat"],
+    },
+  }
+
+  return {
+    __esModule: true,
+    ...originalModule,
+    useSession: jest.fn(() => ({ data: mockSession, status: "authenticated" })),
+  }
+})
 
 it("renders homepage", () => {
-  useSession.mockReturnValueOnce([false, false])
-  const { container } = render(<Home />)
+  const { container } = render(<Index />)
   expect(container).toMatchSnapshot()
 })

@@ -351,3 +351,15 @@ export const users = [
   getUser(7, [getOVHServiceAccount(7)]),
   getUser(8, [getMattermostServiceAccount(8), getOVHServiceAccount(8)]),
 ]
+
+export const session = {
+  expires: new Date(Date.now() + 2 * 86400).toISOString(),
+  user: {
+    role: "user",
+    name: "John Doe",
+    login: "john-doe",
+    email: "john.doe@paradise.sky",
+    image: "https://avatars.githubusercontent.com/u/59922165?v=4",
+    teams: ["core-team", "fabrique", "sre", "covid-19", "admins-secretariat"],
+  },
+}

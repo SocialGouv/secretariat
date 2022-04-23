@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders layout 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div
+      class="header-content"
+    >
+      <a
+        href="/"
+      >
+        <div
+          class="logo"
+        >
+          République
+          <br />
+          Française
+        </div>
+        <div
+          class="title"
+        >
+          <h1>
+            Secretariat
+          </h1>
+          <p>
+            Gestion des comptes de services @SocialGouv
+          </p>
+        </div>
+      </a>
+      <nav />
+    </div>
+  </header>
+  <div
+    class="page"
+  >
+    <div>
+      some children here
+    </div>
+    <footer>
+      <div
+        class="footer-content"
+      >
+        <div
+          class="logo-info"
+        >
+          <div
+            class="logo big"
+          >
+            République
+            <br />
+            Française
+          </div>
+          <div
+            class="info"
+          >
+            <p>
+              <strong>
+                Secretariat
+              </strong>
+               est une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
+            </p>
+            <p>
+              Pour en savoir plus sur l'utilisation de
+               
+              <strong>
+                Secretariat
+              </strong>
+              , visitez le
+               
+              <a
+                href="https://github.com/SocialGouv/www/wiki/Inscrire-son-%C3%A9quipe-au-standup"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                wiki
+              </a>
+              .
+            </p>
+            <p
+              class="flex items-center"
+            >
+              <i
+                class="ri-github-fill ri-xl relative top-px mr-1"
+              />
+              version 
+               (
+              <a
+                href="https://github.com/SocialGouv/secretariat/tree/undefined"
+                rel="noreferrer"
+                target="_blank"
+              />
+              )
+            </p>
+          </div>
+        </div>
+        <div
+          class="links"
+        >
+          <a
+            href="https://www.fabrique.social.gouv.fr/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            La Fabrique Numérique
+          </a>
+          <a
+            href="/legal"
+          >
+            Mentions légales
+          </a>
+          <button>
+            <i
+              class="theme-toggle-button ri-sun-line"
+            />
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;

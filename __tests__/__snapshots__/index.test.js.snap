@@ -1,6 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders homepage 1`] = `
+exports[`when index page renders displays a loader if session is undefined 1`] = `
+<div>
+  <main>
+    <div
+      class="loader lg"
+    >
+      <div />
+    </div>
+  </main>
+</div>
+`;
+
+exports[`when index page renders displays login form if session is null 1`] = `
+<div>
+  <main>
+    <div
+      class="login"
+    >
+      Pour vous connecter, cliquez sur le bouton juste en dessous, là: 
+      <br />
+       
+      <br />
+      <button
+        class="primary"
+      >
+        Connexion
+      </button>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`when index page renders displays users list if session is valid 1`] = `
 <div>
   <main>
     <div

@@ -2,14 +2,14 @@ name: Lighthouse Test
 
 on: deployment_status
 
-# concurrency:
-#   cancel-in-progress: true
-#   group: lighthouse-${{ github.event.deployment_status.deployment_id }}
+concurrency:
+  cancel-in-progress: true
+  group: lighthouse-${{ github.event.deployment_status.deployment_id }}
 
 jobs:
   lhci:
     name: Run lhci on deployed environment
-    # if: github.event.deployment_status.step == 'finish' && github.event.deployment_status.status == 'success'
+    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-18.04
     steps:
 
@@ -19,12 +19,12 @@ jobs:
       - name: debug
         run: |
           echo target_url: ${{ github.event.deployment_status.target_url }}
-          echo env_url: ${{ github.event.deployment_status.env_url }}
+          echo environment_url: ${{ github.event.deployment_status.environment_url }}
           echo status: ${{ github.event.deployment_status.status }}
           echo step: ${{ github.event.deployment_status.step }}
           echo state: ${{ github.event.deployment_status.state }}
 
-      # - name: run lhci
-      #   run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.env_url }}
-      #   env:
-      #     LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+      - name: run lhci
+        run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.environment_url }}
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_PAT }}

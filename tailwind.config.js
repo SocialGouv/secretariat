@@ -352,8 +352,15 @@ const colors = {
 module.exports = {
   darkMode: "class",
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    // "./src/pages/**/*.{js,ts,jsx,tsx}",
+    // "./src/hooks/**/*.{js,ts,jsx,tsx}",
+    // "./src/mocks/**/*.{js,ts,jsx,tsx}",
+    // "./src/types/**/*.{js,ts,jsx,tsx}",
+    // "./src/utils/**/*.{js,ts,jsx,tsx}",
+    // "./src/queries/**/*.{js,ts,jsx,tsx}",
+    // "./src/services/**/*.{js,ts,jsx,tsx}",
+    // "./src/components/**/*.{js,ts,jsx,tsx}",
+    // "./src/**/*.{js,jsx,ts,tsx,scss}",
   ],
   theme: {
     extend: {
@@ -378,15 +385,15 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      margin: ["last"],
-      padding: ["first"],
-      boxShadow: ["active"],
-      cursor: ["disabled"],
-      borderWidth: ["last"],
-      backgroundColor: ["odd", "even", "active"],
-    },
-  },
+  // variants: {
+  //   extend: {
+  //     margin: ["last"],
+  //     padding: ["first"],
+  //     boxShadow: ["active"],
+  //     cursor: ["disabled"],
+  //     borderWidth: ["last"],
+  //     backgroundColor: ["odd", "even", "active"],
+  //   },
+  // },
   plugins: [],
 }

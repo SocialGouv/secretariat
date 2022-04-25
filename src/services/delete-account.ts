@@ -26,7 +26,7 @@ export const deleteGithubAccount = async (username: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 
@@ -42,7 +42,7 @@ export const deleteMattermostAccount = async (userID: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 
@@ -59,7 +59,7 @@ export const deleteMatomoAccount = async (login: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 
@@ -77,7 +77,7 @@ export const deleteZammadAccount = async (userID: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 
@@ -97,7 +97,7 @@ export const deleteNextcloudAccount = async (userID: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 
@@ -113,7 +113,7 @@ export const deleteSentryAccount = async (userID: string) => {
     }
   )
   return response
-    ? { status: response.status, body: response.text() }
+    ? { status: response.status, body: await response.text() }
     : { status: 500, body: "" }
 }
 

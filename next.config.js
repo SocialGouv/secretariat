@@ -21,7 +21,7 @@ const ContentSecurityPolicy =
       default-src 'self';
       font-src 'self';
       img-src 'self' data:;
-      style-src 'self';
+      style-src 'self' 'unsafe-inline';
       connect-src 'self' localhost:8080;
       script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `

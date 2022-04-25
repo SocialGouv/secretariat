@@ -1,3 +1,10 @@
+## [1.29.12](https://github.com/SocialGouv/secretariat/compare/v1.29.11...v1.29.12) (2022-04-25)
+
+
+### Bug Fixes
+
+* jwt url ([4174808](https://github.com/SocialGouv/secretariat/commit/4174808ab9e2105815ce0b9edd7db61ff8dedbcb))
+
 ## [1.29.11](https://github.com/SocialGouv/secretariat/compare/v1.29.10...v1.29.11) (2022-04-25)
 
 

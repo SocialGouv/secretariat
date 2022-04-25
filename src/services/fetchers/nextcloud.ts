@@ -55,6 +55,7 @@ export const fetchNextcloudUsers = async (
 
   if (loginsPage.length === 0) {
     // Nextcloud only sends us a list of logins, we need to query each user's details
+    // Here we are fetching even disabled users because we can't filter them in the first query
     const users = await pMap(
       logins,
       async (login: string, index: number) => {

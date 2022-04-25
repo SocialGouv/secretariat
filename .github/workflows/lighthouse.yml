@@ -8,23 +8,15 @@ concurrency:
 
 jobs:
   lhci:
+    runs-on: ubuntu-18.04
     name: Run lhci on deployed environment
     if: github.event.deployment_status.state == 'success'
-    runs-on: ubuntu-18.04
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: debug
-        run: |
-          echo target_url: ${{ github.event.deployment_status.target_url }}
-          echo environment_url: ${{ github.event.deployment_status.environment_url }}
-          echo status: ${{ github.event.deployment_status.status }}
-          echo step: ${{ github.event.deployment_status.step }}
-          echo state: ${{ github.event.deployment_status.state }}
+      # - name: Checkout
+      #   uses: actions/checkout@v3
 
       - name: run lhci
         run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.environment_url }}
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_PAT }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_LHCI_GITHUB_APP_TOKEN }}

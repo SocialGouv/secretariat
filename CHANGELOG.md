@@ -1,3 +1,10 @@
+## [1.29.13-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.29.13-beta.1...v1.29.13-beta.2) (2022-04-25)
+
+
+### Bug Fixes
+
+* Bump version ([0c99dd9](https://github.com/SocialGouv/secretariat/commit/0c99dd994eb3714461a583543196e33e467441ec))
+
 ## [1.29.13-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.29.12...v1.29.13-beta.1) (2022-04-25)
 
 

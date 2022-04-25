@@ -1,9 +1,7 @@
 const fetcher = async (url: string, params: Record<string, unknown>) => {
   const response = await fetch(url, params)
   if (!response.ok) {
-    console.error("Error status in response")
-    console.error("Response head:", response)
-    console.error("Response body:", await response.text())
+    console.error("Error status in response", response)
     return null
   }
   return response

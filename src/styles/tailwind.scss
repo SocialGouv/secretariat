@@ -110,4 +110,15 @@
     src: url("/fonts/Spectral/Spectral-ExtraBold.woff2") format("woff2"),
       url("/fonts/Spectral/Spectral-ExtraBold.woff") format("woff")
   }
+
+  @font-face {
+    font-display: swap;
+    font-family: Remixicon;
+    src: url('/fonts/Remixicon/remixicon.eot?t=1590207869815'); /* IE9 */
+    src: url('/fonts/Remixicon/remixicon.eot?t=1590207869815#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url("/fonts/Remixicon/remixicon.woff2?t=1590207869815") format("woff2"),
+      url("/fonts/Remixicon/remixicon.woff?t=1590207869815") format("woff"),
+      url('/fonts/Remixicon/remixicon.ttf?t=1590207869815') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      url('/fonts/Remixicon/remixicon.svg?t=1590207869815#remixicon') format('svg'); /* iOS 4.1- */
+  }
 }

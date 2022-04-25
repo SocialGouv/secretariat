@@ -51,12 +51,7 @@ export const deleteMatomoAccount = async (login: string) => {
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify({
-        module: "API",
-        token_auth: MATOMO_API_TOKEN,
-        method: "UsersManager.deleteUser",
-        userLogin: login,
-      }),
+      body: `module=API&token_auth=${MATOMO_API_TOKEN}&method=UsersManager.deleteUser&userLogin=${login}`,
     }
   )
   return response ? response.status : 500
@@ -70,6 +65,7 @@ export const deleteZammadAccount = async (userID: string) => {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${ZAMMAD_API_TOKEN}`,
+        "Content-type": "application/json",
       },
       body: JSON.stringify({ active: false }),
     }
@@ -119,7 +115,7 @@ export const deleteOvhAccount = async (email: string) => {
   })
 
   try {
-    ovh.requestPromised(
+    await ovh.requestPromised(
       "DELETE",
       `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
     )

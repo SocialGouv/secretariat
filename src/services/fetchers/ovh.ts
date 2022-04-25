@@ -16,7 +16,7 @@ const OvhFetcher = async (
   emptyValue: any
 ) => {
   try {
-    return ovh.requestPromised(verb, url)
+    return await ovh.requestPromised(verb, url)
   } catch (error) {
     console.error("Error while fetching OVH: ", error)
     return emptyValue

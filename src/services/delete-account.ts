@@ -25,7 +25,9 @@ export const deleteGithubAccount = async (username: string) => {
       },
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteMattermostAccount = async (userID: string) => {
@@ -39,7 +41,9 @@ export const deleteMattermostAccount = async (userID: string) => {
       },
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteMatomoAccount = async (login: string) => {
@@ -54,7 +58,9 @@ export const deleteMatomoAccount = async (login: string) => {
       body: `module=API&token_auth=${MATOMO_API_TOKEN}&method=UsersManager.deleteUser&userLogin=${login}`,
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteZammadAccount = async (userID: string) => {
@@ -70,7 +76,9 @@ export const deleteZammadAccount = async (userID: string) => {
       body: JSON.stringify({ active: false }),
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteNextcloudAccount = async (userID: string) => {
@@ -88,7 +96,9 @@ export const deleteNextcloudAccount = async (userID: string) => {
       },
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteSentryAccount = async (userID: string) => {
@@ -102,7 +112,9 @@ export const deleteSentryAccount = async (userID: string) => {
       },
     }
   )
-  return response ? response.status : 500
+  return response
+    ? { status: response.status, body: response.text() }
+    : { status: 500, body: "" }
 }
 
 export const deleteOvhAccount = async (email: string) => {
@@ -119,9 +131,9 @@ export const deleteOvhAccount = async (email: string) => {
       "DELETE",
       `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
     )
-    return 200
+    return { status: 200, body: "" }
   } catch (error) {
     console.error("Error while deleting OVH account:", error)
-    return 500
+    return { status: 500, body: error }
   }
 }

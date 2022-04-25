@@ -3,8 +3,8 @@ import { deleteOvhAccount } from "@/services/delete-account"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email } = req.query
-  const status = await deleteOvhAccount(email as string)
-  res.status(status).end()
+  const { status, body } = await deleteOvhAccount(email as string)
+  res.status(status).send(body)
 }
 
 export default Endpoint

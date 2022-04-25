@@ -3,8 +3,8 @@ import { deleteSentryAccount } from "@/services/delete-account"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   const { userID } = req.query
-  const status = await deleteSentryAccount(userID as string)
-  res.status(status).end()
+  const { status, body } = await deleteSentryAccount(userID as string)
+  res.status(status).send(body)
 }
 
 export default Endpoint

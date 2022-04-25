@@ -1,3 +1,10 @@
+## [1.29.10](https://github.com/SocialGouv/secretariat/compare/v1.29.9...v1.29.10) (2022-04-25)
+
+
+### Bug Fixes
+
+* remove reference to localhost:3000 ([#239](https://github.com/SocialGouv/secretariat/issues/239)) ([3ac2400](https://github.com/SocialGouv/secretariat/commit/3ac2400cb4fb522b0e8a8635e027bb91313cf8b4))
+
 ## [1.29.9](https://github.com/SocialGouv/secretariat/compare/v1.29.8...v1.29.9) (2022-04-22)
 
 

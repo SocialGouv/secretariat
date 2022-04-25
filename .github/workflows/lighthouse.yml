@@ -9,7 +9,7 @@ concurrency:
 jobs:
   lhci:
     name: Run lhci on deployed environment
-    if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.step == 'finish' && github.event.deployment_status.status == 'success'
     runs-on: ubuntu-18.04
     steps:
 
@@ -21,6 +21,6 @@ jobs:
           echo url: ${{ github.event.deployment_status.target_url }}
 
       - name: run lhci
-        run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.target_url }}
+        run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.env_url }}
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}

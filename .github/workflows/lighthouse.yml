@@ -1,4 +1,4 @@
-name: Lighthouse
+name: Lighthouse Test
 
 on: deployment_status
 

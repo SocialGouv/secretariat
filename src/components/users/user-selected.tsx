@@ -1,7 +1,8 @@
-import UserProfile from "@/components/users/user-profile"
-import useSelectedUser from "@/hooks/use-selected-user"
-import useUsers from "@/hooks/use-users"
 import { useEffect } from "react"
+
+import useUsers from "@/hooks/use-users"
+import useSelectedUser from "@/hooks/use-selected-user"
+import UserProfile from "@/components/users/user-profile"
 
 const UserSelected = ({
   onUserDrop,

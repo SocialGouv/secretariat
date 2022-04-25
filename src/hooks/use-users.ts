@@ -7,9 +7,9 @@ import { detectWarnings } from "@/utils/detect-warnings"
 import {
   getUsers,
   updateUser,
-  mergeUsers as mergeUsersQuery,
   insertUser,
   updateService,
+  mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
 
 interface UserMapping {
@@ -105,12 +105,12 @@ const mapUsers = (users: User[]): User[] => {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
-export const mutateUser = async (
+export const mutateUser = (
   user: User,
   token: string
 ): Promise<User | undefined> => {
   const { id, arrival, departure } = user
-  return await fetcher(updateUser, token, { id, _set: { arrival, departure } })
+  return fetcher(updateUser, token, { id, _set: { arrival, departure } })
 }
 
 export const mergeUsers = async (

@@ -1,3 +1,17 @@
+## [1.29.9](https://github.com/SocialGouv/secretariat/compare/v1.29.8...v1.29.9) (2022-04-22)
+
+
+### Bug Fixes
+
+* set title to all pages using next/head ([#232](https://github.com/SocialGouv/secretariat/issues/232)) ([36215cc](https://github.com/SocialGouv/secretariat/commit/36215ccdb72df30f98e043f7f8d4c833616cd0ee))
+
+## [1.29.8](https://github.com/SocialGouv/secretariat/compare/v1.29.7...v1.29.8) (2022-04-21)
+
+
+### Bug Fixes
+
+* fetch concurrently but do not update DB concurrently ([#229](https://github.com/SocialGouv/secretariat/issues/229)) ([1139404](https://github.com/SocialGouv/secretariat/commit/113940480451e07e52772522b4e1097368b05a1c))
+
 ## [1.29.7](https://github.com/SocialGouv/secretariat/compare/v1.29.6...v1.29.7) (2022-04-19)
 
 

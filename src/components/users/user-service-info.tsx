@@ -61,16 +61,38 @@ const SentryUserInfo = ({
   },
 }: {
   account: SentryServiceAccount
-}) => <InfoTable data={{ ...info, uses_2fa: user.has2fa }} />
+}) => (
+  <>
+    <InfoTable data={{ ...info, uses_2fa: user.has2fa }} />
+    <div className="teams">
+      {projects?.map((project, index) => (
+        <div key={index} className="tag">
+          {project}
+        </div>
+      ))}
+    </div>
+  </>
+)
 
 const MattermostUserInfo = ({
   account: {
-    data: { id, first_name, last_name, email, create_at, username },
+    data: { id, first_name, last_name, email, create_at, username, teams },
   },
 }: {
   account: MattermostServiceAccount
 }) => (
-  <InfoTable data={{ username, first_name, last_name, email, id, create_at }} />
+  <>
+    <InfoTable
+      data={{ username, first_name, last_name, email, id, create_at }}
+    />
+    <div className="teams">
+      {teams?.map((team, index) => (
+        <div key={index} className="tag">
+          {team.name}
+        </div>
+      ))}
+    </div>
+  </>
 )
 
 const OVHUserInfo = ({
@@ -103,11 +125,22 @@ const OVHUserInfo = ({
 
 const NextCloudUserInfo = ({
   account: {
-    data: { id, email, lastLogin, displayname },
+    data: { id, email, lastLogin, displayname, groups },
   },
 }: {
   account: NextCloudServiceAccount
-}) => <InfoTable data={{ id, email, lastLogin, displayname }} />
+}) => (
+  <>
+    <InfoTable data={{ id, email, lastLogin, displayname }} />
+    <div className="teams">
+      {groups?.map((group, index) => (
+        <div key={index} className="tag">
+          {group}
+        </div>
+      ))}
+    </div>
+  </>
+)
 
 const ZammadUserInfo = ({
   account: {

@@ -189,6 +189,9 @@ exports[`renders user profile 1`] = `
               </div>
             </div>
           </div>
+          <div
+            class="teams"
+          />
         </div>
       </div>
     </div>

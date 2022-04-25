@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect } from "react"
 import useIsDarkTheme from "@/hooks/use-is-dark-theme"
 
 const ThemeToggleButton = () => {

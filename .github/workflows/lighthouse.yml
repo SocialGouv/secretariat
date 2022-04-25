@@ -18,14 +18,11 @@ jobs:
 
       - name: debug
         run: |
-          echo deployment_status: ${{ github.event.deployment_status }}
-
-      - name: debug
-        run: |
           echo target_url: ${{ github.event.deployment_status.target_url }}
           echo env_url: ${{ github.event.deployment_status.env_url }}
           echo status: ${{ github.event.deployment_status.status }}
           echo step: ${{ github.event.deployment_status.step }}
+          echo state: ${{ github.event.deployment_status.state }}
 
       # - name: run lhci
       #   run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.env_url }}

@@ -3,7 +3,6 @@ import { SessionProvider } from "next-auth/react"
 
 import Layout from "@/components/layout"
 
-// import "remixicon/fonts/remixicon.css"
 import "@/styles/tailwind.scss"
 import "@/styles/globals.scss"
 

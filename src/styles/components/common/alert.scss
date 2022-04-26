@@ -2,54 +2,53 @@
   @apply
     flex
     border
-    text-sm
-    items-center;
+    text-sm;
 
-  i {
-    @apply 
-      px-1
-      mr-2
-      text-2xl
-      text-grey-1000-main;
-  }
+    .icon {
+      @apply py-0.5 px-2;
+
+      i {
+        @apply
+        text-2xl
+        text-grey-1000-main;
+      }
+    }
+
+    .message {
+      @apply flex py-1 px-2 items-center;
+    }
 
   &.warning {
+    
     @apply
       border-yellow-moutarde-850-main;
 
-    i {
-      @apply
-      bg-yellow-moutarde-850-main;
-    }
+      .icon {
+        @apply bg-yellow-moutarde-850-main;
+      }
   }
 
   &.info {
-    @apply
-      border-info-425-main;
+    @apply border-info-425-main;
 
-    i {
-      @apply
-      bg-info-425-main;
+    .icon {
+      @apply bg-info-425-main;
     }
   }
 
   &.error {
-    @apply
-      border-error-425-main;
+    @apply border-error-425-main;
 
-    i {
-      @apply
-      bg-error-425-main;
+    .icon {
+      @apply bg-error-425-main;
     }
   }
 
   &.success {
-    @apply
-      border-success-425-main;
+    @apply border-success-425-main;
 
-    i {
-      @apply
-      bg-success-425-main;
+    .icon {
+      @apply bg-success-425-main;
     }
   }
 }

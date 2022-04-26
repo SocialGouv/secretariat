@@ -1,7 +1,8 @@
-import { MATTERMOST_API_TOKEN } from "@/utils/env"
-import fetcher from "@/utils/rest-fetcher"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
+
+import fetcher from "@/utils/rest-fetcher"
+import { MATTERMOST_API_TOKEN } from "@/utils/env"
 
 const PAGE_SIZE = 200 // maximum for Mattermost's API
 

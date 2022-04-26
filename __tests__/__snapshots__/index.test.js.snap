@@ -1,18 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when index page renders displays a loader if session is undefined 1`] = `
-<div>
-  <main>
-    <div
-      class="loader lg"
-    >
-      <div />
-    </div>
-  </main>
-</div>
-`;
-
-exports[`when index page renders displays login form if session is null 1`] = `
+exports[`when index page renders displays login form if session is invalid 1`] = `
 <div>
   <main>
     <div

@@ -1,4 +1,4 @@
-name: Lighthouse
+name: Lighthouse Test
 
 on: deployment_status
 
@@ -8,19 +8,17 @@ concurrency:
 
 jobs:
   lhci:
+    runs-on: ubuntu-18.04
     name: Run lhci on deployed environment
     if: github.event.deployment_status.state == 'success'
-    runs-on: ubuntu-18.04
     steps:
 
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: debug
-        run: |
-          echo url: ${{ github.event.deployment_status.target_url }}
+        with:
+          fetch-depth: 0
 
       - name: run lhci
-        run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.target_url }}
+        run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.environment_url }}
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_LHCI_GITHUB_APP_TOKEN }}

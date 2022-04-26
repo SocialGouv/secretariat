@@ -1,7 +1,8 @@
-import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
-import fetcher from "@/utils/rest-fetcher"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
+
+import fetcher from "@/utils/rest-fetcher"
+import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
 
 const PAGE_SIZE = 100 // not sure about the real max for Nextcloud's API
 

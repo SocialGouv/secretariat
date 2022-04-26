@@ -72,7 +72,7 @@ jobs:
     needs: [register-app, register-hasura, create-db]
     steps:
       - name: Use autodevops deployment
-        uses: SocialGouv/actions/autodevops-helm-deploy@deployments-notifications
+        uses: SocialGouv/actions/autodevops-helm-deploy@v1
         with:
           environment: 'dev'
           kubeconfig: ${{ secrets.KUBECONFIG }}

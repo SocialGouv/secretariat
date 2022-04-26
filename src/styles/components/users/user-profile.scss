@@ -59,6 +59,10 @@
               @apply ml-1 capitalize;
             }
           }
+
+          .controls {
+            @apply flex gap-2
+          }
         }
   
         .info-table {

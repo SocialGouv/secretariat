@@ -2261,6 +2261,18 @@ exports[`when users are loaded should match the snapshot 1`] = `
                       nextcloud
                     </div>
                   </div>
+                  <div
+                    class="controls"
+                  >
+                    <button
+                      class="secondary sm icon"
+                      title="révoquer"
+                    >
+                      <i
+                        class="ri-close-line"
+                      />
+                    </button>
+                  </div>
                 </h3>
                 <div
                   class="info-table grid grid-flow-row grid-cols-3"

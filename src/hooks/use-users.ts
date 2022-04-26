@@ -143,6 +143,20 @@ export const detachUserServiceAccount = async (
   })
 }
 
+export const deleteAccount = async (account: ServiceAccount) => {
+  let accountKey =
+    account.type === "ovh"
+      ? account.data.primaryEmailAddress
+      : account.type === "github" || account.type === "matomo"
+      ? account.data.login
+      : account.data.id
+
+  const response = await fetch(
+    `/api/delete-account/${account.type}/${encodeURIComponent(accountKey)}`
+  )
+  return { status: response.status, body: await response.text() }
+}
+
 const useUsers = () => {
   const [token] = useToken()
 

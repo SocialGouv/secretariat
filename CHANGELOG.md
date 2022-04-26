@@ -1,3 +1,10 @@
+## [1.29.13](https://github.com/SocialGouv/secretariat/compare/v1.29.12...v1.29.13) (2022-04-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-auth to v4.3.2 [security] ([#234](https://github.com/SocialGouv/secretariat/issues/234)) ([f2cdf07](https://github.com/SocialGouv/secretariat/commit/f2cdf07f2c8f208e47e39c776503f6d78205d4b7))
+
 ## [1.29.13-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.29.13-beta.1...v1.29.13-beta.2) (2022-04-25)
 
 

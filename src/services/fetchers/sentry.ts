@@ -1,5 +1,5 @@
-import { SENTRY_API_TOKEN } from "@/utils/env"
 import fetcher from "@/utils/rest-fetcher"
+import { SENTRY_API_TOKEN } from "@/utils/env"
 
 export const fetchSentryUsers = async (): Promise<
   Record<string, unknown>[]

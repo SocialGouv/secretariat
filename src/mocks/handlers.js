@@ -1,41 +1,6 @@
 import { graphql, rest } from "msw"
 
-const users = [
-  {
-    id: "1",
-    name: "user1",
-    email: "user1@paradise.sky",
-    warnings: [],
-    services: [
-      {
-        id: "11",
-        type: "nextcloud",
-        data: {
-          lastLogin: "",
-          displayname: "User 1",
-          email: "user1@paradise.sky",
-        },
-      },
-    ],
-  },
-  {
-    id: "2",
-    name: "user2",
-    email: "user2@paradise.sky",
-    warnings: [],
-    services: [
-      {
-        id: "12",
-        type: "nextcloud",
-        data: {
-          lastLogin: "",
-          displayname: "User 2",
-          email: "user2@paradise.sky",
-        },
-      },
-    ],
-  },
-]
+import { users } from "./data"
 
 export const handlers = [
   rest.get("http://localhost/test", (_req, res, ctx) =>

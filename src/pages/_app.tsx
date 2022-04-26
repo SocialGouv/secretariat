@@ -1,21 +1,17 @@
 import type { AppProps } from "next/app"
 import { SessionProvider } from "next-auth/react"
 
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+import Layout from "@/components/layout"
 
-import "remixicon/fonts/remixicon.css"
 import "@/styles/tailwind.scss"
 import "@/styles/globals.scss"
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Header />
-      <div className="page">
+      <Layout>
         <Component {...pageProps} />
-        <Footer />
-      </div>
+      </Layout>
     </SessionProvider>
   )
 }

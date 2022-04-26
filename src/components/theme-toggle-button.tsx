@@ -30,7 +30,10 @@ const ThemeToggleButton = () => {
   }, [setIsDarkThemeCallback])
 
   return (
-    <button onClick={() => setIsDarkTheme(!isDarkTheme)}>
+    <button
+      aria-label="theme toggle"
+      onClick={() => setIsDarkTheme(!isDarkTheme)}
+    >
       <i
         className={`theme-toggle-button ${
           isDarkTheme ? "ri-moon-line" : "ri-sun-line"

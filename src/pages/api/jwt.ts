@@ -1,6 +1,7 @@
 import { getJwt } from "@/utils/jwt"
-import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
+
+import type { NextApiRequest, NextApiResponse } from "next"
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req })

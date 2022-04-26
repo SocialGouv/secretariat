@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: echo ID ==> ${{ github.event.deployment_status.deployment_id }}
+      - run: echo ID ${{ github.event.deployment_status.deployment_id }}
 
       - name: run lhci
         run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.environment_url }}

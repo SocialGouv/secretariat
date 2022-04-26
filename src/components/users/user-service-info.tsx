@@ -165,10 +165,12 @@ const UserServiceInfo = ({
   account,
   isSingleAccount,
   onDetachAccount,
+  onDeleteAccount,
 }: {
   account: ServiceAccount
   isSingleAccount: boolean
   onDetachAccount: (account: ServiceAccount) => void
+  onDeleteAccount: (account: ServiceAccount) => void
 }) => {
   const ref = useSpringRef()
 
@@ -189,15 +191,24 @@ const UserServiceInfo = ({
           </div>
           <div className="title">{account.type}</div>
         </div>
-        {!isSingleAccount && (
+        <div className="controls">
+          {!isSingleAccount && (
+            <button
+              title="détacher"
+              className="secondary sm icon"
+              onClick={() => spring.start()}
+            >
+              <i className="ri-eject-fill"></i>
+            </button>
+          )}
           <button
-            title="détacher"
+            title="révoquer"
             className="secondary sm icon"
-            onClick={() => spring.start()}
+            onClick={() => onDeleteAccount(account)}
           >
-            <i className="ri-eject-fill"></i>
+            <i className="ri-close-circle-fill"></i>
           </button>
-        )}
+        </div>
       </h3>
       {account.type === "github" && <GithubUserInfo account={account} />}
       {account.type === "matomo" && <MatomoUserInfo account={account} />}

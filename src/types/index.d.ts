@@ -60,6 +60,7 @@ interface MatomoServiceAccount extends BasicServiceAccount {
 interface SentryServiceAccount extends BasicServiceAccount {
   type: "sentry"
   data: {
+    id: string
     name: string
     email: string
     dateCreated: Date

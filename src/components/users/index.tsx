@@ -1,19 +1,20 @@
-import { useSWRConfig } from "swr"
-import { DndProvider } from "react-dnd"
-import { useEffect, useState } from "react"
-import { HTML5Backend } from "react-dnd-html5-backend"
-
-import useToken from "@/hooks/use-token"
 import UserList from "@/components/users/user-list"
+import UserSelected from "@/components/users/user-selected"
 import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
-import UserSelected from "@/components/users/user-selected"
+import useToken from "@/hooks/use-token"
 import {
+  deleteAccount,
   detachUserServiceAccount,
   mapUser,
   mergeUsers,
   mutateUser,
 } from "@/hooks/use-users"
+import { useEffect, useState } from "react"
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
+import { useSWRConfig } from "swr"
+import AccountDeleteModal from "./delete-account-modal"
 
 const Users = () => {
   const [token] = useToken()
@@ -21,6 +22,7 @@ const Users = () => {
   const { pagedUsers } = usePagedUsers()
   const [droppedUser, setDroppedUser] = useState<User>()
   const { selectedUser, setSelectedUser } = useSelectedUser()
+  const [accountToDelete, setAccountToDelete] = useState<ServiceAccount>()
 
   useEffect(() => {
     if (pagedUsers && pagedUsers.length && !selectedUser) {
@@ -37,7 +39,6 @@ const Users = () => {
   const handleAccountsChange = async (account: ServiceAccount) => {
     const services = selectedUser?.services.filter((a) => a.id !== account.id)
     if (selectedUser && services) {
-      // setSelectedUser(mapUser({ ...selectedUser, services }))
       await detachUserServiceAccount(account, token)
       mutate("/users")
     }
@@ -46,15 +47,31 @@ const Users = () => {
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
       await mergeUsers(selectedUser, user, token)
-      // const updatedUser = await mergeUsers(selectedUser, user, token)
-      // setSelectedUser(updatedUser)
       mutate("/users")
     }
+  }
+
+  const handleDeleteAccount = (account: ServiceAccount) => {
+    if (accountToDelete !== undefined) {
+      return
+    }
+    setAccountToDelete(account)
+  }
+
+  const handleConfirmDeleteAccount = async () => {
+    if (accountToDelete === undefined) return
+    await deleteAccount(accountToDelete)
+    setAccountToDelete(undefined)
   }
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="users-view">
+        <AccountDeleteModal
+          isOpen={!!accountToDelete}
+          onConfirm={handleConfirmDeleteAccount}
+          onRequestClose={() => setAccountToDelete(undefined)}
+        />
         <UserList
           users={pagedUsers}
           droppedUser={droppedUser}
@@ -65,6 +82,7 @@ const Users = () => {
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
           onAccountsChange={(account) => handleAccountsChange(account)}
+          onDeleteAccount={handleDeleteAccount}
         />
       </div>
     </DndProvider>

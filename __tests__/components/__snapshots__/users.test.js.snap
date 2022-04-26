@@ -2120,10 +2120,18 @@ exports[`when users are loaded should match the snapshot 1`] = `
               <div
                 class="alert warning"
               >
-                <i
-                  class="ri-alert-fill"
-                />
-                Cet utilisateur n'a pas de date de départ.
+                <div
+                  class="icon"
+                >
+                  <i
+                    class="ri-alert-fill"
+                  />
+                </div>
+                <div
+                  class="message"
+                >
+                  Cet utilisateur n'a pas de date de départ.
+                </div>
               </div>
             </div>
             <div
@@ -2132,10 +2140,18 @@ exports[`when users are loaded should match the snapshot 1`] = `
               <div
                 class="alert warning"
               >
-                <i
-                  class="ri-alert-fill"
-                />
-                Cet utilisateur n'est attaché qu'à un seul service.
+                <div
+                  class="icon"
+                >
+                  <i
+                    class="ri-alert-fill"
+                  />
+                </div>
+                <div
+                  class="message"
+                >
+                  Cet utilisateur n'est attaché qu'à un seul service.
+                </div>
               </div>
             </div>
             <div
@@ -2144,10 +2160,18 @@ exports[`when users are loaded should match the snapshot 1`] = `
               <div
                 class="alert warning"
               >
-                <i
-                  class="ri-alert-fill"
-                />
-                Cet utilisateur n'a pas de compte Github ou Mattermost.
+                <div
+                  class="icon"
+                >
+                  <i
+                    class="ri-alert-fill"
+                  />
+                </div>
+                <div
+                  class="message"
+                >
+                  Cet utilisateur n'a pas de compte Github ou Mattermost.
+                </div>
               </div>
             </div>
             <div

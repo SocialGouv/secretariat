@@ -4,7 +4,7 @@ on: deployment_status
 
 concurrency:
   cancel-in-progress: true
-  group: lighthouse-${{ github.event.deployment_status.deployment_id }}
+  group: lighthouse-${{ github.event.deployment_status.id }}
 
 jobs:
   lhci:

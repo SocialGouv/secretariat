@@ -206,7 +206,7 @@ const UserServiceInfo = ({
             className="secondary sm icon"
             onClick={() => onDeleteAccount(account)}
           >
-            <i className="ri-close-circle-fill"></i>
+            <i className="ri-close-line"></i>
           </button>
         </div>
       </h3>

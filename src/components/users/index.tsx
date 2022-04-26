@@ -52,16 +52,11 @@ const Users = () => {
   }
 
   const handleDeleteAccount = (account: ServiceAccount) => {
-    if (accountToDelete !== undefined) {
-      return
-    }
     setAccountToDelete(account)
   }
 
   const handleConfirmDeleteAccount = async () => {
-    if (accountToDelete === undefined) return
-    await deleteAccount(accountToDelete)
-    setAccountToDelete(undefined)
+    return deleteAccount(accountToDelete as ServiceAccount)
   }
 
   return (

@@ -11,11 +11,10 @@ import {
   SENTRY_API_TOKEN,
   ZAMMAD_API_TOKEN,
 } from "@/utils/env"
-import fetcher from "@/utils/rest-fetcher"
 
 export const deleteGithubAccount = async (username: string) => {
   // Removes a member from the SocialGouv organization with its login
-  const response = await fetcher(
+  const response = await fetch(
     `https://api.github.com/orgs/SocialGouv/memberships/${username}`,
     {
       method: "DELETE",
@@ -25,14 +24,12 @@ export const deleteGithubAccount = async (username: string) => {
       },
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteMattermostAccount = async (userID: string) => {
   // Disables a user with its ID
-  const response = await fetcher(
+  const response = await fetch(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/users/${userID}`,
     {
       method: "DELETE",
@@ -41,14 +38,12 @@ export const deleteMattermostAccount = async (userID: string) => {
       },
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteMatomoAccount = async (login: string) => {
   // Permanently deletes a user with its login
-  const response = await fetcher(
+  const response = await fetch(
     "https://matomo.fabrique.social.gouv.fr/index.php",
     {
       method: "POST",
@@ -58,14 +53,12 @@ export const deleteMatomoAccount = async (login: string) => {
       body: `module=API&token_auth=${MATOMO_API_TOKEN}&method=UsersManager.deleteUser&userLogin=${login}`,
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteZammadAccount = async (userID: string) => {
   // Disables a user with its ID
-  const response = await fetcher(
+  const response = await fetch(
     `https://pastek.fabrique.social.gouv.fr/api/v1/users/${userID}`,
     {
       method: "PUT",
@@ -76,14 +69,12 @@ export const deleteZammadAccount = async (userID: string) => {
       body: JSON.stringify({ active: false }),
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteNextcloudAccount = async (userID: string) => {
   // Disables a user with its ID
-  const response = await fetcher(
+  const response = await fetch(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users/${userID}/disable`,
     {
       method: "PUT",
@@ -96,14 +87,12 @@ export const deleteNextcloudAccount = async (userID: string) => {
       },
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteSentryAccount = async (userID: string) => {
   // TODO is this one permanent ?
-  const response = await fetcher(
+  const response = await fetch(
     `https://sentry.fabrique.social.gouv.fr/api/0/organizations/incubateur/members/${userID}/`,
     {
       method: "DELETE",
@@ -112,9 +101,7 @@ export const deleteSentryAccount = async (userID: string) => {
       },
     }
   )
-  return response
-    ? { status: response.status, body: await response.text() }
-    : { status: 500, body: "" }
+  return { status: response.status, body: await response.text() }
 }
 
 export const deleteOvhAccount = async (email: string) => {
@@ -132,8 +119,7 @@ export const deleteOvhAccount = async (email: string) => {
       `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
     )
     return { status: 200, body: "" }
-  } catch (error) {
-    console.error("Error while deleting OVH account:", error)
-    return { status: 500, body: error }
+  } catch (error: any) {
+    return { status: error.error, body: error.message }
   }
 }

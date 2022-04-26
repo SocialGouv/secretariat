@@ -154,9 +154,7 @@ export const deleteAccount = async (account: ServiceAccount) => {
   const response = await fetch(
     `/api/delete-account/${account.type}/${encodeURIComponent(accountKey)}`
   )
-  console.log("called API to delete account")
-  console.log("status", response.status)
-  console.log("body", await response.text())
+  return { status: response.status, body: await response.text() }
 }
 
 const useUsers = () => {

@@ -28,6 +28,7 @@
     @apply
       p-4
       rounded
+      min-w-[50vw]
       relative
       shadow-lg
       outline-none
@@ -56,8 +57,12 @@
       }
     }
 
-    .buttons {
+    .confirm-buttons {
       @apply flex justify-between;
+    }
+
+    .close-button {
+      @apply flex justify-center;
     }
   }
 }

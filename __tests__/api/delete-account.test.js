@@ -1,7 +1,6 @@
-import fetcher from "@/utils/rest-fetcher"
+import { rest } from "msw"
+import { setupServer } from "msw/node"
 import { createMocks } from "node-mocks-http"
-import { getSession } from "next-auth/react"
-
 import handleDeleteGithubAccount from "../../src/pages/api/delete-account/github/[userLogin]"
 import handleDeleteMatomoAccount from "../../src/pages/api/delete-account/matomo/[userLogin]"
 import handleDeleteMattermostAccount from "../../src/pages/api/delete-account/mattermost/[userID]"
@@ -10,10 +9,38 @@ import handleDeleteOvhAccount from "../../src/pages/api/delete-account/ovh/[emai
 import handleDeleteSentryAccount from "../../src/pages/api/delete-account/sentry/[userID]"
 import handleDeleteZammadAccount from "../../src/pages/api/delete-account/zammad/[userID]"
 
-jest.mock("@/utils/rest-fetcher")
 jest.mock("next-auth/react", () => ({
   getSession: () => Promise.resolve(true),
 }))
+
+const server = setupServer(
+  rest.delete(/github.com/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  rest.delete(/mattermost.fabrique.social.gouv.fr/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  rest.post(/matomo.fabrique.social.gouv.fr/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  rest.put(/pastek.fabrique.social.gouv.fr/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  rest.put(/nextcloud.fabrique.social.gouv.fr/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  rest.delete(/sentry.fabrique.social.gouv.fr/, (req, res, ctx) => {
+    return res(ctx.status(100), ctx.text("fake message"))
+  })
+)
+
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: "error" })
+})
+
+afterAll(() => {
+  server.close()
+})
 
 let req, res
 beforeEach(() => {
@@ -23,110 +50,69 @@ beforeEach(() => {
     query: {
       userLogin: "fake user",
       userID: "fake user",
+      email: "fake user",
     },
   }))
 })
 
-describe("/api/delete-account/github/[userLogin]", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
+describe("delete Github account", () => {
+  it("should return status and body from service API", async () => {
     await handleDeleteGithubAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
-  })
-
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteGithubAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
 })
 
 describe("delete Mattermost account", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
+  it("should return status and body from service API", async () => {
     await handleDeleteMattermostAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
-  })
-
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteMattermostAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
 })
 
 describe("delete Zammad account", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
+  it("should return status and body from service API", async () => {
     await handleDeleteZammadAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
-  })
-
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteZammadAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
 })
 
 describe("delete Sentry account", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
+  it("should return status and body from service API", async () => {
     await handleDeleteSentryAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
-  })
-
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteSentryAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
 })
 
 describe("delete Nextcloud account", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
+  it("should return status and body from service API", async () => {
     await handleDeleteNextcloudAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
+})
 
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteNextcloudAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
+describe("delete Matomo account", () => {
+  it("should return status and body from service API", async () => {
+    await handleDeleteMatomoAccount(req, res)
+    expect(res._getStatusCode()).toEqual(100)
+    expect(res._getData()).toEqual("fake message")
   })
 })
 
 describe("delete Ovh account", () => {
-  it("should return status 500 error message on exception", async () => {
+  it("should return status and message from exception", async () => {
     jest.mock("ovh", () => () => ({
       requestPromised: () => {
-        throw Error("test error")
+        throw { error: 500, message: "fake message" }
       },
     }))
     await handleDeleteOvhAccount(req, res)
     expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual(Error("test error"))
+    expect(res._getData()).toEqual("fake message")
   })
 
   it("should return status 200 and empty text", async () => {
@@ -136,23 +122,5 @@ describe("delete Ovh account", () => {
     await handleDeleteOvhAccount(req, res)
     expect(res._getStatusCode()).toEqual(200)
     expect(res._getData()).toEqual("")
-  })
-})
-
-describe("delete Matomo account", () => {
-  it("should return status 500 and empty text if query went wrong", async () => {
-    fetcher.mockImplementationOnce(() => Promise.resolve(null))
-    await handleDeleteMatomoAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("")
-  })
-
-  it("should return status and text from response", async () => {
-    fetcher.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, text: () => Promise.resolve("test text") })
-    )
-    await handleDeleteMatomoAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("test text")
   })
 })

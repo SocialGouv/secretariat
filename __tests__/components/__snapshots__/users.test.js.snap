@@ -2245,7 +2245,7 @@ exports[`when users are loaded should match the snapshot 1`] = `
                       title="révoquer"
                     >
                       <i
-                        class="ri-close-circle-fill"
+                        class="ri-close-line"
                       />
                     </button>
                   </div>

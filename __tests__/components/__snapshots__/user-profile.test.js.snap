@@ -148,7 +148,7 @@ exports[`renders user profile 1`] = `
                 title="révoquer"
               >
                 <i
-                  class="ri-close-circle-fill"
+                  class="ri-close-line"
                 />
               </button>
             </div>

@@ -1,5 +1,7 @@
 import fetcher from "@/utils/rest-fetcher"
 import { createMocks } from "node-mocks-http"
+import { getSession } from "next-auth/react"
+
 import handleDeleteGithubAccount from "../../src/pages/api/delete-account/github/[userLogin]"
 import handleDeleteMatomoAccount from "../../src/pages/api/delete-account/matomo/[userLogin]"
 import handleDeleteMattermostAccount from "../../src/pages/api/delete-account/mattermost/[userID]"
@@ -9,6 +11,9 @@ import handleDeleteSentryAccount from "../../src/pages/api/delete-account/sentry
 import handleDeleteZammadAccount from "../../src/pages/api/delete-account/zammad/[userID]"
 
 jest.mock("@/utils/rest-fetcher")
+jest.mock("next-auth/react", () => ({
+  getSession: () => Promise.resolve(true),
+}))
 
 let req, res
 beforeEach(() => {

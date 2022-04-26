@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/SocialGouv/secretariat/compare/v1.29.15...v1.30.0) (2022-04-26)
+
+
+### Features
+
+* User delete APIs ([#226](https://github.com/SocialGouv/secretariat/issues/226)) ([f6a27dd](https://github.com/SocialGouv/secretariat/commit/f6a27ddcbf6567ee2d2a826060ef483379e8417d))
+
 ## [1.29.15](https://github.com/SocialGouv/secretariat/compare/v1.29.14...v1.29.15) (2022-04-26)
 
 

@@ -1,7 +1,8 @@
-import { MATOMO_API_TOKEN } from "@/utils/env"
-import fetcher from "@/utils/rest-fetcher"
 import { randomUUID } from "crypto"
 import { setTimeout } from "timers/promises"
+
+import fetcher from "@/utils/rest-fetcher"
+import { MATOMO_API_TOKEN } from "@/utils/env"
 
 const PAGE_SIZE = 100 // maximum for Matomo's API
 

@@ -1,11 +1,12 @@
+import pMap from "p-map"
+import { setTimeout } from "timers/promises"
+
 import {
   OVH_APP_KEY,
   OVH_APP_SECRET,
   OVH_CONSUMER_KEY,
   OVH_SERVICE_NAME,
 } from "@/utils/env"
-import pMap from "p-map"
-import { setTimeout } from "timers/promises"
 
 const EXCLUDE_CONFIGURE_ME_ADDRESSES = true
 

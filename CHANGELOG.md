@@ -1,3 +1,45 @@
+## [1.29.13](https://github.com/SocialGouv/secretariat/compare/v1.29.12...v1.29.13) (2022-04-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-auth to v4.3.2 [security] ([#234](https://github.com/SocialGouv/secretariat/issues/234)) ([f2cdf07](https://github.com/SocialGouv/secretariat/commit/f2cdf07f2c8f208e47e39c776503f6d78205d4b7))
+
+## [1.29.13-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.29.13-beta.1...v1.29.13-beta.2) (2022-04-25)
+
+
+### Bug Fixes
+
+* Bump version ([0c99dd9](https://github.com/SocialGouv/secretariat/commit/0c99dd994eb3714461a583543196e33e467441ec))
+
+## [1.29.13-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.29.12...v1.29.13-beta.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* Bump version ([8b7b3b8](https://github.com/SocialGouv/secretariat/commit/8b7b3b8e0d305cf58bd22be7bae07d1d4c961fd2))
+
+## [1.29.12](https://github.com/SocialGouv/secretariat/compare/v1.29.11...v1.29.12) (2022-04-25)
+
+
+### Bug Fixes
+
+* jwt url ([4174808](https://github.com/SocialGouv/secretariat/commit/4174808ab9e2105815ce0b9edd7db61ff8dedbcb))
+
+## [1.29.11](https://github.com/SocialGouv/secretariat/compare/v1.29.10...v1.29.11) (2022-04-25)
+
+
+### Bug Fixes
+
+* csp + jwt url ([6400bc9](https://github.com/SocialGouv/secretariat/commit/6400bc9b5a169640f73c67196c96c7d7da932b0c))
+
+## [1.29.10](https://github.com/SocialGouv/secretariat/compare/v1.29.9...v1.29.10) (2022-04-25)
+
+
+### Bug Fixes
+
+* remove reference to localhost:3000 ([#239](https://github.com/SocialGouv/secretariat/issues/239)) ([3ac2400](https://github.com/SocialGouv/secretariat/commit/3ac2400cb4fb522b0e8a8635e027bb91313cf8b4))
+
 ## [1.29.9](https://github.com/SocialGouv/secretariat/compare/v1.29.8...v1.29.9) (2022-04-22)
 
 

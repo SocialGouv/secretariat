@@ -77,7 +77,9 @@ exports[`renders footer 1`] = `
         >
           Mentions légales
         </a>
-        <button>
+        <button
+          aria-label="theme toggle"
+        >
           <i
             class="theme-toggle-button ri-sun-line"
           />

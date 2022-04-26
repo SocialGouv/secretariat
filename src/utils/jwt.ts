@@ -1,5 +1,7 @@
-import type { SignOptions } from "jsonwebtoken"
 import jwt from "jsonwebtoken"
+
+import type { SignOptions } from "jsonwebtoken"
+
 import { HASURA_JWT_KEY } from "./env"
 
 export function getJwt(

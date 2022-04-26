@@ -20,3 +20,6 @@ yarn-error.log
 
 # jest's coverage output
 coverage
+
+# LHCI
+.lighthouseci

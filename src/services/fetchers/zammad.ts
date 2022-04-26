@@ -1,6 +1,7 @@
-import { ZAMMAD_API_TOKEN } from "@/utils/env"
-import fetcher from "@/utils/rest-fetcher"
 import { setTimeout } from "timers/promises"
+
+import fetcher from "@/utils/rest-fetcher"
+import { ZAMMAD_API_TOKEN } from "@/utils/env"
 
 const PAGE_SIZE = 200
 

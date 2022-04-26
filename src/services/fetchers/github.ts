@@ -1,8 +1,9 @@
-import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
-import fetcher from "@/utils/fetcher"
-import { getJwt } from "@/utils/jwt"
 import pMap from "p-map"
 import { setTimeout } from "timers/promises"
+
+import { getJwt } from "@/utils/jwt"
+import fetcher from "@/utils/fetcher"
+import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
 
 const fetchGithubPage = async (jwt: string, cursor?: string) => {
   // if it is the query for the first page, we don't have a cursor

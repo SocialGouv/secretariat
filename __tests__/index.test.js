@@ -5,13 +5,7 @@ import Index from "../src/pages/index"
 import { session } from "../src/mocks/data"
 
 describe("when index page renders", () => {
-  it("displays a loader if session is undefined", () => {
-    useSession.mockImplementation(() => [false, false])
-    const { container } = render(<Index />)
-    expect(container).toMatchSnapshot()
-  })
-
-  it("displays login form if session is null", () => {
+  it("displays login form if session is invalid", () => {
     useSession.mockImplementation(() => ({
       data: null,
       status: "unauthenticated",

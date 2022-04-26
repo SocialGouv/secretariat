@@ -132,8 +132,8 @@ export const deleteOvhAccount = async (email: string) => {
       `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
     )
     return { status: 200, body: "" }
-  } catch ({ error, message }) {
-    console.error("Error while deleting OVH account:", { error, message })
-    return { status: error, body: message }
+  } catch (error) {
+    console.error("Error while deleting OVH account:", error)
+    return { status: 500, body: error }
   }
 }

@@ -1,3 +1,10 @@
+## [1.29.15](https://github.com/SocialGouv/secretariat/compare/v1.29.14...v1.29.15) (2022-04-26)
+
+
+### Bug Fixes
+
+* alerts style ([#246](https://github.com/SocialGouv/secretariat/issues/246)) ([59a298b](https://github.com/SocialGouv/secretariat/commit/59a298b7c25a2beeea7f7bb9bd108494c305ec75))
+
 ## [1.29.14](https://github.com/SocialGouv/secretariat/compare/v1.29.13...v1.29.14) (2022-04-26)
 
 

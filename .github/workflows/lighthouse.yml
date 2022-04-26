@@ -4,7 +4,7 @@ on: deployment_status
 
 concurrency:
   cancel-in-progress: true
-  group: lighthouse-${{ github.event.deployment_status.deployment_id }}
+  group: lighthouse-${{ github.event.deployment_status.id }}
 
 jobs:
   lhci:
@@ -17,8 +17,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - run: echo ID ${{ github.event.deployment_status.id }}
 
       - name: run lhci
         run: npx --yes @lhci/cli@latest autorun --collect.url=${{ github.event.deployment_status.environment_url }}

@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/SocialGouv/secretariat/compare/v1.30.0...v1.30.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* unused yarn resolution ([#247](https://github.com/SocialGouv/secretariat/issues/247)) ([e208adb](https://github.com/SocialGouv/secretariat/commit/e208adbd36d9f4de72dbbb08b688421c09068382))
+
 # [1.30.0](https://github.com/SocialGouv/secretariat/compare/v1.29.15...v1.30.0) (2022-04-26)
 
 

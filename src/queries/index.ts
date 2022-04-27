@@ -172,3 +172,18 @@ export const deleteUsers = gql`
     }
   }
 `
+
+export const deleteAccount = gql`
+  mutation deleteAccount($accountID: uuid!) {
+    delete_services_by_pk(id: $accountID) {
+      users {
+        services_aggregate {
+          aggregate {
+            count
+          }
+        }
+        id
+      }
+    }
+  }
+`

@@ -10,6 +10,8 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
+  deleteAccount as deleteAccountQuery,
+  deleteUsers,
 } from "@/queries/index"
 
 interface UserMapping {
@@ -143,7 +145,7 @@ export const detachUserServiceAccount = async (
   })
 }
 
-export const deleteAccount = async (account: ServiceAccount) => {
+export const revokeAccount = async (account: ServiceAccount) => {
   let accountKey =
     account.type === "ovh"
       ? account.data.primaryEmailAddress
@@ -155,6 +157,24 @@ export const deleteAccount = async (account: ServiceAccount) => {
     `/api/delete-account/${account.type}/${encodeURIComponent(accountKey)}`
   )
   return { status: response.status, body: await response.text() }
+}
+
+export const deleteAccount = async (account: ServiceAccount, token: string) => {
+  const {
+    delete_services_by_pk: {
+      users: {
+        services_aggregate: {
+          aggregate: { count: userAccountsCount },
+        },
+        id: userID,
+      },
+    },
+  } = await fetcher(deleteAccountQuery, token, {
+    accountID: account.id,
+  })
+  if (userAccountsCount === 0) {
+    await fetcher(deleteUsers, token, { userIds: [userID] })
+  }
 }
 
 const useUsers = () => {

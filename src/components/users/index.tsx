@@ -4,11 +4,12 @@ import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
 import useToken from "@/hooks/use-token"
 import {
-  deleteAccount,
+  revokeAccount,
   detachUserServiceAccount,
   mapUser,
   mergeUsers,
   mutateUser,
+  deleteAccount,
 } from "@/hooks/use-users"
 import { useEffect, useState } from "react"
 import { DndProvider } from "react-dnd"
@@ -56,7 +57,12 @@ const Users = () => {
   }
 
   const handleConfirmDeleteAccount = async () => {
-    return deleteAccount(accountToDelete as ServiceAccount)
+    const response = await revokeAccount(accountToDelete as ServiceAccount)
+    if (response.status < 300) {
+      await deleteAccount(accountToDelete as ServiceAccount, token)
+      mutate("/users")
+    }
+    return response
   }
 
   return (

@@ -57,7 +57,13 @@ const accountCreators: Record<ServiceName, any> = {
   zammad: zammadAccountCreator,
 }
 
-export const onboard = async ({ generic, ...accounts }: OnboardingData) => {
+export const onboard = async ({
+  firstname,
+  lastname,
+  arrivalDate,
+  departureDate,
+  ...accounts
+}: OnboardingData) => {
   return pReduce(
     SERVICES.filter((serviceName) => serviceName in accounts),
     async (acc, serviceName) => ({

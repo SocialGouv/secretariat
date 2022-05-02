@@ -136,13 +136,6 @@ interface ServiceAccountsMapping {
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
 
-interface OnboardingGenericData {
-  firstname: string
-  lastname: string
-  arrivalDate: Date
-  departureDate: Date
-}
-
 interface GithubOnboardingData {
   login: string
 }
@@ -166,7 +159,10 @@ interface ZammadOnboardingData {
 }
 
 interface OnboardingData {
-  generic: OnboardingGenericData
+  firstname: string
+  lastname: string
+  arrivalDate: Date
+  departureDate: Date
   github?: GithubOnboardingData
   matomo?: MatomoOnboardingData
   mattermost?: MattermostOnboardingData

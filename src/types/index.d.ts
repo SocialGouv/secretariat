@@ -135,3 +135,43 @@ interface ServiceAccountsMapping {
 
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
+
+interface OnboardingGenericData {
+  firstname: string
+  lastname: string
+  arrivalDate: Date
+  departureDate: Date
+}
+
+interface GithubOnboardingData {
+  login: string
+}
+interface MatomoOnboardingData {
+  email: string
+}
+interface MattermostOnboardingData {
+  email: string
+}
+interface NextcloudOnboardingData {
+  email: string
+}
+interface OvhOnboardingData {
+  email: string
+}
+interface SentryOnboardingData {
+  email: string
+}
+interface ZammadOnboardingData {
+  email: string
+}
+
+interface OnboardingData {
+  generic: OnboardingGenericData
+  github?: GithubOnboardingData
+  matomo?: MatomoOnboardingData
+  mattermost?: MattermostOnboardingData
+  nextcloud?: NextcloudOnboardingData
+  ovh?: OvhOnboardingData
+  sentry?: SentryOnboardingData
+  zammad?: ZammadOnboardingData
+}

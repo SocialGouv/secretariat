@@ -16,7 +16,7 @@ import {
   updateService,
 } from "../queries"
 
-export const DEFAULT_DELAY = 800
+const DEFAULT_DELAY = 800
 
 const servicesFetchers: Record<ServiceName, any> = {
   github: fetchGithubUsers,
@@ -146,7 +146,7 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-export const fetchAndUpdateServices = async (
+const fetchAndUpdateServices = async (
   jwt: string,
   enabledServices: ServiceName[] = SERVICES
 ) => {
@@ -186,3 +186,5 @@ export const fetchAndUpdateServices = async (
   stats.userDeletions = 0
   stats.accountDeletions = 0
 }
+
+export default fetchAndUpdateServices

@@ -11,8 +11,36 @@ import {
   SENTRY_API_TOKEN,
   ZAMMAD_API_TOKEN,
 } from "@/utils/env"
+import fetcher from "@/utils/fetcher"
+import {
+  deleteAccount as deleteAccountQuery,
+  deleteUsers,
+} from "@/queries/index"
+import { getJwt } from "@/utils/jwt"
 
-export const deleteGithubAccount = async (username: string) => {
+const deleteAccountOnSuccess = async (status: number, accountID: string) => {
+  if (status >= 300) {
+    return
+  }
+  const token = getJwt("webhook")
+  const {
+    delete_services_by_pk: {
+      users: {
+        services_aggregate: {
+          aggregate: { count: userAccountsCount },
+        },
+        id: userID,
+      },
+    },
+  } = await fetcher(deleteAccountQuery, token, {
+    accountID,
+  })
+  if (userAccountsCount === 0) {
+    await fetcher(deleteUsers, token, { userIds: [userID] })
+  }
+}
+
+const revokeGithubAccount = async (username: string, accountID: string) => {
   // Removes a member from the SocialGouv organization with its login
   const response = await fetch(
     `https://api.github.com/orgs/SocialGouv/memberships/${username}`,
@@ -24,10 +52,11 @@ export const deleteGithubAccount = async (username: string) => {
       },
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteMattermostAccount = async (userID: string) => {
+const revokeMattermostAccount = async (userID: string, accountID: string) => {
   // Disables a user with its ID
   const response = await fetch(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/users/${userID}`,
@@ -38,10 +67,11 @@ export const deleteMattermostAccount = async (userID: string) => {
       },
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteMatomoAccount = async (login: string) => {
+const revokeMatomoAccount = async (login: string, accountID: string) => {
   // Permanently deletes a user with its login
   const response = await fetch(
     "https://matomo.fabrique.social.gouv.fr/index.php",
@@ -53,10 +83,11 @@ export const deleteMatomoAccount = async (login: string) => {
       body: `module=API&token_auth=${MATOMO_API_TOKEN}&method=UsersManager.deleteUser&userLogin=${login}`,
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteZammadAccount = async (userID: string) => {
+const revokeZammadAccount = async (userID: string, accountID: string) => {
   // Disables a user with its ID
   const response = await fetch(
     `https://pastek.fabrique.social.gouv.fr/api/v1/users/${userID}`,
@@ -69,10 +100,11 @@ export const deleteZammadAccount = async (userID: string) => {
       body: JSON.stringify({ active: false }),
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteNextcloudAccount = async (userID: string) => {
+const revokeNextcloudAccount = async (userID: string, accountID: string) => {
   // Disables a user with its ID
   const response = await fetch(
     `https://nextcloud.fabrique.social.gouv.fr/ocs/v1.php/cloud/users/${userID}/disable`,
@@ -87,10 +119,11 @@ export const deleteNextcloudAccount = async (userID: string) => {
       },
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteSentryAccount = async (userID: string) => {
+const revokeSentryAccount = async (userID: string, accountID: string) => {
   // TODO is this one permanent ?
   const response = await fetch(
     `https://sentry.fabrique.social.gouv.fr/api/0/organizations/incubateur/members/${userID}/`,
@@ -101,10 +134,11 @@ export const deleteSentryAccount = async (userID: string) => {
       },
     }
   )
+  await deleteAccountOnSuccess(response.status, accountID)
   return { status: response.status, body: await response.text() }
 }
 
-export const deleteOvhAccount = async (email: string) => {
+const revokeOvhAccount = async (email: string, accountID: string) => {
   // Permanently deletes a user with its email
   const ovh = require("ovh")({
     endpoint: "ovh-eu",
@@ -118,8 +152,29 @@ export const deleteOvhAccount = async (email: string) => {
       "DELETE",
       `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
     )
+    await deleteAccountOnSuccess(200, accountID)
     return { status: 200, body: "" }
   } catch (error: any) {
     return { status: error.error, body: error.message }
   }
 }
+
+const accountRevokers: Record<ServiceName, AccountRevoker> = {
+  github: revokeGithubAccount,
+  matomo: revokeMatomoAccount,
+  mattermost: revokeMattermostAccount,
+  nextcloud: revokeNextcloudAccount,
+  ovh: revokeOvhAccount,
+  sentry: revokeSentryAccount,
+  zammad: revokeZammadAccount,
+}
+
+const revoke = async (
+  accountServiceID: string,
+  accountID: string,
+  serviceName: ServiceName
+) => {
+  return accountRevokers[serviceName](accountServiceID, accountID)
+}
+
+export default revoke

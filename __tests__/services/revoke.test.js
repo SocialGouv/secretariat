@@ -1,16 +1,16 @@
-import { rest } from "msw"
+import { rest, graphql } from "msw"
 import { setupServer } from "msw/node"
-import { createMocks } from "node-mocks-http"
-import handleDeleteGithubAccount from "../../src/pages/api/delete-account/github/[userLogin]"
-import handleDeleteMatomoAccount from "../../src/pages/api/delete-account/matomo/[userLogin]"
-import handleDeleteMattermostAccount from "../../src/pages/api/delete-account/mattermost/[userID]"
-import handleDeleteNextcloudAccount from "../../src/pages/api/delete-account/nextcloud/[userID]"
-import handleDeleteOvhAccount from "../../src/pages/api/delete-account/ovh/[email]"
-import handleDeleteSentryAccount from "../../src/pages/api/delete-account/sentry/[userID]"
-import handleDeleteZammadAccount from "../../src/pages/api/delete-account/zammad/[userID]"
+import revoke from "@/services/revoke"
+
+beforeEach(() => {
+  jest.resetModules()
+})
 
 jest.mock("next-auth/react", () => ({
   getSession: () => Promise.resolve(true),
+}))
+jest.mock("@/utils/jwt", () => ({
+  getJwt: () => "",
 }))
 
 const server = setupServer(
@@ -31,6 +31,23 @@ const server = setupServer(
   }),
   rest.delete(/sentry.fabrique.social.gouv.fr/, (req, res, ctx) => {
     return res(ctx.status(100), ctx.text("fake message"))
+  }),
+  graphql.mutation("deleteAccount", (_req, res, ctx) => {
+    return res(
+      ctx.data({
+        delete_services_by_pk: {
+          users: {
+            services_aggregate: {
+              aggregate: { count: 0 },
+            },
+            id: "fake user ID",
+          },
+        },
+      })
+    )
+  }),
+  graphql.mutation("deleteUsers", (_req, res, ctx) => {
+    return res(ctx.data({ affected_rows: [] }))
   })
 )
 
@@ -42,64 +59,75 @@ afterAll(() => {
   server.close()
 })
 
-let req, res
-beforeEach(() => {
-  jest.resetModules()
-  ;({ req, res } = createMocks({
-    method: "GET",
-    query: {
-      userLogin: "fake user",
-      userID: "fake user",
-      email: "fake user",
-    },
-  }))
-})
-
 describe("delete Github account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteGithubAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "github"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
 describe("delete Mattermost account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteMattermostAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "mattermost"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
 describe("delete Zammad account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteZammadAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "zammad"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
 describe("delete Sentry account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteSentryAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "sentry"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
 describe("delete Nextcloud account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteNextcloudAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "nextcloud"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
 describe("delete Matomo account", () => {
   it("should return status and body from service API", async () => {
-    await handleDeleteMatomoAccount(req, res)
-    expect(res._getStatusCode()).toEqual(100)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "matomo"
+    )
+    expect(status).toEqual(100)
+    expect(body).toEqual("fake message")
   })
 })
 
@@ -110,17 +138,25 @@ describe("delete Ovh account", () => {
         throw { error: 500, message: "fake message" }
       },
     }))
-    await handleDeleteOvhAccount(req, res)
-    expect(res._getStatusCode()).toEqual(500)
-    expect(res._getData()).toEqual("fake message")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "ovh"
+    )
+    expect(status).toEqual(500)
+    expect(body).toEqual("fake message")
   })
 
   it("should return status 200 and empty text", async () => {
     jest.mock("ovh", () => () => ({
       requestPromised: () => {},
     }))
-    await handleDeleteOvhAccount(req, res)
-    expect(res._getStatusCode()).toEqual(200)
-    expect(res._getData()).toEqual("")
+    const { status, body } = await revoke(
+      "fake account service ID",
+      "fake account ID",
+      "ovh"
+    )
+    expect(status).toEqual(200)
+    expect(body).toEqual("")
   })
 })

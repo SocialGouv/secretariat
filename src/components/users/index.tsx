@@ -9,7 +9,6 @@ import {
   mapUser,
   mergeUsers,
   mutateUser,
-  deleteAccount,
 } from "@/hooks/use-users"
 import { useEffect, useState } from "react"
 import { DndProvider } from "react-dnd"
@@ -57,12 +56,13 @@ const Users = () => {
   }
 
   const handleConfirmDeleteAccount = async () => {
-    const response = await revokeAccount(accountToDelete as ServiceAccount)
-    if (response.status < 300) {
-      await deleteAccount(accountToDelete as ServiceAccount, token)
+    const { status, body } = await revokeAccount(
+      accountToDelete as ServiceAccount
+    )
+    if (status < 300) {
       mutate("/users")
     }
-    return response
+    return { status, body }
   }
 
   return (

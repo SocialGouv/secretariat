@@ -133,5 +133,13 @@ interface ServiceAccountsMapping {
   mattermost: MattermostServiceAccount
 }
 
+type AccountRevoker = (
+  accountServiceID: string,
+  accountID: string
+) => Promise<{
+  status: number
+  body: string
+}>
+
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]

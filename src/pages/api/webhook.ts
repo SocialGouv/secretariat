@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
 import { GITHUB_WEBHOOK_SECRET } from "@/utils/env"
-import { fetchAndUpdateServices } from "@/services/fetch"
+import fetchAndUpdateServices from "@/services/fetch"
 
 const reqIsGithub = (req: NextApiRequest) => {
   const payload = JSON.stringify(req.body)

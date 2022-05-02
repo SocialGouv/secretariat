@@ -166,7 +166,7 @@ export const deleteServices = gql`
 `
 
 export const deleteUsers = gql`
-  mutation deleteServices($userIds: [uuid!] = "") {
+  mutation deleteUsers($userIds: [uuid!] = "") {
     delete_users(where: { id: { _in: $userIds } }) {
       affected_rows
     }

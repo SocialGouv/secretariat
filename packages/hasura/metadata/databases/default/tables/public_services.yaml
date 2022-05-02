@@ -49,7 +49,4 @@ update_permissions:
 delete_permissions:
 - permission:
     filter: {}
-  role: user
-- permission:
-    filter: {}
   role: webhook

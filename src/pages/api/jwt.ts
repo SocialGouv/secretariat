@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react"
 
 import type { NextApiRequest, NextApiResponse } from "next"
 
-const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
+const Jwt = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req })
 
   const { user: { role, teams } = { role: "anonymous", teams: [] } } =
@@ -14,4 +14,4 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({ token })
 }
 
-export default Endpoint
+export default Jwt

@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
 import { GITHUB_WEBHOOK_SECRET } from "@/utils/env"
-import fetchAndUpdateServices from "@/services/fetch"
+import fetch from "@/services/fetch"
 
 const reqIsGithub = (req: NextApiRequest) => {
   const payload = JSON.stringify(req.body)
@@ -20,7 +20,7 @@ const reqIsGithub = (req: NextApiRequest) => {
   )
 }
 
-const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
+const Webhook = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
   // if (!reqIsGithub(req)) {
   //   res.status(403).send("Forbidden")
@@ -30,9 +30,9 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the JWT needed to query Hasura with update privileges
   const jwt = getJwt("webhook")
 
-  fetchAndUpdateServices(jwt)
+  fetch(jwt)
 
   res.status(200).send("OK")
 }
 
-export default Endpoint
+export default Webhook

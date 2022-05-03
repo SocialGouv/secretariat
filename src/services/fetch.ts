@@ -146,7 +146,7 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-const fetchAndUpdateServices = async (
+const fetch = async (
   jwt: string,
   enabledServices: ServiceName[] = SERVICES
 ) => {
@@ -187,4 +187,4 @@ const fetchAndUpdateServices = async (
   stats.accountDeletions = 0
 }
 
-export default fetchAndUpdateServices
+export default fetch

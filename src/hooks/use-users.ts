@@ -10,8 +10,6 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
-  deleteAccount as deleteAccountQuery,
-  deleteUsers,
 } from "@/queries/index"
 
 interface UserMapping {

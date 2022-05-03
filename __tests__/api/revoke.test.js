@@ -18,7 +18,7 @@ beforeEach(() => {
     body: {
       accountServiceID: "fake accountServiceID",
       accountID: "fake accountID",
-      serviceName: "fake serviceName",
+      serviceName: "github",
     },
   }))
 })
@@ -31,8 +31,17 @@ it("should call the revoke service and return its return value", async () => {
   expect(revoke).toHaveBeenCalledWith(
     "fake accountServiceID",
     "fake accountID",
-    "fake serviceName"
+    "github"
   )
+})
+
+it("should return 400 if service name is incorrect", async () => {
+  getSession.mockImplementation(() => Promise.resolve(true))
+  req.body.serviceName = "fake serviceName"
+  await handleRevoke(req, res)
+  expect(res._getStatusCode()).toEqual(400)
+  expect(res._getData()).toEqual("unknown service name")
+  expect(revoke).not.toHaveBeenCalled()
 })
 
 it("should return 403 if no next-auth session", async () => {

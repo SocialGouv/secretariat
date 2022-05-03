@@ -1,4 +1,4 @@
-import fetchAndUpdateServices from "@/services/fetch"
+import sync from "@/services/sync"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import { fetchMatomoUsers } from "@/services/fetchers/matomo"
 import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
@@ -52,7 +52,7 @@ jest.mock("@/services/fetchers/zammad", () => ({
 }))
 
 it("should call every fetcher", async () => {
-  await fetchAndUpdateServices("jwt")
+  await sync()
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     expect(serviceFetcher).toHaveBeenCalled()
   }

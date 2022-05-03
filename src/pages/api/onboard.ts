@@ -2,7 +2,7 @@ import { onboard } from "@/services/onboard"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
 
-const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
+const Onboard = async (req: NextApiRequest, res: NextApiResponse) => {
   if (await getSession({ req })) {
     const { onboardingData }: { onboardingData: OnboardingData } = req.body
     const serviceResponses = await onboard(onboardingData)
@@ -12,4 +12,4 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default Endpoint
+export default Onboard

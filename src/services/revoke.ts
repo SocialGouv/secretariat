@@ -22,7 +22,7 @@ const deleteAccountOnSuccess = async (status: number, accountID: string) => {
   if (status >= 300) {
     return
   }
-  const token = getJwt("webhook")
+  const jwt = getJwt("webhook")
   const {
     delete_services_by_pk: {
       users: {
@@ -32,11 +32,11 @@ const deleteAccountOnSuccess = async (status: number, accountID: string) => {
         id: userID,
       },
     },
-  } = await fetcher(deleteAccountQuery, token, {
+  } = await fetcher(deleteAccountQuery, jwt, {
     accountID,
   })
   if (userAccountsCount === 0) {
-    await fetcher(deleteUsers, token, { userIds: [userID] })
+    await fetcher(deleteUsers, jwt, { userIds: [userID] })
   }
 }
 

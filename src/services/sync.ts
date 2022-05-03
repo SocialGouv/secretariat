@@ -6,6 +6,7 @@ import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import fetcher from "@/utils/fetcher"
+import { getJwt } from "@/utils/jwt"
 import SERVICES from "@/utils/SERVICES"
 import {
   deleteServices,
@@ -146,10 +147,9 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-const fetch = async (
-  jwt: string,
-  enabledServices: ServiceName[] = SERVICES
-) => {
+const sync = async (enabledServices: ServiceName[] = SERVICES) => {
+  const jwt = getJwt("webhook")
+
   // Remember the users list for all services, to clean the deleted users afterwards
   const existingServicesIds: Record<string, string[]> = {}
   for (const serviceName of enabledServices) {
@@ -187,4 +187,4 @@ const fetch = async (
   stats.accountDeletions = 0
 }
 
-export default fetch
+export default sync

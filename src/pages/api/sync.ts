@@ -1,10 +1,7 @@
-import { createHmac, timingSafeEqual } from "crypto"
-
-import type { NextApiRequest, NextApiResponse } from "next"
-
-import { getJwt } from "@/utils/jwt"
+import sync from "@/services/sync"
 import { GITHUB_WEBHOOK_SECRET } from "@/utils/env"
-import fetch from "@/services/fetch"
+import { createHmac, timingSafeEqual } from "crypto"
+import type { NextApiRequest, NextApiResponse } from "next"
 
 const reqIsGithub = (req: NextApiRequest) => {
   const payload = JSON.stringify(req.body)
@@ -20,19 +17,15 @@ const reqIsGithub = (req: NextApiRequest) => {
   )
 }
 
-const Webhook = async (req: NextApiRequest, res: NextApiResponse) => {
+const Sync = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO run this only when deployed ?
   // if (!reqIsGithub(req)) {
   //   res.status(403).send("Forbidden")
   //   return
   // }
 
-  // Get the JWT needed to query Hasura with update privileges
-  const jwt = getJwt("webhook")
-
-  fetch(jwt)
-
-  res.status(200).send("OK")
+  sync()
+  res.status(202).end()
 }
 
-export default Webhook
+export default Sync

@@ -12,6 +12,7 @@ jest.mock("@/services/revoke", () =>
 
 let req, res
 beforeEach(() => {
+  revoke.mockClear()
   ;({ req, res } = createMocks({
     method: "POST",
     body: {
@@ -32,4 +33,11 @@ it("should call the revoke service and return its return value", async () => {
     "fake accountID",
     "fake serviceName"
   )
+})
+
+it("should return 403 if no next-auth session", async () => {
+  getSession.mockImplementation(() => Promise.resolve(false))
+  await handleRevoke(req, res)
+  expect(res._getStatusCode()).toEqual(403)
+  expect(revoke).not.toHaveBeenCalled()
 })

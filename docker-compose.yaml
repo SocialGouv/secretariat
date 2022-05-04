@@ -15,20 +15,8 @@ services:
   hasura:
     build: packages/hasura
     env_file: packages/hasura/.env
-    ports:
-      - "8080:8080"
     restart: always
-
-  # backend:
-  #   build: packages/backend
-  #   ports:
-  #     - "3000:3000"
-
-  # frontend:
-  #   build: packages/frontend
-  #   env_file: packages/frontend/.env
-  #   ports:
-  #     - "80:80"
+    network_mode: host
 
 volumes:
   db_data:

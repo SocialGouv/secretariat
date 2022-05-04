@@ -2,8 +2,8 @@ actions: []
 custom_types:
   enums: []
   input_objects:
-  - name: SampleInput
+    - name: SampleInput
   objects:
-  - name: SampleOutput
-  - name: ExpressResponse
+    - name: SampleOutput
+    - name: ExpressResponse
   scalars: []

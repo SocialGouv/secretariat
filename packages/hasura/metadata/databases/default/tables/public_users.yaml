@@ -1,53 +1,53 @@
 table:
-  name: users
   schema: public
+  name: users
 array_relationships:
-- name: services
-  using:
-    foreign_key_constraint_on:
-      column: user_id
-      table:
-        name: services
-        schema: public
+  - name: services
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: services
 insert_permissions:
-- permission:
-    backend_only: false
-    check: {}
-    columns: []
-  role: user
-- permission:
-    backend_only: false
-    check: {}
-    columns: []
-  role: webhook
+  - role: user
+    permission:
+      check: {}
+      columns: []
+      backend_only: false
+  - role: webhook
+    permission:
+      check: {}
+      columns: []
+      backend_only: false
 select_permissions:
-- permission:
-    allow_aggregations: true
-    columns:
-    - arrival
-    - departure
-    - id
-    - updated_at
-    filter: {}
-  role: user
-- permission:
-    allow_aggregations: true
-    columns:
-    - id
-    filter: {}
-  role: webhook
+  - role: user
+    permission:
+      columns:
+        - arrival
+        - departure
+        - id
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: webhook
+    permission:
+      columns:
+        - id
+      filter: {}
+      allow_aggregations: true
 update_permissions:
-- permission:
-    check: null
-    columns:
-    - arrival
-    - departure
-    filter: {}
-  role: user
+  - role: user
+    permission:
+      columns:
+        - arrival
+        - departure
+      filter: {}
+      check: null
 delete_permissions:
-- permission:
-    filter: {}
-  role: user
-- permission:
-    filter: {}
-  role: webhook
+  - role: user
+    permission:
+      filter: {}
+  - role: webhook
+    permission:
+      filter: {}

@@ -17,7 +17,7 @@
     "jsonwebtoken": "8.5.1",
     "lodash.isequal": "4.5.0",
     "next": "12.1.0",
-    "next-auth": "4.3.2",
+    "next-auth": "4.3.4",
     "ovh": "2.0.3",
     "p-map": "4.0.0",
     "p-reduce": "3.0.0",

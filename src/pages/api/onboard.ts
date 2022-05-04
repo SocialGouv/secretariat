@@ -4,7 +4,7 @@ import { getSession } from "next-auth/react"
 
 const Onboard = async (req: NextApiRequest, res: NextApiResponse) => {
   if (await getSession({ req })) {
-    const { onboardingData }: { onboardingData: OnboardingData } = req.body
+    const onboardingData: OnboardingData = req.body
     const serviceResponses = await onboard(onboardingData)
     res.status(200).json(serviceResponses)
   } else {

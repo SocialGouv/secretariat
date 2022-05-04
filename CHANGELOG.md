@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/SocialGouv/secretariat/compare/v1.31.0...v1.31.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* delete account in DB ([#249](https://github.com/SocialGouv/secretariat/issues/249)) ([76f3299](https://github.com/SocialGouv/secretariat/commit/76f3299e1c8b8759b668b71ae3054c7527466596))
+
 # [1.31.0](https://github.com/SocialGouv/secretariat/compare/v1.30.1...v1.31.0) (2022-05-04)
 
 

@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/SocialGouv/secretariat/compare/v1.30.1...v1.31.0) (2022-05-04)
+
+
+### Features
+
+* Onboarding api calls ([#250](https://github.com/SocialGouv/secretariat/issues/250)) ([ff57fff](https://github.com/SocialGouv/secretariat/commit/ff57fff68eb6f9aa83821c47b19d61ef870a030a))
+
 ## [1.30.1](https://github.com/SocialGouv/secretariat/compare/v1.30.0...v1.30.1) (2022-04-27)
 
 

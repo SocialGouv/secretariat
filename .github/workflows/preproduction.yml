@@ -48,6 +48,8 @@ jobs:
           dockercontext: ./packages/hasura
           token: ${{ secrets.GITHUB_TOKEN }}
           imageName: secretariat/hasura
+          dockerbuildargs: |
+            APP_URL=https://secretariat-preprod.dev.fabrique.social.gouv.fr
 
   ##############################################################################
   ## DEPLOY BACKEND

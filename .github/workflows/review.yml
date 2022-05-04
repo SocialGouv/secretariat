@@ -55,6 +55,12 @@ jobs:
     name: Build & Register Hasura
     runs-on: ubuntu-latest
     steps:
+      - name: Get branch slug and commit sha
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          BRANCH_SLUG=$(npx @socialgouv/env-slug ${BRANCH_NAME})
+          echo "BRANCH_SLUG=${BRANCH_SLUG}" >> $GITHUB_ENV
+    
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
@@ -62,6 +68,8 @@ jobs:
           dockercontext: ./packages/hasura
           token: ${{ secrets.GITHUB_TOKEN }}
           imageName: secretariat/hasura
+          dockerbuildargs: |
+            APP_URL=https://secretariat-${{ env.BRANCH_SLUG }}.dev.fabrique.social.gouv.fr
 
   ##############################################################################
   ## DEPLOY

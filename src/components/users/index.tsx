@@ -4,7 +4,7 @@ import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
 import useToken from "@/hooks/use-token"
 import {
-  deleteAccount,
+  revokeAccount,
   detachUserServiceAccount,
   mapUser,
   mergeUsers,
@@ -56,7 +56,13 @@ const Users = () => {
   }
 
   const handleConfirmDeleteAccount = async () => {
-    return deleteAccount(accountToDelete as ServiceAccount)
+    const { status, body } = await revokeAccount(
+      accountToDelete as ServiceAccount
+    )
+    if (status < 300) {
+      mutate("/users")
+    }
+    return { status, body }
   }
 
   return (

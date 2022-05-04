@@ -143,17 +143,25 @@ export const detachUserServiceAccount = async (
   })
 }
 
-export const deleteAccount = async (account: ServiceAccount) => {
-  let accountKey =
+export const revokeAccount = async (account: ServiceAccount) => {
+  let accountServiceID =
     account.type === "ovh"
       ? account.data.primaryEmailAddress
       : account.type === "github" || account.type === "matomo"
       ? account.data.login
       : account.data.id
 
-  const response = await fetch(
-    `/api/delete-account/${account.type}/${encodeURIComponent(accountKey)}`
-  )
+  const response = await fetch("/api/revoke", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      serviceName: account.type,
+      accountID: account.id,
+      accountServiceID,
+    }),
+  })
   return { status: response.status, body: await response.text() }
 }
 

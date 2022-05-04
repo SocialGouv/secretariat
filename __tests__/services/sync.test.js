@@ -1,4 +1,4 @@
-import { DEFAULT_DELAY, fetchAndUpdateServices } from "@/services/fetch"
+import sync from "@/services/sync"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import { fetchMatomoUsers } from "@/services/fetchers/matomo"
 import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
@@ -51,12 +51,8 @@ jest.mock("@/services/fetchers/zammad", () => ({
   fetchZammadUsers: jest.fn(() => []),
 }))
 
-it("should not be too low to avoid spamming remote APIs", () => {
-  expect(DEFAULT_DELAY).toBeGreaterThanOrEqual(800)
-})
-
 it("should call every fetcher", async () => {
-  await fetchAndUpdateServices("jwt")
+  await sync()
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     expect(serviceFetcher).toHaveBeenCalled()
   }

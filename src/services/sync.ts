@@ -6,6 +6,7 @@ import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import fetcher from "@/utils/fetcher"
+import { getJwt } from "@/utils/jwt"
 import SERVICES from "@/utils/SERVICES"
 import {
   deleteServices,
@@ -16,7 +17,7 @@ import {
   updateService,
 } from "../queries"
 
-export const DEFAULT_DELAY = 800
+const DEFAULT_DELAY = 800
 
 const servicesFetchers: Record<ServiceName, any> = {
   github: fetchGithubUsers,
@@ -146,10 +147,9 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-export const fetchAndUpdateServices = async (
-  jwt: string,
-  enabledServices: ServiceName[] = SERVICES
-) => {
+const sync = async (enabledServices: ServiceName[] = SERVICES) => {
+  const jwt = getJwt("webhook")
+
   // Remember the users list for all services, to clean the deleted users afterwards
   const existingServicesIds: Record<string, string[]> = {}
   for (const serviceName of enabledServices) {
@@ -186,3 +186,5 @@ export const fetchAndUpdateServices = async (
   stats.userDeletions = 0
   stats.accountDeletions = 0
 }
+
+export default sync

@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/SocialGouv/secretariat/compare/v1.31.2...v1.32.0) (2022-05-04)
+
+
+### Features
+
+* cron ([#252](https://github.com/SocialGouv/secretariat/issues/252)) ([f5511e4](https://github.com/SocialGouv/secretariat/commit/f5511e4530386b0a01988fdc8eabab8ccb888cb9))
+
 ## [1.31.2](https://github.com/SocialGouv/secretariat/compare/v1.31.1...v1.31.2) (2022-05-04)
 
 

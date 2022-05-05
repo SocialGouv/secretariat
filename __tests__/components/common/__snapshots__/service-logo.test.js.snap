@@ -17,6 +17,7 @@ exports[`renders large service logo 1`] = `
     </span>
     <img
       alt="matomo logo"
+      class=""
       data-nimg="intrinsic"
       decoding="async"
       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -45,6 +46,7 @@ exports[`renders medium service logo 1`] = `
     </span>
     <img
       alt="matomo logo"
+      class=""
       data-nimg="intrinsic"
       decoding="async"
       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -73,6 +75,7 @@ exports[`renders small service logo 1`] = `
     </span>
     <img
       alt="matomo logo"
+      class=""
       data-nimg="intrinsic"
       decoding="async"
       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

@@ -25,7 +25,7 @@ const ServiceLogo = ({
   disabled = false,
 }: {
   name: ServiceName
-  disabled: boolean
+  disabled?: boolean
   size?: "sm" | "md" | "lg" | "xl" | "2xl"
 }) => {
   const { isDarkTheme } = useIsDarkTheme()

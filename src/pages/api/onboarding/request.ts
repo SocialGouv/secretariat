@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { deleteGithubAccount } from "@/services/delete-account"
-import { getSession } from "next-auth/react"
+
+import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
 import { createOnboardingRequest } from "@/queries/index"
-import { getJwt } from "@/utils/jwt"
 import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
 
 const sendEmail = async (email: Record<string, unknown>) => {
@@ -59,19 +58,6 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   res.json({ id })
-  // console.log("ID", id)
-  // const result = await fetcher(insertOnboardingRequest, token, {
-  //   request: { data: req.body },
-  // })
-  // console.log("ID", result)
-  // res.end()
-  // if (await getSession({ req })) {
-  //   const { userLogin } = req.query
-  //   const { status, body } = await deleteGithubAccount(userLogin as string)
-  //   res.status(status).send(body)
-  // } else {
-  //   res.status(403).end()
-  // }
 }
 
 export default Endpoint

@@ -18,6 +18,7 @@
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
+@use "./components/onboarding.scss";
 @use "./components/users/user-item.scss";
 @use "./components/users/user-template.scss";
 @use "./components/users/user-header.scss";
@@ -60,6 +61,8 @@ main {
     flex-1
     mx-auto
     container;
+
+  min-height: calc(100vh - 24rem);
 
   & > .loader {
     height: calc(100vh - 9.5rem);

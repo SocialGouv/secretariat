@@ -45,14 +45,14 @@ const SearchFilters = () => {
           {Object.keys(filters?.services || []).map((service, i) => (
             <div
               key={i}
+              className="service"
               onClick={() => handleServiceClick(service)}
-              className={`service ${
-                filters?.services && filters.services[service]
-                  ? ""
-                  : " opacity-25 dark:opacity-35"
-              }`}
             >
-              <ServiceLogo name={service as ServiceName} size="sm" />
+              <ServiceLogo
+                size="sm"
+                name={service as ServiceName}
+                disabled={!filters?.services || !filters.services[service]}
+              />
             </div>
           ))}
         </div>

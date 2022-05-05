@@ -21,15 +21,12 @@ const UserTemplate = ({ user }: { user: User }) => {
         </div>
         <div className="services">
           {SERVICES.map((service, i) => (
-            <div
-              key={i}
-              className={
-                user.services.find((s) => s.type === service)
-                  ? ""
-                  : "opacity-25 dark:opacity-35"
-              }
-            >
-              <ServiceLogo name={service} size="sm" />
+            <div key={i}>
+              <ServiceLogo
+                size="sm"
+                name={service}
+                disabled={!user.services.find((s) => s.type === service)}
+              />
             </div>
           ))}
         </div>

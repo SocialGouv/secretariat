@@ -22,3 +22,7 @@ export const GITHUB_ID = process.env.GITHUB_ID as string
 export const GITHUB_SECRET = process.env.GITHUB_SECRET as string
 
 export const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET as string
+
+// Tipimail API credentials
+export const TIPIMAIL_API_KEY = process.env.TIPIMAIL_API_KEY as string
+export const TIPIMAIL_API_USER = process.env.TIPIMAIL_API_USER as string

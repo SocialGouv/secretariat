@@ -187,3 +187,24 @@ export const deleteAccount = gql`
     }
   }
 `
+
+export const createOnboardingRequest = gql`
+  mutation createOnboardingRequest(
+    $request: onboarding_requests_insert_input!
+  ) {
+    insert_onboarding_requests_one(object: $request) {
+      id
+    }
+  }
+`
+
+export const confirmOnboardingRequest = gql`
+  mutation confirmOnboardingRequest(
+    $data: onboarding_requests_set_input!
+    $cols: onboarding_requests_pk_columns_input!
+  ) {
+    update_onboarding_requests_by_pk(pk_columns: $cols, _set: $data) {
+      id
+    }
+  }
+`

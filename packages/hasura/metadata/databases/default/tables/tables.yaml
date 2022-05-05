@@ -1,2 +1,3 @@
+- "!include public_onboarding_requests.yaml"
 - "!include public_services.yaml"
 - "!include public_users.yaml"

@@ -1,4 +1,10 @@
-const Alert = ({ message, type }: { message: string; type: string }) => (
+const Alert = ({
+  message,
+  type,
+}: {
+  message: string
+  type: "info" | "success" | "warning" | "error"
+}) => (
   <div className={`alert ${type}`}>
     <div className="icon">
       {type === "info" && <i className="ri-information-fill"></i>}

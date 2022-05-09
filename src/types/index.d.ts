@@ -168,3 +168,17 @@ interface OnboardingData {
   departureDate: Date
   services: Record<ServiceName, Record<string, unknown>>
 }
+
+interface OnboardingRequest {
+  id
+  created_at: Date
+  confirmed: boolean
+  data: {
+    email: string
+    endDate: string
+    message: string
+    lastName: string
+    firstName: string
+    startDate: string
+  }
+}

@@ -165,7 +165,7 @@ const ServiceAccounts = ({
   </div>
 )
 
-const OnboardingForm = () => {
+const OnboardingForm = ({ request }: { request?: OnboardingRequest }) => {
   const [data, setData] = useState({
     email: "",
     message: "",
@@ -195,6 +195,10 @@ const OnboardingForm = () => {
     if (!result || !result.ok) setStatus("error")
     else if (result.ok) setStatus("success")
   }
+
+  useEffect(() => {
+    if (request?.data) setData(request.data)
+  }, [request])
 
   return (
     <div className="onboarding">

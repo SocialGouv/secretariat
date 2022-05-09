@@ -1,3 +1,12 @@
 table:
   schema: public
   name: onboarding_requests
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - confirmed
+        - data
+        - created_at
+        - id
+      filter: {}

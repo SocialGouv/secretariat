@@ -2,24 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
+import sendEmail from "@/utils/send-email"
 import { createOnboardingRequest } from "@/queries/index"
-import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
-
-const sendEmail = async (email: Record<string, unknown>) => {
-  console.log("TIPIMAIL_API_KEY", TIPIMAIL_API_KEY)
-  console.log("TIPIMAIL_API_USER", TIPIMAIL_API_USER)
-  email.apiKey = TIPIMAIL_API_KEY
-  const result = await fetch("https://api.tipimail.com/v1/messages/send", {
-    method: "POST",
-    body: JSON.stringify(email),
-    headers: {
-      "Content-Type": "application/json",
-      "X-Tipimail-ApiKey": TIPIMAIL_API_KEY,
-      "X-Tipimail-ApiUser": TIPIMAIL_API_USER,
-    },
-  })
-  console.log("result", result)
-}
 
 const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt("admin")
@@ -36,7 +20,7 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
     to: [
       {
         address: req.body.email,
-        personalName: `${req.body.firstName} ${req.body.lastName}`,
+        // personalName: `${req.body.firstName} ${req.body.lastName}`,
       },
     ],
     msg: {

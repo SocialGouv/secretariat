@@ -28,18 +28,18 @@ export const mergeUsers = gql`
   }
 `
 
-const userServicesFragment = gql`
-  fragment userServicesFields on users {
-    id
-    ovh
-    github
-    matomo
-    sentry
-    zammad
-    nextcloud
-    mattermost
-  }
-`
+// const userServicesFragment = gql`
+//   fragment userServicesFields on users {
+//     id
+//     ovh
+//     github
+//     matomo
+//     sentry
+//     zammad
+//     nextcloud
+//     mattermost
+//   }
+// `
 
 export const getUsers = gql`
   query getUsers {
@@ -48,6 +48,23 @@ export const getUsers = gql`
     }
   }
   ${userFragment}
+`
+
+export const getCoreTeamUsers = gql`
+  query getCoreTeamUsers {
+    organization(login: "socialgouv") {
+      team(slug: "core-team") {
+        members {
+          nodes {
+            id
+            name
+            login
+            email
+          }
+        }
+      }
+    }
+  }
 `
 
 export const getUserTeams = gql`
@@ -63,7 +80,7 @@ export const getUserTeams = gql`
 `
 
 export const getRemoteGithubUsers = gql`
-  query GetGithubUsers($cursor: String) {
+  query getGithubUsers($cursor: String) {
     organization(login: "SocialGouv") {
       membersWithRole(first: 100, after: $cursor) {
         nodes {
@@ -83,7 +100,7 @@ export const getRemoteGithubUsers = gql`
 `
 
 export const getRemoteGithubTeams = gql`
-  query GetRemoteGithubTeams($userLogins: [String!]) {
+  query getRemoteGithubTeams($userLogins: [String!]) {
     organization(login: "SocialGouv") {
       teams(userLogins: $userLogins, first: 100) {
         nodes {
@@ -188,6 +205,17 @@ export const deleteAccount = gql`
   }
 `
 
+export const getOnboardingRequest = gql`
+  query getOnboardingRequest($id: uuid!) {
+    onboarding_requests(where: { id: { _eq: $id }, confirmed: { _eq: true } }) {
+      id
+      data
+      created_at
+      confirmed
+    }
+  }
+`
+
 export const createOnboardingRequest = gql`
   mutation createOnboardingRequest(
     $request: onboarding_requests_insert_input!
@@ -205,6 +233,9 @@ export const confirmOnboardingRequest = gql`
   ) {
     update_onboarding_requests_by_pk(pk_columns: $cols, _set: $data) {
       id
+      data
+      confirmed
+      created_at
     }
   }
 `

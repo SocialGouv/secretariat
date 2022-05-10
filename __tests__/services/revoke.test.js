@@ -2,9 +2,6 @@ import revoke from "@/services/revoke"
 import { graphql, rest } from "msw"
 import { setupServer } from "msw/node"
 
-jest.mock("next-auth/react", () => ({
-  getSession: () => Promise.resolve(true),
-}))
 jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
@@ -218,9 +215,9 @@ describe("delete Ovh account", () => {
     expect(body).toEqual("fake message")
   })
 
-  it("should return status 200 and empty text", async () => {
+  it("should return status 200 and data", async () => {
     jest.mock("ovh", () => () => ({
-      requestPromised: () => {},
+      requestPromised: () => Promise.resolve("fake data"),
     }))
     const { status, body } = await revoke(
       "fake account service ID",
@@ -228,6 +225,6 @@ describe("delete Ovh account", () => {
       "ovh"
     )
     expect(status).toEqual(200)
-    expect(body).toEqual("")
+    expect(body).toEqual("fake data")
   })
 })

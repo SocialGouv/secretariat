@@ -115,8 +115,8 @@ export const getServicesMatchingId = gql`
 `
 
 export const insertUser = gql`
-  mutation insertUser {
-    insert_users_one(object: {}) {
+  mutation insertUser($user: users_insert_input = {}) {
+    insert_users_one(object: $user) {
       id
     }
   }

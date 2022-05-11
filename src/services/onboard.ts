@@ -8,6 +8,11 @@ import pReduce from "p-reduce"
 import strongPassword from "@/utils/strong-password"
 import ovh from "@/utils/ovh"
 import statusOk from "@/utils/status-ok"
+import fetcher from "@/utils/fetcher"
+import { insertService, insertUser } from "../queries"
+import { getJwt } from "@/utils/jwt"
+
+const ACCOUNTS_TO_CREATE_ON_SUCCESS = ["ovh", "mattermost"]
 
 const githubAccountCreator = async ({
   login,
@@ -82,17 +87,30 @@ const ovhAccountCreator = async ({
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
+  const login = `${firstname}.${lastname}`
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {
-      displayName: `${firstname}.${lastname}`,
-      login: `${firstname}.${lastname}`,
+      displayName: login,
+      login,
       domain: "fabrique.social.gouv.fr",
     }
   )
+
+  // Fetch account data
+  const accountResponse = await ovh(
+    "GET",
+    `/email/pro/${OVH_SERVICE_NAME}/account/${login}@fabrique.social.gouv.fr`
+  )
+
   return response.success
-    ? { status: 200, body: response.data }
+    ? {
+        status: 200,
+        body: accountResponse.success
+          ? accountResponse.data
+          : accountResponse.error,
+      }
     : { status: response.error.error, body: response.error.message }
 }
 
@@ -102,8 +120,45 @@ const accountCreators: Record<string, any> = {
   ovh: ovhAccountCreator,
 }
 
+const shouldInsertAccount = (serviceName: string, response: APIResponse) =>
+  statusOk(response.status) &&
+  ACCOUNTS_TO_CREATE_ON_SUCCESS.includes(serviceName)
+
+const createAccountsOnSuccess = async (
+  {
+    departureDate: departure,
+    arrivalDate: arrival,
+  }: { arrivalDate: Date; departureDate: Date },
+  responses: Record<string, APIResponse>
+) => {
+  if (
+    Object.entries(responses).some(([serviceName, response]) =>
+      shouldInsertAccount(serviceName, response)
+    )
+  ) {
+    const jwt = getJwt("webhook")
+
+    // First, create an associated user entry
+    const {
+      insert_users_one: { id: userId },
+    } = await fetcher(insertUser, jwt, { user: { arrival, departure } })
+
+    for (const [serviceName, response] of Object.entries(responses)) {
+      if (shouldInsertAccount(serviceName, response)) {
+        await fetcher(insertService, jwt, {
+          service: {
+            data: responses[serviceName].body,
+            user_id: userId,
+            type: serviceName,
+          },
+        })
+      }
+    }
+  }
+}
+
 const onboard = async ({ services, ...user }: OnboardingData) => {
-  // Create required accounts and insert accounts in DB on success
+  // Create required accounts
   const servicesCreationResponses = await pReduce(
     SERVICES.filter((serviceName) => serviceName in services),
     async (acc, serviceName) => ({
@@ -115,6 +170,8 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
     }),
     {}
   )
+
+  await createAccountsOnSuccess(user, servicesCreationResponses)
 
   return servicesCreationResponses
 }

@@ -175,10 +175,10 @@ interface OnboardingRequest {
   confirmed: boolean
   data: {
     email: string
-    endDate: string
+    departure: string
     message: string
     lastName: string
     firstName: string
-    startDate: string
+    arrival: string
   }
 }

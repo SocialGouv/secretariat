@@ -5,7 +5,7 @@ import fetcher from "@/utils/fetcher"
 import sendEmail from "@/utils/send-email"
 import { createOnboardingRequest } from "@/queries/index"
 
-const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
+const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt("admin")
   console.log("BODY", req.body, req.body.data)
   const {
@@ -44,4 +44,4 @@ const Endpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json({ id })
 }
 
-export default Endpoint
+export default Request

@@ -9,12 +9,12 @@ interface FormData {
   message: string
   lastName: string
   firstName: string
-  endDate: string | number | readonly string[] | undefined
-  startDate: string | number | readonly string[] | undefined
+  arrival: string | number | readonly string[] | undefined
+  departure: string | number | readonly string[] | undefined
 }
 
 const Info = ({
-  data: { firstName, lastName, email, startDate, endDate, message },
+  data: { firstName, lastName, email, arrival, departure, message },
   handleChange,
 }: {
   data: FormData
@@ -60,25 +60,25 @@ const Info = ({
         onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
     </label>
-    <label htmlFor="startDate">
+    <label htmlFor="arrival">
       Date de début:
       <input
         required
         type="date"
-        id="startDate"
-        name="startDate"
-        value={startDate}
+        id="arrival"
+        name="arrival"
+        value={arrival}
         onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
     </label>
-    <label htmlFor="endDate">
+    <label htmlFor="departure">
       Date de fin:
       <input
         required
         type="date"
-        id="endDate"
-        name="endDate"
-        value={endDate}
+        id="departure"
+        name="departure"
+        value={departure}
         onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
     </label>
@@ -171,8 +171,8 @@ const OnboardingForm = ({ request }: { request?: OnboardingRequest }) => {
     message: "",
     lastName: "",
     firstName: "",
-    endDate: new Date().toLocaleDateString("en-CA"),
-    startDate: new Date().toLocaleDateString("en-CA"),
+    arrival: new Date().toLocaleDateString("en-CA"),
+    departure: new Date().toLocaleDateString("en-CA"),
   })
 
   const [status, setStatus] = useState<"edit" | "success" | "error">("edit")
@@ -186,11 +186,17 @@ const OnboardingForm = ({ request }: { request?: OnboardingRequest }) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const result = await fetcher("/api/onboarding/request", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "content-type": "application/json" },
-    })
+    let result
+    if (request?.id) {
+      //
+      //
+    } else {
+      result = await fetcher("/api/onboarding/request", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "content-type": "application/json" },
+      })
+    }
     console.log("RESULT", result)
     if (!result || !result.ok) setStatus("error")
     else if (result.ok) setStatus("success")
@@ -201,17 +207,7 @@ const OnboardingForm = ({ request }: { request?: OnboardingRequest }) => {
   }, [request])
 
   return (
-    <div className="onboarding">
-      <div className="flex mt-8">
-        <div className="text-7xl flex items-center pr-6">🛳️</div>
-        <div>
-          <h2>Embarquement à la Fabrique Numérique des Ministères Sociaux</h2>
-          <p className="pt-2">
-            Remplissez le formulaire suivant afin d&apos;effectuer une demande
-            d&apos;embarquement à la Fabrique Numérique des Ministères Sociaux.
-          </p>
-        </div>
-      </div>
+    <div className="onboarding-form">
       {status === "edit" && (
         <form onSubmit={handleSubmit}>
           <Info
@@ -219,9 +215,15 @@ const OnboardingForm = ({ request }: { request?: OnboardingRequest }) => {
             handleChange={(name, value) => setData({ ...data, [name]: value })}
           />
           <ServiceAccounts onStatusChange={handleClick} />
-          <button className="primary" type="submit">
-            Envoyer
-          </button>
+          {request?.id ? (
+            <button className="primary" type="submit">
+              Valider
+            </button>
+          ) : (
+            <button className="primary" type="submit">
+              Envoyer
+            </button>
+          )}
         </form>
       )}
       {status === "success" && (

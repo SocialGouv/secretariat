@@ -7,10 +7,13 @@ import SERVICES from "@/utils/SERVICES"
 import pReduce from "p-reduce"
 import strongPassword from "@/utils/strong-password"
 import ovh from "@/utils/ovh"
+import statusOk from "@/utils/status-ok"
 
 const githubAccountCreator = async ({
   login,
-}: GithubOnboardingData): Promise<APIResponse> => {
+}: {
+  login: string
+}): Promise<APIResponse> => {
   const responseID = await fetch(`https://api.github.com/users/${login}`, {
     headers: { accept: "application/vnd.github.v3+json" },
   })
@@ -35,7 +38,11 @@ const mattermostAccountCreator = async ({
   firstname,
   lastname,
   email,
-}: MattermostOnboardingData): Promise<APIResponse> => {
+}: {
+  firstname: string
+  lastname: string
+  email: string
+}): Promise<APIResponse> => {
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
     {
@@ -56,7 +63,13 @@ const mattermostAccountCreator = async ({
   return { status: response.status, body: await response.json() }
 }
 
-const ovhAccountCreator = async ({ login }: OvhOnboardingData) => {
+const ovhAccountCreator = async ({
+  firstname,
+  lastname,
+}: {
+  firstname: string
+  lastname: string
+}) => {
   const mailResponse = await ovh(
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account`
@@ -73,8 +86,8 @@ const ovhAccountCreator = async ({ login }: OvhOnboardingData) => {
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {
-      displayName: login,
-      login,
+      displayName: `${firstname}.${lastname}`,
+      login: `${firstname}.${lastname}`,
       domain: "fabrique.social.gouv.fr",
     }
   )
@@ -102,6 +115,7 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
     }),
     {}
   )
+
   return servicesCreationResponses
 }
 

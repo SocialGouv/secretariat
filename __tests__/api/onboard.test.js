@@ -16,7 +16,7 @@ beforeEach(() => {
     body: {
       lastname: "fake lastname",
       services: {
-        ovh: { login: "fake login" },
+        ovh: {},
         mattermost: {},
         github: { login: "fake login" },
       },
@@ -32,7 +32,7 @@ it("should call the onboard service and return its return value", async () => {
   expect(onboard).toHaveBeenCalledWith({
     lastname: "fake lastname",
     services: {
-      ovh: { login: "fake login" },
+      ovh: {},
       mattermost: {},
       github: { login: "fake login" },
     },

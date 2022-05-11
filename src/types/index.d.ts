@@ -146,20 +146,6 @@ interface APIResponse {
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
 
-interface GithubOnboardingData {
-  login: string
-}
-
-interface MattermostOnboardingData {
-  firstname: string
-  lastname: string
-  email: string
-}
-
-interface OvhOnboardingData {
-  login: string
-}
-
 interface OnboardingData {
   firstname: string
   lastname: string

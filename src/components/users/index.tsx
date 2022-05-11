@@ -10,6 +10,7 @@ import {
   mergeUsers,
   mutateUser,
 } from "@/hooks/use-users"
+import statusOk from "@/utils/status-ok"
 import { useEffect, useState } from "react"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
@@ -59,7 +60,7 @@ const Users = () => {
     const { status, body } = await revokeAccount(
       accountToDelete as ServiceAccount
     )
-    if (status < 300) {
+    if (statusOk(status)) {
       mutate("/users")
     }
     return { status, body }

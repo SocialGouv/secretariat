@@ -136,10 +136,12 @@ interface ServiceAccountsMapping {
 type AccountRevoker = (
   accountServiceID: string,
   accountID: string
-) => Promise<{
+) => Promise<APIResponse>
+
+interface APIResponse {
   status: number
   body: string
-}>
+}
 
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
@@ -147,35 +149,22 @@ type ServiceAccount = ServiceAccountsMapping[ServiceName]
 interface GithubOnboardingData {
   login: string
 }
-interface MatomoOnboardingData {
-  email: string
-}
+
 interface MattermostOnboardingData {
+  firstname: string
+  lastname: string
   email: string
 }
-interface NextcloudOnboardingData {
-  email: string
-}
+
 interface OvhOnboardingData {
-  email: string
-}
-interface SentryOnboardingData {
-  email: string
-}
-interface ZammadOnboardingData {
-  email: string
+  login: string
 }
 
 interface OnboardingData {
   firstname: string
   lastname: string
+  email: string
   arrivalDate: Date
   departureDate: Date
-  github?: GithubOnboardingData
-  matomo?: MatomoOnboardingData
-  mattermost?: MattermostOnboardingData
-  nextcloud?: NextcloudOnboardingData
-  ovh?: OvhOnboardingData
-  sentry?: SentryOnboardingData
-  zammad?: ZammadOnboardingData
+  services: Record<ServiceName, Record<string, unknown>>
 }

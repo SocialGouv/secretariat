@@ -104,9 +104,12 @@ const updateUsers = async (
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
   for (const userKey in users) {
-    existingServicesIds.push(
-      await updateOrInsertService(users[userKey], serviceName, jwt)
+    const serviceId = await updateOrInsertService(
+      users[userKey],
+      serviceName,
+      jwt
     )
+    if (serviceId !== "") existingServicesIds.push(serviceId)
   }
   return existingServicesIds
 }

@@ -4,9 +4,6 @@ import {
   MATTERMOST_API_TOKEN,
   NEXTCLOUD_API_LOGIN,
   NEXTCLOUD_API_SECRET,
-  OVH_APP_KEY,
-  OVH_APP_SECRET,
-  OVH_CONSUMER_KEY,
   OVH_SERVICE_NAME,
   SENTRY_API_TOKEN,
   ZAMMAD_API_TOKEN,
@@ -17,9 +14,11 @@ import {
   deleteUsers,
 } from "@/queries/index"
 import { getJwt } from "@/utils/jwt"
+import statusOk from "@/utils/status-ok"
+import ovh from "@/utils/ovh"
 
 const deleteAccountOnSuccess = async (status: number, accountID: string) => {
-  if (status >= 300) {
+  if (!statusOk(status)) {
     return
   }
   const jwt = getJwt("webhook")
@@ -139,23 +138,20 @@ const revokeSentryAccount = async (userID: string, accountID: string) => {
 }
 
 const revokeOvhAccount = async (email: string, accountID: string) => {
-  // Permanently deletes a user with its email
-  const ovh = require("ovh")({
-    endpoint: "ovh-eu",
-    appKey: OVH_APP_KEY,
-    appSecret: OVH_APP_SECRET,
-    consumerKey: OVH_CONSUMER_KEY,
-  })
-
-  try {
-    await ovh.requestPromised(
-      "DELETE",
-      `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
-    )
+  // Resets the mail account to random@configureme.me
+  const response = await ovh(
+    "DELETE",
+    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+  )
+  if (response.success) {
     await deleteAccountOnSuccess(200, accountID)
-    return { status: 200, body: "" }
-  } catch (error: any) {
-    return { status: error.error, body: error.message }
+    return { status: 200, body: response.data }
+  } else {
+    await deleteAccountOnSuccess(500, accountID)
+    return {
+      status: response.error.error as number,
+      body: response.error.message as string,
+    }
   }
 }
 

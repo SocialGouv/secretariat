@@ -6,7 +6,6 @@ import SERVICES from "@/utils/SERVICES"
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
   if (await getSession({ req })) {
     const { accountServiceID, accountID, serviceName } = req.body
-    console.log(serviceName)
     if (SERVICES.includes(serviceName)) {
       const { status, body } = await revoke(
         accountServiceID,

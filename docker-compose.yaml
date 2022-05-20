@@ -16,7 +16,9 @@ services:
     build: packages/hasura
     env_file: packages/hasura/.env
     restart: always
-    network_mode: host
+    # network_mode: host
+    ports:
+      - "8080:8080"
 
 volumes:
   db_data:

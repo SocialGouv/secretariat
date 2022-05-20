@@ -4,15 +4,17 @@
   form {
     @apply flex flex-col gap-10;
 
-    .info {
-      @apply grid grid-cols-4 gap-6;
+    .user-info {
+      .fields {
+        @apply grid grid-cols-4 gap-6;
 
-      label {
-        @apply flex flex-col;
+        label {
+          @apply flex flex-col;
+        }
       }
     }
 
-    .service-accounts {
+    .services-tiles {
       @apply grid grid-cols-4 gap-6;
 
       .service {

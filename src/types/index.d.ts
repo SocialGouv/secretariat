@@ -160,25 +160,31 @@ interface OvhOnboardingData {
   login: string
 }
 
+// interface OnboardingData {
+//   firstname: string
+//   lastname: string
+//   email: string
+//   arrivalDate: Date
+//   departureDate: Date
+//   services: Record<ServiceName, Record<string, unknown>>
+// }
+
 interface OnboardingData {
-  firstname: string
-  lastname: string
   email: string
-  arrivalDate: Date
-  departureDate: Date
-  services: Record<ServiceName, Record<string, unknown>>
+  departure: string
+  message: string
+  lastName: string
+  firstName: string
+  arrival: string
+  githubLogin: string
+  // services?: Record<ServiceName, Record<string, unknown>>
+  // services: Record<"mattermost" | "ovh", boolean>
+  services: Record<ServiceName, boolean>
 }
 
 interface OnboardingRequest {
-  id
+  id: string
   created_at: Date
   confirmed: boolean
-  data: {
-    email: string
-    departure: string
-    message: string
-    lastName: string
-    firstName: string
-    arrival: string
-  }
+  data: OnboardingData
 }

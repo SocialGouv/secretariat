@@ -1,12 +1,13 @@
+import pReduce from "p-reduce"
+
+import ovh from "@/utils/ovh"
+import SERVICES from "@/utils/SERVICES"
+import strongPassword from "@/utils/strong-password"
 import {
   GITHUB_API_TOKEN,
   MATTERMOST_API_TOKEN,
   OVH_SERVICE_NAME,
 } from "@/utils/env"
-import SERVICES from "@/utils/SERVICES"
-import pReduce from "p-reduce"
-import strongPassword from "@/utils/strong-password"
-import ovh from "@/utils/ovh"
 
 const githubAccountCreator = async ({
   login,
@@ -95,10 +96,12 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
     SERVICES.filter((serviceName) => serviceName in services),
     async (acc, serviceName) => ({
       ...acc,
-      [serviceName]: await accountCreators[serviceName]({
-        ...user,
-        ...services[serviceName],
-      }),
+      [serviceName]:
+        console.log("serviceName", serviceName) ||
+        (await accountCreators[serviceName]({
+          ...user,
+          // ...services[serviceName],
+        })),
     }),
     {}
   )

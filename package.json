@@ -41,7 +41,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "is-ci || husky install"
   },
   "devDependencies": {
     "@react-spring/types": "9.4.4",
@@ -56,9 +57,12 @@
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
     "eslint-plugin-prettier": "4.0.0",
+    "husky": "^8.0.0",
+    "is-ci": "^3.0.1",
     "jest": "27.5.1",
     "msw": "^0.39.2",
     "node-mocks-http": "^1.11.0",
+    "node-talisman": "^1.27.0",
     "postcss": "8.4.6",
     "prettier": "2.5.1",
     "stylelint": "14.5.3",

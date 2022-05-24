@@ -6,7 +6,7 @@ const Form = ({
   status,
   onSubmit,
 }: {
-  status: "edit" | "review"
+  status: "create" | "review"
   onSubmit: () => void
 }) => (
   <form
@@ -25,7 +25,7 @@ const Form = ({
     /> */}
 
     <button className="primary" type="submit">
-      {status === "edit" ? "Envoyer" : "Valider"}
+      {status === "create" ? "Envoyer" : "Valider"}
     </button>
   </form>
 )

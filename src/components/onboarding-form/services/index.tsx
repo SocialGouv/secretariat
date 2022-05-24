@@ -5,15 +5,15 @@ const Services = ({
   onStatusChange,
 }: {
   services: Record<ServiceName, boolean>
-  onStatusChange: (service: ServiceName, checked: boolean) => void
+  onStatusChange: (service: ServiceName, enabled: boolean) => void
 }) => (
   <div className="services-tiles">
     {Object.entries(services).map(([service, enabled], i) => (
       <Service
         key={i}
         enabled={enabled}
-        onStatusChange={onStatusChange}
         service={service as ServiceName}
+        onToggle={() => onStatusChange(service as ServiceName, !enabled)}
       />
     ))}
   </div>

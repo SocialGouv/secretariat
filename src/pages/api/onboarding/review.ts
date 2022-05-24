@@ -4,7 +4,9 @@ import { getSession } from "next-auth/react"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
   if (await getSession({ req })) {
-    res.status(200).json(await onboard(req.body))
+    console.log("REQUEST", req.body)
+    // res.status(200).end()
+    res.status(200).json(await onboard(req.body.data))
   } else {
     res.status(403).end()
   }

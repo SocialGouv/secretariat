@@ -1,7 +1,9 @@
 const Alert = ({
   message,
+  title,
   type,
 }: {
+  title?: string
   message: string
   type: "info" | "success" | "warning" | "error"
 }) => (
@@ -12,7 +14,10 @@ const Alert = ({
       {type === "warning" && <i className="ri-alert-fill"></i>}
       {type === "error" && <i className="ri-close-circle-fill"></i>}
     </div>
-    <div className="message">{message}</div>
+    <div className="body">
+      {title && <div className="title">{title}</div>}
+      <div className="message">{message}</div>
+    </div>
   </div>
 )
 

@@ -1,6 +1,6 @@
-import DefaultServices from "./default-services"
-// import GithubServices from "./github-services"
 import UserInfo from "./user-info"
+import GithubServices from "./github-services"
+import DefaultServices from "./default-services"
 
 const Form = ({
   status,
@@ -16,13 +16,8 @@ const Form = ({
     }}
   >
     <UserInfo />
-    {/* <hr /> */}
     <DefaultServices />
-    {/* <hr /> */}
-    {/* <GithubServices
-    // githubLogin={data.githubLogin}
-    // onStatusChange={handleServiceAccountStatusChange}
-    /> */}
+    <GithubServices />
 
     <button className="primary" type="submit">
       {status === "create" ? "Envoyer" : "Valider"}

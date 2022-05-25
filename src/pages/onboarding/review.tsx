@@ -6,7 +6,6 @@ import OnboardingForm from "@/components/onboarding-form"
 
 const Review = () => {
   const { data: session } = useSession()
-  // const result = await restFetcher("/api/onboarding/review", {
 
   return (
     <main>

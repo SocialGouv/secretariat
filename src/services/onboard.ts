@@ -9,12 +9,18 @@ import {
   OVH_SERVICE_NAME,
 } from "@/utils/env"
 
+// const githubAccountCreator = async ({
+//   login,
+// }: GithubOnboardingData): Promise<APIResponse> => {
 const githubAccountCreator = async ({
-  login,
-}: GithubOnboardingData): Promise<APIResponse> => {
-  const responseID = await fetch(`https://api.github.com/users/${login}`, {
-    headers: { accept: "application/vnd.github.v3+json" },
-  })
+  githubLogin,
+}: OnboardingData): Promise<APIResponse> => {
+  const responseID = await fetch(
+    `https://api.github.com/users/${githubLogin}`,
+    {
+      headers: { accept: "application/vnd.github.v3+json" },
+    }
+  )
   const { id: userID } = await responseID.json()
 
   const response = await fetch(
@@ -33,10 +39,14 @@ const githubAccountCreator = async ({
 }
 
 const mattermostAccountCreator = async ({
-  firstname,
-  lastname,
+  firstName,
+  lastName,
   email,
-}: MattermostOnboardingData): Promise<APIResponse> => {
+}: OnboardingData): Promise<APIResponse> => {
+  const username = `${firstName.replace(/\s+/g, "-").toLowerCase()}.${lastName
+    .replace(/\s+/g, "-")
+    .toLowerCase()}`
+  console.log("mattermostAccountCreator", firstName, lastName, email, username)
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
     {
@@ -47,9 +57,9 @@ const mattermostAccountCreator = async ({
       },
       body: JSON.stringify({
         email,
-        first_name: firstname,
-        last_name: lastname,
-        username: `${firstname}.${lastname}`,
+        username,
+        last_name: lastName,
+        first_name: firstName,
         password: strongPassword(),
       }),
     }
@@ -57,7 +67,7 @@ const mattermostAccountCreator = async ({
   return { status: response.status, body: await response.json() }
 }
 
-const ovhAccountCreator = async ({ login }: OvhOnboardingData) => {
+const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const mailResponse = await ovh(
     "GET",
     `/email/pro/${OVH_SERVICE_NAME}/account`
@@ -70,13 +80,14 @@ const ovhAccountCreator = async ({ login }: OvhOnboardingData) => {
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
+  console.log("ovhAccountCreator", firstName, lastName)
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {
-      displayName: login,
-      login,
       domain: "fabrique.social.gouv.fr",
+      login: `${firstName}.${lastName}`,
+      displayName: `${firstName} ${lastName}`,
     }
   )
   return response.success
@@ -93,15 +104,12 @@ const accountCreators: Record<string, any> = {
 const onboard = async ({ services, ...user }: OnboardingData) => {
   // Create required accounts and insert accounts in DB on success
   const servicesCreationResponses = await pReduce(
-    SERVICES.filter((serviceName) => serviceName in services),
+    SERVICES.filter(
+      (serviceName) => serviceName in services && services[serviceName]
+    ),
     async (acc, serviceName) => ({
       ...acc,
-      [serviceName]:
-        console.log("serviceName", serviceName) ||
-        (await accountCreators[serviceName]({
-          ...user,
-          // ...services[serviceName],
-        })),
+      [serviceName]: await accountCreators[serviceName](user),
     }),
     {}
   )

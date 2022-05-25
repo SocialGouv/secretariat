@@ -5,27 +5,32 @@ import Alert from "@/components/common/alert"
 import useOnboarding from "@/hooks/use-onboarding"
 import Form from "@/components/onboarding-form/form"
 
+type ServicesAccountsStatuses = Record<
+  ServiceName,
+  Record<"body", string | Record<"message", string>>
+>
+
 const ServicesAccountsStatuses = ({
-  data,
+  statuses,
 }: {
-  data: Record<string, unknown>
+  statuses?: ServicesAccountsStatuses
 }) => {
-  console.log("data", data)
+  console.log("statuses", statuses)
   return (
     <div className="servicesAccountsStatuses">
-      {Object.entries(data).map(
-        ([service, item], i) =>
-          console.log("service-item", service, item) || (
-            <>
-              <br />
-              <Alert
-                type="error"
-                title={service}
-                message={item.body.message || item.body}
-              />
-            </>
-          )
-      )}
+      {statuses &&
+        Object.entries(statuses).map(([service, status], i) => (
+          <Alert
+            key={i}
+            type="error"
+            title={service}
+            message={
+              typeof status.body === "string"
+                ? status.body
+                : status.body.message
+            }
+          />
+        ))}
     </div>
   )
 }
@@ -41,9 +46,8 @@ const OnboardingForm = () => {
     | "review_error"
   >("create")
 
-  const [servicesAccountsStatuses, setServicesAccountsStatuses] = useState<
-    Record<string, unknown>
-  >({})
+  const [servicesAccountsStatuses, setServicesAccountsStatuses] =
+    useState<ServicesAccountsStatuses>()
 
   const handleCreationSubmit = async () => {
     const result = await fetcher("/api/onboarding/request", {
@@ -100,7 +104,7 @@ const OnboardingForm = () => {
             type="info"
             message="Un email a été envoyé à l'éméteur de la requête d'embarquement."
           />
-          <ServicesAccountsStatuses data={servicesAccountsStatuses} />
+          <ServicesAccountsStatuses statuses={servicesAccountsStatuses} />
         </div>
       )}
       {status === "create_error" && (

@@ -11,7 +11,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     insert_onboarding_requests_one: { id },
   } = await fetcher(createOnboardingRequest, token, {
-    request: { data: req.body },
+    request: { data: req.body.data },
   })
 
   const url = `http://localhost:3000/api/onboarding/confirm?id=${id}`
@@ -19,7 +19,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   await sendEmail({
     to: [
       {
-        address: req.body.email,
+        address: req.body.data.email,
         // personalName: `${req.body.firstName} ${req.body.lastName}`,
       },
     ],
@@ -32,7 +32,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
         personalName: "La Fabrique Numérique des Ministères Sociaux",
         address: "noreply@fabrique.social.gouv.fr",
       },
-      subject: "Vérification de votre adresses mail",
+      subject: "Vérification de votre adresse mail",
       text: `Veuillez effectuer la vérification de votre adresse mail en vous rendant à l'adresse suivante: ${url}`,
       html: `
         <p>Veuillez effectuer la vérification de votre adresse mail en cliquant sur le bouton ci-dessous:</p>

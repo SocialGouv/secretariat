@@ -12,7 +12,7 @@ const FirstName = () => {
         id="firstName"
         name="firstName"
         placeholder="Jean"
-        value={data.firstName}
+        value={data?.firstName}
         autoComplete="given-name"
         onChange={(e) => mutate({ ...data, firstName: e.target.value })}
       />
@@ -33,7 +33,7 @@ const LastName = () => {
         name="lastName"
         autoComplete="on"
         placeholder="Dupont"
-        value={data.lastName}
+        value={data?.lastName}
         onChange={(e) => mutate({ ...data, lastName: e.target.value })}
       />
     </label>
@@ -52,7 +52,7 @@ const Email = () => {
         type="email"
         name="email"
         autoComplete="on"
-        value={data.email}
+        value={data?.email}
         placeholder="jean.dupont@domaine.fr"
         onChange={(e) => mutate({ ...data, email: e.target.value })}
       />
@@ -71,7 +71,7 @@ const Arrival = () => {
         type="date"
         id="arrival"
         name="arrival"
-        value={data.arrival}
+        value={data?.arrival}
         onChange={(e) => mutate({ ...data, arrival: e.target.value })}
       />
     </label>
@@ -89,7 +89,7 @@ const Departure = () => {
         type="date"
         id="departure"
         name="departure"
-        value={data.departure}
+        value={data?.departure}
         onChange={(e) => mutate({ ...data, departure: e.target.value })}
       />
     </label>
@@ -106,7 +106,7 @@ const Message = () => {
         rows={3}
         required
         name="message"
-        value={data.message}
+        value={data?.message}
         onChange={(e) => mutate({ ...data, message: e.target.value })}
         placeholder="Bonjour, je suis PO sur le produit XXX et je souhaiterais obtenir des accès à Matomo, ainsi qu'à l'organisation Github de la Fabrique Numérique."
       ></textarea>

@@ -1,9 +1,11 @@
+import type { KeyedMutator } from "swr"
+
 import useSWR from "swr"
 
 import useOnboardingRequest from "./use-onboarding-request"
 
 export const fallbackData = {
-  githubLogin: "",
+  githubLogin: "chewam",
   firstName: "Gary",
   lastName: "van Woerkens",
   email: "gary@chewam.com",
@@ -16,9 +18,10 @@ export const fallbackData = {
 const useOnboarding = () => {
   const { request } = useOnboardingRequest()
 
-  const { data, mutate } = useSWR("onboarding", null, {
-    fallbackData: request?.data || fallbackData,
-  })
+  const { data, mutate }: { data?: OnboardingData; mutate: KeyedMutator<any> } =
+    useSWR("onboarding", null, {
+      fallbackData: request?.data || fallbackData,
+    })
 
   return { data, mutate, request }
 }

@@ -188,3 +188,13 @@ interface OnboardingRequest {
   confirmed: boolean
   data: OnboardingData
 }
+
+interface Ruru {
+  github?: boolean
+  matomo?: boolean
+  sentry?: boolean
+  nextcloud?: boolean
+  ovh?: boolean
+  zammad?: boolean
+  mattermost?: boolean
+}

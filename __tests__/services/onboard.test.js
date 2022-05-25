@@ -26,7 +26,11 @@ afterAll(() => {
 
 it("should return empty object if no services", async () => {
   expect(
-    await onboard({ services: {}, lastname: "fake lastname" })
+    await onboard({
+      services: {},
+      firstName: "fake firstname",
+      lastName: "fake lastname",
+    })
   ).toStrictEqual({})
 })
 
@@ -37,7 +41,8 @@ it("should return status and body from each API", async () => {
   expect(
     await onboard({
       services: { github: {}, mattermost: {}, ovh: {} },
-      lastname: "fake lastname",
+      firstName: "fake firstname",
+      lastName: "fake lastname",
     })
   ).toStrictEqual({
     ovh: { status: 200, body: "fake data" },
@@ -55,7 +60,8 @@ describe("ovh error", () => {
     expect(
       await onboard({
         services: { ovh: {} },
-        lastname: "fake lastname",
+        firstName: "fake firstname",
+        lastName: "fake lastname",
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },
@@ -72,7 +78,8 @@ describe("ovh error", () => {
     expect(
       await onboard({
         services: { ovh: {} },
-        lastname: "fake lastname",
+        firstName: "fake firstname",
+        lastName: "fake lastname",
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },

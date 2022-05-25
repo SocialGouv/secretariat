@@ -2072,9 +2072,13 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   />
                 </div>
                 <div
-                  class="message"
+                  class="body"
                 >
-                  Cet utilisateur n'a pas de date de départ.
+                  <div
+                    class="message"
+                  >
+                    Cet utilisateur n'a pas de date de départ.
+                  </div>
                 </div>
               </div>
             </div>
@@ -2092,9 +2096,13 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   />
                 </div>
                 <div
-                  class="message"
+                  class="body"
                 >
-                  Cet utilisateur n'est attaché qu'à un seul service.
+                  <div
+                    class="message"
+                  >
+                    Cet utilisateur n'est attaché qu'à un seul service.
+                  </div>
                 </div>
               </div>
             </div>
@@ -2112,9 +2120,13 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   />
                 </div>
                 <div
-                  class="message"
+                  class="body"
                 >
-                  Cet utilisateur n'a pas de compte Github ou Mattermost.
+                  <div
+                    class="message"
+                  >
+                    Cet utilisateur n'a pas de compte Github ou Mattermost.
+                  </div>
                 </div>
               </div>
             </div>

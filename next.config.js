@@ -44,9 +44,9 @@ module.exports = {
   },
   experimental: {
     outputStandalone: true,
-    images: {
-      layoutRaw: true,
-    },
+    // images: {
+    //   layoutRaw: true,
+    // },
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
@@ -55,12 +55,12 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src", "styles")],
   },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: securityHeaders,
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/:path*",
+  //       headers: securityHeaders,
+  //     },
+  //   ]
+  // },
 }

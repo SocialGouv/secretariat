@@ -1,3 +1,10 @@
+# [1.34.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.33.0...v1.34.0-beta.1) (2022-05-30)
+
+
+### Features
+
+* onboarding user path ([c41b385](https://github.com/SocialGouv/secretariat/commit/c41b385348b005fe19a9e1b37a1713e2307f6c1c))
+
 # [1.33.0](https://github.com/SocialGouv/secretariat/compare/v1.32.0...v1.33.0) (2022-05-11)
 
 

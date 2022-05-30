@@ -33,6 +33,7 @@ const ServiceLogo = ({
   return (
     <Image
       title={name}
+      layout="raw"
       height={sizes[size]}
       alt={`${name} logo`}
       width={sizes[size] * ratios[name]}

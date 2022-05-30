@@ -44,6 +44,9 @@ module.exports = {
   },
   experimental: {
     outputStandalone: true,
+    images: {
+      layoutRaw: true,
+    },
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,

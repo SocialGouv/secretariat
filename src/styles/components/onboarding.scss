@@ -1,3 +1,15 @@
+.onboarding-header {
+  @apply flex py-8;
+
+  .icon {
+    @apply text-7xl flex items-center pr-6;
+  }
+
+  .text {
+    @apply pt-2;
+  }
+}
+
 .onboarding-form {
   @apply flex flex-col gap-10;
 

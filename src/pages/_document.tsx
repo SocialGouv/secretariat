@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document"
 
 export default function Document() {
+  console.log("NONCE ==>", process.env.NONCE)
   return (
     <Html lang="fr">
       <Head nonce={process.env.NONCE}>

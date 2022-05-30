@@ -13,8 +13,6 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     data: { confirmed: true },
   })
 
-  // console.log("REQUEST", request)
-
   const {
     organization: {
       team: {
@@ -23,8 +21,6 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   } = await fetcher(getCoreTeamUsers, token)
 
-  // console.log("USERS", users)
-
   const to = users.reduce(
     (emails: Record<"address", string>[], user: Record<"email", string>) => (
       user.email.length && emails.push({ address: user.email }), emails
@@ -32,13 +28,10 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     []
   )
 
-  // console.log("EMAILS", emails)
-  const toto = [{ address: "gary@chewam.com" }]
-
   const url = `http://localhost:3000/onboarding/review?id=${id}`
 
   await sendEmail({
-    to: toto,
+    to,
     msg: {
       from: {
         personalName: "La Fabrique Numérique des Ministères Sociaux",

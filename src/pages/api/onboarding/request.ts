@@ -7,7 +7,7 @@ import { createOnboardingRequest } from "@/queries/index"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt("admin")
-  console.log("BODY", req.body, req.body.data)
+
   const {
     insert_onboarding_requests_one: { id },
   } = await fetcher(createOnboardingRequest, token, {

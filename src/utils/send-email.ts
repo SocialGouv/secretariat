@@ -2,7 +2,7 @@ import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
 
 const sendEmail = async (email: Record<string, unknown>) => {
   email.apiKey = TIPIMAIL_API_KEY
-  console.log("TIPIMAIL", TIPIMAIL_API_KEY, TIPIMAIL_API_USER, email)
+
   const result = await fetch("https://api.tipimail.com/v1/messages/send", {
     method: "POST",
     body: JSON.stringify(email),

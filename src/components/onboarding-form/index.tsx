@@ -14,26 +14,21 @@ const ServicesAccountsStatuses = ({
   statuses,
 }: {
   statuses?: ServicesAccountsStatuses
-}) => {
-  console.log("statuses", statuses)
-  return (
-    <div className="servicesAccountsStatuses">
-      {statuses &&
-        Object.entries(statuses).map(([service, status], i) => (
-          <Alert
-            key={i}
-            type="error"
-            title={service}
-            message={
-              typeof status.body === "string"
-                ? status.body
-                : status.body.message
-            }
-          />
-        ))}
-    </div>
-  )
-}
+}) => (
+  <div className="servicesAccountsStatuses">
+    {statuses &&
+      Object.entries(statuses).map(([service, status], i) => (
+        <Alert
+          key={i}
+          type="error"
+          title={service}
+          message={
+            typeof status.body === "string" ? status.body : status.body.message
+          }
+        />
+      ))}
+  </div>
+)
 
 const OnboardingForm = () => {
   const { data, request } = useOnboarding()
@@ -81,7 +76,6 @@ const OnboardingForm = () => {
     if (request) setStatus("review")
   }, [request])
 
-  console.log("STATUS", status, request)
   return (
     <div className="onboarding-form mx-12">
       {status === "review" && (

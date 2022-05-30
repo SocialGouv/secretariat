@@ -23,11 +23,9 @@ const GithubLogin = ({
         value={value}
         onChange={(e) => {
           const {
-            target: { name, value },
+            target: { value },
           } = e
           setValue(value)
-          // setData({ ...data, [name]: value })
-          console.log("onChange", name, value)
         }}
       />
     </label>

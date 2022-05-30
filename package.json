@@ -42,7 +42,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "prepare": "is-ci || husky install"
+    "postinstall": "is-ci || husky install"
   },
   "devDependencies": {
     "@react-spring/types": "9.4.4",

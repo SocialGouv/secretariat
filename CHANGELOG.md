@@ -1,3 +1,10 @@
+# [1.34.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.1...v1.34.0-beta.2) (2022-05-31)
+
+
+### Bug Fixes
+
+* multiple ([e0ce40d](https://github.com/SocialGouv/secretariat/commit/e0ce40d6bef6d126a8ccf4b5f5e53ab8acc4903a))
+
 # [1.34.0-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.33.0...v1.34.0-beta.1) (2022-05-30)
 
 

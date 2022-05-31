@@ -14,9 +14,9 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     request: { data: req.body.data },
   })
 
-  const url = `http://localhost:3000/api/onboarding/confirm?id=${id}`
+  const url = `https://secretariat.fabrique.social.gouv.fr/api/onboarding/confirm?id=${id}`
 
-  await sendEmail({
+  const response = await sendEmail({
     to: [
       {
         address: req.body.data.email,
@@ -41,7 +41,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  res.json({ id })
+  res.status(response.status).json({ id })
 }
 
 export default Request

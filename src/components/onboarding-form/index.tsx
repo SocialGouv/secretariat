@@ -4,10 +4,11 @@ import fetcher from "@/utils/rest-fetcher"
 import Alert from "@/components/common/alert"
 import useOnboarding from "@/hooks/use-onboarding"
 import Form from "@/components/onboarding-form/form"
+import statusOk from "@/utils/status-ok"
 
 type ServicesAccountsStatuses = Record<
   ServiceName,
-  Record<"body", string | Record<"message", string>>
+  { status: number; body: string | Record<"message", string> }
 >
 
 const ServicesAccountsStatuses = ({
@@ -20,7 +21,7 @@ const ServicesAccountsStatuses = ({
       Object.entries(statuses).map(([service, status], i) => (
         <Alert
           key={i}
-          type="error"
+          type={statusOk(status.status) ? "success" : "error"}
           title={service}
           message={
             typeof status.body === "string" ? status.body : status.body.message

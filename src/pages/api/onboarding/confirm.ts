@@ -28,7 +28,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     []
   )
 
-  const url = `http://localhost:3000/onboarding/review?id=${id}`
+  const url = `https://secretariat.fabrique.social.gouv.fr/onboarding/review?id=${id}`
 
   await sendEmail({
     to,
@@ -49,7 +49,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
       `,
     },
   })
-  res.redirect("http://localhost:3000/onboarding/confirm")
+  res.redirect("https://secretariat.fabrique.social.gouv.fr/onboarding/confirm")
 }
 
 export default Confirm

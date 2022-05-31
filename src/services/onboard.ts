@@ -46,7 +46,6 @@ const mattermostAccountCreator = async ({
   const username = `${firstName.replace(/\s+/g, "-").toLowerCase()}.${lastName
     .replace(/\s+/g, "-")
     .toLowerCase()}`
-  console.log("mattermostAccountCreator", firstName, lastName, email, username)
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
     {
@@ -80,7 +79,6 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
-  console.log("ovhAccountCreator", firstName, lastName)
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
@@ -91,7 +89,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
     }
   )
   return response.success
-    ? { status: 200, body: response.data }
+    ? { status: 200, body: response.data ? response.data : "" }
     : { status: response.error.error, body: response.error.message }
 }
 
@@ -101,19 +99,20 @@ const accountCreators: Record<string, any> = {
   ovh: ovhAccountCreator,
 }
 
-const onboard = async ({ services, ...user }: OnboardingData) => {
-  // Create required accounts and insert accounts in DB on success
-  const servicesCreationResponses = await pReduce(
-    SERVICES.filter(
-      (serviceName) => serviceName in services && services[serviceName]
-    ),
+const onboard = async ({ services, ...user }: OnboardingData) =>
+  // Create required accounts
+  pReduce(
+    [
+      ...SERVICES.filter(
+        (serviceName) => serviceName in services && services[serviceName]
+      ),
+      "github",
+    ],
     async (acc, serviceName) => ({
       ...acc,
       [serviceName]: await accountCreators[serviceName](user),
     }),
     {}
   )
-  return servicesCreationResponses
-}
 
 export default onboard

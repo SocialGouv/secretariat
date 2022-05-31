@@ -24,14 +24,14 @@ afterAll(() => {
   server.close()
 })
 
-it("should return empty object if no services", async () => {
+it("should return only github if no services", async () => {
   expect(
     await onboard({
       services: {},
       firstName: "fake firstname",
       lastName: "fake lastname",
     })
-  ).toStrictEqual({})
+  ).toStrictEqual({ github: { status: 250, body: { data: "fake data" } } })
 })
 
 it("should return status and body from each API", async () => {
@@ -65,6 +65,7 @@ describe("ovh error", () => {
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },
+      github: { status: 250, body: { data: "fake data" } },
     })
   })
 
@@ -83,6 +84,7 @@ describe("ovh error", () => {
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },
+      github: { status: 250, body: { data: "fake data" } },
     })
   })
 })

@@ -1,3 +1,10 @@
+# [1.34.0-beta.3](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.2...v1.34.0-beta.3) (2022-06-01)
+
+
+### Bug Fixes
+
+* select user null if last one no longer exists ([#257](https://github.com/SocialGouv/secretariat/issues/257)) ([5bf4987](https://github.com/SocialGouv/secretariat/commit/5bf4987a47bb374b800ac98f6bb0a5e536b81973))
+
 # [1.34.0-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.1...v1.34.0-beta.2) (2022-05-31)
 
 

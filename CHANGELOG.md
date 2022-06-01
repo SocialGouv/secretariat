@@ -1,3 +1,18 @@
+# [1.34.0-beta.4](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.3...v1.34.0-beta.4) (2022-06-01)
+
+
+### Bug Fixes
+
+* insert user and account ([ecb221e](https://github.com/SocialGouv/secretariat/commit/ecb221eec5f257f39df18d5b91f93a591661c989))
+* no data for ovh onboarding ([d2a94cd](https://github.com/SocialGouv/secretariat/commit/d2a94cdf12cb3602a11c3f537d55cfb056bde607))
+* sealed-secrets ([44ec42f](https://github.com/SocialGouv/secretariat/commit/44ec42f0826f76e6c76cb392cad4279639a3e4b7))
+* upsert ([48f7f00](https://github.com/SocialGouv/secretariat/commit/48f7f0028af5ef2c97c2214db85fa6363e9512bc))
+
+
+### Features
+
+* DB insertions on API success ([71bdef4](https://github.com/SocialGouv/secretariat/commit/71bdef4a8dbe485fdbf68f6a0c564508b420e877))
+
 # [1.34.0-beta.3](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.2...v1.34.0-beta.3) (2022-06-01)
 
 

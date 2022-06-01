@@ -1,17 +1,19 @@
-import pReduce from "p-reduce"
-
-import ovh from "@/utils/ovh"
-import SERVICES from "@/utils/SERVICES"
-import strongPassword from "@/utils/strong-password"
 import {
   GITHUB_API_TOKEN,
   MATTERMOST_API_TOKEN,
   OVH_SERVICE_NAME,
 } from "@/utils/env"
+import fetcher from "@/utils/fetcher"
+import { getJwt } from "@/utils/jwt"
+import ovh from "@/utils/ovh"
+import SERVICES from "@/utils/SERVICES"
+import statusOk from "@/utils/status-ok"
+import strongPassword from "@/utils/strong-password"
+import pReduce from "p-reduce"
+import { insertService, insertUser } from "../queries"
 
-// const githubAccountCreator = async ({
-//   login,
-// }: GithubOnboardingData): Promise<APIResponse> => {
+const ACCOUNTS_TO_CREATE_ON_SUCCESS = ["ovh", "mattermost"]
+
 const githubAccountCreator = async ({
   githubLogin,
 }: OnboardingData): Promise<APIResponse> => {
@@ -79,6 +81,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
+  const login = `${firstName}.${lastName}`
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
@@ -88,8 +91,18 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
       displayName: `${firstName} ${lastName}`,
     }
   )
+
+  // Fetch account data
+  const accountResponse = await ovh(
+    "GET",
+    `/email/pro/${OVH_SERVICE_NAME}/account/${login}@fabrique.social.gouv.fr`
+  )
+
   return response.success
-    ? { status: 200, body: response.data ? response.data : "" }
+    ? {
+        status: 200,
+        body: accountResponse.data,
+      }
     : { status: response.error.error, body: response.error.message }
 }
 
@@ -99,20 +112,54 @@ const accountCreators: Record<string, any> = {
   ovh: ovhAccountCreator,
 }
 
-const onboard = async ({ services, ...user }: OnboardingData) =>
+const shouldInsertAccount = (serviceName: string, response: APIResponse) =>
+  statusOk(response.status) &&
+  ACCOUNTS_TO_CREATE_ON_SUCCESS.includes(serviceName)
+
+const createAccountsOnSuccess = async (
+  { departure, arrival }: { arrival: string; departure: string },
+  responses: Record<string, APIResponse>
+) => {
+  if (
+    Object.entries(responses).some(([serviceName, response]) =>
+      shouldInsertAccount(serviceName, response)
+    )
+  ) {
+    const jwt = getJwt("webhook")
+
+    // First, create an associated user entry
+    const {
+      insert_users_one: { id: userId },
+    } = await fetcher(insertUser, jwt, { user: { arrival, departure } })
+
+    for (const [serviceName, response] of Object.entries(responses)) {
+      if (shouldInsertAccount(serviceName, response)) {
+        await fetcher(insertService, jwt, {
+          service: {
+            data: responses[serviceName].body,
+            user_id: userId,
+            type: serviceName,
+          },
+        })
+      }
+    }
+  }
+}
+
+const onboard = async ({ services, ...user }: OnboardingData) => {
   // Create required accounts
-  pReduce(
-    [
-      ...SERVICES.filter(
-        (serviceName) => serviceName in services && services[serviceName]
-      ),
-      "github",
-    ],
+  const servicesCreationResponses = await pReduce(
+    [...SERVICES.filter((serviceName) => serviceName in services), "github"],
     async (acc, serviceName) => ({
       ...acc,
       [serviceName]: await accountCreators[serviceName](user),
     }),
     {}
   )
+
+  await createAccountsOnSuccess(user, servicesCreationResponses)
+
+  return servicesCreationResponses
+}
 
 export default onboard

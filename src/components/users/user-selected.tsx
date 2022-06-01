@@ -21,9 +21,7 @@ const UserSelected = ({
   useEffect(() => {
     if (users && users.length && selectedUser) {
       const user = users.find((u) => u.id === selectedUser.id)
-      if (user) {
-        setSelectedUser(user)
-      }
+      setSelectedUser(user ? user : null)
     }
   })
 

@@ -5,6 +5,8 @@ import fetcher from "@/utils/fetcher"
 import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
 import sendEmail from "@/utils/send-email"
 
+import { NEXTAUTH_URL } from "@/utils/env"
+
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
   const token = getJwt("admin")
@@ -28,7 +30,8 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     []
   )
 
-  const url = `https://secretariat.fabrique.social.gouv.fr/onboarding/review?id=${id}`
+  const url = new URL(NEXTAUTH_URL, "/onboarding/review")
+  url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
   await sendEmail({
     to,
@@ -42,14 +45,14 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
         address: "noreply@fabrique.social.gouv.fr",
       },
       subject: "Demande d'onboarding",
-      text: `Veuillez effectuer la revue de la demande d'onboarding en vous rendant à l'adresse suivante: ${url}`,
+      text: `Veuillez effectuer la revue de la demande d'onboarding en vous rendant à l'adresse suivante: ${url.href}`,
       html: `
         <p>Veuillez effectuer la revue de la demande d'onboarding en cliquant sur le bouton ci-dessous:</p>
-        <a href="${url}">Revoir la demande d'onboarding</a>
+        <a href="${url.href}">Revoir la demande d'onboarding</a>
       `,
     },
   })
-  res.redirect("https://secretariat.fabrique.social.gouv.fr/onboarding/confirm")
+  res.redirect(new URL(NEXTAUTH_URL, "/onboarding/confirm").href)
 }
 
 export default Confirm

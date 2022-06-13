@@ -2,10 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
-import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
-import sendEmail from "@/utils/send-email"
-
 import { NEXTAUTH_URL } from "@/utils/env"
+import sendEmail from "@/utils/send-email"
+import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query

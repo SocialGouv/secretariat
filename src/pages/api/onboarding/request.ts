@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
 import sendEmail from "@/utils/send-email"
+import { NEXTAUTH_URL } from "@/utils/env"
 import { createOnboardingRequest } from "@/queries/index"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -14,13 +15,13 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     request: { data: req.body.data },
   })
 
-  const url = `https://secretariat.fabrique.social.gouv.fr/api/onboarding/confirm?id=${id}`
+  const url = new URL(NEXTAUTH_URL, "/api/onboarding/confirm")
+  url.searchParams.append("id", id)
 
   const response = await sendEmail({
     to: [
       {
         address: req.body.data.email,
-        // personalName: `${req.body.firstName} ${req.body.lastName}`,
       },
     ],
     msg: {

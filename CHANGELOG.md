@@ -1,3 +1,10 @@
+## [1.34.2](https://github.com/SocialGouv/secretariat/compare/v1.34.1...v1.34.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* update GITHUB_ID and GITHUB_SECRET value on preprod ([db412da](https://github.com/SocialGouv/secretariat/commit/db412da6ffb61a953b0d5b5aa49e0f09c0092414))
+
 ## [1.34.1](https://github.com/SocialGouv/secretariat/compare/v1.34.0...v1.34.1) (2022-06-14)
 
 

@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/SocialGouv/secretariat/compare/v1.33.0...v1.34.0) (2022-06-14)
+
+
+### Features
+
+* onboarding ([#311](https://github.com/SocialGouv/secretariat/issues/311)) ([2896bad](https://github.com/SocialGouv/secretariat/commit/2896bad0eb64aca88b7e73d599230bd85c39cd0e)), closes [#257](https://github.com/SocialGouv/secretariat/issues/257)
+
 # [1.34.0-beta.4](https://github.com/SocialGouv/secretariat/compare/v1.34.0-beta.3...v1.34.0-beta.4) (2022-06-01)
 
 

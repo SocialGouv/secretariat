@@ -13,9 +13,13 @@ exports[`renders error alert 1`] = `
       />
     </div>
     <div
-      class="message"
+      class="body"
     >
-      This is a error alert.
+      <div
+        class="message"
+      >
+        This is a error alert.
+      </div>
     </div>
   </div>
 </div>
@@ -34,9 +38,13 @@ exports[`renders info alert 1`] = `
       />
     </div>
     <div
-      class="message"
+      class="body"
     >
-      This is a info alert.
+      <div
+        class="message"
+      >
+        This is a info alert.
+      </div>
     </div>
   </div>
 </div>
@@ -55,9 +63,13 @@ exports[`renders success alert 1`] = `
       />
     </div>
     <div
-      class="message"
+      class="body"
     >
-      This is a success alert.
+      <div
+        class="message"
+      >
+        This is a success alert.
+      </div>
     </div>
   </div>
 </div>
@@ -76,9 +88,13 @@ exports[`renders warning alert 1`] = `
       />
     </div>
     <div
-      class="message"
+      class="body"
     >
-      This is a warning alert.
+      <div
+        class="message"
+      >
+        This is a warning alert.
+      </div>
     </div>
   </div>
 </div>

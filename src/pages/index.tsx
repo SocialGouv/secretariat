@@ -5,7 +5,7 @@ import Login from "@/components/login"
 import Users from "@/components/users"
 import Search from "@/components/search"
 
-const Page = () => {
+const Home = () => {
   const { data: session } = useSession()
 
   return (
@@ -25,4 +25,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default Home

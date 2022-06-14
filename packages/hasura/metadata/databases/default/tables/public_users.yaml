@@ -18,7 +18,9 @@ insert_permissions:
   - role: webhook
     permission:
       check: {}
-      columns: []
+      columns:
+        - arrival
+        - departure
       backend_only: false
 select_permissions:
   - role: user

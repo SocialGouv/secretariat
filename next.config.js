@@ -12,7 +12,7 @@ const ContentSecurityPolicy =
       default-src 'self';
       font-src 'self';
       base-uri 'self';
-      style-src 'self';
+      style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
       connect-src 'self' ${process.env.NEXT_PUBLIC_HASURA_URL};
@@ -44,6 +44,9 @@ module.exports = {
   },
   experimental: {
     outputStandalone: true,
+    // images: {
+    //   layoutRaw: true,
+    // },
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,

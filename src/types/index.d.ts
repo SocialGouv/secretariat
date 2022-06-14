@@ -146,25 +146,30 @@ interface APIResponse {
 type ServiceName = keyof ServiceAccountsMapping
 type ServiceAccount = ServiceAccountsMapping[ServiceName]
 
-interface GithubOnboardingData {
-  login: string
-}
-
-interface MattermostOnboardingData {
-  firstname: string
-  lastname: string
-  email: string
-}
-
-interface OvhOnboardingData {
-  login: string
-}
-
 interface OnboardingData {
-  firstname: string
-  lastname: string
   email: string
-  arrivalDate: Date
-  departureDate: Date
-  services: Record<ServiceName, Record<string, unknown>>
+  departure: string
+  message: string
+  lastName: string
+  firstName: string
+  arrival: string
+  githubLogin: string
+  services: Record<ServiceName, boolean>
+}
+
+interface OnboardingRequest {
+  id: string
+  created_at: Date
+  confirmed: boolean
+  data: OnboardingData
+}
+
+interface Ruru {
+  github?: boolean
+  matomo?: boolean
+  sentry?: boolean
+  nextcloud?: boolean
+  ovh?: boolean
+  zammad?: boolean
+  mattermost?: boolean
 }

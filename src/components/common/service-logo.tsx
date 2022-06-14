@@ -15,23 +15,29 @@ const sizes: Record<string, number> = {
   sm: 18,
   md: 22,
   lg: 24,
+  xl: 32,
+  "2xl": 48,
 }
 
 const ServiceLogo = ({
   name,
   size = "md",
+  disabled = false,
 }: {
   name: ServiceName
-  size?: "sm" | "md" | "lg"
+  disabled?: boolean
+  size?: "sm" | "md" | "lg" | "xl" | "2xl"
 }) => {
   const { isDarkTheme } = useIsDarkTheme()
 
   return (
     <Image
       title={name}
+      // layout="raw"
       height={sizes[size]}
       alt={`${name} logo`}
       width={sizes[size] * ratios[name]}
+      className={disabled ? "opacity-25 dark:opacity-40" : ""}
       src={`/images/${isDarkTheme ? "light" : "dark"}/${name}.svg#icon-logo`}
     />
   )

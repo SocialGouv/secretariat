@@ -1,0 +1,68 @@
+.onboarding-header {
+  @apply flex py-8;
+
+  .icon {
+    @apply text-7xl flex items-center pr-6;
+  }
+
+  .text {
+    @apply pt-2;
+  }
+}
+
+.onboarding-form {
+  @apply flex flex-col gap-10;
+
+  form {
+    @apply flex flex-col gap-10;
+
+    .user-info {
+      .fields {
+        @apply grid grid-cols-4 gap-6;
+
+        label {
+          @apply flex flex-col;
+        }
+      }
+    }
+
+    .services-tiles {
+      @apply grid grid-cols-4 gap-6;
+
+      .service {
+        @apply
+          py-4
+          border
+          shadow
+          rounded
+          cursor-pointer
+          transition-shadow;
+
+        .service-body {
+          @apply
+            flex
+            flex-col
+            items-center
+            transition-opacity;
+    
+          .name {
+            @apply mt-2;
+          }
+        }
+
+        &.disabled {
+          @apply
+            shadow-none
+            hover:shadow-md;
+
+          .service-body {
+            @apply
+              grayscale
+              opacity-60
+              dark:opacity-40;
+          }
+        }
+      }
+    }
+  }
+}

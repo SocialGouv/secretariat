@@ -2,8 +2,10 @@
   @apply
     flex
     border
-    text-sm;
+    ;
 
+    // text-sm
+    
     .icon {
       @apply py-0.5 px-2;
 
@@ -14,8 +16,12 @@
       }
     }
 
-    .message {
-      @apply flex py-1 px-2 items-center;
+    .body {
+      @apply flex py-1 px-2 flex-col justify-center;
+
+      .title {
+        @apply font-bold capitalize text-lg;
+      }
     }
 
   &.warning {

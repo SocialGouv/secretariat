@@ -47,7 +47,7 @@ const servicesIdFields: Record<ServiceName, string> = {
   ovh: "id",
 }
 
-const updateOrInsertService = async (
+const upsertService = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
   jwt: string
@@ -104,11 +104,7 @@ const updateUsers = async (
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
   for (const userKey in users) {
-    const serviceId = await updateOrInsertService(
-      users[userKey],
-      serviceName,
-      jwt
-    )
+    const serviceId = await upsertService(users[userKey], serviceName, jwt)
     if (serviceId !== "") existingServicesIds.push(serviceId)
   }
   return existingServicesIds

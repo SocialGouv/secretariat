@@ -125,6 +125,7 @@ exports[`renders user profile 1`] = `
                   </span>
                   <img
                     alt="nextcloud logo"
+                    class=""
                     data-nimg="intrinsic"
                     decoding="async"
                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

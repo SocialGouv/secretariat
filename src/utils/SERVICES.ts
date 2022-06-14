@@ -1,10 +1,10 @@
 const SERVICES: ServiceName[] = [
   "mattermost",
+  "github",
+  "matomo",
   "sentry",
   "zammad",
-  "matomo",
   "nextcloud",
-  "github",
   "ovh",
 ]
 

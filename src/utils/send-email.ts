@@ -1,9 +1,9 @@
 import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
 
 const html = (body: string) => `
-<div style="text-align: center; font-size: 1.2rem; font-family: Arial, sans-serif">
+<div style="text-align: center; font-size: 1.2rem; font-family: Arial, sans-serif; background-color: #f6f6f6; border-radius: 4px; padding: 3rem 1rem;">
   <section>
-    <p style="margin: 0"><strong>Secrétariat</strong></p>
+    <p style="margin: 0; font-size: 3rem;"><strong>Secrétariat</strong></p>
     <p style="margin: 0">
       Gestion des comptes de services
       <a href="https://github.com/SocialGouv">@SocialGouv</a>
@@ -24,7 +24,7 @@ const html = (body: string) => `
       Cet email a été envoyé automatiquement par
       <a href="https://github.com/SocialGouv/secretariat">Secrétariat</a>, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
     </p>
-    <p>Merci de ne pas répondre à cet email.</p>
+    <p style="margin-bottom: 0;">Merci de ne pas répondre à cet email.</p>
   </section>
 </div>
 `

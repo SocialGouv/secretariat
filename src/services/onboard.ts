@@ -81,13 +81,13 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
-  const login = `${firstName}.${lastName}`
+  const login = `${firstName}.${lastName.replace(/\s+/g, "-").toLowerCase()}`
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {
+      login,
       domain: "fabrique.social.gouv.fr",
-      login: `${firstName}.${lastName}`,
       displayName: `${firstName} ${lastName}`,
     }
   )

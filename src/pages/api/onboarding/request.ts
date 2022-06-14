@@ -15,7 +15,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     request: { data: req.body.data },
   })
 
-  const url = new URL(NEXTAUTH_URL, "/api/onboarding/confirm")
+  const url = new URL("/api/onboarding/confirm", NEXTAUTH_URL)
   url.searchParams.append("id", id)
 
   const response = await sendEmail({

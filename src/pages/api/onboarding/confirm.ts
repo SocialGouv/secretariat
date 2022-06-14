@@ -29,7 +29,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     []
   )
 
-  const url = new URL(NEXTAUTH_URL, "/onboarding/review")
+  const url = new URL("/onboarding/review", NEXTAUTH_URL)
   url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
   await sendEmail({
@@ -51,7 +51,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
       `,
     },
   })
-  res.redirect(new URL(NEXTAUTH_URL, "/onboarding/confirm").href)
+  res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)
 }
 
 export default Confirm

@@ -12,7 +12,7 @@ const ContentSecurityPolicy =
       default-src 'self';
       font-src 'self';
       base-uri 'self';
-      style-src 'self';
+      style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
       connect-src 'self' ${process.env.NEXT_PUBLIC_HASURA_URL};
@@ -55,12 +55,12 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src", "styles")],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       headers: securityHeaders,
-  //     },
-  //   ]
-  // },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: securityHeaders,
+      },
+    ]
+  },
 }

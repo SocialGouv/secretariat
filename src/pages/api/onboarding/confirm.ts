@@ -22,7 +22,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   } = await fetcher(getCoreTeamUsers, token)
 
-  const to = users.reduce(
+  const recipients = users.reduce(
     (emails: Record<"address", string>[], user: Record<"email", string>) => (
       user.email.length && emails.push({ address: user.email }), emails
     ),
@@ -32,25 +32,26 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = new URL("/onboarding/review", NEXTAUTH_URL)
   url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
-  await sendEmail({
-    to,
-    msg: {
-      from: {
-        personalName: "La Fabrique Numérique des Ministères Sociaux",
-        address: "noreply@fabrique.social.gouv.fr",
-      },
-      replyTo: {
-        personalName: "La Fabrique Numérique des Ministères Sociaux",
-        address: "noreply@fabrique.social.gouv.fr",
-      },
-      subject: "Demande d'onboarding",
-      text: `Veuillez effectuer la revue de la demande d'onboarding en vous rendant à l'adresse suivante: ${url.href}`,
-      html: `
-        <p>Veuillez effectuer la revue de la demande d'onboarding en cliquant sur le bouton ci-dessous:</p>
-        <a href="${url.href}">Revoir la demande d'onboarding</a>
-      `,
-    },
-  })
+  await sendEmail(
+    recipients,
+    "Demande d'onboarding",
+    `Une demande d'onboarding a été effectuée sur Secrétariat.
+    
+    En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :
+
+    ${url.href}`,
+    `<p>Une demande d'onboarding a été effectuée sur Secrétariat.</p>
+    <p>
+      En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton ou en suivant le lien :
+    </p>
+    <a
+      style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: white"
+      href="${url.href}"
+    >
+      Effectuer la revue
+    </a>
+    <p style="font-size: 1rem;">${url.href}</p>`
+  )
   res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)
 }
 

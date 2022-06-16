@@ -1,3 +1,10 @@
+## [1.34.5](https://github.com/SocialGouv/secretariat/compare/v1.34.4...v1.34.5) (2022-06-16)
+
+
+### Bug Fixes
+
+* update GITHUB_API_TOKEN and GITHUB_GRAPHQL_TOKEN prod values ([562cbe5](https://github.com/SocialGouv/secretariat/commit/562cbe51ebae93b4eb18ef7327c53755f2942ee6))
+
 ## [1.34.4](https://github.com/SocialGouv/secretariat/compare/v1.34.3...v1.34.4) (2022-06-14)
 
 

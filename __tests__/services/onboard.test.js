@@ -56,7 +56,7 @@ beforeEach(() => {
 it("should return only github if no services", async () => {
   expect(
     await onboard({
-      services: {},
+      services: { mattermost: false, ovh: false },
       firstName: "fake firstname",
       lastName: "fake lastname",
     })
@@ -69,9 +69,10 @@ it("should return status and body from each API", async () => {
     .mockResolvedValue({ success: true, data: "fake data" })
   expect(
     await onboard({
-      services: { github: {}, mattermost: {}, ovh: {} },
+      services: { mattermost: true, ovh: true },
       firstName: "fake firstname",
       lastName: "fake lastname",
+      githubLogin: "fake github",
     })
   ).toStrictEqual({
     ovh: { status: 200, body: "fake data" },
@@ -82,7 +83,7 @@ it("should return status and body from each API", async () => {
 
 it("should insert user and accounts on success", async () => {
   await onboard({
-    services: { mattermost: {} },
+    services: { mattermost: true, ovh: false },
     firstName: "fake firstname",
     lastName: "fake lastname",
     arrival: "01-01-2022",
@@ -104,7 +105,7 @@ describe("ovh error", () => {
     })
     expect(
       await onboard({
-        services: { ovh: {} },
+        services: { ovh: true, mattermost: false },
         firstName: "fake firstname",
         lastName: "fake lastname",
       })
@@ -123,7 +124,7 @@ describe("ovh error", () => {
       })
     expect(
       await onboard({
-        services: { ovh: {} },
+        services: { ovh: true, mattermost: false },
         firstName: "fake firstname",
         lastName: "fake lastname",
       })

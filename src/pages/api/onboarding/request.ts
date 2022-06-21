@@ -18,29 +18,23 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = new URL("/api/onboarding/confirm", NEXTAUTH_URL)
   url.searchParams.append("id", id)
 
-  const response = await sendEmail({
-    to: [
+  const response = await sendEmail(
+    [
       {
         address: req.body.data.email,
       },
     ],
-    msg: {
-      from: {
-        personalName: "La Fabrique Numérique des Ministères Sociaux",
-        address: "noreply@fabrique.social.gouv.fr",
-      },
-      replyTo: {
-        personalName: "La Fabrique Numérique des Ministères Sociaux",
-        address: "noreply@fabrique.social.gouv.fr",
-      },
-      subject: "Vérification de votre adresse mail",
-      text: `Veuillez effectuer la vérification de votre adresse mail en vous rendant à l'adresse suivante: ${url}`,
-      html: `
-        <p>Veuillez effectuer la vérification de votre adresse mail en cliquant sur le bouton ci-dessous:</p>
-        <a href="${url}">Confirmez votre demande d'onboarding</a>
-      `,
-    },
-  })
+    "Vérification de votre adresse mail",
+    `Veuillez effectuer la vérification de votre adresse mail en vous rendant à l'adresse suivante : ${url}`,
+    `<p>Veuillez effectuer la vérification de votre adresse email en cliquant sur le bouton ou en suivant le lien :</p>
+    <a
+      style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: white"
+      href="${url}"
+    >
+      Vérifier
+    </a>
+    <p style="font-size: 1rem;">${url}</p>`
+  )
 
   res.status(response.status).json({ id })
 }

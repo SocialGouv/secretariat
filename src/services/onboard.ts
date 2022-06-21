@@ -149,7 +149,13 @@ const createAccountsOnSuccess = async (
 const onboard = async ({ services, ...user }: OnboardingData) => {
   // Create required accounts
   const servicesCreationResponses = await pReduce(
-    [...SERVICES.filter((serviceName) => serviceName in services), "github"],
+    [
+      ...SERVICES.filter(
+        (serviceName) =>
+          serviceName in services && services[serviceName] === true
+      ),
+      "github",
+    ],
     async (acc, serviceName) => ({
       ...acc,
       [serviceName]: await accountCreators[serviceName](user),
@@ -157,7 +163,7 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
     {}
   )
 
-  await createAccountsOnSuccess(user, servicesCreationResponses)
+  createAccountsOnSuccess(user, servicesCreationResponses)
 
   return servicesCreationResponses
 }

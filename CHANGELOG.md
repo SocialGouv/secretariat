@@ -1,3 +1,10 @@
+## [1.34.6](https://github.com/SocialGouv/secretariat/compare/v1.34.5...v1.34.6) (2022-06-21)
+
+
+### Bug Fixes
+
+* onboard service only on true ([#320](https://github.com/SocialGouv/secretariat/issues/320)) ([9195c80](https://github.com/SocialGouv/secretariat/commit/9195c8092b93a09987524b1841c3a031fdde0565))
+
 ## [1.34.5](https://github.com/SocialGouv/secretariat/compare/v1.34.4...v1.34.5) (2022-06-16)
 
 

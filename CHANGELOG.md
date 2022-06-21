@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/SocialGouv/secretariat/compare/v1.34.6...v1.35.0) (2022-06-21)
+
+
+### Features
+
+* better emails ([#319](https://github.com/SocialGouv/secretariat/issues/319)) ([3f16c58](https://github.com/SocialGouv/secretariat/commit/3f16c5812ac6c84ed682a29339b27b984d607b30))
+
 ## [1.34.6](https://github.com/SocialGouv/secretariat/compare/v1.34.5...v1.34.6) (2022-06-21)
 
 

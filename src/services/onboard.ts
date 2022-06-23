@@ -5,6 +5,7 @@ import {
 } from "@/utils/env"
 import fetcher from "@/utils/fetcher"
 import { getJwt } from "@/utils/jwt"
+import sluggifyString from "@/utils/sluggify-string"
 import ovh from "@/utils/ovh"
 import SERVICES from "@/utils/SERVICES"
 import statusOk from "@/utils/status-ok"
@@ -45,9 +46,7 @@ const mattermostAccountCreator = async ({
   lastName,
   email,
 }: OnboardingData): Promise<APIResponse> => {
-  const username = `${firstName.replace(/\s+/g, "-").toLowerCase()}.${lastName
-    .replace(/\s+/g, "-")
-    .toLowerCase()}`
+  const username = `${sluggifyString(firstName)}.${sluggifyString(lastName)}`
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
     {
@@ -81,7 +80,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const email = mailResponse.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
-  const login = `${firstName}.${lastName.replace(/\s+/g, "-").toLowerCase()}`
+  const login = `${sluggifyString(firstName)}.${sluggifyString(lastName)}`
   const response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,

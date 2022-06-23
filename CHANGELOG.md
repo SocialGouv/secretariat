@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/SocialGouv/secretariat/compare/v1.35.0...v1.35.1) (2022-06-23)
+
+
+### Bug Fixes
+
+* remove diacritics from user input ([#324](https://github.com/SocialGouv/secretariat/issues/324)) ([0078210](https://github.com/SocialGouv/secretariat/commit/00782108cbcee71a52f4ebb8d4442fc0288b72bd))
+
 # [1.35.0](https://github.com/SocialGouv/secretariat/compare/v1.34.6...v1.35.0) (2022-06-21)
 
 

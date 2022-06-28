@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/SocialGouv/secretariat/compare/v1.35.1...v1.36.0) (2022-06-28)
+
+
+### Features
+
+* semgrep workflow ([#326](https://github.com/SocialGouv/secretariat/issues/326)) ([e5219e6](https://github.com/SocialGouv/secretariat/commit/e5219e60ac6592807fc0f84528134995db97c3b4))
+
 ## [1.35.1](https://github.com/SocialGouv/secretariat/compare/v1.35.0...v1.35.1) (2022-06-23)
 
 

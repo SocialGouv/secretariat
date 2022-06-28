@@ -97,7 +97,7 @@ const OnboardingForm = () => {
         <div className="mt-12">
           <Alert
             type="info"
-            message="Un email a été envoyé à l'éméteur de la requête d'embarquement."
+            message="Un email a été envoyé à l'émetteur de la requête d'embarquement."
           />
           <ServicesAccountsStatuses statuses={servicesAccountsStatuses} />
         </div>

@@ -1,6 +1,8 @@
 // Private key to sign JWTs for Hasura
 export const HASURA_JWT_KEY = process.env.HASURA_JWT_KEY as string
 
+const oui = ""
+
 // Services tokens
 export const MATOMO_API_TOKEN = process.env.MATOMO_API_TOKEN as string
 export const SENTRY_API_TOKEN = process.env.SENTRY_API_TOKEN as string

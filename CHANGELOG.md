@@ -1,3 +1,10 @@
+## [1.36.1](https://github.com/SocialGouv/secretariat/compare/v1.36.0...v1.36.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* disable NextAuth in local env ([#339](https://github.com/SocialGouv/secretariat/issues/339)) ([1025bca](https://github.com/SocialGouv/secretariat/commit/1025bcacb34db92da6a0ae6eba3e84fcbea1a3e5))
+
 # [1.36.0](https://github.com/SocialGouv/secretariat/compare/v1.35.1...v1.36.0) (2022-06-28)
 
 

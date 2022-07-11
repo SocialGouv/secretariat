@@ -1,3 +1,6 @@
+// Node env
+export const NODE_ENV = process.env.NODE_ENV as string
+
 // Private key to sign JWTs for Hasura
 export const HASURA_JWT_KEY = process.env.HASURA_JWT_KEY as string
 

@@ -4,7 +4,12 @@ import GithubProvider from "next-auth/providers/github"
 import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
 import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
-import { GITHUB_ID, GITHUB_SECRET, NEXTAUTH_SECRET } from "@/utils/env"
+import {
+  GITHUB_ID,
+  GITHUB_SECRET,
+  NEXTAUTH_SECRET,
+  NODE_ENV,
+} from "@/utils/env"
 
 const AuthorizedTeams = ["sre", "ops", "core-team"]
 
@@ -41,6 +46,8 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
+      if (NODE_ENV === "development") return true
+
       const { login } = user
       const teams = await getUserTeams(login)
       return AuthorizedTeams.some((team) => teams.includes(team))
@@ -49,9 +56,11 @@ export default NextAuth({
       if (user) {
         const { login } = user
         const teams = await getUserTeams(login)
-        const role = AuthorizedTeams.some((team) => teams.includes(team))
-          ? "user"
-          : "anonymous"
+        const role =
+          NODE_ENV === "development" ||
+          AuthorizedTeams.some((team) => teams.includes(team))
+            ? "user"
+            : "anonymous"
         return { ...token, login, teams, role }
       }
       return token

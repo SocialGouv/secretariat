@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/SocialGouv/secretariat/compare/v1.36.1...v1.37.0) (2022-07-13)
+
+
+### Features
+
+* hasura seeds ([#338](https://github.com/SocialGouv/secretariat/issues/338)) ([c804bb0](https://github.com/SocialGouv/secretariat/commit/c804bb001a8dfad8af988e91f6f7c706f148baa0))
+
 ## [1.36.1](https://github.com/SocialGouv/secretariat/compare/v1.36.0...v1.36.1) (2022-07-11)
 
 

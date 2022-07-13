@@ -153,7 +153,7 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
         (serviceName) =>
           serviceName in services && services[serviceName] === true
       ),
-      "github",
+      ...(user.githubLogin !== "" ? ["github"] : []),
     ],
     async (acc, serviceName) => ({
       ...acc,

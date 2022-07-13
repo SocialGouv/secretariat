@@ -2,9 +2,8 @@
 node_modules/
 
 # dotenv environment variables file
-.env
-.env.test
-.env.local
+.env*
+!.env.sample
 
 # Next.js build output
 .next

@@ -48,7 +48,7 @@ On utilise une image Hasura qui applique des **migrations lors de son build**. L
 - lors de la **première mise en place** de l'environnement
 - après avoir **manuellement supprimé** le volume (par exemple `docker-compose down --volumes`)
 
-Il faut alors vérifier que Hasura a bien fini de démarrer avant de passer à l'étape suivante. Une bonne manière de s'en assurer est de lancer l'interface web : `hasura console`. Le démarrage complet peut prendre plusieurs minutes.
+Il faut alors vérifier que Hasura a **bien fini de démarrer avant de passer à l'étape suivante**. Une bonne manière de s'en assurer est de lancer l'**interface web** : `hasura console`. Le démarrage complet peut prendre **plusieurs minutes**.
 
 #### Seed de données
 
@@ -57,3 +57,13 @@ De manière à se **passer des secrets** permettant de télécharger les donnée
 ```bash
 hasura --database-name=default seed apply
 ```
+
+### Accès à l'application
+
+Démarrage du **serveur de développement** :
+
+```bash
+yarn dev
+```
+
+La plupart des pages de Secrétariat sont derrière un **NextAuth qui accepte seulement certains membres de la Fabrique**. En environnement de développement, ce comportement est modifié. Il suffit de rentrer un **nom d'utilisateur arbitraire** sur la page de connexion pour accéder à l'application.

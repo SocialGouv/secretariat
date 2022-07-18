@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/SocialGouv/secretariat/compare/v1.37.0...v1.37.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* optional Github in onboarding ([#340](https://github.com/SocialGouv/secretariat/issues/340)) ([bf8436d](https://github.com/SocialGouv/secretariat/commit/bf8436d092af64bbc1f4123d965bb6cea2d48445))
+
 # [1.37.0](https://github.com/SocialGouv/secretariat/compare/v1.36.1...v1.37.0) (2022-07-13)
 
 

@@ -8,14 +8,17 @@ const GithubLogin = () => {
     <label htmlFor="githubLogin" className="col-span-2">
       Github login:&nbsp;&nbsp;
       <input
-        required
         type="text"
         id="githubLogin"
         name="githubLogin"
         value={data?.githubLogin}
-        // autoComplete="given-name"
         placeholder="BlackWarrior94"
-        onChange={(e) => mutate({ ...data, githubLogin: e.target.value })}
+        onChange={(e) =>
+          mutate({
+            ...data,
+            githubLogin: e.target.value,
+          })
+        }
       />
     </label>
   )

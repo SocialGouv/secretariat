@@ -1,3 +1,10 @@
+## [1.38.1](https://github.com/SocialGouv/secretariat/compare/v1.38.0...v1.38.1) (2022-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to v0.30.5 [security] ([#314](https://github.com/SocialGouv/secretariat/issues/314)) ([0dec461](https://github.com/SocialGouv/secretariat/commit/0dec46180e089ec9254365cfc1408547a7d3ea64))
+
 # [1.38.0](https://github.com/SocialGouv/secretariat/compare/v1.37.1...v1.38.0) (2022-07-19)
 
 

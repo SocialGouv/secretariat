@@ -1,3 +1,10 @@
+## [1.38.2](https://github.com/SocialGouv/secretariat/compare/v1.38.1...v1.38.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-auth to v4.9.0 [security] ([#310](https://github.com/SocialGouv/secretariat/issues/310)) ([c9f6491](https://github.com/SocialGouv/secretariat/commit/c9f64913b49f9a16049cc90e1afabba067e4980f))
+
 ## [1.38.1](https://github.com/SocialGouv/secretariat/compare/v1.38.0...v1.38.1) (2022-07-19)
 
 

@@ -1,3 +1,10 @@
+# [1.38.0](https://github.com/SocialGouv/secretariat/compare/v1.37.1...v1.38.0) (2022-07-19)
+
+
+### Features
+
+* external contributions ([#341](https://github.com/SocialGouv/secretariat/issues/341)) ([87ed2b5](https://github.com/SocialGouv/secretariat/commit/87ed2b54b9bb4eb63956e1103ce2cbe717d5f813))
+
 ## [1.37.1](https://github.com/SocialGouv/secretariat/compare/v1.37.0...v1.37.1) (2022-07-18)
 
 

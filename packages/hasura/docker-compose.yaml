@@ -1,6 +1,6 @@
 # Dev environment compose file
 
-version: '3.6'
+version: "3.6"
 services:
   postgres:
     image: postgres:12
@@ -13,13 +13,11 @@ services:
       - "5432:5432"
 
   hasura:
-    build: packages/hasura
-    env_file: packages/hasura/.env
+    build: .
+    env_file: ./.env
     restart: always
-    # network_mode: host
     ports:
       - "8080:8080"
 
 volumes:
   db_data:
-

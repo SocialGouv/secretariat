@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+import CredentialsProvider from "next-auth/providers/credentials"
 
 import { getJwt } from "@/utils/jwt"
 import fetcher from "@/utils/fetcher"
@@ -25,25 +26,48 @@ const getUserTeams = async (login: string) => {
   return teams.map((team: GithubTeam) => team.slug)
 }
 
+const providers =
+  NODE_ENV === "development"
+    ? [
+        CredentialsProvider({
+          name: "Credentials",
+          credentials: {
+            name: {
+              label: "Name",
+              type: "text",
+              placeholder: "dev",
+            },
+          },
+          async authorize(credentials, req) {
+            if (credentials) {
+              return { name: credentials.name, image: "/favicon.ico" }
+            } else {
+              return null
+            }
+          },
+        }),
+      ]
+    : [
+        GithubProvider({
+          clientId: GITHUB_ID,
+          clientSecret: GITHUB_SECRET,
+          profile: (profile) => {
+            return {
+              teams: [],
+              role: "anonymous",
+              name: profile.name,
+              login: profile.login,
+              email: profile.email,
+              id: String(profile.id),
+              image: profile.avatar_url,
+            }
+          },
+        }),
+      ]
+
 export default NextAuth({
   secret: NEXTAUTH_SECRET,
-  providers: [
-    GithubProvider({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET,
-      profile: (profile) => {
-        return {
-          teams: [],
-          role: "anonymous",
-          name: profile.name,
-          login: profile.login,
-          email: profile.email,
-          id: String(profile.id),
-          image: profile.avatar_url,
-        }
-      },
-    }),
-  ],
+  providers,
   callbacks: {
     async signIn({ user }) {
       if (NODE_ENV === "development") return true
@@ -54,13 +78,14 @@ export default NextAuth({
     },
     async jwt({ token, user }) {
       if (user) {
+        if (NODE_ENV === "development")
+          return { ...token, name: user.name, teams: ["dev"], role: "user" }
+
         const { login } = user
         const teams = await getUserTeams(login)
-        const role =
-          NODE_ENV === "development" ||
-          AuthorizedTeams.some((team) => teams.includes(team))
-            ? "user"
-            : "anonymous"
+        const role = AuthorizedTeams.some((team) => teams.includes(team))
+          ? "user"
+          : "anonymous"
         return { ...token, login, teams, role }
       }
       return token

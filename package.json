@@ -34,7 +34,7 @@
     "swr": "1.2.0"
   },
   "resolutions": {
-    "async": "3.2.2"
+    "async": "3.2.4"
   },
   "scripts": {
     "dev": "next dev",

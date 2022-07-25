@@ -1,31 +1,41 @@
 import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
 
 const html = (body: string) => `
-<div style="text-align: center; font-size: 1.2rem; font-family: Arial, sans-serif; background-color: #f6f6f6; border-radius: 4px; padding: 3rem 1rem;">
-  <section>
-    <p style="margin: 0; font-size: 3rem;"><strong>Secrétariat</strong></p>
-    <p style="margin: 0">
-      Gestion des comptes de services
-      <a href="https://github.com/SocialGouv">@SocialGouv</a>
-    </p>
-  </section>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @media (min-width: 1024px) {
+      .container {
+        width: 50vw
+      }
+    }
+  </style>
+</head>
+<div class="container" style="font-size: 1.2rem; font-family: Arial, sans-serif; background-color: #f5f5fe; color: #3a3a3a; border-radius: 0.25rem; padding: 1rem; margin: 0 auto;">
+    <section>
+      <p style="margin: 0; font-size: 2rem; color: #161616;">Secrétariat</p>
+      <p style="margin: 0; color: #666666;">
+        Gestion des comptes de services
+        <a href="https://github.com/SocialGouv">@SocialGouv</a>
+      </p>
+    </section>
 
-  <br/>
+    <br/>
 
-  <section>
-    ${body}
-  </section>
+    <section>
+      ${body}
+    </section>
 
-  <br/>
-  <br/>
+    <br/>
+    <br/>
 
-  <section style="font-size: 0.8rem; font-style: italic;">
-    <p>
-      Cet email a été envoyé automatiquement par
-      <a href="https://github.com/SocialGouv/secretariat">Secrétariat</a>, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
-    </p>
-    <p style="margin-bottom: 0;">Merci de ne pas répondre à cet email.</p>
-  </section>
+    <section style="font-size: 0.8rem; font-style: italic; color: #666666;">
+      <p>
+        Cet email a été envoyé automatiquement par
+        <a href="https://github.com/SocialGouv/secretariat">Secrétariat</a>, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique des Ministères Sociaux.
+      </p>
+      <p style="margin-bottom: 0;">Merci de ne pas répondre à cet email.</p>
+    </section>
 </div>
 `
 
@@ -35,7 +45,7 @@ Gestion des comptes de services @SocialGouv
 
 ${body}
 
-Cet email a été envoyé automatiquement par Secrétariat, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
+Cet email a été envoyé automatiquement par Secrétariat, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique des Ministères Sociaux.
 Merci de ne pas réponde à cet email.
 `
 

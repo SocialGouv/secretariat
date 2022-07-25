@@ -25,15 +25,19 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     ],
     "Vérification de votre adresse mail",
-    `Veuillez effectuer la vérification de votre adresse mail en vous rendant à l'adresse suivante : ${url}`,
-    `<p>Veuillez effectuer la vérification de votre adresse email en cliquant sur le bouton ou en suivant le lien :</p>
-    <a
-      style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: white"
+    `Vous avez effectué une demande d'embarquement au sein de la Fabrique Numérique des Ministères Sociaux.
+    Veuillez effectuer la vérification de votre adresse mail en vous rendant à l'adresse ci-dessous :
+    ${url}`,
+    `<p>Vous avez effectué une demande d'embarquement au sein de la Fabrique Numérique des Ministères Sociaux.</p>
+    <p>Veuillez vérifier votre adresse email en cliquant sur le bouton ci-dessous&nbsp:</p>
+    <div style="text-align: center;">
+      <a
+      style="text-align: center; text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
       href="${url}"
-    >
-      Vérifier
-    </a>
-    <p style="font-size: 1rem;">${url}</p>`
+      >
+        Vérifier
+      </a>
+    </div>`
   )
 
   res.status(response.status).json({ id })

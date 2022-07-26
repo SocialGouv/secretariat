@@ -1,3 +1,10 @@
+## [1.38.3](https://github.com/SocialGouv/secretariat/compare/v1.38.2...v1.38.3) (2022-07-26)
+
+
+### Bug Fixes
+
+* prettier emails ([#343](https://github.com/SocialGouv/secretariat/issues/343)) ([748111f](https://github.com/SocialGouv/secretariat/commit/748111f64406c576939f5bb03d25275c030951aa))
+
 ## [1.38.2](https://github.com/SocialGouv/secretariat/compare/v1.38.1...v1.38.2) (2022-07-19)
 
 

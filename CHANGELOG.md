@@ -1,3 +1,10 @@
+# [1.39.0](https://github.com/SocialGouv/secretariat/compare/v1.38.5...v1.39.0) (2022-08-11)
+
+
+### Features
+
+* give user their ovh password ([#349](https://github.com/SocialGouv/secretariat/issues/349)) ([a69f83d](https://github.com/SocialGouv/secretariat/commit/a69f83d6244b884812c66cf8cdf54d501626cf47))
+
 ## [1.38.5](https://github.com/SocialGouv/secretariat/compare/v1.38.4...v1.38.5) (2022-08-11)
 
 

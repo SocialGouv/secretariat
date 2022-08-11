@@ -45,7 +45,7 @@
     "postinstall": "is-ci || husky install"
   },
   "devDependencies": {
-    "@react-spring/types": "9.4.4",
+    "@react-spring/types": "9.5.2",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.2",
     "@types/jsonwebtoken": "8.5.8",

@@ -29,7 +29,7 @@
     "react-modal": "^3.14.4",
     "react-spring": "9.4.4",
     "sass": "1.49.7",
-    "sharp": "0.30.5",
+    "sharp": "0.30.7",
     "spinthatshit": "1.0.4",
     "swr": "1.2.0"
   },

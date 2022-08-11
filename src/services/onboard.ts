@@ -68,20 +68,17 @@ const mattermostAccountCreator = async ({
 }
 
 const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
-  const mailResponse = await ovh(
-    "GET",
-    `/email/pro/${OVH_SERVICE_NAME}/account`
-  )
-  if (!mailResponse.success)
+  let response = await ovh("GET", `/email/pro/${OVH_SERVICE_NAME}/account`)
+  if (!response.success)
     return {
-      status: mailResponse.error.error,
-      body: mailResponse.error.message,
+      status: response.error.error,
+      body: response.error.message,
     }
-  const email = mailResponse.data.find((email: string) =>
+  let email = response.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
   const login = `${sluggifyString(firstName)}.${sluggifyString(lastName)}`
-  const response = await ovh(
+  response = await ovh(
     "PUT",
     `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
     {
@@ -91,18 +88,33 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
     }
   )
 
+  if (!response.success) {
+    return { status: response.error.error, body: response.error.message }
+  }
+
+  email = `${login}@fabrique.social.gouv.fr`
+  const password = strongPassword()
+  response = await ovh(
+    "POST",
+    `/email/pro/${OVH_SERVICE_NAME}/account/${email}/changePassword`,
+    { password }
+  )
+
+  if (!response.success) {
+    return { status: response.error.error, body: response.error.message }
+  }
+
   // Fetch account data
   const accountResponse = await ovh(
     "GET",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${login}@fabrique.social.gouv.fr`
+    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
   )
 
-  return response.success
-    ? {
-        status: 200,
-        body: accountResponse.data,
-      }
-    : { status: response.error.error, body: response.error.message }
+  return {
+    status: 200,
+    body: accountResponse.data,
+    mailInfo: { login, password },
+  }
 }
 
 const accountCreators: Record<string, any> = {
@@ -146,15 +158,19 @@ const createAccountsOnSuccess = async (
 }
 
 const onboard = async ({ services, ...user }: OnboardingData) => {
+  const servicesToCreate = [
+    ...SERVICES.filter(
+      (serviceName) => serviceName in services && services[serviceName] === true
+    ),
+    ...(user.githubLogin !== "" ? ["github"] : []),
+  ]
+
+  if (servicesToCreate.length === 0) {
+    return {}
+  }
   // Create required accounts
   const servicesCreationResponses = await pReduce(
-    [
-      ...SERVICES.filter(
-        (serviceName) =>
-          serviceName in services && services[serviceName] === true
-      ),
-      ...(user.githubLogin !== "" ? ["github"] : []),
-    ],
+    servicesToCreate,
     async (acc, serviceName) => ({
       ...acc,
       [serviceName]: await accountCreators[serviceName](user),
@@ -162,7 +178,7 @@ const onboard = async ({ services, ...user }: OnboardingData) => {
     {}
   )
 
-  createAccountsOnSuccess(user, servicesCreationResponses)
+  await createAccountsOnSuccess(user, servicesCreationResponses)
 
   return servicesCreationResponses
 }

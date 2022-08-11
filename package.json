@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@react-spring/types": "9.4.4",
-    "@testing-library/jest-dom": "5.16.2",
+    "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.2",
     "@types/jsonwebtoken": "8.5.8",
     "@types/lodash.isequal": "4.5.6",

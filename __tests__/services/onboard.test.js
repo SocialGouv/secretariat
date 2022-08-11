@@ -1,5 +1,6 @@
 import onboard from "@/services/onboard"
 import ovh from "@/utils/ovh"
+import sluggifyString from "@/utils/sluggify-string"
 import { rest, graphql } from "msw"
 import { setupServer } from "msw/node"
 
@@ -53,39 +54,62 @@ beforeEach(() => {
   insertUserCalledWith = null
 })
 
-it("should return only github if no services", async () => {
+it("should return empty if no services", async () => {
   expect(
     await onboard({
       services: { mattermost: false, ovh: false },
       firstName: "fake firstname",
       lastName: "fake lastname",
+      githubLogin: "",
     })
-  ).toStrictEqual({ github: { status: 250, body: { data: "fake data" } } })
+  ).toStrictEqual({})
 })
 
 it("should return status and body from each API", async () => {
-  ovh
-    .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
-    .mockResolvedValue({ success: true, data: "fake data" })
   expect(
     await onboard({
-      services: { mattermost: true, ovh: true },
+      services: { mattermost: true, ovh: false },
       firstName: "fake firstname",
       lastName: "fake lastname",
       githubLogin: "fake github",
     })
   ).toStrictEqual({
-    ovh: { status: 200, body: "fake data" },
     github: { status: 250, body: { data: "fake data" } },
     mattermost: { status: 250, body: { data: "fake data" } },
   })
 })
 
-it("should insert user and accounts on success", async () => {
+it("should return status, body and login/password for ovh account", async () => {
+  ovh
+    .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
+    .mockResolvedValue({ success: true, data: "fake data" })
+
+  const response = await onboard({
+    services: { mattermost: false, ovh: true },
+    firstName: "fake firstname",
+    lastName: "fake lastname",
+    githubLogin: "",
+  })
+  expect(response).toMatchObject({
+    ovh: {
+      status: 200,
+      body: "fake data",
+      mailInfo: {
+        login: `${sluggifyString("fake firstname")}.${sluggifyString(
+          "fake lastname"
+        )}`,
+      },
+    },
+  })
+  expect(response.ovh.mailInfo).toHaveProperty("password")
+})
+
+it("should insert user and account on success", async () => {
   await onboard({
     services: { mattermost: true, ovh: false },
     firstName: "fake firstname",
     lastName: "fake lastname",
+    githubLogin: "",
     arrival: "01-01-2022",
     departure: "01-05-2022",
   })
@@ -98,7 +122,7 @@ it("should insert user and accounts on success", async () => {
 })
 
 describe("ovh error", () => {
-  it("should handle error on first query", async () => {
+  it("should handle error on query 1", async () => {
     ovh.mockResolvedValue({
       success: false,
       error: { error: 550, message: "fake message" },
@@ -108,14 +132,13 @@ describe("ovh error", () => {
         services: { ovh: true, mattermost: false },
         firstName: "fake firstname",
         lastName: "fake lastname",
+        githubLogin: "",
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },
-      github: { status: 250, body: { data: "fake data" } },
     })
   })
-
-  it("should handle error on second query", async () => {
+  it("should handle error on query 3", async () => {
     ovh
       .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
       .mockResolvedValue({
@@ -127,10 +150,29 @@ describe("ovh error", () => {
         services: { ovh: true, mattermost: false },
         firstName: "fake firstname",
         lastName: "fake lastname",
+        githubLogin: "",
       })
     ).toStrictEqual({
       ovh: { status: 550, body: "fake message" },
-      github: { status: 250, body: { data: "fake data" } },
+    })
+  })
+  it("should handle error on query 3", async () => {
+    ovh
+      .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
+      .mockResolvedValueOnce({ success: true, data: "fake data" })
+      .mockResolvedValue({
+        success: false,
+        error: { error: 550, message: "fake message" },
+      })
+    expect(
+      await onboard({
+        services: { ovh: true, mattermost: false },
+        firstName: "fake firstname",
+        lastName: "fake lastname",
+        githubLogin: "",
+      })
+    ).toStrictEqual({
+      ovh: { status: 550, body: "fake message" },
     })
   })
 })

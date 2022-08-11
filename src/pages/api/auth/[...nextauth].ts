@@ -55,9 +55,9 @@ const providers =
             return {
               teams: [],
               role: "anonymous",
-              name: profile.name,
+              name: profile.name ?? profile.login,
               login: profile.login,
-              email: profile.email,
+              email: profile.email as string,
               id: String(profile.id),
               image: profile.avatar_url,
             }

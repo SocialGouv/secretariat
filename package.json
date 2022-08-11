@@ -64,7 +64,7 @@
     "node-mocks-http": "^1.11.0",
     "node-talisman": "^1.27.0",
     "postcss": "8.4.16",
-    "prettier": "2.5.1",
+    "prettier": "2.7.1",
     "stylelint": "14.10.0",
     "stylelint-config-prettier-scss": "0.0.1",
     "stylelint-config-standard-scss": "3.0.0",

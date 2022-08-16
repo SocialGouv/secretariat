@@ -4,10 +4,7 @@ import type { SignOptions } from "jsonwebtoken"
 
 import { HASURA_JWT_KEY } from "./env"
 
-export function getJwt(
-  role: string = "anonymous",
-  teams: string[] = []
-): string {
+export function getJwt(role: string = "anonymous"): string {
   const options: SignOptions = {
     algorithm: "RS512",
     expiresIn: "30d",

@@ -17,7 +17,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import { useSWRConfig } from "swr"
 import AccountDeleteModal from "./delete-account-modal"
 
-const Users = () => {
+const Users = ({ userLogin }) => {
   const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
@@ -47,7 +47,7 @@ const Users = () => {
 
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
-      await mergeUsers(selectedUser, user, token)
+      await mergeUsers(selectedUser, user, token, userLogin)
       mutate("/users")
     }
   }

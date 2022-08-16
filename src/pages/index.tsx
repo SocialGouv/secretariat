@@ -16,7 +16,7 @@ const Home = () => {
       {session ? (
         <>
           <Search />
-          <Users />
+          <Users userLogin={session.user.login} />
         </>
       ) : (
         <Login />

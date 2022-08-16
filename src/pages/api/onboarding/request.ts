@@ -5,9 +5,12 @@ import fetcher from "@/utils/fetcher"
 import sendEmail from "@/utils/send-email"
 import { NEXTAUTH_URL } from "@/utils/env"
 import { createOnboardingRequest } from "@/queries/index"
+import logAction from "@/utils/log-action"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt("admin")
+
+  logAction(token, null, "onboarding/request", JSON.stringify(req.body))
 
   const {
     insert_onboarding_requests_one: { id },

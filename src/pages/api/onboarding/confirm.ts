@@ -5,10 +5,14 @@ import fetcher from "@/utils/fetcher"
 import { NEXTAUTH_URL } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
 import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
+import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
   const token = getJwt("admin")
+
+  logAction(token, null, "onboarding/confirm")
+
   await fetcher(confirmOnboardingRequest, token, {
     cols: { id },
     data: { confirmed: true },
@@ -36,7 +40,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     recipients,
     "Demande d'onboarding",
     `Une demande d'onboarding a été effectuée sur Secrétariat.
-    
+
     En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :
 
     ${url.href}`,

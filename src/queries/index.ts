@@ -226,3 +226,13 @@ export const confirmOnboardingRequest = gql`
     }
   }
 `
+
+export const insertLog = gql`
+  mutation insertLog($user: String, $action: String, $parameters: String) {
+    insert_logs_one(
+      object: { user: $user, action: $action, parameters: $parameters }
+    ) {
+      id
+    }
+  }
+`

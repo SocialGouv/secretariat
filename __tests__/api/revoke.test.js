@@ -9,6 +9,8 @@ jest.mock("next-auth/react", () => ({
 jest.mock("@/services/revoke", () =>
   jest.fn(() => ({ status: 250, body: "fake body" }))
 )
+jest.mock("@/utils/log-action", () => jest.fn())
+jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
 
 let req, res
 beforeEach(() => {
@@ -24,7 +26,9 @@ beforeEach(() => {
 })
 
 it("should call the revoke service and return its return value", async () => {
-  getSession.mockImplementation(() => Promise.resolve(true))
+  getSession.mockImplementation(() =>
+    Promise.resolve({ user: { login: "fake login" } })
+  )
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(250)
   expect(res._getData()).toEqual("fake body")
@@ -36,7 +40,9 @@ it("should call the revoke service and return its return value", async () => {
 })
 
 it("should return 400 if service name is incorrect", async () => {
-  getSession.mockImplementation(() => Promise.resolve(true))
+  getSession.mockImplementation(() =>
+    Promise.resolve({ user: { login: "fake login" } })
+  )
   req.body.serviceName = "fake serviceName"
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(400)

@@ -1,11 +1,22 @@
 import onboard from "@/services/onboard"
+import { getJwt } from "@/utils/jwt"
+import logAction from "@/utils/log-action"
 import sendEmail from "@/utils/send-email"
+import statusOk from "@/utils/status-ok"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (await getSession({ req })) {
-    const result = await onboard(req.body.data)
+  const session = await getSession({ req })
+  if (session) {
+    logAction(
+      getJwt("user"),
+      session.user.login,
+      "onboarding/review",
+      JSON.stringify(req.body)
+    )
+
+    const result: any = await onboard(req.body.data)
 
     await sendEmail(
       [

@@ -11,6 +11,7 @@ import {
   updateService,
   mergeUsers as mergeUsersQuery,
 } from "@/queries/index"
+import logAction from "@/utils/log-action"
 
 interface UserMapping {
   email: string
@@ -116,8 +117,16 @@ export const mutateUser = (
 export const mergeUsers = async (
   userToKeep: User,
   userToDrop: User,
-  token: string
+  token: string,
+  userLogin: string
 ): Promise<User> => {
+  logAction(
+    token,
+    userLogin,
+    "revoke",
+    JSON.stringify({ userToKeep, userToDrop })
+  )
+
   await fetcher(mergeUsersQuery, token, {
     userToKeepId: userToKeep.id,
     userToDropId: userToDrop.id,

@@ -3,6 +3,8 @@ import { createMocks } from "node-mocks-http"
 import handleSync from "../../src/pages/api/sync"
 
 jest.mock("@/services/sync", () => jest.fn())
+jest.mock("@/utils/log-action", () => jest.fn())
+jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
 
 let req, res
 beforeEach(() => {

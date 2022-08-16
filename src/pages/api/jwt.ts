@@ -6,10 +6,9 @@ import type { NextApiRequest, NextApiResponse } from "next"
 const Jwt = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req })
 
-  const { user: { role, teams } = { role: "anonymous", teams: [] } } =
-    session || {}
+  const { user: { role } = { role: "anonymous" } } = session || {}
 
-  const token = getJwt(role, teams)
+  const token = getJwt(role)
 
   res.status(200).json({ token })
 }

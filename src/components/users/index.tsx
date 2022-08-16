@@ -17,7 +17,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import { useSWRConfig } from "swr"
 import AccountDeleteModal from "./delete-account-modal"
 
-const Users = ({ userLogin }) => {
+const Users = ({ userLogin }: { userLogin: string }) => {
   const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()

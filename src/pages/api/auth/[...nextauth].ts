@@ -78,8 +78,15 @@ export default NextAuth({
     },
     async jwt({ token, user }) {
       if (user) {
-        if (NODE_ENV === "development")
-          return { ...token, name: user.name, teams: ["dev"], role: "user" }
+        if (NODE_ENV === "development") {
+          return {
+            ...token,
+            name: user.name,
+            login: `${user.name}_devEnv`,
+            teams: ["dev"],
+            role: "user",
+          }
+        }
 
         const { login } = user
         const teams = await getUserTeams(login)

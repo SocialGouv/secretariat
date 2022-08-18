@@ -8,10 +8,10 @@ import {
   SENTRY_API_TOKEN,
   ZAMMAD_API_TOKEN,
 } from "@/utils/env"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import {
   deleteAccount as deleteAccountQuery,
-  deleteUsers,
+  deleteUsers as deleteUsersQuery,
 } from "@/queries/index"
 import { getJwt } from "@/utils/jwt"
 import statusOk from "@/utils/status-ok"
@@ -21,7 +21,7 @@ const deleteAccountOnSuccess = async (status: number, accountID: string) => {
   if (!statusOk(status)) {
     return
   }
-  const jwt = getJwt("webhook")
+  const token = getJwt()
   const {
     delete_services_by_pk: {
       users: {
@@ -31,11 +31,11 @@ const deleteAccountOnSuccess = async (status: number, accountID: string) => {
         id: userID,
       },
     },
-  } = await fetcher(deleteAccountQuery, jwt, {
+  } = await graphQLFetcher(deleteAccountQuery, token, {
     accountID,
   })
   if (userAccountsCount === 0) {
-    await fetcher(deleteUsers, jwt, { userIds: [userID] })
+    await graphQLFetcher(deleteUsersQuery, token, { userIds: [userID] })
   }
 }
 

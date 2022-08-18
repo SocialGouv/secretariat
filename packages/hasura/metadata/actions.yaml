@@ -1,9 +1,20 @@
-actions: []
+actions:
+  - name: revoke
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/revoke'
+      forward_client_headers: true
+    permissions:
+      - role: user
+  - name: sync
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/sync'
 custom_types:
   enums: []
   input_objects:
-    - name: SampleInput
+    - name: RevokeInput
   objects:
-    - name: SampleOutput
-    - name: ExpressResponse
+    - name: SyncOutput
+    - name: APIResponse
   scalars: []

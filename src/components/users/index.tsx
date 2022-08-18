@@ -2,7 +2,6 @@ import UserList from "@/components/users/user-list"
 import UserSelected from "@/components/users/user-selected"
 import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
-import useToken from "@/hooks/use-token"
 import {
   revokeAccount,
   detachUserServiceAccount,
@@ -18,7 +17,6 @@ import { useSWRConfig } from "swr"
 import AccountDeleteModal from "./delete-account-modal"
 
 const Users = () => {
-  const [token] = useToken()
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
   const [droppedUser, setDroppedUser] = useState<User>()
@@ -33,21 +31,21 @@ const Users = () => {
 
   const handleUserEdit = async (user: User) => {
     setSelectedUser(mapUser(user))
-    await mutateUser(user, token)
+    await mutateUser(user)
     mutate("/users")
   }
 
   const handleAccountsChange = async (account: ServiceAccount) => {
     const services = selectedUser?.services.filter((a) => a.id !== account.id)
     if (selectedUser && services) {
-      await detachUserServiceAccount(account, token)
+      await detachUserServiceAccount(account)
       mutate("/users")
     }
   }
 
   const handleUserRemoval = async (user: User) => {
     if (pagedUsers && selectedUser) {
-      await mergeUsers(selectedUser, user, token)
+      await mergeUsers(selectedUser, user)
       mutate("/users")
     }
   }

@@ -1,14 +1,25 @@
-input SampleInput {
-  username: String!
-  password: String!
+type Mutation {
+  revoke(
+    data: RevokeInput!
+  ): APIResponse!
 }
 
-type SampleOutput {
-  accessToken: String!
+type Mutation {
+  sync: SyncOutput!
 }
 
-type ExpressResponse {
-  status: String!
-  message: Int!
+input RevokeInput {
+  accountServiceID: String!
+  accountID: String!
+  serviceName: String!
+}
+
+type SyncOutput {
+  message: String!
+}
+
+type APIResponse {
+  status: Int!
+  body: String!
 }
 

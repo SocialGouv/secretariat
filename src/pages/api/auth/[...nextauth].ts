@@ -2,8 +2,8 @@ import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-import { getJwt } from "@/utils/jwt"
-import fetcher from "@/utils/fetcher"
+import { encode, decode, getJwt } from "@/utils/jwt"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
 import {
   GITHUB_ID,
@@ -12,16 +12,14 @@ import {
   NODE_ENV,
 } from "@/utils/env"
 
-const AuthorizedTeams = ["sre", "ops", "core-team"]
+const AUTHORIZED_TEAMS = ["sre", "ops", "core-team"]
 
 const getUserTeams = async (login: string) => {
-  const jwt = getJwt("admin")
-
   const {
     organization: {
       teams: { nodes: teams },
     },
-  } = await fetcher(getUserTeamsQuery, jwt, { login })
+  } = await graphQLFetcher(getUserTeamsQuery, getJwt(), { login })
 
   return teams.map((team: GithubTeam) => team.slug)
 }
@@ -38,11 +36,16 @@ const providers =
               placeholder: "dev",
             },
           },
-          async authorize(credentials, req) {
-            if (credentials) {
-              return { name: credentials.name, image: "/favicon.ico" }
-            } else {
+          async authorize(credentials) {
+            if (!credentials) {
               return null
+            }
+
+            return {
+              id: credentials.name,
+              name: credentials.name,
+              login: credentials.name,
+              image: "/favicon.ico",
             }
           },
         }),
@@ -53,12 +56,9 @@ const providers =
           clientSecret: GITHUB_SECRET,
           profile: (profile) => {
             return {
-              teams: [],
-              role: "anonymous",
+              id: String(profile.id),
               name: profile.name ?? profile.login,
               login: profile.login,
-              email: profile.email as string,
-              id: String(profile.id),
               image: profile.avatar_url,
             }
           },
@@ -72,28 +72,22 @@ export default NextAuth({
     async signIn({ user }) {
       if (NODE_ENV === "development") return true
 
-      const { login } = user
-      const teams = await getUserTeams(login)
-      return AuthorizedTeams.some((team) => teams.includes(team))
+      const teams = await getUserTeams(user.login)
+      return AUTHORIZED_TEAMS.some((team) => teams.includes(team))
     },
     async jwt({ token, user }) {
-      if (user) {
-        if (NODE_ENV === "development")
-          return { ...token, name: user.name, teams: ["dev"], role: "user" }
-
-        const { login } = user
-        const teams = await getUserTeams(login)
-        const role = AuthorizedTeams.some((team) => teams.includes(team))
-          ? "user"
-          : "anonymous"
-        return { ...token, login, teams, role }
+      if (!user) {
+        return token
       }
-      return token
+
+      return { ...token, user }
     },
     async session({ session, token }) {
-      const { user } = session
-      const { login, role, teams } = token
-      return { ...session, user: { ...user, login, role, teams } }
+      return { ...session, ...token }
     },
+  },
+  jwt: {
+    encode,
+    decode,
   },
 })

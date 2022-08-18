@@ -1,17 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import sendEmail from "@/utils/send-email"
 import { NEXTAUTH_URL } from "@/utils/env"
 import { createOnboardingRequest } from "@/queries/index"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
-  const token = getJwt("admin")
-
   const {
     insert_onboarding_requests_one: { id },
-  } = await fetcher(createOnboardingRequest, token, {
+  } = await graphQLFetcher(createOnboardingRequest, getJwt(), {
     request: { data: req.body.data },
   })
 

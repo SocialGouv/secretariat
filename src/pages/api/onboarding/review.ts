@@ -1,10 +1,12 @@
 import onboard from "@/services/onboard"
+import { decode } from "@/utils/jwt"
 import sendEmail from "@/utils/send-email"
 import { NextApiRequest, NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
+import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (await getSession({ req })) {
+  const token = await getToken({ req, decode })
+  if (token) {
     const result = await onboard(req.body.data)
 
     await sendEmail(

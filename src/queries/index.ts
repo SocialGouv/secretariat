@@ -239,3 +239,22 @@ export const confirmOnboardingRequest = gql`
     }
   }
 `
+
+export const revoke = gql`
+  mutation revoke(
+    $accountID: String!
+    $accountServiceID: String!
+    $serviceName: String!
+  ) {
+    revoke(
+      data: {
+        accountID: $accountID
+        accountServiceID: $accountServiceID
+        serviceName: $serviceName
+      }
+    ) {
+      body
+      status
+    }
+  }
+`

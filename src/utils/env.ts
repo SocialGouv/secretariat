@@ -1,9 +1,6 @@
 // Node env
 export const NODE_ENV = process.env.NODE_ENV as string
 
-// Private key to sign JWTs for Hasura
-export const HASURA_JWT_KEY = process.env.HASURA_JWT_KEY as string
-
 // Services tokens
 export const MATOMO_API_TOKEN = process.env.MATOMO_API_TOKEN as string
 export const SENTRY_API_TOKEN = process.env.SENTRY_API_TOKEN as string
@@ -16,9 +13,6 @@ export const NEXTCLOUD_API_LOGIN = process.env.NEXTCLOUD_API_LOGIN as string
 export const NEXTCLOUD_API_SECRET = process.env.NEXTCLOUD_API_SECRET as string
 export const MATTERMOST_API_TOKEN = process.env.MATTERMOST_API_TOKEN as string
 export const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN as string
-
-// Github sends this to authenticate its webhook
-export const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET as string
 
 // Github auth provider
 export const GITHUB_ID = process.env.GITHUB_ID as string

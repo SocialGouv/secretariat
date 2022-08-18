@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { NEXTAUTH_URL } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
 import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
-  const token = getJwt("admin")
-  await fetcher(confirmOnboardingRequest, token, {
+  const token = getJwt()
+  await graphQLFetcher(confirmOnboardingRequest, token, {
     cols: { id },
     data: { confirmed: true },
   })
@@ -20,7 +20,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
         members: { nodes: users },
       },
     },
-  } = await fetcher(getCoreTeamUsers, token)
+  } = await graphQLFetcher(getCoreTeamUsers, token)
 
   const recipients = users.reduce(
     (emails: Record<"address", string>[], user: Record<"email", string>) => (
@@ -36,7 +36,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     recipients,
     "Demande d'onboarding",
     `Une demande d'onboarding a été effectuée sur Secrétariat.
-    
+
     En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :
 
     ${url.href}`,

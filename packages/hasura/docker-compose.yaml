@@ -9,15 +9,13 @@ services:
       - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgrespassword
-    ports:
-      - "5432:5432"
+    network_mode: host
 
   hasura:
     build: .
     env_file: ./.env
     restart: always
-    ports:
-      - "8080:8080"
+    network_mode: host
 
 volumes:
   db_data:

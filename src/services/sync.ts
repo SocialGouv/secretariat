@@ -5,7 +5,7 @@ import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
 import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
 import SERVICES from "@/utils/SERVICES"
 import {
@@ -50,12 +50,12 @@ const servicesIdFields: Record<ServiceName, string> = {
 const upsertService = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
-  jwt: string
+  token: string
 ): Promise<string> => {
   const idField = servicesIdFields[serviceName]
-  const { services: servicesMatchingId } = await fetcher(
+  const { services: servicesMatchingId } = await graphQLFetcher(
     getServicesMatchingId,
-    jwt,
+    token,
     {
       idKeyValue: { [idField]: serviceData[idField] },
       serviceName,
@@ -67,12 +67,12 @@ const upsertService = async (
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await fetcher(insertUser, jwt)
+    } = await graphQLFetcher(insertUser, token)
 
     // Then, create the service entry
     const {
       insert_services_one: { id: serviceId },
-    } = await fetcher(insertService, jwt, {
+    } = await graphQLFetcher(insertService, token, {
       service: { data: serviceData, user_id: userId, type: serviceName },
     })
     stats.insertions += 1
@@ -81,7 +81,7 @@ const upsertService = async (
     // We have to update a service entry
     const {
       update_services_by_pk: { id: serviceId },
-    } = await fetcher(updateService, jwt, {
+    } = await graphQLFetcher(updateService, token, {
       serviceId: servicesMatchingId[0].id,
       service: { data: serviceData },
     })
@@ -100,11 +100,11 @@ const upsertService = async (
 const updateUsers = async (
   users: Record<string, unknown>[],
   serviceName: ServiceName,
-  jwt: string
+  token: string
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
   for (const userKey in users) {
-    const serviceId = await upsertService(users[userKey], serviceName, jwt)
+    const serviceId = await upsertService(users[userKey], serviceName, token)
     if (serviceId !== "") existingServicesIds.push(serviceId)
   }
   return existingServicesIds
@@ -112,13 +112,13 @@ const updateUsers = async (
 
 const clearDeletedServices = async (
   existingServicesIds: Record<string, string[]>,
-  jwt: string
+  token: string
 ) => {
   const affectedUsers = []
   for (const serviceName in existingServicesIds) {
     const {
       delete_services: { returning: affectedUsersForService },
-    } = await fetcher(deleteServices, jwt, {
+    } = await graphQLFetcher(deleteServices, token, {
       existingServicesIds: existingServicesIds[serviceName],
       serviceName,
     })
@@ -134,11 +134,11 @@ const deleteOrphanUsers = async (
       services_aggregate: { aggregate: { count: number } }
     }
   }[],
-  jwt: string
+  token: string
 ) => {
   const {
     delete_users: { affected_rows: deletedUsers },
-  } = await fetcher(deleteUsers, jwt, {
+  } = await graphQLFetcher(deleteUsers, token, {
     userIds: affectedUsers
       .filter((user) => user.users.services_aggregate.aggregate.count === 0)
       .map((user) => user.users.id),
@@ -147,7 +147,7 @@ const deleteOrphanUsers = async (
 }
 
 const sync = async (enabledServices: ServiceName[] = SERVICES) => {
-  const jwt = getJwt("webhook")
+  const token = getJwt()
 
   // Remember the users list for all services, to clean the deleted users afterwards
   const existingServicesIds: Record<string, string[]> = {}
@@ -168,13 +168,13 @@ const sync = async (enabledServices: ServiceName[] = SERVICES) => {
   // Update the DB synchronously
   for (const serviceName of enabledServices) {
     existingServicesIds[serviceName].push(
-      ...(await updateUsers(dataByService[serviceName], serviceName, jwt))
+      ...(await updateUsers(dataByService[serviceName], serviceName, token))
     )
   }
 
-  const affectedUsers = await clearDeletedServices(existingServicesIds, jwt)
+  const affectedUsers = await clearDeletedServices(existingServicesIds, token)
   stats.accountDeletions = affectedUsers.length
-  const deletedUsers = await deleteOrphanUsers(affectedUsers, jwt)
+  const deletedUsers = await deleteOrphanUsers(affectedUsers, token)
   stats.userDeletions = deletedUsers
 
   console.log("updated users table with all services data")

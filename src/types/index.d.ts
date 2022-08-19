@@ -157,6 +157,12 @@ interface OnboardingData {
   services: Record<ServiceName, boolean>
 }
 
+interface OnboardingResponses {
+  github?: APIResponse
+  mattermost?: APIResponse
+  ovh?: APIResponse & { mailInfo: { login: string; password: string } }
+}
+
 interface OnboardingRequest {
   id: string
   created_at: Date

@@ -167,7 +167,10 @@ const createAccountsOnSuccess = async (
   }
 }
 
-const onboard = async ({ services, ...user }: OnboardingData) => {
+const onboard = async ({
+  services,
+  ...user
+}: OnboardingData): Promise<OnboardingResponses> => {
   const servicesToCreate = [
     ...SERVICES.filter(
       (serviceName) => serviceName in services && services[serviceName] === true

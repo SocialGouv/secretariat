@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 
-import fetcher from "@/utils/rest-fetcher"
 import Alert from "@/components/common/alert"
 import useOnboarding from "@/hooks/use-onboarding"
 import Form from "@/components/onboarding-form/form"
 import statusOk from "@/utils/status-ok"
 import graphQLFetcher from "@/utils/graphql-fetcher"
-import { onboardingRequestAction } from "@/queries/index"
+import {
+  onboardingRequestAction,
+  onboardingReviewAction,
+} from "@/queries/index"
 
 type ServicesAccountsStatuses = Record<
   ServiceName,
@@ -49,11 +51,11 @@ const OnboardingForm = () => {
 
   const handleCreationSubmit = async () => {
     const {
-      onboardingRequestAction: { status, _body },
+      onboardingRequestAction: { status },
     } = await graphQLFetcher({
       query: onboardingRequestAction,
       includeCookie: true,
-      parameters: { ...request, data },
+      parameters: { data },
     })
 
     if (statusOk(status)) {
@@ -64,20 +66,13 @@ const OnboardingForm = () => {
   }
 
   const handleReviewSubmit = async () => {
-    const result = await fetcher("/api/onboarding/review", {
-      method: "POST",
-      body: JSON.stringify({ ...request, data }),
-      headers: { "content-type": "application/json" },
+    const { onboardingReviewAction: responses } = await graphQLFetcher({
+      query: onboardingReviewAction,
+      includeCookie: true,
+      parameters: { data },
     })
-
-    if (!result || !result.ok) {
-      setStatus("review_error")
-    } else if (result.ok) {
-      const data = await result.json()
-
-      setStatus("review_success")
-      setServicesAccountsStatuses(data)
-    }
+    setStatus("review_success")
+    setServicesAccountsStatuses(responses)
   }
 
   useEffect(() => {

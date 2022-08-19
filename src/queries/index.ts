@@ -260,10 +260,29 @@ export const revokeAction = gql`
 `
 
 export const onboardingRequestAction = gql`
-  mutation MyMutation($data: OnboardingRequest!) {
+  mutation onboardingRequestAction($data: OnboardingData!) {
     onboardingRequestAction(data: $data) {
       body
       status
+    }
+  }
+`
+
+export const onboardingReviewAction = gql`
+  mutation onboardingReviewAction($data: OnboardingData!) {
+    onboardingReviewAction(data: $data) {
+      github {
+        body
+        status
+      }
+      mattermost {
+        body
+        status
+      }
+      ovh {
+        status
+        body
+      }
     }
   }
 `

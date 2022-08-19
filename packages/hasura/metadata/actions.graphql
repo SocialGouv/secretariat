@@ -1,7 +1,13 @@
 type Mutation {
   onboardingRequestAction(
-    data: OnboardingRequest!
+    data: OnboardingData!
   ): APIResponse!
+}
+
+type Mutation {
+  onboardingReviewAction(
+    data: OnboardingData!
+  ): OnboardingResponses!
 }
 
 type Mutation {
@@ -21,7 +27,7 @@ input OnboardingServices {
   ovh: Boolean!
 }
 
-input OnboardingRequest {
+input OnboardingData {
   email: String!
   message: String!
   lastName: String!
@@ -35,5 +41,11 @@ input OnboardingRequest {
 type APIResponse {
   status: Int!
   body: String!
+}
+
+type OnboardingResponses {
+  github: APIResponse
+  mattermost: APIResponse
+  ovh: APIResponse
 }
 

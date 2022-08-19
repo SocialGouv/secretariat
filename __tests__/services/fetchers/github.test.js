@@ -1,13 +1,13 @@
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 
-jest.mock("@/utils/fetcher")
+jest.mock("@/utils/graphql-fetcher")
 jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 
 it("should return a list of fetched users", async () => {
-  fetcher
+  graphQLFetcher
     .mockResolvedValueOnce(
       Promise.resolve({
         organization: {

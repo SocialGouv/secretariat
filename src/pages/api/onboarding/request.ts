@@ -13,7 +13,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     query: createOnboardingRequest,
     token: getJwt(),
     parameters: {
-      request: { data: req.body.data },
+      request: { data: req.body.input.data },
     },
   })
 
@@ -23,7 +23,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await sendEmail(
     [
       {
-        address: req.body.data.email,
+        address: req.body.input.data.email,
       },
     ],
     "Vérification de votre adresse mail",
@@ -42,7 +42,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     </div>`
   )
 
-  res.status(response.status).json({ id })
+  res.status(200).json({ status: response.status, body: await response.text() })
 }
 
 export default Request

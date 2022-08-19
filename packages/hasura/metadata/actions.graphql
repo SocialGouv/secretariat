@@ -1,4 +1,10 @@
 type Mutation {
+  onboardingRequestAction(
+    data: OnboardingRequest!
+  ): APIResponse!
+}
+
+type Mutation {
   revokeAction(
     data: RevokeActionInput!
   ): APIResponse!
@@ -8,6 +14,22 @@ input RevokeActionInput {
   accountServiceID: String!
   accountID: String!
   serviceName: String!
+}
+
+input OnboardingServices {
+  mattermost: Boolean!
+  ovh: Boolean!
+}
+
+input OnboardingRequest {
+  email: String!
+  message: String!
+  lastName: String!
+  firstName: String!
+  githubLogin: String!
+  services: OnboardingServices!
+  arrival: String!
+  departure: String!
 }
 
 type APIResponse {

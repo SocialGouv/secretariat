@@ -1,4 +1,10 @@
 actions:
+  - name: onboardingRequestAction
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000/api/onboarding/request
+    permissions:
+      - role: user
   - name: revokeAction
     definition:
       kind: synchronous
@@ -10,6 +16,8 @@ custom_types:
   enums: []
   input_objects:
     - name: RevokeActionInput
+    - name: OnboardingServices
+    - name: OnboardingRequest
   objects:
     - name: APIResponse
   scalars: []

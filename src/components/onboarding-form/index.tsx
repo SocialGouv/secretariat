@@ -5,6 +5,8 @@ import Alert from "@/components/common/alert"
 import useOnboarding from "@/hooks/use-onboarding"
 import Form from "@/components/onboarding-form/form"
 import statusOk from "@/utils/status-ok"
+import graphQLFetcher from "@/utils/graphql-fetcher"
+import { onboardingRequestAction } from "@/queries/index"
 
 type ServicesAccountsStatuses = Record<
   ServiceName,
@@ -46,14 +48,19 @@ const OnboardingForm = () => {
     useState<ServicesAccountsStatuses>()
 
   const handleCreationSubmit = async () => {
-    const result = await fetcher("/api/onboarding/request", {
-      method: "POST",
-      body: JSON.stringify({ ...request, data }),
-      headers: { "content-type": "application/json" },
+    const {
+      onboardingRequestAction: { status, _body },
+    } = await graphQLFetcher({
+      query: onboardingRequestAction,
+      includeCookie: true,
+      parameters: { ...request, data },
     })
 
-    if (!result || !result.ok) setStatus("create_error")
-    else if (result.ok) setStatus("create_success")
+    if (statusOk(status)) {
+      setStatus("create_success")
+    } else {
+      setStatus("create_error")
+    }
   }
 
   const handleReviewSubmit = async () => {

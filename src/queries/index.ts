@@ -258,3 +258,12 @@ export const revokeAction = gql`
     }
   }
 `
+
+export const onboardingRequestAction = gql`
+  mutation MyMutation($data: OnboardingRequest!) {
+    onboardingRequestAction(data: $data) {
+      body
+      status
+    }
+  }
+`

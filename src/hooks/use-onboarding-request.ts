@@ -8,7 +8,9 @@ const useOnboardingRequest = () => {
   const router = useRouter()
   const { id } = router.query
 
-  const key = id ? [getOnboardingRequest, "include", { id }] : null
+  const key = id
+    ? { query: getOnboardingRequest, includeCookie: true, parameters: { id } }
+    : null
 
   const { data: { onboarding_requests: [request] = [] } = {}, mutate } = useSWR(
     key,

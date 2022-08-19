@@ -9,9 +9,13 @@ import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
   const token = getJwt()
-  await graphQLFetcher(confirmOnboardingRequest, token, {
-    cols: { id },
-    data: { confirmed: true },
+  await graphQLFetcher({
+    query: confirmOnboardingRequest,
+    token,
+    parameters: {
+      cols: { id },
+      data: { confirmed: true },
+    },
   })
 
   const {
@@ -20,7 +24,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
         members: { nodes: users },
       },
     },
-  } = await graphQLFetcher(getCoreTeamUsers, token)
+  } = await graphQLFetcher({ query: getCoreTeamUsers, token })
 
   const recipients = users.reduce(
     (emails: Record<"address", string>[], user: Record<"email", string>) => (

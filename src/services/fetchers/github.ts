@@ -7,7 +7,7 @@ import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
 
 const fetchGithubPage = async (token: string, cursor?: string) => {
   // if it is the query for the first page, we don't have a cursor
-  const params = cursor ? { cursor } : {}
+  const parameters = cursor ? { cursor } : {}
   const {
     organization: {
       membersWithRole: {
@@ -15,7 +15,7 @@ const fetchGithubPage = async (token: string, cursor?: string) => {
         pageInfo: { hasNextPage, endCursor },
       },
     },
-  } = await graphQLFetcher(getRemoteGithubUsers, token, params)
+  } = await graphQLFetcher({ query: getRemoteGithubUsers, token, parameters })
 
   return { usersPage, hasNextPage, endCursor }
 }
@@ -47,8 +47,12 @@ export const fetchGithubUsers = async (
         organization: {
           teams: { nodes: teamsList },
         },
-      } = await graphQLFetcher(getRemoteGithubTeams, token, {
-        userLogins: user.login,
+      } = await graphQLFetcher({
+        query: getRemoteGithubTeams,
+        token,
+        parameters: {
+          userLogins: user.login,
+        },
       })
       console.log(`fetched teams for Github user ${index + 1}/${users.length}`)
       await setTimeout(msDelay) // so that we don't spam the remote API

@@ -240,13 +240,13 @@ export const confirmOnboardingRequest = gql`
   }
 `
 
-export const revoke = gql`
-  mutation revoke(
+export const revokeAction = gql`
+  mutation revokeAction(
     $accountID: String!
     $accountServiceID: String!
     $serviceName: String!
   ) {
-    revoke(
+    revokeAction(
       data: {
         accountID: $accountID
         accountServiceID: $accountServiceID

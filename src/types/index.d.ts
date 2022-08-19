@@ -173,3 +173,10 @@ interface Ruru {
   zammad?: boolean
   mattermost?: boolean
 }
+
+interface GraphQLFetcherParams {
+  query: string
+  includeCookie?: boolean
+  token?: string
+  parameters?: Record<string, unknown>
+}

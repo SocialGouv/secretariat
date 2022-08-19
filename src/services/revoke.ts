@@ -31,11 +31,19 @@ const deleteAccountOnSuccess = async (status: number, accountID: string) => {
         id: userID,
       },
     },
-  } = await graphQLFetcher(deleteAccountQuery, token, {
-    accountID,
+  } = await graphQLFetcher({
+    query: deleteAccountQuery,
+    token,
+    parameters: {
+      accountID,
+    },
   })
   if (userAccountsCount === 0) {
-    await graphQLFetcher(deleteUsersQuery, token, { userIds: [userID] })
+    await graphQLFetcher({
+      query: deleteUsersQuery,
+      token,
+      parameters: { userIds: [userID] },
+    })
   }
 }
 

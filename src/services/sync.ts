@@ -53,27 +53,31 @@ const upsertService = async (
   token: string
 ): Promise<string> => {
   const idField = servicesIdFields[serviceName]
-  const { services: servicesMatchingId } = await graphQLFetcher(
-    getServicesMatchingId,
+  const { services: servicesMatchingId } = await graphQLFetcher({
+    query: getServicesMatchingId,
     token,
-    {
+    parameters: {
       idKeyValue: { [idField]: serviceData[idField] },
       serviceName,
-    }
-  )
+    },
+  })
   if (servicesMatchingId.length === 0) {
     // This is a new service entry, we have to insert it into the table
 
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await graphQLFetcher(insertUser, token)
+    } = await graphQLFetcher({ query: insertUser, token })
 
     // Then, create the service entry
     const {
       insert_services_one: { id: serviceId },
-    } = await graphQLFetcher(insertService, token, {
-      service: { data: serviceData, user_id: userId, type: serviceName },
+    } = await graphQLFetcher({
+      query: insertService,
+      token,
+      parameters: {
+        service: { data: serviceData, user_id: userId, type: serviceName },
+      },
     })
     stats.insertions += 1
     return serviceId
@@ -81,9 +85,13 @@ const upsertService = async (
     // We have to update a service entry
     const {
       update_services_by_pk: { id: serviceId },
-    } = await graphQLFetcher(updateService, token, {
-      serviceId: servicesMatchingId[0].id,
-      service: { data: serviceData },
+    } = await graphQLFetcher({
+      query: updateService,
+      token,
+      parameters: {
+        serviceId: servicesMatchingId[0].id,
+        service: { data: serviceData },
+      },
     })
     stats.updates += 1
     return serviceId
@@ -118,9 +126,13 @@ const clearDeletedServices = async (
   for (const serviceName in existingServicesIds) {
     const {
       delete_services: { returning: affectedUsersForService },
-    } = await graphQLFetcher(deleteServices, token, {
-      existingServicesIds: existingServicesIds[serviceName],
-      serviceName,
+    } = await graphQLFetcher({
+      query: deleteServices,
+      token,
+      parameters: {
+        existingServicesIds: existingServicesIds[serviceName],
+        serviceName,
+      },
     })
     affectedUsers.push(...affectedUsersForService)
   }
@@ -138,10 +150,14 @@ const deleteOrphanUsers = async (
 ) => {
   const {
     delete_users: { affected_rows: deletedUsers },
-  } = await graphQLFetcher(deleteUsers, token, {
-    userIds: affectedUsers
-      .filter((user) => user.users.services_aggregate.aggregate.count === 0)
-      .map((user) => user.users.id),
+  } = await graphQLFetcher({
+    query: deleteUsers,
+    token,
+    parameters: {
+      userIds: affectedUsers
+        .filter((user) => user.users.services_aggregate.aggregate.count === 0)
+        .map((user) => user.users.id),
+    },
   })
   return deletedUsers
 }

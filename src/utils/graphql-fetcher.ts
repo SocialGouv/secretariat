@@ -1,23 +1,26 @@
 import { GraphQLClient } from "graphql-request"
+import { NEXT_PUBLIC_HASURA_URL } from "./env"
 
-const url = process.env.NEXT_PUBLIC_HASURA_URL as string
-
-const graphQLFetcher = (query: string, auth?: string, params = {}) => {
+const graphQLFetcher = ({
+  query,
+  includeCookie,
+  token,
+  parameters,
+}: GraphQLFetcherParams) => {
   let options = {}
-
-  if (auth === "include") {
+  if (includeCookie) {
     options = { ...options, credentials: "include" }
-  } else if (auth) {
+  } else if (token) {
     options = {
       ...options,
       credentials: "omit",
-      headers: { authorization: `Bearer ${auth}` },
+      headers: { Cookie: `next-auth.session-token=${token}` },
     }
   }
 
-  const client = new GraphQLClient(url, options)
+  const client = new GraphQLClient(NEXT_PUBLIC_HASURA_URL, options)
 
-  return client.request(query, params)
+  return client.request(query, parameters)
 }
 
 export default graphQLFetcher

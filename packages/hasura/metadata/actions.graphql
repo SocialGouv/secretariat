@@ -1,21 +1,13 @@
 type Mutation {
-  revoke(
-    data: RevokeInput!
+  revokeAction(
+    data: RevokeActionInput!
   ): APIResponse!
 }
 
-type Mutation {
-  sync: SyncOutput!
-}
-
-input RevokeInput {
+input RevokeActionInput {
   accountServiceID: String!
   accountID: String!
   serviceName: String!
-}
-
-type SyncOutput {
-  message: String!
 }
 
 type APIResponse {

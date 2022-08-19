@@ -9,8 +9,12 @@ import { createOnboardingRequest } from "@/queries/index"
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     insert_onboarding_requests_one: { id },
-  } = await graphQLFetcher(createOnboardingRequest, getJwt(), {
-    request: { data: req.body.data },
+  } = await graphQLFetcher({
+    query: createOnboardingRequest,
+    token: getJwt(),
+    parameters: {
+      request: { data: req.body.data },
+    },
   })
 
   const url = new URL("/api/onboarding/confirm", NEXTAUTH_URL)

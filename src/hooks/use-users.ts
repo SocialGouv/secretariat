@@ -9,7 +9,7 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
-  revoke as revokeQuery,
+  revokeAction,
 } from "@/queries/index"
 
 interface UserMapping {
@@ -107,9 +107,13 @@ const mapUsers = (users: User[]): User[] => {
 
 export const mutateUser = (user: User): Promise<User | undefined> => {
   const { id, arrival, departure } = user
-  return graphQLFetcher(updateUser, "include", {
-    id,
-    _set: { arrival, departure },
+  return graphQLFetcher({
+    query: updateUser,
+    includeCookie: true,
+    parameters: {
+      id,
+      _set: { arrival, departure },
+    },
   })
 }
 
@@ -117,9 +121,13 @@ export const mergeUsers = async (
   userToKeep: User,
   userToDrop: User
 ): Promise<User> => {
-  await graphQLFetcher(mergeUsersQuery, "include", {
-    userToKeepId: userToKeep.id,
-    userToDropId: userToDrop.id,
+  await graphQLFetcher({
+    query: mergeUsersQuery,
+    includeCookie: true,
+    parameters: {
+      userToKeepId: userToKeep.id,
+      userToDropId: userToDrop.id,
+    },
   })
 
   return mapUser({
@@ -131,11 +139,15 @@ export const mergeUsers = async (
 export const detachUserServiceAccount = async (account: ServiceAccount) => {
   const {
     insert_users_one: { id: userId },
-  } = await graphQLFetcher(insertUser, "include")
+  } = await graphQLFetcher({ query: insertUser, includeCookie: true })
 
-  await graphQLFetcher(updateService, "include", {
-    serviceId: account.id,
-    service: { user_id: userId },
+  await graphQLFetcher({
+    query: updateService,
+    includeCookie: true,
+    parameters: {
+      serviceId: account.id,
+      service: { user_id: userId },
+    },
   })
 }
 
@@ -148,11 +160,15 @@ export const revokeAccount = async (account: ServiceAccount) => {
       : account.data.id
 
   const {
-    revoke: { status, body },
-  } = await graphQLFetcher(revokeQuery, "include", {
-    serviceName: account.type,
-    accountID: account.id,
-    accountServiceID,
+    revokeAction: { status, body },
+  } = await graphQLFetcher({
+    query: revokeAction,
+    includeCookie: true,
+    parameters: {
+      serviceName: account.type,
+      accountID: account.id,
+      accountServiceID,
+    },
   })
 
   return { status, body }
@@ -160,7 +176,7 @@ export const revokeAccount = async (account: ServiceAccount) => {
 
 const useUsers = () => {
   const getMappedUsers = async () => {
-    const data = await graphQLFetcher(getUsers, "include")
+    const data = await graphQLFetcher({ query: getUsers, includeCookie: true })
     return mapUsers(data.users)
   }
 

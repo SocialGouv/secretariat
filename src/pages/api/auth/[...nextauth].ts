@@ -19,7 +19,11 @@ const getUserTeams = async (login: string) => {
     organization: {
       teams: { nodes: teams },
     },
-  } = await graphQLFetcher(getUserTeamsQuery, getJwt(), { login })
+  } = await graphQLFetcher({
+    query: getUserTeamsQuery,
+    token: getJwt(),
+    parameters: { login },
+  })
 
   return teams.map((team: GithubTeam) => team.slug)
 }

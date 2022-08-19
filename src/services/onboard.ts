@@ -141,17 +141,25 @@ const createAccountsOnSuccess = async (
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await graphQLFetcher(insertUser, token, {
-      user: { arrival, departure },
+    } = await graphQLFetcher({
+      query: insertUser,
+      token,
+      parameters: {
+        user: { arrival, departure },
+      },
     })
 
     for (const [serviceName, response] of Object.entries(responses)) {
       if (shouldInsertAccount(serviceName, response)) {
-        await graphQLFetcher(insertService, token, {
-          service: {
-            data: responses[serviceName].body,
-            user_id: userId,
-            type: serviceName,
+        await graphQLFetcher({
+          query: insertService,
+          token,
+          parameters: {
+            service: {
+              data: responses[serviceName].body,
+              user_id: userId,
+              type: serviceName,
+            },
           },
         })
       }

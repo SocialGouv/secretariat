@@ -1,3 +1,10 @@
+## [1.39.1-beta.2](https://github.com/SocialGouv/secretariat/compare/v1.39.1-beta.1...v1.39.1-beta.2) (2022-09-05)
+
+
+### Bug Fixes
+
+* quotes around RSA key ([a677e82](https://github.com/SocialGouv/secretariat/commit/a677e8220b1d6e116341adc02110ebf8ec4f238e))
+
 ## [1.39.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.39.0...v1.39.1-beta.1) (2022-09-05)
 
 

@@ -28,53 +28,55 @@ const getUserTeams = async (login: string) => {
   return teams.map((team: GithubTeam) => team.slug)
 }
 
-const providers =
-  NODE_ENV === "development"
-    ? [
-        CredentialsProvider({
-          name: "Credentials",
-          credentials: {
-            name: {
-              label: "Name",
-              type: "text",
-              placeholder: "dev",
-            },
-          },
-          async authorize(credentials) {
-            if (!credentials) {
-              return null
-            }
+console.log(NEXTAUTH_SECRET)
 
-            return {
-              id: credentials.name,
-              name: credentials.name,
-              login: credentials.name,
-              image: "/favicon.ico",
-            }
-          },
-        }),
-      ]
-    : [
-        GithubProvider({
-          clientId: GITHUB_ID,
-          clientSecret: GITHUB_SECRET,
-          profile: (profile) => {
-            return {
-              id: String(profile.id),
-              name: profile.name ?? profile.login,
-              login: profile.login,
-              image: profile.avatar_url,
-            }
-          },
-        }),
-      ]
+const providers =
+  // NODE_ENV === "development"
+  //   ? [
+  //       CredentialsProvider({
+  //         name: "Credentials",
+  //         credentials: {
+  //           name: {
+  //             label: "Name",
+  //             type: "text",
+  //             placeholder: "dev",
+  //           },
+  //         },
+  //         async authorize(credentials) {
+  //           if (!credentials) {
+  //             return null
+  //           }
+
+  //           return {
+  //             id: credentials.name,
+  //             name: credentials.name,
+  //             login: credentials.name,
+  //             image: "/favicon.ico",
+  //           }
+  //         },
+  //       }),
+  //     ]
+  [
+    GithubProvider({
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
+      profile: (profile) => {
+        return {
+          id: String(profile.id),
+          name: profile.name ?? profile.login,
+          login: profile.login,
+          image: profile.avatar_url,
+        }
+      },
+    }),
+  ]
 
 export default NextAuth({
   secret: NEXTAUTH_SECRET,
   providers,
   callbacks: {
     async signIn({ user }) {
-      if (NODE_ENV === "development") return true
+      // if (NODE_ENV === "development") return true
 
       const teams = await getUserTeams(user.login)
       return AUTHORIZED_TEAMS.some((team) => teams.includes(team))

@@ -40,6 +40,7 @@ export const encode = (
         "x-hasura-role": hasuraRole,
       },
       user: payload.user,
+      state: payload.state,
     },
     NEXTAUTH_SECRET,
     { algorithm: "RS512", expiresIn: "7d" }

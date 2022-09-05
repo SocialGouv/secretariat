@@ -1,3 +1,10 @@
+## [1.39.1-beta.1](https://github.com/SocialGouv/secretariat/compare/v1.39.0...v1.39.1-beta.1) (2022-09-05)
+
+
+### Bug Fixes
+
+* Github OAUTH ([af4afda](https://github.com/SocialGouv/secretariat/commit/af4afda1796413861eb0b4d3e838295bae5e1f62))
+
 # [1.39.0](https://github.com/SocialGouv/secretariat/compare/v1.38.5...v1.39.0) (2022-08-11)
 
 

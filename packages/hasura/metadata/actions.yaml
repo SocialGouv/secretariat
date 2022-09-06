@@ -1,9 +1,31 @@
-actions: []
+actions:
+  - name: onboardingRequestAction
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/onboarding/request'
+    permissions:
+      - role: user
+  - name: onboardingReviewAction
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/onboarding/review'
+      forward_client_headers: true
+    permissions:
+      - role: user
+  - name: revokeAction
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/revoke'
+      forward_client_headers: true
+    permissions:
+      - role: user
 custom_types:
   enums: []
   input_objects:
-    - name: SampleInput
+    - name: RevokeActionInput
+    - name: OnboardingServices
+    - name: OnboardingData
   objects:
-    - name: SampleOutput
-    - name: ExpressResponse
+    - name: APIResponse
+    - name: OnboardingResponses
   scalars: []

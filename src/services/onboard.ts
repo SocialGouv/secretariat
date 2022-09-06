@@ -3,7 +3,7 @@ import {
   MATTERMOST_API_TOKEN,
   OVH_SERVICE_NAME,
 } from "@/utils/env"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
 import sluggifyString from "@/utils/sluggify-string"
 import ovh from "@/utils/ovh"
@@ -136,20 +136,30 @@ const createAccountsOnSuccess = async (
       shouldInsertAccount(serviceName, response)
     )
   ) {
-    const jwt = getJwt("webhook")
+    const token = getJwt()
 
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await fetcher(insertUser, jwt, { user: { arrival, departure } })
+    } = await graphQLFetcher({
+      query: insertUser,
+      token,
+      parameters: {
+        user: { arrival, departure },
+      },
+    })
 
     for (const [serviceName, response] of Object.entries(responses)) {
       if (shouldInsertAccount(serviceName, response)) {
-        await fetcher(insertService, jwt, {
-          service: {
-            data: responses[serviceName].body,
-            user_id: userId,
-            type: serviceName,
+        await graphQLFetcher({
+          query: insertService,
+          token,
+          parameters: {
+            service: {
+              data: responses[serviceName].body,
+              user_id: userId,
+              type: serviceName,
+            },
           },
         })
       }
@@ -157,7 +167,10 @@ const createAccountsOnSuccess = async (
   }
 }
 
-const onboard = async ({ services, ...user }: OnboardingData) => {
+const onboard = async ({
+  services,
+  ...user
+}: OnboardingData): Promise<OnboardingResponses> => {
   const servicesToCreate = [
     ...SERVICES.filter(
       (serviceName) => serviceName in services && services[serviceName] === true

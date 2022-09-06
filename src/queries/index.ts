@@ -239,3 +239,50 @@ export const confirmOnboardingRequest = gql`
     }
   }
 `
+
+export const revokeAction = gql`
+  mutation revokeAction(
+    $accountID: String!
+    $accountServiceID: String!
+    $serviceName: String!
+  ) {
+    revokeAction(
+      data: {
+        accountID: $accountID
+        accountServiceID: $accountServiceID
+        serviceName: $serviceName
+      }
+    ) {
+      body
+      status
+    }
+  }
+`
+
+export const onboardingRequestAction = gql`
+  mutation onboardingRequestAction($data: OnboardingData!) {
+    onboardingRequestAction(data: $data) {
+      body
+      status
+    }
+  }
+`
+
+export const onboardingReviewAction = gql`
+  mutation onboardingReviewAction($data: OnboardingData!) {
+    onboardingReviewAction(data: $data) {
+      github {
+        body
+        status
+      }
+      mattermost {
+        body
+        status
+      }
+      ovh {
+        status
+        body
+      }
+    }
+  }
+`

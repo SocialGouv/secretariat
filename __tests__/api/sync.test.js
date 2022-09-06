@@ -11,8 +11,8 @@ beforeEach(() => {
   }))
 })
 
-it("should call the sync service and return 202", async () => {
+it("should call the sync service and return 200", async () => {
   await handleSync(req, res)
-  expect(res._getStatusCode()).toEqual(202)
+  expect(res._getStatusCode()).toEqual(200)
   expect(sync).toHaveBeenCalledTimes(1)
 })

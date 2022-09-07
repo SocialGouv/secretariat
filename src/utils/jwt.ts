@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken"
 import { JWT, JWTDecodeParams, JWTEncodeParams } from "next-auth/jwt"
 import { NEXTAUTH_SECRET } from "./env"
 
+export const COOKIE_NAME = "next-auth.session-token"
+
 export const getJwt = () => {
   return encode(
     {

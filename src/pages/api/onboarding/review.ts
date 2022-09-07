@@ -1,12 +1,12 @@
 import onboard from "@/services/onboard"
-import { decode } from "@/utils/jwt"
+import { COOKIE_NAME, decode } from "@/utils/jwt"
 import sendEmail from "@/utils/send-email"
 import statusOk from "@/utils/status-ok"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
-  const token = await getToken({ req, decode })
+  const token = await getToken({ req, decode, cookieName: COOKIE_NAME })
   if (token) {
     const result = await onboard(req.body.input.data)
 

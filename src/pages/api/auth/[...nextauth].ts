@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-import { encode, decode, getJwt } from "@/utils/jwt"
+import { encode, decode, getJwt, COOKIE_NAME } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
 import {
@@ -75,14 +75,15 @@ export default NextAuth({
   cookies: {
     sessionToken: {
       // prevents NextAuth to use __Secure in prod so that Hasura always looks for this name
-      name: `next-auth.session-token`,
+      name: COOKIE_NAME,
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
         secure: true,
         // App and Hasura may not be on the same subdomain
-        domain: ".fabrique.social.gouv.fr",
+        domain:
+          NODE_ENV === "development" ? "localhost" : ".fabrique.social.gouv.fr",
       },
     },
   },

@@ -2,10 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next"
 import revoke from "@/services/revoke"
 import SERVICES from "@/utils/SERVICES"
 import { getToken } from "next-auth/jwt"
-import { decode } from "@/utils/jwt"
+import { COOKIE_NAME, decode } from "@/utils/jwt"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
-  const token = await getToken({ req, decode })
+  const token = await getToken({ req, decode, cookieName: COOKIE_NAME })
   if (token) {
     const { accountServiceID, accountID, serviceName } = req.body.input.data
     if (SERVICES.includes(serviceName)) {

@@ -3,6 +3,7 @@ actions:
     definition:
       kind: synchronous
       handler: '{{APP_URL}}/api/onboarding/request'
+      forward_client_headers: true
     permissions:
       - role: user
   - name: onboardingReviewAction

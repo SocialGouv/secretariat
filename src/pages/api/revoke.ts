@@ -6,6 +6,7 @@ import { decode } from "@/utils/jwt"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = await getToken({ req, decode })
+  console.log(token)
   if (token) {
     const { accountServiceID, accountID, serviceName } = req.body.input.data
     if (SERVICES.includes(serviceName)) {

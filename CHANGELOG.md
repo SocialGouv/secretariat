@@ -1,3 +1,10 @@
+## [1.40.1](https://github.com/SocialGouv/secretariat/compare/v1.40.0...v1.40.1) (2022-09-07)
+
+
+### Bug Fixes
+
+* secrets and auth ([#364](https://github.com/SocialGouv/secretariat/issues/364)) ([7aeca8d](https://github.com/SocialGouv/secretariat/commit/7aeca8db5d9d08be3b9956b816a40435c362bda5))
+
 # [1.40.0](https://github.com/SocialGouv/secretariat/compare/v1.39.0...v1.40.0) (2022-09-07)
 
 

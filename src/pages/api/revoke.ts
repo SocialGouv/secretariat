@@ -5,7 +5,12 @@ import { getToken } from "next-auth/jwt"
 import { decode } from "@/utils/jwt"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log("REQ")
+  console.log(req)
+  console.log("COOKIES")
+  console.log(req.cookies)
   const token = await getToken({ req, decode })
+  console.log("TOKEN")
   console.log(token)
   if (token) {
     const { accountServiceID, accountID, serviceName } = req.body.input.data

@@ -82,7 +82,8 @@ export default NextAuth({
         path: "/",
         secure: true,
         // App and Hasura may not be on the same subdomain
-        domain: ".fabrique.social.gouv.fr",
+        domain:
+          NODE_ENV === "development" ? "localhost" : ".fabrique.social.gouv.fr",
       },
     },
   },

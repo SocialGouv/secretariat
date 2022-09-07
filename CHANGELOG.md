@@ -1,3 +1,10 @@
+# [1.40.0](https://github.com/SocialGouv/secretariat/compare/v1.39.0...v1.40.0) (2022-09-07)
+
+
+### Features
+
+* new graphQL API ([#362](https://github.com/SocialGouv/secretariat/issues/362)) ([502aa6d](https://github.com/SocialGouv/secretariat/commit/502aa6d1a4f1de9482c97992e2d614a28370c465))
+
 # [1.39.0](https://github.com/SocialGouv/secretariat/compare/v1.38.5...v1.39.0) (2022-08-11)
 
 

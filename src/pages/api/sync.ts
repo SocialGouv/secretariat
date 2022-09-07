@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 
 const Sync = async (_req: NextApiRequest, res: NextApiResponse) => {
   sync()
-  res.status(202).end()
+  res.status(200).json({ message: "sync started" })
 }
 
 export default Sync

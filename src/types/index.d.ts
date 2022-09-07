@@ -157,6 +157,12 @@ interface OnboardingData {
   services: Record<ServiceName, boolean>
 }
 
+interface OnboardingResponses {
+  github?: APIResponse
+  mattermost?: APIResponse
+  ovh?: APIResponse & { mailInfo: { login: string; password: string } }
+}
+
 interface OnboardingRequest {
   id: string
   created_at: Date
@@ -172,4 +178,11 @@ interface Ruru {
   ovh?: boolean
   zammad?: boolean
   mattermost?: boolean
+}
+
+interface GraphQLFetcherParams {
+  query: string
+  includeCookie?: boolean
+  token?: string
+  parameters?: Record<string, unknown>
 }

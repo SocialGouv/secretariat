@@ -1,16 +1,19 @@
 import onboard from "@/services/onboard"
+import { decode } from "@/utils/jwt"
 import sendEmail from "@/utils/send-email"
+import statusOk from "@/utils/status-ok"
 import { NextApiRequest, NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
+import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (await getSession({ req })) {
-    const result = await onboard(req.body.data)
+  const token = await getToken({ req, decode })
+  if (token) {
+    const result = await onboard(req.body.input.data)
 
     await sendEmail(
       [
         {
-          address: req.body.data.email,
+          address: req.body.input.data.email,
         },
       ],
       "Bienvenue à la Fabrique",
@@ -26,23 +29,51 @@ Voici quelques ressources pour débuter :
 Vous avez à présent accès aux services de la Fabrique Numérique des Ministères Sociaux. Ci-dessous la liste des services qui vous sont accessibles :
 ${
   "mattermost" in result
-    ? '- Mattermost : https://mattermost.fabrique.social.gouv.fr/ (générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
+    ? `- Mattermost : https://mattermost.fabrique.social.gouv.fr/ ${
+        statusOk(result.mattermost!.status)
+          ? '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
+          : "(erreur lors de la création automatique du compte)"
+      }`
     : ""
 }
 ${
   "ovh" in result
-    ? `- Mail OVH : https://pro2.mail.ovh.net/
-  - adresse : ${(result as any).ovh.mailInfo.login}@fabrique.social.gouv.fr
-  - mot de passe : ${(result as any).ovh.mailInfo.password} (à changer)`
+    ? `- Mail OVH : https://pro2.mail.ovh.net/ ${
+        statusOk(result.ovh!.status)
+          ? `
+  - adresse : ${result.ovh!.mailInfo.login}@fabrique.social.gouv.fr
+  - mot de passe : ${result.ovh!.mailInfo.password} (à changer)`
+          : "(erreur lors de la création automatique du compte)"
+      }`
     : ""
 }
 ${
   "github" in result
-    ? `- Github @SocialGouv : https://github.com/SocialGouv
-- Zammad : https://pastek.fabrique.social.gouv.fr/
-- Sentry : https://sentry.fabrique.social.gouv.fr/
-- Matomo : https://matomo.fabrique.social.gouv.fr/
-- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/`
+    ? `- Github @SocialGouv : https://github.com/SocialGouv${
+        !statusOk(result.github!.status)
+          ? " (erreur lors de l'invitation du compte Github)"
+          : ""
+      }
+- Zammad : https://pastek.fabrique.social.gouv.fr/${
+        !statusOk(result.github!.status)
+          ? " (erreur lors de l'invitation du compte Github)"
+          : ""
+      }
+- Sentry : https://sentry.fabrique.social.gouv.fr/${
+        !statusOk(result.github!.status)
+          ? " (erreur lors de l'invitation du compte Github)"
+          : ""
+      }
+- Matomo : https://matomo.fabrique.social.gouv.fr/${
+        !statusOk(result.github!.status)
+          ? " (erreur lors de l'invitation du compte Github)"
+          : ""
+      }
+- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/${
+        !statusOk(result.github!.status)
+          ? " (erreur lors de l'invitation du compte Github)"
+          : ""
+      }`
     : ""
 }`,
       `<p>Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.</p>
@@ -55,36 +86,59 @@ ${
 <p>Vous avez à présent accès aux services de la Fabrique Numérique des Ministères Sociaux. Ci-dessous la liste des services qui vous sont accessibles&nbsp:</p>
 ${
   "mattermost" in result
-    ? '<li><a href="https://mattermost.fabrique.social.gouv.fr/">Mattermost</a> (générer un nouveau mot de passe en cliquant sur "mot de passe oublié")</li>'
+    ? `<li><a href="https://mattermost.fabrique.social.gouv.fr/">Mattermost</a> ${
+        statusOk(result.mattermost!.status)
+          ? '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
+          : "(erreur lors de la création automatique du compte)"
+      }</li>`
     : ""
 }
 ${
   "ovh" in result
-    ? `<li><a href="https://pro2.mail.ovh.net/">Mail OVH</a>
-  <ul>
-    <li>adresse : ${
-      (result as any).ovh.mailInfo.login
-    }@fabrique.social.gouv.fr</li>
-    <li>mot de passe : ${(result as any).ovh.mailInfo.password} (à changer)</li>
-  </ul>
+    ? `<li><a href="https://pro2.mail.ovh.net/">Mail OVH</a> ${
+        statusOk(result.ovh!.status)
+          ? `<ul>
+  <li>adresse : ${result.ovh!.mailInfo.login}@fabrique.social.gouv.fr</li>
+  <li>mot de passe : ${result.ovh!.mailInfo.password} (à changer)</li>
+</ul>`
+          : "(erreur lors de la création automatique du compte)"
+      }
 </li>`
     : ""
 }
 ${
   "github" in result
-    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a></li>
-<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a></li>
-<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a></li>
-<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a></li>
-<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a></li>`
+    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a> ${
+        !statusOk(result.github!.status)
+          ? "(erreur lors de l'invitation du compte Github)"
+          : ""
+      }</li>
+<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a> ${
+        !statusOk(result.github!.status)
+          ? "(erreur lors de l'invitation du compte Github)"
+          : ""
+      }</li>
+<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a> ${
+        !statusOk(result.github!.status)
+          ? "(erreur lors de l'invitation du compte Github)"
+          : ""
+      }</li>
+<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a> ${
+        !statusOk(result.github!.status)
+          ? "(erreur lors de l'invitation du compte Github)"
+          : ""
+      }</li>
+<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a> ${
+        !statusOk(result.github!.status)
+          ? "(erreur lors de l'invitation du compte Github)"
+          : ""
+      }</li>`
     : ""
 }`
     )
-
     res.status(200).json(result)
   } else {
     res.status(403).end()
   }
 }
-
 export default Review

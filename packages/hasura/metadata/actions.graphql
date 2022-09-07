@@ -1,14 +1,51 @@
-input SampleInput {
-  username: String!
-  password: String!
+type Mutation {
+  onboardingRequestAction(
+    data: OnboardingData!
+  ): APIResponse!
 }
 
-type SampleOutput {
-  accessToken: String!
+type Mutation {
+  onboardingReviewAction(
+    data: OnboardingData!
+  ): OnboardingResponses!
 }
 
-type ExpressResponse {
-  status: String!
-  message: Int!
+type Mutation {
+  revokeAction(
+    data: RevokeActionInput!
+  ): APIResponse!
+}
+
+input RevokeActionInput {
+  accountServiceID: String!
+  accountID: String!
+  serviceName: String!
+}
+
+input OnboardingServices {
+  mattermost: Boolean!
+  ovh: Boolean!
+}
+
+input OnboardingData {
+  email: String!
+  message: String!
+  lastName: String!
+  firstName: String!
+  githubLogin: String!
+  services: OnboardingServices!
+  arrival: String!
+  departure: String!
+}
+
+type APIResponse {
+  status: Int!
+  body: String!
+}
+
+type OnboardingResponses {
+  github: APIResponse
+  mattermost: APIResponse
+  ovh: APIResponse
 }
 

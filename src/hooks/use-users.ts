@@ -1,8 +1,7 @@
 import useSWR from "swr"
 
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import SERVICES from "@/utils/SERVICES"
-import useToken from "@/hooks/use-token"
 import { detectWarnings } from "@/utils/detect-warnings"
 import {
   getUsers,
@@ -10,6 +9,7 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
+  revokeAction,
 } from "@/queries/index"
 
 interface UserMapping {
@@ -105,22 +105,29 @@ const mapUsers = (users: User[]): User[] => {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
-export const mutateUser = (
-  user: User,
-  token: string
-): Promise<User | undefined> => {
+export const mutateUser = (user: User): Promise<User | undefined> => {
   const { id, arrival, departure } = user
-  return fetcher(updateUser, token, { id, _set: { arrival, departure } })
+  return graphQLFetcher({
+    query: updateUser,
+    includeCookie: true,
+    parameters: {
+      id,
+      _set: { arrival, departure },
+    },
+  })
 }
 
 export const mergeUsers = async (
   userToKeep: User,
-  userToDrop: User,
-  token: string
+  userToDrop: User
 ): Promise<User> => {
-  await fetcher(mergeUsersQuery, token, {
-    userToKeepId: userToKeep.id,
-    userToDropId: userToDrop.id,
+  await graphQLFetcher({
+    query: mergeUsersQuery,
+    includeCookie: true,
+    parameters: {
+      userToKeepId: userToKeep.id,
+      userToDropId: userToDrop.id,
+    },
   })
 
   return mapUser({
@@ -129,17 +136,18 @@ export const mergeUsers = async (
   })
 }
 
-export const detachUserServiceAccount = async (
-  account: ServiceAccount,
-  token: string
-) => {
+export const detachUserServiceAccount = async (account: ServiceAccount) => {
   const {
     insert_users_one: { id: userId },
-  } = await fetcher(insertUser, token)
+  } = await graphQLFetcher({ query: insertUser, includeCookie: true })
 
-  await fetcher(updateService, token, {
-    serviceId: account.id,
-    service: { user_id: userId },
+  await graphQLFetcher({
+    query: updateService,
+    includeCookie: true,
+    parameters: {
+      serviceId: account.id,
+      service: { user_id: userId },
+    },
   })
 }
 
@@ -151,29 +159,28 @@ export const revokeAccount = async (account: ServiceAccount) => {
       ? account.data.login
       : account.data.id
 
-  const response = await fetch("/api/revoke", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
+  const {
+    revokeAction: { status, body },
+  } = await graphQLFetcher({
+    query: revokeAction,
+    includeCookie: true,
+    parameters: {
       serviceName: account.type,
       accountID: account.id,
       accountServiceID,
-    }),
+    },
   })
-  return { status: response.status, body: await response.text() }
+
+  return { status, body }
 }
 
 const useUsers = () => {
-  const [token] = useToken()
-
   const getMappedUsers = async () => {
-    const data = await fetcher(getUsers, token)
-    return Promise.resolve(mapUsers(data.users))
+    const data = await graphQLFetcher({ query: getUsers, includeCookie: true })
+    return mapUsers(data.users)
   }
 
-  const { data: users } = useSWR(token ? "/users" : null, getMappedUsers)
+  const { data: users } = useSWR("/users", getMappedUsers)
 
   return users
 }

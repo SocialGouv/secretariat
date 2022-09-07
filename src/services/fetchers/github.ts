@@ -2,12 +2,12 @@ import pMap from "p-map"
 import { setTimeout } from "timers/promises"
 
 import { getJwt } from "@/utils/jwt"
-import fetcher from "@/utils/fetcher"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
 
-const fetchGithubPage = async (jwt: string, cursor?: string) => {
+const fetchGithubPage = async (token: string, cursor?: string) => {
   // if it is the query for the first page, we don't have a cursor
-  const params = cursor ? { cursor } : {}
+  const parameters = cursor ? { cursor } : {}
   const {
     organization: {
       membersWithRole: {
@@ -15,7 +15,7 @@ const fetchGithubPage = async (jwt: string, cursor?: string) => {
         pageInfo: { hasNextPage, endCursor },
       },
     },
-  } = await fetcher(getRemoteGithubUsers, jwt, params)
+  } = await graphQLFetcher({ query: getRemoteGithubUsers, token, parameters })
 
   return { usersPage, hasNextPage, endCursor }
 }
@@ -24,16 +24,16 @@ export const fetchGithubUsers = async (
   msDelay: number
 ): Promise<Record<string, unknown>[]> => {
   // accessing an Hasura remote schema requires admin rights
-  const jwt = getJwt("admin")
+  const token = getJwt()
 
   const users = []
-  let { usersPage, hasNextPage, endCursor } = await fetchGithubPage(jwt)
+  let { usersPage, hasNextPage, endCursor } = await fetchGithubPage(token)
   users.push(...usersPage)
 
   while (hasNextPage) {
     await setTimeout(msDelay) // so that we don't spam the remote API
     ;({ usersPage, hasNextPage, endCursor } = await fetchGithubPage(
-      jwt,
+      token,
       endCursor
     ))
     users.push(...usersPage)
@@ -47,7 +47,13 @@ export const fetchGithubUsers = async (
         organization: {
           teams: { nodes: teamsList },
         },
-      } = await fetcher(getRemoteGithubTeams, jwt, { userLogins: user.login })
+      } = await graphQLFetcher({
+        query: getRemoteGithubTeams,
+        token,
+        parameters: {
+          userLogins: user.login,
+        },
+      })
       console.log(`fetched teams for Github user ${index + 1}/${users.length}`)
       await setTimeout(msDelay) // so that we don't spam the remote API
       return { ...user, teams: teamsList }

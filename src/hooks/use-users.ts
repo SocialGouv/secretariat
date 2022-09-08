@@ -11,6 +11,8 @@ import {
   mergeUsers as mergeUsersQuery,
   revokeAction,
 } from "@/queries/index"
+import logAction from "@/utils/log-action"
+import { getSession } from "next-auth/react"
 
 interface UserMapping {
   email: string
@@ -121,6 +123,13 @@ export const mergeUsers = async (
   userToKeep: User,
   userToDrop: User
 ): Promise<User> => {
+  const session = await getSession()
+  logAction({
+    action: "merge",
+    user: session?.user.login,
+    parameters: JSON.stringify({ userToKeep, userToDrop }),
+  })
+
   await graphQLFetcher({
     query: mergeUsersQuery,
     includeCookie: true,

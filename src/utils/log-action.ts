@@ -26,17 +26,4 @@ const logAction = ({
   })
 }
 
-// const logAction = (
-//   token: string | null,
-//   user: string | null,
-//   action: string,
-//   parameters: string | null = null
-// ) => {
-//   graphQLFetcher(insertLog, token, {
-//     ...(user !== null && { user }),
-//     action,
-//     ...(parameters !== null && { parameters }),
-//   })
-// }
-
 export default logAction

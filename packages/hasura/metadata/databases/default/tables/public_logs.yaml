@@ -1,0 +1,22 @@
+table:
+  schema: public
+  name: logs
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - action
+        - parameters
+        - user
+      backend_only: false
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - action
+        - created_at
+        - id
+        - parameters
+        - user
+      filter: {}

@@ -5,10 +5,18 @@ import graphQLFetcher from "@/utils/graphql-fetcher"
 import { NEXTAUTH_URL } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
 import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
+import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
   const token = getJwt()
+
+  logAction({
+    action: "onboarding/confirm",
+    token,
+    parameters: JSON.stringify({ id }),
+  })
+
   await graphQLFetcher({
     query: confirmOnboardingRequest,
     token,

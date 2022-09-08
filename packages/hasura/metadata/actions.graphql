@@ -44,8 +44,8 @@ type APIResponse {
 }
 
 type OnboardingResponses {
-  github: APIResponse!
-  mattermost: APIResponse!
-  ovh: APIResponse!
+  github: APIResponse
+  mattermost: APIResponse
+  ovh: APIResponse
 }
 

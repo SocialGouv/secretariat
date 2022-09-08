@@ -4,11 +4,15 @@ import { getToken } from "next-auth/jwt"
 import handleRevoke from "../../src/pages/api/revoke"
 
 jest.mock("next-auth/jwt", () => ({
-  getToken: jest.fn(),
+  getToken: jest.fn(() => ({ user: { login: "testUser" } })),
 }))
 jest.mock("@/services/revoke", () =>
   jest.fn(() => ({ status: 250, body: "fake body" }))
 )
+jest.mock("@/utils/log-action", () => jest.fn())
+jest.mock("@/utils/jwt", () => ({
+  getJwt: jest.fn(),
+}))
 
 let req, res
 beforeEach(() => {
@@ -28,7 +32,6 @@ beforeEach(() => {
 })
 
 it("should call the revoke service and return its return value", async () => {
-  getToken.mockImplementation(() => Promise.resolve(true))
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(200)
   expect(res._getData()).toEqual('{"status":250,"body":"fake body"}')
@@ -40,7 +43,6 @@ it("should call the revoke service and return its return value", async () => {
 })
 
 it("should return 400 if service name is incorrect", async () => {
-  getToken.mockImplementation(() => Promise.resolve(true))
   req.body.input.data.serviceName = "fake serviceName"
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(400)

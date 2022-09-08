@@ -1,3 +1,10 @@
+## [1.40.3](https://github.com/SocialGouv/secretariat/compare/v1.40.2...v1.40.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* each service is optional response data ([#366](https://github.com/SocialGouv/secretariat/issues/366)) ([fc6f849](https://github.com/SocialGouv/secretariat/commit/fc6f84908dbab57466caf34b0ac1ef637656c224))
+
 ## [1.40.2](https://github.com/SocialGouv/secretariat/compare/v1.40.1...v1.40.2) (2022-09-07)
 
 

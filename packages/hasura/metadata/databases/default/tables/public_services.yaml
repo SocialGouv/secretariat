@@ -5,15 +5,6 @@ object_relationships:
   - name: users
     using:
       foreign_key_constraint_on: user_id
-insert_permissions:
-  - role: webhook
-    permission:
-      check: {}
-      columns:
-        - data
-        - type
-        - user_id
-      backend_only: false
 select_permissions:
   - role: user
     permission:
@@ -25,14 +16,6 @@ select_permissions:
         - user_id
       filter: {}
       allow_aggregations: true
-  - role: webhook
-    permission:
-      columns:
-        - data
-        - id
-        - type
-      filter: {}
-      allow_aggregations: true
 update_permissions:
   - role: user
     permission:
@@ -40,13 +23,3 @@ update_permissions:
         - user_id
       filter: {}
       check: null
-  - role: webhook
-    permission:
-      columns:
-        - data
-      filter: {}
-      check: null
-delete_permissions:
-  - role: webhook
-    permission:
-      filter: {}

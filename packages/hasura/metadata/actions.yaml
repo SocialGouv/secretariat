@@ -5,6 +5,7 @@ actions:
       handler: '{{APP_URL}}/api/onboarding/request'
       forward_client_headers: true
     permissions:
+      - role: anonymous
       - role: user
   - name: onboardingReviewAction
     definition:

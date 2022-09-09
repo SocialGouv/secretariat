@@ -15,13 +15,6 @@ insert_permissions:
       check: {}
       columns: []
       backend_only: false
-  - role: webhook
-    permission:
-      check: {}
-      columns:
-        - arrival
-        - departure
-      backend_only: false
 select_permissions:
   - role: user
     permission:
@@ -30,12 +23,6 @@ select_permissions:
         - departure
         - id
         - updated_at
-      filter: {}
-      allow_aggregations: true
-  - role: webhook
-    permission:
-      columns:
-        - id
       filter: {}
       allow_aggregations: true
 update_permissions:
@@ -48,8 +35,5 @@ update_permissions:
       check: null
 delete_permissions:
   - role: user
-    permission:
-      filter: {}
-  - role: webhook
     permission:
       filter: {}

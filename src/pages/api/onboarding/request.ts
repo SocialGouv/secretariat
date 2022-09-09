@@ -43,7 +43,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     <p>Veuillez vérifier votre adresse email en cliquant sur le bouton ci-dessous&nbsp:</p>
     <div style="text-align: center;">
       <a
-      style="text-align: center; text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
+      style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
       href="${url}"
       >
         Vérifier

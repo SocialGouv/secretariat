@@ -25,5 +25,8 @@ export const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET as string
 export const TIPIMAIL_API_KEY = process.env.TIPIMAIL_API_KEY as string
 export const TIPIMAIL_API_USER = process.env.TIPIMAIL_API_USER as string
 
+export const ONBOARDING_NOTIFICATION_EMAILS = process.env
+  .ONBOARDING_NOTIFICATION_EMAILS as string
+
 export const NEXT_PUBLIC_HASURA_URL = process.env
   .NEXT_PUBLIC_HASURA_URL as string

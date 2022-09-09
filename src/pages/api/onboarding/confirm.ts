@@ -54,15 +54,14 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     ${url.href}`,
     `<p>Une demande d'onboarding a été effectuée sur Secrétariat.</p>
     <p>
-      En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton ou en suivant le lien :
+      En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton :
     </p>
     <a
       style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: white"
       href="${url.href}"
     >
       Effectuer la revue
-    </a>
-    <p style="font-size: 1rem;">${url.href}</p>`
+    </a>`
   )
   res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)
 }

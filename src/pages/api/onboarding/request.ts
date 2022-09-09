@@ -5,13 +5,22 @@ import graphQLFetcher from "@/utils/graphql-fetcher"
 import sendEmail from "@/utils/send-email"
 import { NEXTAUTH_URL } from "@/utils/env"
 import { createOnboardingRequest } from "@/queries/index"
+import logAction from "@/utils/log-action"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
+  const token = getJwt()
+
+  logAction({
+    action: "onboarding/request",
+    token,
+    parameters: JSON.stringify(req.body.input.data),
+  })
+
   const {
     insert_onboarding_requests_one: { id },
   } = await graphQLFetcher({
     query: createOnboardingRequest,
-    token: getJwt(),
+    token,
     parameters: {
       request: { data: req.body.input.data },
     },

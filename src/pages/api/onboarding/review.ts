@@ -1,13 +1,21 @@
 import onboard from "@/services/onboard"
-import { COOKIE_NAME, decode } from "@/utils/jwt"
+import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
+import logAction from "@/utils/log-action"
 import sendEmail from "@/utils/send-email"
 import statusOk from "@/utils/status-ok"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
-  const token = await getToken({ req, decode, cookieName: COOKIE_NAME })
-  if (token) {
+  const userToken = await getToken({ req, decode, cookieName: COOKIE_NAME })
+  if (userToken) {
+    logAction({
+      action: "onboarding/review",
+      user: userToken.user.login,
+      token: getJwt(),
+      parameters: JSON.stringify(req.body.input.data),
+    })
+
     const result = await onboard(req.body.input.data)
 
     await sendEmail(

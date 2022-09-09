@@ -1,0 +1,1 @@
+CREATE TABLE "public"."logs" ("id" serial NOT NULL, "created_at" timestamptz NOT NULL DEFAULT now(), "user" text, "action" text NOT NULL, "parameters" text, PRIMARY KEY ("id") , UNIQUE ("id"));COMMENT ON TABLE "public"."logs" IS E'User actions logs';

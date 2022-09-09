@@ -1,6 +1,13 @@
 import { GraphQLClient } from "graphql-request"
 import { NEXT_PUBLIC_HASURA_URL } from "./env"
 
+interface GraphQLFetcherParams {
+  query: string
+  includeCookie?: boolean
+  token?: string
+  parameters?: Record<string, unknown>
+}
+
 const graphQLFetcher = ({
   query,
   includeCookie,

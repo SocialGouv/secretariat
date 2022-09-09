@@ -1,3 +1,10 @@
+## [1.41.1](https://github.com/SocialGouv/secretariat/compare/v1.41.0...v1.41.1) (2022-09-09)
+
+
+### Bug Fixes
+
+* samesite cookie and email sending ([#369](https://github.com/SocialGouv/secretariat/issues/369)) ([6216181](https://github.com/SocialGouv/secretariat/commit/6216181f4dca23b7781a28d02dd34a224ec34259))
+
 # [1.41.0](https://github.com/SocialGouv/secretariat/compare/v1.40.3...v1.41.0) (2022-09-09)
 
 

@@ -78,7 +78,7 @@ export default NextAuth({
       name: COOKIE_NAME,
       options: {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "strict",
         path: "/",
         secure: true,
         // App and Hasura may not be on the same subdomain

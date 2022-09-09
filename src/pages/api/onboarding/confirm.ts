@@ -57,7 +57,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
       En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton :
     </p>
     <a
-      style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: white"
+      style="text-align: center; text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
       href="${url.href}"
     >
       Effectuer la revue

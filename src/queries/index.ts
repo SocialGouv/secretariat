@@ -37,23 +37,6 @@ export const getUsers = gql`
   ${userFragment}
 `
 
-export const getCoreTeamUsers = gql`
-  query getCoreTeamUsers {
-    organization(login: "socialgouv") {
-      team(slug: "core-team") {
-        members {
-          nodes {
-            id
-            name
-            login
-            email
-          }
-        }
-      }
-    }
-  }
-`
-
 export const getUserTeams = gql`
   query getUserTeams($login: String!) {
     organization(login: "socialgouv") {

@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
-import { NEXTAUTH_URL } from "@/utils/env"
+import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
-import { confirmOnboardingRequest, getCoreTeamUsers } from "@/queries/index"
+import { confirmOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -26,20 +26,10 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  const {
-    organization: {
-      team: {
-        members: { nodes: users },
-      },
-    },
-  } = await graphQLFetcher({ query: getCoreTeamUsers, token })
-
-  const recipients = users.reduce(
-    (emails: Record<"address", string>[], user: Record<"email", string>) => (
-      user.email.length && emails.push({ address: user.email }), emails
-    ),
-    []
-  )
+  const recipients = ONBOARDING_NOTIFICATION_EMAILS.split(",").map((email) => ({
+    address: email,
+  }))
+  console.log("Sending email notification to recipients:", recipients)
 
   const url = new URL("/onboarding/review", NEXTAUTH_URL)
   url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
@@ -56,12 +46,14 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     <p>
       En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton :
     </p>
-    <a
-      style="text-align: center; text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
-      href="${url.href}"
-    >
-      Effectuer la revue
-    </a>`
+    <div style="text-align: center;">
+      <a
+        style="text-decoration: none; background-color: #000091; cursor: pointer; padding: 0.75rem; border: none; color: #f5f5fe;"
+        href="${url.href}"
+      >
+        Effectuer la revue
+      </a>
+    </div>`
   )
   res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)
 }

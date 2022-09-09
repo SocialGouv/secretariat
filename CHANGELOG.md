@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/SocialGouv/secretariat/compare/v1.40.3...v1.41.0) (2022-09-09)
+
+
+### Features
+
+* log user actions ([#367](https://github.com/SocialGouv/secretariat/issues/367)) ([7ebd6fb](https://github.com/SocialGouv/secretariat/commit/7ebd6fb8c1f3585b1052354be6a901d778ad56b2))
+
 ## [1.40.3](https://github.com/SocialGouv/secretariat/compare/v1.40.2...v1.40.3) (2022-09-08)
 
 

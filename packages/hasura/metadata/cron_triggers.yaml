@@ -1,6 +1,6 @@
-- name: Sync every day at 12:00
+- name: Sync every day at 00:00
   webhook: '{{APP_URL}}/api/sync'
-  schedule: 0 10 * * *
+  schedule: 0 22 * * *
   include_in_metadata: true
   payload: {}
   comment: ""

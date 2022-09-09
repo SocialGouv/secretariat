@@ -1,3 +1,10 @@
+## [1.41.2](https://github.com/SocialGouv/secretariat/compare/v1.41.1...v1.41.2) (2022-09-09)
+
+
+### Bug Fixes
+
+* anonymous can request onboarding ([#370](https://github.com/SocialGouv/secretariat/issues/370)) ([d2241b8](https://github.com/SocialGouv/secretariat/commit/d2241b84687f585d99b028847eed6e0455d7a0d2))
+
 ## [1.41.1](https://github.com/SocialGouv/secretariat/compare/v1.41.0...v1.41.1) (2022-09-09)
 
 

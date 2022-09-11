@@ -22,8 +22,8 @@ const Index = () => (
           accompagnée d&apos;une obligation de transparence en la matière.
         </p>
       </div>
-      <div className="flex-1">
-        <Image src={HomeImage} alt="home image" />
+      <div className="flex-1 relative">
+        <Image src={HomeImage} alt="home image" layout="fill" />
       </div>
     </div>
     <div className="flex mt-12 gap-x-6">

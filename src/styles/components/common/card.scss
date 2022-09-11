@@ -1,0 +1,16 @@
+.card {
+  @apply
+    p-6
+    border
+    relative
+    overflow-auto
+    ;
+
+  .title {
+    @apply text-xl;
+  }
+
+  p {
+    @apply my-6;
+  }
+}

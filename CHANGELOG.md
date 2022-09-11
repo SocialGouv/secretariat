@@ -1,3 +1,10 @@
+# [1.42.0](https://github.com/SocialGouv/secretariat/compare/v1.41.2...v1.42.0) (2022-09-11)
+
+
+### Features
+
+* add home page ([#371](https://github.com/SocialGouv/secretariat/issues/371)) ([2731ee8](https://github.com/SocialGouv/secretariat/commit/2731ee85d6b7eb9dbb099b55fa5489be481ddc47))
+
 ## [1.41.2](https://github.com/SocialGouv/secretariat/compare/v1.41.1...v1.41.2) (2022-09-09)
 
 

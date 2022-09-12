@@ -36,7 +36,7 @@ const ServicesAccountsStatuses = ({
 )
 
 const OnboardingForm = () => {
-  const { data, request } = useOnboarding()
+  const { data, request, id } = useOnboarding()
   const [status, setStatus] = useState<
     | "create"
     | "review"
@@ -69,7 +69,7 @@ const OnboardingForm = () => {
     const { onboardingReviewAction: responses } = await graphQLFetcher({
       query: onboardingReviewAction,
       includeCookie: true,
-      parameters: { data },
+      parameters: { data, id },
     })
     setStatus("review_success")
     setServicesAccountsStatuses(responses)

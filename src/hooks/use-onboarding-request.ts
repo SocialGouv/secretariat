@@ -17,7 +17,7 @@ const useOnboardingRequest = () => {
     graphQLFetcher
   )
 
-  return { request, mutate }
+  return { request, mutate, id }
 }
 
 export default useOnboardingRequest

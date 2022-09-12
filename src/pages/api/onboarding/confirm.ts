@@ -4,7 +4,7 @@ import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
-import { confirmOnboardingRequest } from "@/queries/index"
+import { updateOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -23,7 +23,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   await graphQLFetcher({
-    query: confirmOnboardingRequest,
+    query: updateOnboardingRequest,
     token,
     parameters: {
       cols: { id },

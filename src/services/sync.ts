@@ -162,7 +162,7 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-const sync = async (enabledServices: ServiceName[] = SERVICES) => {
+const sync = async (enabledServices: ServiceName[]) => {
   const token = getJwt()
 
   // Remember the users list for all services, to clean the deleted users afterwards

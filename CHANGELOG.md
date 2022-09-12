@@ -1,3 +1,24 @@
+## [1.42.2](https://github.com/SocialGouv/secretariat/compare/v1.42.1...v1.42.2) (2022-09-12)
+
+
+### Bug Fixes
+
+* add reviewed column in onboarding_requests ([#374](https://github.com/SocialGouv/secretariat/issues/374)) ([55186ff](https://github.com/SocialGouv/secretariat/commit/55186ffdb6a7a596c02ac52db1560ad4ef50013c))
+
+## [1.42.1](https://github.com/SocialGouv/secretariat/compare/v1.42.0...v1.42.1) (2022-09-12)
+
+
+### Bug Fixes
+
+* API methods ([#375](https://github.com/SocialGouv/secretariat/issues/375)) ([43236f3](https://github.com/SocialGouv/secretariat/commit/43236f31ea2c3263a78af619aad7d9632e0763c0))
+
+# [1.42.0](https://github.com/SocialGouv/secretariat/compare/v1.41.2...v1.42.0) (2022-09-11)
+
+
+### Features
+
+* add home page ([#371](https://github.com/SocialGouv/secretariat/issues/371)) ([2731ee8](https://github.com/SocialGouv/secretariat/commit/2731ee85d6b7eb9dbb099b55fa5489be481ddc47))
+
 ## [1.41.2](https://github.com/SocialGouv/secretariat/compare/v1.41.1...v1.41.2) (2022-09-09)
 
 

@@ -16,14 +16,14 @@ export const fallbackData = {
 } as OnboardingData
 
 const useOnboarding = () => {
-  const { request } = useOnboardingRequest()
+  const { request, id } = useOnboardingRequest()
 
   const { data, mutate }: { data?: OnboardingData; mutate: KeyedMutator<any> } =
     useSWR("onboarding", null, {
       fallbackData: request?.data || fallbackData,
     })
 
-  return { data, mutate, request }
+  return { data, mutate, request, id }
 }
 
 export default useOnboarding

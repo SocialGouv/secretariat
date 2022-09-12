@@ -1,4 +1,6 @@
+import { updateOnboardingRequest } from "@/queries/index"
 import onboard from "@/services/onboard"
+import graphQLFetcher from "@/utils/graphql-fetcher"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
 import sendEmail from "@/utils/send-email"
@@ -7,21 +9,39 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "POST") {
+    res.status(405).end()
+    return
+  }
+
   const userToken = await getToken({ req, decode, cookieName: COOKIE_NAME })
   if (userToken) {
+    const token = getJwt()
+
+    const { data, id } = req.body.input
+
     logAction({
       action: "onboarding/review",
       user: userToken.user.login,
-      token: getJwt(),
-      parameters: JSON.stringify(req.body.input.data),
+      token,
+      parameters: JSON.stringify(data),
     })
 
-    const result = await onboard(req.body.input.data)
+    await graphQLFetcher({
+      query: updateOnboardingRequest,
+      token,
+      parameters: {
+        cols: { id },
+        data: { reviewed: true, data },
+      },
+    })
+
+    const result = await onboard(data)
 
     await sendEmail(
       [
         {
-          address: req.body.input.data.email,
+          address: data.email,
         },
       ],
       "Bienvenue à la Fabrique",

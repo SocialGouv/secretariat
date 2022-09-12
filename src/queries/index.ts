@@ -207,16 +207,13 @@ export const createOnboardingRequest = gql`
   }
 `
 
-export const confirmOnboardingRequest = gql`
-  mutation confirmOnboardingRequest(
+export const updateOnboardingRequest = gql`
+  mutation updateOnboardingRequest(
     $data: onboarding_requests_set_input!
     $cols: onboarding_requests_pk_columns_input!
   ) {
     update_onboarding_requests_by_pk(pk_columns: $cols, _set: $data) {
       id
-      data
-      confirmed
-      created_at
     }
   }
 `
@@ -250,8 +247,8 @@ export const onboardingRequestAction = gql`
 `
 
 export const onboardingReviewAction = gql`
-  mutation onboardingReviewAction($data: OnboardingData!) {
-    onboardingReviewAction(data: $data) {
+  mutation onboardingReviewAction($data: OnboardingData!, $id: String!) {
+    onboardingReviewAction(data: $data, id: $id) {
       github {
         body
         status

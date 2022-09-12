@@ -7,7 +7,6 @@ import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
-import SERVICES from "@/utils/SERVICES"
 import {
   deleteServices,
   deleteUsers,

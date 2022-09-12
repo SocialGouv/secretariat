@@ -1,4 +1,5 @@
 import sync from "@/services/sync"
+import SERVICES from "@/utils/SERVICES"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import { fetchMatomoUsers } from "@/services/fetchers/matomo"
 import { fetchMattermostUsers } from "@/services/fetchers/mattermost"
@@ -114,7 +115,7 @@ jest.mock("@/services/fetchers/sentry")
 jest.mock("@/services/fetchers/zammad")
 
 it("should call every fetcher", async () => {
-  await sync()
+  await sync(SERVICES)
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     expect(serviceFetcher).toHaveBeenCalledTimes(1)
   }
@@ -125,7 +126,7 @@ it("should call every fetcher", async () => {
 
 it("should insert the account and a new user", async () => {
   fetchGithubUsers.mockImplementation(() => [{ id: "fake id" }])
-  await sync()
+  await sync(SERVICES)
   expect(insertAccountCalled).toBe(true)
   expect(insertUserCalled).toBe(true)
   expect(updateServiceCalled).toBe(false)
@@ -142,7 +143,7 @@ it("should update the account", async () => {
       )
     })
   )
-  await sync()
+  await sync(SERVICES)
   expect(insertAccountCalled).toBe(false)
   expect(insertUserCalled).toBe(false)
   expect(updateServiceCalled).toBe(true)
@@ -159,7 +160,7 @@ it("should do nothing and return an empty string on inconsistent DB", async () =
       )
     })
   )
-  await sync()
+  await sync(SERVICES)
   expect(insertAccountCalled).toBe(false)
   expect(insertUserCalled).toBe(false)
   expect(updateServiceCalled).toBe(false)

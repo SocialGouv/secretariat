@@ -1,3 +1,10 @@
+## [1.42.1](https://github.com/SocialGouv/secretariat/compare/v1.42.0...v1.42.1) (2022-09-12)
+
+
+### Bug Fixes
+
+* API methods ([#375](https://github.com/SocialGouv/secretariat/issues/375)) ([43236f3](https://github.com/SocialGouv/secretariat/commit/43236f31ea2c3263a78af619aad7d9632e0763c0))
+
 # [1.42.0](https://github.com/SocialGouv/secretariat/compare/v1.41.2...v1.42.0) (2022-09-11)
 
 

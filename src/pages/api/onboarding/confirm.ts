@@ -8,6 +8,11 @@ import { confirmOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "GET") {
+    res.status(405).end()
+    return
+  }
+
   const { id } = req.query
   const token = getJwt()
 

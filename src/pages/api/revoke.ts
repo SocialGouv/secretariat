@@ -6,6 +6,11 @@ import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "POST") {
+    res.status(405).end()
+    return
+  }
+
   const userToken = await getToken({ req, decode, cookieName: COOKIE_NAME })
   if (userToken) {
     logAction({

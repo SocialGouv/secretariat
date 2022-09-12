@@ -7,6 +7,11 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "POST") {
+    res.status(405).end()
+    return
+  }
+
   const userToken = await getToken({ req, decode, cookieName: COOKIE_NAME })
   if (userToken) {
     logAction({

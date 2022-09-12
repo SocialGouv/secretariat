@@ -8,6 +8,11 @@ import { createOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "POST") {
+    res.status(405).end()
+    return
+  }
+
   const token = getJwt()
 
   logAction({

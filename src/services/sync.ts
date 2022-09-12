@@ -7,7 +7,6 @@ import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
-import SERVICES from "@/utils/SERVICES"
 import {
   deleteServices,
   deleteUsers,
@@ -162,7 +161,7 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-const sync = async (enabledServices: ServiceName[] = SERVICES) => {
+const sync = async (enabledServices: ServiceName[]) => {
   const token = getJwt()
 
   // Remember the users list for all services, to clean the deleted users afterwards

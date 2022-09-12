@@ -6,7 +6,8 @@ select_permissions:
     permission:
       columns:
         - confirmed
-        - data
         - created_at
+        - data
         - id
+        - reviewed
       filter: {}

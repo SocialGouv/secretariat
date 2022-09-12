@@ -175,6 +175,17 @@ export const deleteAccount = gql`
   }
 `
 
+export const getOnboardingRequests = gql`
+  query getOnboardingRequests {
+    onboarding_requests {
+      id
+      data
+      created_at
+      confirmed
+    }
+  }
+`
+
 export const getOnboardingRequest = gql`
   query getOnboardingRequest($id: uuid!) {
     onboarding_requests(where: { id: { _eq: $id }, confirmed: { _eq: true } }) {

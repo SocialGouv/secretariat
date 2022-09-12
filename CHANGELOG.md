@@ -1,3 +1,10 @@
+## [1.42.2](https://github.com/SocialGouv/secretariat/compare/v1.42.1...v1.42.2) (2022-09-12)
+
+
+### Bug Fixes
+
+* add reviewed column in onboarding_requests ([#374](https://github.com/SocialGouv/secretariat/issues/374)) ([55186ff](https://github.com/SocialGouv/secretariat/commit/55186ffdb6a7a596c02ac52db1560ad4ef50013c))
+
 ## [1.42.1](https://github.com/SocialGouv/secretariat/compare/v1.42.0...v1.42.1) (2022-09-12)
 
 

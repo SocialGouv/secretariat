@@ -15,11 +15,13 @@
 @use "./components/search.scss";
 @use "./components/logo.scss";
 @use "./components/header.scss";
+@use "./components/navigation.scss";
 @use "./components/footer.scss";
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
 @use "./components/onboarding.scss";
+@use "./components/onboarding-requests.scss";
 @use "./components/users/user-item.scss";
 @use "./components/users/user-template.scss";
 @use "./components/users/user-header.scss";
@@ -46,7 +48,7 @@ body {
   @apply flex flex-col flex-1 overflow-hidden;
 
   & > .page {
-    @apply flex-1 overflow-auto mt-28 scroll-smooth;
+    @apply flex-1 overflow-auto mt-40 scroll-smooth;
   }
 }
 

@@ -11,7 +11,8 @@ table {
           border-b-2
           text-gray-700
           border-gray-600
-          dark:text-gray-200;
+          dark:text-gray-200
+          ;
       }
     }
   }
@@ -27,6 +28,6 @@ table {
   }
 
   td {
-    @apply border-r last:border-0 p-2;
+    @apply border-r last:border-r-0 p-2;
   }
 }

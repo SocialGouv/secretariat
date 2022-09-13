@@ -22,8 +22,8 @@ const Index = () => (
           Numérique des minisères sociaux.
         </p>
       </div>
-      <div className="flex-1 relative">
-        <Image src={HomeImage} alt="home image" height={400} />
+      <div className="flex-1 relative min-h-[400px]">
+        <Image src={HomeImage} alt="home image" layout="fill" />
       </div>
     </div>
     <div className="flex my-12 gap-x-6">

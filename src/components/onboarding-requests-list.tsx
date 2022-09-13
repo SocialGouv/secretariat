@@ -1,31 +1,55 @@
-import useOnboardingRequests from "@/hooks/use-onboarding-requests"
 import Link from "next/link"
+import { format } from "date-fns"
+
+import useOnboardingRequests from "@/hooks/use-onboarding-requests"
 
 const OnboardingRequestsList = () => {
   const onboardingRequest = useOnboardingRequests()
-  console.log("OnboardingRequestsList", onboardingRequest)
 
   return (
     <div className="onboarding-requests-list">
       <table>
-        {onboardingRequest.map((request: OnboardingRequest, i: number) => (
-          <tr key={i}>
-            <td>{request.confirmed ? "validée" : "en attente"}</td>
-            <td>
-              <Link
-                href={{
-                  pathname: "/onboarding/review",
-                  query: { id: request.id },
-                }}
-              >
-                <a>{request.id}</a>
-              </Link>
-            </td>
-            <td>{request.data.firstName}</td>
-            <td>{request.data.lastName}</td>
-            <td>{request.created_at}</td>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Email</th>
+            <th>Revue</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {onboardingRequest?.map((request: OnboardingRequest, i: number) => (
+            <tr key={i}>
+              <td>{format(new Date(request.created_at), "dd/MM/Y H:m:s")}</td>
+              <td>
+                <Link
+                  href={{
+                    pathname: "/onboarding/review",
+                    query: { id: request.id },
+                  }}
+                >
+                  <a>
+                    {request.data.firstName} {request.data.lastName}
+                  </a>
+                </Link>
+              </td>
+              <td align="center">
+                {request.confirmed ? (
+                  <i className="ri-checkbox-circle-line text-2xl leading-none align-middle" />
+                ) : (
+                  <i className="ri-checkbox-blank-circle-line text-2xl leading-none align-middle" />
+                )}
+              </td>
+              <td align="center">
+                {request.reviewed ? (
+                  <i className="ri-checkbox-circle-line text-2xl leading-none align-middle" />
+                ) : (
+                  <i className="ri-checkbox-blank-circle-line text-2xl leading-none align-middle" />
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   )

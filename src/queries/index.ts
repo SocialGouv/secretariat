@@ -182,6 +182,7 @@ export const getOnboardingRequests = gql`
       data
       created_at
       confirmed
+      reviewed
     }
   }
 `
@@ -193,6 +194,7 @@ export const getOnboardingRequest = gql`
       data
       created_at
       confirmed
+      reviewed
     }
   }
 `

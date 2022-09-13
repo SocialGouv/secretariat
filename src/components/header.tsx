@@ -1,13 +1,12 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { useSession } from "next-auth/react"
 
 import Navigation from "@/components/navigation"
 import Logo from "@/components/common/site-logo"
 import AuthenticatedUser from "@/components/authenticated-user"
 
 const Header = () => {
-  const router = useRouter()
-  const { pathname } = router
+  const { data: session } = useSession()
 
   return (
     <header className="header">
@@ -25,9 +24,7 @@ const Header = () => {
           <AuthenticatedUser />
         </nav>
       </div>
-      {["/accounts", "onboarding-requests", "/onboarding-requests"].includes(
-        pathname
-      ) && <Navigation />}
+      {session && <Navigation />}
     </header>
   )
 }

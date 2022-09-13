@@ -2,7 +2,6 @@ import useSWR from "swr"
 
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getOnboardingRequests } from "@/queries/index"
-console.log("toto")
 
 const useOnboardingRequests = () => {
   const getOnboardingRequestsData = async () => {
@@ -17,7 +16,6 @@ const useOnboardingRequests = () => {
     "/onboarding-requests",
     getOnboardingRequestsData
   )
-  console.log("SWR onboarding_requests", onboarding_requests)
   return onboarding_requests
 }
 

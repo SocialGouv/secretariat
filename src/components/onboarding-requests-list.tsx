@@ -11,8 +11,8 @@ const OnboardingRequestsList = () => {
       <table>
         <thead>
           <tr>
-            <th>Nom</th>
             <th>Date</th>
+            <th>Nom</th>
             <th>Email</th>
             <th>Revue</th>
           </tr>

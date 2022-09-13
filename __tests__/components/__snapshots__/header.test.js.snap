@@ -119,6 +119,7 @@ exports[`when header renders does show authenticated user if session is valid 1`
         </li>
         <li>
           <a
+            class=""
             href="/onboarding-requests"
           >
             Demandes d'embarquement

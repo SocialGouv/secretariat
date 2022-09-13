@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/SocialGouv/secretariat/compare/v1.42.2...v1.43.0) (2022-09-13)
+
+
+### Features
+
+* add onboarding requests list page ([#373](https://github.com/SocialGouv/secretariat/issues/373)) ([9dd1cff](https://github.com/SocialGouv/secretariat/commit/9dd1cff537203c7b5d14b4019d6d2555213cc2cc))
+
 ## [1.42.2](https://github.com/SocialGouv/secretariat/compare/v1.42.1...v1.42.2) (2022-09-12)
 
 

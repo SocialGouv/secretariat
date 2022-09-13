@@ -1,3 +1,10 @@
+## [1.43.1](https://github.com/SocialGouv/secretariat/compare/v1.43.0...v1.43.1) (2022-09-13)
+
+
+### Bug Fixes
+
+* onboarding requests table headers and navigation item selection ([#377](https://github.com/SocialGouv/secretariat/issues/377)) ([23408a2](https://github.com/SocialGouv/secretariat/commit/23408a23c3caae73b6d8d44a724489360d73a853))
+
 # [1.43.0](https://github.com/SocialGouv/secretariat/compare/v1.42.2...v1.43.0) (2022-09-13)
 
 

@@ -4,6 +4,17 @@ import { render } from "@testing-library/react"
 import { session } from "../../src/mocks/data"
 import Header from "../../src/components/header"
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      route: "/accounts",
+      pathname: "",
+      query: "",
+      asPath: "",
+    }
+  },
+}))
+
 describe("when header renders", () => {
   it("does not show authenticated user if session is not valid", () => {
     useSession.mockImplementation(() => [false, false])

@@ -23,7 +23,7 @@ const Index = () => (
         </p>
       </div>
       <div className="flex-1 relative">
-        <Image src={HomeImage} alt="home image" layout="fill" />
+        <Image src={HomeImage} alt="home image" height={400} />
       </div>
     </div>
     <div className="flex my-12 gap-x-6">

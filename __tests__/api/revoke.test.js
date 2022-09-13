@@ -16,9 +16,8 @@ jest.mock("@/utils/jwt", () => ({
 
 let req, res
 beforeEach(() => {
-  revoke.mockClear()
   ;({ req, res } = createMocks({
-    method: "POST",
+    method: "DELETE",
     body: {
       input: {
         data: {
@@ -46,7 +45,7 @@ it("should return 400 if service name is incorrect", async () => {
   req.body.input.data.serviceName = "fake serviceName"
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(400)
-  expect(res._getData()).toEqual('{"message":"unknown service name"}')
+  expect(res._getJSONData()).toEqual({ message: "unknown service name" })
   expect(revoke).not.toHaveBeenCalled()
 })
 
@@ -54,5 +53,15 @@ it("should return 403 if no next-auth session", async () => {
   getToken.mockImplementation(() => Promise.resolve(false))
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(403)
+  expect(res._getJSONData()).toStrictEqual({ message: "Unauthorized" })
   expect(revoke).not.toHaveBeenCalled()
+})
+
+it("should return 405 if wrong method", async () => {
+  ;({ req, res } = createMocks({ method: "GET" }))
+  await handleRevoke(req, res)
+  expect(res._getStatusCode()).toEqual(405)
+  expect(res._getJSONData()).toStrictEqual({ message: "Method Not Allowed" })
+  expect(res._getHeaders().allow).toStrictEqual("DELETE")
+  expect(revoke).toHaveBeenCalledTimes(0)
 })

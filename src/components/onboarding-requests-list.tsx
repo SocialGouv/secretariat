@@ -20,7 +20,9 @@ const OnboardingRequestsList = () => {
         <tbody>
           {onboardingRequest?.map((request: OnboardingRequest, i: number) => (
             <tr key={i}>
-              <td>{format(new Date(request.created_at), "dd/MM/Y H:m:s")}</td>
+              <td>
+                {format(new Date(request.created_at), "dd/MM/Y HH:mm:ss")}
+              </td>
               <td>
                 <Link
                   href={{

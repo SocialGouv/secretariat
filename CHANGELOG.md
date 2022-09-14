@@ -1,3 +1,11 @@
+## [1.43.3](https://github.com/SocialGouv/secretariat/compare/v1.43.2...v1.43.3) (2022-09-14)
+
+
+### Bug Fixes
+
+* **onboarding-list:** use fixed-width dates ([#382](https://github.com/SocialGouv/secretariat/issues/382)) ([79ff87b](https://github.com/SocialGouv/secretariat/commit/79ff87b464f352cde73e9d89f800cdc42afd5c7d))
+* onboarding emails prod ([#383](https://github.com/SocialGouv/secretariat/issues/383)) ([2422e4e](https://github.com/SocialGouv/secretariat/commit/2422e4eec3100487cbd7efa29ec39e82512ef304))
+
 ## [1.43.2](https://github.com/SocialGouv/secretariat/compare/v1.43.1...v1.43.2) (2022-09-14)
 
 

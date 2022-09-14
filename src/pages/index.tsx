@@ -19,7 +19,7 @@ const Index = () => (
         <p className="mt-6">
           Secrétariat est une solution numérique permettant aux membres des
           Startups d&apos;Etat de gérer leurs accès aux services de la Fabrique
-          Numérique des minisères sociaux.
+          Numérique des ministères sociaux.
         </p>
       </div>
       <div className="flex-1 relative min-h-[400px]">

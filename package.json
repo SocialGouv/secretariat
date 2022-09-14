@@ -5,6 +5,7 @@
     "node": "16.13"
   },
   "private": true,
+  "homepage": "https://github.com/SocialGouv/secretariat",
   "repository": "git@github.com:SocialGouv/secretariat.git",
   "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/secretariat/issues",

@@ -1,3 +1,10 @@
+## [1.43.2](https://github.com/SocialGouv/secretariat/compare/v1.43.1...v1.43.2) (2022-09-14)
+
+
+### Bug Fixes
+
+* typo ([#380](https://github.com/SocialGouv/secretariat/issues/380)) ([913104a](https://github.com/SocialGouv/secretariat/commit/913104af887b6e5691935109cc6156ee507409ac))
+
 ## [1.43.1](https://github.com/SocialGouv/secretariat/compare/v1.43.0...v1.43.1) (2022-09-13)
 
 

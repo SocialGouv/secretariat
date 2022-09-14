@@ -22,7 +22,7 @@ exports[`renders home page 1`] = `
         <p
           class="mt-6"
         >
-          Secrétariat est une solution numérique permettant aux membres des Startups d'Etat de gérer leurs accès aux services de la Fabrique Numérique des minisères sociaux.
+          Secrétariat est une solution numérique permettant aux membres des Startups d'Etat de gérer leurs accès aux services de la Fabrique Numérique des ministères sociaux.
         </p>
       </div>
       <div

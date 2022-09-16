@@ -1,6 +1,6 @@
 const path = require("path")
 const { randomBytes } = require("crypto")
-const { version } = require("./package.json")
+const { version, homepage } = require("./package.json")
 
 const nonce = randomBytes(8).toString("base64")
 process.env.NONCE = nonce
@@ -51,6 +51,7 @@ module.exports = {
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
     NEXT_PUBLIC_APP_VERSION_COMMIT: commitSha,
+    NEXT_PUBLIC_APP_REPOSITORY_URL: homepage,
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "src", "styles")],

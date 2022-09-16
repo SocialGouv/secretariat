@@ -1,3 +1,10 @@
+## [1.43.5](https://github.com/SocialGouv/secretariat/compare/v1.43.4...v1.43.5) (2022-09-16)
+
+
+### Bug Fixes
+
+* footer sha link ([#381](https://github.com/SocialGouv/secretariat/issues/381)) ([99b9099](https://github.com/SocialGouv/secretariat/commit/99b9099608a3858dacc4af698a46fd76be1041dc))
+
 ## [1.43.4](https://github.com/SocialGouv/secretariat/compare/v1.43.3...v1.43.4) (2022-09-16)
 
 

@@ -19,6 +19,10 @@ actions:
       kind: synchronous
       handler: '{{APP_URL}}/api/revoke'
       forward_client_headers: true
+      request_transform:
+        method: DELETE
+        query_params: {}
+        template_engine: Kriti
     permissions:
       - role: user
 custom_types:

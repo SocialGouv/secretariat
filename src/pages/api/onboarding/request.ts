@@ -9,7 +9,8 @@ import logAction from "@/utils/log-action"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
-    res.status(405).end()
+    res.setHeader("Allow", "POST")
+    res.status(405).json({ message: "Method Not Allowed" })
     return
   }
 

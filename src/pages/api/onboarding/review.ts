@@ -10,42 +10,48 @@ import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
-    res.status(405).end()
+    res.setHeader("Allow", "POST")
+    res.status(405).json({ message: "Method Not Allowed" })
     return
   }
 
   const userToken = await getToken({ req, decode, cookieName: COOKIE_NAME })
-  if (userToken) {
-    const token = getJwt()
 
-    const { data, id } = req.body.input
+  if (!userToken) {
+    res.status(403).json({ message: "Unauthorized" })
+    return
+  }
 
-    logAction({
-      action: "onboarding/review",
-      user: userToken.user.login,
-      token,
-      parameters: JSON.stringify(data),
-    })
+  const token = getJwt()
 
-    await graphQLFetcher({
-      query: updateOnboardingRequest,
-      token,
-      parameters: {
-        cols: { id },
-        data: { reviewed: true, data },
+  const { data, id } = req.body.input
+
+  logAction({
+    action: "onboarding/review",
+    user: userToken.user.login,
+    token,
+    parameters: JSON.stringify(data),
+  })
+
+  await graphQLFetcher({
+    query: updateOnboardingRequest,
+    token,
+    parameters: {
+      cols: { id },
+      data: { reviewed: true, data },
+    },
+  })
+
+  const result = await onboard(data)
+
+  await sendEmail(
+    [
+      {
+        address: data.email,
       },
-    })
-
-    const result = await onboard(data)
-
-    await sendEmail(
-      [
-        {
-          address: data.email,
-        },
-      ],
-      "Bienvenue à la Fabrique",
-      `Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.
+    ],
+    "Bienvenue à la Fabrique",
+    `Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.
 
 Voici quelques ressources pour débuter :
 - Charte de collaboration : https://github.com/SocialGouv/www/wiki/Charte-de-collaboration
@@ -104,7 +110,7 @@ ${
       }`
     : ""
 }`,
-      `<p>Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.</p>
+    `<p>Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.</p>
 <p>Voici quelques ressources pour débuter&nbsp:</p>
   <li><a href="https://github.com/SocialGouv/www/wiki/Charte-de-collaboration">Charte de collaboration</a></li>
   <li><a href="https://www.notion.so/fabnummas/La-Fabrique-pour-tous-18c0f050420846379e0e971402c2f58c">Espace Notion</a></li>
@@ -163,10 +169,8 @@ ${
       }</li>`
     : ""
 }`
-    )
-    res.status(200).json(result)
-  } else {
-    res.status(403).end()
-  }
+  )
+  res.status(200).json(result)
 }
+
 export default Review

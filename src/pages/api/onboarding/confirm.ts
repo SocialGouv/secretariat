@@ -9,7 +9,8 @@ import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
-    res.status(405).end()
+    res.setHeader("Allow", "GET")
+    res.status(405).json({ message: "Method Not Allowed" })
     return
   }
 
@@ -34,11 +35,11 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   const recipients = ONBOARDING_NOTIFICATION_EMAILS.split(",").map((email) => ({
     address: email,
   }))
-  console.log("Sending email notification to recipients:", recipients)
 
   const url = new URL("/onboarding/review", NEXTAUTH_URL)
   url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
+  console.log("sending email notification to recipients:", recipients)
   await sendEmail(
     recipients,
     "Demande d'onboarding",

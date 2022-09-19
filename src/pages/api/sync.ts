@@ -12,8 +12,7 @@ const Sync = async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (req.method === "POST") {
     ;({ services } = req.body)
     if (!services) {
-      res.status(400).json({ message: "services body field expected" })
-      return
+      services = SERVICES
     }
   } else {
     res.setHeader("Allow", "GET, POST")

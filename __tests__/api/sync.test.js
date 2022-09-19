@@ -31,16 +31,14 @@ describe("POST", () => {
     expect(sync).toHaveBeenCalledWith(["github", "mattermost"])
   })
 
-  it("should return 400", async () => {
+  it("should call the sync service with all services", async () => {
     const { req, res } = createMocks({
       method: "POST",
     })
     await handleSync(req, res)
-    expect(res._getStatusCode()).toEqual(400)
-    expect(res._getJSONData()).toStrictEqual({
-      message: "services body field expected",
-    })
-    expect(sync).toHaveBeenCalledTimes(0)
+    expect(res._getStatusCode()).toEqual(200)
+    expect(sync).toHaveBeenCalledTimes(1)
+    expect(sync).toHaveBeenCalledWith(SERVICES)
   })
 })
 

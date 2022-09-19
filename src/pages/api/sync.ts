@@ -5,19 +5,15 @@ import SERVICES from "@/utils/SERVICES"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 const Sync = async (req: NextApiRequest, res: NextApiResponse) => {
-  let services
-
-  if (req.method === "GET") {
-    services = SERVICES
-  } else if (req.method === "POST") {
-    ;({ services } = req.body)
-    if (!services) {
-      services = SERVICES
-    }
-  } else {
-    res.setHeader("Allow", "GET, POST")
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST")
     res.status(405).json({ message: "Method Not Allowed" })
     return
+  }
+
+  let { services } = req.body
+  if (!services) {
+    services = SERVICES
   }
 
   logAction({

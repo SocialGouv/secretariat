@@ -1,3 +1,10 @@
+## [1.43.6](https://github.com/SocialGouv/secretariat/compare/v1.43.5...v1.43.6) (2022-09-19)
+
+
+### Bug Fixes
+
+* avoid multiple confirms ([#390](https://github.com/SocialGouv/secretariat/issues/390)) ([b21b1d5](https://github.com/SocialGouv/secretariat/commit/b21b1d54f21d811fbb9d6287067c2febafd10fd9))
+
 ## [1.43.5](https://github.com/SocialGouv/secretariat/compare/v1.43.4...v1.43.5) (2022-09-16)
 
 

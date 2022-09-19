@@ -4,7 +4,7 @@ import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
-import { updateOnboardingRequest } from "@/queries/index"
+import { confirmOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -23,32 +23,36 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: JSON.stringify({ id }),
   })
 
-  await graphQLFetcher({
-    query: updateOnboardingRequest,
+  const {
+    update_onboarding_requests: { affected_rows },
+  } = await graphQLFetcher({
+    query: confirmOnboardingRequest,
     token,
     parameters: {
-      cols: { id },
-      data: { confirmed: true },
+      id,
     },
   })
 
-  const recipients = ONBOARDING_NOTIFICATION_EMAILS.split(",").map((email) => ({
-    address: email,
-  }))
+  if (affected_rows === 1) {
+    const recipients = ONBOARDING_NOTIFICATION_EMAILS.split(",").map(
+      (email) => ({
+        address: email,
+      })
+    )
 
-  const url = new URL("/onboarding/review", NEXTAUTH_URL)
-  url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
+    const url = new URL("/onboarding/review", NEXTAUTH_URL)
+    url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
-  console.log("sending email notification to recipients:", recipients)
-  await sendEmail(
-    recipients,
-    "Demande d'onboarding",
-    `Une demande d'onboarding a été effectuée sur Secrétariat.
+    console.log("sending email notification to recipients:", recipients)
+    await sendEmail(
+      recipients,
+      "Demande d'onboarding",
+      `Une demande d'onboarding a été effectuée sur Secrétariat.
 
     En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :
 
     ${url.href}`,
-    `<p>Une demande d'onboarding a été effectuée sur Secrétariat.</p>
+      `<p>Une demande d'onboarding a été effectuée sur Secrétariat.</p>
     <p>
       En tant qu'administrateur, veuillez en effectuer la revue en cliquant sur le bouton :
     </p>
@@ -60,7 +64,9 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
         Effectuer la revue
       </a>
     </div>`
-  )
+    )
+  }
+
   res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)
 }
 

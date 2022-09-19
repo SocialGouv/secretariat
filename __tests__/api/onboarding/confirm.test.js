@@ -13,14 +13,12 @@ jest.mock("@/utils/env", () => ({
   NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
 }))
 
-let updateOnboardingRequestCalled
 const server = setupServer(
-  graphql.mutation("updateOnboardingRequest", (_req, res, ctx) => {
-    updateOnboardingRequestCalled = true
+  graphql.mutation("confirmOnboardingRequest", (_req, res, ctx) => {
     return res(
       ctx.data({
-        update_onboarding_requests_by_pk: {
-          id: "1",
+        update_onboarding_requests: {
+          affected_rows: 1,
         },
       })
     )
@@ -36,7 +34,6 @@ afterAll(() => {
 })
 
 beforeEach(() => {
-  updateOnboardingRequestCalled = false
   server.resetHandlers()
 })
 
@@ -47,8 +44,28 @@ it("should confirm request and send email", async () => {
   })
   await handleConfirm(req, res)
   expect(res._getStatusCode(200))
-  expect(updateOnboardingRequestCalled).toStrictEqual(true)
   expect(sendEmail).toHaveBeenCalled()
+})
+
+it("should not confirm multiple times", async () => {
+  const { req, res } = createMocks({
+    method: "GET",
+    query: { id: "fakeId" },
+  })
+  server.use(
+    graphql.mutation("confirmOnboardingRequest", (_req, res, ctx) => {
+      return res(
+        ctx.data({
+          update_onboarding_requests: {
+            affected_rows: 0,
+          },
+        })
+      )
+    })
+  )
+  await handleConfirm(req, res)
+  expect(res._getStatusCode(200))
+  expect(sendEmail).not.toHaveBeenCalled()
 })
 
 it("should return 405", async () => {
@@ -59,6 +76,5 @@ it("should return 405", async () => {
   expect(res._getStatusCode()).toEqual(405)
   expect(res._getJSONData()).toStrictEqual({ message: "Method Not Allowed" })
   expect(res._getHeaders().allow).toStrictEqual("GET")
-  expect(updateOnboardingRequestCalled).toStrictEqual(false)
   expect(sendEmail).not.toHaveBeenCalled()
 })

@@ -187,6 +187,16 @@ export const getOnboardingRequests = gql`
   }
 `
 
+export const getOnboardingRequestStatus = gql`
+  query getOnboardingRequestStatus($id: uuid!) {
+    onboarding_requests(where: { id: { _eq: $id } }) {
+      created_at
+      confirmed
+      reviewed
+    }
+  }
+`
+
 export const getOnboardingRequest = gql`
   query getOnboardingRequest($id: uuid!) {
     onboarding_requests(where: { id: { _eq: $id }, confirmed: { _eq: true } }) {

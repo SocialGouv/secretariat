@@ -24,6 +24,9 @@ const server = setupServer(
         },
       })
     )
+  }),
+  graphql.query("getOnboardingRequestStatus", (_req, res, ctx) => {
+    return res(ctx.data({ onboarding_requests: { confirmed: false } }))
   })
 )
 
@@ -49,6 +52,22 @@ it("should confirm request and send email", async () => {
   expect(res._getStatusCode(200))
   expect(updateOnboardingRequestCalled).toStrictEqual(true)
   expect(sendEmail).toHaveBeenCalled()
+})
+
+it("should not confirm multiple times", async () => {
+  const { req, res } = createMocks({
+    method: "GET",
+    query: { id: "fakeId" },
+  })
+  server.use(
+    graphql.query("getOnboardingRequestStatus", (_req, res, ctx) => {
+      return res(ctx.data({ onboarding_requests: { confirmed: true } }))
+    })
+  )
+  await handleConfirm(req, res)
+  expect(res._getStatusCode(200))
+  expect(updateOnboardingRequestCalled).toStrictEqual(false)
+  expect(sendEmail).not.toHaveBeenCalled()
 })
 
 it("should return 405", async () => {

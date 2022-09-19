@@ -4,10 +4,7 @@ import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
 import sendEmail from "@/utils/send-email"
-import {
-  getOnboardingRequestStatus,
-  updateOnboardingRequest,
-} from "@/queries/index"
+import { confirmOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -27,25 +24,16 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   const {
-    onboarding_requests: { confirmed },
+    update_onboarding_requests: { affected_rows },
   } = await graphQLFetcher({
-    query: getOnboardingRequestStatus,
+    query: confirmOnboardingRequest,
     token,
     parameters: {
       id,
     },
   })
 
-  if (!confirmed) {
-    await graphQLFetcher({
-      query: updateOnboardingRequest,
-      token,
-      parameters: {
-        cols: { id },
-        data: { confirmed: true },
-      },
-    })
-
+  if (affected_rows === 1) {
     const recipients = ONBOARDING_NOTIFICATION_EMAILS.split(",").map(
       (email) => ({
         address: email,

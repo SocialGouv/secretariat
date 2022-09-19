@@ -187,16 +187,6 @@ export const getOnboardingRequests = gql`
   }
 `
 
-export const getOnboardingRequestStatus = gql`
-  query getOnboardingRequestStatus($id: uuid!) {
-    onboarding_requests(where: { id: { _eq: $id } }) {
-      created_at
-      confirmed
-      reviewed
-    }
-  }
-`
-
 export const getOnboardingRequest = gql`
   query getOnboardingRequest($id: uuid!) {
     onboarding_requests(where: { id: { _eq: $id }, confirmed: { _eq: true } }) {
@@ -226,6 +216,17 @@ export const updateOnboardingRequest = gql`
   ) {
     update_onboarding_requests_by_pk(pk_columns: $cols, _set: $data) {
       id
+    }
+  }
+`
+
+export const confirmOnboardingRequest = gql`
+  mutation confirmOnboardingRequest($id: uuid!) {
+    update_onboarding_requests(
+      where: { id: { _eq: $id }, confirmed: { _eq: false } }
+      _set: { confirmed: true }
+    ) {
+      affected_rows
     }
   }
 `

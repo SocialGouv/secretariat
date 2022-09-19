@@ -1,3 +1,10 @@
+## [1.43.8](https://github.com/SocialGouv/secretariat/compare/v1.43.7...v1.43.8) (2022-09-19)
+
+
+### Bug Fixes
+
+* avoid host network mode ([#379](https://github.com/SocialGouv/secretariat/issues/379)) ([42c43c2](https://github.com/SocialGouv/secretariat/commit/42c43c257275dd499633a6ec8ee3b5632b4dc6a1))
+
 ## [1.43.7](https://github.com/SocialGouv/secretariat/compare/v1.43.6...v1.43.7) (2022-09-19)
 
 

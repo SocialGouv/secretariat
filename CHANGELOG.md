@@ -1,3 +1,10 @@
+## [1.43.7](https://github.com/SocialGouv/secretariat/compare/v1.43.6...v1.43.7) (2022-09-19)
+
+
+### Bug Fixes
+
+* support Hasura POST request without body ([#391](https://github.com/SocialGouv/secretariat/issues/391)) ([2d6d37d](https://github.com/SocialGouv/secretariat/commit/2d6d37d71d19155c93606d737f7a97654ef938fc))
+
 ## [1.43.6](https://github.com/SocialGouv/secretariat/compare/v1.43.5...v1.43.6) (2022-09-19)
 
 

@@ -31,24 +31,25 @@ const Index = () => {
         </div>
       </div>
       <div className="flex my-12 gap-x-6">
-        <div className="card">
+        <div className="card flex-1">
           <h3 className="title">Effectuez une demande d&apos;embarquement</h3>
           <p>
-            Vous arrivez aux ministères sociaux, vous avez besoins de créer vos
-            comptes afin d&apos;accéder aux services de la Fabrique Numérique,
-            effectuez une demande d&apos;embarquement en cliquant sur le bouton
-            ci-dessous.
+            Si vous arrivez aux ministères sociaux et que vous avez besoins de
+            créer vos comptes afin d&apos;accéder aux services de la Fabrique
+            Numérique, vous pouvez effectuer une demande d&apos;embarquement en
+            cliquant sur le bouton ci-dessous.
           </p>
           <Link href="/onboarding">
             <a className="btn primary">Demande d&apos;embarquement</a>
           </Link>
         </div>
-        <div className="card">
+        <div className="card flex flex-col flex-1 items-start">
           <h3 className="title">Administrer les comptes utilisateurs</h3>
-          <p>
-            Vous souhaitez effectuer une revue des comptes des utilisateurs des
-            services de la Fabrique Numérique des ministères sociaux, accèder
-            aux outils de gestion en cliquant sur le bouton ci-dessous.
+          <p className="flex-1">
+            Si vous souhaitez effectuer une revue des comptes des utilisateurs
+            des services de la Fabrique Numérique des ministères sociaux, vous
+            pouvez accèder aux outils de gestion en cliquant sur le bouton
+            ci-dessous.
           </p>
           <Link href="/accounts">
             <a className="btn primary">Gestion des comptes</a>

@@ -6,9 +6,9 @@ const DefaultServices = () => {
   const { services } = data || {}
 
   return (
-    <div className="services">
+    <div className="card services">
       <h3>Services de la Fabrique Numérique:</h3>
-      <br />
+      <p>Sélectionnez les services qui vous intéressent.</p>
       {services && (
         <ServiceAccounts
           services={services}
@@ -17,6 +17,10 @@ const DefaultServices = () => {
           }
         />
       )}
+      <p>
+        Des comptes dédiés seront créés pour vous. Les informations de connexion
+        vous seront envoyées par mail ultérieurement.
+      </p>
     </div>
   )
 }

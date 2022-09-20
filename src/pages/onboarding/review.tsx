@@ -8,7 +8,7 @@ const Review = () => {
   const { data: session } = useSession()
 
   return (
-    <main>
+    <main className={session ? "mt-12" : ""}>
       <Head>
         <title>Secrétariat</title>
       </Head>

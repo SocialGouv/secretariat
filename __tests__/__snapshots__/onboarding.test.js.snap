@@ -2,7 +2,9 @@
 
 exports[`renders onboarding page 1`] = `
 <div>
-  <main>
+  <main
+    class=""
+  >
     <div
       class="onboarding-header"
     >
@@ -27,7 +29,7 @@ exports[`renders onboarding page 1`] = `
     >
       <form>
         <div
-          class="user-info"
+          class="card user-info"
         >
           <h3>
             Informations Personnelles:
@@ -120,12 +122,14 @@ exports[`renders onboarding page 1`] = `
           </div>
         </div>
         <div
-          class="services"
+          class="card services"
         >
           <h3>
             Services de la Fabrique Numérique:
           </h3>
-          <br />
+          <p>
+            Sélectionnez les services qui vous intéressent.
+          </p>
           <div
             class="services-tiles"
           >
@@ -204,9 +208,12 @@ exports[`renders onboarding page 1`] = `
               </div>
             </div>
           </div>
+          <p>
+            Des comptes dédiés seront créés pour vous. Les informations de connexion vous seront envoyées par mail ultérieurement.
+          </p>
         </div>
         <div
-          class="github-services"
+          class="card github-services"
         >
           <div
             class="services"
@@ -214,7 +221,18 @@ exports[`renders onboarding page 1`] = `
             <h3>
               Services associés à Github:
             </h3>
-            <br />
+            <p>
+              Associez votre compte Github à
+               
+              <a
+                href="https://github.com/socialgouv"
+                rel="noreferrer"
+                target="_blank"
+              >
+                l'organisation SocialGouv de la Fabrique Numérique
+              </a>
+              .
+            </p>
             <label
               class="col-span-2"
               for="githubLogin"
@@ -228,7 +246,9 @@ exports[`renders onboarding page 1`] = `
                 value=""
               />
             </label>
-            <br />
+            <p>
+              Une fois membre de l'organisation SocialGouv, les services listés ci-dessous vous seront accessibles via une authentification Github.
+            </p>
             <br />
             <div
               class="services-tiles"

@@ -1,5 +1,5 @@
 .onboarding-header {
-  @apply flex py-8;
+  @apply flex px-6 py-12;
 
   .icon {
     @apply text-7xl flex items-center pr-6;
@@ -11,7 +11,7 @@
 }
 
 .onboarding-form {
-  @apply flex flex-col gap-10;
+  @apply flex flex-col mx-6;
 
   form {
     @apply flex flex-col gap-10;

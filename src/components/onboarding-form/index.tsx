@@ -42,6 +42,7 @@ const OnboardingForm = () => {
     | "review"
     | "create_success"
     | "create_error"
+    | "create_already_exists"
     | "review_success"
     | "review_error"
   >("create")
@@ -51,7 +52,7 @@ const OnboardingForm = () => {
 
   const handleCreationSubmit = async () => {
     const {
-      onboardingRequestAction: { status },
+      onboardingRequestAction: { status, body },
     } = await graphQLFetcher({
       query: onboardingRequestAction,
       includeCookie: true,
@@ -60,6 +61,8 @@ const OnboardingForm = () => {
 
     if (statusOk(status)) {
       setStatus("create_success")
+    } else if (body === "already exists") {
+      setStatus("create_already_exists")
     } else {
       setStatus("create_error")
     }
@@ -109,6 +112,14 @@ const OnboardingForm = () => {
           <Alert
             type="error"
             message="Une erreur est survenue veuillez réessayer ultérieurement."
+          />
+        </div>
+      )}
+      {status === "create_already_exists" && (
+        <div className="mt-12">
+          <Alert
+            type="warning"
+            message="Une demande d'embarquement utilisant cet email existe déjà."
           />
         </div>
       )}

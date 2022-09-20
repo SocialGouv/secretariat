@@ -1,3 +1,10 @@
+## [1.43.9](https://github.com/SocialGouv/secretariat/compare/v1.43.8...v1.43.9) (2022-09-20)
+
+
+### Bug Fixes
+
+* avoid duplicate requests ([#395](https://github.com/SocialGouv/secretariat/issues/395)) ([13cc1fb](https://github.com/SocialGouv/secretariat/commit/13cc1fb21fc7033caa26075dff40393e4e0f5661))
+
 ## [1.43.8](https://github.com/SocialGouv/secretariat/compare/v1.43.7...v1.43.8) (2022-09-19)
 
 

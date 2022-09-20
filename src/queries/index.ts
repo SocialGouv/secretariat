@@ -220,6 +220,17 @@ export const updateOnboardingRequest = gql`
   }
 `
 
+export const confirmOnboardingRequest = gql`
+  mutation confirmOnboardingRequest($id: uuid!) {
+    update_onboarding_requests(
+      where: { id: { _eq: $id }, confirmed: { _eq: false } }
+      _set: { confirmed: true }
+    ) {
+      affected_rows
+    }
+  }
+`
+
 export const revokeAction = gql`
   mutation revokeAction(
     $accountID: String!

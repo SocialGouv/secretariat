@@ -1,3 +1,24 @@
+## [1.43.8](https://github.com/SocialGouv/secretariat/compare/v1.43.7...v1.43.8) (2022-09-19)
+
+
+### Bug Fixes
+
+* avoid host network mode ([#379](https://github.com/SocialGouv/secretariat/issues/379)) ([42c43c2](https://github.com/SocialGouv/secretariat/commit/42c43c257275dd499633a6ec8ee3b5632b4dc6a1))
+
+## [1.43.7](https://github.com/SocialGouv/secretariat/compare/v1.43.6...v1.43.7) (2022-09-19)
+
+
+### Bug Fixes
+
+* support Hasura POST request without body ([#391](https://github.com/SocialGouv/secretariat/issues/391)) ([2d6d37d](https://github.com/SocialGouv/secretariat/commit/2d6d37d71d19155c93606d737f7a97654ef938fc))
+
+## [1.43.6](https://github.com/SocialGouv/secretariat/compare/v1.43.5...v1.43.6) (2022-09-19)
+
+
+### Bug Fixes
+
+* avoid multiple confirms ([#390](https://github.com/SocialGouv/secretariat/issues/390)) ([b21b1d5](https://github.com/SocialGouv/secretariat/commit/b21b1d54f21d811fbb9d6287067c2febafd10fd9))
+
 ## [1.43.5](https://github.com/SocialGouv/secretariat/compare/v1.43.4...v1.43.5) (2022-09-16)
 
 

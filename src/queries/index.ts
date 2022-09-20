@@ -199,6 +199,14 @@ export const getOnboardingRequest = gql`
   }
 `
 
+export const getOnboardingRequestContaining = gql`
+  query getOnboardingRequestContaining($contains: jsonb!) {
+    onboarding_requests(where: { data: { _contains: $contains } }) {
+      id
+    }
+  }
+`
+
 export const createOnboardingRequest = gql`
   mutation createOnboardingRequest(
     $request: onboarding_requests_insert_input!
@@ -227,6 +235,9 @@ export const confirmOnboardingRequest = gql`
       _set: { confirmed: true }
     ) {
       affected_rows
+      returning {
+        data
+      }
     }
   }
 `

@@ -30,6 +30,13 @@ const server = setupServer(
         },
       })
     )
+  }),
+  graphql.query("getOnboardingRequestContaining", (_req, res, ctx) => {
+    return res(
+      ctx.data({
+        onboarding_requests: [],
+      })
+    )
   })
 )
 
@@ -58,6 +65,30 @@ it("should create request and send email", async () => {
   expect(res._getJSONData()).toStrictEqual({
     status: 200,
     body: "fakeBody",
+  })
+})
+
+it("should not create duplicate request", async () => {
+  const { req, res } = createMocks({
+    method: "POST",
+    body: { input: { data: "fakeData" } },
+  })
+  server.use(
+    graphql.query("getOnboardingRequestContaining", (_req, res, ctx) => {
+      return res(
+        ctx.data({
+          onboarding_requests: ["fakeExistingRequest"],
+        })
+      )
+    })
+  )
+  await handleRequest(req, res)
+  expect(res._getStatusCode(200))
+  expect(createOnboardingRequestCalled).toStrictEqual(false)
+  expect(sendEmail).not.toHaveBeenCalled()
+  expect(res._getJSONData()).toStrictEqual({
+    status: 400,
+    body: "already exists",
   })
 })
 

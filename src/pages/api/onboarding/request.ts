@@ -4,7 +4,10 @@ import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import sendEmail from "@/utils/send-email"
 import { NEXTAUTH_URL } from "@/utils/env"
-import { createOnboardingRequest } from "@/queries/index"
+import {
+  createOnboardingRequest,
+  getOnboardingRequestContaining,
+} from "@/queries/index"
 import logAction from "@/utils/log-action"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -15,12 +18,29 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const token = getJwt()
+  const onboardingRequest: OnboardingData = req.body.input.data
 
   logAction({
     action: "onboarding/request",
     token,
-    parameters: JSON.stringify(req.body.input.data),
+    parameters: JSON.stringify(onboardingRequest),
   })
+
+  // avoid duplicate onboarding requests
+  const { onboarding_requests: existingRequests } = await graphQLFetcher({
+    query: getOnboardingRequestContaining,
+    token,
+    parameters: {
+      contains: { email: onboardingRequest.email },
+    },
+  })
+  if (existingRequests.length > 0) {
+    res.status(200).json({
+      status: 400,
+      body: "already exists",
+    })
+    return
+  }
 
   const {
     insert_onboarding_requests_one: { id },
@@ -28,7 +48,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     query: createOnboardingRequest,
     token,
     parameters: {
-      request: { data: req.body.input.data },
+      request: { data: onboardingRequest },
     },
   })
 
@@ -38,7 +58,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await sendEmail(
     [
       {
-        address: req.body.input.data.email,
+        address: onboardingRequest.email,
       },
     ],
     "Vérification de votre adresse mail",

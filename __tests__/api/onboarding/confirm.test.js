@@ -19,6 +19,11 @@ const server = setupServer(
       ctx.data({
         update_onboarding_requests: {
           affected_rows: 1,
+          returning: [
+            {
+              data: { firstName: "fake firstname", lastName: "fake lastname" },
+            },
+          ],
         },
       })
     )

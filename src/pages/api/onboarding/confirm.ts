@@ -24,7 +24,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   const {
-    update_onboarding_requests: { affected_rows },
+    update_onboarding_requests: { affected_rows, returning },
   } = await graphQLFetcher({
     query: confirmOnboardingRequest,
     token,
@@ -39,6 +39,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
         address: email,
       })
     )
+    const { firstName, lastName } = returning[0].data
 
     const url = new URL("/onboarding/review", NEXTAUTH_URL)
     url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
@@ -46,7 +47,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log("sending email notification to recipients:", recipients)
     await sendEmail(
       recipients,
-      "Demande d'onboarding",
+      `Demande d'onboarding de ${firstName} ${lastName}`,
       `Une demande d'onboarding a été effectuée sur Secrétariat.
 
     En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :

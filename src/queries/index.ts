@@ -227,6 +227,9 @@ export const confirmOnboardingRequest = gql`
       _set: { confirmed: true }
     ) {
       affected_rows
+      returning {
+        data
+      }
     }
   }
 `

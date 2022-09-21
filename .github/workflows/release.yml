@@ -19,6 +19,7 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.DEPLOY_KEY }}
+          persist-credentials: false
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:

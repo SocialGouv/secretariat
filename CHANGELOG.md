@@ -1,3 +1,10 @@
+## [1.44.2](https://github.com/SocialGouv/secretariat/compare/v1.44.1...v1.44.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* install deps without saving ([ea5fc67](https://github.com/SocialGouv/secretariat/commit/ea5fc67f56240d9bbe93a23187964d55a567cac7))
+
 ## [1.44.1](https://github.com/SocialGouv/secretariat/compare/v1.44.0...v1.44.1) (2022-09-21)
 
 

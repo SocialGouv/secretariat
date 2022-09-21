@@ -1,3 +1,10 @@
+# [1.44.0](https://github.com/SocialGouv/secretariat/compare/v1.43.9...v1.44.0) (2022-09-21)
+
+
+### Features
+
+* Use cards to frame onboarding form sections ([#396](https://github.com/SocialGouv/secretariat/issues/396)) ([d427f28](https://github.com/SocialGouv/secretariat/commit/d427f28c759234cdb6aafb5d30853a519871b9cd))
+
 ## [1.43.9](https://github.com/SocialGouv/secretariat/compare/v1.43.8...v1.43.9) (2022-09-20)
 
 

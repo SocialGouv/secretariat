@@ -8,7 +8,7 @@ const OnboardingRequests = () => {
   const { data: session } = useSession()
 
   return (
-    <main className="mt-24">
+    <main className="mt-10">
       <Head>
         <title>Secrétariat</title>
       </Head>

@@ -8,7 +8,7 @@ const Review = () => {
   const { data: session } = useSession()
 
   return (
-    <main className={session ? "mt-12" : ""}>
+    <main>
       <Head>
         <title>Secrétariat</title>
       </Head>
@@ -18,8 +18,8 @@ const Review = () => {
           <h2>Embarquement à la Fabrique Numérique des Ministères Sociaux</h2>
           <p className="pt-2">
             En tant qu&apos;administrateur, vous pouvez effectuer une revue et
-            valider la demande d&apos;embarquement à la Fabrique Numérique des
-            Ministères Sociaux.
+            valider la demande d&apos;embarquement d&apos;un collaborateur à la
+            Fabrique Numérique des Ministères Sociaux.
           </p>
         </div>
       </div>

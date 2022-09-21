@@ -2,9 +2,7 @@
 
 exports[`when accounts page renders displays login form if session is invalid 1`] = `
 <div>
-  <main
-    class="mt-14"
-  >
+  <main>
     <div
       class="login"
     >
@@ -24,9 +22,7 @@ exports[`when accounts page renders displays login form if session is invalid 1`
 
 exports[`when accounts page renders displays users list if session is valid 1`] = `
 <div>
-  <main
-    class="mt-14"
-  >
+  <main>
     <div
       class="search"
     >

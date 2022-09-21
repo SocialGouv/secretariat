@@ -9,7 +9,7 @@ const Accounts = () => {
   const { data: session } = useSession()
 
   return (
-    <main className="mt-14">
+    <main>
       <Head>
         <title>Secrétariat</title>
       </Head>

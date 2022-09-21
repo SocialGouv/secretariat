@@ -1,3 +1,10 @@
+## [1.44.4](https://github.com/SocialGouv/secretariat/compare/v1.44.3...v1.44.4) (2022-09-21)
+
+
+### Bug Fixes
+
+* layout behaviour on scroll ([#401](https://github.com/SocialGouv/secretariat/issues/401)) ([891f1d2](https://github.com/SocialGouv/secretariat/commit/891f1d21be0117939f8402dee4001bd4ed656aec))
+
 ## [1.44.3](https://github.com/SocialGouv/secretariat/compare/v1.44.2...v1.44.3) (2022-09-21)
 
 

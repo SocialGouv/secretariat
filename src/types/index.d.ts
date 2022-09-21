@@ -171,7 +171,7 @@ interface OnboardingRequest {
   data: OnboardingData
 }
 
-interface Ruru {
+interface OnboardingRequestServices {
   github?: boolean
   matomo?: boolean
   sentry?: boolean

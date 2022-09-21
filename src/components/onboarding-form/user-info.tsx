@@ -115,7 +115,7 @@ const Message = () => {
 }
 
 const UserInfo = () => (
-  <div className="user-info">
+  <div className="card user-info">
     <h3>Informations Personnelles:</h3>
     <br />
     <div className="fields">

@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react"
 import { render } from "@testing-library/react"
 
 jest.mock("next/router", () => ({
@@ -21,6 +22,10 @@ afterAll(() => {
 })
 
 it("renders onboarding page", () => {
+  useSession.mockImplementation(() => ({
+    data: null,
+    status: "unauthenticated",
+  }))
   // Import has to happen after the jest setup that mocks the Date object
   const Onboarding = require("../src/pages/onboarding").default
   const { container } = render(<Onboarding />)

@@ -7,7 +7,7 @@ const OnboardingRequestsList = () => {
   const onboardingRequest = useOnboardingRequests()
 
   return (
-    <div className="onboarding-requests-list">
+    <div>
       <table>
         <thead>
           <tr>

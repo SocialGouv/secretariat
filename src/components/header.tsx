@@ -16,7 +16,7 @@ const Header = () => {
             <Logo />
             <div className="title">
               <h1>Secretariat</h1>
-              <p>Gestion des comptes de services @SocialGouv</p>
+              <p>Gestion des comptes de la Fabrique Numérique</p>
             </div>
           </a>
         </Link>

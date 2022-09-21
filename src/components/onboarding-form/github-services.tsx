@@ -33,15 +33,28 @@ const GithubServices = () => {
     nextcloud: !!data?.githubLogin,
     sentry: !!data?.githubLogin,
     zammad: !!data?.githubLogin,
-  } as Ruru
+  } as OnboardingRequestServices
 
   return (
-    <div className="github-services">
+    <div className="card github-services">
       <div className="services">
         <h3>Services associés à Github:</h3>
-        <br />
+        <p>
+          Associez votre compte Github à{" "}
+          <a
+            target="_blank"
+            href="https://github.com/socialgouv"
+            rel="noreferrer"
+          >
+            l&apos;organisation SocialGouv de la Fabrique Numérique
+          </a>
+          .
+        </p>
         <GithubLogin />
-        <br />
+        <p>
+          Une fois membre de l&apos;organisation SocialGouv, les services listés
+          ci-dessous vous seront accessibles via une authentification Github.
+        </p>
         <br />
         <ServiceAccounts services={services} />
       </div>

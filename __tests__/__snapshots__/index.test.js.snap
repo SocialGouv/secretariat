@@ -2,7 +2,9 @@
 
 exports[`renders home page 1`] = `
 <div>
-  <main>
+  <main
+    class=""
+  >
     <div
       class="flex"
     >
@@ -46,7 +48,7 @@ exports[`renders home page 1`] = `
       class="flex my-12 gap-x-6"
     >
       <div
-        class="card"
+        class="card flex-1"
       >
         <h3
           class="title"
@@ -54,7 +56,7 @@ exports[`renders home page 1`] = `
           Effectuez une demande d'embarquement
         </h3>
         <p>
-          Vous arrivez aux ministères sociaux, vous avez besoins de créer vos comptes afin d'accéder aux services de la Fabrique Numérique, effectuez une demande d'embarquement en cliquant sur le bouton ci-dessous.
+          Si vous arrivez aux ministères sociaux et que vous avez besoins de créer vos comptes afin d'accéder aux services de la Fabrique Numérique, vous pouvez effectuer une demande d'embarquement en cliquant sur le bouton ci-dessous.
         </p>
         <a
           class="btn primary"
@@ -64,15 +66,17 @@ exports[`renders home page 1`] = `
         </a>
       </div>
       <div
-        class="card"
+        class="card flex flex-col flex-1 items-start"
       >
         <h3
           class="title"
         >
           Administrer les comptes utilisateurs
         </h3>
-        <p>
-          Vous souhaitez effectuer une revue des comptes des utilisateurs des services de la Fabrique Numérique des ministères sociaux, accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
+        <p
+          class="flex-1"
+        >
+          Si vous souhaitez effectuer une revue des comptes des utilisateurs des services de la Fabrique Numérique des ministères sociaux, vous pouvez accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
         </p>
         <a
           class="btn primary"

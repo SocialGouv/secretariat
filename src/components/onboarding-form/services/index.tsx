@@ -4,7 +4,7 @@ const Services = ({
   services,
   onStatusChange,
 }: {
-  services: Ruru
+  services: OnboardingRequestServices
   onStatusChange?: (service: ServiceName, enabled: boolean) => void
 }) => (
   <div className="services-tiles">

@@ -47,7 +47,11 @@ body {
   @apply flex flex-col flex-1 overflow-hidden;
 
   & > .page {
-    @apply flex-1 overflow-auto pt-28 scroll-smooth;
+    @apply flex-1 overflow-auto mt-28 scroll-smooth;
+
+    &.authenticated {
+      @apply mt-40;
+    }
   }
 }
 
@@ -64,7 +68,7 @@ main {
     mx-auto
     container;
 
-  min-height: calc(100vh - 24rem);
+  min-height: calc(100vh - 30rem);
 
   & > .loader {
     height: calc(100vh - 9.5rem);

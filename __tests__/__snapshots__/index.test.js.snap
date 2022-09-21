@@ -2,9 +2,7 @@
 
 exports[`renders home page 1`] = `
 <div>
-  <main
-    class=""
-  >
+  <main>
     <div
       class="flex"
     >
@@ -45,7 +43,7 @@ exports[`renders home page 1`] = `
       </div>
     </div>
     <div
-      class="flex my-12 gap-x-6"
+      class="flex my-8 gap-x-6"
     >
       <div
         class="card flex-1"

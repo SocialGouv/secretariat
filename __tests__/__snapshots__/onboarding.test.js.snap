@@ -2,9 +2,7 @@
 
 exports[`renders onboarding page 1`] = `
 <div>
-  <main
-    class=""
-  >
+  <main>
     <div
       class="onboarding-header"
     >

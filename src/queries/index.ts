@@ -177,7 +177,7 @@ export const deleteAccount = gql`
 
 export const getOnboardingRequests = gql`
   query getOnboardingRequests {
-    onboarding_requests {
+    onboarding_requests(order_by: { created_at: desc }) {
       id
       data
       created_at

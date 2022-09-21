@@ -1,3 +1,10 @@
+## [1.44.3](https://github.com/SocialGouv/secretariat/compare/v1.44.2...v1.44.3) (2022-09-21)
+
+
+### Bug Fixes
+
+* sort onboarding requests ([#400](https://github.com/SocialGouv/secretariat/issues/400)) ([35ce399](https://github.com/SocialGouv/secretariat/commit/35ce399f1acd3e9b2b5d4656b2c2458dc519f739))
+
 ## [1.44.2](https://github.com/SocialGouv/secretariat/compare/v1.44.1...v1.44.2) (2022-09-21)
 
 

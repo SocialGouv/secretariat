@@ -1,3 +1,11 @@
+## [1.44.1](https://github.com/SocialGouv/secretariat/compare/v1.44.0...v1.44.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* do not persist creds ([d11479c](https://github.com/SocialGouv/secretariat/commit/d11479ceaafa47d8037858044aec21271aee8990))
+* Revert "fix: do not persist creds" ([7d8e579](https://github.com/SocialGouv/secretariat/commit/7d8e5797f25398809078eb8a43decb12f328804e))
+
 # [1.44.0](https://github.com/SocialGouv/secretariat/compare/v1.43.9...v1.44.0) (2022-09-21)
 
 

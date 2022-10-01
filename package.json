@@ -22,7 +22,7 @@
     "next-auth": "4.10.3",
     "ovh": "2.0.3",
     "p-map": "4.0.0",
-    "p-reduce": "2.1.0",
+    "p-reduce": "3.0.0",
     "react": "17.0.2",
     "react-dnd": "15.1.2",
     "react-dnd-html5-backend": "15.1.3",

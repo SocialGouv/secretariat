@@ -1,3 +1,10 @@
+## [1.44.5](https://github.com/SocialGouv/secretariat/compare/v1.44.4...v1.44.5) (2022-10-04)
+
+
+### Bug Fixes
+
+* new github token ([#412](https://github.com/SocialGouv/secretariat/issues/412)) ([32b227b](https://github.com/SocialGouv/secretariat/commit/32b227bef9abee8383fcf6c7717ab5debb765ba4))
+
 ## [1.44.4](https://github.com/SocialGouv/secretariat/compare/v1.44.3...v1.44.4) (2022-09-21)
 
 

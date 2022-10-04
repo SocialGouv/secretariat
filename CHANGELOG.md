@@ -1,3 +1,10 @@
+## [1.44.6](https://github.com/SocialGouv/secretariat/compare/v1.44.5...v1.44.6) (2022-10-04)
+
+
+### Bug Fixes
+
+* prod secrets ([90db2a2](https://github.com/SocialGouv/secretariat/commit/90db2a200729c4f23c7062d7e5fa4ebc4d4ce7ff))
+
 ## [1.44.5](https://github.com/SocialGouv/secretariat/compare/v1.44.4...v1.44.5) (2022-10-04)
 
 

@@ -1,3 +1,10 @@
+# [1.45.0](https://github.com/SocialGouv/secretariat/compare/v1.44.6...v1.45.0) (2022-10-09)
+
+
+### Features
+
+* add logs page ([#416](https://github.com/SocialGouv/secretariat/issues/416)) ([ec04d30](https://github.com/SocialGouv/secretariat/commit/ec04d3013d2c14f2bb616700b2917789b672fbc9))
+
 ## [1.44.6](https://github.com/SocialGouv/secretariat/compare/v1.44.5...v1.44.6) (2022-10-04)
 
 

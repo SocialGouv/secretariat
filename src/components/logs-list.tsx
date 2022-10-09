@@ -11,6 +11,7 @@ const LogsList = () => {
 
     if (action === "merge") icon = "ri-git-merge-line"
     else if (action === "sync") icon = "ri-refresh-line"
+    else if (action === "revoke") icon = "ri-delete-bin-line"
     else if (action === "onboarding/request") icon = "ri-ship-line"
     else if (action === "onboarding/confirm") icon = "ri-mail-check-line"
     else if (action === "onboarding/review") icon = "ri-check-double-line"

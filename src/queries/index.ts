@@ -298,3 +298,15 @@ export const insertLog = gql`
     }
   }
 `
+
+export const getLogs = gql`
+  query getLOgs {
+    logs(order_by: { created_at: desc }) {
+      user
+      parameters
+      id
+      created_at
+      action
+    }
+  }
+`

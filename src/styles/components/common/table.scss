@@ -11,8 +11,7 @@ table {
           border-b-2
           text-gray-700
           border-gray-600
-          dark:text-gray-200
-          ;
+          dark:text-gray-200;
       }
     }
   }
@@ -29,5 +28,35 @@ table {
 
   td {
     @apply border-r last:border-r-0 p-2;
+  }
+}
+
+.table {
+  .table-header-group {
+    .table-row {
+      @apply bg-grey-975-main;
+
+      .table-cell {
+        @apply
+          p-2
+          border-b-2
+          text-gray-700
+          border-gray-600
+          dark:text-gray-200;
+      }
+    }
+  }
+  .table-row-group {
+    .table-row {
+      @apply
+        even:bg-grey-975-main
+        odd:bg-grey-1000-main
+        dark:even:bg-grey-75-main
+        dark:odd:bg-grey-50-main;
+
+      .table-cell {
+        @apply border-r last:border-r-0 p-2;
+      }
+    }
   }
 }

@@ -1,3 +1,10 @@
+# [1.46.0](https://github.com/SocialGouv/secretariat/compare/v1.45.0...v1.46.0) (2022-10-09)
+
+
+### Features
+
+* add icons to logs actions ([#417](https://github.com/SocialGouv/secretariat/issues/417)) ([4c8eb64](https://github.com/SocialGouv/secretariat/commit/4c8eb64a4f9746cc7c06e77b2771ac098f9e33a5))
+
 # [1.45.0](https://github.com/SocialGouv/secretariat/compare/v1.44.6...v1.45.0) (2022-10-09)
 
 

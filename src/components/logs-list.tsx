@@ -6,6 +6,18 @@ const LogsList = () => {
   const logs = useLogs()
   const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
 
+  const getActionIcon = (action: string) => {
+    let icon = ""
+
+    if (action === "merge") icon = "ri-git-merge-line"
+    else if (action === "sync") icon = "ri-refresh-line"
+    else if (action === "onboarding/request") icon = "ri-ship-line"
+    else if (action === "onboarding/confirm") icon = "ri-mail-check-line"
+    else if (action === "onboarding/review") icon = "ri-check-double-line"
+
+    return icon
+  }
+
   return (
     <div className="table border w-full">
       <div className="table-header-group">
@@ -35,7 +47,11 @@ const LogsList = () => {
               {format(new Date(log.created_at), DATE_FORMAT)}
             </div>
             <div className="table-cell">
-              <i className="ri-git-merge-line leading-none align-middle mr-1" />
+              <i
+                className={`${getActionIcon(
+                  log.action
+                )} leading-none align-middle mr-1`}
+              />
               {log.action}
             </div>
             <div className="table-cell">{log.user}</div>

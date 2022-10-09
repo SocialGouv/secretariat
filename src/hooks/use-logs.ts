@@ -3,8 +3,8 @@ import useSWR from "swr"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getLogs } from "@/queries/index"
 
-const useOnboardingRequests = () => {
-  const getOnboardingRequestsData = async () => {
+const useLogs = () => {
+  const getLogsData = async () => {
     const data = await graphQLFetcher({
       query: getLogs,
       includeCookie: true,
@@ -12,12 +12,9 @@ const useOnboardingRequests = () => {
     return data
   }
 
-  const { data: { logs } = {}, mutate } = useSWR(
-    "/logs",
-    getOnboardingRequestsData
-  )
+  const { data: { logs } = {} } = useSWR("/logs", getLogsData)
 
   return logs
 }
 
-export default useOnboardingRequests
+export default useLogs

@@ -12,7 +12,7 @@ const useOnboardingRequests = () => {
     return data
   }
 
-  const { data: { onboarding_requests } = {}, mutate } = useSWR(
+  const { data: { onboarding_requests } = {} } = useSWR(
     "/onboarding-requests",
     getOnboardingRequestsData
   )

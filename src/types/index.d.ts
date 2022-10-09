@@ -180,3 +180,11 @@ interface OnboardingRequestServices {
   zammad?: boolean
   mattermost?: boolean
 }
+
+interface Logs {
+  id: string
+  created_at: date
+  user: string
+  action: string
+  parameters: string
+}

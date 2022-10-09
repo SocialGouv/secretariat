@@ -114,6 +114,9 @@ exports[`when header renders does show authenticated user if session is valid 1`
             class="selected"
             href="/accounts"
           >
+            <i
+              class="ri-user-3-line text-xl leading-none align-sub mr-1"
+            />
             Gestion des comptes
           </a>
         </li>
@@ -122,7 +125,21 @@ exports[`when header renders does show authenticated user if session is valid 1`
             class=""
             href="/onboarding-requests"
           >
+            <i
+              class="ri-ship-line text-xl leading-none align-sub mr-1"
+            />
             Demandes d'embarquement
+          </a>
+        </li>
+        <li>
+          <a
+            class=""
+            href="/logs"
+          >
+            <i
+              class="ri-file-list-3-line text-xl leading-none align-sub mr-1"
+            />
+            Journal des actions
           </a>
         </li>
       </ul>

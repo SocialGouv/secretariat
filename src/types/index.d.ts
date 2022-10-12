@@ -166,7 +166,7 @@ interface OnboardingResponses {
 interface OnboardingRequest {
   id: string
   created_at: Date
-  reviewed: boolean
+  reviewed: { author: string; date: string } | null
   confirmed: boolean
   data: OnboardingData
 }

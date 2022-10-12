@@ -29,6 +29,9 @@ const server = setupServer(
         },
       })
     )
+  }),
+  graphql.query("getOnboardingRequest", (_req, res, ctx) => {
+    return res(ctx.data({ onboarding_requests: [{ reviewed: null }] }))
   })
 )
 
@@ -57,6 +60,44 @@ it("should update request and send email", async () => {
   expect(res._getJSONData()).toStrictEqual({
     github: { body: "fake body", status: 250 },
   })
+})
+
+it("should return 400 if request is already reviewed", async () => {
+  const { req, res } = createMocks({
+    method: "POST",
+    body: { input: { data: "fakeData" } },
+  })
+  server.use(
+    graphql.query("getOnboardingRequest", (_req, res, ctx) => {
+      return res(ctx.data({ onboarding_requests: [{ reviewed: {} }] }))
+    })
+  )
+  await handleReview(req, res)
+  expect(res._getStatusCode()).toBe(400)
+  expect(res._getJSONData()).toStrictEqual({
+    message: "Onboarding request already reviewed",
+  })
+  expect(updateOnboardingRequestCalled).toBe(false)
+  expect(onboard).not.toHaveBeenCalled()
+})
+
+it("should return 500 if request does not exist", async () => {
+  const { req, res } = createMocks({
+    method: "POST",
+    body: { input: { data: "fakeData" } },
+  })
+  server.use(
+    graphql.query("getOnboardingRequest", (_req, res, ctx) => {
+      return res(ctx.data({ onboarding_requests: [] }))
+    })
+  )
+  await handleReview(req, res)
+  expect(res._getStatusCode()).toBe(500)
+  expect(res._getJSONData()).toStrictEqual({
+    message: "Could not find an onboarding request for this ID",
+  })
+  expect(updateOnboardingRequestCalled).toBe(false)
+  expect(onboard).not.toHaveBeenCalled()
 })
 
 it("should return 403 if no next-auth session", async () => {

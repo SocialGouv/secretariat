@@ -1,3 +1,11 @@
+## [1.46.1](https://github.com/SocialGouv/secretariat/compare/v1.46.0...v1.46.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* add revoke logs icon ([ef86fb6](https://github.com/SocialGouv/secretariat/commit/ef86fb6842b6e2618d78cb70fa7f43b277925d8a))
+* avoid duplicate reviews ([#418](https://github.com/SocialGouv/secretariat/issues/418)) ([ee29aa4](https://github.com/SocialGouv/secretariat/commit/ee29aa4076e4aa24bb45dfeb1873ea27f737dd84))
+
 # [1.46.0](https://github.com/SocialGouv/secretariat/compare/v1.45.0...v1.46.0) (2022-10-09)
 
 

@@ -2,18 +2,18 @@ import handleRequest from "../../../src/pages/api/onboarding/request"
 import { createMocks } from "node-mocks-http"
 import { graphql } from "msw"
 import { setupServer } from "msw/node"
-import sendEmail from "@/utils/send-email"
+import { sendRequestMail } from "@/utils/send-email"
 
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
-jest.mock("@/utils/send-email", () =>
-  jest.fn(() => {
+jest.mock("@/utils/send-email", () => ({
+  sendRequestMail: jest.fn(() => {
     return {
       status: 200,
       text: () => "fakeBody",
     }
-  })
-)
+  }),
+}))
 jest.mock("@/utils/env", () => ({
   NEXTAUTH_URL: "http://fake.fr",
   NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
@@ -61,7 +61,7 @@ it("should create request and send email", async () => {
   await handleRequest(req, res)
   expect(res._getStatusCode(200))
   expect(createOnboardingRequestCalled).toStrictEqual(true)
-  expect(sendEmail).toHaveBeenCalled()
+  expect(sendRequestMail).toHaveBeenCalled()
   expect(res._getJSONData()).toStrictEqual({
     status: 200,
     body: "fakeBody",
@@ -85,7 +85,7 @@ it("should not create duplicate request", async () => {
   await handleRequest(req, res)
   expect(res._getStatusCode(200))
   expect(createOnboardingRequestCalled).toStrictEqual(false)
-  expect(sendEmail).not.toHaveBeenCalled()
+  expect(sendRequestMail).not.toHaveBeenCalled()
   expect(res._getJSONData()).toStrictEqual({
     status: 400,
     body: "already exists",
@@ -101,5 +101,5 @@ it("should return 405", async () => {
   expect(res._getJSONData()).toStrictEqual({ message: "Method Not Allowed" })
   expect(res._getHeaders().allow).toStrictEqual("POST")
   expect(createOnboardingRequestCalled).toStrictEqual(false)
-  expect(sendEmail).not.toHaveBeenCalled()
+  expect(sendRequestMail).not.toHaveBeenCalled()
 })

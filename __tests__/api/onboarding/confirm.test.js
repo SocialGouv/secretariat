@@ -2,11 +2,11 @@ import { createMocks } from "node-mocks-http"
 import handleConfirm from "../../../src/pages/api/onboarding/confirm"
 import { graphql } from "msw"
 import { setupServer } from "msw/node"
-import sendEmail from "@/utils/send-email"
+import { sendConfirmMail } from "@/utils/send-email"
 
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
-jest.mock("@/utils/send-email", () => jest.fn())
+jest.mock("@/utils/send-email", () => ({ sendConfirmMail: jest.fn() }))
 jest.mock("@/utils/env", () => ({
   ONBOARDING_NOTIFICATION_EMAILS: "mail",
   NEXTAUTH_URL: "http://fake.fr",
@@ -49,7 +49,7 @@ it("should confirm request and send email", async () => {
   })
   await handleConfirm(req, res)
   expect(res._getStatusCode(200))
-  expect(sendEmail).toHaveBeenCalled()
+  expect(sendConfirmMail).toHaveBeenCalled()
 })
 
 it("should not confirm multiple times", async () => {
@@ -70,7 +70,7 @@ it("should not confirm multiple times", async () => {
   )
   await handleConfirm(req, res)
   expect(res._getStatusCode(200))
-  expect(sendEmail).not.toHaveBeenCalled()
+  expect(sendConfirmMail).not.toHaveBeenCalled()
 })
 
 it("should return 405", async () => {
@@ -81,5 +81,5 @@ it("should return 405", async () => {
   expect(res._getStatusCode()).toEqual(405)
   expect(res._getJSONData()).toStrictEqual({ message: "Method Not Allowed" })
   expect(res._getHeaders().allow).toStrictEqual("GET")
-  expect(sendEmail).not.toHaveBeenCalled()
+  expect(sendConfirmMail).not.toHaveBeenCalled()
 })

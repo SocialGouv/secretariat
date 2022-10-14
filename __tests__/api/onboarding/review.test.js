@@ -4,7 +4,7 @@ import { getToken } from "next-auth/jwt"
 import handleReview from "../../../src/pages/api/onboarding/review"
 import { graphql } from "msw"
 import { setupServer } from "msw/node"
-import sendEmail from "@/utils/send-email"
+import { sendReviewMail } from "@/utils/send-email"
 
 jest.mock("next-auth/jwt", () => ({
   getToken: jest.fn(() => ({ user: { login: "testUser" } })),
@@ -16,7 +16,9 @@ jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({
   getJwt: jest.fn(),
 }))
-jest.mock("@/utils/send-email", () => jest.fn())
+jest.mock("@/utils/send-email", () => ({
+  sendReviewMail: jest.fn(),
+}))
 
 let updateOnboardingRequestCalled
 const server = setupServer(
@@ -56,7 +58,7 @@ it("should update request and send email", async () => {
   await handleReview(req, res)
   expect(res._getStatusCode(200))
   expect(updateOnboardingRequestCalled).toStrictEqual(true)
-  expect(sendEmail).toHaveBeenCalled()
+  expect(sendReviewMail).toHaveBeenCalled()
   expect(res._getJSONData()).toStrictEqual({
     github: { body: "fake body", status: 250 },
   })

@@ -7,4 +7,4 @@ SET DEFAULT NULL;
 ALTER TABLE onboarding_requests
 ALTER COLUMN reviewed
 TYPE JSONB
-USING (CASE WHEN reviewed='true' THEN json_build_object('date', 'unknwown', 'author', 'unknown') ELSE NULL END);
+USING (CASE WHEN reviewed='true' THEN json_build_object('date', null, 'author', null) ELSE NULL END);

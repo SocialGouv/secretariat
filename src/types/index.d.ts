@@ -158,9 +158,11 @@ interface OnboardingData {
 }
 
 interface OnboardingResponses {
-  github?: APIResponse
-  mattermost?: APIResponse
-  ovh?: APIResponse & { mailInfo: { login: string; password: string } }
+  github?: { status: number; body: Record<string, unknown> }
+  mattermost?: { status: number; body: Record<string, unknown> }
+  ovh?: { status: number; body: string } & {
+    mailInfo: { login: string; password?: string }
+  }
 }
 
 interface OnboardingRequest {

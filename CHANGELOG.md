@@ -1,3 +1,10 @@
+## [1.46.2](https://github.com/SocialGouv/secretariat/compare/v1.46.1...v1.46.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* reviewed fields default to null ([#422](https://github.com/SocialGouv/secretariat/issues/422)) ([3585c4b](https://github.com/SocialGouv/secretariat/commit/3585c4b1c334e0df10cba3474e60f803e7d6d76b))
+
 ## [1.46.1](https://github.com/SocialGouv/secretariat/compare/v1.46.0...v1.46.1) (2022-10-13)
 
 

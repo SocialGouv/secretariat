@@ -221,13 +221,12 @@ export const sendConfirmMail = (
   recipients: {
     address: string
   }[],
-  firstName: string,
-  lastName: string,
+  fullName: string,
   url: string
 ) => {
   sendEmail(
     recipients,
-    `Demande d'onboarding de ${firstName} ${lastName}`,
+    `Demande d'onboarding de ${fullName}`,
     `Une demande d'onboarding a été effectuée sur Secrétariat.
 
 En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :

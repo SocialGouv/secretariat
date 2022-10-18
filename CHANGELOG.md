@@ -1,3 +1,10 @@
+## [1.46.4](https://github.com/SocialGouv/secretariat/compare/v1.46.3...v1.46.4) (2022-10-18)
+
+
+### Bug Fixes
+
+* **onboarding-request:** show review info instead of validation button ([#424](https://github.com/SocialGouv/secretariat/issues/424)) ([1065555](https://github.com/SocialGouv/secretariat/commit/10655555535e4f6d61d5bda71e6afeb06cf827d7))
+
 ## [1.46.3](https://github.com/SocialGouv/secretariat/compare/v1.46.2...v1.46.3) (2022-10-18)
 
 

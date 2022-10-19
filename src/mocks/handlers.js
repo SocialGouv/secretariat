@@ -62,4 +62,16 @@ export const handlers = [
       })
     )
   ),
+  graphql.mutation("updateOnboardingRequest", (_req, res, ctx) =>
+    res(
+      ctx.data({
+        insert_onboarding_requests_one: {
+          id: "1",
+        },
+      })
+    )
+  ),
+  graphql.query("getOnboardingRequest", (_req, res, ctx) =>
+    res(ctx.data({ onboarding_requests: [{ reviewed: null }] }))
+  ),
 ]

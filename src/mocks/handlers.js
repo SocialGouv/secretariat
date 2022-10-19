@@ -88,4 +88,32 @@ export const handlers = [
       })
     )
   ),
+  rest.post(/github.com/, (_req, res, ctx) => {
+    return res(ctx.status(250), ctx.json({ data: "fake data" }))
+  }),
+  rest.get(/github.com/, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ id: "fake id" }))
+  }),
+  rest.post(/mattermost.fabrique.social.gouv.fr/, (_req, res, ctx) => {
+    return res(ctx.status(250), ctx.json({ data: "fake data" }))
+  }),
+  graphql.mutation("insertService", (_req, res, ctx) => {
+    return res(
+      ctx.data({
+        insert_services_one: {
+          id: "1",
+        },
+      })
+    )
+  }),
+  graphql.mutation("insertUser", (req, res, ctx) => {
+    insertUserCalledWith = req.variables
+    return res(
+      ctx.data({
+        insert_users_one: {
+          id: "fake id",
+        },
+      })
+    )
+  }),
 ]

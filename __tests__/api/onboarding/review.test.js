@@ -4,7 +4,7 @@ import { getToken } from "next-auth/jwt"
 import handleReview from "../../../src/pages/api/onboarding/review"
 import { graphql } from "msw"
 import { sendReviewMail } from "@/utils/send-email"
-import { server } from "../../../src/mocks/server"
+import { server } from "@/mocks/server"
 
 jest.mock("next-auth/jwt", () => ({
   getToken: jest.fn(() => ({ user: { login: "testUser" } })),

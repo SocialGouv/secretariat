@@ -8,7 +8,7 @@ import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import { graphql } from "msw"
-import { server } from "../../src/mocks/server"
+import { server } from "@/mocks/server"
 
 const servicesFetchers = {
   github: fetchGithubUsers,

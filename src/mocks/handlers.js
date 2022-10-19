@@ -74,4 +74,18 @@ export const handlers = [
   graphql.query("getOnboardingRequest", (_req, res, ctx) =>
     res(ctx.data({ onboarding_requests: [{ reviewed: null }] }))
   ),
+  graphql.mutation("confirmOnboardingRequest", (_req, res, ctx) =>
+    res(
+      ctx.data({
+        update_onboarding_requests: {
+          affected_rows: 1,
+          returning: [
+            {
+              data: { firstName: "fake firstname", lastName: "fake lastname" },
+            },
+          ],
+        },
+      })
+    )
+  ),
 ]

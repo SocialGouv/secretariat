@@ -20,6 +20,8 @@ const customJestConfig = {
     "@/queries/(.*)": "<rootDir>/src/queries/$1",
     "@/services/(.*)": "<rootDir>/src/services/$1",
     "@/components/(.*)": "<rootDir>/src/components/$1",
+    "@/mocks/(.*)": "<rootDir>/src/mocks/$1",
+    "@/pages/(.*)": "<rootDir>/src/pages/$1",
   },
   clearMocks: true,
 }

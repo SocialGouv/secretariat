@@ -8,7 +8,7 @@ import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import { graphql } from "msw"
-import { setupServer } from "msw/node"
+import { server } from "../../src/mocks/server"
 
 const servicesFetchers = {
   github: fetchGithubUsers,
@@ -24,86 +24,11 @@ jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 
-let insertAccountCalled
-let insertUserCalled
-let updateServiceCalled
-const server = setupServer(
-  graphql.mutation("insertService", (_req, res, ctx) => {
-    insertAccountCalled = true
-    return res(
-      ctx.data({
-        insert_services_one: {
-          id: "1",
-        },
-      })
-    )
-  }),
-  graphql.mutation("insertUser", (_req, res, ctx) => {
-    insertUserCalled = true
-    return res(
-      ctx.data({
-        insert_users_one: {
-          id: "fake id",
-        },
-      })
-    )
-  }),
-  graphql.mutation("updateService", (_req, res, ctx) => {
-    updateServiceCalled = true
-    return res(
-      ctx.data({
-        update_services_by_pk: {
-          id: "fake id",
-        },
-      })
-    )
-  }),
-  graphql.mutation("deleteServices", (_req, res, ctx) => {
-    return res(
-      ctx.data({
-        delete_services: {
-          returning: [
-            { users: { services_aggregate: { aggregate: { count: 0 } } } },
-          ],
-        },
-      })
-    )
-  }),
-  graphql.mutation("deleteUsers", (_req, res, ctx) => {
-    return res(
-      ctx.data({
-        delete_users: {
-          affected_rows: 0,
-        },
-      })
-    )
-  }),
-  graphql.query("getServicesMatchingId", (_req, res, ctx) => {
-    return res(
-      ctx.data({
-        services: [],
-      })
-    )
-  })
-)
-
-beforeAll(() => {
-  server.listen({ onUnhandledRequest: "error" })
-})
-
-afterAll(() => {
-  server.close()
-})
-
 beforeEach(() => {
-  insertAccountCalled = false
-  insertUserCalled = false
-  updateServiceCalled = false
   jest.resetModules()
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     serviceFetcher.mockImplementation(() => [])
   }
-  server.resetHandlers()
 })
 
 jest.mock("@/services/fetchers/github")
@@ -115,21 +40,29 @@ jest.mock("@/services/fetchers/sentry")
 jest.mock("@/services/fetchers/zammad")
 
 it("should call every fetcher", async () => {
-  await sync(SERVICES)
+  const results = await sync(SERVICES)
   for (const serviceFetcher of Object.values(servicesFetchers)) {
     expect(serviceFetcher).toHaveBeenCalledTimes(1)
   }
-  expect(insertAccountCalled).toBe(false)
-  expect(insertUserCalled).toBe(false)
-  expect(updateServiceCalled).toBe(false)
+  expect(results).toStrictEqual({
+    accountDeletions: 0,
+    errors: 0,
+    insertions: 0,
+    updates: 0,
+    userDeletions: 0,
+  })
 })
 
 it("should insert the account and a new user", async () => {
   fetchGithubUsers.mockImplementation(() => [{ id: "fake id" }])
-  await sync(SERVICES)
-  expect(insertAccountCalled).toBe(true)
-  expect(insertUserCalled).toBe(true)
-  expect(updateServiceCalled).toBe(false)
+  const results = await sync(SERVICES)
+  expect(results).toStrictEqual({
+    accountDeletions: 0,
+    errors: 0,
+    insertions: 1,
+    updates: 0,
+    userDeletions: 0,
+  })
 })
 
 it("should update the account", async () => {
@@ -143,10 +76,14 @@ it("should update the account", async () => {
       )
     })
   )
-  await sync(SERVICES)
-  expect(insertAccountCalled).toBe(false)
-  expect(insertUserCalled).toBe(false)
-  expect(updateServiceCalled).toBe(true)
+  const results = await sync(SERVICES)
+  expect(results).toStrictEqual({
+    accountDeletions: 0,
+    errors: 0,
+    insertions: 0,
+    updates: 1,
+    userDeletions: 0,
+  })
 })
 
 it("should do nothing and return an empty string on inconsistent DB", async () => {
@@ -155,13 +92,18 @@ it("should do nothing and return an empty string on inconsistent DB", async () =
     graphql.query("getServicesMatchingId", (_req, res, ctx) => {
       return res(
         ctx.data({
+          // Two entries with the same ID
           services: [{ id: "fake id" }, { id: "fake id" }],
         })
       )
     })
   )
-  await sync(SERVICES)
-  expect(insertAccountCalled).toBe(false)
-  expect(insertUserCalled).toBe(false)
-  expect(updateServiceCalled).toBe(false)
+  const results = await sync(SERVICES)
+  expect(results).toStrictEqual({
+    accountDeletions: 0,
+    errors: 1,
+    insertions: 0,
+    updates: 0,
+    userDeletions: 0,
+  })
 })

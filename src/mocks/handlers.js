@@ -122,4 +122,36 @@ export const handlers = [
       })
     )
   ),
+  rest.delete(/github.com/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  rest.delete(/mattermost.fabrique.social.gouv.fr/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  rest.post(/matomo.fabrique.social.gouv.fr/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  rest.put(/pastek.fabrique.social.gouv.fr/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  rest.put(/nextcloud.fabrique.social.gouv.fr/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  rest.delete(/sentry.fabrique.social.gouv.fr/, (_req, res, ctx) =>
+    res(ctx.status(550), ctx.text("fake message"))
+  ),
+  graphql.mutation("deleteAccount", (_req, res, ctx) =>
+    res(
+      ctx.data({
+        delete_services_by_pk: {
+          users: {
+            services_aggregate: {
+              aggregate: { count: 2 },
+            },
+            id: "fake user ID",
+          },
+        },
+      })
+    )
+  ),
 ]

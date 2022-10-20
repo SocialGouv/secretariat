@@ -1,57 +1,18 @@
 import handleRequest from "../../../src/pages/api/onboarding/request"
 import { createMocks } from "node-mocks-http"
 import { graphql } from "msw"
-import { setupServer } from "msw/node"
 import { sendRequestMail } from "@/utils/send-email"
+import { server } from "@/mocks/server"
 
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
 jest.mock("@/utils/send-email", () => ({
-  sendRequestMail: jest.fn(() => {
-    return {
-      status: 200,
-      text: () => "fakeBody",
-    }
-  }),
+  sendRequestMail: jest.fn(),
 }))
 jest.mock("@/utils/env", () => ({
   NEXTAUTH_URL: "http://fake.fr",
   NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
 }))
-
-let createOnboardingRequestCalled
-const server = setupServer(
-  graphql.mutation("createOnboardingRequest", (_req, res, ctx) => {
-    createOnboardingRequestCalled = true
-    return res(
-      ctx.data({
-        insert_onboarding_requests_one: {
-          id: "1",
-        },
-      })
-    )
-  }),
-  graphql.query("getOnboardingRequestContaining", (_req, res, ctx) => {
-    return res(
-      ctx.data({
-        onboarding_requests: [],
-      })
-    )
-  })
-)
-
-beforeAll(() => {
-  server.listen({ onUnhandledRequest: "error" })
-})
-
-afterAll(() => {
-  server.close()
-})
-
-beforeEach(() => {
-  createOnboardingRequestCalled = false
-  server.resetHandlers()
-})
 
 it("should create request and send email", async () => {
   const { req, res } = createMocks({
@@ -60,11 +21,10 @@ it("should create request and send email", async () => {
   })
   await handleRequest(req, res)
   expect(res._getStatusCode(200))
-  expect(createOnboardingRequestCalled).toStrictEqual(true)
   expect(sendRequestMail).toHaveBeenCalled()
   expect(res._getJSONData()).toStrictEqual({
     status: 200,
-    body: "fakeBody",
+    body: "request created",
   })
 })
 
@@ -84,7 +44,6 @@ it("should not create duplicate request", async () => {
   )
   await handleRequest(req, res)
   expect(res._getStatusCode(200))
-  expect(createOnboardingRequestCalled).toStrictEqual(false)
   expect(sendRequestMail).not.toHaveBeenCalled()
   expect(res._getJSONData()).toStrictEqual({
     status: 400,
@@ -100,6 +59,5 @@ it("should return 405", async () => {
   expect(res._getStatusCode()).toEqual(405)
   expect(res._getJSONData()).toStrictEqual({ message: "Method Not Allowed" })
   expect(res._getHeaders().allow).toStrictEqual("POST")
-  expect(createOnboardingRequestCalled).toStrictEqual(false)
   expect(sendRequestMail).not.toHaveBeenCalled()
 })

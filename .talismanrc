@@ -1,8 +1,0 @@
-fileignoreconfig:
-- filename: yarn.lock
-  checksum: ff0470374423e8b941c8dac91db1c72398fffab2f3d33e32b2a7027fb8543b68
-- filename: src/components/logs-list.tsx
-  checksum: 1703517e00fdaa281ba488ea045e2cba2ed048b4144e85b5ba3d0bf7da2b7514
-- filename: src/components/onboarding-requests-list.tsx
-  checksum: 49f9914b19c4aca0ed69bbbb95ff6e51237b0cb57c8aaea4a1a17c741a870725
-version: ""

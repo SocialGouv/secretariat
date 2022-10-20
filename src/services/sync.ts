@@ -28,14 +28,6 @@ const servicesFetchers: Record<ServiceName, any> = {
   zammad: fetchZammadUsers,
 }
 
-const stats = {
-  insertions: 0,
-  updates: 0,
-  errors: 0,
-  userDeletions: 0,
-  accountDeletions: 0,
-}
-
 const servicesIdFields: Record<ServiceName, string> = {
   github: "id",
   matomo: "email", // This API does not return any unique ID in entries
@@ -49,7 +41,8 @@ const servicesIdFields: Record<ServiceName, string> = {
 const upsertService = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
-  token: string
+  token: string,
+  stats: syncStats
 ): Promise<string> => {
   const idField = servicesIdFields[serviceName]
   const { services: servicesMatchingId } = await graphQLFetcher({
@@ -107,11 +100,17 @@ const upsertService = async (
 const updateUsers = async (
   users: Record<string, unknown>[],
   serviceName: ServiceName,
-  token: string
+  token: string,
+  stats: syncStats
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
   for (const userKey in users) {
-    const serviceId = await upsertService(users[userKey], serviceName, token)
+    const serviceId = await upsertService(
+      users[userKey],
+      serviceName,
+      token,
+      stats
+    )
     if (serviceId !== "") existingServicesIds.push(serviceId)
   }
   return existingServicesIds
@@ -135,6 +134,7 @@ const clearDeletedServices = async (
     })
     affectedUsers.push(...affectedUsersForService)
   }
+
   return affectedUsers
 }
 
@@ -164,6 +164,14 @@ const deleteOrphanUsers = async (
 const sync = async (enabledServices: ServiceName[]) => {
   const token = getJwt()
 
+  const stats: syncStats = {
+    insertions: 0,
+    updates: 0,
+    errors: 0,
+    userDeletions: 0,
+    accountDeletions: 0,
+  }
+
   // Remember the users list for all services, to clean the deleted users afterwards
   const existingServicesIds: Record<string, string[]> = {}
   for (const serviceName of enabledServices) {
@@ -183,22 +191,27 @@ const sync = async (enabledServices: ServiceName[]) => {
   // Update the DB synchronously
   for (const serviceName of enabledServices) {
     existingServicesIds[serviceName].push(
-      ...(await updateUsers(dataByService[serviceName], serviceName, token))
+      ...(await updateUsers(
+        dataByService[serviceName],
+        serviceName,
+        token,
+        stats
+      ))
     )
   }
 
+  // Delete services that we could have currently in DB but that we did not receive for this current fetch
   const affectedUsers = await clearDeletedServices(existingServicesIds, token)
   stats.accountDeletions = affectedUsers.length
+
+  // Delete users left with no accounts
   const deletedUsers = await deleteOrphanUsers(affectedUsers, token)
   stats.userDeletions = deletedUsers
 
   console.log("updated users table with all services data")
   console.log(stats)
-  stats.errors = 0
-  stats.insertions = 0
-  stats.updates = 0
-  stats.userDeletions = 0
-  stats.accountDeletions = 0
+
+  return stats
 }
 
 export default sync

@@ -188,3 +188,11 @@ interface Logs {
   action: string
   parameters: string
 }
+
+interface syncStats {
+  insertions: number
+  updates: number
+  errors: number
+  userDeletions: number
+  accountDeletions: number
+}

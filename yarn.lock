@@ -4418,10 +4418,10 @@ node-releases@^2.0.6:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
-node-talisman@1.28.0:
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/node-talisman/-/node-talisman-1.28.0.tgz#8438a093f74c87e4d03008e91cd4dcd9b258db18"
-  integrity sha512-pKgJl1YhYBhRZ4av2ycLitQYt7hxYh/kyLf82ZRAO1nbBbeQNdAf9Q+p+6HBT36XMHSZDJVMGIUh8EcdkRA8gA==
+node-talisman@1.28.1:
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/node-talisman/-/node-talisman-1.28.1.tgz#24b92ea827da4219b74fdd87d215e38851921b0c"
+  integrity sha512-42+NUopNa/1gkMMkEbSoe9I/i0URJ+HCeLCj9BRafrHPFVlkj61uUNG2rJfASzqFoxtsaCvJziQHgMX7kiFJzA==
   dependencies:
     clogy "^1.3.3"
     exec-sh "^0.3.4"

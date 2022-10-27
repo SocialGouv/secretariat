@@ -1,3 +1,10 @@
+## [1.46.5](https://github.com/SocialGouv/secretariat/compare/v1.46.4...v1.46.5) (2022-10-27)
+
+
+### Bug Fixes
+
+* release on push ([ee8d475](https://github.com/SocialGouv/secretariat/commit/ee8d4755caf800d51d021e366df1bf63fc26741c))
+
 ## [1.46.4](https://github.com/SocialGouv/secretariat/compare/v1.46.3...v1.46.4) (2022-10-18)
 
 

@@ -1,3 +1,10 @@
+## [1.46.6](https://github.com/SocialGouv/secretariat/compare/v1.46.5...v1.46.6) (2022-10-27)
+
+
+### Bug Fixes
+
+* show /api/onboarding/request tipimail response ([43e9e52](https://github.com/SocialGouv/secretariat/commit/43e9e52c5a6fabe0ded8ba483496b3fa2c90e07c))
+
 ## [1.46.5](https://github.com/SocialGouv/secretariat/compare/v1.46.4...v1.46.5) (2022-10-27)
 
 

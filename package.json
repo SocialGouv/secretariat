@@ -64,7 +64,7 @@
     "jest": "27.5.1",
     "msw": "0.47.4",
     "node-mocks-http": "1.11.0",
-    "node-talisman": "1.28.1",
+    "node-talisman": "1.29.3",
     "postcss": "8.4.18",
     "prettier": "2.7.1",
     "stylelint": "14.14.0",

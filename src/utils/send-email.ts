@@ -84,7 +84,7 @@ const sendEmail = async (
 export const sendReviewMail = (
   onboardingResponses: OnboardingResponses,
   email: string
-) => {
+) =>
   sendEmail(
     [
       {
@@ -215,7 +215,6 @@ ${
     : ""
 }`
   )
-}
 
 export const sendConfirmMail = (
   recipients: {
@@ -224,7 +223,7 @@ export const sendConfirmMail = (
   firstName: string,
   lastName: string,
   url: string
-) => {
+) =>
   sendEmail(
     recipients,
     `Demande d'onboarding de ${firstName} ${lastName}`,
@@ -246,10 +245,9 @@ ${url}`,
   </a>
 </div>`
   )
-}
 
-export const sendRequestMail = (email: string, url: string) => {
-  return sendEmail(
+export const sendRequestMail = (email: string, url: string) =>
+  sendEmail(
     [
       {
         address: email,
@@ -270,4 +268,3 @@ export const sendRequestMail = (email: string, url: string) => {
       </a>
     </div>`
   )
-}

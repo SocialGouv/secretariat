@@ -7,7 +7,10 @@ import { server } from "@/mocks/server"
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
 jest.mock("@/utils/send-email", () => ({
-  sendRequestMail: jest.fn(),
+  sendRequestMail: jest.fn(() => ({
+    status: 200,
+    text: () => Promise.resolve("response"),
+  })),
 }))
 jest.mock("@/utils/env", () => ({
   NEXTAUTH_URL: "http://fake.fr",

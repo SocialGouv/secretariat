@@ -608,10 +608,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"
   integrity sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==
 
-"@next/eslint-plugin-next@12.3.2":
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.3.2.tgz#c965bb41fd5c36b6fc5fe066aeebf9385b69a62d"
-  integrity sha512-Jx0BIS9STamGSbA+vgTxPAi1mRcq4DoH/5kPMs0PFLFi542mmIKUUtYWB61bI+G6KPMTqejYmO3zi+SF6tzGYg==
+"@next/eslint-plugin-next@12.3.3":
+  version "12.3.3"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.3.3.tgz#4c2eb595101a1778d5ff7c78574f7e810f72b5e5"
+  integrity sha512-s1mPMhhmwc+B97lQ2xzLLEdn3TR6ietc8Z1zLhAEd5Vujqx+Ks7E8Qr8V93I/qTs21WY66zvs1SXKYLvOHbQVw==
   dependencies:
     glob "7.1.7"
 
@@ -2224,12 +2224,12 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-next@12.3.2:
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.3.2.tgz#3dd50a9ae5acf77f0ca5c94d77b604e40c67bf5c"
-  integrity sha512-ir8t3wRNexUMSKsMNh7J1EWwiBAr2dd015UAiCFvQ/01MRBPmFof1C6PFh/RqlupwamSZlv6j8gfaV1RxHuRoQ==
+eslint-config-next@12.3.3:
+  version "12.3.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.3.3.tgz#b04f6b55b43a72983e68e51329a993d2a8ea648c"
+  integrity sha512-ZqovaLqMlWQh9yVbqJ2gvOLk6acAZX4vRkORFsiI5lv9oJDDBbDDeTPG2KmpZ3K+l/wJ+xo6bm4FN90j94snhw==
   dependencies:
-    "@next/eslint-plugin-next" "12.3.2"
+    "@next/eslint-plugin-next" "12.3.3"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.21.0"
     eslint-import-resolver-node "^0.3.6"
@@ -3001,10 +3001,10 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-husky@8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
-  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
+husky@8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.2.tgz#5816a60db02650f1f22c8b69b928fd6bcd77a236"
+  integrity sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
@@ -4858,10 +4858,10 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.1.0, postcss-value-parser@^
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@8.4.18, postcss@^8.4.14, postcss@^8.4.18:
-  version "8.4.18"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.18.tgz#6d50046ea7d3d66a85e0e782074e7203bc7fbca2"
-  integrity sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==
+postcss@8.4.19, postcss@^8.4.14, postcss@^8.4.18:
+  version "8.4.19"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.19.tgz#61178e2add236b17351897c8bcc0b4c8ecab56fc"
+  integrity sha512-h+pbPsyhlYj6N2ozBmHhHrs9DzGmbaarbLvWipMRO7RLS+v4onj26MPFXA5OBYFxyqYhUJK456SwDcY9H2/zsA==
   dependencies:
     nanoid "^3.3.4"
     picocolors "^1.0.0"

@@ -55,7 +55,7 @@ const Review = async (req: NextApiRequest, res: NextApiResponse) => {
       cols: { id },
       data: {
         reviewed: {
-          date: Date.now(),
+          date: new Date(),
           author: userToken.user.login,
         },
         data,

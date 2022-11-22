@@ -74,7 +74,7 @@ describe("ovh error", () => {
       ovh: { status: 550, body: "fake message" },
     })
   })
-  it("should handle error on query 3", async () => {
+  it("should handle error on query 2", async () => {
     ovh
       .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
       .mockResolvedValue({
@@ -89,7 +89,11 @@ describe("ovh error", () => {
         githubLogin: "",
       })
     ).toStrictEqual({
-      ovh: { status: 550, body: "fake message" },
+      ovh: {
+        status: 550,
+        body: "fake message",
+        mailInfo: { login: "fake-firstname.fake-lastname" },
+      },
     })
   })
   it("should handle error on query 3", async () => {
@@ -108,7 +112,11 @@ describe("ovh error", () => {
         githubLogin: "",
       })
     ).toStrictEqual({
-      ovh: { status: 550, body: "fake message" },
+      ovh: {
+        status: 550,
+        body: "fake message",
+        mailInfo: { login: "fake-firstname.fake-lastname" },
+      },
     })
   })
 })

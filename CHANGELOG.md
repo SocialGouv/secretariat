@@ -1,3 +1,10 @@
+## [1.47.1](https://github.com/SocialGouv/secretariat/compare/v1.47.0...v1.47.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* tell user if an account could not be created because it already exists ([#423](https://github.com/SocialGouv/secretariat/issues/423)) ([b222fa5](https://github.com/SocialGouv/secretariat/commit/b222fa53d040fa27b22e0a4bc9b1d45229eb11cc))
+
 # [1.47.0](https://github.com/SocialGouv/secretariat/compare/v1.46.7...v1.47.0) (2022-11-22)
 
 

@@ -55,9 +55,14 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = new URL("/api/onboarding/confirm", NEXTAUTH_URL)
   url.searchParams.append("id", id)
 
-  const response = await sendRequestMail(onboardingRequest.email, url.href)
+  const mailResponse = await sendRequestMail(onboardingRequest.email, url.href)
+  console.log(
+    "tipimail API response:",
+    mailResponse.status,
+    await mailResponse.text()
+  )
 
-  res.status(200).json({ status: response.status, body: await response.text() })
+  res.status(200).json({ status: 200, body: "request created" })
 }
 
 export default Request

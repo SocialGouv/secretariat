@@ -64,6 +64,9 @@ export const getRemoteGithubUsers = gql`
           hasNextPage
           endCursor
         }
+        edges {
+          role
+        }
       }
     }
   }

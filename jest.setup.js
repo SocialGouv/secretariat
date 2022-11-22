@@ -36,7 +36,7 @@ jest.mock("next-auth/react", () => {
 })
 
 beforeAll(() => {
-  server.listen()
+  server.listen({ onUnhandledRequest: "error" })
 })
 
 afterEach(() => {

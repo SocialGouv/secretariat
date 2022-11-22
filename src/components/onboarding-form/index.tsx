@@ -40,6 +40,7 @@ const OnboardingForm = () => {
   const [status, setStatus] = useState<
     | "create"
     | "review"
+    | "reviewed"
     | "create_success"
     | "create_error"
     | "create_already_exists"
@@ -79,11 +80,21 @@ const OnboardingForm = () => {
   }
 
   useEffect(() => {
-    if (request) setStatus("review")
+    if (request) {
+      if (request.reviewed) setStatus("reviewed")
+      else setStatus("review")
+    }
   }, [request])
 
   return (
     <div className="onboarding-form mx-12">
+      {status === "reviewed" && (
+        <Form
+          status="reviewed"
+          review={request.reviewed}
+          onSubmit={handleReviewSubmit}
+        />
+      )}
       {status === "review" && (
         <Form status="review" onSubmit={handleReviewSubmit} />
       )}

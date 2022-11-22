@@ -1,130 +1,18 @@
 import revoke from "@/services/revoke"
-import { graphql, rest } from "msw"
-import { setupServer } from "msw/node"
+import ovh from "@/utils/ovh"
 
+jest.mock("@/utils/ovh")
 jest.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 
-let deleteAccountCalled = false
-let deleteUserCalled = false
-
-const server = setupServer(
-  rest.delete(/github.com/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  rest.delete(/mattermost.fabrique.social.gouv.fr/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  rest.post(/matomo.fabrique.social.gouv.fr/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  rest.put(/pastek.fabrique.social.gouv.fr/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  rest.put(/nextcloud.fabrique.social.gouv.fr/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  rest.delete(/sentry.fabrique.social.gouv.fr/, (_req, res, ctx) => {
-    return res(ctx.status(550), ctx.text("fake message"))
-  }),
-  graphql.mutation("deleteAccount", (_req, res, ctx) => {
-    deleteAccountCalled = true
-    return res(
-      ctx.data({
-        delete_services_by_pk: {
-          users: {
-            services_aggregate: {
-              aggregate: { count: 2 },
-            },
-            id: "fake user ID",
-          },
-        },
-      })
-    )
-  })
-)
-
-beforeAll(() => {
-  server.listen({ onUnhandledRequest: "error" })
-})
-
-afterAll(() => {
-  server.close()
-})
-
-beforeEach(() => {
-  jest.resetModules()
-  server.resetHandlers()
-})
-
-describe("on account revocation", () => {
-  beforeEach(() => {
-    deleteAccountCalled = false
-    deleteUserCalled = false
-  })
-
-  it("should delete the account on success", async () => {
-    server.use(
-      rest.delete(/github.com/, (_req, res, ctx) => {
-        return res(ctx.status(250), ctx.text("fake message"))
-      })
-    )
-    const { status } = await revoke(
-      "fake account service ID",
-      "fake account ID",
-      "github"
-    )
-    expect(status).toEqual(250)
-    expect(deleteAccountCalled).toEqual(true)
-    expect(deleteUserCalled).toEqual(false)
-  })
-
-  it("should not delete the account on failure", async () => {
-    const { status } = await revoke(
-      "fake account service ID",
-      "fake account ID",
-      "github"
-    )
-    expect(status).toEqual(550)
-    expect(deleteAccountCalled).toEqual(false)
-    expect(deleteUserCalled).toEqual(false)
-  })
-
-  it("should delete the user if it has no more accounts", async () => {
-    server.use(
-      rest.delete(/github.com/, (_req, res, ctx) => {
-        return res(ctx.status(250), ctx.text("fake message"))
-      }),
-      graphql.mutation("deleteAccount", (_req, res, ctx) => {
-        deleteAccountCalled = true
-        return res(
-          ctx.data({
-            delete_services_by_pk: {
-              users: {
-                services_aggregate: {
-                  aggregate: { count: 0 },
-                },
-                id: "fake user ID",
-              },
-            },
-          })
-        )
-      }),
-      graphql.mutation("deleteUsers", (_req, res, ctx) => {
-        deleteUserCalled = true
-        return res(ctx.data({ affected_rows: [] }))
-      })
-    )
-    const { status } = await revoke(
-      "fake account service ID",
-      "fake account ID",
-      "github"
-    )
-    expect(status).toEqual(250)
-    expect(deleteAccountCalled).toEqual(true)
-    expect(deleteUserCalled).toEqual(true)
-  })
+it("should return status and body returned by service API", async () => {
+  const { status } = await revoke(
+    "fake account service ID",
+    "fake account ID",
+    "github"
+  )
+  expect(status).toEqual(550)
 })
 
 describe("delete Github account", () => {
@@ -201,11 +89,12 @@ describe("delete Matomo account", () => {
 
 describe("delete Ovh account", () => {
   it("should return status and message from exception", async () => {
-    jest.mock("ovh", () => () => ({
-      requestPromised: () => {
-        throw { error: 550, message: "fake message" }
-      },
-    }))
+    ovh.mockResolvedValue({
+      success: false,
+      error: { error: 550, message: "fake message" },
+      data: {},
+    })
+
     const { status, body } = await revoke(
       "fake account service ID",
       "fake account ID",
@@ -216,6 +105,11 @@ describe("delete Ovh account", () => {
   })
 
   it("should return status 200 and data", async () => {
+    ovh.mockResolvedValue({
+      success: true,
+      data: "fake data",
+      error: {},
+    })
     jest.mock("ovh", () => () => ({
       requestPromised: () => Promise.resolve("fake data"),
     }))
@@ -224,7 +118,7 @@ describe("delete Ovh account", () => {
       "fake account ID",
       "ovh"
     )
-    expect(status).toEqual(200)
     expect(body).toEqual("fake data")
+    expect(status).toEqual(200)
   })
 })

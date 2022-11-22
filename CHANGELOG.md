@@ -1,3 +1,45 @@
+# [1.47.0](https://github.com/SocialGouv/secretariat/compare/v1.46.7...v1.47.0) (2022-11-22)
+
+
+### Features
+
+* mattermost review notifications ([#428](https://github.com/SocialGouv/secretariat/issues/428)) ([a77570d](https://github.com/SocialGouv/secretariat/commit/a77570d54c2b7c4e9072775f3f8c8f73313e24b7))
+
+## [1.46.7](https://github.com/SocialGouv/secretariat/compare/v1.46.6...v1.46.7) (2022-11-22)
+
+
+### Bug Fixes
+
+* fetch organization role for github accounts ([#427](https://github.com/SocialGouv/secretariat/issues/427)) ([02bdc7d](https://github.com/SocialGouv/secretariat/commit/02bdc7d050f023b79718a43ae3e3a2d765d94101))
+
+## [1.46.6](https://github.com/SocialGouv/secretariat/compare/v1.46.5...v1.46.6) (2022-10-27)
+
+
+### Bug Fixes
+
+* show /api/onboarding/request tipimail response ([43e9e52](https://github.com/SocialGouv/secretariat/commit/43e9e52c5a6fabe0ded8ba483496b3fa2c90e07c))
+
+## [1.46.5](https://github.com/SocialGouv/secretariat/compare/v1.46.4...v1.46.5) (2022-10-27)
+
+
+### Bug Fixes
+
+* release on push ([ee8d475](https://github.com/SocialGouv/secretariat/commit/ee8d4755caf800d51d021e366df1bf63fc26741c))
+
+## [1.46.4](https://github.com/SocialGouv/secretariat/compare/v1.46.3...v1.46.4) (2022-10-18)
+
+
+### Bug Fixes
+
+* **onboarding-request:** show review info instead of validation button ([#424](https://github.com/SocialGouv/secretariat/issues/424)) ([1065555](https://github.com/SocialGouv/secretariat/commit/10655555535e4f6d61d5bda71e6afeb06cf827d7))
+
+## [1.46.3](https://github.com/SocialGouv/secretariat/compare/v1.46.2...v1.46.3) (2022-10-18)
+
+
+### Bug Fixes
+
+* **onboarding-request:** remove non confirmed request links from requests list ([#425](https://github.com/SocialGouv/secretariat/issues/425)) ([f1b7908](https://github.com/SocialGouv/secretariat/commit/f1b79089b03655bcfae7a9a0f5ea059551bcce10))
+
 ## [1.46.2](https://github.com/SocialGouv/secretariat/compare/v1.46.1...v1.46.2) (2022-10-17)
 
 

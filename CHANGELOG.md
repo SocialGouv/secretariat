@@ -1,3 +1,10 @@
+## [1.46.7](https://github.com/SocialGouv/secretariat/compare/v1.46.6...v1.46.7) (2022-11-22)
+
+
+### Bug Fixes
+
+* fetch organization role for github accounts ([#427](https://github.com/SocialGouv/secretariat/issues/427)) ([02bdc7d](https://github.com/SocialGouv/secretariat/commit/02bdc7d050f023b79718a43ae3e3a2d765d94101))
+
 ## [1.46.6](https://github.com/SocialGouv/secretariat/compare/v1.46.5...v1.46.6) (2022-10-27)
 
 

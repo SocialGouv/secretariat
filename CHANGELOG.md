@@ -1,3 +1,10 @@
+# [1.47.0](https://github.com/SocialGouv/secretariat/compare/v1.46.7...v1.47.0) (2022-11-22)
+
+
+### Features
+
+* mattermost review notifications ([#428](https://github.com/SocialGouv/secretariat/issues/428)) ([a77570d](https://github.com/SocialGouv/secretariat/commit/a77570d54c2b7c4e9072775f3f8c8f73313e24b7))
+
 ## [1.46.7](https://github.com/SocialGouv/secretariat/compare/v1.46.6...v1.46.7) (2022-11-22)
 
 

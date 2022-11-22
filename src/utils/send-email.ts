@@ -161,7 +161,7 @@ export const sendReviewMail = (
     ? " (erreur lors de l'invitation du compte Github)"
     : ""
 
-  sendEmail(
+  return sendEmail(
     [
       {
         address: email,
@@ -215,13 +215,12 @@ export const sendConfirmMail = (
   recipients: {
     address: string
   }[],
-  firstName: string,
-  lastName: string,
+  fullName: string,
   url: string
-) => {
+) =>
   sendEmail(
     recipients,
-    `Demande d'onboarding de ${firstName} ${lastName}`,
+    `Demande d'onboarding de ${fullName}`,
     `Une demande d'onboarding a été effectuée sur Secrétariat.
 
 En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :
@@ -240,10 +239,9 @@ ${url}`,
   </a>
 </div>`
   )
-}
 
-export const sendRequestMail = (email: string, url: string) => {
-  return sendEmail(
+export const sendRequestMail = (email: string, url: string) =>
+  sendEmail(
     [
       {
         address: email,
@@ -264,4 +262,3 @@ export const sendRequestMail = (email: string, url: string) => {
       </a>
     </div>`
   )
-}

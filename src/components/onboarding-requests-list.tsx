@@ -36,16 +36,22 @@ const OnboardingRequestsList = () => {
               {format(new Date(request.created_at), DATE_FORMAT)}
             </div>
             <div className="table-cell">
-              <Link
-                href={{
-                  pathname: "/onboarding/review",
-                  query: { id: request.id },
-                }}
-              >
-                <a>
+              {request.confirmed ? (
+                <Link
+                  href={{
+                    pathname: "/onboarding/review",
+                    query: { id: request.id },
+                  }}
+                >
+                  <a>
+                    {request.data.firstName} {request.data.lastName}
+                  </a>
+                </Link>
+              ) : (
+                <span>
                   {request.data.firstName} {request.data.lastName}
-                </a>
-              </Link>
+                </span>
+              )}
             </div>
             <div className="table-cell text-center">
               {request.confirmed ? (

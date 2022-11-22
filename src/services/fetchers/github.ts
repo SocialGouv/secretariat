@@ -11,11 +11,20 @@ const fetchGithubPage = async (token: string, cursor?: string) => {
   const {
     organization: {
       membersWithRole: {
-        nodes: usersPage,
+        nodes: nodesPage,
         pageInfo: { hasNextPage, endCursor },
+        edges: edgesPage,
       },
     },
   } = await graphQLFetcher({ query: getRemoteGithubUsers, token, parameters })
+
+  // construct users with nodes union edges
+  const usersPage = nodesPage.map(
+    (node: Record<string, unknown>, index: number) => ({
+      ...node,
+      ...edgesPage[index],
+    })
+  )
 
   return { usersPage, hasNextPage, endCursor }
 }

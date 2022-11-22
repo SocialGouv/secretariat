@@ -13,6 +13,7 @@ it("should return a list of fetched users", async () => {
         organization: {
           membersWithRole: {
             nodes: [{}, {}, {}],
+            edges: [{}, {}, {}],
             pageInfo: { hasNextPage: true, endCursor: "cursor" },
           },
         },
@@ -23,6 +24,7 @@ it("should return a list of fetched users", async () => {
         organization: {
           membersWithRole: {
             nodes: [],
+            edges: [],
             pageInfo: { hasNextPage: false, endCursor: "" },
           },
         },

@@ -6,6 +6,7 @@ import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
 import { sendConfirmMail } from "@/utils/send-email"
 import { confirmOnboardingRequest } from "@/queries/index"
 import logAction from "@/utils/log-action"
+import sendMattermostAlert from "@/utils/mattermost-alert"
 
 const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
@@ -44,8 +45,9 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
     const url = new URL("/onboarding/review", NEXTAUTH_URL)
     url.searchParams.append("id", Array.isArray(id) ? id[0] : id)
 
-    console.log("sending email notification to recipients:", recipients)
-    sendConfirmMail(recipients, firstName, lastName, url.href)
+    const fullName = `${firstName} ${lastName}`
+    sendConfirmMail(recipients, fullName, url.href)
+    sendMattermostAlert(fullName, url.href)
   }
 
   res.redirect(new URL("/onboarding/confirm", NEXTAUTH_URL).href)

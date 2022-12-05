@@ -89,7 +89,11 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   )
 
   if (!response.success) {
-    return { status: response.error.error, body: response.error.message }
+    return {
+      status: response.error.error,
+      body: response.error.message,
+      mailInfo: { login },
+    }
   }
 
   email = `${login}@fabrique.social.gouv.fr`
@@ -101,7 +105,11 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   )
 
   if (!response.success) {
-    return { status: response.error.error, body: response.error.message }
+    return {
+      status: response.error.error,
+      body: response.error.message,
+      mailInfo: { login },
+    }
   }
 
   // Fetch account data

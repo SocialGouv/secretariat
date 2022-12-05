@@ -1,3 +1,38 @@
+## [1.47.1](https://github.com/SocialGouv/secretariat/compare/v1.47.0...v1.47.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* tell user if an account could not be created because it already exists ([#423](https://github.com/SocialGouv/secretariat/issues/423)) ([b222fa5](https://github.com/SocialGouv/secretariat/commit/b222fa53d040fa27b22e0a4bc9b1d45229eb11cc))
+
+# [1.47.0](https://github.com/SocialGouv/secretariat/compare/v1.46.7...v1.47.0) (2022-11-22)
+
+
+### Features
+
+* mattermost review notifications ([#428](https://github.com/SocialGouv/secretariat/issues/428)) ([a77570d](https://github.com/SocialGouv/secretariat/commit/a77570d54c2b7c4e9072775f3f8c8f73313e24b7))
+
+## [1.46.7](https://github.com/SocialGouv/secretariat/compare/v1.46.6...v1.46.7) (2022-11-22)
+
+
+### Bug Fixes
+
+* fetch organization role for github accounts ([#427](https://github.com/SocialGouv/secretariat/issues/427)) ([02bdc7d](https://github.com/SocialGouv/secretariat/commit/02bdc7d050f023b79718a43ae3e3a2d765d94101))
+
+## [1.46.6](https://github.com/SocialGouv/secretariat/compare/v1.46.5...v1.46.6) (2022-10-27)
+
+
+### Bug Fixes
+
+* show /api/onboarding/request tipimail response ([43e9e52](https://github.com/SocialGouv/secretariat/commit/43e9e52c5a6fabe0ded8ba483496b3fa2c90e07c))
+
+## [1.46.5](https://github.com/SocialGouv/secretariat/compare/v1.46.4...v1.46.5) (2022-10-27)
+
+
+### Bug Fixes
+
+* release on push ([ee8d475](https://github.com/SocialGouv/secretariat/commit/ee8d4755caf800d51d021e366df1bf63fc26741c))
+
 ## [1.46.4](https://github.com/SocialGouv/secretariat/compare/v1.46.3...v1.46.4) (2022-10-18)
 
 

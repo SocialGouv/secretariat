@@ -40,15 +40,13 @@ const html = (body: string) => `
 </div>
 `
 
-const text = (body: string) => `
-Secrétariat
+const text = (body: string) => `Secrétariat
 Gestion des comptes de services @SocialGouv
 
 ${body}
 
 Cet email a été envoyé automatiquement par Secrétariat, une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique des Ministères Sociaux.
-Merci de ne pas réponde à cet email.
-`
+Merci de ne pas répondre à cet email.`
 
 const sendEmail = async (
   recipients: Record<string, unknown>[],
@@ -81,11 +79,89 @@ const sendEmail = async (
     },
   })
 
+const mattermostFeedback = (
+  html: boolean,
+  onboardingResponses: OnboardingResponses
+) => {
+  if (!("mattermost" in onboardingResponses)) {
+    return ""
+  }
+
+  let content
+  if (statusOk(onboardingResponses.mattermost!.status)) {
+    content =
+      '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
+  } else {
+    if (
+      onboardingResponses.mattermost!.body.message ===
+      "An account with that email already exists."
+    ) {
+      content = "(un compte utilisant cet email existe déjà)"
+    } else {
+      content = "(erreur lors de la création automatique du compte)"
+    }
+  }
+
+  if (html) {
+    return `<li><a href="https://mattermost.fabrique.social.gouv.fr/">Mattermost</a> ${content}</li>`
+  } else {
+    return `- Mattermost : https://mattermost.fabrique.social.gouv.fr/ ${content}`
+  }
+}
+
+const ovhFeedback = (
+  html: boolean,
+  onboardingResponses: OnboardingResponses
+) => {
+  if (!("ovh" in onboardingResponses)) {
+    return ""
+  }
+
+  let content
+  if (statusOk(onboardingResponses.ovh!.status)) {
+    if (html) {
+      content = `<ul>
+      <li>adresse : ${
+        onboardingResponses.ovh!.mailInfo.login
+      }@fabrique.social.gouv.fr</li>
+      <li>mot de passe : ${
+        onboardingResponses.ovh!.mailInfo.password
+      } (à changer)</li>
+    </ul>`
+    } else {
+      content = `
+  - adresse : ${onboardingResponses.ovh!.mailInfo.login}@fabrique.social.gouv.fr
+  - mot de passe : ${onboardingResponses.ovh!.mailInfo.password} (à changer)`
+    }
+  } else {
+    if (
+      onboardingResponses.ovh!.body ===
+      "Email address is already used by a account."
+    ) {
+      content = `(l'email ${
+        onboardingResponses.ovh!.mailInfo.login
+      }@fabrique.social.gouv.fr existe déjà)`
+    } else {
+      content = "(erreur lors de la création automatique du compte)"
+    }
+  }
+
+  if (html) {
+    return `<li><a href="https://pro2.mail.ovh.net/">Mail OVH</a> ${content}</li>`
+  } else {
+    return `- Mail OVH : https://pro2.mail.ovh.net/ ${content}`
+  }
+}
+
 export const sendReviewMail = (
   onboardingResponses: OnboardingResponses,
   email: string
-) =>
-  sendEmail(
+) => {
+  const githubFeedback = !statusOk(onboardingResponses.github!.status)
+    ? " (erreur lors de l'invitation du compte Github)"
+    : ""
+
+  return sendEmail(
     [
       {
         address: email,
@@ -102,53 +178,15 @@ Voici quelques ressources pour débuter :
 - Documentation technique de la Fabrique : https://socialgouv.github.io/support
 
 Vous avez à présent accès aux services de la Fabrique Numérique des Ministères Sociaux. Ci-dessous la liste des services qui vous sont accessibles :
-${
-  "mattermost" in onboardingResponses
-    ? `- Mattermost : https://mattermost.fabrique.social.gouv.fr/ ${
-        statusOk(onboardingResponses.mattermost!.status)
-          ? '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
-          : "(erreur lors de la création automatique du compte)"
-      }`
-    : ""
-}
-${
-  "ovh" in onboardingResponses
-    ? `- Mail OVH : https://pro2.mail.ovh.net/ ${
-        statusOk(onboardingResponses.ovh!.status)
-          ? `
-  - adresse : ${onboardingResponses.ovh!.mailInfo.login}@fabrique.social.gouv.fr
-  - mot de passe : ${onboardingResponses.ovh!.mailInfo.password} (à changer)`
-          : "(erreur lors de la création automatique du compte)"
-      }`
-    : ""
-}
+${mattermostFeedback(false, onboardingResponses)}
+${ovhFeedback(false, onboardingResponses)}
 ${
   "github" in onboardingResponses
-    ? `- Github @SocialGouv : https://github.com/SocialGouv${
-        !statusOk(onboardingResponses.github!.status)
-          ? " (erreur lors de l'invitation du compte Github)"
-          : ""
-      }
-- Zammad : https://pastek.fabrique.social.gouv.fr/${
-        !statusOk(onboardingResponses.github!.status)
-          ? " (erreur lors de l'invitation du compte Github)"
-          : ""
-      }
-- Sentry : https://sentry.fabrique.social.gouv.fr/${
-        !statusOk(onboardingResponses.github!.status)
-          ? " (erreur lors de l'invitation du compte Github)"
-          : ""
-      }
-- Matomo : https://matomo.fabrique.social.gouv.fr/${
-        !statusOk(onboardingResponses.github!.status)
-          ? " (erreur lors de l'invitation du compte Github)"
-          : ""
-      }
-- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/${
-        !statusOk(onboardingResponses.github!.status)
-          ? " (erreur lors de l'invitation du compte Github)"
-          : ""
-      }`
+    ? `- Github @SocialGouv : https://github.com/SocialGouv${githubFeedback}
+- Zammad : https://pastek.fabrique.social.gouv.fr/${githubFeedback}
+- Sentry : https://sentry.fabrique.social.gouv.fr/${githubFeedback}
+- Matomo : https://matomo.fabrique.social.gouv.fr/${githubFeedback}
+- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/${githubFeedback}`
     : ""
 }`,
     `<p>Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.</p>
@@ -159,59 +197,15 @@ ${
   <li><a href="https://doc.incubateur.net/">Documentation générale de beta.gouv.fr</a></li>
   <li><a href="https://socialgouv.github.io/support">Documentation technique de la Fabrique</a></li>
 <p>Vous avez à présent accès aux services de la Fabrique Numérique des Ministères Sociaux. Ci-dessous la liste des services qui vous sont accessibles&nbsp:</p>
-${
-  "mattermost" in onboardingResponses
-    ? `<li><a href="https://mattermost.fabrique.social.gouv.fr/">Mattermost</a> ${
-        statusOk(onboardingResponses.mattermost!.status)
-          ? '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
-          : "(erreur lors de la création automatique du compte)"
-      }</li>`
-    : ""
-}
-${
-  "ovh" in onboardingResponses
-    ? `<li><a href="https://pro2.mail.ovh.net/">Mail OVH</a> ${
-        statusOk(onboardingResponses.ovh!.status)
-          ? `<ul>
-  <li>adresse : ${
-    onboardingResponses.ovh!.mailInfo.login
-  }@fabrique.social.gouv.fr</li>
-  <li>mot de passe : ${
-    onboardingResponses.ovh!.mailInfo.password
-  } (à changer)</li>
-</ul>`
-          : "(erreur lors de la création automatique du compte)"
-      }
-</li>`
-    : ""
-}
+${mattermostFeedback(true, onboardingResponses)}
+${ovhFeedback(true, onboardingResponses)}
 ${
   "github" in onboardingResponses
-    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a> ${
-        !statusOk(onboardingResponses.github!.status)
-          ? "(erreur lors de l'invitation du compte Github)"
-          : ""
-      }</li>
-<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a> ${
-        !statusOk(onboardingResponses.github!.status)
-          ? "(erreur lors de l'invitation du compte Github)"
-          : ""
-      }</li>
-<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a> ${
-        !statusOk(onboardingResponses.github!.status)
-          ? "(erreur lors de l'invitation du compte Github)"
-          : ""
-      }</li>
-<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a> ${
-        !statusOk(onboardingResponses.github!.status)
-          ? "(erreur lors de l'invitation du compte Github)"
-          : ""
-      }</li>
-<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a> ${
-        !statusOk(onboardingResponses.github!.status)
-          ? "(erreur lors de l'invitation du compte Github)"
-          : ""
-      }</li>`
+    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a>${githubFeedback}</li>
+<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a>${githubFeedback}</li>
+<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a>${githubFeedback}</li>
+<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a>${githubFeedback}</li>
+<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a>${githubFeedback}</li>`
     : ""
 }`
   )
@@ -220,13 +214,12 @@ export const sendConfirmMail = (
   recipients: {
     address: string
   }[],
-  firstName: string,
-  lastName: string,
+  fullName: string,
   url: string
 ) =>
   sendEmail(
     recipients,
-    `Demande d'onboarding de ${firstName} ${lastName}`,
+    `Demande d'onboarding de ${fullName}`,
     `Une demande d'onboarding a été effectuée sur Secrétariat.
 
 En tant qu'administrateur, veuillez en effectuer la revue en suivant le lien :

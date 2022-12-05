@@ -1,3 +1,10 @@
+## [1.47.2](https://github.com/SocialGouv/secretariat/compare/v1.47.1...v1.47.2) (2022-12-05)
+
+
+### Bug Fixes
+
+* use raw timestamp for review date ([#426](https://github.com/SocialGouv/secretariat/issues/426)) ([fc673bf](https://github.com/SocialGouv/secretariat/commit/fc673bfc5a225bbfad961022c6c5455772ca0e17))
+
 ## [1.47.1](https://github.com/SocialGouv/secretariat/compare/v1.47.0...v1.47.1) (2022-11-22)
 
 

@@ -209,6 +209,7 @@ ${
     : ""
 }`
   )
+}
 
 export const sendConfirmMail = (
   recipients: {

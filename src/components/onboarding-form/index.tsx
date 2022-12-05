@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
+import statusOk from "@/utils/status-ok"
 import Alert from "@/components/common/alert"
+import Loader from "@/components/common/loader"
 import useOnboarding from "@/hooks/use-onboarding"
 import Form from "@/components/onboarding-form/form"
-import statusOk from "@/utils/status-ok"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import {
   onboardingRequestAction,
@@ -40,6 +41,7 @@ const OnboardingForm = () => {
   const [status, setStatus] = useState<
     | "create"
     | "review"
+    | "loading"
     | "reviewed"
     | "create_success"
     | "create_error"
@@ -52,6 +54,7 @@ const OnboardingForm = () => {
     useState<ServicesAccountsStatuses>()
 
   const handleCreationSubmit = async () => {
+    setStatus("loading")
     const {
       onboardingRequestAction: { status, body },
     } = await graphQLFetcher({
@@ -70,6 +73,7 @@ const OnboardingForm = () => {
   }
 
   const handleReviewSubmit = async () => {
+    setStatus("loading")
     const { onboardingReviewAction: responses } = await graphQLFetcher({
       query: onboardingReviewAction,
       includeCookie: true,
@@ -132,6 +136,11 @@ const OnboardingForm = () => {
             type="warning"
             message="Une demande d'embarquement utilisant cet email existe déjà."
           />
+        </div>
+      )}
+      {status === "loading" && (
+        <div className="mt-12">
+          <Loader size="xl" />
         </div>
       )}
     </div>

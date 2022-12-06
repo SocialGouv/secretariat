@@ -5,6 +5,9 @@ import ServiceLogo from "@/components/common/service-logo"
 
 const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
 
+const getFormattedDate = (date: string) =>
+  date ? format(new Date(date), DATE_FORMAT) : ""
+
 const InfoTable = ({
   data,
 }: {
@@ -92,7 +95,7 @@ const MattermostUserInfo = ({
         last_name,
         email,
         id,
-        create_at: create_at ? format(new Date(create_at), DATE_FORMAT) : "",
+        create_at: getFormattedDate(create_at),
       }}
     />
     <div className="teams">
@@ -146,7 +149,7 @@ const NextCloudUserInfo = ({
         id,
         email,
         displayname,
-        lastLogin: lastLogin ? format(new Date(lastLogin), DATE_FORMAT) : "",
+        lastLogin: getFormattedDate(lastLogin),
       }}
     />
     <div className="teams">

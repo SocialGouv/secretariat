@@ -5,7 +5,7 @@ import ServiceLogo from "@/components/common/service-logo"
 
 const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
 
-const getFormattedDate = (date: string) =>
+const getFormattedDate = (date: Date | string) =>
   date ? format(new Date(date), DATE_FORMAT) : ""
 
 const InfoTable = ({

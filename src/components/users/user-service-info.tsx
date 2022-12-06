@@ -92,7 +92,7 @@ const MattermostUserInfo = ({
         last_name,
         email,
         id,
-        create_at: format(new Date(create_at), DATE_FORMAT),
+        create_at: create_at ? format(new Date(create_at), DATE_FORMAT) : "",
       }}
     />
     <div className="teams">
@@ -146,7 +146,7 @@ const NextCloudUserInfo = ({
         id,
         email,
         displayname,
-        lastLogin: format(new Date(lastLogin), DATE_FORMAT),
+        lastLogin: lastLogin ? format(new Date(lastLogin), DATE_FORMAT) : "",
       }}
     />
     <div className="teams">

@@ -313,3 +313,17 @@ export const getLogs = gql`
     }
   }
 `
+
+export const searchGithubUsers = gql`
+  query searchGithubUsers($query: String!) {
+    search(query: $query, type: USER, first: 10) {
+      nodes {
+        ... on User {
+          name
+          login
+          avatarUrl
+        }
+      }
+    }
+  }
+`

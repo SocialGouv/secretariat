@@ -148,11 +148,11 @@ type ServiceAccount = ServiceAccountsMapping[ServiceName]
 
 interface OnboardingData {
   email: string
-  departure: string
   message: string
-  lastName: string
-  firstName: string
   arrival: string
+  lastName: string
+  departure: string
+  firstName: string
   githubLogin: string
   services: Record<ServiceName, boolean>
 }
@@ -168,9 +168,9 @@ interface OnboardingResponses {
 interface OnboardingRequest {
   id: string
   created_at: Date
-  reviewed: { author: string; date: string } | null
   confirmed: boolean
   data: OnboardingData
+  reviewed: { author: string; date: string } | null
 }
 
 interface OnboardingRequestServices {
@@ -197,4 +197,14 @@ interface syncStats {
   errors: number
   userDeletions: number
   accountDeletions: number
+}
+
+interface WizardStep {
+  title: string
+  // value: OnboardingData
+  component: ({
+    onValidate,
+  }: {
+    onValidate: (isValid: boolean) => void
+  }) => JSX.Element
 }

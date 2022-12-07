@@ -1,2 +1,6 @@
 scopeconfig:
   - scope: node
+fileignoreconfig:
+- filename: yarn.lock
+  checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
+version: ""

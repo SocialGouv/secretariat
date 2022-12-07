@@ -15,14 +15,14 @@ const ContentSecurityPolicy =
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-      connect-src 'self' ${process.env.NEXT_PUBLIC_HASURA_URL};
+      connect-src 'self' api.github.com ${process.env.NEXT_PUBLIC_HASURA_URL};
     `
     : `
       default-src 'self';
       font-src 'self';
       img-src 'self' data:;
       style-src 'self' 'unsafe-inline';
-      connect-src 'self' localhost:8080;
+      connect-src 'self' localhost:8080 api.github.com;
       script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `
 

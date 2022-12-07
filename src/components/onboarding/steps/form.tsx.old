@@ -1,8 +1,8 @@
 import Alert from "@/components/common/alert"
 
-import UserInfo from "./user-info"
-import GithubServices from "./github-services"
-import DefaultServices from "./default-services"
+// import UserInfo from "./user-info"
+// import GithubServices from "./github-services"
+// import DefaultServices from "./default-services"
 import { useMemo } from "react"
 
 const Form = ({
@@ -27,9 +27,9 @@ const Form = ({
         onSubmit()
       }}
     >
-      <UserInfo />
+      {/* <UserInfo />
       <DefaultServices />
-      <GithubServices />
+      <GithubServices /> */}
 
       {status === "reviewed" ? (
         <Alert

@@ -11,57 +11,56 @@
 }
 
 .onboarding-form {
-  @apply flex flex-col mx-6;
+  @apply flex flex-col gap-8;
 
-  form {
-    @apply flex flex-col gap-10;
+  .user-info {
+    .fields {
+      @apply grid grid-cols-4 gap-6;
 
-    .user-info {
-      .fields {
-        @apply grid grid-cols-4 gap-6;
+      label {
+        @apply flex flex-col;
+      }
+    }
+  }
 
-        label {
-          @apply flex flex-col;
-        }
+  ul.services-list {
+    li {
+      @apply
+        card
+        flex
+        mt-6
+        shadow-md
+        items-center
+      ;
+
+      p {
+        @apply mt-0 flex-1;
+      }
+
+      i.icon {
+        @apply ri-4x leading-10 mr-6 text-blue-france-113-main;
+      }
+
+      i.check {
+        @apply ri-4x leading-10 ml-6 text-grey-950-main transition-colors;
+      }
+      
+      &.selected {
+        @apply shadow-sm;
+
+        i.check {
+          @apply text-green-600;
+        } 
       }
     }
 
-    .services-tiles {
-      @apply grid grid-cols-4 gap-6;
-
-      .service {
+    &.editable {
+      li {
         @apply
-          py-4
-          border
-          shadow
-          rounded
           cursor-pointer
-          transition-shadow;
-
-        .service-body {
-          @apply
-            flex
-            flex-col
-            items-center
-            transition-opacity;
-    
-          .name {
-            @apply mt-2;
-          }
-        }
-
-        &.disabled {
-          @apply
-            shadow-none
-            hover:shadow-md;
-
-          .service-body {
-            @apply
-              grayscale
-              opacity-60
-              dark:opacity-40;
-          }
-        }
+          hover:shadow-lg
+          transition-shadow
+        ;
       }
     }
   }

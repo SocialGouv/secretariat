@@ -13,18 +13,6 @@ const Footer = () => (
             <strong>Secretariat</strong> est une application permettant de gérer
             les accès des utilisateurs aux services de la Fabrique Numérique.
           </p>
-          <p>
-            Pour en savoir plus sur l&apos;utilisation de{" "}
-            <strong>Secretariat</strong>, visitez le{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/SocialGouv/www/wiki/Inscrire-son-%C3%A9quipe-au-standup"
-            >
-              wiki
-            </a>
-            .
-          </p>
           <p className="flex items-center">
             <i className="ri-github-fill ri-xl relative top-px mr-1" />
             version {process.env.NEXT_PUBLIC_APP_VERSION} (

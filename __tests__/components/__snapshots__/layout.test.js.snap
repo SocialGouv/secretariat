@@ -61,23 +61,6 @@ exports[`renders layout 1`] = `
               </strong>
                est une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
             </p>
-            <p>
-              Pour en savoir plus sur l'utilisation de
-               
-              <strong>
-                Secretariat
-              </strong>
-              , visitez le
-               
-              <a
-                href="https://github.com/SocialGouv/www/wiki/Inscrire-son-%C3%A9quipe-au-standup"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                wiki
-              </a>
-              .
-            </p>
             <p
               class="flex items-center"
             >

@@ -1,3 +1,11 @@
+## [1.48.1](https://github.com/SocialGouv/secretariat/compare/v1.48.0...v1.48.1) (2022-12-12)
+
+
+### Bug Fixes
+
+* **accounts:** display dates instead of timestamps ([#448](https://github.com/SocialGouv/secretariat/issues/448)) ([a7f0ca8](https://github.com/SocialGouv/secretariat/commit/a7f0ca823c4689235c0e29bec3206eb560255d5f))
+* **footer:** remove link to Carnets wiki ([#446](https://github.com/SocialGouv/secretariat/issues/446)) ([0db2e1f](https://github.com/SocialGouv/secretariat/commit/0db2e1fd415bc73b241221645edbf3432888c57f))
+
 # [1.48.0](https://github.com/SocialGouv/secretariat/compare/v1.47.2...v1.48.0) (2022-12-12)
 
 

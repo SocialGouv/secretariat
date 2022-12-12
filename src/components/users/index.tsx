@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react"
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
+import { useSWRConfig } from "swr"
+
+import statusOk from "@/utils/status-ok"
 import UserList from "@/components/users/user-list"
-import UserSelected from "@/components/users/user-selected"
 import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
+import AccountDeleteModal from "./delete-account-modal"
+import UserSelected from "@/components/users/user-selected"
 import {
   revokeAccount,
   detachUserServiceAccount,
@@ -9,12 +16,6 @@ import {
   mergeUsers,
   mutateUser,
 } from "@/hooks/use-users"
-import statusOk from "@/utils/status-ok"
-import { useEffect, useState } from "react"
-import { DndProvider } from "react-dnd"
-import { HTML5Backend } from "react-dnd-html5-backend"
-import { useSWRConfig } from "swr"
-import AccountDeleteModal from "./delete-account-modal"
 
 const Users = () => {
   const { mutate } = useSWRConfig()

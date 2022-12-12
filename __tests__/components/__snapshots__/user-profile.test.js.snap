@@ -183,16 +183,6 @@ exports[`renders user profile 1`] = `
               class="contents"
             >
               <div>
-                lastLogin
-              </div>
-              <div
-                class="col-span-2"
-              />
-            </div>
-            <div
-              class="contents"
-            >
-              <div>
                 displayname
               </div>
               <div
@@ -200,6 +190,16 @@ exports[`renders user profile 1`] = `
               >
                 User 1
               </div>
+            </div>
+            <div
+              class="contents"
+            >
+              <div>
+                lastLogin
+              </div>
+              <div
+                class="col-span-2"
+              />
             </div>
           </div>
           <div

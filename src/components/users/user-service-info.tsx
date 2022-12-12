@@ -1,6 +1,12 @@
+import { format } from "date-fns"
 import { useSpring, animated, useSpringRef } from "react-spring"
 
 import ServiceLogo from "@/components/common/service-logo"
+
+const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
+
+const getFormattedDate = (date: Date | string) =>
+  date ? format(new Date(date), DATE_FORMAT) : ""
 
 const InfoTable = ({
   data,
@@ -83,7 +89,14 @@ const MattermostUserInfo = ({
 }) => (
   <>
     <InfoTable
-      data={{ username, first_name, last_name, email, id, create_at }}
+      data={{
+        username,
+        first_name,
+        last_name,
+        email,
+        id,
+        create_at: getFormattedDate(create_at),
+      }}
     />
     <div className="teams">
       {teams?.map((team, index) => (
@@ -131,7 +144,14 @@ const NextCloudUserInfo = ({
   account: NextCloudServiceAccount
 }) => (
   <>
-    <InfoTable data={{ id, email, lastLogin, displayname }} />
+    <InfoTable
+      data={{
+        id,
+        email,
+        displayname,
+        lastLogin: getFormattedDate(lastLogin),
+      }}
+    />
     <div className="teams">
       {groups?.map((group, index) => (
         <div key={index} className="tag">

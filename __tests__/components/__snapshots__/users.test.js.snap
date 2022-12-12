@@ -2260,16 +2260,6 @@ exports[`when users are loaded should match the snapshot 1`] = `
                     class="contents"
                   >
                     <div>
-                      lastLogin
-                    </div>
-                    <div
-                      class="col-span-2"
-                    />
-                  </div>
-                  <div
-                    class="contents"
-                  >
-                    <div>
                       displayname
                     </div>
                     <div
@@ -2277,6 +2267,16 @@ exports[`when users are loaded should match the snapshot 1`] = `
                     >
                       User 1
                     </div>
+                  </div>
+                  <div
+                    class="contents"
+                  >
+                    <div>
+                      lastLogin
+                    </div>
+                    <div
+                      class="col-span-2"
+                    />
                   </div>
                 </div>
                 <div

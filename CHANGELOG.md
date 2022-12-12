@@ -1,3 +1,10 @@
+# [1.48.0](https://github.com/SocialGouv/secretariat/compare/v1.47.2...v1.48.0) (2022-12-12)
+
+
+### Features
+
+* **onboarding:** add loading mask on form submission ([#445](https://github.com/SocialGouv/secretariat/issues/445)) ([2bbf8ec](https://github.com/SocialGouv/secretariat/commit/2bbf8ec2c163be348ef2d34a3e5e9f341e881d56))
+
 ## [1.47.2](https://github.com/SocialGouv/secretariat/compare/v1.47.1...v1.47.2) (2022-12-05)
 
 

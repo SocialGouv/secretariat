@@ -56,6 +56,24 @@
       }
     }
   }
+
+  &.xl {
+    & > div {
+      @include spinthatshit.loader02(
+        $size: 128px,
+        $color: #000091,
+        $border-size: 12px,
+      );
+
+      .dark & {
+        @include spinthatshit.loader02(
+          $size: 128px,
+          $color: #8585f6,
+          $border-size: 12px,
+        );
+      }
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +104,16 @@
           $size: 96px,
           $color: #8585f6,
           $border-size: 10px,
+        );
+      }
+    }
+
+    &.xl {
+      & > div {
+        @include spinthatshit.loader02(
+          $size: 128px,
+          $color: #8585f6,
+          $border-size: 12px,
         );
       }
     }

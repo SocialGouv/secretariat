@@ -53,8 +53,8 @@ const sendEmail = async (
   subject: string,
   textBody: string,
   htmlBody: string
-) =>
-  fetch("https://api.tipimail.com/v1/messages/send", {
+) => {
+  return fetch("https://api.tipimail.com/v1/messages/send", {
     method: "POST",
     body: JSON.stringify({
       to: recipients,
@@ -78,6 +78,7 @@ const sendEmail = async (
       "X-Tipimail-ApiUser": TIPIMAIL_API_USER,
     },
   })
+}
 
 const mattermostFeedback = (
   html: boolean,
@@ -153,14 +154,21 @@ const ovhFeedback = (
   }
 }
 
+const githubFeedback = (onboardingResponses: OnboardingResponses) => {
+  if (
+    !("github" in onboardingResponses) ||
+    statusOk(onboardingResponses.github!.status)
+  ) {
+    return ""
+  }
+
+  return " (erreur lors de l'invitation du compte Github)"
+}
+
 export const sendReviewMail = (
   onboardingResponses: OnboardingResponses,
   email: string
 ) => {
-  const githubFeedback = !statusOk(onboardingResponses.github!.status)
-    ? " (erreur lors de l'invitation du compte Github)"
-    : ""
-
   return sendEmail(
     [
       {
@@ -182,11 +190,21 @@ ${mattermostFeedback(false, onboardingResponses)}
 ${ovhFeedback(false, onboardingResponses)}
 ${
   "github" in onboardingResponses
-    ? `- Github @SocialGouv : https://github.com/SocialGouv${githubFeedback}
-- Zammad : https://pastek.fabrique.social.gouv.fr/${githubFeedback}
-- Sentry : https://sentry.fabrique.social.gouv.fr/${githubFeedback}
-- Matomo : https://matomo.fabrique.social.gouv.fr/${githubFeedback}
-- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/${githubFeedback}`
+    ? `- Github @SocialGouv : https://github.com/SocialGouv${githubFeedback(
+        onboardingResponses
+      )}
+- Zammad : https://pastek.fabrique.social.gouv.fr/${githubFeedback(
+        onboardingResponses
+      )}
+- Sentry : https://sentry.fabrique.social.gouv.fr/${githubFeedback(
+        onboardingResponses
+      )}
+- Matomo : https://matomo.fabrique.social.gouv.fr/${githubFeedback(
+        onboardingResponses
+      )}
+- Nextcloud : https://nextcloud.fabrique.social.gouv.fr/${githubFeedback(
+        onboardingResponses
+      )}`
     : ""
 }`,
     `<p>Votre demande d'embarquement a été validée par un administrateur, bienvenue à la Fabrique numérique des Ministères Sociaux.</p>
@@ -201,11 +219,21 @@ ${mattermostFeedback(true, onboardingResponses)}
 ${ovhFeedback(true, onboardingResponses)}
 ${
   "github" in onboardingResponses
-    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a>${githubFeedback}</li>
-<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a>${githubFeedback}</li>
-<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a>${githubFeedback}</li>
-<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a>${githubFeedback}</li>
-<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a>${githubFeedback}</li>`
+    ? `<li><a href="https://github.com/SocialGouv">Github @SocialGouv</a>${githubFeedback(
+        onboardingResponses
+      )}</li>
+<li><a href="https://pastek.fabrique.social.gouv.fr/">Zammad</a>${githubFeedback(
+        onboardingResponses
+      )}</li>
+<li><a href="https://sentry.fabrique.social.gouv.fr/">Sentry</a>${githubFeedback(
+        onboardingResponses
+      )}</li>
+<li><a href="https://matomo.fabrique.social.gouv.fr/">Matomo</a>${githubFeedback(
+        onboardingResponses
+      )}</li>
+<li><a href="https://nextcloud.fabrique.social.gouv.fr/">NextCloud</a>${githubFeedback(
+        onboardingResponses
+      )}</li>`
     : ""
 }`
   )
@@ -217,8 +245,8 @@ export const sendConfirmMail = (
   }[],
   fullName: string,
   url: string
-) =>
-  sendEmail(
+) => {
+  return sendEmail(
     recipients,
     `Demande d'onboarding de ${fullName}`,
     `Une demande d'onboarding a été effectuée sur Secrétariat.
@@ -239,9 +267,10 @@ ${url}`,
   </a>
 </div>`
   )
+}
 
-export const sendRequestMail = (email: string, url: string) =>
-  sendEmail(
+export const sendRequestMail = (email: string, url: string) => {
+  return sendEmail(
     [
       {
         address: email,
@@ -262,3 +291,4 @@ export const sendRequestMail = (email: string, url: string) =>
       </a>
     </div>`
   )
+}

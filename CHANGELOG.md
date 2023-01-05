@@ -1,3 +1,11 @@
+## [1.48.2](https://github.com/SocialGouv/secretariat/compare/v1.48.1...v1.48.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* better talisman config ([#456](https://github.com/SocialGouv/secretariat/issues/456)) ([70d8b6d](https://github.com/SocialGouv/secretariat/commit/70d8b6d0c3cd5a2a8b9b7d2102bcb0255a5b364f))
+* send-email crash when no github ([#457](https://github.com/SocialGouv/secretariat/issues/457)) ([11a3274](https://github.com/SocialGouv/secretariat/commit/11a32747fa226885bc39cac1301e39b635a93da0))
+
 ## [1.48.1](https://github.com/SocialGouv/secretariat/compare/v1.48.0...v1.48.1) (2022-12-12)
 
 

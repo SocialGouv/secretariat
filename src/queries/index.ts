@@ -303,7 +303,7 @@ export const insertLog = gql`
 `
 
 export const getLogs = gql`
-  query getLOgs {
+  query getLogs {
     logs(order_by: { created_at: desc }) {
       user
       parameters

@@ -5,15 +5,14 @@ import Alert from "@/components/common/alert"
 import Wizard from "@/components/common/wizard"
 import useOnboarding from "@/hooks/use-onboarding"
 import graphQLFetcher from "@/utils/graphql-fetcher"
+import UserInfo from "@/components/onboarding/steps/user-info"
+import GithubServices from "@/components/onboarding/steps/github-services"
+import DefaultServices from "@/components/onboarding/steps/default-services"
 import ServicesAccountsStatuses from "@/components/onboarding/steps/services-accounts-statuses"
 import {
   onboardingRequestAction,
   onboardingReviewAction,
 } from "@/queries/index"
-
-import UserInfo from "@/components/onboarding/steps/user-info"
-import GithubServices from "@/components/onboarding/steps/github-services"
-import DefaultServices from "@/components/onboarding/steps/default-services"
 
 const OnboardingForm = () => {
   const { data, request, id } = useOnboarding()
@@ -32,9 +31,9 @@ const OnboardingForm = () => {
     const {
       onboardingRequestAction: { status, body },
     } = await graphQLFetcher({
-      query: onboardingRequestAction,
       includeCookie: true,
       parameters: { data },
+      query: onboardingRequestAction,
     })
 
     if (statusOk(status)) {

@@ -25,18 +25,18 @@ const Status = ({ status }: { status: "loading" | "success" | undefined }) => (
 )
 
 const GithubLogin = ({
-  login,
+  login = "",
   onChange,
 }: {
   login?: string
   onChange: (login: string | undefined) => void
 }) => {
   const [users, setUsers] = useState<User[]>()
+  const [value, setValue] = useState<string>(login)
+  const [loading, setLoading] = useState<boolean>(false)
   const [user, setUser] = useState<User | undefined>(
     login ? ({ login } as User) : undefined
   )
-  const [loading, setLoading] = useState<boolean>(false)
-  const [value, setValue] = useState<string | undefined>(login)
 
   const findUser = async (query: string) => {
     setLoading(true)
@@ -78,16 +78,16 @@ const GithubLogin = ({
   useEffect(() => onValueChange(value), [value, onValueChange])
 
   useEffect(() => {
-    onChange(user?.login)
+    onChange(user?.login || "")
   }, [user, onChange])
 
   return (
     <div className="github-login">
       <input
         type="text"
+        value={value}
         id="githubLogin"
         name="githubLogin"
-        value={value}
         placeholder="Cherchez votre login Github..."
         onChange={({ target: { value } }) => setValue(value)}
       />

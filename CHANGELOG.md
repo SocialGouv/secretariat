@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/SocialGouv/secretariat/compare/v1.48.2...v1.49.0) (2023-01-11)
+
+
+### Features
+
+* turn onboarding form into a wizard ([#454](https://github.com/SocialGouv/secretariat/issues/454)) ([68e9d6c](https://github.com/SocialGouv/secretariat/commit/68e9d6ccf040883473440dacdceaf07c57bd915b))
+
 ## [1.48.2](https://github.com/SocialGouv/secretariat/compare/v1.48.1...v1.48.2) (2023-01-05)
 
 

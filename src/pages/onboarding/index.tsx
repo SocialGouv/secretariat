@@ -1,7 +1,7 @@
 import Head from "next/head"
 
-import OnboardingForm from "@/components/onboarding-form"
-import OnboardingHeader from "@/components/onboarding-header"
+import OnboardingForm from "@/components/onboarding"
+import OnboardingHeader from "@/components/onboarding/header"
 
 const Onboarding = () => (
   <main>

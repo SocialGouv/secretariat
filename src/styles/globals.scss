@@ -11,6 +11,7 @@
 @use "./components/common/alert.scss";
 @use "./components/common/box.scss";
 @use "./components/common/card.scss";
+@use "./components/common/wizard.scss";
 @use "./components/authenticated-user.scss";
 @use "./components/search.scss";
 @use "./components/logo.scss";
@@ -21,6 +22,7 @@
 @use "./components/modal.scss";
 @use "./components/page-404.scss";
 @use "./components/onboarding.scss";
+@use "./components/github-login.scss";
 @use "./components/users/user-item.scss";
 @use "./components/users/user-template.scss";
 @use "./components/users/user-header.scss";

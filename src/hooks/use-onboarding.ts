@@ -1,3 +1,4 @@
+import { add } from "date-fns"
 import type { KeyedMutator } from "swr"
 
 import useSWR from "swr"
@@ -12,7 +13,7 @@ export const fallbackData = {
   githubLogin: "",
   services: { mattermost: true, ovh: false },
   arrival: new Date().toLocaleDateString("en-CA"),
-  departure: new Date().toLocaleDateString("en-CA"),
+  departure: add(new Date(), { months: 3 }).toLocaleDateString("en-CA"),
 } as OnboardingData
 
 const useOnboarding = () => {

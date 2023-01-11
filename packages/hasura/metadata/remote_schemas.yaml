@@ -8,6 +8,42 @@
     forward_client_headers: true
   comment: ""
   permissions:
+    - role: user
+      definition:
+        schema: |-
+          enum SearchType {
+            USER
+          }
+
+          scalar URI
+
+          type User {
+            name: String
+            login: String!
+            avatarUrl: URI!
+          }
+
+          union SearchResultItem = User
+
+          type PageInfo {
+            hasNextPage: Boolean!
+            hasPreviousPage: Boolean!
+          }
+
+          type SearchResultItemConnection {
+            codeCount: Int!
+            userCount: Int!
+            wikiCount: Int!
+            issueCount: Int!
+            pageInfo: PageInfo!
+            discussionCount: Int!
+            repositoryCount: Int!
+            nodes: [SearchResultItem]
+          }
+
+          type Query {
+            search(first: Int, query: String!, type: SearchType!): SearchResultItemConnection!
+          }
     - role: anonymous
       definition:
         schema: |-

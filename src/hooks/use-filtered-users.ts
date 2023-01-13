@@ -24,7 +24,7 @@ const useFilteredUsers = () => {
                   (value) => value && typeof value === "string"
                 )
               ),
-            []
+            [] as string[]
           )
       )
       .join(" ")

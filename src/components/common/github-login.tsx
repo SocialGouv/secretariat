@@ -89,6 +89,7 @@ const GithubLogin = ({
         id="githubLogin"
         name="githubLogin"
         placeholder="Cherchez votre login Github..."
+        autoComplete="off"
         onChange={({ target: { value } }) => setValue(value)}
       />
       <Status status={loading ? "loading" : user ? "success" : undefined} />

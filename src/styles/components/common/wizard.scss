@@ -1,0 +1,48 @@
+.wizard {
+  @apply flex flex-1 flex-col;
+
+  .steps {
+    @apply flex flex-col flex-1;
+
+    .step {
+      @apply flex flex-col flex-1;
+    }
+
+    .actions {
+      @apply flex mt-10;
+    }
+  }
+
+  .stepper {
+    @apply flex flex-col pb-10;
+
+    .title {
+      @apply flex flex-col mb-2;
+
+      span {
+        @apply text-sm text-grey-425-main font-normal mb-1;
+      }
+    }
+
+    .steps {
+      @apply flex flex-row gap-2 mb-3;
+
+      .step {
+        @apply bg-grey-950-main h-2;
+
+        &.active,
+        &.completed {
+          @apply bg-blue-france-113-main;
+        }
+      }
+    }
+
+    .details {
+      @apply text-xs;
+
+      span {
+        @apply font-bold;
+      }
+    }
+  }
+}

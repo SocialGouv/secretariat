@@ -73,9 +73,10 @@ a.btn {
     @apply text-sm px-3 py-2;
   }
 
-  i {
-    @apply relative top-px mr-1;
-  }
+  // i {
+    // @apply relative top-px mr-1;
+    // @apply ri-xl;
+  // }
 
   &.icon {
     @apply

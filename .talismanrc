@@ -1,2 +1,8 @@
+fileignoreconfig:
+- filename: __tests__/components/__snapshots__/users.test.js.snap
+  checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
+- filename: yarn.lock
+  checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
 scopeconfig:
-  - scope: node
+- scope: node
+version: "1.0"

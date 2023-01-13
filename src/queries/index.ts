@@ -303,13 +303,27 @@ export const insertLog = gql`
 `
 
 export const getLogs = gql`
-  query getLOgs {
+  query getLogs {
     logs(order_by: { created_at: desc }) {
       user
       parameters
       id
       created_at
       action
+    }
+  }
+`
+
+export const searchGithubUsers = gql`
+  query searchGithubUsers($query: String!) {
+    search(query: $query, type: USER, first: 10) {
+      nodes {
+        ... on User {
+          name
+          login
+          avatarUrl
+        }
+      }
     }
   }
 `

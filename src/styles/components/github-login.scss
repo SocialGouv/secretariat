@@ -1,0 +1,45 @@
+.github-login {
+  @apply relative flex;
+
+  input {
+    @apply flex-1;
+  }
+
+  ul {
+    @apply
+      z-10
+      flex-1
+      top-10
+      w-full
+      shadow
+      absolute
+      max-h-48
+      rounded-b
+      bg-white
+      overflow-auto
+    ;
+
+    li {
+      @apply
+        p-2
+        flex
+        items-center
+        bg-grey-950-main
+        hover:bg-blue-france-113-main
+        hover:text-white cursor-pointer
+      ;
+
+      img {
+        @apply rounded-full;
+      }
+
+      span {
+        @apply ml-2;
+      }
+    }
+  }
+
+  .github-login-status {
+    @apply absolute z-10 right-0 mt-2 mr-3;
+  }
+}

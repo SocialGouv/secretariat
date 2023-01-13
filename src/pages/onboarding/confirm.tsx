@@ -1,15 +1,18 @@
 import Head from "next/head"
 
 import Alert from "@/components/common/alert"
+import OnboardingHeader from "@/components/onboarding/header"
 
 const Confirm = () => (
-  <main className="flex items-center justify-center">
+  <main>
     <Head>
       <title>Secrétariat</title>
     </Head>
+    <OnboardingHeader />
     <Alert
       type="info"
-      message="Votre requête a été soumise à un administrateur pour revue."
+      title="Adresse email confirmée"
+      message="Merci d'avoir effectué la confirmation de votre adresse email. Votre requête a été soumise à un administrateur pour revue."
     />
   </main>
 )

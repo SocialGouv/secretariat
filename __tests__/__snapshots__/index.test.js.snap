@@ -53,7 +53,9 @@ exports[`renders home page 1`] = `
         >
           Effectuez une demande d'embarquement
         </h3>
-        <p>
+        <p
+          class="flex-1 mt-3 mb-6"
+        >
           Si vous arrivez aux ministères sociaux et que vous avez besoins de créer vos comptes afin d'accéder aux services de la Fabrique Numérique, vous pouvez effectuer une demande d'embarquement en cliquant sur le bouton ci-dessous.
         </p>
         <a
@@ -72,7 +74,7 @@ exports[`renders home page 1`] = `
           Administrer les comptes utilisateurs
         </h3>
         <p
-          class="flex-1"
+          class="flex-1 mt-3 mb-6"
         >
           Si vous souhaitez effectuer une revue des comptes des utilisateurs des services de la Fabrique Numérique des ministères sociaux, vous pouvez accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
         </p>

@@ -1,3 +1,10 @@
+## [1.49.1](https://github.com/SocialGouv/secretariat/compare/v1.49.0...v1.49.1) (2023-01-13)
+
+
+### Bug Fixes
+
+* disable browser autocomplete for Github login ([#466](https://github.com/SocialGouv/secretariat/issues/466)) ([5887a63](https://github.com/SocialGouv/secretariat/commit/5887a63f7451122862fb556da16dc73a15e5f9ff))
+
 # [1.49.0](https://github.com/SocialGouv/secretariat/compare/v1.48.2...v1.49.0) (2023-01-11)
 
 

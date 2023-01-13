@@ -1,6 +1,6 @@
 {
   "name": "secretariat",
-  "version": "1.48.2",
+  "version": "1.49.0",
   "engines": {
     "node": "16.13"
   },
@@ -13,6 +13,7 @@
   "dependencies": {
     "@octokit/rest": "^19.0.5",
     "@octokit/types": "^8.0.0",
+    "@socialgouv/matomo-next": "^1.5.0",
     "date-fns": "2.28.0",
     "debounce-fn": "4.0.0",
     "generate-password": "1.7.0",

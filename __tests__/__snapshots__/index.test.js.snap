@@ -2,9 +2,11 @@
 
 exports[`renders home page 1`] = `
 <div>
-  <main>
+  <main
+    class="flex flex-col pt-12 gap-12"
+  >
     <div
-      class="pt-8"
+      class="home"
     >
       <div
         class="alert warning"
@@ -27,92 +29,82 @@ exports[`renders home page 1`] = `
           <div
             class="message"
           >
-            Cette application est toujours en cours de développement. N&apo;hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique.
+            Cette application est toujours en cours de développement. N'hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique.
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="flex"
-    >
       <div
-        class="flex flex-col flex-1 justify-center p-6"
+        class="jumbo"
       >
-        <p
-          class="font-bold text-2xl mb-2"
+        <div
+          class="text"
         >
-          Bienvenue au
-        </p>
-        <h2
-          class="text-4xl"
+          <p>
+            Bienvenue au
+          </p>
+          <h2>
+            Secrétariat de la Fabrique Numérique des ministères sociaux
+          </h2>
+          <p>
+            Secrétariat est une solution numérique permettant aux membres des Startups d'Etat de gérer leurs accès aux services de la Fabrique Numérique des ministères sociaux.
+          </p>
+        </div>
+        <div
+          class="image"
         >
-          Secrétariat de la Fabrique Numérique des ministères sociaux
-        </h2>
-        <p
-          class="mt-6"
-        >
-          Secrétariat est une solution numérique permettant aux membres des Startups d'Etat de gérer leurs accès aux services de la Fabrique Numérique des ministères sociaux.
-        </p>
+          <span
+            style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+          >
+            <img
+              alt="home image"
+              data-nimg="fill"
+              decoding="async"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+            />
+            <noscript />
+          </span>
+        </div>
       </div>
       <div
-        class="flex-1 relative min-h-[400px]"
+        class="tiles"
       >
-        <span
-          style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+        <div
+          class="card"
         >
-          <img
-            alt="home image"
-            data-nimg="fill"
-            decoding="async"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-          />
-          <noscript />
-        </span>
-      </div>
-    </div>
-    <div
-      class="flex my-2 gap-x-6"
-    >
-      <div
-        class="card flex-1"
-      >
-        <h3
-          class="title"
+          <h3
+            class="title"
+          >
+            Effectuez une demande d'embarquement
+          </h3>
+          <p>
+            Si vous arrivez aux ministères sociaux et que vous avez besoins de créer vos comptes afin d'accéder aux services de la Fabrique Numérique, vous pouvez effectuer une demande d'embarquement en cliquant sur le bouton ci-dessous.
+          </p>
+          <a
+            class="btn primary"
+            href="/onboarding"
+          >
+            Demande d'embarquement
+          </a>
+        </div>
+        <div
+          class="card"
         >
-          Effectuez une demande d'embarquement
-        </h3>
-        <p
-          class="flex-1 mt-3 mb-6"
-        >
-          Si vous arrivez aux ministères sociaux et que vous avez besoins de créer vos comptes afin d'accéder aux services de la Fabrique Numérique, vous pouvez effectuer une demande d'embarquement en cliquant sur le bouton ci-dessous.
-        </p>
-        <a
-          class="btn primary"
-          href="/onboarding"
-        >
-          Demande d'embarquement
-        </a>
-      </div>
-      <div
-        class="card flex flex-col flex-1 items-start"
-      >
-        <h3
-          class="title"
-        >
-          Administrer les comptes utilisateurs
-        </h3>
-        <p
-          class="flex-1 mt-3 mb-6"
-        >
-          Si vous souhaitez effectuer une revue des comptes des utilisateurs des services de la Fabrique Numérique des ministères sociaux, vous pouvez accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
-        </p>
-        <a
-          class="btn primary"
-          href="/accounts"
-        >
-          Gestion des comptes
-        </a>
+          <h3
+            class="title"
+          >
+            Administrer les comptes utilisateurs
+          </h3>
+          <p>
+            Si vous souhaitez effectuer une revue des comptes des utilisateurs des services de la Fabrique Numérique des ministères sociaux, vous pouvez accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
+          </p>
+          <a
+            class="btn primary"
+            href="/accounts"
+          >
+            Gestion des comptes
+          </a>
+        </div>
       </div>
     </div>
   </main>

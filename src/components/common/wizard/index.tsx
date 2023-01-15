@@ -24,7 +24,7 @@ const Wizard = ({
 
   useEffect(() => setFields(data), [data])
 
-  const PreviousButton = ({ activeStepIndex }: { activeStepIndex: number }) => (
+  const PreviousButton = () => (
     <button
       className="primary flex leading-4"
       onClick={(e) => {
@@ -38,13 +38,7 @@ const Wizard = ({
     </button>
   )
 
-  const NextButton = ({
-    activeStepIndex,
-    isDisabled = false,
-  }: {
-    isDisabled?: boolean
-    activeStepIndex: number
-  }) => (
+  const NextButton = ({ isDisabled = false }: { isDisabled?: boolean }) => (
     <button
       disabled={isDisabled}
       className="primary flex leading-4"
@@ -80,15 +74,8 @@ const Wizard = ({
         <div
           className={`actions justify-${activeStepIndex ? "between" : "end"}`}
         >
-          {activeStepIndex > 0 && (
-            <PreviousButton activeStepIndex={activeStepIndex} />
-          )}
-          {!isLastStep && (
-            <NextButton
-              isDisabled={!isValidStep}
-              activeStepIndex={activeStepIndex}
-            />
-          )}
+          {activeStepIndex > 0 && <PreviousButton />}
+          {!isLastStep && <NextButton isDisabled={!isValidStep} />}
           {isLastStep && editable && <SubmitButton />}
         </div>
       </div>

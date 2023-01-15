@@ -13,7 +13,7 @@ const GithubServices = ({
 
   return (
     <div className="github-services">
-      <p className="mb-6">
+      <p>
         Si vous le souhaitez, vous pouvez{" "}
         <strong>associer votre compte Github</strong> à{" "}
         <a

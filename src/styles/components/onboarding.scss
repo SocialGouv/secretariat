@@ -1,9 +1,5 @@
 .onboarding-header {
-  @apply flex px-6 justify-center items-center;
-
-  // .icon {
-  //   @apply text-7xl flex items-center pr-6;
-  // }
+  @apply flex px-6 items-center;
 
   .text {
     @apply pt-2;
@@ -11,10 +7,10 @@
 }
 
 .onboarding {
-  @apply flex flex-col flex-1 gap-8;
+  @apply flex flex-col flex-1 mx-8 gap-12;
 
   .user-info, .default-services, .github-services {
-    @apply flex flex-col gap-6 justify-center flex-1;
+    @apply flex flex-col gap-6 flex-1;
   }
 
   .user-info {

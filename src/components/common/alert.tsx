@@ -1,10 +1,10 @@
 const Alert = ({
-  message,
   title,
   type,
+  children,
 }: {
   title?: string
-  message: string
+  children: JSX.Element
   type: "info" | "success" | "warning" | "error"
 }) => (
   <div className={`alert ${type}`}>
@@ -16,7 +16,7 @@ const Alert = ({
     </div>
     <div className="body">
       {title && <div className="title">{title}</div>}
-      <div className="message">{message}</div>
+      <div className="message">{children}</div>
     </div>
   </div>
 )

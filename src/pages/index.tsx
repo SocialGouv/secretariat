@@ -11,11 +11,13 @@ const Index = () => (
       <title>Secrétariat</title>
     </Head>
     <div className="pt-8">
-      <Alert
-        type="warning"
-        title="Version Beta"
-        message="Cette application est toujours en cours de développement. N'hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique."
-      />
+      <Alert type="warning" title="Version Beta">
+        <>
+          Cette application est toujours en cours de développement.
+          N&apo;hésitez pas à signaler tout dysfonctionnement au support
+          technique de la Fabrique Numérique.
+        </>
+      </Alert>
     </div>
     <div className="flex">
       <div className="flex flex-col flex-1 justify-center p-6">

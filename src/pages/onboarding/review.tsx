@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useSession } from "next-auth/react"
 
 import Login from "@/components/login"
-import OnboardingForm from "@/components/onboarding"
+import Onboarding from "@/components/onboarding"
 import OnboardingHeader from "@/components/onboarding/header"
 
 const Review = () => {
@@ -18,7 +18,7 @@ const Review = () => {
             valider la demande d'embarquement d'un collaborateur à la
             Fabrique Numérique des Ministères Sociaux."
       />
-      {session ? <OnboardingForm /> : <Login />}
+      {session ? <Onboarding /> : <Login />}
     </main>
   )
 }

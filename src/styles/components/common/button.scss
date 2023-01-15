@@ -5,9 +5,11 @@ a.btn {
     py-3
     relative
     leading-4
-    inline-block
     cursor-pointer
-    disabled:cursor-not-allowed;
+    disabled:cursor-not-allowed
+    inline-flex
+    ;
+
 
   &.primary {
     @apply

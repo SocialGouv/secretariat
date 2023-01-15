@@ -10,6 +10,13 @@ const Index = () => (
     <Head>
       <title>Secrétariat</title>
     </Head>
+    <div className="pt-8">
+      <Alert
+        type="warning"
+        title="Version Beta"
+        message="Cette application est toujours en cours de développement. N'hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique."
+      />
+    </div>
     <div className="flex">
       <div className="flex flex-col flex-1 justify-center p-6">
         <p className="font-bold text-2xl mb-2">Bienvenue au</p>
@@ -26,7 +33,7 @@ const Index = () => (
         <Image src={HomeImage} alt="home image" layout="fill" />
       </div>
     </div>
-    <div className="flex my-8 gap-x-6">
+    <div className="flex my-2 gap-x-6">
       <div className="card flex-1">
         <h3 className="title">Effectuez une demande d&apos;embarquement</h3>
         <p className="flex-1 mt-3 mb-6">
@@ -51,11 +58,6 @@ const Index = () => (
         </Link>
       </div>
     </div>
-    <Alert
-      type="warning"
-      title="Version Beta"
-      message="Cette application est toujours en cours de développement. N'hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique."
-    />
   </main>
 )
 

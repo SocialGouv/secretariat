@@ -1,3 +1,4 @@
+import Alert from "@/components/common/alert"
 import useOnboarding from "@/hooks/use-onboarding"
 import { useEffect } from "react"
 
@@ -48,10 +49,11 @@ const DefaultServices = ({
           <i className="ri-check-line check" />
         </li>
       </ul>
-      <p className="mt-6">
-        Des comptes dédiés seront créés pour vous. Les informations de connexion
-        vous seront envoyées par mail ultérieurement.
-      </p>
+      <Alert
+        type="info"
+        title="Information"
+        message="Des comptes dédiés seront créés pour vous. Les informations de connexion vous seront envoyées par mail ultérieurement."
+      />
     </div>
   )
 }

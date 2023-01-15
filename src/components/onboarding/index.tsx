@@ -14,7 +14,7 @@ import {
   onboardingReviewAction,
 } from "@/queries/index"
 
-const OnboardingForm = () => {
+const Onboarding = () => {
   const { data, request, id } = useOnboarding()
   const [status, setStatus] = useState<
     "create" | "review" | "reviewed" | "create_success" | "review_success"
@@ -93,7 +93,7 @@ const OnboardingForm = () => {
   }, [request?.reviewed])
 
   return (
-    <div className="onboarding-form mx-12">
+    <div className="onboarding mx-8">
       {status === "reviewed" && (
         <Alert
           type="info"
@@ -150,4 +150,4 @@ const OnboardingForm = () => {
   )
 }
 
-export default OnboardingForm
+export default Onboarding

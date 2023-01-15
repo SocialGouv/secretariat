@@ -1,5 +1,5 @@
 .wizard {
-  @apply flex flex-1 flex-col;
+  @apply flex flex-1 flex-col gap-8;
 
   .steps {
     @apply flex flex-col flex-1;
@@ -14,7 +14,7 @@
   }
 
   .stepper {
-    @apply flex flex-col pb-10;
+    @apply flex flex-col;
 
     .title {
       @apply flex flex-col mb-2;
@@ -25,7 +25,7 @@
     }
 
     .steps {
-      @apply flex flex-row gap-2 mb-3;
+      @apply flex flex-row flex-1 gap-2 mb-3;
 
       .step {
         @apply bg-grey-950-main h-2;

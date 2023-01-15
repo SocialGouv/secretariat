@@ -27,7 +27,7 @@ exports[`renders home page 1`] = `
           <div
             class="message"
           >
-            Cette application est toujours en cours de développement. N'hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique.
+            Cette application est toujours en cours de développement. N&apo;hésitez pas à signaler tout dysfonctionnement au support technique de la Fabrique Numérique.
           </div>
         </div>
       </div>

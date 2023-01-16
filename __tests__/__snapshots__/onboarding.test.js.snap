@@ -3,70 +3,124 @@
 exports[`renders onboarding page 1`] = `
 <div>
   <main
-    class="flex flex-col mt-8 px-12"
+    class="flex flex-col"
   >
-    <h2
-      class="text-4xl mb-6"
-    >
-      Embarquement à la Fabrique Numérique des Ministères Sociaux
-    </h2>
     <div
-      class="relative flex flex-1 items-center justify-center"
+      class="relative flex flex-1 justify-center"
     >
-      <span
-        style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+      <div
+        class="flex-1 flex items-center bg-red-50 rounded"
       >
         <span
-          style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+          style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
         >
+          <span
+            style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27800%27%20height=%27522%27/%3e"
+              style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+            />
+          </span>
           <img
-            alt=""
-            aria-hidden="true"
-            src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27800%27%20height=%27522%27/%3e"
-            style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+            alt="illustration embarquement"
+            data-nimg="intrinsic"
+            decoding="async"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
           />
+          <noscript />
         </span>
-        <img
-          alt="illustration embarquement"
-          data-nimg="intrinsic"
-          decoding="async"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-        />
-        <noscript />
-      </span>
-    </div>
-    <p
-      class="mb-2 mt-6 text-lg"
-    >
-      Effectuez votre demande d'
-      <strong>
-        embarquement en quelques instants
-      </strong>
-       !
-    </p>
-    <p
-      class="text-lg"
-    >
-      Une fois votre demande validée, obtenez vos
-       
-      <strong>
-        accès aux services mis à votre disposition
-      </strong>
-       par la Fabrique Numérique.
-    </p>
-    <div
-      class="flex justify-center mt-6"
-    >
-      <a
-        class="flex btn primary items-center text-2xl"
-        href="/onboarding/request"
+      </div>
+      <div
+        class="flex flex-col gap-8 pl-6"
       >
-        Commencer
-        <i
-          class="ri-arrow-right-s-line ri-xl relative left-2"
-        />
-      </a>
+        <div
+          class="TOTO"
+        >
+          <h2
+            class="text-4xl mb-3"
+          >
+            Embarquement 
+          </h2>
+          <p
+            class="text-2xl"
+          >
+            à la Fabrique Numérique des Ministères Sociaux
+          </p>
+        </div>
+        <div
+          class="TITI flex flex-col flex-1 gap-6"
+        >
+          <div
+            class="flex flex-1 items-center"
+          >
+            <i
+              class="ri-timer-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
+            >
+              Effectuez votre demande d'
+              <strong>
+                embarquement en quelques instants
+              </strong>
+               !
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex flex-1 items-center"
+          >
+            <i
+              class="ri-mail-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
+            >
+              Utilisez l'email de vérification pour
+               
+              <strong>
+                confirmer l'authenticité de votre adresse email
+              </strong>
+              .
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex flex-1 items-center"
+          >
+            <i
+              class="ri-lock-unlock-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
+            >
+              Obtenez vos
+               
+              <strong>
+                accès aux services mis à votre disposition
+              </strong>
+               par la Fabrique Numérique.
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex justify-center"
+        >
+          <a
+            class="flex leading-8 btn primary items-center text-3xl py-6 bg-red-marianne-425-main"
+            href="/onboarding/request"
+          >
+            Commencer
+            <i
+              class="ri-arrow-right-s-line relative left-2"
+            />
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 </div>

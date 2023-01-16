@@ -1,3 +1,10 @@
+# [1.50.0](https://github.com/SocialGouv/secretariat/compare/v1.49.2...v1.50.0) (2023-01-16)
+
+
+### Features
+
+* add onboarding intro page ([#469](https://github.com/SocialGouv/secretariat/issues/469)) ([5bc50dd](https://github.com/SocialGouv/secretariat/commit/5bc50dd8fb263c4a16f67b89c46473d304055be0))
+
 ## [1.49.2](https://github.com/SocialGouv/secretariat/compare/v1.49.1...v1.49.2) (2023-01-16)
 
 

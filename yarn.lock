@@ -803,9 +803,9 @@
     "@octokit/plugin-rest-endpoint-methods" "^6.7.0"
 
 "@octokit/types@^8.0.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.1.0.tgz#63f88d4b60692f450bd1ed43a2d8b96eeefdfe2f"
-  integrity sha512-N4nLjzkiWBqVQqljTTsCrbvHGoWdWfcCeZjbHdggw7a9HbJMnxbK8A+UWdqwR4out30JarlSa3eqKyVK0n5aBg==
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.1.1.tgz#92e304e0f00d563667dfdbe0ae6b52e70d5149bb"
+  integrity sha512-7tjk+6DyhYAmei8FOEwPfGKc0VE1x56CKPJ+eE44zhDbOyMT+9yan8apfQFxo8oEFsy+0O7PiBtH8w0Yo0Y9Kw==
   dependencies:
     "@octokit/openapi-types" "^14.0.0"
 
@@ -950,9 +950,9 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@socialgouv/matomo-next@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@socialgouv/matomo-next/-/matomo-next-1.5.0.tgz#9acb0395d8a601b1b71b6d7fdfca6b9958b6e327"
-  integrity sha512-yBLrIS7Ee5UzalvBk/T0apnzDWZXHHshQ3Z8mZzJJ8+x0bF5Y4zRPfYiO+ZnGMpHZTPIPqQblOdEhn9KouSgnQ==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@socialgouv/matomo-next/-/matomo-next-1.6.0.tgz#a1ae44fc51c2a19e27449cd1805b50faf7e5e318"
+  integrity sha512-0p6Ft2r2frjEC8bHs1C3s8heXzKHOjY16kLOs3HadkMnE1ZKAl018epaYAgRu/Hqi9TadYPsGxl0xlUGRkNo3Q==
 
 "@testing-library/dom@^8.0.0":
   version "8.19.1"

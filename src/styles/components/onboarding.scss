@@ -34,10 +34,6 @@
         items-center
       ;
 
-      p {
-        @apply mt-0 flex-1;
-      }
-
       i.icon {
         @apply ri-4x leading-10 mr-6 text-blue-france-113-main;
       }
@@ -51,7 +47,11 @@
 
         i.check {
           @apply text-green-600;
-        } 
+
+          &.error {
+            @apply text-red-marianne-472-main;
+          }
+        }
       }
     }
 
@@ -64,5 +64,9 @@
         ;
       }
     }
+  }
+
+  .services-accounts-statuses {
+    @apply flex flex-col gap-2;
   }
 }

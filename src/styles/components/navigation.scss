@@ -1,15 +1,16 @@
 .navigation {
-  @apply border-t px-4;
+  @apply border-t;
 
   ul {
-    @apply flex container mx-auto px-6 gap-3 items-stretch;
+    @apply flex container mx-auto px-8 gap-3 items-stretch;
 
     li {
       @apply flex items-center;
 
       a {
         @apply
-          p-3
+          py-3
+          pr-3
           text-grey-200-main
           hover:text-blue-france-113-main;
 

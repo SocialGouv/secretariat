@@ -2,217 +2,123 @@
 
 exports[`renders onboarding page 1`] = `
 <div>
-  <main>
+  <main
+    class="flex flex-col"
+  >
     <div
-      class="onboarding-header"
+      class="relative flex flex-1 justify-center"
     >
       <div
-        class="icon"
+        class="flex-1 flex items-center bg-red-50 rounded"
       >
-        🛳️
-      </div>
-      <div>
-        <h2>
-          Embarquement à la Fabrique Numérique des Ministères Sociaux
-        </h2>
-        <p
-          class="text"
+        <span
+          style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
         >
-          Remplissez le formulaire suivant afin d'effectuer une demande d'embarquement à la Fabrique Numérique des Ministères Sociaux.
-        </p>
+          <span
+            style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27800%27%20height=%27522%27/%3e"
+              style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+            />
+          </span>
+          <img
+            alt="illustration embarquement"
+            data-nimg="intrinsic"
+            decoding="async"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+          />
+          <noscript />
+        </span>
       </div>
-    </div>
-    <div
-      class="onboarding-form mx-12"
-    >
       <div
-        class="wizard"
+        class="flex flex-col gap-8 pl-6"
       >
         <div
-          class="stepper"
+          class="TOTO"
         >
           <h2
-            class="title"
+            class="text-4xl mb-3"
           >
-            <span>
-              Étape 1 sur 3
-            </span>
-            Informations Personnelles
+            Embarquement 
           </h2>
-          <div
-            class="steps"
-            data-fr-current-step="1"
-            data-fr-steps="3"
-          >
-            <div
-              class="step active"
-            />
-            <div
-              class="step"
-            />
-            <div
-              class="step"
-            />
-          </div>
           <p
-            class="details"
+            class="text-2xl"
           >
-            <span>
-              Étape suivante:
-            </span>
-             
-            Services de la Fabrique Numérique
+            à la Fabrique Numérique des Ministères Sociaux
           </p>
         </div>
         <div
-          class="steps"
+          class="TITI flex flex-col flex-1 gap-6"
         >
           <div
-            class="user-info"
+            class="flex flex-1 items-center"
           >
-            <div
-              class="fields"
+            <i
+              class="ri-timer-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
             >
-              <label
-                class="col-span-2"
-                for="firstName"
-              >
-                <div
-                  class="flex justify-between"
-                >
-                  <div>
-                    Prénom*
-                  </div>
-                  <div
-                    class="text-xs"
-                  >
-                    (obligatoire)
-                  </div>
-                </div>
-                <input
-                  autocomplete="given-name"
-                  id="firstName"
-                  name="firstName"
-                  placeholder="Jean"
-                  required=""
-                  type="text"
-                  value=""
-                />
-              </label>
-              <label
-                class="col-span-2"
-                for="lastName"
-              >
-                <div
-                  class="flex justify-between"
-                >
-                  <div>
-                    Nom*
-                  </div>
-                  <div
-                    class="text-xs"
-                  >
-                    (obligatoire)
-                  </div>
-                </div>
-                <input
-                  autocomplete="on"
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Dupont"
-                  required=""
-                  type="text"
-                  value=""
-                />
-              </label>
-              <label
-                class="col-span-2"
-                for="email"
-              >
-                <div
-                  class="flex justify-between"
-                >
-                  <div>
-                    Email*
-                  </div>
-                  <div
-                    class="text-xs"
-                  >
-                    (obligatoire)
-                  </div>
-                </div>
-                <input
-                  autocomplete="on"
-                  id="email"
-                  name="email"
-                  placeholder="jean.dupont@domaine.fr"
-                  required=""
-                  type="email"
-                  value=""
-                />
-              </label>
-              <label
-                for="arrival"
-              >
-                Date de début
-                <input
-                  id="arrival"
-                  name="arrival"
-                  required=""
-                  type="date"
-                  value="2020-08-20"
-                />
-              </label>
-              <label
-                for="departure"
-              >
-                Date de fin
-                <input
-                  id="departure"
-                  name="departure"
-                  required=""
-                  type="date"
-                  value="2020-11-20"
-                />
-              </label>
-              <label
-                class="col-span-4"
-                for="#message"
-              >
-                <div
-                  class="flex justify-between"
-                >
-                  <div>
-                    Présentation*
-                  </div>
-                  <div
-                    class="text-xs"
-                  >
-                    (obligatoire)
-                  </div>
-                </div>
-                <textarea
-                  name="message"
-                  placeholder="Bonjour, je suis PO sur le produit XYZ et je souhaiterais obtenir des accès à la messagerie instantanée ainsi qu'à l'organisation Github de la Fabrique Numérique."
-                  required=""
-                  rows="3"
-                />
-              </label>
-            </div>
+              Effectuez votre demande d'
+              <strong>
+                embarquement en quelques instants
+              </strong>
+               !
+            </p>
           </div>
+          <hr />
           <div
-            class="actions justify-end"
+            class="flex flex-1 items-center"
           >
-            <button
-              class="primary flex"
-              disabled=""
+            <i
+              class="ri-mail-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
             >
-              Suivant
-              <i
-                class="ri-arrow-right-s-line ri-xl relative left-2"
-              />
-            </button>
+              Utilisez l'email de vérification pour
+               
+              <strong>
+                confirmer l'authenticité de votre adresse email
+              </strong>
+              .
+            </p>
           </div>
+          <hr />
+          <div
+            class="flex flex-1 items-center"
+          >
+            <i
+              class="ri-lock-unlock-line ri-4x text-blue-france-113-main"
+            />
+            <p
+              class="text-lg ml-6"
+            >
+              Obtenez vos
+               
+              <strong>
+                accès aux services mis à votre disposition
+              </strong>
+               par la Fabrique Numérique.
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex justify-center"
+        >
+          <a
+            class="flex leading-8 btn primary items-center text-3xl py-6 bg-red-marianne-425-main"
+            href="/onboarding/request"
+          >
+            Commencer
+            <i
+              class="ri-arrow-right-s-line relative left-2"
+            />
+          </a>
         </div>
       </div>
     </div>

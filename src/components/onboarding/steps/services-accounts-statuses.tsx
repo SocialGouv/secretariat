@@ -16,12 +16,15 @@ const ServicesAccountsStatuses = ({
       Object.entries(statuses).map(([service, status], i) => (
         <Alert
           key={i}
-          type={statusOk(status.status) ? "success" : "error"}
           title={service}
-          message={
-            typeof status.body === "string" ? status.body : status.body.message
-          }
-        />
+          type={statusOk(status.status) ? "success" : "error"}
+        >
+          <>
+            {typeof status.body === "string"
+              ? status.body
+              : status.body.message}
+          </>
+        </Alert>
       ))}
   </div>
 )

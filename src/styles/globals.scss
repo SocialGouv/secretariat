@@ -20,6 +20,7 @@
 @use "./components/footer.scss";
 @use "./components/login.scss";
 @use "./components/modal.scss";
+@use "./components/home.scss";
 @use "./components/page-404.scss";
 @use "./components/onboarding.scss";
 @use "./components/github-login.scss";
@@ -65,12 +66,13 @@ aside {
 
 main {
   @apply
-    px-6
+    px-8
+    py-12
     flex-1
     mx-auto
     container;
 
-  min-height: calc(100vh - 30rem);
+  min-height: calc(100vh - 24rem);
 
   & > .loader {
     height: calc(100vh - 9.5rem);

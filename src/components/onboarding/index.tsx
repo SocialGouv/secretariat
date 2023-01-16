@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useEffect, useMemo, useState } from "react"
 
 import statusOk from "@/utils/status-ok"
@@ -14,7 +15,7 @@ import {
   onboardingReviewAction,
 } from "@/queries/index"
 
-const OnboardingForm = () => {
+const Onboarding = () => {
   const { data, request, id } = useOnboarding()
   const [status, setStatus] = useState<
     "create" | "review" | "reviewed" | "create_success" | "review_success"
@@ -93,16 +94,16 @@ const OnboardingForm = () => {
   }, [request?.reviewed])
 
   return (
-    <div className="onboarding-form mx-12">
+    <div className="onboarding">
       {status === "reviewed" && (
-        <Alert
-          type="info"
-          title="Demande validée"
-          message={`Cette demande d'embarquement a été validée${
-            request.reviewed?.author &&
-            ` par ${request.reviewed.author} le ${reviewDate}`
-          }.`}
-        />
+        <Alert type="info" title="Demande validée">
+          <>
+            Cette demande d&apos;embarquement a été validée{" "}
+            {request.reviewed?.author &&
+              ` par ${request.reviewed.author} le ${reviewDate}`}
+            .
+          </>
+        </Alert>
       )}
 
       {status !== "create_success" && status !== "review_success" && (
@@ -115,39 +116,51 @@ const OnboardingForm = () => {
       )}
 
       {status === "create_success" && (
-        <Alert
-          type="success"
-          title="Demande d'embarquement effectuée"
-          message="Un email de confirmation vient de vous être envoyé. Veuillez suivre le lien présent dans l'email afin de continuer votre embarquement."
-        />
+        <div className="flex flex-col flex-1 gap-12">
+          <Alert type="success" title="Demande d'embarquement effectuée">
+            <>
+              Un <strong>email de confirmation</strong> vient de vous être
+              envoyé. Veuillez{" "}
+              <strong>suivre le lien présent dans l&apos;email</strong> afin de
+              continuer votre embarquement.
+            </>
+          </Alert>
+          <div className="flex-1 relative flex justify-center">
+            <Image
+              width={674}
+              height={636}
+              src="/images/email-sent.png"
+              alt="illustration email envoyé"
+            />
+          </div>
+        </div>
       )}
 
       {status === "review_success" && (
         <>
-          <Alert
-            type="info"
-            title="Demande d'embarquement validée"
-            message="Un email récapitulatif a été envoyé à l'émetteur de la requête d'embarquement."
-          />
+          <Alert type="info" title="Demande d'embarquement validée">
+            <>
+              Un email récapitulatif a été envoyé à l&apos;émetteur de la
+              requête d&spo;embarquement.
+            </>
+          </Alert>
           <ServicesAccountsStatuses statuses={servicesAccountsStatuses} />
         </>
       )}
 
       {statusMessage === "create_error" && (
-        <Alert
-          type="error"
-          message="Une erreur est survenue veuillez réessayer ultérieurement."
-        />
+        <Alert type="error">
+          <>Une erreur est survenue veuillez réessayer ultérieurement.</>
+        </Alert>
       )}
 
       {statusMessage === "create_already_exists" && (
-        <Alert
-          type="warning"
-          message="Une demande d'embarquement utilisant cet email existe déjà."
-        />
+        <Alert type="warning">
+          <>Une demande d&apos;embarquement utilisant cet email existe déjà.</>
+        </Alert>
       )}
     </div>
   )
 }
 
-export default OnboardingForm
+export default Onboarding

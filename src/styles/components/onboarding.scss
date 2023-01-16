@@ -1,17 +1,17 @@
 .onboarding-header {
-  @apply flex px-6 py-12;
-
-  .icon {
-    @apply text-7xl flex items-center pr-6;
-  }
+  @apply flex items-center;
 
   .text {
     @apply pt-2;
   }
 }
 
-.onboarding-form {
-  @apply flex flex-col gap-8;
+.onboarding {
+  @apply flex flex-col flex-1 gap-12;
+
+  .user-info, .default-services, .github-services {
+    @apply flex flex-col gap-8 flex-1;
+  }
 
   .user-info {
     .fields {
@@ -24,11 +24,12 @@
   }
 
   ul.services-list {
+    @apply flex flex-col gap-6;
+
     li {
       @apply
         card
         flex
-        mt-6
         shadow-md
         items-center
       ;

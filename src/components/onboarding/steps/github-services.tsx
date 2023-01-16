@@ -13,8 +13,9 @@ const GithubServices = ({
 
   return (
     <div className="github-services">
-      <p className="mb-6">
-        Si vous le souhaitez, vous pouvez associer votre compte Github à{" "}
+      <p>
+        Si vous le souhaitez, vous pouvez{" "}
+        <strong>associer votre compte Github</strong> à{" "}
         <a
           target="_blank"
           rel="noreferrer"
@@ -22,8 +23,12 @@ const GithubServices = ({
         >
           l&apos;organisation SocialGouv de la Fabrique Numérique
         </a>{" "}
-        et profiter de l&apos;authentification Github pour accéder à certains
-        services de la Fabrique Numérique.
+        et{" "}
+        <strong>
+          profiter de l&apos;authentification Github pour accéder à de nombreux
+          services
+        </strong>{" "}
+        de la Fabrique Numérique.
       </p>
 
       <GithubLogin

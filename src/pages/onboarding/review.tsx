@@ -2,23 +2,22 @@ import Head from "next/head"
 import { useSession } from "next-auth/react"
 
 import Login from "@/components/login"
-import OnboardingForm from "@/components/onboarding"
+import Onboarding from "@/components/onboarding"
 import OnboardingHeader from "@/components/onboarding/header"
 
 const Review = () => {
   const { data: session } = useSession()
 
   return (
-    <main>
+    <main className="flex flex-col pt-12 gap-12">
       <Head>
         <title>Secrétariat</title>
       </Head>
       <OnboardingHeader
-        text="En tant qu'administrateur, vous pouvez effectuer une revue et
-            valider la demande d'embarquement d'un collaborateur à la
-            Fabrique Numérique des Ministères Sociaux."
+        text="En tant qu'administrateur, effectuez une revue et
+            validez la demande d'embarquement."
       />
-      {session ? <OnboardingForm /> : <Login />}
+      {session ? <Onboarding /> : <Login />}
     </main>
   )
 }

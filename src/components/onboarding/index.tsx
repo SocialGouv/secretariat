@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useEffect, useMemo, useState } from "react"
 
 import statusOk from "@/utils/status-ok"
@@ -115,13 +116,24 @@ const Onboarding = () => {
       )}
 
       {status === "create_success" && (
-        <Alert type="success" title="Demande d'embarquement effectuée">
-          <>
-            Un email de confirmation vient de vous être envoyé. Veuillez suivre
-            le lien présent dans l&apos;email afin de continuer votre
-            embarquement.
-          </>
-        </Alert>
+        <div className="flex flex-col flex-1 gap-12">
+          <Alert type="success" title="Demande d'embarquement effectuée">
+            <>
+              Un <strong>email de confirmation</strong> vient de vous être
+              envoyé. Veuillez{" "}
+              <strong>suivre le lien présent dans l&apos;email</strong> afin de
+              continuer votre embarquement.
+            </>
+          </Alert>
+          <div className="flex-1 relative flex justify-center">
+            <Image
+              width={674}
+              height={636}
+              src="/images/email-sent.png"
+              alt="illustration email envoyé"
+            />
+          </div>
+        </div>
       )}
 
       {status === "review_success" && (

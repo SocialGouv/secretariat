@@ -15,7 +15,7 @@ const DefaultServices = ({
   return (
     <div className="default-services">
       <p>Sélectionnez les services qui vous intéressent :</p>
-      <ul className="services-list editable mb-6">
+      <ul className="services-list editable">
         <li
           onClick={() =>
             mutate({
@@ -52,7 +52,7 @@ const DefaultServices = ({
       <Alert type="info" title="Information">
         <>
           Des comptes dédiés seront créés pour vous. Les informations de
-          connexion vous seront envoyées par mail ultérieurement.
+          connexion vous seront envoyées par email ultérieurement.
         </>
       </Alert>
     </div>

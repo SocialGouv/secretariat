@@ -24,13 +24,9 @@ const Wizard = ({
 
   useEffect(() => setFields(data), [data])
 
-  // const handleChange = (name: string, value: string) => {
-  //   setFields({ ...fields, [name]: value })
-  // }
-
   const PreviousButton = ({ activeStepIndex }: { activeStepIndex: number }) => (
     <button
-      className="primary flex"
+      className="primary flex leading-4"
       onClick={(e) => {
         e.preventDefault()
         setValidStep(false)
@@ -42,34 +38,6 @@ const Wizard = ({
     </button>
   )
 
-  // const NextButton = ({
-  //   isLastStep,
-  //   activeStepIndex,
-  //   isDisabled = false,
-  // }: {
-  //   isLastStep: boolean
-  //   isDisabled?: boolean
-  //   activeStepIndex: number
-  // }) => (
-  //   <button
-  //     disabled={isDisabled}
-  //     className="primary flex"
-  //     onClick={(e) => {
-  //       e.preventDefault()
-  //       setValidStep(false)
-  //       setActiveStepIndex(activeStepIndex + 1)
-  //       if (isLastStep) onComplete(fields)
-  //     }}
-  //   >
-  //     {isLastStep ? "Terminer" : "Suivant"}
-  //     {isLastStep ? (
-  //       <i className="ri-check-line ri-xl relative left-1" />
-  //     ) : (
-  //       <i className="ri-arrow-right-s-line ri-xl relative left-2" />
-  //     )}
-  //   </button>
-  // )
-
   const NextButton = ({
     activeStepIndex,
     isDisabled = false,
@@ -79,7 +47,7 @@ const Wizard = ({
   }) => (
     <button
       disabled={isDisabled}
-      className="primary flex"
+      className="primary flex leading-4"
       onClick={(e) => {
         e.preventDefault()
         setValidStep(false)
@@ -93,11 +61,9 @@ const Wizard = ({
 
   const SubmitButton = () => (
     <button
-      className="primary flex"
+      className="primary flex leading-4"
       onClick={(e) => {
         e.preventDefault()
-        // setValidStep(false)
-        // setActiveStepIndex(activeStepIndex + 1)
         onComplete(fields)
       }}
     >

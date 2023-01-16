@@ -7,7 +7,7 @@ const OnboardingHeader = ({ text }: { text?: string }) => (
       </h2>
       <p className="text">
         {text ||
-          "Remplissez le formulaire suivant afin d'effectuer une demande d'embarquement à la Fabrique Numérique."}
+          "Remplissez le formulaire afin d'effectuer une demande d'embarquement à la Fabrique Numérique."}
       </p>
     </div>
   </div>

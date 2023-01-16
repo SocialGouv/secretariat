@@ -1,9 +1,8 @@
 footer { /* stylelint-disable-line */
   @apply
-    mt-10
-    border-t-2
-    border-blue-france-113-main
-    dark:border-blue-france-625-main;
+  border-t-2
+  border-blue-france-113-main
+  dark:border-blue-france-625-main;
 
   .footer-content {
     @apply

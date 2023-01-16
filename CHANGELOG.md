@@ -1,3 +1,10 @@
+## [1.49.2](https://github.com/SocialGouv/secretariat/compare/v1.49.1...v1.49.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency jsonwebtoken to v9 [security] ([#453](https://github.com/SocialGouv/secretariat/issues/453)) ([81369a5](https://github.com/SocialGouv/secretariat/commit/81369a546538128b4e34d1a5f2fb9aaf3ca78bd0))
+
 ## [1.49.1](https://github.com/SocialGouv/secretariat/compare/v1.49.0...v1.49.1) (2023-01-13)
 
 

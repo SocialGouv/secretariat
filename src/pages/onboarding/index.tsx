@@ -7,9 +7,6 @@ const Onboarding = () => (
     <Head>
       <title>Secrétariat</title>
     </Head>
-    {/* <h2 className="text-4xl mb-6">
-      Embarquement à la Fabrique Numérique des Ministères Sociaux
-    </h2> */}
     <div className="relative flex flex-1 justify-center">
       <div className="flex-1 flex items-center bg-red-50 rounded">
         <Image

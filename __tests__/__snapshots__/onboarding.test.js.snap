@@ -3,7 +3,7 @@
 exports[`renders onboarding page 1`] = `
 <div>
   <main
-    class="flex flex-col"
+    class="flex flex-col pt-12"
   >
     <div
       class="relative flex flex-1 justify-center"
@@ -37,11 +37,9 @@ exports[`renders onboarding page 1`] = `
       <div
         class="flex flex-col gap-8 pl-6"
       >
-        <div
-          class="TOTO"
-        >
+        <div>
           <h2
-            class="text-4xl mb-3"
+            class="text-4xl"
           >
             Embarquement 
           </h2>
@@ -52,16 +50,16 @@ exports[`renders onboarding page 1`] = `
           </p>
         </div>
         <div
-          class="TITI flex flex-col flex-1 gap-6"
+          class="flex flex-col flex-1 justify-center"
         >
           <div
-            class="flex flex-1 items-center"
+            class="flex items-center py-8"
           >
             <i
               class="ri-timer-line ri-4x text-blue-france-113-main"
             />
             <p
-              class="text-lg ml-6"
+              class="text-lg ml-6 flex-1"
             >
               Effectuez votre demande d'
               <strong>
@@ -72,13 +70,13 @@ exports[`renders onboarding page 1`] = `
           </div>
           <hr />
           <div
-            class="flex flex-1 items-center"
+            class="flex items-center py-8"
           >
             <i
               class="ri-mail-line ri-4x text-blue-france-113-main"
             />
             <p
-              class="text-lg ml-6"
+              class="text-lg ml-6 flex-1"
             >
               Utilisez l'email de vérification pour
                
@@ -90,13 +88,13 @@ exports[`renders onboarding page 1`] = `
           </div>
           <hr />
           <div
-            class="flex flex-1 items-center"
+            class="flex items-center py-8"
           >
             <i
               class="ri-lock-unlock-line ri-4x text-blue-france-113-main"
             />
             <p
-              class="text-lg ml-6"
+              class="text-lg ml-6 flex-1"
             >
               Obtenez vos
                

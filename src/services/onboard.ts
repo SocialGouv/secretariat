@@ -5,9 +5,10 @@ import {
 } from "@/utils/env"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
-import sluggifyString from "@/utils/sluggify-string"
+import logger from "@/utils/logger"
 import ovh from "@/utils/ovh"
 import SERVICES from "@/utils/SERVICES"
+import sluggifyString from "@/utils/sluggify-string"
 import statusOk from "@/utils/status-ok"
 import strongPassword from "@/utils/strong-password"
 import pReduce from "p-reduce"
@@ -125,6 +126,20 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   }
 }
 
+const redactServicesCreationResponses = (servicesCreationResponses: any) => {
+  if ("ovh" in servicesCreationResponses) {
+    return {
+      ...servicesCreationResponses,
+      // Remove mailInfo key
+      ovh: {
+        status: servicesCreationResponses.ovh.status,
+        body: servicesCreationResponses.ovh.body,
+      },
+    }
+  }
+  return servicesCreationResponses
+}
+
 const accountCreators: Record<string, any> = {
   github: githubAccountCreator,
   mattermost: mattermostAccountCreator,
@@ -186,6 +201,8 @@ const onboard = async ({
     ...(user.githubLogin !== "" ? ["github"] : []),
   ]
 
+  logger.info({ servicesToCreate, user }, "started onboarding user")
+
   if (servicesToCreate.length === 0) {
     return {}
   }
@@ -200,6 +217,17 @@ const onboard = async ({
   )
 
   await createAccountsOnSuccess(user, servicesCreationResponses)
+
+  logger.info(
+    {
+      servicesToCreate,
+      user,
+      servicesCreationResponses: redactServicesCreationResponses(
+        servicesCreationResponses
+      ),
+    },
+    "finished onboarding user"
+  )
 
   return servicesCreationResponses
 }

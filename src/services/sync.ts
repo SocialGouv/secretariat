@@ -7,6 +7,7 @@ import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
+import logger from "@/utils/logger"
 import {
   deleteServices,
   deleteUsers,
@@ -162,6 +163,8 @@ const deleteOrphanUsers = async (
 }
 
 const sync = async (enabledServices: ServiceName[]) => {
+  logger.info({ enabledServices }, "started sync")
+
   const token = getJwt()
 
   const stats: syncStats = {
@@ -208,8 +211,7 @@ const sync = async (enabledServices: ServiceName[]) => {
   const deletedUsers = await deleteOrphanUsers(affectedUsers, token)
   stats.userDeletions = deletedUsers
 
-  console.log("updated users table with all services data")
-  console.log(stats)
+  logger.info({ stats, enabledServices }, "finished sync")
 
   return stats
 }

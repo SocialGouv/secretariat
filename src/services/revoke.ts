@@ -16,6 +16,7 @@ import {
 import { getJwt } from "@/utils/jwt"
 import statusOk from "@/utils/status-ok"
 import ovh from "@/utils/ovh"
+import logger from "@/utils/logger"
 
 const deleteAccountOnSuccess = async (status: number, accountID: string) => {
   if (!statusOk(status)) {
@@ -178,6 +179,10 @@ const revoke = async (
   accountID: string,
   serviceName: ServiceName
 ) => {
+  logger.info(
+    { serviceName, accountID, accountServiceID },
+    "started revoking account"
+  )
   return accountRevokers[serviceName](accountServiceID, accountID)
 }
 

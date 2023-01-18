@@ -14,6 +14,10 @@ const services: Record<string, Record<"icon" | "message", string>> = {
     icon: "ri-wechat-line",
     message: "Obtenir un compte de messagerie instantanée (Mattermost)",
   },
+  ovh: {
+    icon: "ri-mail-line",
+    message: "Obtenir une adresse email @fabrique.social.gouv.fr (OVH)",
+  },
 }
 
 const ServicesAccountsStatuses = ({
@@ -29,9 +33,11 @@ const ServicesAccountsStatuses = ({
             <i className={`${services[service].icon} icon`} />
             <div className="flex-1">
               <p>{services[service].message}</p>
-              <pre className="text-sm rounded mt-2 py-2 px-3 bg-red-marianne-950-main text-red-marianne-425-main">
-                {typeof body === "string" ? body : body.message}
-              </pre>
+              {!statusOk(status) && (
+                <pre className="text-sm rounded mt-2 py-2 px-3 bg-red-marianne-950-main text-red-marianne-425-main">
+                  {typeof body === "string" ? body : body.message}
+                </pre>
+              )}
             </div>
 
             {statusOk(status) ? (

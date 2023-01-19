@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/SocialGouv/secretariat/compare/v1.51.1...v1.52.0) (2023-01-19)
+
+
+### Features
+
+* use pino for logging ([#474](https://github.com/SocialGouv/secretariat/issues/474)) ([2ff7e93](https://github.com/SocialGouv/secretariat/commit/2ff7e93d6f856514fd7262270d562546e55a9e16))
+
 ## [1.51.1](https://github.com/SocialGouv/secretariat/compare/v1.51.0...v1.51.1) (2023-01-18)
 
 

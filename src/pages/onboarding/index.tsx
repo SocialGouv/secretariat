@@ -17,7 +17,7 @@ const Onboarding = () => (
           alt="illustration embarquement"
         />
       </div>
-      <div className="flex flex-col gap-12 flex-2 ml-24 justify-center">
+      <div className="flex flex-col gap-12 flex-2 ml-12 justify-center pb-3">
         <div>
           <h2 className="text-6xl">Embarquement</h2>
           <p className="text-2xl">

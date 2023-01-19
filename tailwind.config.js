@@ -350,18 +350,9 @@ const colors = {
 }
 
 module.exports = {
+  plugins: [],
   darkMode: "class",
-  content: [
-    // "./src/pages/**/*.{js,ts,jsx,tsx}",
-    // "./src/hooks/**/*.{js,ts,jsx,tsx}",
-    // "./src/mocks/**/*.{js,ts,jsx,tsx}",
-    // "./src/types/**/*.{js,ts,jsx,tsx}",
-    // "./src/utils/**/*.{js,ts,jsx,tsx}",
-    // "./src/queries/**/*.{js,ts,jsx,tsx}",
-    // "./src/services/**/*.{js,ts,jsx,tsx}",
-    // "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,jsx,ts,tsx,scss}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx,scss}"],
   theme: {
     extend: {
       colors: colors,
@@ -369,6 +360,13 @@ module.exports = {
       borderColor: colors,
       backgroundColor: colors,
       gradientColorStops: colors,
+      flex: {
+        2: "2 2 0%",
+      },
+      fontSize: {
+        "5xl": ["3rem", "4rem"],
+        "6xl": ["3.75rem", "5rem"],
+      },
       fontFamily: {
         arial: ["arial", "sans-serif"],
         spectral: ["Spectral", "serif"],
@@ -385,15 +383,4 @@ module.exports = {
       },
     },
   },
-  // variants: {
-  //   extend: {
-  //     margin: ["last"],
-  //     padding: ["first"],
-  //     boxShadow: ["active"],
-  //     cursor: ["disabled"],
-  //     borderWidth: ["last"],
-  //     backgroundColor: ["odd", "even", "active"],
-  //   },
-  // },
-  plugins: [],
 }

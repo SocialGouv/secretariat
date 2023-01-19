@@ -67,12 +67,12 @@ aside {
 main {
   @apply
     px-8
-    py-12
+    pb-12
     flex-1
     mx-auto
     container;
 
-  min-height: calc(100vh - 24rem);
+  min-height: calc(100vh - 21rem);
 
   & > .loader {
     height: calc(100vh - 9.5rem);

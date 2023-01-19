@@ -15,18 +15,26 @@ const ContentSecurityPolicy =
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-      connect-src 'self' api.github.com ${process.env.NEXT_PUBLIC_HASURA_URL};
+      connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL};
     `
     : `
       default-src 'self';
       font-src 'self';
       img-src 'self' data:;
       style-src 'self' 'unsafe-inline';
-      connect-src 'self' localhost:8080 api.github.com;
+      connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr;
       script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `
 
 const securityHeaders = [
+  {
+    key: "X-XSS-Protection",
+    value: "1; mode=block",
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
   {
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),

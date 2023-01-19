@@ -42,6 +42,10 @@
         @apply ri-4x leading-10 ml-6 text-grey-950-main transition-colors;
       }
       
+      p {
+        @apply flex-1;
+      }
+
       &.selected {
         @apply shadow-sm;
 

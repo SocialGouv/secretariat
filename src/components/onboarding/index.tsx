@@ -127,6 +127,7 @@ const Onboarding = () => {
           </Alert>
           <div className="flex-1 relative flex justify-center">
             <Image
+              priority
               width={674}
               height={636}
               src="/images/email-sent.png"

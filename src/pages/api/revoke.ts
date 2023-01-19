@@ -1,11 +1,13 @@
-import { NextApiRequest, NextApiResponse } from "next"
 import revoke from "@/services/revoke"
-import SERVICES from "@/utils/SERVICES"
-import { getToken } from "next-auth/jwt"
+import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
+import SERVICES from "@/utils/SERVICES"
+import { NextApiRequest, NextApiResponse } from "next"
+import { getToken } from "next-auth/jwt"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
+  httpLogger(req, res)
   if (req.method !== "DELETE") {
     res.setHeader("Allow", "DELETE")
     res.status(405).json({ message: "Method Not Allowed" })

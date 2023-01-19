@@ -1,3 +1,10 @@
+## [1.51.1](https://github.com/SocialGouv/secretariat/compare/v1.51.0...v1.51.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* missing ovh message and empty error message on success ([#475](https://github.com/SocialGouv/secretariat/issues/475)) ([732f55d](https://github.com/SocialGouv/secretariat/commit/732f55d130a1dde7ebcb4ed5521dce426fea6353))
+
 # [1.51.0](https://github.com/SocialGouv/secretariat/compare/v1.50.0...v1.51.0) (2023-01-16)
 
 

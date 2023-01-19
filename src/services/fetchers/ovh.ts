@@ -3,6 +3,7 @@ import { setTimeout } from "timers/promises"
 
 import { OVH_SERVICE_NAME } from "@/utils/env"
 import ovh from "@/utils/ovh"
+import logger from "@/utils/logger"
 
 export const fetchOvhUsers = async (
   msDelay: number
@@ -22,7 +23,7 @@ export const fetchOvhUsers = async (
         "GET",
         `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
       )
-      console.log(`fetched OVH user ${index + 1}/${emails.length}`)
+      logger.info(`fetched OVH user ${index + 1}/${emails.length}`)
       await setTimeout(msDelay)
       return response.success ? response.data : {}
     },

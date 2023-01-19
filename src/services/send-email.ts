@@ -1,5 +1,6 @@
 import { TIPIMAIL_API_KEY, TIPIMAIL_API_USER } from "@/utils/env"
-import statusOk from "./status-ok"
+import logger from "../utils/logger"
+import statusOk from "../utils/status-ok"
 
 const html = (body: string) => `
 <head>
@@ -54,7 +55,7 @@ const sendEmail = async (
   textBody: string,
   htmlBody: string
 ) => {
-  return fetch("https://api.tipimail.com/v1/messages/send", {
+  const response = await fetch("https://api.tipimail.com/v1/messages/send", {
     method: "POST",
     body: JSON.stringify({
       to: recipients,
@@ -78,6 +79,16 @@ const sendEmail = async (
       "X-Tipimail-ApiUser": TIPIMAIL_API_USER,
     },
   })
+  logger.info(
+    {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers),
+      body: await response.json(),
+    },
+    "Tipimail API response"
+  )
+  return response
 }
 
 const mattermostFeedback = (

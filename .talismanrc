@@ -1,6 +1,8 @@
 fileignoreconfig:
 - filename: __tests__/components/__snapshots__/users.test.js.snap
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
+- filename: next.config.js
+  checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
 - filename: src/components/onboarding/steps/services-accounts-statuses.tsx
   checksum: b118715f8269bd92790bbe4019159567893d2517cad7ef2a639e456d924b88ca
 - filename: yarn.lock

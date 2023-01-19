@@ -3,6 +3,7 @@ import { setTimeout } from "timers/promises"
 
 import fetcher from "@/utils/rest-fetcher"
 import { NEXTCLOUD_API_LOGIN, NEXTCLOUD_API_SECRET } from "@/utils/env"
+import logger from "@/utils/logger"
 
 const PAGE_SIZE = 100 // not sure about the real max for Nextcloud's API
 
@@ -63,7 +64,7 @@ export const fetchNextcloudUsers = async (
         const {
           ocs: { data: user },
         } = await fetchNextcloudUser(login)
-        console.log(`fetched Nextcloud user ${index + 1}/${logins.length}`)
+        logger.info(`fetched Nextcloud user ${index + 1}/${logins.length}`)
         await setTimeout(msDelay)
         return user
       },

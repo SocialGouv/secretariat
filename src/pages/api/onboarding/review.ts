@@ -1,13 +1,15 @@
 import { getOnboardingRequest, updateOnboardingRequest } from "@/queries/index"
 import onboard from "@/services/onboard"
+import { sendReviewMail } from "@/services/send-email"
 import graphQLFetcher from "@/utils/graphql-fetcher"
+import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
-import { sendReviewMail } from "@/utils/send-email"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 
 const Review = async (req: NextApiRequest, res: NextApiResponse) => {
+  httpLogger(req, res)
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST")
     res.status(405).json({ message: "Method Not Allowed" })

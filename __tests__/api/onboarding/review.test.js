@@ -3,7 +3,7 @@ import { createMocks } from "node-mocks-http"
 import { getToken } from "next-auth/jwt"
 import handleReview from "../../../src/pages/api/onboarding/review"
 import { graphql } from "msw"
-import { sendReviewMail } from "@/utils/send-email"
+import { sendReviewMail } from "@/services/send-email"
 import { server } from "@/mocks/server"
 
 jest.mock("next-auth/jwt", () => ({
@@ -16,7 +16,7 @@ jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({
   getJwt: jest.fn(),
 }))
-jest.mock("@/utils/send-email", () => ({
+jest.mock("@/services/send-email", () => ({
   sendReviewMail: jest.fn(),
 }))
 

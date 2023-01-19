@@ -1,12 +1,12 @@
 import handleRequest from "../../../src/pages/api/onboarding/request"
 import { createMocks } from "node-mocks-http"
 import { graphql } from "msw"
-import { sendRequestMail } from "@/utils/send-email"
+import { sendRequestMail } from "@/services/send-email"
 import { server } from "@/mocks/server"
 
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
-jest.mock("@/utils/send-email", () => ({
+jest.mock("@/services/send-email", () => ({
   sendRequestMail: jest.fn(() => ({
     status: 200,
     text: () => Promise.resolve("response"),

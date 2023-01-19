@@ -24,7 +24,7 @@ const Home = () => (
         </p>
       </div>
       <div className="image">
-        <Image src={HomeImage} alt="home image" layout="fill" />
+        <Image priority src={HomeImage} alt="home image" layout="fill" />
       </div>
     </div>
     <div className="tiles">

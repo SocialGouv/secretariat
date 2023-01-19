@@ -20,6 +20,7 @@ const Confirm = () => (
       </Alert>
       <div className="flex-1 relative flex justify-center">
         <Image
+          priority
           width={916}
           height={600}
           src="/images/email-confirmed.png"

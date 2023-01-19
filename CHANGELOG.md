@@ -1,3 +1,10 @@
+## [1.52.1](https://github.com/SocialGouv/secretariat/compare/v1.52.0...v1.52.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* styles ([#472](https://github.com/SocialGouv/secretariat/issues/472)) ([de3d5ea](https://github.com/SocialGouv/secretariat/commit/de3d5ea8a5007557c0c6c55ddd09c3925b1868c5))
+
 # [1.52.0](https://github.com/SocialGouv/secretariat/compare/v1.51.1...v1.52.0) (2023-01-19)
 
 

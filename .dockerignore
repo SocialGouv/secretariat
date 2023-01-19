@@ -13,3 +13,4 @@ npm-debug.log
 README.md
 packages
 sonar-project.properties
+.tmuxp.yaml

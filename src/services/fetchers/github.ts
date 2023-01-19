@@ -4,6 +4,7 @@ import { setTimeout } from "timers/promises"
 import { getJwt } from "@/utils/jwt"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
+import logger from "@/utils/logger"
 
 const fetchGithubPage = async (token: string, cursor?: string) => {
   // if it is the query for the first page, we don't have a cursor
@@ -63,7 +64,7 @@ export const fetchGithubUsers = async (
           userLogins: user.login,
         },
       })
-      console.log(`fetched teams for Github user ${index + 1}/${users.length}`)
+      logger.info(`fetched teams for Github user ${index + 1}/${users.length}`)
       await setTimeout(msDelay) // so that we don't spam the remote API
       return { ...user, teams: teamsList }
     },

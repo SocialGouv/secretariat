@@ -1,16 +1,17 @@
-import { NextApiRequest, NextApiResponse } from "next"
-
-import { getJwt } from "@/utils/jwt"
-import graphQLFetcher from "@/utils/graphql-fetcher"
-import { sendRequestMail } from "@/utils/send-email"
-import { NEXTAUTH_URL } from "@/utils/env"
 import {
   createOnboardingRequest,
   getOnboardingRequestContaining,
 } from "@/queries/index"
+import { sendRequestMail } from "@/services/send-email"
+import { NEXTAUTH_URL } from "@/utils/env"
+import graphQLFetcher from "@/utils/graphql-fetcher"
+import httpLogger from "@/utils/http-logger"
+import { getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
+import { NextApiRequest, NextApiResponse } from "next"
 
 const Request = async (req: NextApiRequest, res: NextApiResponse) => {
+  httpLogger(req, res)
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST")
     res.status(405).json({ message: "Method Not Allowed" })
@@ -56,11 +57,6 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   url.searchParams.append("id", id)
 
   const mailResponse = await sendRequestMail(onboardingRequest.email, url.href)
-  console.log(
-    "tipimail API response:",
-    mailResponse.status,
-    await mailResponse.text()
-  )
 
   res.status(200).json({ status: 200, body: "request created" })
 }

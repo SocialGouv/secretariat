@@ -1,12 +1,12 @@
 import { createMocks } from "node-mocks-http"
 import handleConfirm from "@/pages/api/onboarding/confirm"
 import { graphql } from "msw"
-import { sendConfirmMail } from "@/utils/send-email"
+import { sendConfirmMail } from "@/services/send-email"
 import { server } from "@/mocks/server"
 
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
-jest.mock("@/utils/send-email", () => ({ sendConfirmMail: jest.fn() }))
+jest.mock("@/services/send-email", () => ({ sendConfirmMail: jest.fn() }))
 jest.mock("@/utils/env", () => ({
   ONBOARDING_NOTIFICATION_EMAILS: "mail",
   NEXTAUTH_URL: "http://fake.fr",

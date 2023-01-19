@@ -9,25 +9,23 @@ const commitSha = process.env.GITHUB_SHA || "dev"
 const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
+      default-src 'self';
       font-src 'self';
       base-uri 'self';
-      object-src 'none';
-      default-src 'self';
-      img-src 'self' data:;
       style-src 'self' 'unsafe-inline';
-      connect-src 'self' api.github.com ${process.env.NEXT_PUBLIC_HASURA_URL};
-      script-src 'self' 'nonce-${nonce}' matomo.fabrique.social.gouv.fr 'unsafe-inline';
+      img-src 'self' data:;
+      script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
+      connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL};
     `
     : `
-      font-src 'self';
-      object-src 'none';
       default-src 'self';
+      font-src 'self';
       img-src 'self' data:;
       style-src 'self' 'unsafe-inline';
-      connect-src 'self' localhost:8080 api.github.com;
-      script-src 'self' 'nonce-${nonce}' matomo.fabrique.social.gouv.fr 'unsafe-eval';
+      connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr;
+      script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `
-console.log("ENV", process.env.NODE_ENV)
+
 const securityHeaders = [
   {
     key: "X-XSS-Protection",

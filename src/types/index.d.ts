@@ -201,7 +201,6 @@ interface syncStats {
 
 interface WizardStep {
   title: string
-  // value: OnboardingData
   component: ({
     onValidate,
   }: {

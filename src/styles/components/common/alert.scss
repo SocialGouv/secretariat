@@ -1,10 +1,7 @@
 .alert {
   @apply
     flex
-    border
-    ;
-
-    // text-sm
+    border;
     
     .icon {
       @apply py-0.5 px-2;

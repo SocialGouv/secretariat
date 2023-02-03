@@ -1,0 +1,27 @@
+app:
+  replicas: 1
+
+hasura:
+  replicas: 1
+  envFrom:
+    - secretRef:
+        name: hasura
+    - secretRef:
+        name: pg-user
+    - configMapRef:
+        name: hasura-configmap
+
+jobs:
+  runs:
+    db:
+      use: create-db
+      with:
+        pgAdminSecretRefName: azure-pg-admin-user
+
+deactivate:
+  enabled: false
+  jobs-deactivate:
+    runs:
+      deactivate:
+        with:
+          pgAdminSecretRefName: azure-pg-admin-user

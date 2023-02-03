@@ -4,15 +4,14 @@ on: deployment_status
 
 concurrency:
   cancel-in-progress: true
-  group: lighthouse-${{ github.event.deployment_status.id }}
+  group: lighthouse-${{ github.event.deployment.environment }}
 
 jobs:
   lhci:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     name: Run lhci on deployed environment
-    if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment_url
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
         with:

@@ -1,0 +1,57 @@
+name: 👀 Review
+on:
+  push:
+    branches:
+      - "**"
+      - "!master"
+      - "!main"
+      - "!feat/**"
+      - "!fix/**"
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
+
+jobs:
+  build-app:
+    name: Build & Register app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch slug
+        run: |
+          SUBDOMAIN=$(npx kontinuous slug-subdomain --branch="$GITHUB_REF" hasura)
+          echo "SUBDOMAIN=${SUBDOMAIN}" >> $GITHUB_ENV
+
+      - name: Use autodevops build and register
+        uses: socialgouv/workflows/actions/build-image@v1
+        with:
+          imagePackage: app
+          token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
+            GITHUB_SHA=${{ github.sha }}
+            NEXT_PUBLIC_HASURA_URL=https://${{ env.SUBDOMAIN }}.dev.fabrique.social.gouv.fr/v1/graphql
+
+  build-hasura:
+    name: Build & Register hasura
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch slug
+        run: |
+          SUBDOMAIN=$(npx kontinuous slug-subdomain --branch="$GITHUB_REF")
+          echo "SUBDOMAIN=${SUBDOMAIN}" >> $GITHUB_ENV
+
+      - name: Use autodevops build and register
+        uses: socialgouv/workflows/actions/build-image@v1
+        with:
+          imagePackage: hasura
+          dockerfile: ./packages/hasura/Dockerfile
+          dockercontext: ./packages/hasura
+          token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
+            APP_URL=https://${{ env.SUBDOMAIN }}.dev.fabrique.social.gouv.fr
+
+  kontinuous:
+    name: "Deploy on Kubernetes 🐳"
+    needs: [build-app, build-hasura]
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review.yaml@v1
+    secrets: inherit

@@ -1,0 +1,48 @@
+name: 🚀 Production
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
+
+jobs:
+  build-app:
+    name: Build & Register app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use autodevops build and register
+        uses: socialgouv/workflows/actions/build-image@v1
+        with:
+          environment: prod
+          imagePackage: app
+          token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
+            GITHUB_SHA=${{ github.sha }}
+            NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat.fabrique.social.gouv.fr/v1/graphql
+            NEXT_PUBLIC_MATOMO_SITE_ID=82
+            NEXT_PUBLIC_MATOMO_URL=https://matomo.fabrique.social.gouv.fr/
+
+  build-hasura:
+    name: Build & Register hasura
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use autodevops build and register
+        uses: socialgouv/workflows/actions/build-image@v1
+        with:
+          environment: prod
+          imagePackage: hasura
+          dockerfile: ./packages/hasura/Dockerfile
+          dockercontext: ./packages/hasura
+          token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
+            APP_URL=https://secretariat.fabrique.social.gouv.fr
+
+  kontinuous:
+    name: "Deploy on Kubernetes 🐳"
+    needs: [build-app, build-hasura]
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-production.yaml@v1
+    secrets: inherit

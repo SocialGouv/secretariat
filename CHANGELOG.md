@@ -1,3 +1,10 @@
+## [1.52.2](https://github.com/SocialGouv/secretariat/compare/v1.52.1...v1.52.2) (2023-02-06)
+
+
+### Bug Fixes
+
+* use kontinuous ([#493](https://github.com/SocialGouv/secretariat/issues/493)) ([9156fdc](https://github.com/SocialGouv/secretariat/commit/9156fdc534b1cc8c0e5441071596ca27837f7f80))
+
 ## [1.52.1](https://github.com/SocialGouv/secretariat/compare/v1.52.0...v1.52.1) (2023-01-19)
 
 

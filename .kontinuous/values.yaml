@@ -1,7 +1,3 @@
-components:
-  app: true
-  hasura: true
-
 app:
   envFrom:
     - secretRef:

@@ -21,12 +21,6 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt()
   const onboardingRequest: OnboardingData = req.body.input.data
 
-  logAction({
-    action: "onboarding/request",
-    token,
-    parameters: JSON.stringify(onboardingRequest),
-  })
-
   // avoid duplicate onboarding requests
   const { onboarding_requests: existingRequests } = await graphQLFetcher({
     query: getOnboardingRequestContaining,
@@ -43,6 +37,12 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     })
     return
   }
+
+  logAction({
+    action: "onboarding/request",
+    token,
+    parameters: JSON.stringify(onboardingRequest),
+  })
 
   const {
     insert_onboarding_requests_one: { id },

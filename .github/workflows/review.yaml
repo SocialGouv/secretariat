@@ -17,6 +17,9 @@ jobs:
     name: Build & Register app
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Get branch slug
         run: |
           SUBDOMAIN=$(npx kontinuous slug-subdomain --branch="$GITHUB_REF" hasura)
@@ -35,6 +38,9 @@ jobs:
     name: Build & Register hasura
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Get branch slug
         run: |
           SUBDOMAIN=$(npx kontinuous slug-subdomain --branch="$GITHUB_REF")

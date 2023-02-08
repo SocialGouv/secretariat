@@ -1,3 +1,10 @@
+## [1.52.3](https://github.com/SocialGouv/secretariat/compare/v1.52.2...v1.52.3) (2023-02-08)
+
+
+### Bug Fixes
+
+* review env ([19091df](https://github.com/SocialGouv/secretariat/commit/19091dfba30054551013184d3fe931b564d412ca))
+
 ## [1.52.2](https://github.com/SocialGouv/secretariat/compare/v1.52.1...v1.52.2) (2023-02-06)
 
 

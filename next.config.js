@@ -1,3 +1,9 @@
+// This file sets a custom webpack configuration to use your Next.js app
+// with Sentry.
+// https://nextjs.org/docs/api-reference/next.config.js/introduction
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+const { withSentryConfig } = require("@sentry/nextjs")
+
 const path = require("path")
 const { randomBytes } = require("crypto")
 const { version, homepage } = require("./package.json")
@@ -15,14 +21,14 @@ const ContentSecurityPolicy =
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-      connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL};
+      connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `
       default-src 'self';
       font-src 'self';
       img-src 'self' data:;
       style-src 'self' 'unsafe-inline';
-      connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr;
+      connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr sentry.fabrique.social.gouv.fr;
       script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `
 
@@ -50,6 +56,11 @@ module.exports = {
     domains: ["avatars.githubusercontent.com", "secure.gravatar.com"],
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  sentry: {
+    hideSourceMaps: true,
+    disableClientWebpackPlugin: true,
+    disableServerWebpackPlugin: true,
+  },
   experimental: {
     outputStandalone: true,
   },
@@ -70,3 +81,5 @@ module.exports = {
     ]
   },
 }
+
+module.exports = withSentryConfig(module.exports, { silent: true })

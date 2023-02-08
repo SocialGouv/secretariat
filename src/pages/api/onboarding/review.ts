@@ -50,7 +50,7 @@ const Review = async (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  await graphQLFetcher({
+  graphQLFetcher({
     query: updateOnboardingRequest,
     token,
     parameters: {

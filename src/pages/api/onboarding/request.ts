@@ -36,6 +36,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
   if (existingRequests.length > 0) {
+    req.log.info("a request with the same email already exists")
     res.status(200).json({
       status: 400,
       body: "already exists",
@@ -55,8 +56,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const url = new URL("/api/onboarding/confirm", NEXTAUTH_URL)
   url.searchParams.append("id", id)
-
-  const mailResponse = await sendRequestMail(onboardingRequest.email, url.href)
+  sendRequestMail(onboardingRequest.email, url.href)
 
   res.status(200).json({ status: 200, body: "request created" })
 }

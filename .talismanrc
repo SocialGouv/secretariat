@@ -15,6 +15,12 @@ fileignoreconfig:
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
 - filename: next.config.js
   checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
+- filename: sentry.client.config.js
+  checksum: c099a2c12302135ea90b784b7f17827d985de03d2b667750551cb9f8cde0ea81
+- filename: sentry.edge.config.js
+  checksum: 1944a74030b8a786b01906e52ee2d9c1304d3867aebe394df7828e98f057bce4
+- filename: sentry.server.config.js
+  checksum: c45afaf7fe0822f1bf966627a0e5e166468d27f6d5151229990f293b37d4302b
 - filename: src/components/onboarding/steps/services-accounts-statuses.tsx
   checksum: b118715f8269bd92790bbe4019159567893d2517cad7ef2a639e456d924b88ca
 - filename: yarn.lock

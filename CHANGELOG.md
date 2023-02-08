@@ -1,3 +1,10 @@
+# [1.53.0](https://github.com/SocialGouv/secretariat/compare/v1.52.4...v1.53.0) (2023-02-08)
+
+
+### Features
+
+* use sentry ([#484](https://github.com/SocialGouv/secretariat/issues/484)) ([b177bb0](https://github.com/SocialGouv/secretariat/commit/b177bb0e804b12e74b458eaa076a846d3915aea0))
+
 ## [1.52.4](https://github.com/SocialGouv/secretariat/compare/v1.52.3...v1.52.4) (2023-02-08)
 
 

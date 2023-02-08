@@ -1,3 +1,10 @@
+## [1.52.4](https://github.com/SocialGouv/secretariat/compare/v1.52.3...v1.52.4) (2023-02-08)
+
+
+### Bug Fixes
+
+* use Env action ([#497](https://github.com/SocialGouv/secretariat/issues/497)) ([4b77b95](https://github.com/SocialGouv/secretariat/commit/4b77b9547f102a3535927a9db382a86e6858ab52))
+
 ## [1.52.3](https://github.com/SocialGouv/secretariat/compare/v1.52.2...v1.52.3) (2023-02-08)
 
 

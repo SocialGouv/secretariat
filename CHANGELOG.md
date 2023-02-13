@@ -1,3 +1,10 @@
+## [1.53.1](https://github.com/SocialGouv/secretariat/compare/v1.53.0...v1.53.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* do not log invalid onboarding request ([#498](https://github.com/SocialGouv/secretariat/issues/498)) ([06c3415](https://github.com/SocialGouv/secretariat/commit/06c34154e2adadbf5ded77af956c6d291a2a33c2))
+
 # [1.53.0](https://github.com/SocialGouv/secretariat/compare/v1.52.4...v1.53.0) (2023-02-08)
 
 

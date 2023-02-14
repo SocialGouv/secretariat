@@ -3,7 +3,6 @@ import { useSession, signOut } from "next-auth/react"
 
 const AuthenticatedUser = () => {
   const { data: session } = useSession()
-
   if (session) {
     return (
       <div className="authenticated-user">

@@ -17,5 +17,5 @@ concurrency:
 
 jobs:
   kontinuous:
-    uses: socialgouv/workflows/.github/workflows/use-ks-gh-deactivate.yaml@v1
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-deactivate.yaml@fix/no-env-failure
     secrets: inherit

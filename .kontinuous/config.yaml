@@ -4,3 +4,12 @@ dependencies:
     import: socialgouv/kontinuous/plugins/fabrique
     options:
       registry: ghcr.io
+    dependencies:
+      contrib:
+        preDeploy:
+          importSecrets:
+            options:
+              secrets:
+                pg-admin-user:
+                  from:
+                    - cnpg-admin-user

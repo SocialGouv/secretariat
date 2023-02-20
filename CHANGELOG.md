@@ -1,3 +1,10 @@
+## [1.53.3](https://github.com/SocialGouv/secretariat/compare/v1.53.2...v1.53.3) (2023-02-20)
+
+
+### Bug Fixes
+
+* add nvmrc ([ff0a805](https://github.com/SocialGouv/secretariat/commit/ff0a805bf9708b23c2510ef2bb114f149cddb728))
+
 ## [1.53.2](https://github.com/SocialGouv/secretariat/compare/v1.53.1...v1.53.2) (2023-02-20)
 
 

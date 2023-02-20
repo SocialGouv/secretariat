@@ -1,3 +1,10 @@
+## [1.53.2](https://github.com/SocialGouv/secretariat/compare/v1.53.1...v1.53.2) (2023-02-20)
+
+
+### Bug Fixes
+
+* test CNPG DB ([#500](https://github.com/SocialGouv/secretariat/issues/500)) ([85c83f7](https://github.com/SocialGouv/secretariat/commit/85c83f7a90aa2284de3c0478a30d9d984475be6c))
+
 ## [1.53.1](https://github.com/SocialGouv/secretariat/compare/v1.53.0...v1.53.1) (2023-02-13)
 
 

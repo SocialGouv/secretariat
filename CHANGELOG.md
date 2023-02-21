@@ -1,3 +1,10 @@
+## [1.53.5](https://github.com/SocialGouv/secretariat/compare/v1.53.4...v1.53.5) (2023-02-21)
+
+
+### Bug Fixes
+
+* active create db on prod go to cnpg ([0c70b86](https://github.com/SocialGouv/secretariat/commit/0c70b86e454b9545b707b793eb723ab2534bcc95))
+
 ## [1.53.4](https://github.com/SocialGouv/secretariat/compare/v1.53.3...v1.53.4) (2023-02-21)
 
 

@@ -20,7 +20,7 @@ const fetchZammadGroups = async (): Promise<{ id: number }[]> => {
 
 export const fetchZammadUsers = async (
   msDelay: number,
-  users: { group_ids: Record<string, unknown> }[] = [],
+  users: { id: number; group_ids: Record<string, unknown> }[] = [],
   page = 1
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
@@ -38,6 +38,7 @@ export const fetchZammadUsers = async (
     const allGroups = await fetchZammadGroups()
     return users.map((user) => ({
       ...user,
+      id: user.id.toString(),
       groups: allGroups.filter((group) =>
         Object.keys(user.group_ids).includes(group.id.toString())
       ),

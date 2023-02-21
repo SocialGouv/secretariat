@@ -1,3 +1,10 @@
+## [1.53.4](https://github.com/SocialGouv/secretariat/compare/v1.53.3...v1.53.4) (2023-02-21)
+
+
+### Bug Fixes
+
+* record zammad id as string ([#506](https://github.com/SocialGouv/secretariat/issues/506)) ([82f80c7](https://github.com/SocialGouv/secretariat/commit/82f80c7c038589b1c5bc69f2b275789ce2d1d50d))
+
 ## [1.53.3](https://github.com/SocialGouv/secretariat/compare/v1.53.2...v1.53.3) (2023-02-20)
 
 

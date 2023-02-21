@@ -1,0 +1,7 @@
+hasura:
+  ~needs: []
+  
+jobs:
+  runs:
+    create-db:
+      enabled: false

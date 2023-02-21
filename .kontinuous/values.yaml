@@ -10,6 +10,7 @@ app:
   imagePackage: app
 
 hasura:
+  ~needs: [create-db]
   envFrom:
     - secretRef:
         name: hasura
@@ -25,3 +26,8 @@ hasura:
       cpu: 250m
       memory: 512Mi
   replicas: 2
+
+jobs:
+  runs:
+    create-db:
+      use: create-db

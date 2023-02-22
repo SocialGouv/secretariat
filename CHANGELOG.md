@@ -1,3 +1,10 @@
+## [1.53.6](https://github.com/SocialGouv/secretariat/compare/v1.53.5...v1.53.6) (2023-02-22)
+
+
+### Bug Fixes
+
+* allow matomo.fabrique.social.gouv.fr scripts ([#511](https://github.com/SocialGouv/secretariat/issues/511)) ([cb8168e](https://github.com/SocialGouv/secretariat/commit/cb8168ebc8f4442b4f44bac7fc9d8b60c37ca2d7))
+
 ## [1.53.5](https://github.com/SocialGouv/secretariat/compare/v1.53.4...v1.53.5) (2023-02-21)
 
 

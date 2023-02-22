@@ -20,7 +20,7 @@ const ContentSecurityPolicy =
       base-uri 'self';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
-      script-src 'self' 'nonce-${nonce}' 'unsafe-inline';
+      script-src 'self' 'nonce-${nonce}' 'unsafe-inline' matomo.fabrique.social.gouv.fr;
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `

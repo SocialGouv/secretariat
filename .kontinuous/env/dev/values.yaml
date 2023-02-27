@@ -1,11 +1,3 @@
-# hasura:
-#   ~needs: [create-db]
-
-# jobs:
-#   runs:
-#     create-db:
-#       use: create-db
-
 deactivate:
   enabled: false
   jobs-deactivate:

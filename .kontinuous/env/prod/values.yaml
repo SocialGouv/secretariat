@@ -1,0 +1,24 @@
+app:
+  resources:
+    requests:
+      cpu: 5m
+      memory: 128Mi
+    limits:
+      cpu: 10m
+      memory: 256Mi
+  autoscale:
+    enabled: true
+    minReplicas: 2
+
+hasura:
+  resources:
+    requests:
+      cpu: 25m
+      memory: 512Mi
+    limits:
+      cpu: 50m
+      memory: 1024Mi
+  autoscale:
+    enabled: true
+    minReplicas: 2
+

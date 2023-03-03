@@ -67,17 +67,14 @@ exports[`renders layout 1`] = `
               <i
                 class="ri-github-fill ri-xl relative top-px mr-1"
               />
-              version 
-              0.0.42
-               (
               <a
-                href="https://github.com/SocialGouv/secretariat/tree/2f7c23024eeb820ed67aef00bc40e7955111cbf4"
+                href="https://github.com/SocialGouv/secretariat"
                 rel="noreferrer"
                 target="_blank"
               >
-                2f7c2302
+                version 
+                0.0.42
               </a>
-              )
             </p>
           </div>
         </div>

@@ -10,7 +10,6 @@ const { version, homepage } = require("./package.json")
 
 const nonce = randomBytes(8).toString("base64")
 process.env.NONCE = nonce
-const commitSha = process.env.GITHUB_SHA || "dev"
 
 const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
@@ -69,7 +68,6 @@ module.exports = {
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
-    NEXT_PUBLIC_APP_VERSION_COMMIT: commitSha,
     NEXT_PUBLIC_APP_REPOSITORY_URL: homepage,
   },
   sassOptions: {

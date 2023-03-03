@@ -6,7 +6,6 @@ app:
     - name: NEXTAUTH_URL
       value: https://{{ .Values.global.host }}
   probesPath: /healthz
-  replicas: 2
   imagePackage: app
 
 hasura:
@@ -18,14 +17,6 @@ hasura:
         name: pg-user
     - configMapRef:
         name: hasura-configmap
-  resources:
-    limits:
-      cpu: 500m
-      memory: 1024Mi
-    requests:
-      cpu: 250m
-      memory: 512Mi
-  replicas: 2
 
 jobs:
   runs:

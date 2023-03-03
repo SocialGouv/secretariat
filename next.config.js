@@ -16,20 +16,23 @@ const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
       default-src 'self';
-      font-src 'self';
-      base-uri 'self';
+      object-src 'none';
+      base-uri 'none';
+      require-trusted-types-for 'script';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
-      script-src 'self' 'nonce-${nonce}' 'unsafe-inline' matomo.fabrique.social.gouv.fr;
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' matomo.fabrique.social.gouv.fr;
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `
       default-src 'self';
-      font-src 'self';
-      img-src 'self' data:;
+      object-src 'none';
+      base-uri 'none';
+      require-trusted-types-for 'script';
       style-src 'self' 'unsafe-inline';
+      img-src 'self' data:;
+      script-src 'self' 'unsafe-eval';
       connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr sentry.fabrique.social.gouv.fr;
-      script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
     `
 
 const securityHeaders = [

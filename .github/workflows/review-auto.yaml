@@ -58,3 +58,24 @@ jobs:
     needs: [build-app, build-hasura]
     uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
     secrets: inherit
+
+  lighthouse-scan:
+    name: "Lighthouse scan"
+    needs: [kontinuous]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Env
+        id: env
+        uses: socialgouv/kontinuous/.github/actions/env@v1
+
+      - name: Lighthouse scan
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://${{ steps.env.outputs.subdomain }}.dev.fabrique.social.gouv.fr
+          configPath: "./lighthouserc.json"
+          runs: 3
+          temporaryPublicStorage: true

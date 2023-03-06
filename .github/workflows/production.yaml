@@ -21,7 +21,6 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            GITHUB_SHA=${{ github.sha }}
             NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat.fabrique.social.gouv.fr/v1/graphql
             NEXT_PUBLIC_MATOMO_SITE_ID=82
             NEXT_PUBLIC_MATOMO_URL=https://matomo.fabrique.social.gouv.fr/

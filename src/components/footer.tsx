@@ -15,15 +15,13 @@ const Footer = () => (
           </p>
           <p className="flex items-center">
             <i className="ri-github-fill ri-xl relative top-px mr-1" />
-            version {process.env.NEXT_PUBLIC_APP_VERSION} (
             <a
               target="_blank"
-              href={`${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}/tree/${process.env.NEXT_PUBLIC_APP_VERSION_COMMIT}`}
+              href={`${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}/tree/v${process.env.NEXT_PUBLIC_APP_VERSION}`}
               rel="noreferrer"
             >
-              {process.env.NEXT_PUBLIC_APP_VERSION_COMMIT?.substring(0, 8)}
+              version {process.env.NEXT_PUBLIC_APP_VERSION}
             </a>
-            )
           </p>
         </div>
       </div>

@@ -1,3 +1,10 @@
+## [1.53.8](https://github.com/SocialGouv/secretariat/compare/v1.53.7...v1.53.8) (2023-03-06)
+
+
+### Bug Fixes
+
+* do not use commit SHA to preserve docker cache ([#516](https://github.com/SocialGouv/secretariat/issues/516)) ([f3dc31d](https://github.com/SocialGouv/secretariat/commit/f3dc31d3595713c04c77941df62e26917720eac4))
+
 ## [1.53.7](https://github.com/SocialGouv/secretariat/compare/v1.53.6...v1.53.7) (2023-03-03)
 
 

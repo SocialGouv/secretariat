@@ -17,7 +17,7 @@ const Footer = () => (
             <i className="ri-github-fill ri-xl relative top-px mr-1" />
             <a
               target="_blank"
-              href={`${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}`}
+              href={`${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}/tree/v${process.env.NEXT_PUBLIC_APP_VERSION}`}
               rel="noreferrer"
             >
               version {process.env.NEXT_PUBLIC_APP_VERSION}

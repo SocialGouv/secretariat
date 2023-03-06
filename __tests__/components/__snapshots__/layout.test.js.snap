@@ -68,7 +68,7 @@ exports[`renders layout 1`] = `
                 class="ri-github-fill ri-xl relative top-px mr-1"
               />
               <a
-                href="https://github.com/SocialGouv/secretariat"
+                href="https://github.com/SocialGouv/secretariat/tree/v0.0.42"
                 rel="noreferrer"
                 target="_blank"
               >

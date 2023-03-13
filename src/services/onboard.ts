@@ -65,7 +65,36 @@ const mattermostAccountCreator = async ({
       }),
     }
   )
-  return { status: response.status, body: await response.json() }
+  const body = await response.json()
+
+  if (response.status === 201 && body.id) {
+    const teamResponse = await fetch(
+      "https://mattermost.fabrique.social.gouv.fr/api/v4/teams/k4iacfzt8jnxbnxemzz77s344w/members",
+      {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${MATTERMOST_API_TOKEN}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: body.id,
+          team_id: "k4iacfzt8jnxbnxemzz77s344w",
+        }),
+      }
+    )
+    if (!statusOk(teamResponse.status)) {
+      logger.error(
+        { status: teamResponse.status, body: teamResponse.json() },
+        "Error when adding Mattermost user to SocialGouv team"
+      )
+    }
+  } else {
+    logger.error(
+      { status: response.status, body },
+      "Error when creating Mattermost user"
+    )
+  }
+  return { status: response.status, body }
 }
 
 const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {

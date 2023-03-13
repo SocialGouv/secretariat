@@ -1,3 +1,10 @@
+# [1.54.0](https://github.com/SocialGouv/secretariat/compare/v1.53.10...v1.54.0) (2023-03-13)
+
+
+### Features
+
+* invite onboarding user in Mattermost team ([#518](https://github.com/SocialGouv/secretariat/issues/518)) ([548a6a5](https://github.com/SocialGouv/secretariat/commit/548a6a56911248fa9eb0224162419dbae7693d8b))
+
 ## [1.53.10](https://github.com/SocialGouv/secretariat/compare/v1.53.9...v1.53.10) (2023-03-13)
 
 

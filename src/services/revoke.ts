@@ -150,7 +150,7 @@ const revokeOvhAccount = async (email: string, accountID: string) => {
   // Resets the mail account to random@configureme.me
   const response = await ovh(
     "DELETE",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}`
   )
   if (response.success) {
     await deleteAccountOnSuccess(200, accountID)

@@ -34,7 +34,7 @@ it("should return status and body from each API", async () => {
 
 it("should return status, body and login/password for ovh account", async () => {
   ovh
-    .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
+    .mockResolvedValueOnce({ success: true, data: ["fake@configureme.me"] })
     .mockResolvedValue({ success: true, data: "fake data" })
 
   const response = await onboard({
@@ -57,6 +57,25 @@ it("should return status, body and login/password for ovh account", async () => 
   expect(response.ovh.mailInfo).toHaveProperty("password")
 })
 
+it("should stop if no available mailbox could be found", async () => {
+  ovh
+    .mockResolvedValueOnce({ success: true, data: ["fake@fabrique.fr"] })
+    .mockResolvedValue({ success: true, data: "fake data" })
+
+  const response = await onboard({
+    services: { mattermost: false, ovh: true },
+    firstName: "fake firstname",
+    lastName: "fake lastname",
+    githubLogin: "",
+  })
+  expect(response).toMatchObject({
+    ovh: {
+      status: 503,
+      body: "Could not get an available configureme.me OVH email",
+    },
+  })
+})
+
 describe("ovh error", () => {
   it("should handle error on query 1", async () => {
     ovh.mockResolvedValue({
@@ -76,7 +95,7 @@ describe("ovh error", () => {
   })
   it("should handle error on query 2", async () => {
     ovh
-      .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
+      .mockResolvedValueOnce({ success: true, data: ["fake@configureme.me"] })
       .mockResolvedValue({
         success: false,
         error: { error: 550, message: "fake message" },
@@ -98,7 +117,7 @@ describe("ovh error", () => {
   })
   it("should handle error on query 3", async () => {
     ovh
-      .mockResolvedValueOnce({ success: true, data: ["fake@fake.fake"] })
+      .mockResolvedValueOnce({ success: true, data: ["fake@configureme.me"] })
       .mockResolvedValueOnce({ success: true, data: "fake data" })
       .mockResolvedValue({
         success: false,

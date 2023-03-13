@@ -8,7 +8,10 @@ import logger from "@/utils/logger"
 export const fetchOvhUsers = async (
   msDelay: number
 ): Promise<Record<string, unknown>[]> => {
-  const response = await ovh("GET", `/email/pro/${OVH_SERVICE_NAME}/account`)
+  const response = await ovh(
+    "GET",
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account`
+  )
   const emails: string[] = response.success
     ? response.data.filter(
         (email: string) => !email.endsWith("@configureme.me")
@@ -21,7 +24,7 @@ export const fetchOvhUsers = async (
     async (email: string, index: number) => {
       const response = await ovh(
         "GET",
-        `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+        `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}`
       )
       logger.info(`fetched OVH user ${index + 1}/${emails.length}`)
       await setTimeout(msDelay)

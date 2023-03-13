@@ -69,7 +69,10 @@ const mattermostAccountCreator = async ({
 }
 
 const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
-  let response = await ovh("GET", `/email/pro/${OVH_SERVICE_NAME}/account`)
+  let response = await ovh(
+    "GET",
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account`
+  )
   if (!response.success)
     return {
       status: response.error.error,
@@ -78,10 +81,16 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   let email = response.data.find((email: string) =>
     email.endsWith("@configureme.me")
   )
+  if (!email) {
+    return {
+      status: 503,
+      body: "Could not get an available configureme.me OVH email",
+    }
+  }
   const login = `${sluggifyString(firstName)}.${sluggifyString(lastName)}`
   response = await ovh(
     "PUT",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`,
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}`,
     {
       login,
       domain: "fabrique.social.gouv.fr",
@@ -101,7 +110,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   const password = strongPassword()
   response = await ovh(
     "POST",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${email}/changePassword`,
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}/changePassword`,
     { password }
   )
 
@@ -116,7 +125,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   // Fetch account data
   const accountResponse = await ovh(
     "GET",
-    `/email/pro/${OVH_SERVICE_NAME}/account/${email}`
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}`
   )
 
   return {

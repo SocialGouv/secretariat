@@ -1,3 +1,10 @@
+## [1.53.9](https://github.com/SocialGouv/secretariat/compare/v1.53.8...v1.53.9) (2023-03-13)
+
+
+### Bug Fixes
+
+* missing logger instead of console.log ([#517](https://github.com/SocialGouv/secretariat/issues/517)) ([1ec78fe](https://github.com/SocialGouv/secretariat/commit/1ec78fe638b18d84d8c607ac0aa7c37121fd077c))
+
 ## [1.53.8](https://github.com/SocialGouv/secretariat/compare/v1.53.7...v1.53.8) (2023-03-06)
 
 

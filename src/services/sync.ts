@@ -89,9 +89,9 @@ const upsertService = async (
     stats.updates += 1
     return serviceId
   } else {
-    console.error(
-      "Got multiple matches with a service's primary key field and service name",
-      servicesMatchingId
+    logger.error(
+      { servicesMatchingId },
+      "Got multiple matches with a service's primary key field and service name"
     )
     stats.errors += 1
     return ""

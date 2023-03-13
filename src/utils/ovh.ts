@@ -1,4 +1,5 @@
 import { OVH_APP_KEY, OVH_APP_SECRET, OVH_CONSUMER_KEY } from "./env"
+import logger from "./logger"
 
 const ovh = async (
   method: string,
@@ -24,10 +25,7 @@ const ovh = async (
       error: {},
     }
   } catch (error) {
-    console.error("Error while querying OVH:", error)
-    console.error("method:", method)
-    console.error("URI:", URI)
-    console.error("data:", data)
+    logger.error({ method, URI, data, error }, "Error while querying OVH")
     return {
       success: false,
       error: error as { error: number; message: string },

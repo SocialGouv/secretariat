@@ -1,3 +1,10 @@
+## [1.53.10](https://github.com/SocialGouv/secretariat/compare/v1.53.9...v1.53.10) (2023-03-13)
+
+
+### Bug Fixes
+
+* new OVH API ([#519](https://github.com/SocialGouv/secretariat/issues/519)) ([9fc57ac](https://github.com/SocialGouv/secretariat/commit/9fc57acf49f671f2d9d88d2127715eebaca34e49))
+
 ## [1.53.9](https://github.com/SocialGouv/secretariat/compare/v1.53.8...v1.53.9) (2023-03-13)
 
 

@@ -15,7 +15,7 @@ const fetchSitesNames = async (
   msDelay: number,
   users: { sites: Record<string, unknown>[] }[],
   sites: Record<string, unknown>[] = [],
-  page: number = 0
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   await setTimeout(msDelay)
   const response = await fetcher(
@@ -49,7 +49,7 @@ const fetchUserSites = async (
   msDelay: number,
   user: Record<string, unknown>,
   sites: Record<string, unknown>[] = [],
-  page: number = 0
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   await setTimeout(msDelay)
   const response = await fetcher(
@@ -78,7 +78,7 @@ const fetchUserSites = async (
 export const fetchMatomoUsers = async (
   msDelay: number,
   users: { sites: Record<string, unknown>[] }[] = [],
-  page: number = 0
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
     "https://matomo.fabrique.social.gouv.fr/index.php",

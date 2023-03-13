@@ -19,7 +19,7 @@ import {
 
 const DEFAULT_DELAY = 800
 
-const servicesFetchers: Record<ServiceName, any> = {
+const servicesFetchers = {
   github: fetchGithubUsers,
   matomo: fetchMatomoUsers,
   mattermost: fetchMattermostUsers,

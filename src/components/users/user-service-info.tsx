@@ -25,7 +25,7 @@ const InfoTable = ({
 
 const GithubUserInfo = ({
   account: {
-    data: { avatarUrl, teams, ...info },
+    data: { avatarUrl: _avatarUrl, teams, ...info },
   },
 }: {
   account: GithubServiceAccount
@@ -63,7 +63,7 @@ const MatomoUserInfo = ({
 
 const SentryUserInfo = ({
   account: {
-    data: { user, projects, flags, ...info },
+    data: { user, projects, flags: _flags, ...info },
   },
 }: {
   account: SentryServiceAccount

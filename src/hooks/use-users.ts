@@ -161,7 +161,7 @@ export const detachUserServiceAccount = async (account: ServiceAccount) => {
 }
 
 export const revokeAccount = async (account: ServiceAccount) => {
-  let accountServiceID =
+  const accountServiceID =
     account.type === "ovh"
       ? account.data.primaryEmailAddress
       : account.type === "github" || account.type === "matomo"

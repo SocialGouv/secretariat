@@ -1,5 +1,6 @@
 import { OVH_APP_KEY, OVH_APP_SECRET, OVH_CONSUMER_KEY } from "./env"
 import logger from "./logger"
+import ovhLib from "ovh"
 
 const ovh = async (
   method: string,
@@ -7,10 +8,10 @@ const ovh = async (
   data: Record<string, unknown> = {}
 ): Promise<{
   success: boolean
-  data: any
+  data: unknown
   error: Record<string, unknown>
 }> => {
-  const ovh = require("ovh")({
+  const ovh = ovhLib({
     endpoint: "ovh-eu",
     appKey: OVH_APP_KEY,
     appSecret: OVH_APP_SECRET,

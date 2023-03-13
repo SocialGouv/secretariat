@@ -24,7 +24,11 @@ const Sync = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: JSON.stringify({ services }),
   })
 
-  sync(services.filter((service: any) => SERVICES.includes(service)))
+  sync(
+    services.filter((service: keyof ServiceAccountsMapping) =>
+      SERVICES.includes(service)
+    )
+  )
   res.status(200).json({ message: "sync started" })
 }
 

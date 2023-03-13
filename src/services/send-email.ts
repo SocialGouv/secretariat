@@ -95,17 +95,17 @@ const mattermostFeedback = (
   html: boolean,
   onboardingResponses: OnboardingResponses
 ) => {
-  if (!("mattermost" in onboardingResponses)) {
+  if (!onboardingResponses.mattermost) {
     return ""
   }
 
   let content
-  if (statusOk(onboardingResponses.mattermost!.status)) {
+  if (statusOk(onboardingResponses.mattermost.status)) {
     content =
       '(générer un nouveau mot de passe en cliquant sur "mot de passe oublié")'
   } else {
     if (
-      onboardingResponses.mattermost!.body.message ===
+      onboardingResponses.mattermost.body.message ===
       "An account with that email already exists."
     ) {
       content = "(un compte utilisant cet email existe déjà)"
@@ -125,34 +125,28 @@ const ovhFeedback = (
   html: boolean,
   onboardingResponses: OnboardingResponses
 ) => {
-  if (!("ovh" in onboardingResponses)) {
+  if (!onboardingResponses.ovh) {
     return ""
   }
 
   let content
-  if (statusOk(onboardingResponses.ovh!.status)) {
+  if (statusOk(onboardingResponses.ovh.status)) {
     if (html) {
       content = `<ul>
-      <li>adresse : ${
-        onboardingResponses.ovh!.mailInfo.login
-      }@fabrique.social.gouv.fr</li>
-      <li>mot de passe : ${
-        onboardingResponses.ovh!.mailInfo.password
-      } (à changer)</li>
+      <li>adresse : ${onboardingResponses.ovh.mailInfo.login}@fabrique.social.gouv.fr</li>
+      <li>mot de passe : ${onboardingResponses.ovh.mailInfo.password} (à changer)</li>
     </ul>`
     } else {
       content = `
-  - adresse : ${onboardingResponses.ovh!.mailInfo.login}@fabrique.social.gouv.fr
-  - mot de passe : ${onboardingResponses.ovh!.mailInfo.password} (à changer)`
+  - adresse : ${onboardingResponses.ovh.mailInfo.login}@fabrique.social.gouv.fr
+  - mot de passe : ${onboardingResponses.ovh.mailInfo.password} (à changer)`
     }
   } else {
     if (
-      onboardingResponses.ovh!.body ===
+      onboardingResponses.ovh.body ===
       "Email address is already used by a account."
     ) {
-      content = `(l'email ${
-        onboardingResponses.ovh!.mailInfo.login
-      }@fabrique.social.gouv.fr existe déjà)`
+      content = `(l'email ${onboardingResponses.ovh.mailInfo.login}@fabrique.social.gouv.fr existe déjà)`
     } else {
       content = "(erreur lors de la création automatique du compte)"
     }
@@ -167,8 +161,8 @@ const ovhFeedback = (
 
 const githubFeedback = (onboardingResponses: OnboardingResponses) => {
   if (
-    !("github" in onboardingResponses) ||
-    statusOk(onboardingResponses.github!.status)
+    !onboardingResponses.github ||
+    statusOk(onboardingResponses.github.status)
   ) {
     return ""
   }

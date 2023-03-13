@@ -157,6 +157,8 @@ interface OnboardingData {
   services: Record<ServiceName, boolean>
 }
 
+type OnboardingDataPerService = Omit<OnboardingData, "services">
+
 interface OnboardingResponses {
   github?: { status: number; body: Record<string, unknown> }
   mattermost?: { status: number; body: Record<string, unknown> }
@@ -207,3 +209,5 @@ interface WizardStep {
     onValidate: (isValid: boolean) => void
   }) => JSX.Element
 }
+
+declare module "ovh"

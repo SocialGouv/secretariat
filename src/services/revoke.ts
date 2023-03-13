@@ -146,15 +146,15 @@ const revokeSentryAccount = async (userID: string, accountID: string) => {
   return { status: response.status, body: await response.text() }
 }
 
-const revokeOvhAccount = async (email: string, accountID: string) => {
+const revokeOvhAccount = async (userID: string, accountID: string) => {
   // Resets the mail account to random@configureme.me
   const response = await ovh(
     "DELETE",
-    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${email}`
+    `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account/${userID}`
   )
   if (response.success) {
     await deleteAccountOnSuccess(200, accountID)
-    return { status: 200, body: response.data }
+    return { status: 200, body: response.data as string }
   } else {
     await deleteAccountOnSuccess(500, accountID)
     return {

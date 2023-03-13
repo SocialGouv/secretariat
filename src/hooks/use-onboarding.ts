@@ -19,10 +19,16 @@ export const fallbackData = {
 const useOnboarding = () => {
   const { request, id } = useOnboardingRequest()
 
-  const { data, mutate }: { data?: OnboardingData; mutate: KeyedMutator<any> } =
-    useSWR("onboarding", null, {
+  const {
+    data,
+    mutate,
+  }: { data?: OnboardingData; mutate: KeyedMutator<unknown> } = useSWR(
+    "onboarding",
+    null,
+    {
       fallbackData: request?.data || fallbackData,
-    })
+    }
+  )
 
   return { data, mutate, request, id }
 }

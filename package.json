@@ -49,7 +49,7 @@
     "dev": "FORCE_COLOR=true next dev | pino-pretty",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir src",
     "test": "jest",
     "postinstall": "is-ci || husky install"
   },

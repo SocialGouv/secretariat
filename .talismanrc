@@ -6,7 +6,7 @@ fileignoreconfig:
 - filename: .github/workflows/production.yaml
   checksum: 7ae9af137671722308557d0881493f6c0302f6c44a9753696129403930d6169b
 - filename: .github/workflows/review-auto.yaml
-  checksum: 5f090b20053b8148115e2511d7fec8a0580a9f3f97a2efff51191fb8d5a1a18c
+  checksum: 1870d1749680c383244118c241feb35ba4cabfd758a91503f089f7efff3012d7
 - filename: .github/workflows/review.yaml
   checksum: 3209ade741c7176f01de5a3a3cdd3d8b852bd68c45755c785dcac68845b30405
 - filename: .kontinuous/env/dev/values.yaml

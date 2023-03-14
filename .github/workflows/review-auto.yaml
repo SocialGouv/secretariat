@@ -75,7 +75,7 @@ jobs:
           pat: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
           environment-scope: review
 
-      - uses: socialgouv/kontinuous/.github/actions/deploy-via-github@v1
+      - uses: socialgouv/kontinuous/.github/actions/deploy-via-github@dev-cnpg-crd-needs
         id: deployment
         continue-on-error: true
         with:

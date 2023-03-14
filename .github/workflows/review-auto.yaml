@@ -56,5 +56,5 @@ jobs:
   kontinuous:
     name: "Deploy on Kubernetes 🐳"
     needs: [build-app, build-hasura]
-    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@dev-cnpg-crd-needs
     secrets: inherit

@@ -1,7 +1,7 @@
 projectName: secretariat
 dependencies:
   fabrique:
-    import: socialgouv/kontinuous/plugins/fabrique@dev-cnpg-crd-needs
+    import: socialgouv/kontinuous/plugins/fabrique
     options:
       registry: ghcr.io
     dependencies:

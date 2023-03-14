@@ -1,7 +1,7 @@
 projectName: secretariat
 dependencies:
   fabrique:
-    import: socialgouv/kontinuous/plugins/fabrique
+    import: socialgouv/kontinuous/plugins/fabrique@dev-cnpg-crd-needs
     options:
       registry: ghcr.io
     dependencies:
@@ -11,5 +11,4 @@ dependencies:
             options:
               secrets:
                 pg-admin-user:
-                  from:
-                    - cnpg-admin-user
+                  enabled: false

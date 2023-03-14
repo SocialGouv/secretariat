@@ -23,6 +23,10 @@ fileignoreconfig:
   checksum: c45afaf7fe0822f1bf966627a0e5e166468d27f6d5151229990f293b37d4302b
 - filename: src/components/onboarding/steps/services-accounts-statuses.tsx
   checksum: b118715f8269bd92790bbe4019159567893d2517cad7ef2a639e456d924b88ca
+- filename: src/hooks/use-onboarding.ts
+  checksum: 84ace93b2abe1dbb750a311a6cee984e9b0392be6176871e7e49d7cdf948cef0
+- filename: src/services/send-email.ts
+  checksum: f8e6673f08300673626ad8ce310cfce4037f5feec086d4ce5808e40c09766992
 - filename: yarn.lock
   checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
 scopeconfig:

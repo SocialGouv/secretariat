@@ -10,7 +10,7 @@ const useFilteredUsers = () => {
   const { filters } = useFilters()
 
   const matchSearchQuery = (user: User, regex: RegExp): boolean => {
-    const { id, ...data } = user
+    const { id: _id, ...data } = user
     const values = Object.values(data)
     return !!values
       .filter((value) => value && typeof value === "string")

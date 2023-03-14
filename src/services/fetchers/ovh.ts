@@ -12,8 +12,8 @@ export const fetchOvhUsers = async (
     "GET",
     `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account`
   )
-  const emails: string[] = response.success
-    ? response.data.filter(
+  const emails = response.success
+    ? (response.data as string[]).filter(
         (email: string) => !email.endsWith("@configureme.me")
       )
     : []
@@ -28,7 +28,7 @@ export const fetchOvhUsers = async (
       )
       logger.info(`fetched OVH user ${index + 1}/${emails.length}`)
       await setTimeout(msDelay)
-      return response.success ? response.data : {}
+      return response.success ? (response.data as Record<string, unknown>) : {}
     },
     { concurrency: 1 }
   )

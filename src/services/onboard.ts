@@ -18,7 +18,7 @@ const ACCOUNTS_TO_CREATE_ON_SUCCESS = ["ovh", "mattermost"]
 
 const githubAccountCreator = async ({
   githubLogin,
-}: OnboardingData): Promise<APIResponse> => {
+}: OnboardingDataPerService): Promise<APIResponse> => {
   const responseID = await fetch(
     `https://api.github.com/users/${githubLogin}`,
     {
@@ -46,7 +46,7 @@ const mattermostAccountCreator = async ({
   firstName,
   lastName,
   email,
-}: OnboardingData): Promise<APIResponse> => {
+}: OnboardingDataPerService): Promise<APIResponse> => {
   const username = `${sluggifyString(firstName)}.${sluggifyString(lastName)}`
   const response = await fetch(
     "https://mattermost.fabrique.social.gouv.fr/api/v4/users",
@@ -97,7 +97,10 @@ const mattermostAccountCreator = async ({
   return { status: response.status, body }
 }
 
-const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
+const ovhAccountCreator = async ({
+  firstName,
+  lastName,
+}: OnboardingDataPerService) => {
   let response = await ovh(
     "GET",
     `/email/exchange/${OVH_SERVICE_NAME}/service/${OVH_SERVICE_NAME}/account`
@@ -107,7 +110,7 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
       status: response.error.error,
       body: response.error.message,
     }
-  let email = response.data.find((email: string) =>
+  let email = (response.data as string[]).find((email: string) =>
     email.endsWith("@configureme.me")
   )
   if (!email) {
@@ -164,8 +167,10 @@ const ovhAccountCreator = async ({ firstName, lastName }: OnboardingData) => {
   }
 }
 
-const redactServicesCreationResponses = (servicesCreationResponses: any) => {
-  if ("ovh" in servicesCreationResponses) {
+const redactServicesCreationResponses = (
+  servicesCreationResponses: OnboardingResponses
+) => {
+  if (servicesCreationResponses.ovh) {
     return {
       ...servicesCreationResponses,
       // Remove mailInfo key
@@ -178,7 +183,7 @@ const redactServicesCreationResponses = (servicesCreationResponses: any) => {
   return servicesCreationResponses
 }
 
-const accountCreators: Record<string, any> = {
+const accountCreators = {
   github: githubAccountCreator,
   mattermost: mattermostAccountCreator,
   ovh: ovhAccountCreator,
@@ -236,7 +241,9 @@ const onboard = async ({
     ...SERVICES.filter(
       (serviceName) => serviceName in services && services[serviceName] === true
     ),
-    ...(user.githubLogin !== "" ? ["github"] : []),
+    ...(user.githubLogin !== ""
+      ? ["github" as keyof ServiceAccountsMapping]
+      : []),
   ]
 
   logger.info({ servicesToCreate, user }, "started onboarding user")
@@ -249,7 +256,9 @@ const onboard = async ({
     servicesToCreate,
     async (acc, serviceName) => ({
       ...acc,
-      [serviceName]: await accountCreators[serviceName](user),
+      [serviceName]: await accountCreators[
+        serviceName as "ovh" | "mattermost" | "github"
+      ](user),
     }),
     {}
   )

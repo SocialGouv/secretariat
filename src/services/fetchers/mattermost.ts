@@ -9,7 +9,7 @@ const PAGE_SIZE = 200 // maximum for Mattermost's API
 const fetchMattermostTeams = async (
   msDelay: number,
   teams: { id: string }[] = [],
-  page: number = 0
+  page = 0
 ): Promise<{ id: string }[]> => {
   const response = await fetcher(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/teams?page=${page}&per_page=${PAGE_SIZE}`,
@@ -33,7 +33,7 @@ const fetchMattermostTeamMemberships = async (
   teamID: string,
   msDelay: number,
   members: Record<string, unknown>[] = [],
-  page: number = 0
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/teams/${teamID}/members?page=${page}&per_page=${PAGE_SIZE}`,
@@ -61,7 +61,7 @@ const fetchMattermostTeamMemberships = async (
 export const fetchMattermostUsers = async (
   msDelay: number,
   users: Record<string, unknown>[] = [],
-  page: number = 0
+  page = 0
 ): Promise<Record<string, unknown>[]> => {
   const response = await fetcher(
     `https://mattermost.fabrique.social.gouv.fr/api/v4/users?page=${page}&per_page=${PAGE_SIZE}&active=true`,
@@ -88,7 +88,7 @@ export const fetchMattermostUsers = async (
         .filter((team) =>
           team.memberships.some((membership) => membership.user_id === user.id)
         )
-        .map(({ memberships, ...team }) => team),
+        .map(({ memberships: _memberships, ...team }) => team),
     }))
   } else {
     await setTimeout(msDelay) // so that we don't spam the remote API

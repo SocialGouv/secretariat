@@ -1,5 +1,3 @@
-import ovh from "@/utils/ovh"
-
 beforeEach(() => {
   jest.resetModules()
 })
@@ -11,6 +9,7 @@ it("should return the received data", async () => {
       .mockResolvedValue(Promise.resolve(["a", "b", "c"])),
   }))
 
+  const { default: ovh } = await import("@/utils/ovh")
   const result = await ovh("GET", "/test")
   expect(result).toStrictEqual({
     success: true,
@@ -26,6 +25,7 @@ it("should return the received error", async () => {
     }),
   }))
 
+  const { default: ovh } = await import("@/utils/ovh")
   const result = await ovh("GET", "/test")
   expect(result).toStrictEqual({
     success: false,

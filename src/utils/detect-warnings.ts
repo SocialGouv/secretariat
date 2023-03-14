@@ -21,7 +21,7 @@ const containsSpecificServices = (user: User) => {
 }
 
 const hasNoDepartureDate = (user: User) => {
-  return !!user.departure ? null : "no_departure_date"
+  return user.departure ? null : "no_departure_date"
 }
 
 const ACTIVE_RULES = [

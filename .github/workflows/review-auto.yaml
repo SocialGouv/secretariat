@@ -53,44 +53,8 @@ jobs:
           dockerbuildargs: |
             APP_URL=https://${{ steps.env.outputs.subdomain }}.dev.fabrique.social.gouv.fr
 
-  # kontinuous:
-  #   name: "Deploy on Kubernetes 🐳"
-  #   needs: [build-app, build-hasura]
-  #   uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
-  #   secrets: inherit
-
-  deploy:
+  kontinuous:
+    name: "Deploy on Kubernetes 🐳"
     needs: [build-app, build-hasura]
-    name: Review Auto Pipeline 👓
-    runs-on: ubuntu-latest
-    environment: review-auto
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - uses: socialgouv/workflows/actions/deployment-starting@v1
-        id: deployment-starting
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pat: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
-          environment-scope: review
-
-      - uses: socialgouv/kontinuous/.github/actions/deploy-via-github@dev-cnpg-crd-needs
-        id: deployment
-        continue-on-error: true
-        with:
-          kubeconfig: ${{ secrets.KUBECONFIG }}
-          environment: dev
-          deployWriteOutputFile: "true"
-          sentryDSN: ${{ secrets.KS_SENTRY_DSN }}
-          notifyWebhookUrl: ${{ secrets.KS_NOTIFY_MATTERMOST_WEBHOOK_URL }}
-          ciNamespace: ${{ env.KS_CI_NAMESPACE }}
-      
-      - uses: socialgouv/workflows/actions/deployment-ending@v1
-        with:
-          pat: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          deployment-id: ${{ steps.deployment-starting.outputs.deployment-id }}
-          deployment-name: ${{ steps.deployment-starting.outputs.deployment-name }}
-          deployment-ok: ${{ steps.deployment.outcome == 'success' && 'true' || 'false' }}
-
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
+    secrets: inherit

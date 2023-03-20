@@ -1,3 +1,10 @@
+## [1.54.2](https://github.com/SocialGouv/secretariat/compare/v1.54.1...v1.54.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* upgrade Next to upgrade NextAuth ([#525](https://github.com/SocialGouv/secretariat/issues/525)) ([046b1aa](https://github.com/SocialGouv/secretariat/commit/046b1aa117dfff891facc5fc0d47dd5768c67cc4))
+
 ## [1.54.1](https://github.com/SocialGouv/secretariat/compare/v1.54.0...v1.54.1) (2023-03-20)
 
 

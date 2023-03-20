@@ -87,7 +87,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -113,7 +114,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -139,7 +141,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -165,7 +168,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -191,7 +195,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -217,7 +222,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -243,7 +249,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -292,7 +299,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                       alt="user avatar"
                       data-nimg="intrinsic"
                       decoding="async"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      src="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75"
+                      srcset="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75 2x"
                       style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                     />
                     <noscript />
@@ -342,7 +350,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -368,7 +377,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -394,7 +404,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -420,7 +431,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -446,7 +458,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -472,7 +485,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -498,7 +512,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -588,7 +603,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -614,7 +630,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -640,7 +657,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -666,7 +684,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -692,7 +711,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -718,7 +738,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -744,7 +765,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -793,7 +815,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                       alt="user avatar"
                       data-nimg="intrinsic"
                       decoding="async"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      src="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75"
+                      srcset="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75 2x"
                       style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                     />
                     <noscript />
@@ -841,7 +864,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -867,7 +891,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -893,7 +918,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -919,7 +945,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -945,7 +972,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -971,7 +999,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -997,7 +1026,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -1087,7 +1117,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -1113,7 +1144,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -1139,7 +1171,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -1165,7 +1198,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -1191,7 +1225,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -1217,7 +1252,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -1243,7 +1279,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -1333,7 +1370,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -1359,7 +1397,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -1385,7 +1424,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -1411,7 +1451,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -1437,7 +1478,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -1463,7 +1505,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -1489,7 +1532,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -1579,7 +1623,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -1605,7 +1650,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -1631,7 +1677,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -1657,7 +1704,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -1683,7 +1731,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -1709,7 +1758,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -1735,7 +1785,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -1825,7 +1876,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="mattermost"
                       />
@@ -1851,7 +1903,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="github"
                       />
@@ -1877,7 +1930,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class=""
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="matomo"
                       />
@@ -1903,7 +1957,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="sentry"
                       />
@@ -1929,7 +1984,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="zammad"
                       />
@@ -1955,7 +2011,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="nextcloud"
                       />
@@ -1981,7 +2038,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                         class="opacity-25 dark:opacity-40"
                         data-nimg="intrinsic"
                         decoding="async"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                         title="ovh"
                       />
@@ -2205,7 +2263,8 @@ exports[`when users are loaded should match the snapshot 1`] = `
                           class=""
                           data-nimg="intrinsic"
                           decoding="async"
-                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                          srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
                           style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
                           title="nextcloud"
                         />

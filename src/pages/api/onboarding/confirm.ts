@@ -17,6 +17,11 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const { id } = req.query
+  if (!id) {
+    res.status(400).json({ message: "Missing id query parameter" })
+    return
+  }
+
   const token = getJwt()
 
   logAction({

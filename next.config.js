@@ -63,9 +63,7 @@ module.exports = {
     disableClientWebpackPlugin: true,
     disableServerWebpackPlugin: true,
   },
-  experimental: {
-    outputStandalone: true,
-  },
+  output: "standalone",
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
     NEXT_PUBLIC_APP_REPOSITORY_URL: homepage,

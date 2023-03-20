@@ -4,6 +4,7 @@ on:
     branches:
       - "feat/**"
       - "fix/**"
+      - "chore/**"
 
 concurrency:
   cancel-in-progress: true

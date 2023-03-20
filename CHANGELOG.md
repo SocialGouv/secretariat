@@ -1,3 +1,10 @@
+## [1.54.1](https://github.com/SocialGouv/secretariat/compare/v1.54.0...v1.54.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* release ([41a40f8](https://github.com/SocialGouv/secretariat/commit/41a40f8787607e22f5b9d183c2c0c672b5e0d7cb))
+
 # [1.54.0](https://github.com/SocialGouv/secretariat/compare/v1.53.10...v1.54.0) (2023-03-13)
 
 

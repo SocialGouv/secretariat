@@ -1,3 +1,10 @@
+## [1.54.4](https://github.com/SocialGouv/secretariat/compare/v1.54.3...v1.54.4) (2023-03-21)
+
+
+### Bug Fixes
+
+* test values ([bddb7c3](https://github.com/SocialGouv/secretariat/commit/bddb7c327f29501587e024c70b11916d1d49219e))
+
 ## [1.54.3](https://github.com/SocialGouv/secretariat/compare/v1.54.2...v1.54.3) (2023-03-21)
 
 

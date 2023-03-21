@@ -15,6 +15,8 @@ fileignoreconfig:
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
 - filename: next.config.js
   checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
+- filename: pnpm-lock.yaml
+  checksum: fb99dbf47d8d843bafc098c636027096c42b8e77ce3b9052297ab7632f3359a3
 - filename: sentry.client.config.js
   checksum: c099a2c12302135ea90b784b7f17827d985de03d2b667750551cb9f8cde0ea81
 - filename: sentry.edge.config.js
@@ -27,8 +29,6 @@ fileignoreconfig:
   checksum: 84ace93b2abe1dbb750a311a6cee984e9b0392be6176871e7e49d7cdf948cef0
 - filename: src/services/send-email.ts
   checksum: f8e6673f08300673626ad8ce310cfce4037f5feec086d4ce5808e40c09766992
-- filename: yarn.lock
-  checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
 scopeconfig:
 - scope: node
 version: "1.0"

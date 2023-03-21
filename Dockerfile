@@ -1,13 +1,18 @@
 # Install dependencies only when needed
-FROM node:16-alpine AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+FROM node:16-alpine3.17 AS deps
 RUN apk add --no-cache libc6-compat
+RUN npm install -g pnpm
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+
+COPY pnpm-lock.yaml ./
+RUN pnpm fetch
 
 # Rebuild the source code only when needed
-FROM node:16-alpine AS builder
+FROM node:16-alpine3.17 AS builder
+RUN apk add --no-cache libc6-compat
+RUN npm install -g pnpm
+WORKDIR /app
+
 ARG NEXT_PUBLIC_HASURA_URL
 ENV NEXT_PUBLIC_HASURA_URL $NEXT_PUBLIC_HASURA_URL
 ARG NEXT_PUBLIC_MATOMO_URL
@@ -15,14 +20,16 @@ ENV NEXT_PUBLIC_MATOMO_URL $NEXT_PUBLIC_MATOMO_URL
 ARG NEXT_PUBLIC_MATOMO_SITE_ID
 ENV NEXT_PUBLIC_MATOMO_SITE_ID $NEXT_PUBLIC_MATOMO_SITE_ID
 ENV NEXT_TELEMETRY_DISABLED 1
-WORKDIR /app
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN yarn build
+RUN pnpm install --offline
+RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:16-alpine AS runner
+FROM node:16-alpine3.17 AS runner
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 ENV NODE_ENV production

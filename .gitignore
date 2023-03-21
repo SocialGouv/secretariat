@@ -14,9 +14,6 @@ node_modules/
 # dev assets
 .assets
 
-# yarn
-yarn-error.log
-
 # jest's coverage output
 coverage
 

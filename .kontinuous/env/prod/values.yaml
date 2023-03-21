@@ -1,11 +1,11 @@
 app:
   resources:
     requests:
-      cpu: 200m
-      memory: 512Mi
+      cpu: 15m
+      memory: 200Mi
     limits:
-      cpu: 400m
-      memory: 1024Mi
+      cpu: 30m
+      memory: 400Mi
   autoscale:
     enabled: true
     minReplicas: 2
@@ -13,10 +13,10 @@ app:
 hasura:
   resources:
     requests:
-      cpu: 200m
+      cpu: 50m
       memory: 512Mi
     limits:
-      cpu: 400m
+      cpu: 100m
       memory: 1024Mi
   autoscale:
     enabled: true

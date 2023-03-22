@@ -17,7 +17,9 @@ const InfoTable = ({
     {Object.entries(data).map(([key, value], i) => (
       <div key={i} className="contents">
         <div>{key}</div>
-        <div className="col-span-2">{value}</div>
+        <div className="col-span-2">
+          {value instanceof Date ? value.toString() : value}
+        </div>
       </div>
     ))}
   </div>

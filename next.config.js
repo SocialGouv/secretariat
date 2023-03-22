@@ -28,7 +28,7 @@ const ContentSecurityPolicy =
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
-      script-src 'self' 'unsafe-eval';
+      script-src * 'unsafe-eval' 'unsafe-inline';
       connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr sentry.fabrique.social.gouv.fr;
     `
 

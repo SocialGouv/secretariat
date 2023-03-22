@@ -24,13 +24,14 @@ const Navigation = () => {
       <ul>
         {links.map((link, i) => (
           <li key={i}>
-            <Link href={link.route}>
-              <a className={route === link.route ? "selected" : ""}>
-                <i
-                  className={`${link.icon} text-xl leading-none align-sub mr-1`}
-                />
-                {link.text}
-              </a>
+            <Link
+              href={link.route}
+              className={route === link.route ? "selected" : ""}
+            >
+              <i
+                className={`${link.icon} text-xl leading-none align-sub mr-1`}
+              />
+              {link.text}
             </Link>
           </li>
         ))}

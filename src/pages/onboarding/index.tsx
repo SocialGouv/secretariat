@@ -55,11 +55,12 @@ const Onboarding = () => (
         </div>
 
         <div className="flex justify-center">
-          <Link href="/onboarding/request">
-            <a className="flex leading-8 btn primary items-center text-3xl py-6 bg-red-marianne-425-main">
-              Commencer
-              <i className="ri-arrow-right-s-line relative left-2" />
-            </a>
+          <Link
+            href="/onboarding/request"
+            className="flex leading-8 btn primary items-center text-3xl py-6 bg-red-marianne-425-main"
+          >
+            Commencer
+            <i className="ri-arrow-right-s-line relative left-2" />
           </Link>
         </div>
       </div>

@@ -36,8 +36,8 @@ const Home = () => (
           Numérique, vous pouvez effectuer une demande d&apos;embarquement en
           cliquant sur le bouton ci-dessous.
         </p>
-        <Link href="/onboarding">
-          <a className="btn primary">Demande d&apos;embarquement</a>
+        <Link href="/onboarding" className="btn primary">
+          Demande d&apos;embarquement
         </Link>
       </div>
       <div className="card">
@@ -47,8 +47,8 @@ const Home = () => (
           services de la Fabrique Numérique des ministères sociaux, vous pouvez
           accèder aux outils de gestion en cliquant sur le bouton ci-dessous.
         </p>
-        <Link href="/accounts">
-          <a className="btn primary">Gestion des comptes</a>
+        <Link href="/accounts" className="btn primary">
+          Gestion des comptes
         </Link>
       </div>
     </div>

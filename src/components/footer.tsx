@@ -33,9 +33,7 @@ const Footer = () => (
         >
           La Fabrique Numérique
         </a>
-        <Link href="/legal">
-          <a>Mentions légales</a>
-        </Link>
+        <Link href="/legal">Mentions légales</Link>
         <ThemeToggleButton />
       </div>
     </div>

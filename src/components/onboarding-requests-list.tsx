@@ -43,9 +43,7 @@ const OnboardingRequestsList = () => {
                     query: { id: request.id },
                   }}
                 >
-                  <a>
-                    {request.data.firstName} {request.data.lastName}
-                  </a>
+                  {request.data.firstName} {request.data.lastName}
                 </Link>
               ) : (
                 <span>

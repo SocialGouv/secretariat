@@ -17,7 +17,6 @@ const ContentSecurityPolicy =
       default-src 'self';
       object-src 'none';
       base-uri 'none';
-      require-trusted-types-for 'script';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' matomo.fabrique.social.gouv.fr;
@@ -27,7 +26,6 @@ const ContentSecurityPolicy =
       default-src 'self';
       object-src 'none';
       base-uri 'none';
-      require-trusted-types-for 'script';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data:;
       script-src 'self' 'unsafe-eval';

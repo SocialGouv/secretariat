@@ -1,3 +1,10 @@
+## [1.54.6](https://github.com/SocialGouv/secretariat/compare/v1.54.5...v1.54.6) (2023-03-23)
+
+
+### Bug Fixes
+
+* CSP ([#527](https://github.com/SocialGouv/secretariat/issues/527)) ([5bb6fc7](https://github.com/SocialGouv/secretariat/commit/5bb6fc7b9f03eb7f5bb28c7865757532ec582255))
+
 ## [1.54.5](https://github.com/SocialGouv/secretariat/compare/v1.54.4...v1.54.5) (2023-03-21)
 
 

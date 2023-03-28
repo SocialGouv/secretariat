@@ -12,7 +12,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 8e57dfc5e7e7fa5e4d6ca8a2174e2ea88ec66b80e165b705a442bc756e8c1a76
 - filename: __tests__/components/__snapshots__/users.test.js.snap
-  checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
+  checksum: 45a16294e2f2ee34379ecbd818ab0a6fd197b96d82ac04766eff5e73b4ce12a9
 - filename: next.config.js
   checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
 - filename: sentry.client.config.js

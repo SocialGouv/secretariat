@@ -14,7 +14,7 @@ exports[`when users are loaded should match the snapshot 1`] = `
           role="User"
         >
           <div
-            class="user box selected"
+            class="user box draggable"
             draggable="true"
           >
             <div
@@ -69,193 +69,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -282,29 +198,17 @@ exports[`when users are loaded should match the snapshot 1`] = `
                 <div
                   class="avatar"
                 >
-                  <span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                  >
-                    <span
-                      style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                    >
-                      <img
-                        alt=""
-                        aria-hidden="true"
-                        src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2744%27%20height=%2744%27/%3e"
-                        style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                      />
-                    </span>
-                    <img
-                      alt="user avatar"
-                      data-nimg="intrinsic"
-                      decoding="async"
-                      src="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75"
-                      srcset="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75 2x"
-                      style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                    />
-                    <noscript />
-                  </span>
+                  <img
+                    alt="user avatar"
+                    data-nimg="1"
+                    decoding="async"
+                    height="44"
+                    loading="lazy"
+                    src="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75"
+                    srcset="/_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F5b9ebfc387f3a08eebf32587e7e9e608%3Fs%3D32%26d%3Dmm&w=96&q=75 2x"
+                    style="color: transparent;"
+                    width="44"
+                  />
                 </div>
                 <div
                   class="info"
@@ -332,193 +236,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -585,193 +405,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -798,29 +534,17 @@ exports[`when users are loaded should match the snapshot 1`] = `
                 <div
                   class="avatar"
                 >
-                  <span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                  >
-                    <span
-                      style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                    >
-                      <img
-                        alt=""
-                        aria-hidden="true"
-                        src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2744%27%20height=%2744%27/%3e"
-                        style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                      />
-                    </span>
-                    <img
-                      alt="user avatar"
-                      data-nimg="intrinsic"
-                      decoding="async"
-                      src="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75"
-                      srcset="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75 2x"
-                      style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                    />
-                    <noscript />
-                  </span>
+                  <img
+                    alt="user avatar"
+                    data-nimg="1"
+                    decoding="async"
+                    height="44"
+                    loading="lazy"
+                    src="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75"
+                    srcset="/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F5468549%3Fu%3D32c7c5b1e8e18a369b6fad50399b8a4daf6aff7d%26v%3D4&w=96&q=75 2x"
+                    style="color: transparent;"
+                    width="44"
+                  />
                 </div>
                 <div
                   class="info"
@@ -846,193 +570,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -1099,193 +739,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -1352,193 +908,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -1605,193 +1077,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -1858,193 +1246,109 @@ exports[`when users are loaded should match the snapshot 1`] = `
                   class="services"
                 >
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="mattermost logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="mattermost"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="mattermost logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmattermost.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="mattermost"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2718%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="github logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="github"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="github logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fgithub.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="github"
+                      width="18"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2726.172%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="matomo logo"
-                        class=""
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="matomo"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="matomo logo"
+                      class=""
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fmatomo.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="matomo"
+                      width="26.172"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.574%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="sentry logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="sentry"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="sentry logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fsentry.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="sentry"
+                      width="20.574"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720.988%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="zammad logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="zammad"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="zammad logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fzammad.svg%23icon-logo&w=48&q=75 2x"
+                      style="color: transparent;"
+                      title="zammad"
+                      width="20.988"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2737.152%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="nextcloud logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="nextcloud"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="nextcloud logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                      style="color: transparent;"
+                      title="nextcloud"
+                      width="37.152"
+                    />
                   </div>
                   <div>
-                    <span
-                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                    >
-                      <span
-                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                      >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730.311999999999998%27%20height=%2718%27/%3e"
-                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                        />
-                      </span>
-                      <img
-                        alt="ovh logo"
-                        class="opacity-25 dark:opacity-40"
-                        data-nimg="intrinsic"
-                        decoding="async"
-                        src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
-                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
-                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                        title="ovh"
-                      />
-                      <noscript />
-                    </span>
+                    <img
+                      alt="ovh logo"
+                      class="opacity-25 dark:opacity-40"
+                      data-nimg="1"
+                      decoding="async"
+                      height="18"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75"
+                      srcset="/_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=32&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fovh.svg%23icon-logo&w=64&q=75 2x"
+                      style="color: transparent;"
+                      title="ovh"
+                      width="30.311999999999998"
+                    />
                   </div>
                 </div>
               </div>
@@ -2245,31 +1549,19 @@ exports[`when users are loaded should match the snapshot 1`] = `
                     <div
                       class="icon"
                     >
-                      <span
-                        style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
-                      >
-                        <span
-                          style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
-                        >
-                          <img
-                            alt=""
-                            aria-hidden="true"
-                            src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2745.408%27%20height=%2722%27/%3e"
-                            style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
-                          />
-                        </span>
-                        <img
-                          alt="nextcloud logo"
-                          class=""
-                          data-nimg="intrinsic"
-                          decoding="async"
-                          src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
-                          srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
-                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                          title="nextcloud"
-                        />
-                        <noscript />
-                      </span>
+                      <img
+                        alt="nextcloud logo"
+                        class=""
+                        data-nimg="1"
+                        decoding="async"
+                        height="22"
+                        loading="lazy"
+                        src="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75"
+                        srcset="/_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=48&q=75 1x, /_next/image?url=%2Fimages%2Fdark%2Fnextcloud.svg%23icon-logo&w=96&q=75 2x"
+                        style="color: transparent;"
+                        title="nextcloud"
+                        width="45.408"
+                      />
                     </div>
                     <div
                       class="title"

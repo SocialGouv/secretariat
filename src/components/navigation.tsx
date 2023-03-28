@@ -28,10 +28,12 @@ const Navigation = () => {
               href={link.route}
               className={route === link.route ? "selected" : ""}
             >
-              <i
-                className={`${link.icon} text-xl leading-none align-sub mr-1`}
-              />
-              {link.text}
+              <>
+                <i
+                  className={`${link.icon} text-xl leading-none align-sub mr-1`}
+                />
+                {link.text}
+              </>
             </Link>
           </li>
         ))}

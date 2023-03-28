@@ -23,10 +23,10 @@ header {
         flex
         text-gray-700
         dark:text-gray-200;
+    }
 
-      .title {
-        @apply flex flex-col justify-center px-8;
-      }
+    .title {
+      @apply flex flex-col justify-center px-8;
     }
 
     nav {

@@ -12,11 +12,13 @@ const Header = () => {
     <header className="header">
       <div className="header-content">
         <Link href="/">
-          <Logo />
-          <div className="title">
-            <h1>Secretariat</h1>
-            <p>Gestion des comptes de la Fabrique Numérique</p>
-          </div>
+          <>
+            <Logo />
+            <div className="title">
+              <h1>Secretariat</h1>
+              <p>Gestion des comptes de la Fabrique Numérique</p>
+            </div>
+          </>
         </Link>
         <nav>
           <AuthenticatedUser />

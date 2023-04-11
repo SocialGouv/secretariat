@@ -1,4 +1,5 @@
 projectName: secretariat
+ciNamespace: ci-secretariat
 dependencies:
   fabrique:
     import: socialgouv/kontinuous/plugins/fabrique

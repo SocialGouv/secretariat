@@ -1,7 +1,0 @@
-deactivate:
-  enabled: false
-  jobs-deactivate:
-    runs:
-      deactivate:
-        with:
-          db: true

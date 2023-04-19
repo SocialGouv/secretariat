@@ -9,7 +9,7 @@ app:
   imagePackage: app
 
 hasura:
-  ~needs: [create-db]
+  ~needs: [pg]
   envFrom:
     - secretRef:
         name: hasura
@@ -18,7 +18,8 @@ hasura:
     - configMapRef:
         name: hasura-configmap
 
-jobs:
-  runs:
-    create-db:
-      use: create-db
+pg:
+  ~chart: pg
+  # cnpg-cluster:
+  #   persistence:
+  #     size: 8Gi

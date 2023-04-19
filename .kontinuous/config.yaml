@@ -1,4 +1,5 @@
 projectName: secretariat
+ciNamespace: ci-secretariat
 dependencies:
   fabrique:
     import: socialgouv/kontinuous/plugins/fabrique
@@ -11,5 +12,4 @@ dependencies:
             options:
               secrets:
                 pg-admin-user:
-                  from:
-                    - cnpg-admin-user
+                  enabled: false

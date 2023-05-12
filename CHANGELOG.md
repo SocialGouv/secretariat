@@ -1,3 +1,10 @@
+## [1.54.7](https://github.com/SocialGouv/secretariat/compare/v1.54.6...v1.54.7) (2023-05-12)
+
+
+### Bug Fixes
+
+* update service name in secrets ([#533](https://github.com/SocialGouv/secretariat/issues/533)) ([3a233c3](https://github.com/SocialGouv/secretariat/commit/3a233c3c7cf4e79fa0f4051742d1980ee77094b0))
+
 ## [1.54.6](https://github.com/SocialGouv/secretariat/compare/v1.54.5...v1.54.6) (2023-03-23)
 
 

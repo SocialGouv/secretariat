@@ -9,8 +9,14 @@ fileignoreconfig:
   checksum: 3e14e4a3020b4f6e749ab6e607e08b1f8ea3c7cb445907e843d99909fc1dbb65
 - filename: .github/workflows/review.yaml
   checksum: 3209ade741c7176f01de5a3a3cdd3d8b852bd68c45755c785dcac68845b30405
+- filename: .kontinuous/env/dev/templates/app.sealed-secret.yaml
+  checksum: f717a3e5f714e5a28b2a5c19aee8dc3825cfb1aee5b9bc55d9d8f231fff8f7f0
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 8e57dfc5e7e7fa5e4d6ca8a2174e2ea88ec66b80e165b705a442bc756e8c1a76
+- filename: .kontinuous/env/preprod/templates/app.sealed-secret.yaml
+  checksum: 16b13c43bba2baa73e9fd9e45136f563b971a6141158ce36121fb9c6f6466c56
+- filename: .kontinuous/env/prod/templates/app.sealed-secret.yaml
+  checksum: 19adea6e6ae0e8f78e3271d99589271adf93ff7c35bfd49bea45d445534c82fb
 - filename: __tests__/components/__snapshots__/users.test.js.snap
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
 - filename: next.config.js

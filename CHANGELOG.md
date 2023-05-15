@@ -1,3 +1,10 @@
+## [1.54.11](https://github.com/SocialGouv/secretariat/compare/v1.54.10...v1.54.11) (2023-05-15)
+
+
+### Bug Fixes
+
+* prod values ([#537](https://github.com/SocialGouv/secretariat/issues/537)) ([afcfda9](https://github.com/SocialGouv/secretariat/commit/afcfda97d04626ee86e531670bf29ecc3daca320))
+
 ## [1.54.10](https://github.com/SocialGouv/secretariat/compare/v1.54.9...v1.54.10) (2023-05-15)
 
 

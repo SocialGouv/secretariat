@@ -1,34 +1,6 @@
 fileignoreconfig:
-- filename: .github/workflows/deactivate.yaml
-  checksum: e0f0138068d1f9a11721ad38ff8b892f8dfbf19854f741fe60ae1d7f291fff22
-- filename: .github/workflows/preproduction.yaml
-  checksum: 852a71100a6bf940df9c77fb911b35e59ab280a4febfec67811f9d0a7f8f4676
-- filename: .github/workflows/production.yaml
-  checksum: 7ae9af137671722308557d0881493f6c0302f6c44a9753696129403930d6169b
-- filename: .github/workflows/review-auto.yaml
-  checksum: 3e14e4a3020b4f6e749ab6e607e08b1f8ea3c7cb445907e843d99909fc1dbb65
-- filename: .github/workflows/review.yaml
-  checksum: 3209ade741c7176f01de5a3a3cdd3d8b852bd68c45755c785dcac68845b30405
-- filename: .kontinuous/env/dev/values.yaml
-  checksum: 8e57dfc5e7e7fa5e4d6ca8a2174e2ea88ec66b80e165b705a442bc756e8c1a76
-- filename: __tests__/components/__snapshots__/users.test.js.snap
-  checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
-- filename: next.config.js
-  checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
-- filename: sentry.client.config.js
-  checksum: c099a2c12302135ea90b784b7f17827d985de03d2b667750551cb9f8cde0ea81
-- filename: sentry.edge.config.js
-  checksum: 1944a74030b8a786b01906e52ee2d9c1304d3867aebe394df7828e98f057bce4
-- filename: sentry.server.config.js
-  checksum: c45afaf7fe0822f1bf966627a0e5e166468d27f6d5151229990f293b37d4302b
-- filename: src/components/onboarding/steps/services-accounts-statuses.tsx
-  checksum: b118715f8269bd92790bbe4019159567893d2517cad7ef2a639e456d924b88ca
-- filename: src/hooks/use-onboarding.ts
-  checksum: 84ace93b2abe1dbb750a311a6cee984e9b0392be6176871e7e49d7cdf948cef0
-- filename: src/services/send-email.ts
-  checksum: f8e6673f08300673626ad8ce310cfce4037f5feec086d4ce5808e40c09766992
-- filename: yarn.lock
-  checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
-scopeconfig:
-- scope: node
+- filename: .kontinuous/env/preprod/templates/app.sealed-secret.yaml
+  checksum: 0477b2e58e7923268e529e24f4e02ecd7df137881d1b8922bdae44fe8996213e
+- filename: .kontinuous/env/prod/templates/app.sealed-secret.yaml
+  checksum: 9a4a6fe4d4a8d5645a1f9b17d7b4aae4ceca6dbc41b246507ba2af3ec0e4a103
 version: "1.0"

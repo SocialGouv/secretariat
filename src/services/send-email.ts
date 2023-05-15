@@ -153,9 +153,9 @@ const ovhFeedback = (
   }
 
   if (html) {
-    return `<li><a href="https://pro2.mail.ovh.net/">Mail OVH</a> ${content}</li>`
+    return `<li><a href="https://ex5.mail.ovh.net/">Mail OVH</a> ${content}</li>`
   } else {
-    return `- Mail OVH : https://pro2.mail.ovh.net/ ${content}`
+    return `- Mail OVH : https://ex5.mail.ovh.net/ ${content}`
   }
 }
 

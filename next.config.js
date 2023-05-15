@@ -18,8 +18,8 @@ const ContentSecurityPolicy =
       object-src 'none';
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
-      img-src 'self' data:;
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' matomo.fabrique.social.gouv.fr;
+      img-src 'self' data: authjs.dev;
+      script-src 'nonce-${nonce}';
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `
@@ -27,7 +27,7 @@ const ContentSecurityPolicy =
       object-src 'none';
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
-      img-src 'self' data:;
+      img-src 'self' data: authjs.dev;
       script-src 'self' 'unsafe-eval';
       connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr sentry.fabrique.social.gouv.fr;
     `

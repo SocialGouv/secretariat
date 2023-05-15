@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: .kontinuous/env/preprod/templates/app.sealed-secret.yaml
-  checksum: d01064bed08794fbddf3222520966d773327818ab3a1f8ac81973c7e22ed4ca3
+  checksum: 0477b2e58e7923268e529e24f4e02ecd7df137881d1b8922bdae44fe8996213e
 - filename: .kontinuous/env/prod/templates/app.sealed-secret.yaml
-  checksum: e2cbf4a424f95c4cc7b83e5a58365160405f198592f0104225fda337181f32b6
+  checksum: 9a4a6fe4d4a8d5645a1f9b17d7b4aae4ceca6dbc41b246507ba2af3ec0e4a103
 version: "1.0"

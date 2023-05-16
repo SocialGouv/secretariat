@@ -20,6 +20,3 @@ hasura:
 
 pg:
   ~chart: pg
-  # cnpg-cluster:
-  #   persistence:
-  #     size: 8Gi

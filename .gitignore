@@ -22,5 +22,3 @@ coverage
 
 # LHCI
 .lighthouseci
-
-.tmuxp.yaml

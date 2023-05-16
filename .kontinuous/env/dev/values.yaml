@@ -1,0 +1,28 @@
+pg:
+  ~chart: pg
+  cnpg-cluster:
+    backup:
+      enabled: false
+      schedule: "0 10 * * * *"
+      destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-branch"
+      azureCredentials:
+        storageAccount:
+          name: cnpg-backup-credentials
+          key: azurestorageaccountname
+        storageKey:
+          name: cnpg-backup-credentials
+          key: azurestorageaccountkey
+
+    recovery:
+      enabled: false
+      # targetTime: "2023-04-28 15:00:00.00000+00"
+      backup:
+        destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-branch"
+        azureCredentials:
+          storageAccount:
+            name: cnpg-backup-credentials
+            key: azurestorageaccountname
+          storageKey:
+            name: cnpg-backup-credentials
+            key: azurestorageaccountkey
+

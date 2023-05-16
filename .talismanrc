@@ -1,6 +1,6 @@
 fileignoreconfig:
-- filename: .kontinuous/env/preprod/templates/app.sealed-secret.yaml
-  checksum: 0477b2e58e7923268e529e24f4e02ecd7df137881d1b8922bdae44fe8996213e
-- filename: .kontinuous/env/prod/templates/app.sealed-secret.yaml
-  checksum: 9f4703a91e046f4fdd9f59335b9537067456bf972257005cda5c32258cc7caaf
+- filename: .kontinuous/env/dev/templates/cnpg-backup-credentials.sealed-secret.yaml
+  checksum: dfe2e3b7a5fa937efc92b6e607b1ee1e43ed1638009a867820e42feecf33a58c
+- filename: .kontinuous/env/dev/values.yaml
+  checksum: a00da990c5cf7c3a02bd72a2ca99fcaa858d67d650b541d81ce2e66b43c36326
 version: "1.0"

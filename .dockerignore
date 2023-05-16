@@ -1,4 +1,5 @@
 .dockerignore
+.talismanrc
 .git
 .github
 .gitignore
@@ -13,6 +14,5 @@ npm-debug.log
 README.md
 packages
 sonar-project.properties
-.tmuxp.yaml
 .kontinuous
 .talismanrc

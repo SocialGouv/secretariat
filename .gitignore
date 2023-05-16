@@ -23,4 +23,11 @@ coverage
 # LHCI
 .lighthouseci
 
-.tmuxp.yaml
+# Yarn Berry
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

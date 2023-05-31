@@ -142,7 +142,7 @@ const Onboarding = () => {
           <Alert type="info" title="Demande d'embarquement validée">
             <>
               Un email récapitulatif a été envoyé à l&apos;émetteur de la
-              requête d&spo;embarquement.
+              requête d&apos;embarquement.
             </>
           </Alert>
           <ServicesAccountsStatuses statuses={servicesAccountsStatuses} />

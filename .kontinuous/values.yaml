@@ -9,7 +9,7 @@ app:
   imagePackage: app
 
 hasura:
-  ~needs: [pg]
+  ~needs: [cnpg-cluster]
   envFrom:
     - secretRef:
         name: hasura
@@ -18,7 +18,7 @@ hasura:
     - configMapRef:
         name: hasura-configmap
 
-pg:
+cnpg-cluster:
   ~chart: pg
   # cnpg-cluster:
   #   persistence:

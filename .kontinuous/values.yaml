@@ -1,4 +1,5 @@
 app:
+  ~needs: [build-app]
   envFrom:
     - secretRef:
         name: app
@@ -9,7 +10,7 @@ app:
   imagePackage: app
 
 hasura:
-  ~needs: [cnpg-cluster]
+  ~needs: [cnpg-cluster, build-hasura]
   envFrom:
     - secretRef:
         name: hasura
@@ -20,6 +21,20 @@ hasura:
 
 cnpg-cluster:
   ~chart: pg
-  # cnpg-cluster:
-  #   persistence:
-  #     size: 8Gi
+
+jobs:
+  runs:
+    build-app:
+      use: build
+      with:
+        imagePackage: app
+        buildArgs:
+          NEXT_PUBLIC_HASURA_URL: "https://hasura-{{ .Values.global.host }}/v1/graphql"
+
+    build-hasura:
+      use: build
+      with:
+        imagePackage: hasura
+        context: ./packages/hasura
+        buildArgs:
+          APP_URL: "https://{{ .Values.global.host }}"

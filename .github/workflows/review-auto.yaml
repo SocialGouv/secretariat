@@ -11,50 +11,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
 
 jobs:
-  build-app:
-    name: Build & Register app
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Env
-        id: env
-        uses: socialgouv/kontinuous/.github/actions/env@v1
-        with:
-          subdomain: hasura
-
-      - name: Use autodevops build and register
-        uses: socialgouv/workflows/actions/build-image@v1
-        with:
-          imagePackage: app
-          token: ${{ secrets.GITHUB_TOKEN }}
-          dockerbuildargs: |
-            NEXT_PUBLIC_HASURA_URL=https://${{ steps.env.outputs.subdomain_hasura }}.dev.fabrique.social.gouv.fr/v1/graphql
-
-  build-hasura:
-    name: Build & Register hasura
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Env
-        id: env
-        uses: socialgouv/kontinuous/.github/actions/env@v1
-
-      - name: Use autodevops build and register
-        uses: socialgouv/workflows/actions/build-image@v1
-        with:
-          imagePackage: hasura
-          dockerfile: ./packages/hasura/Dockerfile
-          dockercontext: ./packages/hasura
-          token: ${{ secrets.GITHUB_TOKEN }}
-          dockerbuildargs: |
-            APP_URL=https://${{ steps.env.outputs.subdomain }}.dev.fabrique.social.gouv.fr
-
-  kontinuous:
-    name: "Deploy on Kubernetes 🐳"
-    needs: [build-app, build-hasura]
+  socialgouv:
+    name: "🇫🇷 SocialGouv"
     uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
     secrets: inherit

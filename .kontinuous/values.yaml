@@ -14,7 +14,7 @@ hasura:
     - secretRef:
         name: hasura
     - secretRef:
-        name: pg-user
+        name: cnpg-cluster-app
     - configMapRef:
         name: hasura-configmap
 

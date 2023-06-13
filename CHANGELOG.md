@@ -1,3 +1,10 @@
+## [1.54.14](https://github.com/SocialGouv/secretariat/compare/v1.54.13...v1.54.14) (2023-06-13)
+
+
+### Bug Fixes
+
+* ks build ([#546](https://github.com/SocialGouv/secretariat/issues/546)) ([581f874](https://github.com/SocialGouv/secretariat/commit/581f8748b22660dcb28e2bf75f7e6a110b88611e))
+
 ## [1.54.13](https://github.com/SocialGouv/secretariat/compare/v1.54.12...v1.54.13) (2023-06-13)
 
 

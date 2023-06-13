@@ -1,3 +1,10 @@
+## [1.54.12](https://github.com/SocialGouv/secretariat/compare/v1.54.11...v1.54.12) (2023-06-13)
+
+
+### Bug Fixes
+
+* pg chart breaking ([#544](https://github.com/SocialGouv/secretariat/issues/544)) ([4b597c4](https://github.com/SocialGouv/secretariat/commit/4b597c42717870ddc9f1a17a5a1e7f790975a97f))
+
 ## [1.54.11](https://github.com/SocialGouv/secretariat/compare/v1.54.10...v1.54.11) (2023-05-15)
 
 

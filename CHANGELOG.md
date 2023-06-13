@@ -1,3 +1,10 @@
+## [1.54.13](https://github.com/SocialGouv/secretariat/compare/v1.54.12...v1.54.13) (2023-06-13)
+
+
+### Bug Fixes
+
+* typo ([#541](https://github.com/SocialGouv/secretariat/issues/541)) ([98c60f9](https://github.com/SocialGouv/secretariat/commit/98c60f9bf14e7a91ee2ab91638ab1bc3e6868e2a))
+
 ## [1.54.12](https://github.com/SocialGouv/secretariat/compare/v1.54.11...v1.54.12) (2023-06-13)
 
 

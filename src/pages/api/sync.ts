@@ -1,4 +1,4 @@
-import sync from "@/services/sync"
+import { sync } from "@/services/sync"
 import httpLogger from "@/utils/http-logger"
 import { getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"

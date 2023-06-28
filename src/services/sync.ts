@@ -9,12 +9,13 @@ import graphQLFetcher from "@/utils/graphql-fetcher"
 import { getJwt } from "@/utils/jwt"
 import logger from "@/utils/logger"
 import {
-  deleteServices,
+  deleteServicesNotIn,
   deleteUsers,
   getServicesMatchingId,
   insertService,
   insertUser,
   updateService,
+  deleteService as deleteServiceQuery,
 } from "../queries"
 
 const DEFAULT_DELAY = 800
@@ -39,12 +40,11 @@ const servicesIdFields: Record<ServiceName, string> = {
   ovh: "id",
 }
 
-const upsertService = async (
+export const getServiceFromData = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
-  token: string,
-  stats: syncStats
-): Promise<string> => {
+  token: string
+): Promise<Record<string, any>[]> => {
   const idField = servicesIdFields[serviceName]
   const { services: servicesMatchingId } = await graphQLFetcher({
     query: getServicesMatchingId,
@@ -54,6 +54,26 @@ const upsertService = async (
       serviceName,
     },
   })
+  return servicesMatchingId
+}
+
+export const upsertService = async (
+  serviceData: Record<string, unknown>,
+  serviceName: ServiceName,
+  token: string
+): Promise<{ serviceId: string; operationStats: SyncStats }> => {
+  const operationStats: SyncStats = {
+    errors: 0,
+    updates: 0,
+    insertions: 0,
+    userDeletions: 0,
+    accountDeletions: 0,
+  }
+  const servicesMatchingId = await getServiceFromData(
+    serviceData,
+    serviceName,
+    token
+  )
   if (servicesMatchingId.length === 0) {
     // This is a new service entry, we have to insert it into the table
 
@@ -72,8 +92,8 @@ const upsertService = async (
         service: { data: serviceData, user_id: userId, type: serviceName },
       },
     })
-    stats.insertions += 1
-    return serviceId
+    operationStats.insertions += 1
+    return { serviceId, operationStats }
   } else if (servicesMatchingId.length === 1) {
     // We have to update a service entry
     const {
@@ -86,15 +106,15 @@ const upsertService = async (
         service: { data: serviceData },
       },
     })
-    stats.updates += 1
-    return serviceId
+    operationStats.updates += 1
+    return { serviceId, operationStats }
   } else {
     logger.error(
       { servicesMatchingId },
       "Got multiple matches with a service's primary key field and service name"
     )
-    stats.errors += 1
-    return ""
+    operationStats.errors += 1
+    return { serviceId: "", operationStats }
   }
 }
 
@@ -102,17 +122,24 @@ const updateUsers = async (
   users: Record<string, unknown>[],
   serviceName: ServiceName,
   token: string,
-  stats: syncStats
+  stats: SyncStats
 ): Promise<string[]> => {
   const existingServicesIds: string[] = []
   for (const userKey in users) {
-    const serviceId = await upsertService(
+    const { serviceId, operationStats } = await upsertService(
       users[userKey],
       serviceName,
-      token,
-      stats
+      token
     )
-    if (serviceId !== "") existingServicesIds.push(serviceId)
+    for (const key in operationStats) {
+      if (key in stats) {
+        stats[key as keyof SyncStats] += operationStats[key as keyof SyncStats]
+      }
+    }
+
+    if (serviceId) {
+      existingServicesIds.push(serviceId)
+    }
   }
   return existingServicesIds
 }
@@ -126,7 +153,7 @@ const clearDeletedServices = async (
     const {
       delete_services: { returning: affectedUsersForService },
     } = await graphQLFetcher({
-      query: deleteServices,
+      query: deleteServicesNotIn,
       token,
       parameters: {
         existingServicesIds: existingServicesIds[serviceName],
@@ -162,12 +189,51 @@ const deleteOrphanUsers = async (
   return deletedUsers
 }
 
-const sync = async (enabledServices: ServiceName[]) => {
+export const deleteService = async (
+  serviceData: Record<string, unknown>,
+  serviceName: ServiceName,
+  token: string
+) => {
+  const servicesMatchingId = await getServiceFromData(
+    serviceData,
+    serviceName,
+    token
+  )
+  if (servicesMatchingId.length === 0) {
+    logger.error(
+      { serviceName, serviceData },
+      "Could not find service to delete"
+    )
+  } else if (servicesMatchingId.length === 1) {
+    const {
+      delete_services: { returning: affectedUsersForService },
+    } = await graphQLFetcher({
+      query: deleteServiceQuery,
+      token,
+      parameters: {
+        serviceId: servicesMatchingId[0].id,
+        serviceName,
+      },
+    })
+    await deleteOrphanUsers(affectedUsersForService, token)
+    logger.info(
+      { serviceName, serviceData },
+      "Successfully deleted user from Github webhook"
+    )
+  } else {
+    logger.error(
+      { serviceName, serviceData },
+      "Got multiple matches for service to delete"
+    )
+  }
+}
+
+export const sync = async (enabledServices: ServiceName[]) => {
   logger.info({ enabledServices }, "started sync")
 
   const token = getJwt()
 
-  const stats: syncStats = {
+  const stats: SyncStats = {
     insertions: 0,
     updates: 0,
     errors: 0,
@@ -215,5 +281,3 @@ const sync = async (enabledServices: ServiceName[]) => {
 
   return stats
 }
-
-export default sync

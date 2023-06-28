@@ -37,6 +37,15 @@ export const handlers = [
       })
     )
   ),
+  graphql.mutation("deleteServicesNotIn", (_req, res, ctx) =>
+    res(
+      ctx.data({
+        delete_services: {
+          returning: [],
+        },
+      })
+    )
+  ),
   graphql.mutation("deleteServices", (_req, res, ctx) =>
     res(
       ctx.data({

@@ -193,7 +193,7 @@ interface Logs {
   parameters: string
 }
 
-interface syncStats {
+interface SyncStats {
   insertions: number
   updates: number
   errors: number

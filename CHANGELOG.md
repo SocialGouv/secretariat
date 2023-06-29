@@ -1,3 +1,10 @@
+# [1.55.0](https://github.com/SocialGouv/secretariat/compare/v1.54.14...v1.55.0) (2023-06-29)
+
+
+### Features
+
+* github webhook ([#547](https://github.com/SocialGouv/secretariat/issues/547)) ([d8edcb9](https://github.com/SocialGouv/secretariat/commit/d8edcb95c4bedac76e46737936d9c82464a93d86))
+
 ## [1.54.14](https://github.com/SocialGouv/secretariat/compare/v1.54.13...v1.54.14) (2023-06-13)
 
 

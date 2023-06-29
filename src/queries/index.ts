@@ -100,6 +100,9 @@ export const getServicesMatchingId = gql`
       where: { data: { _contains: $idKeyValue }, type: { _eq: $serviceName } }
     ) {
       id
+      type
+      data
+      user_id
     }
   }
 `
@@ -128,8 +131,27 @@ export const updateService = gql`
   }
 `
 
-export const deleteServices = gql`
-  mutation deleteServices(
+export const deleteService = gql`
+  mutation deleteService($serviceId: uuid!, $serviceName: String!) {
+    delete_services(
+      where: { _and: { id: { _eq: $serviceId }, type: { _eq: $serviceName } } }
+    ) {
+      returning {
+        users {
+          id
+          services_aggregate {
+            aggregate {
+              count
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const deleteServicesNotIn = gql`
+  mutation deleteServicesNotIn(
     $existingServicesIds: [uuid!]
     $serviceName: String!
   ) {

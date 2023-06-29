@@ -1,9 +1,9 @@
-import sync from "@/services/sync"
+import { sync } from "@/services/sync"
 import SERVICES from "@/utils/SERVICES"
 import { createMocks } from "node-mocks-http"
 import handleSync from "../../src/pages/api/sync"
 
-jest.mock("@/services/sync", () => jest.fn())
+jest.mock("@/services/sync", () => ({ sync: jest.fn() }))
 jest.mock("@/utils/log-action", () => jest.fn())
 jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
 

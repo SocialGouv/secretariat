@@ -1,4 +1,4 @@
-import sync from "@/services/sync"
+import { sync } from "@/services/sync"
 import SERVICES from "@/utils/SERVICES"
 import { fetchGithubUsers } from "@/services/fetchers/github"
 import { fetchMatomoUsers } from "@/services/fetchers/matomo"

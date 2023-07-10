@@ -22,3 +22,6 @@ hasura:
     enabled: true
     minReplicas: 2
 
+cnpg-cluster:
+  cnpg-cluster:
+    replicaCount: 2

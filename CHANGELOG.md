@@ -1,3 +1,10 @@
+## [1.55.1](https://github.com/SocialGouv/secretariat/compare/v1.55.0...v1.55.1) (2023-07-10)
+
+
+### Bug Fixes
+
+* cnpg replicas and backups ([#550](https://github.com/SocialGouv/secretariat/issues/550)) ([9af497a](https://github.com/SocialGouv/secretariat/commit/9af497a276496badd4c80c29c1570f697a96493e))
+
 # [1.55.0](https://github.com/SocialGouv/secretariat/compare/v1.54.14...v1.55.0) (2023-06-29)
 
 

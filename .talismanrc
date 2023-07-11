@@ -12,7 +12,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 8e57dfc5e7e7fa5e4d6ca8a2174e2ea88ec66b80e165b705a442bc756e8c1a76
 - filename: .kontinuous/env/prod/templates/cnpg-backup-credentials.yaml
-  checksum: 86b4c2c82922bb97804a3ab6436ebddc4140f9327288626114ac5ee8aa762fd4
+  checksum: 7eb76edfc4548e0973aa159fb11ca2a1887a114d00c32f498ad50c2f508b91f5
 - filename: .kontinuous/env/prod/values.yaml
   checksum: 4ae41486acbfaf2aadca67f4d49e9fdc7077c6bb19fd9e34f58215a36e7bc90c
 - filename: .yarn/plugins/@yarnpkg/plugin-fetch.cjs

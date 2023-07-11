@@ -15,11 +15,13 @@ const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
       default-src 'self';
+      report-uri '/api/report';
+      report-to endpoint;
       object-src 'none';
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: authjs.dev;
-      script-src 'nonce-${nonce}';
+      script-src 'nonce-${nonce}' 'strict-dynamic';
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `
@@ -32,7 +34,7 @@ const ContentSecurityPolicy =
       connect-src 'self' localhost:8080 api.github.com matomo.fabrique.social.gouv.fr sentry.fabrique.social.gouv.fr;
     `
 
-const securityHeaders = [
+const headers = [
   {
     key: "X-XSS-Protection",
     value: "1; mode=block",
@@ -45,6 +47,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
+  { key: "Reporting-Endpoints", value: "endpoint='/api/report'" },
 ]
 
 module.exports = {
@@ -73,7 +76,7 @@ module.exports = {
     return [
       {
         source: "/:path*",
-        headers: securityHeaders,
+        headers,
       },
     ]
   },

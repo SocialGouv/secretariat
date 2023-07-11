@@ -20,7 +20,7 @@ fileignoreconfig:
 - filename: __tests__/components/__snapshots__/users.test.js.snap
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
 - filename: next.config.js
-  checksum: ccd6b98396d5da01f5855d54733b196a6b8d26a25de748d2476e8205a78d5228
+  checksum: 855b09fc06f8388ba51dccbaaf7c76375f45c36a89ace9b51cd665d290f1d9f4
 - filename: sentry.client.config.js
   checksum: c099a2c12302135ea90b784b7f17827d985de03d2b667750551cb9f8cde0ea81
 - filename: sentry.edge.config.js

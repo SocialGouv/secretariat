@@ -1,3 +1,10 @@
+## [1.55.3](https://github.com/SocialGouv/secretariat/compare/v1.55.2...v1.55.3) (2023-07-11)
+
+
+### Bug Fixes
+
+* backup secret ([#552](https://github.com/SocialGouv/secretariat/issues/552)) ([debb4cd](https://github.com/SocialGouv/secretariat/commit/debb4cdd999fed60e825e7f63062f376658425ea))
+
 ## [1.55.2](https://github.com/SocialGouv/secretariat/compare/v1.55.1...v1.55.2) (2023-07-11)
 
 

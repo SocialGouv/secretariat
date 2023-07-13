@@ -1,3 +1,10 @@
+## [1.55.4](https://github.com/SocialGouv/secretariat/compare/v1.55.3...v1.55.4) (2023-07-13)
+
+
+### Bug Fixes
+
+* matomo URL ([#553](https://github.com/SocialGouv/secretariat/issues/553)) ([be41f1c](https://github.com/SocialGouv/secretariat/commit/be41f1c08b193f90efd1accb2d2bb6713c494664))
+
 ## [1.55.3](https://github.com/SocialGouv/secretariat/compare/v1.55.2...v1.55.3) (2023-07-11)
 
 

@@ -36,3 +36,14 @@ cnpg-cluster:
         storageKey:
           name: cnpg-backup-credentials
           key: azurestorageaccountkey
+
+jobs:
+  runs:
+    build-app:
+      use: build
+      with:
+        imagePackage: app
+        buildArgs:
+          NEXT_PUBLIC_HASURA_URL: "https://hasura-{{ .Values.global.host }}/v1/graphql"
+          NEXT_PUBLIC_MATOMO_SITE_ID: "82"
+          NEXT_PUBLIC_MATOMO_URL: "https://matomo.fabrique.social.gouv.fr/"

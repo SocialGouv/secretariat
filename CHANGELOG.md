@@ -1,3 +1,10 @@
+# [1.56.0](https://github.com/SocialGouv/secretariat/compare/v1.55.4...v1.56.0) (2023-07-18)
+
+
+### Features
+
+* ovh ([#554](https://github.com/SocialGouv/secretariat/issues/554)) ([619c00d](https://github.com/SocialGouv/secretariat/commit/619c00dc7aaeefab0fb5a749ec411e3e1a5a3df3))
+
 ## [1.55.4](https://github.com/SocialGouv/secretariat/compare/v1.55.3...v1.55.4) (2023-07-13)
 
 

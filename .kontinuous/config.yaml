@@ -1,8 +1,8 @@
 projectName: secretariat
 ciNamespace: ci-secretariat
+
 dependencies:
   fabrique:
-    import: socialgouv/kontinuous/plugins/fabrique
     dependencies:
       contrib:
         preDeploy:
@@ -11,3 +11,6 @@ dependencies:
               secrets:
                 pg-admin-user:
                   enabled: false
+    extends:
+    - name: ovh
+      ifEnv: [dev,preprod]

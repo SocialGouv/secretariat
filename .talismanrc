@@ -14,7 +14,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/prod/templates/cnpg-backup-credentials.yaml
   checksum: 7eb76edfc4548e0973aa159fb11ca2a1887a114d00c32f498ad50c2f508b91f5
 - filename: .kontinuous/env/prod/values.yaml
-  checksum: 4ae41486acbfaf2aadca67f4d49e9fdc7077c6bb19fd9e34f58215a36e7bc90c
+  checksum: 832641aa7d11d88e5f5fb3b94fdf82587bc086ba77433a20b670caf67c8945ea
 - filename: .yarn/plugins/@yarnpkg/plugin-fetch.cjs
   checksum: d5c4610f916094d84cfcd7a372f3a9fb4cf5af733488bbe04684c384d846f53a
 - filename: __tests__/components/__snapshots__/users.test.js.snap

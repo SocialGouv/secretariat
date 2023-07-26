@@ -24,18 +24,18 @@ hasura:
 
 cnpg-cluster:
   cnpg-cluster:
-    replicaCount: 2
     backup:
       enabled: true
       schedule: "0 0 0 * * 0"
-      destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-kontinuous"
-      azureCredentials:
-        storageAccount:
-          name: cnpg-backup-credentials
-          key: azurestorageaccountname
-        storageKey:
-          name: cnpg-backup-credentials
-          key: azurestorageaccountkey
+      barmanObjectStore:
+        destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-kontinuous"
+        azureCredentials:
+          storageAccount:
+            name: cnpg-backup-credentials
+            key: azurestorageaccountname
+          storageKey:
+            name: cnpg-backup-credentials
+            key: azurestorageaccountkey
 
 jobs:
   runs:

@@ -31,6 +31,8 @@ fileignoreconfig:
   checksum: b118715f8269bd92790bbe4019159567893d2517cad7ef2a639e456d924b88ca
 - filename: src/hooks/use-onboarding.ts
   checksum: 84ace93b2abe1dbb750a311a6cee984e9b0392be6176871e7e49d7cdf948cef0
+- filename: src/pages/api/openmetrics.ts
+  checksum: bbfd917d0dcc5e53730a48d2c90b1f19b40c49232921208731d0ca556bd11fe1
 - filename: src/services/send-email.ts
   checksum: f8e6673f08300673626ad8ce310cfce4037f5feec086d4ce5808e40c09766992
 - filename: src/services/sync.ts

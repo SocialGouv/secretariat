@@ -1,3 +1,10 @@
+## [1.56.1](https://github.com/SocialGouv/secretariat/compare/v1.56.0...v1.56.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* update CNPG values ([#555](https://github.com/SocialGouv/secretariat/issues/555)) ([af4c911](https://github.com/SocialGouv/secretariat/commit/af4c911f4f264d47997df267f97d4f40fd9cf230))
+
 # [1.56.0](https://github.com/SocialGouv/secretariat/compare/v1.55.4...v1.56.0) (2023-07-18)
 
 

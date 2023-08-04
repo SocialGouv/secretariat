@@ -73,7 +73,7 @@ const GithubServices = ({
           <i className="ri-customer-service-2-fill icon" />
           <p>
             Je souhaite obtenir un accès au service de support utilisateurs{" "}
-            <i>(Paztek)</i>
+            <i>(Pastek)</i>
           </p>
           <i className="ri-check-line check" />
         </li>

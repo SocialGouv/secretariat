@@ -166,4 +166,13 @@ export const handlers = [
   graphql.query("getReviewedOnboardingRequestContaining", (_req, res, ctx) =>
     res(ctx.data({ onboarding_requests: [] }))
   ),
+  graphql.mutation("enableUsersByServicesIds", (_req, res, ctx) =>
+    res(
+      ctx.data({
+        update_users: {
+          affected_rows: 0,
+        },
+      })
+    )
+  ),
 ]

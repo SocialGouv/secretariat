@@ -6,6 +6,7 @@ const userFragment = gql`
     departure
     arrival
     updated_at
+    disabled
     services {
       id
       data
@@ -31,6 +32,15 @@ export const mergeUsers = gql`
 export const getUsers = gql`
   query getUsers {
     users {
+      ...userFields
+    }
+  }
+  ${userFragment}
+`
+
+export const getUser = gql`
+  query getUser($id: uuid!) {
+    users_by_pk(id: $id) {
       ...userFields
     }
   }
@@ -90,6 +100,22 @@ export const updateUser = gql`
   mutation updateUser($id: uuid!, $_set: users_set_input!) {
     update_users_by_pk(pk_columns: { id: $id }, _set: $_set) {
       id
+    }
+  }
+`
+
+export const enableUsersByServicesIds = gql`
+  mutation enableUsersByServicesIds($servicesIds: [uuid!] = "") {
+    update_users(
+      where: {
+        _and: {
+          services: { id: { _in: $servicesIds } }
+          disabled: { _eq: true }
+        }
+      }
+      _set: { disabled: false }
+    ) {
+      affected_rows
     }
   }
 `
@@ -160,6 +186,7 @@ export const deleteServicesNotIn = gql`
         _and: {
           id: { _nin: $existingServicesIds }
           type: { _eq: $serviceName }
+          users: { disabled: { _eq: false } }
         }
       }
     ) {

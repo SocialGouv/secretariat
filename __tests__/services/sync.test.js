@@ -50,6 +50,7 @@ it("should call every fetcher", async () => {
     insertions: 0,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
@@ -62,6 +63,7 @@ it("should insert the account and a new user", async () => {
     insertions: 1,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
@@ -83,6 +85,7 @@ it("should update the account", async () => {
     insertions: 0,
     updates: 1,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
@@ -105,5 +108,6 @@ it("should do nothing and return an empty string on inconsistent DB", async () =
     insertions: 0,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })

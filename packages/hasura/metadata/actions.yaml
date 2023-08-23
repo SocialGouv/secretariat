@@ -1,4 +1,27 @@
 actions:
+  - name: disableAction
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/disable'
+      forward_client_headers: true
+      request_transform:
+        method: PUT
+        query_params: {}
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: enableAction
+    definition:
+      kind: synchronous
+      handler: '{{APP_URL}}/api/enable'
+      request_transform:
+        method: PUT
+        query_params: {}
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
   - name: onboardingRequestAction
     definition:
       kind: synchronous
@@ -32,6 +55,8 @@ custom_types:
     - name: RevokeActionInput
     - name: OnboardingServices
     - name: OnboardingData
+    - name: DisableActionInput
+    - name: EnableActionInput
   objects:
     - name: APIResponse
     - name: OnboardingResponses

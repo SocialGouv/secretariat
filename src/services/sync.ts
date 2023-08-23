@@ -18,6 +18,7 @@ import {
   deleteService as deleteServiceQuery,
   getReviewedOnboardingRequestContaining,
   linkGithubOnboarding,
+  enableUsersByServicesIds,
 } from "../queries"
 
 const DEFAULT_DELAY = 800
@@ -70,6 +71,7 @@ export const upsertService = async (
     insertions: 0,
     userDeletions: 0,
     accountDeletions: 0,
+    enablements: 0,
   }
   const servicesMatchingId = await getServiceFromData(
     serviceData,
@@ -144,7 +146,7 @@ export const upsertService = async (
   }
 }
 
-const updateUsers = async (
+const upsertServices = async (
   users: Record<string, unknown>[],
   serviceName: ServiceName,
   token: string,
@@ -265,6 +267,7 @@ export const sync = async (enabledServices: ServiceName[]) => {
     errors: 0,
     userDeletions: 0,
     accountDeletions: 0,
+    enablements: 0,
   }
 
   // Remember the users list for all services, to clean the deleted users afterwards
@@ -286,13 +289,28 @@ export const sync = async (enabledServices: ServiceName[]) => {
   // Update the DB synchronously
   for (const serviceName of enabledServices) {
     existingServicesIds[serviceName].push(
-      ...(await updateUsers(
+      ...(await upsertServices(
         dataByService[serviceName],
         serviceName,
         token,
         stats
       ))
     )
+  }
+
+  // Enable all users for which we received a Github  account
+  if (
+    existingServicesIds["github"] &&
+    existingServicesIds["github"].length > 0
+  ) {
+    const result = await graphQLFetcher({
+      query: enableUsersByServicesIds,
+      token,
+      parameters: {
+        servicesIds: existingServicesIds["github"],
+      },
+    })
+    stats.enablements += result.update_users.affected_rows
   }
 
   // Delete services that we could have currently in DB but that we did not receive for this current fetch

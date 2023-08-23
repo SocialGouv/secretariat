@@ -8,6 +8,10 @@ import { getToken } from "next-auth/jwt"
 
 const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
   httpLogger(req, res)
+
+  // ENDPOINT DISABLED
+  res.status(403).json({ message: "Endpoint Disabled" })
+
   if (req.method !== "DELETE") {
     res.setHeader("Allow", "DELETE")
     res.status(405).json({ message: "Method Not Allowed" })

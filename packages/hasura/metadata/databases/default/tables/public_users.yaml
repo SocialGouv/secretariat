@@ -30,6 +30,7 @@ select_permissions:
       columns:
         - arrival
         - departure
+        - disabled
         - id
         - updated_at
       filter: {}

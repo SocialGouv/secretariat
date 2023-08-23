@@ -30,7 +30,7 @@ beforeEach(() => {
   }))
 })
 
-it("should call the revoke service and return its return value", async () => {
+it.skip("should call the revoke service and return its return value", async () => {
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(200)
   expect(res._getData()).toEqual('{"status":250,"body":"fake body"}')
@@ -41,7 +41,7 @@ it("should call the revoke service and return its return value", async () => {
   )
 })
 
-it("should return 400 if service name is incorrect", async () => {
+it.skip("should return 400 if service name is incorrect", async () => {
   req.body.input.data.serviceName = "fake serviceName"
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(400)
@@ -49,7 +49,7 @@ it("should return 400 if service name is incorrect", async () => {
   expect(revoke).not.toHaveBeenCalled()
 })
 
-it("should return 403 if no next-auth session", async () => {
+it.skip("should return 403 if no next-auth session", async () => {
   getToken.mockImplementation(() => Promise.resolve(false))
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(403)
@@ -57,7 +57,7 @@ it("should return 403 if no next-auth session", async () => {
   expect(revoke).not.toHaveBeenCalled()
 })
 
-it("should return 405 if wrong method", async () => {
+it.skip("should return 405 if wrong method", async () => {
   ;({ req, res } = createMocks({ method: "GET" }))
   await handleRevoke(req, res)
   expect(res._getStatusCode()).toEqual(405)

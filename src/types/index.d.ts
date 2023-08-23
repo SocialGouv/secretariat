@@ -8,6 +8,7 @@ interface User {
   avatarUrl: string
   services: ServiceAccount[]
   warnings: Warning[]
+  disabled: boolean
 }
 
 type Warning = "alone_service" | "missing_services" | "no_departure_date"
@@ -199,6 +200,7 @@ interface SyncStats {
   errors: number
   userDeletions: number
   accountDeletions: number
+  enablements: number
 }
 
 interface WizardStep {

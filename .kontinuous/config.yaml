@@ -9,10 +9,11 @@ dependencies:
           importSecrets:
             options:
               secrets:
+                secretariat-dev-backups-access-key:
                 pg-admin-user:
                   enabled: false
     extends:
-    - name: ovh
-      ifEnv: [dev,preprod]
-    - name: buildkit-service
-      ifEnv: [dev,preprod]
+      - name: ovh
+        ifEnv: [dev, preprod]
+      - name: buildkit-service
+        ifEnv: [dev, preprod]

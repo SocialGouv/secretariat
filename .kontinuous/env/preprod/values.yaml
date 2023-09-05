@@ -9,6 +9,6 @@ charon:
     - configMapRef:
         name: "charon-config"
   vars:
-    CHARON_PUBLIC_HOST: "https://{{ .Values.global.host }}"
+    CHARON_PUBLIC_HOST: "https://charon-{{ .Values.global.host }}"
     DEBUG: "charon:*"
     CHARON_PORT: "3000"

@@ -2,7 +2,7 @@ charon:
   ~chart: app
   image: lsagetlethias/charon:latest
   probesPath: /healthz
-  host: "{{ .Values.global.host }}"
+  host: "charon-{{ .Values.global.host }}"
   envFrom:
     - secretRef:
         name: "charon"

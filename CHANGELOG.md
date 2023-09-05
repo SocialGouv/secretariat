@@ -1,3 +1,10 @@
+## [1.56.3](https://github.com/SocialGouv/secretariat/compare/v1.56.2...v1.56.3) (2023-09-05)
+
+
+### Bug Fixes
+
+* use charon auth in dev ([#568](https://github.com/SocialGouv/secretariat/issues/568)) ([886ab2a](https://github.com/SocialGouv/secretariat/commit/886ab2a63c3b84aa31d556e792320bd6adfb30a6))
+
 ## [1.56.2](https://github.com/SocialGouv/secretariat/compare/v1.56.1...v1.56.2) (2023-08-14)
 
 

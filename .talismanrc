@@ -9,8 +9,14 @@ fileignoreconfig:
   checksum: 3e14e4a3020b4f6e749ab6e607e08b1f8ea3c7cb445907e843d99909fc1dbb65
 - filename: .github/workflows/review.yaml
   checksum: 3209ade741c7176f01de5a3a3cdd3d8b852bd68c45755c785dcac68845b30405
+- filename: .kontinuous/env/dev/templates/app.sealed-secret.yaml
+  checksum: fa80c5622c002c66ac217ec37a6f6b33935d42e98fcef60a008a234609c13344
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 8e57dfc5e7e7fa5e4d6ca8a2174e2ea88ec66b80e165b705a442bc756e8c1a76
+- filename: .kontinuous/env/preprod/templates/app.sealed-secret.yaml
+  checksum: 45302a0bf5121715c7abab561bdcaab85e67f57f4deb932aeeed383292c0cc4b
+- filename: .kontinuous/env/preprod/templates/charon.sealed-secret.yaml
+  checksum: ed2e8250214389ddda47d74a8e27defd392245c4d64966240d6e8a6cb9bbe573
 - filename: .kontinuous/env/prod/templates/cnpg-backup-credentials.yaml
   checksum: 7eb76edfc4548e0973aa159fb11ca2a1887a114d00c32f498ad50c2f508b91f5
 - filename: .kontinuous/env/prod/values.yaml

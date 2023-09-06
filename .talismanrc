@@ -41,6 +41,8 @@ fileignoreconfig:
   checksum: f8e6673f08300673626ad8ce310cfce4037f5feec086d4ce5808e40c09766992
 - filename: src/services/sync.ts
   checksum: ae6aef4a72d66a3ad64e55a6a9bdd96dea9cdcb55809d1ac1b8bc7adb3d99b07
+- filename: src/utils/env.ts
+  checksum: d7acba9f2c4fb7fc16b2d3b35440e9f0105d299a3b3b499f912b580e7096d25d
 - filename: yarn.lock
   checksum: b9128943e69440b534f82c27472f838bfea5567d0af222e4e681746eb74a9486
 scopeconfig:

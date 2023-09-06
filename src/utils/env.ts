@@ -1,5 +1,6 @@
-// Node env
+// Env
 export const NODE_ENV = process.env.NODE_ENV as string
+export const ENV = process.env.ENV as string
 
 // Services tokens
 export const MATOMO_API_TOKEN = process.env.MATOMO_API_TOKEN as string

@@ -1,4 +1,6 @@
 app:
+  vars:
+    ENV: prod
   resources:
     requests:
       cpu: 15m

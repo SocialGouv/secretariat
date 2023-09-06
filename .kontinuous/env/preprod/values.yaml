@@ -1,3 +1,7 @@
+app:
+  vars:
+    ENV: preprod
+
 charon:
   ~chart: app
   image: lsagetlethias/charon:latest

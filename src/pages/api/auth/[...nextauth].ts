@@ -10,6 +10,7 @@ import {
   GITHUB_SECRET,
   NEXTAUTH_SECRET,
   NODE_ENV,
+  ENV,
 } from "@/utils/env"
 
 const AUTHORIZED_TEAMS = ["sre", "ops", "core-team"]
@@ -29,6 +30,7 @@ const getUserTeams = async (login: string) => {
 }
 
 const providers =
+  // allow fake credentials login for local dev
   NODE_ENV === "development"
     ? [
         CredentialsProvider({
@@ -58,6 +60,13 @@ const providers =
         GithubProvider({
           clientId: GITHUB_ID,
           clientSecret: GITHUB_SECRET,
+          ...(ENV !== "prod" && {
+            authorization: {
+              url: "https://charon-secretariat-preprod.ovh.fabrique.social.gouv.fr/github/login/oauth/authorize",
+            },
+            token:
+              "https://charon-secretariat-preprod.ovh.fabrique.social.gouv.fr/github/login/oauth/access_token",
+          }),
           profile: (profile) => {
             return {
               id: String(profile.id),

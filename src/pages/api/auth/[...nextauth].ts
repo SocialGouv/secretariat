@@ -62,10 +62,10 @@ const providers =
           clientSecret: GITHUB_SECRET,
           ...(ENV !== "prod" && {
             authorization: {
-              url: "https://charon-secretariat-preprod.ovh.fabrique.social.gouv.fr/github/login/oauth/authorize",
+              url: "https://charon-secretariat.ovh.fabrique.social.gouv.fr/github/login/oauth/authorize",
             },
             token:
-              "https://charon-secretariat-preprod.ovh.fabrique.social.gouv.fr/github/login/oauth/access_token",
+              "https://charon-secretariat.ovh.fabrique.social.gouv.fr/github/login/oauth/access_token",
           }),
           profile: (profile) => {
             return {

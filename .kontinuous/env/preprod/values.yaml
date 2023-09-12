@@ -1,18 +1,3 @@
 app:
   vars:
     ENV: preprod
-
-charon:
-  ~chart: app
-  image: lsagetlethias/charon:latest
-  probesPath: /healthz
-  host: "charon-{{ .Values.global.host }}"
-  envFrom:
-    - secretRef:
-        name: "charon"
-    - configMapRef:
-        name: "charon-config"
-  vars:
-    CHARON_PUBLIC_HOST: "https://charon-{{ .Values.global.host }}"
-    DEBUG: "charon:*"
-    CHARON_PORT: "3000"

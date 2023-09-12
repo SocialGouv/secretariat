@@ -1,9 +1,0 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: charon-config
-data:
-  CHARON_CLIENT_0_WILDCARDS: |
-    http://localhost:3000,
-    https://secretariat-*.ovh.fabrique.social.gouv.fr
-  CHARON_CLIENT_0_PROVIDER: github

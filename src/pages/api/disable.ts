@@ -1,5 +1,5 @@
 import { getUser, updateUser } from "@/queries/index"
-import { disableGithubAccount } from "@/services/disable/github"
+import { disable } from "@/services/disable"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
@@ -50,35 +50,24 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: { id: parsedBody.data.id },
   })
 
-  // Only handling Github for now
-  const githubAccount = user.services.find(
-    (account) => account.type === "github"
-  ) as GithubServiceAccount | undefined
-  if (!githubAccount) {
-    logger.error("No Github service associated with this user")
-    res.status(400).json({ message: "Bad Request" })
-    return
-  }
+  const responses = await disable(user)
 
-  const response = await disableGithubAccount(githubAccount.data.login)
-  if (statusOk(response.status)) {
+  if (responses.some((response) => !response || !statusOk(response.status))) {
+    const data = {
+      user,
+      responses: responses.map(async (r) =>
+        r ? { status: r.status, body: await r.json() } : null
+      ),
+    }
+    logger.error(data, "error disabling user")
+    res.status(400).json("error disabling user")
+  } else {
     await graphQLFetcher({
       query: updateUser,
       token,
       parameters: { id: user.id, _set: { disabled: true } },
     })
     res.status(200).json({ status: 200, body: "user disabled successfully" })
-  } else {
-    const responseData = {
-      user,
-      account: githubAccount,
-      response: {
-        status: response.status,
-        body: await response.json(),
-      },
-    }
-    logger.error(responseData, "error disabling Github account")
-    res.status(400).json({ message: "error disabling Github account" })
   }
 }
 

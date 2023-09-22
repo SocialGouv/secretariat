@@ -1,5 +1,5 @@
 import { getUser, updateUser } from "@/queries/index"
-import { enableGithubAccount } from "@/services/enable/github"
+import { enable } from "@/services/enable"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
@@ -50,35 +50,24 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: { id: parsedBody.data.id },
   })
 
-  // Only handling Github for now
-  const githubAccount = user.services.find(
-    (account) => account.type === "github"
-  ) as GithubServiceAccount | undefined
-  if (!githubAccount) {
-    logger.error("No Github service associated with this user")
-    res.status(400).json({ message: "Bad Request" })
-    return
-  }
+  const responses = await enable(user)
 
-  const response = await enableGithubAccount(githubAccount.data.login)
-  if (statusOk(response.status)) {
+  if (responses.some((response) => !response || !statusOk(response.status))) {
+    const data = {
+      user,
+      responses: responses.map(async (r) =>
+        r ? { status: r.status, body: await r.json() } : null
+      ),
+    }
+    logger.error(data, "error enabling user")
+    res.status(400).json("error enabling user")
+  } else {
     await graphQLFetcher({
       query: updateUser,
       token,
       parameters: { id: user.id, _set: { disabled: false } },
     })
     res.status(200).json({ status: 200, body: "user enabled successfully" })
-  } else {
-    const responseData = {
-      user,
-      account: githubAccount,
-      response: {
-        status: response.status,
-        body: await response.json(),
-      },
-    }
-    logger.error(responseData, "error enabling Github account")
-    res.status(400).json({ message: "error enabling Github account" })
   }
 }
 

@@ -1,0 +1,18 @@
+import { disableGithubAccount } from "./disablers/github"
+import { disableMattermostAccount } from "./disablers/mattermost"
+
+export async function disable(user: User) {
+  const responses = Promise.all(
+    user.services.map((service) => {
+      if (service.type === "github") {
+        return disableGithubAccount(service.data.login)
+      } else if (service.type === "mattermost") {
+        return disableMattermostAccount(service.data.id)
+      } else {
+        return null
+      }
+    })
+  )
+
+  return responses
+}

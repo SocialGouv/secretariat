@@ -1,3 +1,10 @@
+## [1.56.4](https://github.com/SocialGouv/secretariat/compare/v1.56.3...v1.56.4) (2023-09-22)
+
+
+### Bug Fixes
+
+* typo in header ([#578](https://github.com/SocialGouv/secretariat/issues/578)) ([324bb23](https://github.com/SocialGouv/secretariat/commit/324bb23702349ce79dfc83c7687f3e8e4279c393))
+
 ## [1.56.3](https://github.com/SocialGouv/secretariat/compare/v1.56.2...v1.56.3) (2023-09-05)
 
 

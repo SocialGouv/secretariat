@@ -15,7 +15,7 @@ const Header = () => {
           <a>
             <Logo />
             <div className="title">
-              <h1>Secretariat</h1>
+              <h1>Secrétariat</h1>
               <p>Gestion des comptes de la Fabrique Numérique</p>
             </div>
           </a>

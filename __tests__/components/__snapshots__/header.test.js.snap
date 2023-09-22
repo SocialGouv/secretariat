@@ -22,7 +22,7 @@ exports[`when header renders does not show authenticated user if session is not 
           class="title"
         >
           <h1>
-            Secretariat
+            Secrétariat
           </h1>
           <p>
             Gestion des comptes de la Fabrique Numérique
@@ -57,7 +57,7 @@ exports[`when header renders does show authenticated user if session is valid 1`
           class="title"
         >
           <h1>
-            Secretariat
+            Secrétariat
           </h1>
           <p>
             Gestion des comptes de la Fabrique Numérique

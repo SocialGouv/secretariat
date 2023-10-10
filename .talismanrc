@@ -27,6 +27,22 @@ fileignoreconfig:
   checksum: 690d463633eb908fa7ed3eade9597d8aa9ded3c5d892206e3837596e35d88cd4
 - filename: next.config.js
   checksum: 855b09fc06f8388ba51dccbaaf7c76375f45c36a89ace9b51cd665d290f1d9f4
+- filename: packages/hasura/migrations/default/1696938677969_alter_table_public_users_add_column_email/down.sql
+  checksum: 1e47fbc2dccbf99c13549c8d6e669c54815be24d7e42f0edd78219377fdc63f4
+- filename: packages/hasura/migrations/default/1696938677969_alter_table_public_users_add_column_email/up.sql
+  checksum: c97a7b91dc05e94fca2ba43f8bc4bb743450cdbb552175bb0c10fee01fe86882
+- filename: packages/hasura/migrations/default/1696938751031_alter_table_public_users_add_column_onboardind_request_id/down.sql
+  checksum: 3f27790c9d3f5c08440f56b3d238f90014352ecf5967b80a93a910459aa6e7b8
+- filename: packages/hasura/migrations/default/1696938751031_alter_table_public_users_add_column_onboardind_request_id/up.sql
+  checksum: 3dbfd37ba006e639f12a4c375fa44626a04c27e2bb5d4356a1782576fff9b199
+- filename: packages/hasura/migrations/default/1696938764795_alter_table_public_users_alter_column_email/down.sql
+  checksum: cc4f4de24bd74f2be73cbdc45f562a3d485826bcc2189b1becce143cde11ccb2
+- filename: packages/hasura/migrations/default/1696938764795_alter_table_public_users_alter_column_email/up.sql
+  checksum: 7fc715964fdbc2fdd70a5316e0ec68dfc0f8255869682ec6abf31b2b71ce4948
+- filename: packages/hasura/migrations/default/1696938864227_alter_table_public_users_alter_column_onboardind_request_id/down.sql
+  checksum: d4a7960f08d3af47c48d30cb3436fdb1739b38078bce92e18f394e2ea4bf9a86
+- filename: packages/hasura/migrations/default/1696938864227_alter_table_public_users_alter_column_onboardind_request_id/up.sql
+  checksum: 623d5d32a6aabc5790d7ae05656b340f8a6c8a55e2d99b767194b98f4bf080f2
 - filename: sentry.client.config.js
   checksum: c099a2c12302135ea90b784b7f17827d985de03d2b667750551cb9f8cde0ea81
 - filename: sentry.edge.config.js

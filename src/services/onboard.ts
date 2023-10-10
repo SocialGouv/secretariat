@@ -194,7 +194,16 @@ const shouldInsertAccount = (serviceName: string, response: APIResponse) =>
   ACCOUNTS_TO_CREATE_ON_SUCCESS.includes(serviceName)
 
 const createAccountsOnSuccess = async (
-  { departure, arrival }: { arrival: string; departure: string },
+  {
+    departure,
+    arrival,
+    email,
+  }: {
+    arrival: string
+    departure: string
+    email: string
+  },
+  onboardingRequestId: string,
   responses: Record<string, APIResponse>
 ) => {
   if (
@@ -211,7 +220,12 @@ const createAccountsOnSuccess = async (
       query: insertUser,
       token,
       parameters: {
-        user: { arrival, departure },
+        user: {
+          arrival,
+          departure,
+          email,
+          onboarding_request_id: onboardingRequestId,
+        },
       },
     })
 
@@ -233,10 +247,10 @@ const createAccountsOnSuccess = async (
   }
 }
 
-const onboard = async ({
-  services,
-  ...user
-}: OnboardingData): Promise<OnboardingResponses> => {
+const onboard = async (
+  { services, ...user }: OnboardingData,
+  onboardingRequestId: string
+): Promise<OnboardingResponses> => {
   const servicesToCreate = [
     ...SERVICES.filter(
       (serviceName) => serviceName in services && services[serviceName] === true
@@ -263,7 +277,11 @@ const onboard = async ({
     {}
   )
 
-  await createAccountsOnSuccess(user, servicesCreationResponses)
+  await createAccountsOnSuccess(
+    user,
+    onboardingRequestId,
+    servicesCreationResponses
+  )
 
   logger.info(
     {

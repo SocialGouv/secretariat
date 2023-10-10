@@ -23,6 +23,7 @@ actions:
         method: DELETE
         query_params: {}
         template_engine: Kriti
+        version: 1
     permissions:
       - role: user
 custom_types:

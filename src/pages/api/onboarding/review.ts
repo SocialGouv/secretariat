@@ -72,7 +72,7 @@ const Review = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: JSON.stringify(data),
   })
 
-  const result = await onboard(data)
+  const result = await onboard(data, id)
   sendReviewMail(result, data.email)
 
   res.status(200).json(result)

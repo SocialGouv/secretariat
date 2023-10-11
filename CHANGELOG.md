@@ -1,3 +1,10 @@
+## [1.56.6](https://github.com/SocialGouv/secretariat/compare/v1.56.5...v1.56.6) (2023-10-11)
+
+
+### Bug Fixes
+
+* remove incorrect resources ([#582](https://github.com/SocialGouv/secretariat/issues/582)) ([292274e](https://github.com/SocialGouv/secretariat/commit/292274ec7975b759b01b321c8445884ecf02e890))
+
 ## [1.56.5](https://github.com/SocialGouv/secretariat/compare/v1.56.4...v1.56.5) (2023-10-11)
 
 

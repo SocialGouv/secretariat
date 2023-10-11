@@ -1,43 +1,28 @@
 app:
   vars:
     ENV: prod
-  resources:
-    requests:
-      cpu: 15m
-      memory: 200Mi
-    limits:
-      cpu: 30m
-      memory: 400Mi
+  # resources:
+  #   requests:
+  #     cpu: 15m
+  #     memory: 200Mi
+  #   limits:
+  #     cpu: 30m
+  #     memory: 400Mi
   autoscale:
     enabled: true
     minReplicas: 2
 
 hasura:
-  resources:
-    requests:
-      cpu: 50m
-      memory: 512Mi
-    limits:
-      cpu: 100m
-      memory: 1024Mi
+  # resources:
+  #   requests:
+  #     cpu: 50m
+  #     memory: 512Mi
+  #   limits:
+  #     cpu: 100m
+  #     memory: 1024Mi
   autoscale:
     enabled: true
     minReplicas: 2
-
-cnpg-cluster:
-  cnpg-cluster:
-    backup:
-      enabled: true
-      schedule: "0 0 0 * * 0"
-      barmanObjectStore:
-        destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-kontinuous"
-        azureCredentials:
-          storageAccount:
-            name: cnpg-backup-credentials
-            key: azurestorageaccountname
-          storageKey:
-            name: cnpg-backup-credentials
-            key: azurestorageaccountkey
 
 jobs:
   runs:

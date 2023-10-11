@@ -1,3 +1,10 @@
+## [1.56.5](https://github.com/SocialGouv/secretariat/compare/v1.56.4...v1.56.5) (2023-10-11)
+
+
+### Bug Fixes
+
+* keep user email from onboarding ([#581](https://github.com/SocialGouv/secretariat/issues/581)) ([037ab55](https://github.com/SocialGouv/secretariat/commit/037ab5525f0caa4262c44b34a5fb449cefafb6f4))
+
 ## [1.56.4](https://github.com/SocialGouv/secretariat/compare/v1.56.3...v1.56.4) (2023-09-22)
 
 

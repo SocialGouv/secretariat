@@ -10,8 +10,7 @@ dependencies:
             options:
               secrets:
                 secretariat-dev-backups-access-key:
-                pg-admin-user:
-                  enabled: false
+                secretariat-prod-backups-access-key:
     extends:
       - name: ovh
         ifEnv: [dev, preprod]

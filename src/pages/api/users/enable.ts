@@ -5,7 +5,6 @@ import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
 import logger from "@/utils/logger"
-import statusOk from "@/utils/status-ok"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 import { z } from "zod"
@@ -38,7 +37,7 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = getJwt()
 
   logAction({
-    action: "disable",
+    action: "enable",
     user: userToken.user.login,
     token,
     parameters: JSON.stringify(parsedBody),
@@ -52,12 +51,10 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const responses = await enable(user)
 
-  if (responses.some((response) => !response || !statusOk(response.status))) {
+  if (responses.some((response) => !response || !response.success)) {
     const data = {
       user,
-      responses: responses.map(async (r) =>
-        r ? { status: r.status, body: await r.json() } : null
-      ),
+      responses,
     }
     logger.error(data, "error enabling user")
     res.status(400).json("error enabling user")

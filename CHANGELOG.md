@@ -1,3 +1,10 @@
+## [1.56.9](https://github.com/SocialGouv/secretariat/compare/v1.56.8...v1.56.9) (2023-10-11)
+
+
+### Bug Fixes
+
+* secret ([#585](https://github.com/SocialGouv/secretariat/issues/585)) ([200160b](https://github.com/SocialGouv/secretariat/commit/200160b368c7ebf99eace2c8f3660f95a3e761e6))
+
 ## [1.56.8](https://github.com/SocialGouv/secretariat/compare/v1.56.7...v1.56.8) (2023-10-11)
 
 

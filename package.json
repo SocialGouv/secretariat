@@ -1,6 +1,6 @@
 {
   "name": "secretariat",
-  "version": "1.56.8",
+  "version": "1.56.9",
   "engines": {
     "node": "16"
   },

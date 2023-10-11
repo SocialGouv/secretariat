@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: logs
+  schema: public
 insert_permissions:
   - role: user
     permission:
@@ -9,7 +9,6 @@ insert_permissions:
         - action
         - parameters
         - user
-      backend_only: false
 select_permissions:
   - role: user
     permission:

@@ -24,21 +24,6 @@ hasura:
     enabled: true
     minReplicas: 2
 
-cnpg-cluster:
-  cnpg-cluster:
-    backup:
-      enabled: true
-      schedule: "0 0 0 * * 0"
-      barmanObjectStore:
-        destinationPath: "https://secretariatprodcnpgbckp.blob.core.windows.net/secretariat-backup-restore-kontinuous"
-        azureCredentials:
-          storageAccount:
-            name: cnpg-backup-credentials
-            key: azurestorageaccountname
-          storageKey:
-            name: cnpg-backup-credentials
-            key: azurestorageaccountkey
-
 jobs:
   runs:
     build-app:

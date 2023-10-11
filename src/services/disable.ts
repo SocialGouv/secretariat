@@ -1,5 +1,6 @@
 import { disableGithubAccount } from "./disablers/github"
 import { disableMattermostAccount } from "./disablers/mattermost"
+import { disableOvhAccount } from "./disablers/ovh"
 
 export async function disable(user: User) {
   const responses = Promise.all(

@@ -1,3 +1,10 @@
+## [1.56.7](https://github.com/SocialGouv/secretariat/compare/v1.56.6...v1.56.7) (2023-10-11)
+
+
+### Bug Fixes
+
+* stop renovate from auto rebasing PRs ([#584](https://github.com/SocialGouv/secretariat/issues/584)) ([bbf2d5c](https://github.com/SocialGouv/secretariat/commit/bbf2d5c03c1fa952f7a2194e2e09c1907d8d01f2))
+
 ## [1.56.6](https://github.com/SocialGouv/secretariat/compare/v1.56.5...v1.56.6) (2023-10-11)
 
 

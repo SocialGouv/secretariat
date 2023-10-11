@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/services/disablers/ovh.ts
+  checksum: 390c9e51cf01b5db14a4af94a4182c3d55ccddeb7905462b21b0a5f23b8d24e9
+version: "1.0"

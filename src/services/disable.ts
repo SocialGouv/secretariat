@@ -8,6 +8,8 @@ export async function disable(user: User) {
         return disableGithubAccount(service.data.login)
       } else if (service.type === "mattermost") {
         return disableMattermostAccount(service.data.id)
+      } else if (service.type === "ovh") {
+        return disableOvhAccount(service.data.primaryEmailAddress)
       } else {
         return null
       }

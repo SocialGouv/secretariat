@@ -163,4 +163,7 @@ export const handlers = [
       })
     )
   ),
+  graphql.query("getReviewedOnboardingRequestContaining", (_req, res, ctx) =>
+    res(ctx.data({ onboarding_requests: [] }))
+  ),
 ]

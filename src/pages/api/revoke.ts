@@ -11,6 +11,7 @@ const Revoke = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // ENDPOINT DISABLED
   res.status(403).json({ message: "Endpoint Disabled" })
+  return
 
   if (req.method !== "DELETE") {
     res.setHeader("Allow", "DELETE")

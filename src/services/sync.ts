@@ -298,16 +298,16 @@ export const sync = async (enabledServices: ServiceName[]) => {
     )
   }
 
-  // Enable all users for which we received a Github  account
-  if (
-    existingServicesIds["github"] &&
-    existingServicesIds["github"].length > 0
-  ) {
+  // Enable all users for which we received an account
+  const flatIds = Object.values(existingServicesIds).reduce((acc, value) =>
+    acc.concat(value)
+  )
+  if (flatIds.length > 0) {
     const result = await graphQLFetcher({
       query: enableUsersByServicesIds,
       token,
       parameters: {
-        servicesIds: existingServicesIds["github"],
+        servicesIds: flatIds,
       },
     })
     stats.enablements += result.update_users.affected_rows

@@ -1,3 +1,10 @@
+## [1.56.10](https://github.com/SocialGouv/secretariat/compare/v1.56.9...v1.56.10) (2023-10-20)
+
+
+### Bug Fixes
+
+* github auto link ([#589](https://github.com/SocialGouv/secretariat/issues/589)) ([de90ff2](https://github.com/SocialGouv/secretariat/commit/de90ff2baac843c8fb276bf92a70af29b5058cf3))
+
 ## [1.56.9](https://github.com/SocialGouv/secretariat/compare/v1.56.8...v1.56.9) (2023-10-11)
 
 

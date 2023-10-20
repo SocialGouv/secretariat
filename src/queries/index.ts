@@ -349,3 +349,33 @@ export const searchGithubUsers = gql`
     }
   }
 `
+
+export const getReviewedOnboardingRequestContaining = gql`
+  query getReviewedOnboardingRequestContaining($_contains: jsonb!) {
+    onboarding_requests(
+      where: { reviewed: { _is_null: false }, data: { _contains: $_contains } }
+    ) {
+      id
+      data
+    }
+  }
+`
+
+export const linkGithubOnboarding = gql`
+  mutation linkGithubOnboarding(
+    $_contains: jsonb!
+    $email: String!
+    $onboarding_request_id: uuid!
+  ) {
+    update_users(
+      where: {
+        services: { type: { _eq: "github" }, data: { _contains: $_contains } }
+      }
+      _set: { email: $email, onboarding_request_id: $onboarding_request_id }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`

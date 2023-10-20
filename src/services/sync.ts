@@ -16,6 +16,8 @@ import {
   insertUser,
   updateService,
   deleteService as deleteServiceQuery,
+  getReviewedOnboardingRequestContaining,
+  linkGithubOnboarding,
 } from "../queries"
 
 const DEFAULT_DELAY = 800
@@ -92,6 +94,30 @@ export const upsertService = async (
         service: { data: serviceData, user_id: userId, type: serviceName },
       },
     })
+
+    // Github accounts are created after the user accepted an invitation
+    // At this moment, we need to check if the user comes from a Secrétariat onboarding or not
+    // if so, link it to its onboarding request
+    if (serviceName === "github") {
+      const { onboarding_requests: onboardingRequests } = await graphQLFetcher({
+        query: getReviewedOnboardingRequestContaining,
+        parameters: { _contains: { githubLogin: serviceData.login } },
+        token,
+      })
+
+      if (onboardingRequests.length === 1) {
+        await graphQLFetcher({
+          query: linkGithubOnboarding,
+          token,
+          parameters: {
+            _contains: { login: serviceData.login },
+            email: onboardingRequests[0].data.email,
+            onboarding_request_id: onboardingRequests[0].id,
+          },
+        })
+      }
+    }
+
     operationStats.insertions += 1
     return { serviceId, operationStats }
   } else if (servicesMatchingId.length === 1) {

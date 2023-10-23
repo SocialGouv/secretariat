@@ -2,7 +2,7 @@ actions:
   - name: disableAction
     definition:
       kind: synchronous
-      handler: '{{APP_URL}}/api/users/disable'
+      handler: '{{APP_URL}}/api/accounts/disable'
       forward_client_headers: true
       request_transform:
         method: PUT
@@ -12,7 +12,7 @@ actions:
   - name: enableAction
     definition:
       kind: synchronous
-      handler: '{{APP_URL}}/api/users/enable'
+      handler: '{{APP_URL}}/api/accounts/enable'
       request_transform:
         method: PUT
         query_params: {}
@@ -33,22 +33,9 @@ actions:
       forward_client_headers: true
     permissions:
       - role: user
-  - name: revokeAction
-    definition:
-      kind: synchronous
-      handler: '{{APP_URL}}/api/revoke'
-      forward_client_headers: true
-      request_transform:
-        method: DELETE
-        query_params: {}
-        template_engine: Kriti
-        version: 1
-    permissions:
-      - role: user
 custom_types:
   enums: []
   input_objects:
-    - name: RevokeActionInput
     - name: OnboardingServices
     - name: OnboardingData
     - name: DisableActionInput

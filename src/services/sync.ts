@@ -18,7 +18,6 @@ import {
   deleteService as deleteServiceQuery,
   getReviewedOnboardingRequestContaining,
   linkGithubOnboarding,
-  enableUsersByServicesIds,
 } from "../queries"
 
 const DEFAULT_DELAY = 800
@@ -47,7 +46,7 @@ export const getServiceFromData = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
   token: string
-): Promise<Record<string, any>[]> => {
+) => {
   const idField = servicesIdFields[serviceName]
   const { services: servicesMatchingId } = await graphQLFetcher({
     query: getServicesMatchingId,
@@ -98,7 +97,7 @@ export const upsertService = async (
     })
 
     // Github accounts are created after the user accepted an invitation
-    // At this moment, we need to check if the user comes from a Secrétariat onboarding or not
+    // At this moment, we need to check if the user comes from a Secretariat onboarding or not
     // if so, link it to its onboarding request
     if (serviceName === "github") {
       const { onboarding_requests: onboardingRequests } = await graphQLFetcher({
@@ -131,7 +130,11 @@ export const upsertService = async (
       token,
       parameters: {
         serviceId: servicesMatchingId[0].id,
-        service: { data: serviceData },
+        service: {
+          data: serviceData,
+          // a disabled OVH account will still appear while fetching because we only change the user's password
+          ...(serviceName !== "ovh" ? { disabled: false } : {}),
+        },
       },
     })
     operationStats.updates += 1
@@ -296,21 +299,6 @@ export const sync = async (enabledServices: ServiceName[]) => {
         stats
       ))
     )
-  }
-
-  // Enable all users for which we received an account
-  const flatIds = Object.values(existingServicesIds).reduce((acc, value) =>
-    acc.concat(value)
-  )
-  if (flatIds.length > 0) {
-    const result = await graphQLFetcher({
-      query: enableUsersByServicesIds,
-      token,
-      parameters: {
-        servicesIds: flatIds,
-      },
-    })
-    stats.enablements += result.update_users.affected_rows
   }
 
   // Delete services that we could have currently in DB but that we did not receive for this current fetch

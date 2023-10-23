@@ -10,9 +10,10 @@ select_permissions:
     permission:
       columns:
         - data
+        - disabled
+        - id
         - type
         - updated_at
-        - id
         - user_id
       filter: {}
       allow_aggregations: true

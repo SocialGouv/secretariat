@@ -23,18 +23,6 @@ type Mutation {
   ): OnboardingResponses!
 }
 
-type Mutation {
-  revokeAction(
-    data: RevokeActionInput!
-  ): APIResponse!
-}
-
-input RevokeActionInput {
-  accountServiceID: String!
-  accountID: String!
-  serviceName: String!
-}
-
 input OnboardingServices {
   mattermost: Boolean!
   ovh: Boolean!

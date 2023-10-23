@@ -13,6 +13,6 @@ export async function enableGithubAccount(username: string) {
       authorization: `Bearer ${GITHUB_API_TOKEN}`,
       "content-type": "application/json",
     },
-    body: JSON.stringify({ invitee_id: userID }),
+    body: JSON.stringify({ invitee_id: userID, role: "reinstate" }),
   })
 }

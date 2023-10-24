@@ -30,7 +30,7 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
   const bodySchema = z.object({
     id: z.string().uuid(),
   })
-  const parsedBody = bodySchema.safeParse(req.body)
+  const parsedBody = bodySchema.safeParse(req.body.input.data)
   if (!parsedBody.success) {
     logger.error(parsedBody.error)
     res.status(400).json({ message: "Bad Request" })
@@ -63,16 +63,16 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
 
   let response: APIResponse
   if (serviceAccount.type === "mattermost") {
-    const res = await disableMattermostAccount(serviceAccount.data.id)
-    response = { status: res.status, body: await res.json() }
+    const r = await disableMattermostAccount(serviceAccount.data.id)
+    response = { status: r.status, body: await r.json() }
   } else if (serviceAccount.type === "github") {
-    const res = await disableGithubAccount(serviceAccount.data.login)
-    response = { status: res.status, body: await res.json() }
+    const r = await disableGithubAccount(serviceAccount.data.login)
+    response = { status: r.status, body: await r.text() } // Github does not always send valid JSON
   } else if (serviceAccount.type == "ovh") {
-    const res = await disableOvhAccount(serviceAccount.data.primaryEmailAddress)
-    return {
-      status: res.success ? "200" : "500",
-      body: res.success ? res.data : res.error,
+    const r = await disableOvhAccount(serviceAccount.data.primaryEmailAddress)
+    response = {
+      status: r.success ? 200 : 500,
+      body: r.success ? (r.data as string) : JSON.stringify(r.error),
     }
   } else {
     logger.error(
@@ -90,8 +90,8 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
       query: updateService,
       token,
       parameters: {
-        id: serviceAccount.id,
-        _set: { disabled: true },
+        serviceId: serviceAccount.id,
+        service: { disabled: true },
       },
     })
   }

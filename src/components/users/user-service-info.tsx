@@ -185,12 +185,12 @@ const UserServiceInfo = ({
   account,
   isSingleAccount,
   onDetachAccount,
-  onDeleteAccount,
+  onToggleAccount,
 }: {
   account: ServiceAccount
   isSingleAccount: boolean
   onDetachAccount: (account: ServiceAccount) => void
-  onDeleteAccount: (account: ServiceAccount) => void
+  onToggleAccount: (account: AccountToToggle) => void
 }) => {
   const ref = useSpringRef()
 
@@ -221,13 +221,21 @@ const UserServiceInfo = ({
               <i className="ri-eject-fill"></i>
             </button>
           )}
-          <button
-            title="révoquer"
-            className="secondary sm icon"
-            onClick={() => onDeleteAccount(account)}
-          >
-            <i className="ri-close-line"></i>
-          </button>
+          {account.disabled ? (
+            <button
+              className="primary sm"
+              onClick={() => onToggleAccount({ disable: false, account })}
+            >
+              activer
+            </button>
+          ) : (
+            <button
+              className="secondary sm"
+              onClick={() => onToggleAccount({ disable: true, account })}
+            >
+              désactiver
+            </button>
+          )}
         </div>
       </h3>
       {account.type === "github" && <GithubUserInfo account={account} />}

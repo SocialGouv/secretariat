@@ -7,7 +7,7 @@ export function disableGithubAccount(username: string) {
     {
       method: "DELETE",
       headers: {
-        accept: "application/vnd.github.v3+json",
+        accept: "application/vnd.github+json",
         authorization: `Bearer ${GITHUB_API_TOKEN}`,
       },
     }

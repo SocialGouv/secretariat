@@ -3,11 +3,11 @@ import UserServiceInfo from "@/components/users/user-service-info"
 const UserServices = ({
   services,
   onDetachAccount,
-  onDeleteAccount,
+  onToggleAccount,
 }: {
   services: ServiceAccount[]
   onDetachAccount: (account: ServiceAccount) => void
-  onDeleteAccount: (account: ServiceAccount) => void
+  onToggleAccount: (account: AccountToToggle) => void
 }) => {
   const isSingleAccount = services.length <= 1
 
@@ -19,7 +19,7 @@ const UserServices = ({
           account={account}
           isSingleAccount={isSingleAccount}
           onDetachAccount={onDetachAccount}
-          onDeleteAccount={onDeleteAccount}
+          onToggleAccount={onToggleAccount}
         />
       ))}
     </div>

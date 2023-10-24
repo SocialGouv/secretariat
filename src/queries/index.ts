@@ -10,6 +10,7 @@ const userFragment = gql`
       id
       data
       type
+      disabled
     }
   }
 `
@@ -38,7 +39,7 @@ export const getUsers = gql`
 `
 
 export const getService = gql`
-  query getService($id! uuid!) {
+  query getService($id: uuid!) {
     services_by_pk(id: $id) {
       id
       type
@@ -267,19 +268,18 @@ export const confirmOnboardingRequest = gql`
   }
 `
 
-export const revokeAction = gql`
-  mutation revokeAction(
-    $accountID: String!
-    $accountServiceID: String!
-    $serviceName: String!
-  ) {
-    revokeAction(
-      data: {
-        accountID: $accountID
-        accountServiceID: $accountServiceID
-        serviceName: $serviceName
-      }
-    ) {
+export const disableAction = gql`
+  mutation disableAction($serviceAccountId: uuid!) {
+    disableAction(data: { id: $serviceAccountId }) {
+      body
+      status
+    }
+  }
+`
+
+export const enableAction = gql`
+  mutation enableAction($serviceAccountId: uuid!) {
+    enableAction(data: { id: $serviceAccountId }) {
       body
       status
     }

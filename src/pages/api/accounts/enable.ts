@@ -30,7 +30,7 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
   const bodySchema = z.object({
     id: z.string().uuid(),
   })
-  const parsedBody = bodySchema.safeParse(req.body)
+  const parsedBody = bodySchema.safeParse(req.body.input.data)
   if (!parsedBody.success) {
     logger.error(parsedBody.error)
     res.status(400).json({ message: "Bad Request" })
@@ -100,8 +100,8 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
       query: updateService,
       token,
       parameters: {
-        id: serviceAccount.id,
-        _set: { disabled: false },
+        serviceId: serviceAccount.id,
+        service: { disabled: false },
       },
     })
   }

@@ -9,7 +9,8 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
-  revokeAction,
+  disableAction,
+  enableAction,
 } from "@/queries/index"
 import logAction from "@/utils/log-action"
 import { getSession } from "next-auth/react"
@@ -160,23 +161,28 @@ export const detachUserServiceAccount = async (account: ServiceAccount) => {
   })
 }
 
-export const revokeAccount = async (account: ServiceAccount) => {
-  const accountServiceID =
-    account.type === "ovh"
-      ? account.data.primaryEmailAddress
-      : account.type === "github" || account.type === "matomo"
-      ? account.data.login
-      : account.data.id
-
+export const disableAccount = async (account: ServiceAccount) => {
   const {
-    revokeAction: { status, body },
+    disableAction: { status, body },
   } = await graphQLFetcher({
-    query: revokeAction,
+    query: disableAction,
     includeCookie: true,
     parameters: {
-      serviceName: account.type,
-      accountID: account.id,
-      accountServiceID,
+      serviceAccountId: account.id,
+    },
+  })
+
+  return { status, body }
+}
+
+export const enableAccount = async (account: ServiceAccount) => {
+  const {
+    enableAction: { status, body },
+  } = await graphQLFetcher({
+    query: enableAction,
+    includeCookie: true,
+    parameters: {
+      serviceAccountId: account.id,
     },
   })
 

@@ -2,11 +2,13 @@ import { useState } from "react"
 import Modal from "react-modal"
 import Loader from "../common/loader"
 
-const AccountDeleteModal = ({
+const AccountToggleModal = ({
+  disable,
   isOpen,
   onConfirm,
   onRequestClose,
 }: {
+  disable: boolean | undefined
   isOpen: boolean
   onConfirm: () => Promise<{ status: number; body: string }>
   onRequestClose: () => void
@@ -36,24 +38,21 @@ const AccountDeleteModal = ({
       className="modal"
       ariaHideApp={false}
       onRequestClose={handleRequestClose}
-      contentLabel="Delete account modal"
+      contentLabel="Toggle account modal"
       overlayClassName="modal-overlay"
     >
       <button className="close" onClick={handleRequestClose}>
         <i className="ri-close-line"></i>
       </button>
-      <h2>Révoquer un accès</h2>
+      <h2>{disable ? "Désactiver" : "Activer"} un accès</h2>
       <br />
       {!isConfirmed ? (
         <>
           <p>
-            Vous allez supprimer un accès utilisateur sur un outil de la
-            Fabrique.
+            Vous allez {disable ? "désactiver" : "activer"} un accès utilisateur
+            sur un outil de la Fabrique.
           </p>
-          <p>
-            Cela sera réellement répercuté sur le service concerné et peut être
-            irréversible.
-          </p>
+          <p>Cela sera répercuté sur le service concerné.</p>
           <br />
           <div className="confirm-buttons">
             <button className="secondary" onClick={handleRequestClose}>
@@ -82,4 +81,4 @@ const AccountDeleteModal = ({
   )
 }
 
-export default AccountDeleteModal
+export default AccountToggleModal

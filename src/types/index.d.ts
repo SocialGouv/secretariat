@@ -31,9 +31,15 @@ interface ZammadGroup {
   name: string
 }
 
+interface AccountToToggle {
+  disable: boolean
+  account: ServiceAccount
+}
+
 interface BasicServiceAccount {
   id: string
   type: ServiceName
+  disabled: boolean
 }
 
 interface GithubServiceAccount extends BasicServiceAccount {

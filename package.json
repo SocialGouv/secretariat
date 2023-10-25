@@ -75,7 +75,7 @@
     "node-mocks-http": "1.12.1",
     "node-talisman": "1.29.7",
     "pino-pretty": "9.1.1",
-    "postcss": "8.4.21",
+    "postcss": "8.4.31",
     "prettier": "2.8.4",
     "stylelint": "14.16.1",
     "stylelint-config-prettier-scss": "0.0.1",

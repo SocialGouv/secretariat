@@ -4946,10 +4946,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:16.3.0":
-  version: 16.3.0
-  resolution: "graphql@npm:16.3.0"
-  checksum: ba540641e9cd2a8de5b989ff1433b015f232fa73aaef478d6709c1339cd43113347917acb965a5799c004667687852fc8ff0cfaa935eb26374c91c1fd7fdaeb1
+"graphql@npm:16.8.1":
+  version: 16.8.1
+  resolution: "graphql@npm:16.8.1"
+  checksum: 8d304b7b6f708c8c5cc164b06e92467dfe36aff6d4f2cf31dd19c4c2905a0e7b89edac4b7e225871131fd24e21460836b369de0c06532644d15b461d55b1ccc0
   languageName: node
   linkType: hard
 
@@ -8921,7 +8921,7 @@ __metadata:
     eslint-config-next: 12.3.4
     eslint-plugin-prettier: 4.2.1
     generate-password: 1.7.0
-    graphql: 16.3.0
+    graphql: 16.8.1
     graphql-request: 3.7.0
     husky: 8.0.3
     is-ci: 3.0.1

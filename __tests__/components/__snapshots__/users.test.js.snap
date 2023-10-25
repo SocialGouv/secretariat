@@ -2281,12 +2281,9 @@ exports[`when users are loaded should match the snapshot 1`] = `
                     class="controls"
                   >
                     <button
-                      class="secondary sm icon"
-                      title="révoquer"
+                      class="secondary sm"
                     >
-                      <i
-                        class="ri-close-line"
-                      />
+                      désactiver
                     </button>
                   </div>
                 </h3>

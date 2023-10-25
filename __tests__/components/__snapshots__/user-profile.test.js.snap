@@ -145,12 +145,9 @@ exports[`renders user profile 1`] = `
               class="controls"
             >
               <button
-                class="secondary sm icon"
-                title="révoquer"
+                class="secondary sm"
               >
-                <i
-                  class="ri-close-line"
-                />
+                désactiver
               </button>
             </div>
           </h3>

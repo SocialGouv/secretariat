@@ -1,3 +1,10 @@
+## [1.56.11](https://github.com/SocialGouv/secretariat/compare/v1.56.10...v1.56.11) (2023-10-25)
+
+
+### Bug Fixes
+
+* deps ([#591](https://github.com/SocialGouv/secretariat/issues/591)) ([00dc045](https://github.com/SocialGouv/secretariat/commit/00dc045b6606c2ee82d6b09e36994e9bece23493)), closes [#590](https://github.com/SocialGouv/secretariat/issues/590)
+
 ## [1.56.10](https://github.com/SocialGouv/secretariat/compare/v1.56.9...v1.56.10) (2023-10-20)
 
 

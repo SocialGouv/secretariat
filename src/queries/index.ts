@@ -149,7 +149,13 @@ export const updateService = gql`
 export const deleteService = gql`
   mutation deleteService($serviceId: uuid!, $serviceName: String!) {
     delete_services(
-      where: { _and: { id: { _eq: $serviceId }, type: { _eq: $serviceName } } }
+      where: {
+        _and: {
+          id: { _eq: $serviceId }
+          type: { _eq: $serviceName }
+          disabled: { _eq: false }
+        }
+      }
     ) {
       returning {
         users {

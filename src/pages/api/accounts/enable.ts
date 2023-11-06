@@ -70,19 +70,19 @@ const Enable = async (req: NextApiRequest, res: NextApiResponse) => {
     response = { status: r.status, body: await r.json() }
   } else if (serviceAccount.type == "ovh") {
     if (!serviceAccount.users.email) {
-      res.status(400).json({
-        message:
-          "could not enable an ovh account for which we don't know the user's external email",
-      })
-      return
-    }
-    const r = await enableOvhAccount(
-      serviceAccount.data.primaryEmailAddress,
-      serviceAccount.users.email
-    )
-    response = {
-      status: r.success ? 200 : 500,
-      body: r.success ? (r.data as string) : JSON.stringify(r.error),
+      response = {
+        status: 400,
+        body: "could not enable an ovh account for which we don't know the user's external email",
+      }
+    } else {
+      const r = await enableOvhAccount(
+        serviceAccount.data.primaryEmailAddress,
+        serviceAccount.users.email
+      )
+      response = {
+        status: r.success ? 200 : 500,
+        body: r.success ? (r.data as string) : JSON.stringify(r.error),
+      }
     }
   } else {
     logger.error(

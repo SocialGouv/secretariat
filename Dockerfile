@@ -1,4 +1,4 @@
-FROM node:16-alpine as base
+FROM node:20-alpine as base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -14,8 +14,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 # install deps
 COPY yarn.lock .yarnrc.yml ./
-COPY .yarn ./.yarn
-RUN yarn fetch
+COPY .yarn .yarn
+RUN yarn fetch --immutable
 
 # build
 COPY . .

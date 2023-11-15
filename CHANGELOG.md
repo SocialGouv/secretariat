@@ -1,3 +1,10 @@
+## [1.56.12](https://github.com/SocialGouv/secretariat/compare/v1.56.11...v1.56.12) (2023-11-15)
+
+
+### Bug Fixes
+
+* lock all dependencies ([e6af5c2](https://github.com/SocialGouv/secretariat/commit/e6af5c268ba94d9caa9ef6566fbe75428ad39665))
+
 ## [1.56.11](https://github.com/SocialGouv/secretariat/compare/v1.56.10...v1.56.11) (2023-10-25)
 
 

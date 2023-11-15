@@ -1,3 +1,5 @@
+scopeconfig:
+- scope: node
 fileignoreconfig:
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql
   checksum: cac3e070c06c7c7fbd6821009fef546e452a38184ac6539ccca609be4a82bd8b

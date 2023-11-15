@@ -20,6 +20,9 @@ jobs:
           fetch-depth: 0
 
       - name: run lhci
-        run: npx --yes @lhci/cli@latest autorun --collect.url=https://secretariat-preprod.dev.fabrique.social.gouv.fr
+        run:
+          npx --yes @lhci/cli@latest autorun
+          --collect.url=https://secretariat-preprod.ovh.fabrique.social.gouv.fr
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.SOCIALGROOVYBOT_LHCI_GITHUB_APP_TOKEN }}
+          LHCI_GITHUB_APP_TOKEN:
+            ${{ secrets.SOCIALGROOVYBOT_LHCI_GITHUB_APP_TOKEN }}

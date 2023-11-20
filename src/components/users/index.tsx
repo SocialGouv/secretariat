@@ -75,10 +75,10 @@ const Users = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="users-view">
         <AccountToggleModal
-          disable={accountToToggle?.disable}
+          account={accountToToggle}
           isOpen={!!accountToToggle}
-          onConfirm={() =>
-            handleConfirmToggleAccount(accountToToggle as AccountToToggle)
+          onConfirm={(accountToToggle: AccountToToggle) =>
+            handleConfirmToggleAccount(accountToToggle)
           }
           onRequestClose={() => setAccountToToggle(undefined)}
         />

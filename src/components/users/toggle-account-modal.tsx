@@ -1,34 +1,29 @@
-import { useState } from "react"
 import Modal from "react-modal"
-import Loader from "../common/loader"
+import { toast } from "react-toastify"
 
 const AccountToggleModal = ({
-  disable,
+  account,
   isOpen,
   onConfirm,
   onRequestClose,
 }: {
-  disable: boolean | undefined
+  account: AccountToToggle | undefined
   isOpen: boolean
-  onConfirm: () => Promise<{ status: number; body: string }>
+  onConfirm: (
+    accountTotoggle: AccountToToggle
+  ) => Promise<{ status: number; body: string }>
   onRequestClose: () => void
 }) => {
-  const [isConfirmed, setIsConfirmed] = useState(false)
-  const [response, setResponse] = useState<{ status: number; body: string }>()
-
   const handleConfirm = async () => {
-    setIsConfirmed(true)
-    const response = await onConfirm()
-    try {
-      setResponse({ status: response.status, body: JSON.parse(response.body) })
-    } catch {
-      setResponse(response)
-    }
+    toast.promise(onConfirm(account as AccountToToggle), {
+      pending: "En attente",
+      success: "Succès",
+      error: "Échec",
+    })
+    onRequestClose()
   }
 
   const handleRequestClose = () => {
-    setIsConfirmed(false)
-    setResponse(undefined)
     onRequestClose()
   }
 
@@ -44,39 +39,35 @@ const AccountToggleModal = ({
       <button className="close" onClick={handleRequestClose}>
         <i className="ri-close-line"></i>
       </button>
-      <h2>{disable ? "Désactiver" : "Activer"} un accès</h2>
+      <h2>{account?.disable ? "Désactiver" : "Activer"} un accès</h2>
       <br />
-      {!isConfirmed ? (
-        <>
-          <p>
-            Vous allez {disable ? "désactiver" : "activer"} un accès utilisateur
-            sur un outil de la Fabrique.
-          </p>
-          <p>Cela sera répercuté sur le service concerné.</p>
-          <br />
-          <div className="confirm-buttons">
-            <button className="secondary" onClick={handleRequestClose}>
-              Annuler
-            </button>
-            <button className="primary" onClick={handleConfirm}>
-              Confirmer
-            </button>
-          </div>
-        </>
-      ) : !response ? (
-        <Loader />
+      <p>
+        Vous allez {account?.disable ? "désactiver" : "activer"} un accès
+        utilisateur sur un outil de la Fabrique.
+      </p>
+      <br />
+      {account?.disable && account?.account.type === "ovh" ? (
+        <p>
+          La désactivation d&apos;un compte OVH consiste à{" "}
+          <b>changer le mot de passe</b> du compte de manière à ce que
+          l&apos;utilisateur ne le connaisse plus. La réactivation consiste à
+          changer de nouveau le mot de passe et à l&apos;envoyer par email à
+          l&apos;utilisateur. Si l&apos;<b>email</b> de l&apos;utilisateur{" "}
+          <b>n&apos;est pas connu</b>, la <b>réactivation</b> par Secrétariat{" "}
+          <b>est impossible</b>.
+        </p>
       ) : (
-        <>
-          <p>Réponse du service :</p>
-          <br />
-          <pre>{JSON.stringify(response, null, 2)}</pre>
-          <div className="close-button">
-            <button className="secondary" onClick={handleRequestClose}>
-              Fermer
-            </button>
-          </div>
-        </>
+        <p>Cela sera répercuté sur le service concerné.</p>
       )}
+      <br />
+      <div className="confirm-buttons">
+        <button className="secondary" onClick={handleRequestClose}>
+          Annuler
+        </button>
+        <button className="primary" onClick={handleConfirm}>
+          Confirmer
+        </button>
+      </div>
     </Modal>
   )
 }

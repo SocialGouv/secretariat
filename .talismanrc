@@ -1,14 +1,16 @@
-scopeconfig:
-- scope: node
 fileignoreconfig:
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql
   checksum: cac3e070c06c7c7fbd6821009fef546e452a38184ac6539ccca609be4a82bd8b
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/up.sql
   checksum: 390c88e78b3e8bd3153e028403a3ffea2b5da636eeab22c307788cbddb86e096
+- filename: src/components/users/toggle-account-modal.tsx
+  checksum: 2d0bd58b461814a6d2d934d96441ed7962a74f2d184e2581b38b4990562dde70
 - filename: src/services/disablers/ovh.ts
   checksum: 390c9e51cf01b5db14a4af94a4182c3d55ccddeb7905462b21b0a5f23b8d24e9
 - filename: src/services/enablers/ovh.ts
   checksum: 5e2adf5acd6e8f769a465b573cd9149226526bbce8402abf3c0cc8d6f5520a3a
 - filename: src/services/send-email.ts
   checksum: 0562c88a33c18be479847c12d3c05dfc00b6edea18ffd61b97bc389536d41cb1
+scopeconfig:
+- scope: node
 version: "1.0"

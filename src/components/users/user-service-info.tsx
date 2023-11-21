@@ -2,6 +2,8 @@ import { format } from "date-fns"
 import { useSpring, animated, useSpringRef } from "react-spring"
 
 import ServiceLogo from "@/components/common/service-logo"
+import { TOGGLEABLE_SERVICE } from "@/utils/SERVICES"
+import { useEffect } from "react"
 
 const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
 
@@ -182,17 +184,23 @@ const ZammadUserInfo = ({
 )
 
 const UserServiceInfo = ({
+  user,
   account,
   isSingleAccount,
   onDetachAccount,
   onToggleAccount,
 }: {
+  user: User
   account: ServiceAccount
   isSingleAccount: boolean
   onDetachAccount: (account: ServiceAccount) => void
   onToggleAccount: (account: AccountToToggle) => void
 }) => {
   const ref = useSpringRef()
+
+  useEffect(() => {
+    console.log(user)
+  })
 
   const [styles, spring] = useSpring(() => ({
     ref,
@@ -221,20 +229,38 @@ const UserServiceInfo = ({
               <i className="ri-eject-fill"></i>
             </button>
           )}
-          {account.disabled ? (
-            <button
-              className="primary sm"
-              onClick={() => onToggleAccount({ disable: false, account })}
-            >
-              activer
-            </button>
-          ) : (
-            <button
-              className="secondary sm"
-              onClick={() => onToggleAccount({ disable: true, account })}
-            >
-              désactiver
-            </button>
+          {TOGGLEABLE_SERVICE.includes(account.type) && (
+            <>
+              {account.disabled ? (
+                <>
+                  {!user.email && account.type === "ovh" ? (
+                    <button
+                      title="email de contact indisponible"
+                      className="btn sm "
+                      disabled
+                    >
+                      activer
+                    </button>
+                  ) : (
+                    <button
+                      className="primary sm"
+                      onClick={() =>
+                        onToggleAccount({ disable: false, account })
+                      }
+                    >
+                      activer
+                    </button>
+                  )}
+                </>
+              ) : (
+                <button
+                  className="secondary sm"
+                  onClick={() => onToggleAccount({ disable: true, account })}
+                >
+                  désactiver
+                </button>
+              )}
+            </>
           )}
         </div>
       </h3>

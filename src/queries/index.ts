@@ -6,6 +6,7 @@ const userFragment = gql`
     departure
     arrival
     updated_at
+    email
     services {
       id
       data

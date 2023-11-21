@@ -63,7 +63,7 @@ const UserProfile = ({
           onChange={(dates) => onUserEdit({ ...user, ...dates })}
         />
         <UserServices
-          services={user.services}
+          user={user}
           onDetachAccount={onAccountsChange}
           onToggleAccount={onToggleAccount}
         />

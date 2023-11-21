@@ -2,7 +2,7 @@ actions:
   - name: disableAction
     definition:
       kind: synchronous
-      handler: "{{APP_URL}}/api/accounts/disable"
+      handler: '{{APP_URL}}/api/accounts/disable'
       forward_client_headers: true
       request_transform:
         method: PUT
@@ -14,7 +14,7 @@ actions:
   - name: enableAction
     definition:
       kind: synchronous
-      handler: "{{APP_URL}}/api/accounts/enable"
+      handler: '{{APP_URL}}/api/accounts/enable'
       forward_client_headers: true
       request_transform:
         method: PUT
@@ -26,7 +26,7 @@ actions:
   - name: onboardingRequestAction
     definition:
       kind: synchronous
-      handler: "{{APP_URL}}/api/onboarding/request"
+      handler: '{{APP_URL}}/api/onboarding/request'
       forward_client_headers: true
     permissions:
       - role: anonymous
@@ -34,7 +34,7 @@ actions:
   - name: onboardingReviewAction
     definition:
       kind: synchronous
-      handler: "{{APP_URL}}/api/onboarding/review"
+      handler: '{{APP_URL}}/api/onboarding/review'
       forward_client_headers: true
     permissions:
       - role: user

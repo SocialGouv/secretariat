@@ -16,7 +16,7 @@ import logAction from "@/utils/log-action"
 import { getSession } from "next-auth/react"
 
 interface UserMapping {
-  email: string
+  // email: string
   name: string
   avatarUrl?: string
 }
@@ -28,40 +28,32 @@ type getDataFromType = {
 }
 
 const getDataFrom: getDataFromType = {
-  matomo: ({ data: { login, email } }) => ({
-    email,
+  matomo: ({ data: { login } }) => ({
     name: login,
   }),
-  ovh: ({ data: { displayName, primaryEmailAddress } }) => ({
+  ovh: ({ data: { displayName } }) => ({
     name: displayName,
-    email: primaryEmailAddress,
   }),
-  github: ({ data: { name, login, email, avatarUrl } }) => ({
-    email,
+  github: ({ data: { name, login, avatarUrl } }) => ({
     avatarUrl,
     name: name ?? login,
   }),
-  nextcloud: ({ data: { email, displayname } }) => ({
-    email: email ?? "",
+  nextcloud: ({ data: { displayname } }) => ({
     name: displayname,
   }),
-  zammad: ({ data: { email, lastname, firstname } }) => ({
-    email,
+  zammad: ({ data: { lastname, firstname } }) => ({
     name: `${firstname} ${lastname}`,
   }),
   sentry: ({
     data: {
       name,
-      email,
       user: { avatarUrl },
     },
   }) => ({
-    email,
     name,
     avatarUrl,
   }),
-  mattermost: ({ data: { email, username, last_name, first_name } }) => ({
-    email,
+  mattermost: ({ data: { username, last_name, first_name } }) => ({
     name: first_name ? `${first_name} ${last_name}` : username,
   }),
 }

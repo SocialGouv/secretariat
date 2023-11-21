@@ -8,4 +8,6 @@ const SERVICES: ServiceName[] = [
   "ovh",
 ]
 
+export const TOGGLEABLE_SERVICE: ServiceName[] = ["mattermost", "ovh", "github"]
+
 export default SERVICES

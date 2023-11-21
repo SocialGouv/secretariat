@@ -30,7 +30,9 @@ select_permissions:
       columns:
         - arrival
         - departure
+        - email
         - id
+        - onboarding_request_id
         - updated_at
       filter: {}
       allow_aggregations: true

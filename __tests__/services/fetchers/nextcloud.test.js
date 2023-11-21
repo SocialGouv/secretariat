@@ -1,7 +1,8 @@
 import fetcher from "@/utils/rest-fetcher"
 import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/utils/rest-fetcher")
+vi.mock("@/utils/rest-fetcher")
 
 it("should return a list of fetched users", async () => {
   fetcher

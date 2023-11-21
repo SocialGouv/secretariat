@@ -1,8 +1,9 @@
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import { fetchGithubUsers } from "@/services/fetchers/github"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/utils/graphql-fetcher")
-jest.mock("@/utils/jwt", () => ({
+vi.mock("@/utils/graphql-fetcher")
+vi.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 

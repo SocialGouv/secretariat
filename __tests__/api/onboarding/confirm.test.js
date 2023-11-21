@@ -1,17 +1,22 @@
 import { createMocks } from "node-mocks-http"
 import handleConfirm from "@/pages/api/onboarding/confirm"
-import { graphql } from "msw"
+import { graphql, HttpResponse } from "msw"
 import { sendConfirmMail } from "@/services/send-email"
 import { server } from "@/mocks/server"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/utils/log-action", () => jest.fn())
-jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
-jest.mock("@/services/send-email", () => ({ sendConfirmMail: jest.fn() }))
-jest.mock("@/utils/env", () => ({
-  ONBOARDING_NOTIFICATION_EMAILS: "mail",
-  NEXTAUTH_URL: "http://fake.fr",
-  NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
-}))
+vi.mock("@/utils/log-action", () => ({ default: vi.fn() }))
+vi.mock("@/utils/jwt", () => ({ getJwt: vi.fn() }))
+vi.mock("@/services/send-email", () => ({ sendConfirmMail: vi.fn() }))
+vi.mock("@/utils/env", async () => {
+  const actual = await vi.importActual("@/utils/env")
+  return {
+    ...actual,
+    ONBOARDING_NOTIFICATION_EMAILS: "mail",
+    NEXTAUTH_URL: "http://fake.fr",
+    NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
+  }
+})
 
 it("should confirm request and send email", async () => {
   const { req, res } = createMocks({
@@ -29,15 +34,15 @@ it("should not confirm multiple times", async () => {
     query: { id: "fakeId" },
   })
   server.use(
-    graphql.mutation("confirmOnboardingRequest", (_req, res, ctx) => {
-      return res(
-        ctx.data({
+    graphql.mutation("confirmOnboardingRequest", () =>
+      HttpResponse.json({
+        data: {
           update_onboarding_requests: {
             affected_rows: 0,
           },
-        })
-      )
-    })
+        },
+      })
+    )
   )
   await handleConfirm(req, res)
   expect(res._getStatusCode(200))

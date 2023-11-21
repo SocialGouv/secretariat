@@ -1,11 +1,12 @@
 import onboard from "@/services/onboard"
 import ovh from "@/utils/ovh"
 import sluggifyString from "@/utils/sluggify-string"
+import { vi, it, expect, describe } from "vitest"
 
-jest.mock("@/utils/jwt", () => ({
+vi.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
-jest.mock("@/utils/ovh")
+vi.mock("@/utils/ovh")
 
 it("should return empty if no services", async () => {
   expect(

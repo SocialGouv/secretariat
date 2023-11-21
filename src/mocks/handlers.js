@@ -1,91 +1,89 @@
-import { graphql, rest } from "msw"
+import { graphql, http, HttpResponse } from "msw"
 
 import { users } from "./data"
 
 export const handlers = [
-  rest.get("http://localhost/test", (_req, res, ctx) =>
-    res(ctx.json(["test result"]))
+  http.get("http://localhost/test", () => HttpResponse.json(["test result"])),
+  http.get("http://localhost:3000/api/jwt", () =>
+    HttpResponse.json({ token: "1234" })
   ),
-  rest.get("http://localhost:3000/api/jwt", (_req, res, ctx) =>
-    res(ctx.json({ token: "1234" }))
-  ),
-  graphql.query("getUsers", (_req, res, ctx) => res(ctx.data({ users }))),
-  graphql.mutation("insertService", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.query("getUsers", () => HttpResponse.json({ data: { users } })),
+  graphql.mutation("insertService", () =>
+    HttpResponse.json({
+      data: {
         insert_services_one: {
           id: "1",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("insertUser", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("insertUser", () =>
+    HttpResponse.json({
+      data: {
         insert_users_one: {
           id: "insertedUserId",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("updateService", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("updateService", () =>
+    HttpResponse.json({
+      data: {
         update_services_by_pk: {
           id: "updatedServiceId",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("deleteServicesNotIn", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("deleteServicesNotIn", () =>
+    HttpResponse.json({
+      data: {
         delete_services: {
           returning: [],
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("deleteServices", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("deleteServices", () =>
+    HttpResponse.json({
+      data: {
         delete_services: {
           returning: [],
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("deleteUsers", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("deleteUsers", () =>
+    HttpResponse.json({
+      data: {
         delete_users: {
           affected_rows: 0,
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.query("getServicesMatchingId", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.query("getServicesMatchingId", () =>
+    HttpResponse.json({
+      data: {
         services: [],
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("updateOnboardingRequest", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("updateOnboardingRequest", () =>
+    HttpResponse.json({
+      data: {
         insert_onboarding_requests_one: {
           id: "1",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.query("getOnboardingRequest", (_req, res, ctx) =>
-    res(ctx.data({ onboarding_requests: [{ reviewed: null }] }))
+  graphql.query("getOnboardingRequest", () =>
+    HttpResponse.json({ data: { onboarding_requests: [{ reviewed: null }] } })
   ),
-  graphql.mutation("confirmOnboardingRequest", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("confirmOnboardingRequest", () =>
+    HttpResponse.json({
+      data: {
         update_onboarding_requests: {
           affected_rows: 1,
           returning: [
@@ -94,64 +92,62 @@ export const handlers = [
             },
           ],
         },
-      })
-    )
+      },
+    })
   ),
-  rest.post(/github.com/, (_req, res, ctx) =>
-    res(ctx.status(250), ctx.json({ data: "fake data" }))
+  http.post(/github.com/, () =>
+    HttpResponse.json({ data: "fake data" }, { status: 250 })
   ),
-  rest.get(/github.com/, (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json({ id: "fake id" }))
+  http.get(/github.com/, () => HttpResponse.json({ id: "fake id" })),
+  http.post(/mattermost.fabrique.social.gouv.fr/, () =>
+    HttpResponse.json({ data: "fake data" }, { status: 250 })
   ),
-  rest.post(/mattermost.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(250), ctx.json({ data: "fake data" }))
-  ),
-  graphql.mutation("insertService", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("insertService", () =>
+    HttpResponse.json({
+      data: {
         insert_services_one: {
           id: "1",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.mutation("createOnboardingRequest", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("createOnboardingRequest", () =>
+    HttpResponse.json({
+      data: {
         insert_onboarding_requests_one: {
           id: "1",
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.query("getOnboardingRequestContaining", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.query("getOnboardingRequestContaining", () =>
+    HttpResponse.json({
+      data: {
         onboarding_requests: [],
-      })
-    )
+      },
+    })
   ),
-  rest.delete(/github.com/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.delete(/github.com/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  rest.delete(/mattermost.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.delete(/mattermost.fabrique.social.gouv.fr/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  rest.post(/matomo.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.post(/matomo.fabrique.social.gouv.fr/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  rest.put(/pastek.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.put(/pastek.fabrique.social.gouv.fr/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  rest.put(/nextcloud.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.put(/nextcloud.fabrique.social.gouv.fr/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  rest.delete(/sentry.fabrique.social.gouv.fr/, (_req, res, ctx) =>
-    res(ctx.status(550), ctx.text("fake message"))
+  http.delete(/sentry.fabrique.social.gouv.fr/, () =>
+    HttpResponse.text("fake message", { status: 550 })
   ),
-  graphql.mutation("deleteAccount", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("deleteAccount", () =>
+    HttpResponse.json({
+      data: {
         delete_services_by_pk: {
           users: {
             services_aggregate: {
@@ -160,19 +156,19 @@ export const handlers = [
             id: "fake user ID",
           },
         },
-      })
-    )
+      },
+    })
   ),
-  graphql.query("getReviewedOnboardingRequestContaining", (_req, res, ctx) =>
-    res(ctx.data({ onboarding_requests: [] }))
+  graphql.query("getReviewedOnboardingRequestContaining", () =>
+    HttpResponse.json({ data: { onboarding_requests: [] } })
   ),
-  graphql.mutation("enableUsersByServicesIds", (_req, res, ctx) =>
-    res(
-      ctx.data({
+  graphql.mutation("enableUsersByServicesIds", () =>
+    HttpResponse.json({
+      data: {
         update_users: {
           affected_rows: 0,
         },
-      })
-    )
+      },
+    })
   ),
 ]

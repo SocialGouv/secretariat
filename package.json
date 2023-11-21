@@ -52,7 +52,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "test": "jest",
+    "test": "vitest",
     "postinstall": "is-ci || husky install"
   },
   "devDependencies": {
@@ -66,6 +66,7 @@
     "@types/react-modal": "3.13.1",
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "@typescript-eslint/parser": "5.49.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "10.4.13",
     "eslint": "8.31.0",
     "eslint-config-next": "12.3.4",
@@ -73,7 +74,7 @@
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "jest": "27.5.1",
-    "msw": "0.49.3",
+    "msw": "2.0.8",
     "node-mocks-http": "1.12.1",
     "node-talisman": "1.29.7",
     "pino-pretty": "10.2.3",
@@ -84,6 +85,7 @@
     "stylelint-config-standard-scss": "3.0.0",
     "tailwindcss": "3.2.6",
     "typescript": "4.9.5",
+    "vitest": "0.34.6",
     "whatwg-fetch": "3.6.2"
   },
   "packageManager": "yarn@4.0.2"

@@ -1,0 +1,149 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`when header renders > does not show authenticated user if session is not valid 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div
+      class="header-content"
+    >
+      <a
+        href="/"
+      >
+        <div
+          class="logo"
+        >
+          République
+          <br />
+          Française
+        </div>
+        <div
+          class="title"
+        >
+          <h1>
+            Secrétariat
+          </h1>
+          <p>
+            Gestion des comptes de la Fabrique Numérique
+          </p>
+        </div>
+      </a>
+      <nav />
+    </div>
+  </header>
+</div>
+`;
+
+exports[`when header renders > does show authenticated user if session is valid 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div
+      class="header-content"
+    >
+      <a
+        href="/"
+      >
+        <div
+          class="logo"
+        >
+          République
+          <br />
+          Française
+        </div>
+        <div
+          class="title"
+        >
+          <h1>
+            Secrétariat
+          </h1>
+          <p>
+            Gestion des comptes de la Fabrique Numérique
+          </p>
+        </div>
+      </a>
+      <nav>
+        <div
+          class="authenticated-user"
+        >
+          <span
+            style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+          >
+            <span
+              style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+            >
+              <img
+                alt=""
+                aria-hidden="true"
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2744%27%20height=%2744%27/%3e"
+                style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+              />
+            </span>
+            <img
+              alt="user avatar"
+              data-nimg="intrinsic"
+              decoding="async"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+            />
+            <noscript />
+          </span>
+          <div
+            class="user-name-links"
+          >
+            <div>
+              John Doe
+            </div>
+            <button
+              class="link text-sm"
+            >
+              Déconnexion
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="navigation"
+    >
+      <ul>
+        <li>
+          <a
+            class="selected"
+            href="/accounts"
+          >
+            <i
+              class="ri-user-3-line text-xl leading-none align-sub mr-1"
+            />
+            Gestion des comptes
+          </a>
+        </li>
+        <li>
+          <a
+            class=""
+            href="/onboarding-requests"
+          >
+            <i
+              class="ri-ship-line text-xl leading-none align-sub mr-1"
+            />
+            Demandes d'embarquement
+          </a>
+        </li>
+        <li>
+          <a
+            class=""
+            href="/logs"
+          >
+            <i
+              class="ri-file-list-3-line text-xl leading-none align-sub mr-1"
+            />
+            Journal des actions
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
+`;

@@ -1,7 +1,8 @@
 import fetcher from "@/utils/rest-fetcher"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/utils/rest-fetcher")
+vi.mock("@/utils/rest-fetcher")
 
 it("should return a list of fetched users", async () => {
   fetcher.mockResolvedValue(

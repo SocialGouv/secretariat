@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders disabled badge 1`] = `
+<div>
+  <p
+    class="badge disabled"
+    title="disabled"
+  >
+    disabled
+  </p>
+</div>
+`;
+
+exports[`renders expiry badge 1`] = `
+<div>
+  <p
+    class="badge expiry"
+    title="expiry"
+  >
+    expiry
+  </p>
+</div>
+`;
+
+exports[`renders icon warning badge 1`] = `
+<div>
+  <p
+    class="badge warning icon"
+    title="icon badge"
+  />
+</div>
+`;
+
+exports[`renders warning badge 1`] = `
+<div>
+  <p
+    class="badge warning"
+    title="warning"
+  >
+    warning
+  </p>
+</div>
+`;

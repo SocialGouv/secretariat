@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders footer 1`] = `
+<div>
+  <footer>
+    <div
+      class="footer-content"
+    >
+      <div
+        class="logo-info"
+      >
+        <div
+          class="logo big"
+        >
+          République
+          <br />
+          Française
+        </div>
+        <div
+          class="info"
+        >
+          <p>
+            <strong>
+              Secretariat
+            </strong>
+             est une application permettant de gérer les accès des utilisateurs aux services de la Fabrique Numérique.
+          </p>
+          <p
+            class="flex items-center"
+          >
+            <i
+              class="ri-github-fill ri-xl relative top-px mr-1"
+            />
+            <a
+              href="https://github.com/SocialGouv/secretariat/tree/v0.0.42"
+              rel="noreferrer"
+              target="_blank"
+            >
+              version 
+              0.0.42
+            </a>
+          </p>
+        </div>
+      </div>
+      <div
+        class="links"
+      >
+        <a
+          href="https://www.fabrique.social.gouv.fr/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          La Fabrique Numérique
+        </a>
+        <a
+          href="/legal"
+        >
+          Mentions légales
+        </a>
+        <button
+          aria-label="theme toggle"
+        >
+          <i
+            class="theme-toggle-button ri-sun-line"
+          />
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

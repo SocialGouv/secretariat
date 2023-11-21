@@ -2,10 +2,11 @@ import { sync } from "@/services/sync"
 import SERVICES from "@/utils/SERVICES"
 import { createMocks } from "node-mocks-http"
 import handleSync from "../../src/pages/api/sync"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/services/sync", () => ({ sync: jest.fn() }))
-jest.mock("@/utils/log-action", () => jest.fn())
-jest.mock("@/utils/jwt", () => ({ getJwt: jest.fn() }))
+vi.mock("@/services/sync", () => ({ sync: vi.fn() }))
+vi.mock("@/utils/log-action", () => ({ default: vi.fn() }))
+vi.mock("@/utils/jwt", () => ({ getJwt: vi.fn() }))
 
 it("should call the sync service with given services", async () => {
   const { req, res } = createMocks({

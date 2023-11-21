@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders big site logo 1`] = `
+<div>
+  <div
+    class="logo big"
+  >
+    République
+    <br />
+    Française
+  </div>
+</div>
+`;
+
+exports[`renders regular site logo 1`] = `
+<div>
+  <div
+    class="logo"
+  >
+    République
+    <br />
+    Française
+  </div>
+</div>
+`;

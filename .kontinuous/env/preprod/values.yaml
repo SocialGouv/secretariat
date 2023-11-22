@@ -1,9 +1,3 @@
 app:
   vars:
     ENV: preprod
-# jobs:
-#   runs:
-#     build-app:
-#       with:
-#         buildArgs:
-#           NEXT_PUBLIC_ENVIRONMENT: preprod

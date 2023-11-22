@@ -1,4 +1,4 @@
-name: 😎 PreProd
+name: 😎 Preprod
 on:
   workflow_dispatch:
   push:

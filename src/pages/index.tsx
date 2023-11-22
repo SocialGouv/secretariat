@@ -8,6 +8,14 @@ const Index = () => (
       <title>Secrétariat</title>
     </Head>
     <Home />
+    <button
+      className="primary"
+      onClick={() => {
+        throw new Error("manual fail")
+      }}
+    >
+      Fail
+    </button>
   </main>
 )
 

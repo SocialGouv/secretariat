@@ -28,7 +28,9 @@ jobs:
       with:
         imagePackage: app
         buildArgs:
-          NEXT_PUBLIC_HASURA_URL: "https://hasura-{{ .Values.global.host }}/v1/graphql"
+          NEXT_PUBLIC_HASURA_URL:
+            "https://hasura-{{ .Values.global.host }}/v1/graphql"
+          NEXT_PUBLIC_SENTRY_DSN: "https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85"
 
     build-hasura:
       use: build

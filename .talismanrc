@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: .kontinuous/values.yaml
+  checksum: 5cbf30ed8e834175378bf4ddc82bec820875bd0fc960ac80025ca5027d61fda5
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql
   checksum: cac3e070c06c7c7fbd6821009fef546e452a38184ac6539ccca609be4a82bd8b
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/up.sql

@@ -1,3 +1,10 @@
 app:
   vars:
     ENV: review
+
+jobs:
+  runs:
+    build-app:
+      with:
+        buildArgs:
+          NEXT_PUBLIC_ENVIRONMENT: review

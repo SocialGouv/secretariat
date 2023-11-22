@@ -8,6 +8,13 @@ const Index = () => (
       <title>Secrétariat</title>
     </Head>
     <Home />
+    <button
+      onClick={() => {
+        throw new Erorr("client error")
+      }}
+    >
+      Error
+    </button>
   </main>
 )
 

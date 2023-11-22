@@ -10,7 +10,7 @@ const Index = () => (
     <Home />
     <button
       onClick={() => {
-        throw new Erorr("client error")
+        throw new Error("client error")
       }}
     >
       Error

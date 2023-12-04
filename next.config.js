@@ -81,13 +81,11 @@ const sentryWebpackPluginOptions = {
   org: "incubateur",
   project: "secretariat",
   url: "https://sentry.fabrique.social.gouv.fr/",
+  release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
 }
 
 const sentryOptions = {
-  // Upload additional client files (increases upload size)
   widenClientFileUpload: true,
-
-  // Hides source maps from generated client bundles
   hideSourceMaps: true,
 }
 

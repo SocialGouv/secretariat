@@ -81,9 +81,6 @@ const sentryWebpackPluginOptions = {
   org: "incubateur",
   project: "secretariat",
   url: "https://sentry.fabrique.social.gouv.fr/",
-  release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-  environment: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 }
 
 const sentryOptions = {

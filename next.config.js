@@ -61,8 +61,6 @@ module.exports = {
   },
   sentry: {
     hideSourceMaps: true,
-    disableClientWebpackPlugin: true,
-    disableServerWebpackPlugin: true,
   },
   output: "standalone",
   env: {

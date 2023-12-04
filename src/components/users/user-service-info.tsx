@@ -198,10 +198,6 @@ const UserServiceInfo = ({
 }) => {
   const ref = useSpringRef()
 
-  useEffect(() => {
-    console.log(user)
-  })
-
   const [styles, spring] = useSpring(() => ({
     ref,
     config: { duration: 200 },

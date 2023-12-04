@@ -16,7 +16,6 @@ import logAction from "@/utils/log-action"
 import { getSession } from "next-auth/react"
 
 interface UserMapping {
-  // email: string
   name: string
   avatarUrl?: string
 }

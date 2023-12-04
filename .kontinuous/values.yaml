@@ -30,9 +30,9 @@ jobs:
         buildArgs:
           NEXT_PUBLIC_HASURA_URL:
             "https://hasura-{{ .Values.global.host }}/v1/graphql"
-          NEXT_PUBLIC_SENTRY_DSN: "https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85"
-          NEXT_PUBLIC_ENVIRONMENT: "{{ .Values.global.env }}"
-          NEXT_PUBLIC_RELEASE: "{{ .Values.global.imageTag }}"
+          SENTRY_DSN: "https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85"
+          SENTRY_ENVIRONMENT: "{{ .Values.global.env }}"
+          SENTRY_RELEASE: "{{ .Values.global.imageTag }}"
         secrets:
           sentry_auth_token:
             secretName: sentry

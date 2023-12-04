@@ -41,3 +41,7 @@ jobs:
         context: ./packages/hasura
         buildArgs:
           APP_URL: "https://{{ .Values.global.host }}"
+        secrets:
+          sentry_auth_token:
+            secretName: sentry
+            secretKey: SENTRY_AUTH_TOKEN

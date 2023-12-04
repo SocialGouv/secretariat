@@ -1,6 +1,14 @@
 fileignoreconfig:
+- filename: .kontinuous/env/dev/templates/sentry.sealed-secret.yaml
+  checksum: 6b3eb493305a8c3d24402c99d7a20b01b6650e7fedb2782648c539a70adc4088
+- filename: .kontinuous/env/preprod/templates/sentry.sealed-secret.yaml
+  checksum: fae95a0f658c5920845516eb04659cac883418d135a4bce54615236e47da8df1
+- filename: .kontinuous/env/prod/templates/sentry.sealed-secret.yaml
+  checksum: ef7c23320a02ca66f8a10755bccabc2a487973e9581a4408ed3f4c8685f921f7
 - filename: .kontinuous/values.yaml
-  checksum: 5cbf30ed8e834175378bf4ddc82bec820875bd0fc960ac80025ca5027d61fda5
+  checksum: ac5d9706a33f1a17ce439ae53449d71a33eac2c21f36ffc19130212e972ed2ca
+- filename: Dockerfile
+  checksum: 14c30aedc55e0f61364c26cf84c28596973f6951f4e0322f2f2693ec84ff513c
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql
   checksum: cac3e070c06c7c7fbd6821009fef546e452a38184ac6539ccca609be4a82bd8b
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/up.sql

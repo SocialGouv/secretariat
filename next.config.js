@@ -50,7 +50,7 @@ const headers = [
   { key: "Reporting-Endpoints", value: "endpoint='/api/report'" },
 ]
 
-module.exports = {
+const nextConfig = {
   swcMinify: true,
   optimizeFonts: false,
   reactStrictMode: true,
@@ -58,11 +58,6 @@ module.exports = {
     dangerouslyAllowSVG: true,
     domains: ["avatars.githubusercontent.com", "secure.gravatar.com"],
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-  sentry: {
-    hideSourceMaps: true,
-    disableClientWebpackPlugin: true,
-    disableServerWebpackPlugin: true,
   },
   output: "standalone",
   env: {
@@ -82,4 +77,20 @@ module.exports = {
   },
 }
 
-module.exports = withSentryConfig(module.exports, { silent: true })
+const sentryWebpackPluginOptions = {
+  org: "incubateur",
+  project: "secretariat",
+  url: "https://sentry.fabrique.social.gouv.fr/",
+  release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
+}
+
+const sentryOptions = {
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+}
+
+module.exports = withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions,
+  sentryOptions
+)

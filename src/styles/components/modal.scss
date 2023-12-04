@@ -1,7 +1,7 @@
-.ReactModalPortal {
-  /* stylelint-disable-line */
+.ReactModalPortal { /* stylelint-disable-line */
   .modal-overlay {
-    @apply flex
+    @apply
+      flex
       z-30
       mt-28
       fixed
@@ -25,10 +25,10 @@
   }
 
   .modal {
-    @apply p-4
+    @apply
+      p-4
       rounded
       min-w-[50vw]
-      max-w-[50vw]
       relative
       shadow-lg
       outline-none
@@ -46,7 +46,8 @@
       @apply flex items-center;
 
       & > .user {
-        @apply flex-1
+        @apply
+          flex-1
           bg-grey-950-main
           dark:bg-grey-100-main;
       }

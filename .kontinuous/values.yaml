@@ -33,6 +33,10 @@ jobs:
           NEXT_PUBLIC_SENTRY_DSN: "https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85"
           NEXT_PUBLIC_ENVIRONMENT: "{{ .Values.global.env }}"
           NEXT_PUBLIC_RELEASE: "{{ .Values.global.imageTag }}"
+        secrets:
+          sentry_auth_token:
+            secretName: sentry
+            secretKey: SENTRY_AUTH_TOKEN
 
     build-hasura:
       use: build
@@ -41,7 +45,3 @@ jobs:
         context: ./packages/hasura
         buildArgs:
           APP_URL: "https://{{ .Values.global.host }}"
-        secrets:
-          sentry_auth_token:
-            secretName: sentry
-            secretKey: SENTRY_AUTH_TOKEN

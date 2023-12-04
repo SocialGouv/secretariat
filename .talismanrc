@@ -6,7 +6,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/prod/templates/sentry.sealed-secret.yaml
   checksum: ef7c23320a02ca66f8a10755bccabc2a487973e9581a4408ed3f4c8685f921f7
 - filename: .kontinuous/values.yaml
-  checksum: ac5d9706a33f1a17ce439ae53449d71a33eac2c21f36ffc19130212e972ed2ca
+  checksum: 01e719187c7031e191581bd6f0e7c6e0b956c71d91a29d5c4c15e86672693c50
 - filename: Dockerfile
   checksum: 14c30aedc55e0f61364c26cf84c28596973f6951f4e0322f2f2693ec84ff513c
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql

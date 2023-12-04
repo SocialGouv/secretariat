@@ -7,6 +7,13 @@ const Index = () => (
     <Head>
       <title>Secrétariat</title>
     </Head>
+    <button
+      onClick={() => {
+        throw new Error("client error")
+      }}
+    >
+      ERROR
+    </button>
     <Home />
   </main>
 )

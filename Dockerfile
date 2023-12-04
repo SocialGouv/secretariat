@@ -34,13 +34,6 @@ RUN --mount=type=secret,id=sentry_auth_token export SENTRY_AUTH_TOKEN="$(cat /ru
 # Production image, copy all the files and run next
 FROM base AS runner
 
-ARG SENTRY_ENVIRONMENT
-ENV SENTRY_ENVIRONMENT $SENTRY_ENVIRONMENT
-ARG SENTRY_RELEASE
-ENV SENTRY_RELEASE $SENTRY_RELEASE
-ARG SENTRY_DSN
-ENV SENTRY_DSN $SENTRY_DSN
-
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 

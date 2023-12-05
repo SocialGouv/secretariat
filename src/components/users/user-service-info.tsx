@@ -3,7 +3,6 @@ import { useSpring, animated, useSpringRef } from "react-spring"
 
 import ServiceLogo from "@/components/common/service-logo"
 import { TOGGLEABLE_SERVICE } from "@/utils/SERVICES"
-import { useEffect } from "react"
 
 const DATE_FORMAT = "dd/MM/Y HH:mm:ss"
 

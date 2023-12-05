@@ -4,9 +4,9 @@ import { useEffect, useMemo, useState } from "react"
 import statusOk from "@/utils/status-ok"
 import Alert from "@/components/common/alert"
 import Wizard from "@/components/common/wizard"
-import useOnboarding from "@/hooks/use-onboarding"
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import UserInfo from "@/components/onboarding/steps/user-info"
+import useOnboarding, { fallbackData } from "@/hooks/use-onboarding"
 import GithubServices from "@/components/onboarding/steps/github-services"
 import DefaultServices from "@/components/onboarding/steps/default-services"
 import ServicesAccountsStatuses from "@/components/onboarding/steps/services-accounts-statuses"
@@ -16,7 +16,8 @@ import {
 } from "@/queries/index"
 
 const Onboarding = () => {
-  const { data, request, id } = useOnboarding()
+  const { data, request, id, mutate: mutateOnboarding } = useOnboarding()
+
   const [status, setStatus] = useState<
     "create" | "review" | "reviewed" | "create_success" | "review_success"
   >("create")
@@ -57,12 +58,13 @@ const Onboarding = () => {
     setServicesAccountsStatuses(responses)
   }
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (status === "review") {
       handleReviewSubmit()
     } else if (status === "create") {
       handleCreationSubmit()
     }
+    await mutateOnboarding(fallbackData)
   }
 
   useEffect(() => {

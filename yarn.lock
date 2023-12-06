@@ -2076,10 +2076,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:17.0.12":
-  version: 17.0.12
-  resolution: "@types/node@npm:17.0.12"
-  checksum: e35269fd7bc3f8f15a2172e41d099e701d09c671530f09e29ef7af4a7f039e2f5889d4a5a24c3996d68fe3042a8da94e331cfd4252cb5d92f021ffbc4d4389d3
+"@types/node@npm:20.10.3":
+  version: 20.10.3
+  resolution: "@types/node@npm:20.10.3"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 7cb506abb0d570bb5133bd06a47115109a813b507323c985c3b4aef2993eed79b6bb62b82194cb5c558b4d349de3d199ee2e8c693b913065a1cd7f526cc65a68
   languageName: node
   linkType: hard
 
@@ -9407,7 +9409,7 @@ __metadata:
     "@testing-library/react": "npm:12.1.5"
     "@types/jsonwebtoken": "npm:8.5.9"
     "@types/lodash": "npm:4.14.195"
-    "@types/node": "npm:17.0.12"
+    "@types/node": "npm:20.10.3"
     "@types/react": "npm:17.0.53"
     "@types/react-modal": "npm:3.13.1"
     "@typescript-eslint/eslint-plugin": "npm:5.49.0"

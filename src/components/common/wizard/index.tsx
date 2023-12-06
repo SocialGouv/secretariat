@@ -55,7 +55,6 @@ const Wizard = ({
       className="primary flex leading-4"
       onClick={(e) => {
         e.preventDefault()
-        // onComplete(fields)
         onComplete(data)
       }}
     >

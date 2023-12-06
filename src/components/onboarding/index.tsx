@@ -17,6 +17,7 @@ import {
 
 const Onboarding = () => {
   const { data, request, id } = useOnboarding()
+
   const [status, setStatus] = useState<
     "create" | "review" | "reviewed" | "create_success" | "review_success"
   >("create")

@@ -1,4 +1,5 @@
 import SERVICES from "@/utils/SERVICES"
+import { it, expect } from "vitest"
 
 it("should return a list of known services", () => {
   expect(

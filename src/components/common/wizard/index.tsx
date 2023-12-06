@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import Stepper from "./stepper"
 
@@ -17,12 +17,9 @@ const Wizard = ({
 }) => {
   const [isValidStep, setValidStep] = useState(false)
   const [activeStepIndex, setActiveStepIndex] = useState(0)
-  const [fields, setFields] = useState<OnboardingData | undefined>(data)
 
   const { component: Step } = steps[activeStepIndex]
   const isLastStep = activeStepIndex === steps.length - 1
-
-  useEffect(() => setFields(data), [data])
 
   const PreviousButton = () => (
     <button
@@ -58,7 +55,7 @@ const Wizard = ({
       className="primary flex leading-4"
       onClick={(e) => {
         e.preventDefault()
-        onComplete(fields)
+        onComplete(data)
       }}
     >
       Terminer

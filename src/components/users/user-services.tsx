@@ -1,25 +1,26 @@
 import UserServiceInfo from "@/components/users/user-service-info"
 
 const UserServices = ({
-  services,
+  user,
   onDetachAccount,
-  onDeleteAccount,
+  onToggleAccount,
 }: {
-  services: ServiceAccount[]
+  user: User
   onDetachAccount: (account: ServiceAccount) => void
-  onDeleteAccount: (account: ServiceAccount) => void
+  onToggleAccount: (account: AccountToToggle) => void
 }) => {
-  const isSingleAccount = services.length <= 1
+  const isSingleAccount = user.services.length <= 1
 
   return (
     <div className="services">
-      {services.map((account) => (
+      {user.services.map((account) => (
         <UserServiceInfo
+          user={user}
           key={account.id}
           account={account}
           isSingleAccount={isSingleAccount}
           onDetachAccount={onDetachAccount}
-          onDeleteAccount={onDeleteAccount}
+          onToggleAccount={onToggleAccount}
         />
       ))}
     </div>

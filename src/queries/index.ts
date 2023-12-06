@@ -6,10 +6,12 @@ const userFragment = gql`
     departure
     arrival
     updated_at
+    email
     services {
       id
       data
       type
+      disabled
     }
   }
 `
@@ -35,6 +37,20 @@ export const getUsers = gql`
     }
   }
   ${userFragment}
+`
+
+export const getService = gql`
+  query getService($id: uuid!) {
+    services_by_pk(id: $id) {
+      id
+      type
+      data
+      disabled
+      users {
+        email
+      }
+    }
+  }
 `
 
 export const getUserTeams = gql`
@@ -134,7 +150,13 @@ export const updateService = gql`
 export const deleteService = gql`
   mutation deleteService($serviceId: uuid!, $serviceName: String!) {
     delete_services(
-      where: { _and: { id: { _eq: $serviceId }, type: { _eq: $serviceName } } }
+      where: {
+        _and: {
+          id: { _eq: $serviceId }
+          type: { _eq: $serviceName }
+          disabled: { _eq: false }
+        }
+      }
     ) {
       returning {
         users {
@@ -160,6 +182,7 @@ export const deleteServicesNotIn = gql`
         _and: {
           id: { _nin: $existingServicesIds }
           type: { _eq: $serviceName }
+          disabled: { _eq: false }
         }
       }
     ) {
@@ -181,21 +204,6 @@ export const deleteUsers = gql`
   mutation deleteUsers($userIds: [uuid!] = "") {
     delete_users(where: { id: { _in: $userIds } }) {
       affected_rows
-    }
-  }
-`
-
-export const deleteAccount = gql`
-  mutation deleteAccount($accountID: uuid!) {
-    delete_services_by_pk(id: $accountID) {
-      users {
-        services_aggregate {
-          aggregate {
-            count
-          }
-        }
-        id
-      }
     }
   }
 `
@@ -267,19 +275,18 @@ export const confirmOnboardingRequest = gql`
   }
 `
 
-export const revokeAction = gql`
-  mutation revokeAction(
-    $accountID: String!
-    $accountServiceID: String!
-    $serviceName: String!
-  ) {
-    revokeAction(
-      data: {
-        accountID: $accountID
-        accountServiceID: $accountServiceID
-        serviceName: $serviceName
-      }
-    ) {
+export const disableAction = gql`
+  mutation disableAction($serviceAccountId: uuid!) {
+    disableAction(data: { id: $serviceAccountId }) {
+      body
+      status
+    }
+  }
+`
+
+export const enableAction = gql`
+  mutation enableAction($serviceAccountId: uuid!) {
+    enableAction(data: { id: $serviceAccountId }) {
       body
       status
     }

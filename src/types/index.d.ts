@@ -8,6 +8,7 @@ interface User {
   avatarUrl: string
   services: ServiceAccount[]
   warnings: Warning[]
+  disabled: boolean
 }
 
 type Warning = "alone_service" | "missing_services" | "no_departure_date"
@@ -30,9 +31,15 @@ interface ZammadGroup {
   name: string
 }
 
+interface AccountToToggle {
+  disable: boolean
+  account: ServiceAccount
+}
+
 interface BasicServiceAccount {
   id: string
   type: ServiceName
+  disabled: boolean
 }
 
 interface GithubServiceAccount extends BasicServiceAccount {
@@ -199,6 +206,7 @@ interface SyncStats {
   errors: number
   userDeletions: number
   accountDeletions: number
+  enablements: number
 }
 
 interface WizardStep {

@@ -11,13 +11,13 @@ const UserProfile = ({
   onUserDrop,
   onUserEdit,
   onAccountsChange,
-  onDeleteAccount,
+  onToggleAccount,
 }: {
   user: User
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
   onAccountsChange: (account: ServiceAccount) => void
-  onDeleteAccount: (account: ServiceAccount) => void
+  onToggleAccount: (account: AccountToToggle) => void
 }) => {
   const [{ canDrop, isOver }, drop] = useDrop(
     () => ({
@@ -63,9 +63,9 @@ const UserProfile = ({
           onChange={(dates) => onUserEdit({ ...user, ...dates })}
         />
         <UserServices
-          services={user.services}
+          user={user}
           onDetachAccount={onAccountsChange}
-          onDeleteAccount={onDeleteAccount}
+          onToggleAccount={onToggleAccount}
         />
       </div>
     </div>

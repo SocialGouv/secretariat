@@ -1,4 +1,16 @@
 type Mutation {
+  disableAction(
+    data: DisableActionInput!
+  ): APIResponse!
+}
+
+type Mutation {
+  enableAction(
+    data: EnableActionInput!
+  ): APIResponse!
+}
+
+type Mutation {
   onboardingRequestAction(
     data: OnboardingData!
   ): APIResponse!
@@ -9,18 +21,6 @@ type Mutation {
     data: OnboardingData!
     id: String!
   ): OnboardingResponses!
-}
-
-type Mutation {
-  revokeAction(
-    data: RevokeActionInput!
-  ): APIResponse!
-}
-
-input RevokeActionInput {
-  accountServiceID: String!
-  accountID: String!
-  serviceName: String!
 }
 
 input OnboardingServices {
@@ -37,6 +37,14 @@ input OnboardingData {
   services: OnboardingServices!
   arrival: String!
   departure: String!
+}
+
+input DisableActionInput {
+  id: uuid!
+}
+
+input EnableActionInput {
+  id: uuid!
 }
 
 type APIResponse {

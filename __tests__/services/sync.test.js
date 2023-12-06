@@ -7,8 +7,9 @@ import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
 import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
-import { graphql } from "msw"
+import { graphql, HttpResponse } from "msw"
 import { server } from "@/mocks/server"
+import { vi, expect, it, beforeEach } from "vitest"
 
 const servicesFetchers = {
   github: fetchGithubUsers,
@@ -20,24 +21,23 @@ const servicesFetchers = {
   zammad: fetchZammadUsers,
 }
 
-jest.mock("@/utils/jwt", () => ({
+vi.mock("@/utils/jwt", () => ({
   getJwt: () => "",
 }))
 
 beforeEach(() => {
-  jest.resetModules()
-  for (const serviceFetcher of Object.values(servicesFetchers)) {
-    serviceFetcher.mockImplementation(() => [])
-  }
+  vi.clearAllMocks()
 })
 
-jest.mock("@/services/fetchers/github")
-jest.mock("@/services/fetchers/matomo")
-jest.mock("@/services/fetchers/mattermost")
-jest.mock("@/services/fetchers/nextcloud")
-jest.mock("@/services/fetchers/ovh")
-jest.mock("@/services/fetchers/sentry")
-jest.mock("@/services/fetchers/zammad")
+vi.mock("@/services/fetchers/github", () => ({
+  fetchGithubUsers: vi.fn().mockReturnValue([{ id: "fake id" }]),
+}))
+vi.mock("@/services/fetchers/matomo")
+vi.mock("@/services/fetchers/mattermost")
+vi.mock("@/services/fetchers/nextcloud")
+vi.mock("@/services/fetchers/ovh")
+vi.mock("@/services/fetchers/sentry")
+vi.mock("@/services/fetchers/zammad")
 
 it("should call every fetcher", async () => {
   const results = await sync(SERVICES)
@@ -47,14 +47,14 @@ it("should call every fetcher", async () => {
   expect(results).toStrictEqual({
     accountDeletions: 0,
     errors: 0,
-    insertions: 0,
+    insertions: 1,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
 it("should insert the account and a new user", async () => {
-  fetchGithubUsers.mockImplementation(() => [{ id: "fake id" }])
   const results = await sync(SERVICES)
   expect(results).toStrictEqual({
     accountDeletions: 0,
@@ -62,19 +62,19 @@ it("should insert the account and a new user", async () => {
     insertions: 1,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
 it("should update the account", async () => {
-  fetchGithubUsers.mockImplementation(() => [{ id: "fake id" }])
   server.use(
-    graphql.query("getServicesMatchingId", (_req, res, ctx) => {
-      return res(
-        ctx.data({
+    graphql.query("getServicesMatchingId", () =>
+      HttpResponse.json({
+        data: {
           services: [{ id: 0 }],
-        })
-      )
-    })
+        },
+      })
+    )
   )
   const results = await sync(SERVICES)
   expect(results).toStrictEqual({
@@ -83,20 +83,20 @@ it("should update the account", async () => {
     insertions: 0,
     updates: 1,
     userDeletions: 0,
+    enablements: 0,
   })
 })
 
 it("should do nothing and return an empty string on inconsistent DB", async () => {
-  fetchGithubUsers.mockImplementation(() => [{ id: "fake id" }])
   server.use(
-    graphql.query("getServicesMatchingId", (_req, res, ctx) => {
-      return res(
-        ctx.data({
+    graphql.query("getServicesMatchingId", () =>
+      HttpResponse.json({
+        data: {
           // Two entries with the same ID
           services: [{ id: "fake id" }, { id: "fake id" }],
-        })
-      )
-    })
+        },
+      })
+    )
   )
   const results = await sync(SERVICES)
   expect(results).toStrictEqual({
@@ -105,5 +105,6 @@ it("should do nothing and return an empty string on inconsistent DB", async () =
     insertions: 0,
     updates: 0,
     userDeletions: 0,
+    enablements: 0,
   })
 })

@@ -297,3 +297,16 @@ export const sendRequestMail = (email: string, url: string) => {
     </div>`
   )
 }
+
+export const sendOvhEnabledEmail = (email: string, ovhPassword: string) => {
+  return sendEmail(
+    [
+      {
+        address: email,
+      },
+    ],
+    "Réactivation de votre email Fabrique",
+    `Votre adresse email de la Fabrique Numérique des Ministères Sociaux vient d'être réactivée. Vous pouvez de nouveau y accéder avec le mot de passe temporaire suivant : ${ovhPassword} (à changer)`,
+    `<p>Votre adresse email de la Fabrique Numérique des Ministères Sociaux vient d'être réactivée. Vous pouvez de nouveau y accéder avec le mot de passe temporaire suivant : ${ovhPassword} (à changer)<p>`
+  )
+}

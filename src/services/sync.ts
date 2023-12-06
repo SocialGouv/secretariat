@@ -46,7 +46,7 @@ export const getServiceFromData = async (
   serviceData: Record<string, unknown>,
   serviceName: ServiceName,
   token: string
-): Promise<Record<string, any>[]> => {
+) => {
   const idField = servicesIdFields[serviceName]
   const { services: servicesMatchingId } = await graphQLFetcher({
     query: getServicesMatchingId,
@@ -70,6 +70,7 @@ export const upsertService = async (
     insertions: 0,
     userDeletions: 0,
     accountDeletions: 0,
+    enablements: 0,
   }
   const servicesMatchingId = await getServiceFromData(
     serviceData,
@@ -96,7 +97,7 @@ export const upsertService = async (
     })
 
     // Github accounts are created after the user accepted an invitation
-    // At this moment, we need to check if the user comes from a Secrétariat onboarding or not
+    // At this moment, we need to check if the user comes from a Secretariat onboarding or not
     // if so, link it to its onboarding request
     if (serviceName === "github") {
       const { onboarding_requests: onboardingRequests } = await graphQLFetcher({
@@ -129,7 +130,11 @@ export const upsertService = async (
       token,
       parameters: {
         serviceId: servicesMatchingId[0].id,
-        service: { data: serviceData },
+        service: {
+          data: serviceData,
+          // a disabled OVH account will still appear while fetching because we only change the user's password
+          ...(serviceName !== "ovh" ? { disabled: false } : {}),
+        },
       },
     })
     operationStats.updates += 1
@@ -144,7 +149,7 @@ export const upsertService = async (
   }
 }
 
-const updateUsers = async (
+const upsertServices = async (
   users: Record<string, unknown>[],
   serviceName: ServiceName,
   token: string,
@@ -265,6 +270,7 @@ export const sync = async (enabledServices: ServiceName[]) => {
     errors: 0,
     userDeletions: 0,
     accountDeletions: 0,
+    enablements: 0,
   }
 
   // Remember the users list for all services, to clean the deleted users afterwards
@@ -286,7 +292,7 @@ export const sync = async (enabledServices: ServiceName[]) => {
   // Update the DB synchronously
   for (const serviceName of enabledServices) {
     existingServicesIds[serviceName].push(
-      ...(await updateUsers(
+      ...(await upsertServices(
         dataByService[serviceName],
         serviceName,
         token,

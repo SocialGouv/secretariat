@@ -1,16 +1,20 @@
-beforeEach(() => {
-  jest.resetModules()
-})
+import { vi, it, expect } from "vitest"
+import ovhUtil from "@/utils/ovh"
+
+vi.mock("ovh", () => ({
+  default: () => ({
+    requestPromised: (method) => {
+      if (method === "POST") {
+        throw { error: 550, message: "fake error" }
+      } else {
+        return Promise.resolve(["a", "b", "c"])
+      }
+    },
+  }),
+}))
 
 it("should return the received data", async () => {
-  jest.mock("ovh", () => () => ({
-    requestPromised: jest
-      .fn()
-      .mockResolvedValue(Promise.resolve(["a", "b", "c"])),
-  }))
-
-  const { default: ovh } = await import("@/utils/ovh")
-  const result = await ovh("GET", "/test")
+  const result = await ovhUtil("GET", "/test")
   expect(result).toStrictEqual({
     success: true,
     data: ["a", "b", "c"],
@@ -19,14 +23,7 @@ it("should return the received data", async () => {
 })
 
 it("should return the received error", async () => {
-  jest.mock("ovh", () => () => ({
-    requestPromised: jest.fn().mockImplementation(() => {
-      throw { error: 550, message: "fake error" }
-    }),
-  }))
-
-  const { default: ovh } = await import("@/utils/ovh")
-  const result = await ovh("GET", "/test")
+  const result = await ovhUtil("POST", "/test")
   expect(result).toStrictEqual({
     success: false,
     data: {},

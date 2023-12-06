@@ -5,7 +5,7 @@ import useSWR from "swr"
 
 import useOnboardingRequest from "./use-onboarding-request"
 
-export const fallbackData = {
+const defaultData = {
   email: "",
   message: "",
   lastName: "",
@@ -19,15 +19,16 @@ export const fallbackData = {
 const useOnboarding = () => {
   const { request, id } = useOnboardingRequest()
 
+  const key = id ? `onboarding-${id}` : "onboarding"
+  const fallbackData = id && request ? request.data : defaultData
+
   const {
     data,
     mutate,
   }: { data?: OnboardingData; mutate: KeyedMutator<unknown> } = useSWR(
-    "onboarding",
+    key,
     null,
-    {
-      fallbackData: request?.data || fallbackData,
-    }
+    { fallbackData }
   )
 
   return { data, mutate, request, id }

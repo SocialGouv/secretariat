@@ -31,3 +31,6 @@ coverage
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Sentry Config File
+.sentryclirc

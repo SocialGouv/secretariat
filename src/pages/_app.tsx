@@ -8,6 +8,7 @@ import Layout from "@/components/layout"
 
 import "@/styles/tailwind.scss"
 import "@/styles/globals.scss"
+import { ToastProvider } from "@/components/common/toast-provider"
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL || ""
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID || ""
@@ -25,6 +26,7 @@ function App({
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <ToastProvider />
     </SessionProvider>
   )
 }

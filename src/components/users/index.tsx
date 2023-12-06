@@ -7,22 +7,23 @@ import statusOk from "@/utils/status-ok"
 import UserList from "@/components/users/user-list"
 import { usePagedUsers } from "@/hooks/use-paged-users"
 import useSelectedUser from "@/hooks/use-selected-user"
-import AccountDeleteModal from "./delete-account-modal"
 import UserSelected from "@/components/users/user-selected"
 import {
-  revokeAccount,
+  disableAccount,
   detachUserServiceAccount,
   mapUser,
   mergeUsers,
   mutateUser,
+  enableAccount,
 } from "@/hooks/use-users"
+import AccountToggleModal from "./toggle-account-modal"
 
 const Users = () => {
   const { mutate } = useSWRConfig()
   const { pagedUsers } = usePagedUsers()
   const [droppedUser, setDroppedUser] = useState<User>()
   const { selectedUser, setSelectedUser } = useSelectedUser()
-  const [accountToDelete, setAccountToDelete] = useState<ServiceAccount>()
+  const [accountToToggle, setAccountToToggle] = useState<AccountToToggle>()
 
   useEffect(() => {
     if (pagedUsers && pagedUsers.length && !selectedUser) {
@@ -51,27 +52,35 @@ const Users = () => {
     }
   }
 
-  const handleDeleteAccount = (account: ServiceAccount) => {
-    setAccountToDelete(account)
+  const handleToggleAccount = (accountToToggle: AccountToToggle) => {
+    setAccountToToggle(accountToToggle)
   }
 
-  const handleConfirmDeleteAccount = async () => {
-    const { status, body } = await revokeAccount(
-      accountToDelete as ServiceAccount
-    )
-    if (statusOk(status)) {
+  const handleConfirmToggleAccount = async (
+    accountToToggle: AccountToToggle
+  ) => {
+    let response
+    if (accountToToggle.disable) {
+      response = await disableAccount(accountToToggle.account)
+    } else {
+      response = await enableAccount(accountToToggle.account)
+    }
+    if (statusOk(response.status)) {
       mutate("/users")
     }
-    return { status, body }
+    return response
   }
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="users-view">
-        <AccountDeleteModal
-          isOpen={!!accountToDelete}
-          onConfirm={handleConfirmDeleteAccount}
-          onRequestClose={() => setAccountToDelete(undefined)}
+        <AccountToggleModal
+          account={accountToToggle}
+          isOpen={!!accountToToggle}
+          onConfirm={(accountToToggle: AccountToToggle) =>
+            handleConfirmToggleAccount(accountToToggle)
+          }
+          onRequestClose={() => setAccountToToggle(undefined)}
         />
         <UserList
           users={pagedUsers}
@@ -83,7 +92,7 @@ const Users = () => {
           onUserDrop={setDroppedUser}
           onUserEdit={handleUserEdit}
           onAccountsChange={(account) => handleAccountsChange(account)}
-          onDeleteAccount={handleDeleteAccount}
+          onToggleAccount={handleToggleAccount}
         />
       </div>
     </DndProvider>

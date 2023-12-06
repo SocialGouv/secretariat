@@ -8,12 +8,12 @@ const UserSelected = ({
   onUserDrop,
   onUserEdit,
   onAccountsChange,
-  onDeleteAccount,
+  onToggleAccount,
 }: {
   onUserDrop: (user: User) => void
   onUserEdit: (user: User) => void
   onAccountsChange: (account: ServiceAccount) => void
-  onDeleteAccount: (account: ServiceAccount) => void
+  onToggleAccount: (account: AccountToToggle) => void
 }) => {
   const users = useUsers()
   const { selectedUser, setSelectedUser } = useSelectedUser()
@@ -34,7 +34,7 @@ const UserSelected = ({
             onUserDrop={onUserDrop}
             onUserEdit={onUserEdit}
             onAccountsChange={onAccountsChange}
-            onDeleteAccount={onDeleteAccount}
+            onToggleAccount={onToggleAccount}
           />
         ) : (
           <div className="no-user-selected">

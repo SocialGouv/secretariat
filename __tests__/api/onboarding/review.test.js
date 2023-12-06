@@ -1,23 +1,28 @@
 import onboard from "@/services/onboard"
 import { createMocks } from "node-mocks-http"
 import { getToken } from "next-auth/jwt"
-import handleReview from "../../../src/pages/api/onboarding/review"
-import { graphql } from "msw"
+import handleReview from "@/pages/api/onboarding/review"
+import { graphql, HttpResponse } from "msw"
 import { sendReviewMail } from "@/services/send-email"
 import { server } from "@/mocks/server"
+import { vi, it, expect } from "vitest"
 
-jest.mock("next-auth/jwt", () => ({
-  getToken: jest.fn(() => ({ user: { login: "testUser" } })),
+vi.mock("next-auth/jwt", () => ({
+  getToken: vi.fn(() => ({ user: { login: "testUser" } })),
 }))
-jest.mock("@/services/onboard", () =>
-  jest.fn(() => ({ github: { status: 250, body: "fake body" } }))
-)
-jest.mock("@/utils/log-action", () => jest.fn())
-jest.mock("@/utils/jwt", () => ({
-  getJwt: jest.fn(),
+vi.mock("@/services/onboard", () => ({
+  default: vi.fn(() => ({ github: { status: 250, body: "fake body" } })),
 }))
-jest.mock("@/services/send-email", () => ({
-  sendReviewMail: jest.fn(),
+vi.mock("@/utils/log-action", () => ({ default: vi.fn() }))
+vi.mock("@/utils/jwt", async () => {
+  const actual = await vi.importActual("@/utils/jwt")
+  return {
+    ...actual,
+    getJwt: vi.fn(),
+  }
+})
+vi.mock("@/services/send-email", () => ({
+  sendReviewMail: vi.fn(),
 }))
 
 it("should onboard user and send email", async () => {
@@ -40,9 +45,9 @@ it("should return 400 if request is already reviewed", async () => {
     body: { input: { data: "fakeData" } },
   })
   server.use(
-    graphql.query("getOnboardingRequest", (_req, res, ctx) => {
-      return res(ctx.data({ onboarding_requests: [{ reviewed: {} }] }))
-    })
+    graphql.query("getOnboardingRequest", () =>
+      HttpResponse.json({ data: { onboarding_requests: [{ reviewed: {} }] } })
+    )
   )
   await handleReview(req, res)
   expect(res._getStatusCode()).toBe(400)
@@ -59,9 +64,9 @@ it("should return 500 if request does not exist", async () => {
     body: { input: { data: "fakeData" } },
   })
   server.use(
-    graphql.query("getOnboardingRequest", (_req, res, ctx) => {
-      return res(ctx.data({ onboarding_requests: [] }))
-    })
+    graphql.query("getOnboardingRequest", () =>
+      HttpResponse.json({ data: { onboarding_requests: [] } })
+    )
   )
   await handleReview(req, res)
   expect(res._getStatusCode()).toBe(500)

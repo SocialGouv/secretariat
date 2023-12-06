@@ -1,4 +1,5 @@
 import fetcher from "@/utils/rest-fetcher"
+import { it, expect } from "vitest"
 
 it("should return non null if response is ok", () => {
   const unmockedFetch = global.fetch

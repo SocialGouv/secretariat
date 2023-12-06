@@ -1,8 +1,9 @@
 import graphQLFetcher from "@/utils/graphql-fetcher"
 import logAction from "@/utils/log-action"
 import { insertLog } from "@/queries/index"
+import { vi, it, expect } from "vitest"
 
-jest.mock("@/utils/graphql-fetcher", () => jest.fn())
+vi.mock("@/utils/graphql-fetcher", () => ({ default: vi.fn() }))
 
 it("should call fetcher with cookie and no custom token", () => {
   logAction({ action: "testAction" })

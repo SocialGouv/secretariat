@@ -9,13 +9,13 @@ import {
   insertUser,
   updateService,
   mergeUsers as mergeUsersQuery,
-  revokeAction,
+  disableAction,
+  enableAction,
 } from "@/queries/index"
 import logAction from "@/utils/log-action"
 import { getSession } from "next-auth/react"
 
 interface UserMapping {
-  email: string
   name: string
   avatarUrl?: string
 }
@@ -27,40 +27,32 @@ type getDataFromType = {
 }
 
 const getDataFrom: getDataFromType = {
-  matomo: ({ data: { login, email } }) => ({
-    email,
+  matomo: ({ data: { login } }) => ({
     name: login,
   }),
-  ovh: ({ data: { displayName, primaryEmailAddress } }) => ({
+  ovh: ({ data: { displayName } }) => ({
     name: displayName,
-    email: primaryEmailAddress,
   }),
-  github: ({ data: { name, login, email, avatarUrl } }) => ({
-    email,
+  github: ({ data: { name, login, avatarUrl } }) => ({
     avatarUrl,
     name: name ?? login,
   }),
-  nextcloud: ({ data: { email, displayname } }) => ({
-    email: email ?? "",
+  nextcloud: ({ data: { displayname } }) => ({
     name: displayname,
   }),
-  zammad: ({ data: { email, lastname, firstname } }) => ({
-    email,
+  zammad: ({ data: { lastname, firstname } }) => ({
     name: `${firstname} ${lastname}`,
   }),
   sentry: ({
     data: {
       name,
-      email,
       user: { avatarUrl },
     },
   }) => ({
-    email,
     name,
     avatarUrl,
   }),
-  mattermost: ({ data: { email, username, last_name, first_name } }) => ({
-    email,
+  mattermost: ({ data: { username, last_name, first_name } }) => ({
     name: first_name ? `${first_name} ${last_name}` : username,
   }),
 }
@@ -160,23 +152,28 @@ export const detachUserServiceAccount = async (account: ServiceAccount) => {
   })
 }
 
-export const revokeAccount = async (account: ServiceAccount) => {
-  const accountServiceID =
-    account.type === "ovh"
-      ? account.data.primaryEmailAddress
-      : account.type === "github" || account.type === "matomo"
-      ? account.data.login
-      : account.data.id
-
+export const disableAccount = async (account: ServiceAccount) => {
   const {
-    revokeAction: { status, body },
+    disableAction: { status, body },
   } = await graphQLFetcher({
-    query: revokeAction,
+    query: disableAction,
     includeCookie: true,
     parameters: {
-      serviceName: account.type,
-      accountID: account.id,
-      accountServiceID,
+      serviceAccountId: account.id,
+    },
+  })
+
+  return { status, body }
+}
+
+export const enableAccount = async (account: ServiceAccount) => {
+  const {
+    enableAction: { status, body },
+  } = await graphQLFetcher({
+    query: enableAction,
+    includeCookie: true,
+    parameters: {
+      serviceAccountId: account.id,
     },
   })
 

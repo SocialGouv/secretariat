@@ -1,10 +1,11 @@
 import ovh from "@/utils/ovh"
 import { fetchOvhUsers } from "@/services/fetchers/ovh"
+import { vi, beforeEach, it, expect } from "vitest"
 
-jest.mock("@/utils/ovh")
+vi.mock("@/utils/ovh")
 
 beforeEach(() => {
-  jest.resetModules()
+  vi.resetModules()
 })
 
 it("should return a list of fetched users", async () => {

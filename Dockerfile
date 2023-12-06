@@ -4,22 +4,32 @@ WORKDIR /app
 
 # Rebuild the source code only when needed
 FROM base AS builder
-ARG NEXT_PUBLIC_HASURA_URL
-ENV NEXT_PUBLIC_HASURA_URL $NEXT_PUBLIC_HASURA_URL
-ARG NEXT_PUBLIC_MATOMO_URL
-ENV NEXT_PUBLIC_MATOMO_URL $NEXT_PUBLIC_MATOMO_URL
-ARG NEXT_PUBLIC_MATOMO_SITE_ID
-ENV NEXT_PUBLIC_MATOMO_SITE_ID $NEXT_PUBLIC_MATOMO_SITE_ID
-ENV NEXT_TELEMETRY_DISABLED 1
 
 # install deps
 COPY yarn.lock .yarnrc.yml ./
 COPY .yarn .yarn
 RUN yarn fetch --immutable
 
-# build
 COPY . .
-RUN yarn build
+
+# build time args
+ARG NEXT_PUBLIC_HASURA_URL
+ENV NEXT_PUBLIC_HASURA_URL $NEXT_PUBLIC_HASURA_URL
+ARG NEXT_PUBLIC_MATOMO_URL
+ENV NEXT_PUBLIC_MATOMO_URL $NEXT_PUBLIC_MATOMO_URL
+ARG NEXT_PUBLIC_MATOMO_SITE_ID
+ENV NEXT_PUBLIC_MATOMO_SITE_ID $NEXT_PUBLIC_MATOMO_SITE_ID
+ARG NEXT_PUBLIC_SENTRY_ENVIRONMENT
+ENV NEXT_PUBLIC_SENTRY_ENVIRONMENT $NEXT_PUBLIC_SENTRY_ENVIRONMENT
+ARG NEXT_PUBLIC_SENTRY_RELEASE
+ENV NEXT_PUBLIC_SENTRY_RELEASE $NEXT_PUBLIC_SENTRY_RELEASE
+ARG NEXT_PUBLIC_SENTRY_DSN
+ENV NEXT_PUBLIC_SENTRY_DSN $NEXT_PUBLIC_SENTRY_DSN
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# build
+RUN --mount=type=secret,id=sentry_auth_token export SENTRY_AUTH_TOKEN="$(cat /run/secrets/sentry_auth_token)"; \
+  yarn build
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -30,11 +40,9 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs && \
   adduser --system --uid 1001 nextjs
 
-# You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 
-# Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 

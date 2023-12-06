@@ -58,7 +58,7 @@ const Onboarding = () => {
     setServicesAccountsStatuses(responses)
   }
 
-  const handleComplete = async () => {
+  const handleComplete = () => {
     if (status === "review") {
       handleReviewSubmit()
     } else if (status === "create") {

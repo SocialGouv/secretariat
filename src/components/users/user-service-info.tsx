@@ -218,7 +218,7 @@ const UserServiceInfo = ({
           {!isSingleAccount && (
             <button
               title="détacher"
-              className="secondary sm icon"
+              className="secondary sm icon w-10"
               onClick={() => spring.start()}
             >
               <i className="ri-eject-fill"></i>

@@ -1,5 +1,25 @@
 # Secrétariat
 
+<!--toc:start-->
+
+- [Fonctionnement](#fonctionnement)
+  - [Définitions](#définitions)
+  - [Utilisation](#utilisation)
+    - [Synchronisation des accès](#synchronisation-des-accès)
+    - [Désactiver un accès](#désactiver-un-accès)
+      - [Cas particuliers](#cas-particuliers)
+    - [Créer un accès](#créer-un-accès)
+    - [Authentification](#authentification)
+- [Développement](#développement)
+  - [Fichiers d'environnement](#fichiers-denvironnement)
+    - [Application Next](#application-next)
+    - [Backend Hasura](#backend-hasura)
+  - [Mise en place du backend Hasura](#mise-en-place-du-backend-hasura)
+    - [Démarrage du serveur](#démarrage-du-serveur)
+    - [Seed de données](#seed-de-données)
+  - [Accès à l'application](#accès-à-lapplication)
+  <!--toc:end-->
+
 Application de **gestion** des **utilisateurs** des différents outils en ligne
 de la **Fabrique Numérique des Ministères Sociaux**.
 
@@ -18,7 +38,7 @@ de la **Fabrique Numérique des Ministères Sociaux**.
   la Fabrique. Demande possiblement la **création d'un compte** sur un ou
   plusieurs services.
 
-### Backend NodeJS
+### Utilisation
 
 L'application est capable d'**afficher et administrer** (insertion et
 suppression) **chaque service externe** utilisé par la Fabrique (Github,
@@ -107,24 +127,6 @@ La backend NodeJS signe un **JWT pour lui-même** quand il doit interagir avec
 Hasura.
 
 Voir https://hasura.io/docs/latest/graphql/core/auth/authentication/jwt/.
-
-### Backend Hasura
-
-Ce composant **enveloppe la base de données** de l'application. Il interagit
-avec le backend NodeJS et également directement avec le frontend pour les
-opérations qui le permettent.
-
-### Frontend
-
-Le client de l'application permet à un **utilisateur authentifié** de :
-
-- **voir la liste** des comptes existants
-- **fusionner des comptes** vers un utilisateur
-- **désactiver un accès**
-- **valider une demande d'embarquement** (création de comptes)
-
-Un utilisateur **non authentifié** peut effectuer une **demande d'embarquement**
-qui sera transmise aux **administrateurs**.
 
 ## Développement
 

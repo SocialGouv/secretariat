@@ -20,12 +20,12 @@ const useOnboarding = () => {
   const { request, id } = useOnboardingRequest()
 
   const key = id ? `onboarding-${id}` : "onboarding"
-  const fallbackData = id ? request?.data : defaultData
+  const fallbackData = id && request ? request.data : defaultData
 
   const {
     data,
     mutate,
-  }: { data?: OnboardingData; mutate: KeyedMutator<OnboardingData> } = useSWR(
+  }: { data?: OnboardingData; mutate: KeyedMutator<unknown> } = useSWR(
     key,
     null,
     { fallbackData }

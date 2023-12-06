@@ -1,3 +1,15 @@
+# [1.57.0](https://github.com/SocialGouv/secretariat/compare/v1.56.12...v1.57.0) (2023-12-06)
+
+
+### Bug Fixes
+
+* types node 20 ([5579b24](https://github.com/SocialGouv/secretariat/commit/5579b24a7d618ec7d045711365f3634a90180b0b))
+
+
+### Features
+
+* disabling feature for Github, OVH and Mattermost services ([#565](https://github.com/SocialGouv/secretariat/issues/565)) ([5e30e3e](https://github.com/SocialGouv/secretariat/commit/5e30e3ef12a217e8b6fe893ee1658ed09996feb2)), closes [#603](https://github.com/SocialGouv/secretariat/issues/603)
+
 ## [1.56.12](https://github.com/SocialGouv/secretariat/compare/v1.56.11...v1.56.12) (2023-11-15)
 
 

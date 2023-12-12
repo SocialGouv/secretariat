@@ -7,6 +7,10 @@ fileignoreconfig:
   checksum: ef7c23320a02ca66f8a10755bccabc2a487973e9581a4408ed3f4c8685f921f7
 - filename: .kontinuous/values.yaml
   checksum: 1d67b52046f6e850ff38f806000aa8bb1329cb1f7e6314fbec89bea2009709e3
+- filename: .yarn/plugins/@yarnpkg/plugin-fetch.cjs
+  checksum: 608cd661437b8aedcfbf7143a6cc2da8a2ba38bf4640641ae26c452a5c296c9c
+- filename: .yarnrc.yml
+  checksum: b81ba37c99073ee98f27157d91083cc19b7db097e440c107a811ab134bf68041
 - filename: Dockerfile
   checksum: 14c30aedc55e0f61364c26cf84c28596973f6951f4e0322f2f2693ec84ff513c
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql

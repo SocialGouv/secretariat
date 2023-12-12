@@ -1,3 +1,10 @@
+## [1.57.1](https://github.com/SocialGouv/secretariat/compare/v1.57.0...v1.57.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* responsive image ([#612](https://github.com/SocialGouv/secretariat/issues/612)) ([04bdb2c](https://github.com/SocialGouv/secretariat/commit/04bdb2c378d32370a1e5b5752478fa6c369eb995))
+
 # [1.57.0](https://github.com/SocialGouv/secretariat/compare/v1.56.12...v1.57.0) (2023-12-06)
 
 

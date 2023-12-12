@@ -53,15 +53,24 @@ exports[`renders home page 1`] = `
           class="image"
         >
           <span
-            style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+            style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
           >
+            <span
+              style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+            >
+              <img
+                alt=""
+                aria-hidden="true"
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%271%27%20height=%271%27/%3e"
+                style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+              />
+            </span>
             <img
               alt="home image"
-              data-nimg="fill"
+              data-nimg="intrinsic"
               decoding="async"
-              sizes="100vw"
               src="/public/images/home.svg"
-              srcset="/public/images/home.svg 640w, /public/images/home.svg 750w, /public/images/home.svg 828w, /public/images/home.svg 1080w, /public/images/home.svg 1200w, /public/images/home.svg 1920w, /public/images/home.svg 2048w, /public/images/home.svg 3840w"
+              srcset="/public/images/home.svg 1x"
               style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
             />
           </span>

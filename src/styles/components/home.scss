@@ -2,7 +2,7 @@
   @apply flex flex-col gap-12;
 
   .tiles {
-    @apply flex gap-x-6;
+    @apply flex flex-col sm:flex-row gap-x-6;
 
     .card {
       @apply flex flex-col flex-1 items-start;
@@ -14,7 +14,7 @@
   }
 
   .jumbo {
-    @apply flex bg-blue-50 rounded;
+    @apply flex flex-col sm:flex-row bg-blue-50 rounded;
 
     .text {
       @apply flex flex-col flex-1 justify-center p-6;
@@ -33,7 +33,7 @@
     }
 
     .image {
-      @apply flex-1 relative min-h-[400px];
+      @apply flex-1 relative;
     }
   }
 }

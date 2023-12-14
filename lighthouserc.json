@@ -5,7 +5,7 @@
       "startServerCommand": "yarn start"
     },
     "assert": {
-      "preset": "lighthouse:recommended"
+      "preset": "lighthouse:pwa"
     },
     "upload": {
       "target": "temporary-public-storage"

@@ -5,10 +5,7 @@
       "startServerCommand": "yarn start"
     },
     "assert": {
-      "assertions": {
-        "unused-css-rules": ["warn"],
-        "unused-javascript": ["warn"]
-      }
+      "preset": "lighthouse:recommended"
     },
     "upload": {
       "target": "temporary-public-storage"

@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-      - run: |
+      - name: Run Lighthouse CI
+        run: |
           yarn
           npm install -g @lhci/cli@0.12.x
           yarn build

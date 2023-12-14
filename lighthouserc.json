@@ -7,9 +7,11 @@
     "assert": {
       "preset": "lighthouse:no-pwa",
       "assertions": {
-        "unused-css-rules": ["off"],
-        "unused-javascript": ["off"],
-        "errors-in-console": ["off"]
+        "unused-css-rules": ["warn"],
+        "unused-javascript": ["warn"],
+        "errors-in-console": ["warn"],
+        "bf-cache": ["warn"],
+        "csp-xss": ["warn"]
       }
     },
     "upload": {

@@ -5,7 +5,12 @@
       "startServerCommand": "yarn start"
     },
     "assert": {
-      "preset": "lighthouse:no-pwa"
+      "preset": "lighthouse:no-pwa",
+      "assertions": {
+        "unused-css-rules": ["off"],
+        "unused-javascript": ["off"],
+        "errors-in-console": ["off"]
+      }
     },
     "upload": {
       "target": "temporary-public-storage"

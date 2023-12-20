@@ -1,3 +1,10 @@
+## [1.57.3](https://github.com/SocialGouv/secretariat/compare/v1.57.2...v1.57.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* use node 18 ([#615](https://github.com/SocialGouv/secretariat/issues/615)) ([cc9b7a6](https://github.com/SocialGouv/secretariat/commit/cc9b7a690dbd19d33e35fb20759d08b8c332c8fa))
+
 ## [1.57.2](https://github.com/SocialGouv/secretariat/compare/v1.57.1...v1.57.2) (2023-12-20)
 
 

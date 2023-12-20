@@ -1,3 +1,10 @@
+## [1.57.4](https://github.com/SocialGouv/secretariat/compare/v1.57.3...v1.57.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* sanitize user names ([#616](https://github.com/SocialGouv/secretariat/issues/616)) ([39a6d7f](https://github.com/SocialGouv/secretariat/commit/39a6d7f45aedb46cfc8a3a579aac9e1305d2dcca))
+
 ## [1.57.3](https://github.com/SocialGouv/secretariat/compare/v1.57.2...v1.57.3) (2023-12-20)
 
 

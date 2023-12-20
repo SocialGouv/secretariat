@@ -1,3 +1,10 @@
+## [1.57.2](https://github.com/SocialGouv/secretariat/compare/v1.57.1...v1.57.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* sanitize quote in user's name ([#614](https://github.com/SocialGouv/secretariat/issues/614)) ([abafca4](https://github.com/SocialGouv/secretariat/commit/abafca4db1e8dbbc5ffc77b6e525306e86b1457e))
+
 ## [1.57.1](https://github.com/SocialGouv/secretariat/compare/v1.57.0...v1.57.1) (2023-12-12)
 
 

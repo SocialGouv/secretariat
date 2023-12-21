@@ -1,3 +1,25 @@
 app:
   vars:
     ENV: review
+
+cnpg-cluster:
+  ~chart: pg
+  cnpg-cluster:
+    recovery:
+      ~tpl~database: "{{ .Values.global.pgDatabase }}"
+      ~tpl~owner: "{{ .Values.global.pgUser }}"
+      secretName: "cnpg-cluster-db"
+      enabled: true
+      #targetTime: "2023-12-01T09:00:00"
+      barmanObjectStore:
+        destinationPath: "s3://secretariat-prod-backups/secretariat"
+        s3Credentials:
+          accessKeyId:
+            name: "secretariat-prod-backups-access-key"
+            key: bucket_access_key
+          secretAccessKey:
+            name: "secretariat-prod-backups-access-key"
+            key: bucket_secret_key
+          region:
+            name: "secretariat-prod-backups-access-key"
+            key: bucket_region

@@ -1,6 +1,10 @@
 fileignoreconfig:
+- filename: .kontinuous/env/dev/templates/secretariat-prod-backups-access-key.sealed-secret.yaml
+  checksum: 32bdeae92b9c1063e5b4bbba84f1d5d1f86a09d61beb73c9b13ee2c68fc55de5
 - filename: .kontinuous/env/dev/templates/sentry.sealed-secret.yaml
   checksum: 6b3eb493305a8c3d24402c99d7a20b01b6650e7fedb2782648c539a70adc4088
+- filename: .kontinuous/env/dev/values.yaml
+  checksum: 6a2b6f40d45c2c1d517c6b7069ae4799457d12527628ffb62a610fe70d6bec36
 - filename: .kontinuous/env/preprod/templates/sentry.sealed-secret.yaml
   checksum: fae95a0f658c5920845516eb04659cac883418d135a4bce54615236e47da8df1
 - filename: .kontinuous/env/prod/templates/sentry.sealed-secret.yaml

@@ -14,7 +14,7 @@ cnpg-cluster:
       ~tpl~owner: "{{ .Values.global.pgUser }}"
       secretName: "cnpg-cluster-db"
       enabled: true
-      #targetTime: "2023-12-01T09:00:00"
+      targetTime: "2023-12-01T09:00:00"
       barmanObjectStore:
         ~tpl~destinationPath: "s3://secretariat-prod-backups/secretariat"
         s3Credentials:

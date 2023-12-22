@@ -1,3 +1,7 @@
+global:
+  pgUser: secretariat
+  pgDatabase: secretariat
+
 app:
   vars:
     ENV: review
@@ -10,9 +14,9 @@ cnpg-cluster:
     value: true
   cnpg-cluster:
     recovery:
-      # ~tpl~database: "{{ .Values.global.pgDatabase }}"
-      # ~tpl~owner: "{{ .Values.global.pgUser }}"
-      # secretName: "cnpg-cluster-db"
+      ~tpl~database: "{{ .Values.global.pgDatabase }}"
+      ~tpl~owner: "{{ .Values.global.pgUser }}"
+      secretName: "cnpg-cluster-db"
       enabled: true
       targetTime: "2023-12-01T09:00:00"
       barmanObjectStore:

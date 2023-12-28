@@ -24,6 +24,28 @@ hasura:
     enabled: true
     minReplicas: 2
 
+pg:
+  ~chart: pg
+  cnpg-cluster:
+    recovery:
+      enabled: true
+      ~tpl~database: "{{ .Values.global.pgDatabase }}"
+      ~tpl~owner: "{{ .Values.global.pgUser }}"
+      secretName: "pg-db"
+      barmanObjectStore:
+        ~tpl~destinationPath: "s3://secretariat-prod-backups/secretariat"
+        ~tpl~serverName: cnpg-cluster
+        s3Credentials:
+          accessKeyId:
+            ~tpl~name: "secretariat-prod-backups-access-key"
+            key: bucket_access_key
+          secretAccessKey:
+            ~tpl~name: "secretariat-prod-backups-access-key"
+            key: bucket_secret_key
+          region:
+            ~tpl~name: "secretariat-prod-backups-access-key"
+            key: bucket_region
+
 jobs:
   runs:
     build-app:

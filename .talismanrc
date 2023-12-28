@@ -5,6 +5,8 @@ fileignoreconfig:
   checksum: fae95a0f658c5920845516eb04659cac883418d135a4bce54615236e47da8df1
 - filename: .kontinuous/env/prod/templates/sentry.sealed-secret.yaml
   checksum: ef7c23320a02ca66f8a10755bccabc2a487973e9581a4408ed3f4c8685f921f7
+- filename: .kontinuous/env/prod/values.yaml
+  checksum: 7ae5481f157240a2539f48c96187b0e49af4161041b2a4a542d4693b7b298f35
 - filename: .kontinuous/values.yaml
   checksum: 1d67b52046f6e850ff38f806000aa8bb1329cb1f7e6314fbec89bea2009709e3
 - filename: .yarn/plugins/@yarnpkg/plugin-fetch.cjs

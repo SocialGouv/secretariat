@@ -1,3 +1,7 @@
+global:
+  pgDatabase: secretariat
+  pgUser: secretariat
+
 app:
   ~needs: [build-app]
   envFrom:
@@ -9,16 +13,16 @@ app:
   imagePackage: app
 
 hasura:
-  ~needs: [cnpg-cluster, build-hasura]
+  ~needs: [pg, build-hasura]
   envFrom:
     - secretRef:
         name: hasura
     - secretRef:
-        name: cnpg-cluster-app
+        name: pg-app
     - configMapRef:
         name: hasura-configmap
 
-cnpg-cluster:
+pg:
   ~chart: pg
 
 jobs:

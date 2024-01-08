@@ -1,3 +1,10 @@
+## [1.57.6](https://github.com/SocialGouv/secretariat/compare/v1.57.5...v1.57.6) (2024-01-08)
+
+
+### Bug Fixes
+
+* try/catch around fetch ([#620](https://github.com/SocialGouv/secretariat/issues/620)) ([c6d9e1c](https://github.com/SocialGouv/secretariat/commit/c6d9e1c2a5c78d3a42e000014a159d6efd0ca33a))
+
 ## [1.57.5](https://github.com/SocialGouv/secretariat/compare/v1.57.4...v1.57.5) (2023-12-28)
 
 

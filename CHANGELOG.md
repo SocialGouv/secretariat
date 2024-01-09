@@ -1,3 +1,10 @@
+## [1.57.7](https://github.com/SocialGouv/secretariat/compare/v1.57.6...v1.57.7) (2024-01-09)
+
+
+### Bug Fixes
+
+* fetch exception to sentry ([#621](https://github.com/SocialGouv/secretariat/issues/621)) ([b23a802](https://github.com/SocialGouv/secretariat/commit/b23a80250db8913113781cea96a12a8e300ebb98))
+
 ## [1.57.6](https://github.com/SocialGouv/secretariat/compare/v1.57.5...v1.57.6) (2024-01-08)
 
 

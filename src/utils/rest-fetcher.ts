@@ -1,4 +1,5 @@
 import logger from "./logger"
+import * as Sentry from "@sentry/nextjs"
 
 const fetcher = async (url: string, params: Record<string, unknown>) => {
   try {
@@ -9,7 +10,8 @@ const fetcher = async (url: string, params: Record<string, unknown>) => {
     }
     return response
   } catch (error) {
-    logger.error("Error attempting to fetch", error)
+    logger.error(error, "Error attempting to fetch")
+    Sentry.captureException(error)
   }
 }
 

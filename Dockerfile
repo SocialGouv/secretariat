@@ -1,5 +1,5 @@
-FROM node:18-alpine3.18 as base
-RUN apk add --no-cache libc6-compat
+FROM node:18 as base
+# RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Rebuild the source code only when needed

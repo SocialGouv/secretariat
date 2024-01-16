@@ -2,7 +2,8 @@ import { getService, updateService } from "@/queries/index"
 import { disableGithubAccount } from "@/services/disablers/github"
 import { disableMattermostAccount } from "@/services/disablers/mattermost"
 import { disableOvhAccount } from "@/services/disablers/ovh"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
@@ -46,7 +47,7 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
     parameters: JSON.stringify(parsedBody),
   })
 
-  const { services_by_pk: serviceAccount } = await graphQLFetcher({
+  const { services_by_pk: serviceAccount } = await graphQLServiceFetcher({
     query: getService,
     token,
     parameters: { id: parsedBody.data.id },
@@ -86,7 +87,7 @@ const Disable = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (statusOk(response.status)) {
-    await graphQLFetcher({
+    await graphQLServiceFetcher({
       query: updateService,
       token,
       parameters: {

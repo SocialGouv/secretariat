@@ -3,7 +3,8 @@ import {
   MATTERMOST_API_TOKEN,
   OVH_SERVICE_NAME,
 } from "@/utils/env"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import { getJwt } from "@/utils/jwt"
 import logger from "@/utils/logger"
 import ovh from "@/utils/ovh"
@@ -216,7 +217,7 @@ const createAccountsOnSuccess = async (
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await graphQLFetcher({
+    } = await graphQLServiceFetcher({
       query: insertUser,
       token,
       parameters: {
@@ -231,7 +232,7 @@ const createAccountsOnSuccess = async (
 
     for (const [serviceName, response] of Object.entries(responses)) {
       if (shouldInsertAccount(serviceName, response)) {
-        await graphQLFetcher({
+        await graphQLServiceFetcher({
           query: insertService,
           token,
           parameters: {

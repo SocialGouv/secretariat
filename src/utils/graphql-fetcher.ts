@@ -1,11 +1,12 @@
 import { GraphQLClient } from "graphql-request"
 import { NEXT_PUBLIC_HASURA_URL } from "./env"
 
-interface GraphQLFetcherParams {
+export interface GraphQLFetcherParams {
   query: string
   includeCookie?: boolean
   token?: string
   parameters?: Record<string, unknown>
+  url?: string
 }
 
 // Used for all GraphQL interactions with Hasura
@@ -15,6 +16,7 @@ const graphQLFetcher = ({
   includeCookie,
   token,
   parameters,
+  url,
 }: GraphQLFetcherParams) => {
   let options = {}
   if (includeCookie) {
@@ -29,7 +31,7 @@ const graphQLFetcher = ({
     }
   }
 
-  const client = new GraphQLClient(NEXT_PUBLIC_HASURA_URL, options)
+  const client = new GraphQLClient(url || NEXT_PUBLIC_HASURA_URL, options)
 
   return client.request(query, parameters)
 }

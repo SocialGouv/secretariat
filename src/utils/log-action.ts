@@ -1,5 +1,6 @@
 import { insertLog } from "../queries"
-import graphQLFetcher from "./graphql-fetcher"
+// import graphQLFetcher from "./graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 
 interface LogActionParameters {
   action: string
@@ -14,7 +15,7 @@ const logAction = ({
   parameters,
   token,
 }: LogActionParameters) => {
-  graphQLFetcher({
+  graphQLServiceFetcher({
     query: insertLog,
     ...(token && { token, includeCookie: false }),
     ...(!token && { includeCookie: true }),

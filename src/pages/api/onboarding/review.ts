@@ -1,7 +1,8 @@
 import { getOnboardingRequest, updateOnboardingRequest } from "@/queries/index"
 import onboard from "@/services/onboard"
 import { sendReviewMail } from "@/services/send-email"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { COOKIE_NAME, decode, getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
@@ -27,7 +28,7 @@ const Review = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { data, id } = req.body.input
 
-  const { onboarding_requests: requests } = await graphQLFetcher({
+  const { onboarding_requests: requests } = await graphQLServiceFetcher({
     query: getOnboardingRequest,
     token,
     parameters: {
@@ -50,7 +51,7 @@ const Review = async (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  graphQLFetcher({
+  graphQLServiceFetcher({
     query: updateOnboardingRequest,
     token,
     parameters: {

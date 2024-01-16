@@ -1,7 +1,8 @@
 import { confirmOnboardingRequest } from "@/queries/index"
 import { sendConfirmMail } from "@/services/send-email"
 import { NEXTAUTH_URL, ONBOARDING_NOTIFICATION_EMAILS } from "@/utils/env"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
@@ -32,7 +33,7 @@ const Confirm = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const {
     update_onboarding_requests: { affected_rows, returning },
-  } = await graphQLFetcher({
+  } = await graphQLServiceFetcher({
     query: confirmOnboardingRequest,
     token,
     parameters: {

@@ -1,3 +1,10 @@
+## [1.57.8](https://github.com/SocialGouv/secretariat/compare/v1.57.7...v1.57.8) (2024-01-16)
+
+
+### Bug Fixes
+
+* unused recovery cluster ([32e37d3](https://github.com/SocialGouv/secretariat/commit/32e37d37a852f07f3b950320cd9df92330028433))
+
 ## [1.57.7](https://github.com/SocialGouv/secretariat/compare/v1.57.6...v1.57.7) (2024-01-09)
 
 

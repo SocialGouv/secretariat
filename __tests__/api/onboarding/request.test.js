@@ -15,7 +15,7 @@ vi.mock("@/services/send-email", () => ({
 }))
 vi.mock("@/utils/env", () => ({
   NEXTAUTH_URL: "http://fake.fr",
-  NEXT_PUBLIC_HASURA_URL: "http://fake.fr",
+  HASURA_URL: "http://fake",
 }))
 
 it("should create request and send email", async () => {

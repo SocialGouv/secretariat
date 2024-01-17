@@ -14,6 +14,7 @@ import {
 } from "@/queries/index"
 import logAction from "@/utils/log-action"
 import { getSession } from "next-auth/react"
+import logger from "@/utils/logger"
 
 interface UserMapping {
   name: string
@@ -116,11 +117,15 @@ export const mergeUsers = async (
   userToDrop: User
 ): Promise<User> => {
   const session = await getSession()
-  logAction({
-    action: "merge",
-    user: session?.user.login,
-    parameters: JSON.stringify({ userToKeep, userToDrop }),
-  })
+  try {
+    await logAction({
+      action: "merge",
+      user: session?.user.login,
+      parameters: JSON.stringify({ userToKeep, userToDrop }),
+    })
+  } catch (e) {
+    logger.error({ e }, "error inserting log")
+  }
 
   await graphQLFetcher({
     query: mergeUsersQuery,

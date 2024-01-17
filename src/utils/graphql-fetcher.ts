@@ -1,6 +1,5 @@
 import { GraphQLClient } from "graphql-request"
 import { NEXT_PUBLIC_HASURA_URL } from "./env"
-import logger from "./logger"
 
 export interface GraphQLFetcherParams {
   query: string
@@ -32,9 +31,7 @@ const graphQLFetcher = ({
     }
   }
 
-  const using_url = url || NEXT_PUBLIC_HASURA_URL
-  const client = new GraphQLClient(using_url, options)
-  logger.info({ using_url })
+  const client = new GraphQLClient(url || NEXT_PUBLIC_HASURA_URL, options)
 
   return client.request(query, parameters)
 }

@@ -15,7 +15,7 @@ const logAction = ({
   parameters,
   token,
 }: LogActionParameters) => {
-  return graphQLServiceFetcher({
+  graphQLServiceFetcher({
     query: insertLog,
     ...(token && { token, includeCookie: false }),
     ...(!token && { includeCookie: true }),

@@ -1,3 +1,10 @@
+## [1.57.9](https://github.com/SocialGouv/secretariat/compare/v1.57.8...v1.57.9) (2024-01-17)
+
+
+### Bug Fixes
+
+* hasura backend url ([#623](https://github.com/SocialGouv/secretariat/issues/623)) ([66ecc95](https://github.com/SocialGouv/secretariat/commit/66ecc958ed78f4ef37199fc9c1fb537ac880dc1d))
+
 ## [1.57.8](https://github.com/SocialGouv/secretariat/compare/v1.57.7...v1.57.8) (2024-01-16)
 
 

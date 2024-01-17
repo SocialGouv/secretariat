@@ -9,6 +9,7 @@ app:
         name: app
   vars:
     NEXTAUTH_URL: https://{{ .Values.global.host }}
+    HASURA_URL: http://hasura/v1/graphql
   probesPath: /healthz
   imagePackage: app
 

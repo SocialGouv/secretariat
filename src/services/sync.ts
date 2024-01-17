@@ -5,7 +5,8 @@ import { fetchNextcloudUsers } from "@/services/fetchers/nextcloud"
 import { fetchOvhUsers } from "@/services/fetchers/ovh"
 import { fetchSentryUsers } from "@/services/fetchers/sentry"
 import { fetchZammadUsers } from "@/services/fetchers/zammad"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import { getJwt } from "@/utils/jwt"
 import logger from "@/utils/logger"
 import {
@@ -48,7 +49,7 @@ export const getServiceFromData = async (
   token: string
 ) => {
   const idField = servicesIdFields[serviceName]
-  const { services: servicesMatchingId } = await graphQLFetcher({
+  const { services: servicesMatchingId } = await graphQLServiceFetcher({
     query: getServicesMatchingId,
     token,
     parameters: {
@@ -83,12 +84,12 @@ export const upsertService = async (
     // First, create an associated user entry
     const {
       insert_users_one: { id: userId },
-    } = await graphQLFetcher({ query: insertUser, token })
+    } = await graphQLServiceFetcher({ query: insertUser, token })
 
     // Then, create the service entry
     const {
       insert_services_one: { id: serviceId },
-    } = await graphQLFetcher({
+    } = await graphQLServiceFetcher({
       query: insertService,
       token,
       parameters: {
@@ -100,14 +101,15 @@ export const upsertService = async (
     // At this moment, we need to check if the user comes from a Secretariat onboarding or not
     // if so, link it to its onboarding request
     if (serviceName === "github") {
-      const { onboarding_requests: onboardingRequests } = await graphQLFetcher({
-        query: getReviewedOnboardingRequestContaining,
-        parameters: { _contains: { githubLogin: serviceData.login } },
-        token,
-      })
+      const { onboarding_requests: onboardingRequests } =
+        await graphQLServiceFetcher({
+          query: getReviewedOnboardingRequestContaining,
+          parameters: { _contains: { githubLogin: serviceData.login } },
+          token,
+        })
 
       if (onboardingRequests.length === 1) {
-        await graphQLFetcher({
+        await graphQLServiceFetcher({
           query: linkGithubOnboarding,
           token,
           parameters: {
@@ -125,7 +127,7 @@ export const upsertService = async (
     // We have to update a service entry
     const {
       update_services_by_pk: { id: serviceId },
-    } = await graphQLFetcher({
+    } = await graphQLServiceFetcher({
       query: updateService,
       token,
       parameters: {
@@ -183,7 +185,7 @@ const clearDeletedServices = async (
   for (const serviceName in existingServicesIds) {
     const {
       delete_services: { returning: affectedUsersForService },
-    } = await graphQLFetcher({
+    } = await graphQLServiceFetcher({
       query: deleteServicesNotIn,
       token,
       parameters: {
@@ -208,7 +210,7 @@ const deleteOrphanUsers = async (
 ) => {
   const {
     delete_users: { affected_rows: deletedUsers },
-  } = await graphQLFetcher({
+  } = await graphQLServiceFetcher({
     query: deleteUsers,
     token,
     parameters: {
@@ -238,7 +240,7 @@ export const deleteService = async (
   } else if (servicesMatchingId.length === 1) {
     const {
       delete_services: { returning: affectedUsersForService },
-    } = await graphQLFetcher({
+    } = await graphQLServiceFetcher({
       query: deleteServiceQuery,
       token,
       parameters: {

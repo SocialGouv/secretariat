@@ -4,7 +4,8 @@ import {
 } from "@/queries/index"
 import { sendRequestMail } from "@/services/send-email"
 import { NEXTAUTH_URL } from "@/utils/env"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import httpLogger from "@/utils/http-logger"
 import { getJwt } from "@/utils/jwt"
 import logAction from "@/utils/log-action"
@@ -22,13 +23,15 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
   const onboardingRequest: OnboardingData = req.body.input.data
 
   // avoid duplicate onboarding requests
-  const { onboarding_requests: existingRequests } = await graphQLFetcher({
-    query: getOnboardingRequestContaining,
-    token,
-    parameters: {
-      contains: { email: onboardingRequest.email },
-    },
-  })
+  const { onboarding_requests: existingRequests } = await graphQLServiceFetcher(
+    {
+      query: getOnboardingRequestContaining,
+      token,
+      parameters: {
+        contains: { email: onboardingRequest.email },
+      },
+    }
+  )
   if (existingRequests.length > 0) {
     req.log.info("a request with the same email already exists")
     res.status(200).json({
@@ -46,7 +49,7 @@ const Request = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const {
     insert_onboarding_requests_one: { id },
-  } = await graphQLFetcher({
+  } = await graphQLServiceFetcher({
     query: createOnboardingRequest,
     token,
     parameters: {

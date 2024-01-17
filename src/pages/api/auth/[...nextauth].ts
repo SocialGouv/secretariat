@@ -3,7 +3,8 @@ import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
 
 import { encode, decode, getJwt, COOKIE_NAME } from "@/utils/jwt"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import { getUserTeams as getUserTeamsQuery } from "@/queries/index"
 import {
   GITHUB_ID,
@@ -20,7 +21,7 @@ const getUserTeams = async (login: string) => {
     organization: {
       teams: { nodes: teams },
     },
-  } = await graphQLFetcher({
+  } = await graphQLServiceFetcher({
     query: getUserTeamsQuery,
     token: getJwt(),
     parameters: { login },

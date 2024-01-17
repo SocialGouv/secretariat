@@ -31,6 +31,7 @@ export const ONBOARDING_NOTIFICATION_EMAILS = process.env
 
 export const NEXT_PUBLIC_HASURA_URL = process.env
   .NEXT_PUBLIC_HASURA_URL as string
+export const HASURA_URL = process.env.HASURA_URL as string
 
 // Mattermost review alert
 export const MATTERMOST_ALERT_CHANNEL_ID = process.env

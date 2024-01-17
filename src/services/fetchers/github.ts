@@ -2,7 +2,8 @@ import pMap from "p-map"
 import { setTimeout } from "timers/promises"
 
 import { getJwt } from "@/utils/jwt"
-import graphQLFetcher from "@/utils/graphql-fetcher"
+// import graphQLFetcher from "@/utils/graphql-fetcher"
+import graphQLServiceFetcher from "@/utils/graphql-service-fetcher"
 import { getRemoteGithubTeams, getRemoteGithubUsers } from "@/queries/index"
 import logger from "@/utils/logger"
 
@@ -17,7 +18,11 @@ const fetchGithubPage = async (token: string, cursor?: string) => {
         edges: edgesPage,
       },
     },
-  } = await graphQLFetcher({ query: getRemoteGithubUsers, token, parameters })
+  } = await graphQLServiceFetcher({
+    query: getRemoteGithubUsers,
+    token,
+    parameters,
+  })
 
   // construct users with nodes union edges
   const usersPage = nodesPage.map(
@@ -57,7 +62,7 @@ export const fetchGithubUsers = async (
         organization: {
           teams: { nodes: teamsList },
         },
-      } = await graphQLFetcher({
+      } = await graphQLServiceFetcher({
         query: getRemoteGithubTeams,
         token,
         parameters: {

@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: .env.sample
+  checksum: 0f628c927f046a71318bc0060e8a2c5e3d57b6de629da73ec57e909ad127cbdd
 - filename: .kontinuous/env/dev/templates/sentry.sealed-secret.yaml
   checksum: 6b3eb493305a8c3d24402c99d7a20b01b6650e7fedb2782648c539a70adc4088
 - filename: .kontinuous/env/preprod/templates/sentry.sealed-secret.yaml
@@ -29,6 +31,8 @@ fileignoreconfig:
   checksum: 5e2adf5acd6e8f769a465b573cd9149226526bbce8402abf3c0cc8d6f5520a3a
 - filename: src/services/send-email.ts
   checksum: 0562c88a33c18be479847c12d3c05dfc00b6edea18ffd61b97bc389536d41cb1
+- filename: src/utils/env.ts
+  checksum: 27141a4c89dd648bfa03837b32f785029371cabad17ae0e977fa79110b091c67
 scopeconfig:
 - scope: node
 version: "1.0"

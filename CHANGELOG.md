@@ -1,3 +1,10 @@
+## [1.57.11](https://github.com/SocialGouv/secretariat/compare/v1.57.10...v1.57.11) (2024-01-17)
+
+
+### Bug Fixes
+
+* revert debug commit ([da87f60](https://github.com/SocialGouv/secretariat/commit/da87f60d6a1311014f24e2b2fdb9aa32fe3bfacd))
+
 ## [1.57.10](https://github.com/SocialGouv/secretariat/compare/v1.57.9...v1.57.10) (2024-01-17)
 
 

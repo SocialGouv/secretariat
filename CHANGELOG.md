@@ -1,3 +1,10 @@
+## [1.57.10](https://github.com/SocialGouv/secretariat/compare/v1.57.9...v1.57.10) (2024-01-17)
+
+
+### Bug Fixes
+
+* debug url ([#624](https://github.com/SocialGouv/secretariat/issues/624)) ([00febe6](https://github.com/SocialGouv/secretariat/commit/00febe6e6ade1c70c693a8cd2b458a06405c3326))
+
 ## [1.57.9](https://github.com/SocialGouv/secretariat/compare/v1.57.8...v1.57.9) (2024-01-17)
 
 

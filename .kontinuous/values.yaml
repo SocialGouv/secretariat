@@ -15,8 +15,6 @@ app:
 
 hasura:
   ~needs: [pg, build-hasura]
-  vars:
-    APP_URL: "http://app"
   envFrom:
     - secretRef:
         name: hasura

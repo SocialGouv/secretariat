@@ -1,3 +1,10 @@
+## [1.57.12](https://github.com/SocialGouv/secretariat/compare/v1.57.11...v1.57.12) (2024-01-24)
+
+
+### Bug Fixes
+
+* local APP_URL ([#626](https://github.com/SocialGouv/secretariat/issues/626)) ([dd25663](https://github.com/SocialGouv/secretariat/commit/dd25663969f495bceca0f4cfbf256e0492b190ad))
+
 ## [1.57.11](https://github.com/SocialGouv/secretariat/compare/v1.57.10...v1.57.11) (2024-01-17)
 
 

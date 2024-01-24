@@ -18,3 +18,5 @@ data:
   # Github remote schema
   GITHUB_GRAPHQL_ENDPOINT: "https://api.github.com/graphql"
   
+  # backend URL
+  APP_URL: "http://app"

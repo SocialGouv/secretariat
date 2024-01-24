@@ -48,5 +48,3 @@ jobs:
       with:
         imagePackage: hasura
         context: ./packages/hasura
-        buildArgs:
-          APP_URL: "https://{{ .Values.global.host }}"

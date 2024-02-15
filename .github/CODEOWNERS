@@ -1,4 +1,3 @@
 # Protect workflow files
-.github/workflows/*.yml @socialgouv/sre
-.github/CODEOWNERS @socialgouv/sre
-.socialgouv/ @socialgouv/sre
+.github @socialgouv/sre
+.kontinuous @socialgouv/sre

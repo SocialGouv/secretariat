@@ -1,3 +1,4 @@
+11
 # Secrétariat
 
 <!--toc:start-->
@@ -211,5 +212,3 @@ La plupart des pages de Secrétariat sont derrière un **NextAuth qui accepte
 seulement certains membres de la Fabrique**. En environnement de développement,
 ce comportement est modifié. Il suffit de rentrer un **nom d'utilisateur
 arbitraire** sur la page de connexion pour accéder à l'application.
-
-10

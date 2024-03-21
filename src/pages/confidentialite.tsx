@@ -224,7 +224,7 @@ const Confidentialite = () => {
       {/* ></Script> */}
       <div id="matomo-opt-out"></div>
       <Script nonce={process.env.NONCE} id="matomo-script">
-        {`var settings = {"showIntro":true,"divId":"matomo-opt-out","useSecureCookies":true,"cookiePath":null,"cookieDomain":null,"cookieSameSite":"Lax","OptOutComplete":"Cookie d'exclusion install\u00e9. Vos visites sur ce site web ne seront PAS enregistr\u00e9es par notre outil d'analyse web.","OptOutCompleteBis":"Note\u00a0: si vous nettoyez vos cookies et supprimez le cookie d'exclusion, ou bien si vous changez d'ordinateur et\/ou de navigateur, il vous faudra de nouveau effectuer la proc\u00e9dure d'exclusion.","YouMayOptOut2":"Vous pouvez vous opposer au suivi de votre navigation sur ce site web.","YouMayOptOut3":"Cela prot\u00e9gera votre vie priv\u00e9e, mais emp\u00eachera \u00e9galement le propri\u00e9taire d'apprendre de vos actions et de cr\u00e9er une meilleure exp\u00e9rience pour vous et les autres utilisateurs.","OptOutErrorNoCookies":"La fonctionnalit\u00e9 de d\u00e9sactivation du suivi n\u00e9cessite que les cookies soient autoris\u00e9s.","OptOutErrorNotHttps":"La fonctionnalit\u00e9 de d\u00e9sactivation du suivi pourrait ne pas fonctionner car ce site n'a pas \u00e9t\u00e9 charg\u00e9 en HTTPS. Veuillez recharger la page pour v\u00e9rifier que le statut de ce suivi a bien \u00e9t\u00e9 chang\u00e9.","YouAreNotOptedOut":"Vous n'\u00eates pas exclu(e).","UncheckToOptOut":"D\u00e9cochez cette case pour vous exclure.","YouAreOptedOut":"Vous n'\u00eates actuellement pas suivi(e).","CheckToOptIn":"Cochez cette case pour ne plus \u00eatre exclu(e)."};         
+        {`var settings = {"showIntro":true,"divId":"matomo-opt-out","useSecureCookies":true,"cookiePath":null,"cookieDomain":null,"cookieSameSite":"Lax","OptOutComplete":"Cookie d'exclusion install\u00e9. Vos visites sur ce site web ne seront PAS enregistr\u00e9es par notre outil d'analyse web.","OptOutCompleteBis":"Note\u00a0: si vous nettoyez vos cookies et supprimez le cookie d'exclusion, ou bien si vous changez d'ordinateur et/ou de navigateur, il vous faudra de nouveau effectuer la proc\u00e9dure d'exclusion.","YouMayOptOut2":"Vous pouvez vous opposer au suivi de votre navigation sur ce site web.","YouMayOptOut3":"Cela prot\u00e9gera votre vie priv\u00e9e, mais emp\u00eachera \u00e9galement le propri\u00e9taire d'apprendre de vos actions et de cr\u00e9er une meilleure exp\u00e9rience pour vous et les autres utilisateurs.","OptOutErrorNoCookies":"La fonctionnalit\u00e9 de d\u00e9sactivation du suivi n\u00e9cessite que les cookies soient autoris\u00e9s.","OptOutErrorNotHttps":"La fonctionnalit\u00e9 de d\u00e9sactivation du suivi pourrait ne pas fonctionner car ce site n'a pas \u00e9t\u00e9 charg\u00e9 en HTTPS. Veuillez recharger la page pour v\u00e9rifier que le statut de ce suivi a bien \u00e9t\u00e9 chang\u00e9.","YouAreNotOptedOut":"Vous n'\u00eates pas exclu(e).","UncheckToOptOut":"D\u00e9cochez cette case pour vous exclure.","YouAreOptedOut":"Vous n'\u00eates actuellement pas suivi(e).","CheckToOptIn":"Cochez cette case pour ne plus \u00eatre exclu(e)."};         
     document.addEventListener('DOMContentLoaded', function() {                             
         window.MatomoConsent.init(settings.useSecureCookies, settings.cookiePath, settings.cookieDomain, settings.cookieSameSite);                
         showContent(window.MatomoConsent.hasConsent());        
@@ -264,7 +264,7 @@ const Confidentialite = () => {
                     content += '<p>'+settings.YouMayOptOut2+' '+settings.YouMayOptOut3+'</p>';                       
                 }
                 if (useTracker) {
-                    content += '<input onclick="_paq.push([\'optUserOut\']);showContent(false, null, true);" id="trackVisits" type="checkbox" checked="checked" />';
+                    content += '<input onclick="_paq.push(['optUserOut']);showContent(false, null, true);" id="trackVisits" type="checkbox" checked="checked" />';
                 } else {
                     content += '<input onclick="window.MatomoConsent.consentRevoked();showContent(false);" id="trackVisits" type="checkbox" checked="checked" />';
                 }
@@ -274,7 +274,7 @@ const Confidentialite = () => {
                     content += '<p>'+settings.OptOutComplete+' '+settings.OptOutCompleteBis+'</p>';
                 }
                 if (useTracker) {
-                    content += '<input onclick="_paq.push([\'forgetUserOptOut\']);showContent(true, null, true);" id="trackVisits" type="checkbox" />';
+                    content += '<input onclick="_paq.push(['forgetUserOptOut']);showContent(true, null, true);" id="trackVisits" type="checkbox" />';
                 } else {
                     content += '<input onclick="window.MatomoConsent.consentGiven();showContent(true);" id="trackVisits" type="checkbox" />';
                 }

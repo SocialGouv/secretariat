@@ -14,7 +14,7 @@ process.env.NONCE = nonce
 const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
-      default-src 'self';
+      default-src 'self' matomo.fabrique.social.gouv.fr;
       report-uri /api/report;
       report-to endpoint;
       object-src 'none';
@@ -26,7 +26,7 @@ const ContentSecurityPolicy =
       frame-src: 'self' matomo.fabrique.social.gouv.fr;
     `
     : `
-      default-src 'self';
+      default-src 'self' matomo.fabrique.social.gouv.fr;
       object-src 'none';
       base-uri 'none';
       style-src 'self' 'unsafe-inline';

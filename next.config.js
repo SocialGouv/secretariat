@@ -21,7 +21,7 @@ const ContentSecurityPolicy =
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: authjs.dev;
-      script-src 'nonce-${nonce}' 'unsafe-inline';
+      script-src 'nonce-${nonce}' 'strict-dynamic';
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `

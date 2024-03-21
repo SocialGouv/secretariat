@@ -218,7 +218,10 @@ const Confidentialite = () => {
         consentement conformément aux recommandations de la CNIL.
       </p>
       <div id="matomo-opt-out"></div>
-      <Script src="https://matomo.fabrique.social.gouv.fr/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=0"></Script>
+      <Script
+        nonce={process.env.NONCE}
+        src="https://matomo.fabrique.social.gouv.fr/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=0"
+      ></Script>
       <p>
         Pour aller plus loin, vous pouvez consulter les fiches proposées par la
         Commission Nationale de l&apos;Informatique et des Libertés

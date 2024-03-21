@@ -1,0 +1,13 @@
+.confidentialite {
+  ul {
+    @apply list-disc pl-6;
+  }
+
+  h2 {
+    @apply py-4;
+  }
+
+  p {
+    @apply py-2;
+  }
+}

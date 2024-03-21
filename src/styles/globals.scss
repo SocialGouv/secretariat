@@ -18,6 +18,7 @@
 @use "./components/header.scss";
 @use "./components/navigation.scss";
 @use "./components/footer.scss";
+@use "./components/confidentialite.scss";
 @use "./components/login.scss";
 @use "./components/modal.scss";
 @use "./components/home.scss";
@@ -34,19 +35,20 @@
 @use "./components/users/user-last-update.scss";
 @use "./components/users/user-arrival-departure.scss";
 
-html, body {
+html,
+body {
   @apply h-full flex overflow-hidden;
 }
 
 body {
-  @apply
-  flex
+  @apply flex
   flex-1
   flex-col
   overflow-hidden;
 }
 
-#__next { /* stylelint-disable-line */
+#__next {
+  /* stylelint-disable-line */
   @apply flex flex-col flex-1 overflow-hidden;
 
   & > .page {
@@ -65,8 +67,7 @@ aside {
 }
 
 main {
-  @apply
-    px-8
+  @apply px-8
     pb-12
     flex-1
     mx-auto

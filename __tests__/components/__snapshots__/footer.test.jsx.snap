@@ -57,6 +57,11 @@ exports[`renders footer 1`] = `
         >
           Mentions légales
         </a>
+        <a
+          href="/confidentialite"
+        >
+          Politique de confidentialité
+        </a>
         <button
           aria-label="theme toggle"
         >

@@ -25,6 +25,8 @@ fileignoreconfig:
   checksum: 2d0bd58b461814a6d2d934d96441ed7962a74f2d184e2581b38b4990562dde70
 - filename: src/hooks/use-onboarding.ts
   checksum: 004c4c33f375813231a10a7b6399cb7a1c03128ae6c84c6af5fefabff9cd8a81
+- filename: src/pages/confidentialite.tsx
+  checksum: 8d5e83618505f2158e0312aacda102da4ebe397abeb1a0ec4109092daca0ed10
 - filename: src/services/disablers/ovh.ts
   checksum: 390c9e51cf01b5db14a4af94a4182c3d55ccddeb7905462b21b0a5f23b8d24e9
 - filename: src/services/enablers/ovh.ts

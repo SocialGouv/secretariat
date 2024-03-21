@@ -15,7 +15,7 @@ const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
       default-src 'self';
-      report-uri '/api/report';
+      report-uri /api/report;
       report-to endpoint;
       object-src 'none';
       base-uri 'none';
@@ -47,7 +47,7 @@ const headers = [
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
-  { key: "Reporting-Endpoints", value: "endpoint='/api/report'" },
+  { key: "Reporting-Endpoints", value: "endpoint=/api/report" },
 ]
 
 const nextConfig = {

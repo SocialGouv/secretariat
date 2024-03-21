@@ -17,6 +17,8 @@ fileignoreconfig:
   checksum: b81ba37c99073ee98f27157d91083cc19b7db097e440c107a811ab134bf68041
 - filename: Dockerfile
   checksum: 14c30aedc55e0f61364c26cf84c28596973f6951f4e0322f2f2693ec84ff513c
+- filename: next.config.js
+  checksum: 336cfdbf01a31082a404c4a75d400e7d6629bdc3d7f8f8caddf04ba09ff33305
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/down.sql
   checksum: cac3e070c06c7c7fbd6821009fef546e452a38184ac6539ccca609be4a82bd8b
 - filename: packages/hasura/migrations/default/1691156416829_alter_table_public_users_add_column_disabled/up.sql

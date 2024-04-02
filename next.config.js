@@ -14,8 +14,8 @@ process.env.NONCE = nonce
 const ContentSecurityPolicy =
   process.env.NODE_ENV === "production"
     ? `
-      default-src 'self';
-      report-uri '/api/report';
+      default-src 'self' matomo.fabrique.social.gouv.fr;
+      report-uri /api/report;
       report-to endpoint;
       object-src 'none';
       base-uri 'none';
@@ -25,7 +25,7 @@ const ContentSecurityPolicy =
       connect-src 'self' api.github.com matomo.fabrique.social.gouv.fr ${process.env.NEXT_PUBLIC_HASURA_URL} sentry.fabrique.social.gouv.fr;
     `
     : `
-      default-src 'self';
+      default-src 'self' matomo.fabrique.social.gouv.fr;
       object-src 'none';
       base-uri 'none';
       style-src 'self' 'unsafe-inline';
@@ -47,7 +47,7 @@ const headers = [
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
-  { key: "Reporting-Endpoints", value: "endpoint='/api/report'" },
+  { key: "Reporting-Endpoints", value: "endpoint=/api/report" },
 ]
 
 const nextConfig = {

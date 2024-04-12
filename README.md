@@ -185,8 +185,8 @@ déjà mise en place dans le volume Postgres :
 
 Il faut alors vérifier que Hasura a **bien fini de démarrer avant de passer à
 l'étape suivante**. Une bonne manière de s'en assurer est de lancer
-l'**interface web** : `hasura console` après avoir installé `hasura-cli`. Le démarrage complet peut prendre
-**plusieurs minutes**.
+l'**interface web** : `hasura console` après avoir installé `hasura-cli`. Le
+démarrage complet peut prendre **plusieurs minutes**.
 
 #### Seed de données
 

@@ -181,12 +181,12 @@ déjà mise en place dans le volume Postgres :
 
 - lors de la **première mise en place** de l'environnement
 - après avoir **manuellement supprimé** le volume (par exemple
-  `docker-compose down --volumes`)
+  `docker compose down --volumes`)
 
 Il faut alors vérifier que Hasura a **bien fini de démarrer avant de passer à
 l'étape suivante**. Une bonne manière de s'en assurer est de lancer
-l'**interface web** : `hasura console`. Le démarrage complet peut prendre
-**plusieurs minutes**.
+l'**interface web** : `hasura console` après avoir installé `hasura-cli`. Le
+démarrage complet peut prendre **plusieurs minutes**.
 
 #### Seed de données
 

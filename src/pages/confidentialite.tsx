@@ -57,6 +57,11 @@ const Confidentialite = () => {
           au sens de l’article 6-1 e) du RPGD.
         </li>
       </ul>
+      <p>
+        Cette mission d’intérêt public se traduit en pratique par l’arrêté du 27
+        décembre 2019 portant organisation de la direction du numérique,
+        notamment son article 2.
+      </p>
       <h2>Pendant combien de temps conservons-nous ces données ?</h2>
       <table>
         <thead>
@@ -165,7 +170,7 @@ const Confidentialite = () => {
             <td>Hébergement</td>
             <td>
               <a href="https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf">
-                https://storage.gra.cloud.ovh.net/v1/AUTH_325716a587c64897acbef9a4a4726e38/contracts/9e74492-OVH_Data_Protection_Agreement-FR-6.0.pdf
+                https://us.ovhcloud.com/legal/data-processing-agreement/
               </a>
             </td>
           </tr>

@@ -10,7 +10,6 @@ app:
       memory: 1Gi
   autoscale:
     enabled: true
-    minReplicas: 2
 
 hasura:
   resources:
@@ -22,7 +21,6 @@ hasura:
       memory: 2Gi
   autoscale:
     enabled: true
-    minReplicas: 2
 
 jobs:
   runs:

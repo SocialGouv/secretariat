@@ -1,6 +1,8 @@
 fileignoreconfig:
 - filename: .env.sample
   checksum: 0f628c927f046a71318bc0060e8a2c5e3d57b6de629da73ec57e909ad127cbdd
+- filename: .github/workflows/release.yml
+  checksum: 3cbe51a05b23ab62e35d5a6a54b414c56c8891f776bfa254c02b7cbeab138cfa
 - filename: .kontinuous/env/dev/templates/sentry.sealed-secret.yaml
   checksum: 6b3eb493305a8c3d24402c99d7a20b01b6650e7fedb2782648c539a70adc4088
 - filename: .kontinuous/env/preprod/templates/sentry.sealed-secret.yaml

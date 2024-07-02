@@ -5,6 +5,14 @@
 
 * autoscale prod ([#636](https://github.com/SocialGouv/secretariat/issues/636)) ([3814cd1](https://github.com/SocialGouv/secretariat/commit/3814cd161dd1b6115b37785ae9fde73ce2c72784))
 
+## [1.57.19](https://github.com/SocialGouv/secretariat/compare/v1.57.18...v1.57.19) (2024-07-02)
+
+
+### Bug Fixes
+
+* other change ([b6b2ecf](https://github.com/SocialGouv/secretariat/commit/b6b2ecf056a1e64a3687eeed82bdb558ca1b19d4))
+* release-please ([1125e51](https://github.com/SocialGouv/secretariat/commit/1125e51d0281a907e1ae0e4c592017a2eeb71f51))
+
 ## [1.57.17](https://github.com/SocialGouv/secretariat/compare/v1.57.16...v1.57.17) (2024-04-29)
 
 

@@ -1,3 +1,13 @@
+## [1.57.21](https://github.com/SocialGouv/secretariat/compare/v1.57.20...v1.57.21) (2024-07-02)
+
+
+### Bug Fixes
+
+* permissions for GITHUB_TOKEN ([c7a14c2](https://github.com/SocialGouv/secretariat/commit/c7a14c2e002d5e9007e8270c3534f0c14eebdec4))
+* restore initial release process ([9966cbc](https://github.com/SocialGouv/secretariat/commit/9966cbca1cfc47f7544ee7beb9188ee0d2da522d))
+* without perms ([2eb64af](https://github.com/SocialGouv/secretariat/commit/2eb64af82c80af68c08506abc2308e4858d94278))
+* without ssh key ([37b2e07](https://github.com/SocialGouv/secretariat/commit/37b2e079aac94dff96e15818845bdec0e65c074c))
+
 ## [1.57.20](https://github.com/SocialGouv/secretariat/compare/v1.57.19...v1.57.20) (2024-07-02)
 
 

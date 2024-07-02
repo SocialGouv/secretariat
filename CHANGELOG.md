@@ -1,3 +1,10 @@
+## [1.57.20](https://github.com/SocialGouv/secretariat/compare/v1.57.19...v1.57.20) (2024-07-02)
+
+
+### Bug Fixes
+
+* workflow dispatch ([401fa3f](https://github.com/SocialGouv/secretariat/commit/401fa3ff5abaeaf9db81844e624367c00463966d))
+
 ## [1.57.18](https://github.com/SocialGouv/secretariat/compare/v1.57.17...v1.57.18) (2024-06-10)
 
 

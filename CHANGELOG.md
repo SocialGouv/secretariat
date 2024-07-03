@@ -1,3 +1,10 @@
+## [1.57.22](https://github.com/SocialGouv/secretariat/compare/v1.57.21...v1.57.22) (2024-07-03)
+
+
+### Bug Fixes
+
+* Secretariat update resources ([#644](https://github.com/SocialGouv/secretariat/issues/644)) ([ad0c977](https://github.com/SocialGouv/secretariat/commit/ad0c977ba20399837016a139855f577a4d246391))
+
 ## [1.57.21](https://github.com/SocialGouv/secretariat/compare/v1.57.20...v1.57.21) (2024-07-02)
 
 

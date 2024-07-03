@@ -3,22 +3,22 @@ app:
     ENV: prod
   resources:
     requests:
-      cpu: 50m
-      memory: 500Mi
-    limits:
       cpu: 100m
-      memory: 1Gi
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 386Mi
   autoscale:
     enabled: true
 
 hasura:
   resources:
     requests:
-      cpu: 500m
-      memory: 1Gi
+      cpu: 100m
+      memory: 512Mi
     limits:
-      cpu: 1000m
-      memory: 2Gi
+      cpu: 200m
+      memory: 1Gi
   autoscale:
     enabled: true
 

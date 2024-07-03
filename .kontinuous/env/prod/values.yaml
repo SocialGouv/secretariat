@@ -31,3 +31,12 @@ jobs:
         buildArgs:
           NEXT_PUBLIC_MATOMO_SITE_ID: "82"
           NEXT_PUBLIC_MATOMO_URL: "https://matomo.fabrique.social.gouv.fr/"
+
+pg:
+  cnpg-cluster:
+    resources:
+      requests:
+        memory: 1Gi
+      limits:
+        cpu: "1"
+        memory: 1Gi

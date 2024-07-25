@@ -41,7 +41,7 @@
     "sharp": "0.30.7",
     "spinthatshit": "1.0.4",
     "swr": "1.2.2",
-    "zod": "3.21.4"
+    "zod": "3.22.3"
   },
   "resolutions": {
     "async": "3.2.4",

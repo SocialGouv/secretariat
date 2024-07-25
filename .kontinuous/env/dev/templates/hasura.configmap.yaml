@@ -4,7 +4,7 @@ metadata:
   name: hasura-configmap
 data:
   # Config
-  HASURA_GRAPHQL_ENABLE_CONSOLE: "false"
+  HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
   HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
   HASURA_GRAPHQL_ENABLED_LOG_TYPES: "startup, http-log, webhook-log, websocket-log, query-log"
   HASURA_GRAPHQL_LOG_LEVEL: "debug"

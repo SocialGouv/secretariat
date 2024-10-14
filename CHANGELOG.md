@@ -1,3 +1,11 @@
+## [1.57.23](https://github.com/SocialGouv/secretariat/compare/v1.57.22...v1.57.23) (2024-10-14)
+
+
+### Bug Fixes
+
+* release with fine grained ([ef4a498](https://github.com/SocialGouv/secretariat/commit/ef4a498978f8eb284b0197510f7e078ab60cd71b))
+* release with GITHUB_TOKEN ([d4e4b26](https://github.com/SocialGouv/secretariat/commit/d4e4b26bac6a4916bf71475d10df5addc2de5126))
+
 ## [1.57.22](https://github.com/SocialGouv/secretariat/compare/v1.57.21...v1.57.22) (2024-07-03)
 
 

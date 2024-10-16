@@ -14,17 +14,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          persist-credentials: false 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+          persist-credentials: false
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
         with:
-          node-version: "lts/*"
-      - name: Install additional semantic-release plugins
-        run:
-          npm i --save=false semantic-release @socialgouv/releaserc
-          @semantic-release/changelog @semantic-release/git
-          @semantic-release/npm
-      - name: Release
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            @semantic-release/npm
+          extends: |
+            @socialgouv/releaserc
         env:
           GITHUB_TOKEN: ${{ secrets.FINE_GRAIN_TOKEN_TEST }}
-        run: npx semantic-release --extends @socialgouv/releaserc

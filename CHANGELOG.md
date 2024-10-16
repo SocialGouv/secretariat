@@ -1,3 +1,10 @@
+## [1.57.30](https://github.com/SocialGouv/secretariat/compare/v1.57.29...v1.57.30) (2024-10-16)
+
+
+### Bug Fixes
+
+* bump ([7d49234](https://github.com/SocialGouv/secretariat/commit/7d4923457f6cdbe849c2525651b9c27b411e9715))
+
 ## [1.57.26](https://github.com/SocialGouv/secretariat/compare/v1.57.25...v1.57.26) (2024-10-16)
 
 

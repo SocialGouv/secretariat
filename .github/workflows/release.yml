@@ -17,12 +17,6 @@ jobs:
           persist-credentials: false
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
-        with:
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-            @semantic-release/npm
-          extends: |
-            @socialgouv/releaserc
-        env:
-          GITHUB_TOKEN: ${{ secrets.FINE_GRAIN_TOKEN_TEST }}
+        # with:
+        #   extra_plugins: |
+        #     @semantic-release/github

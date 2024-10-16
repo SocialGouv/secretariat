@@ -21,4 +21,4 @@ jobs:
         #   extra_plugins: |
         #     @semantic-release/github
         env:
-          GITHUB_TOKEN: ${{ secrets.FINE_GRAIN_TOKEN_TEST }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

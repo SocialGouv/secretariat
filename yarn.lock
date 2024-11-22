@@ -7838,9 +7838,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:4.20.1":
-  version: 4.20.1
-  resolution: "next-auth@npm:4.20.1"
+"next-auth@npm:4.24.5":
+  version: 4.24.5
+  resolution: "next-auth@npm:4.24.5"
   dependencies:
     "@babel/runtime": "npm:^7.20.13"
     "@panva/hkdf": "npm:^1.0.2"
@@ -7852,14 +7852,14 @@ __metadata:
     preact-render-to-string: "npm:^5.1.19"
     uuid: "npm:^8.3.2"
   peerDependencies:
-    next: ^12.2.5 || ^13
+    next: ^12.2.5 || ^13 || ^14
     nodemailer: ^6.6.5
     react: ^17.0.2 || ^18
     react-dom: ^17.0.2 || ^18
   peerDependenciesMeta:
     nodemailer:
       optional: true
-  checksum: cba05db9ea5825d2e4d0e3570c196ee41ecd13c1f102e0efdb4c7154875fbc23fd13c1bc2d99d42a01e17ba4c4b18b526c745cf807b94d9d3120bb292358819b
+  checksum: c9256deaa7a77741be2c8829c290c43c63fd8fa86ace3196910d3fa4389c101d6a610f3c5f4b55000e766a51dd89eafc9b5cd876e373884db3bf90122fdfa6a1
   languageName: node
   linkType: hard
 
@@ -9668,7 +9668,7 @@ __metadata:
     lodash: "npm:4.17.21"
     msw: "npm:2.0.8"
     next: "npm:12.3.4"
-    next-auth: "npm:4.20.1"
+    next-auth: "npm:4.24.5"
     node-mocks-http: "npm:1.12.1"
     node-talisman: "npm:1.29.7"
     ovh: "npm:2.0.3"

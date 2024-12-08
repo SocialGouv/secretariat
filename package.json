@@ -22,7 +22,7 @@
     "graphql-request": "3.7.0",
     "jsonwebtoken": "9.0.0",
     "lodash": "4.17.21",
-    "next": "12.3.4",
+    "next": "13.5.0",
     "next-auth": "4.20.1",
     "ovh": "2.0.3",
     "p-debounce": "2.1.0",

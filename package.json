@@ -44,7 +44,7 @@
     "zod": "3.21.4"
   },
   "resolutions": {
-    "async": "3.2.4",
+    "async": "3.2.6",
     "@types/react": "17.0.53"
   },
   "scripts": {

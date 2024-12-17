@@ -1,3 +1,10 @@
+## [1.57.35](https://github.com/SocialGouv/secretariat/compare/v1.57.34...v1.57.35) (2024-12-17)
+
+
+### Bug Fixes
+
+* oblik hasura min req ([9e5cc10](https://github.com/SocialGouv/secretariat/commit/9e5cc10e4389e5c253769f713d28e393cb8a9601))
+
 ## [1.57.34](https://github.com/SocialGouv/secretariat/compare/v1.57.33...v1.57.34) (2024-12-17)
 
 

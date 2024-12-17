@@ -15,6 +15,9 @@ app:
 
 hasura:
   ~needs: [pg, build-hasura]
+  annotations:
+    "oblik.socialgouv.io/min-request-memory": 1Gi
+    "oblik.socialgouv.io/min-request-cpu": 300m
   envFrom:
     - secretRef:
         name: hasura

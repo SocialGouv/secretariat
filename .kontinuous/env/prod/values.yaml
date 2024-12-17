@@ -1,24 +1,38 @@
 app:
+  labels:
+    oblik.socialgouv.io/enabled: "true"
+  annotations:
+    oblik.socialgouv.io/increase-request-cpu-algo: "ratio"
+    oblik.socialgouv.io/increase-request-cpu-value: "0.1"
+    oblik.socialgouv.io/increase-request-memory-algo: "ratio"
+    oblik.socialgouv.io/increase-request-memory-value: "0.1"
   vars:
     ENV: prod
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 200m
-      memory: 386Mi
+  # resources:
+  #   requests:
+  #     cpu: 100m
+  #     memory: 256Mi
+  #   limits:
+  #     cpu: 200m
+  #     memory: 386Mi
   autoscale:
     enabled: true
 
 hasura:
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-    limits:
-      cpu: 200m
-      memory: 1Gi
+  labels:
+    oblik.socialgouv.io/enabled: "true"
+  annotations:
+    oblik.socialgouv.io/increase-request-cpu-algo: "ratio"
+    oblik.socialgouv.io/increase-request-cpu-value: "0.1"
+    oblik.socialgouv.io/increase-request-memory-algo: "ratio"
+    oblik.socialgouv.io/increase-request-memory-value: "0.1"
+  # resources:
+  #   requests:
+  #     cpu: 100m
+  #     memory: 512Mi
+  #   limits:
+  #     cpu: 200m
+  #     memory: 1Gi
   autoscale:
     enabled: true
 

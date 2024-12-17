@@ -1,3 +1,10 @@
+## [1.57.34](https://github.com/SocialGouv/secretariat/compare/v1.57.33...v1.57.34) (2024-12-17)
+
+
+### Bug Fixes
+
+* oblik enable ([#650](https://github.com/SocialGouv/secretariat/issues/650)) ([82b3bcd](https://github.com/SocialGouv/secretariat/commit/82b3bcd3a350759da06cd9cd33c6003c7335ffd8))
+
 ## [1.57.33](https://github.com/SocialGouv/secretariat/compare/v1.57.32...v1.57.33) (2024-10-16)
 
 

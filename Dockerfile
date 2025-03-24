@@ -29,6 +29,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 # build
 RUN --mount=type=secret,id=sentry_auth_token export SENTRY_AUTH_TOKEN="$(cat /run/secrets/sentry_auth_token)"; \
+  export SENTRY_ALLOW_FAILURE=true; \
   yarn build
 
 # Production image, copy all the files and run next

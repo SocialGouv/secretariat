@@ -15,10 +15,16 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Get GitHub App Token
+        id: token
+        uses: SocialGouv/token-bureau@main
+        with:
+          token-bureau-url: https://token-bureau.fabrique.social.gouv.fr
+          audience: socialgouv
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         with:
           extends: |
             @socialgouv/releaserc
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.token.outputs.token }}

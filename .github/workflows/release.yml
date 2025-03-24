@@ -5,6 +5,9 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  id-token: write
+
 jobs:
   release:
     name: Release

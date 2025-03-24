@@ -22,7 +22,7 @@
     "graphql-request": "3.7.0",
     "jsonwebtoken": "9.0.0",
     "lodash": "4.17.21",
-    "next": "12.3.4",
+    "next": "^12.3.5",
     "next-auth": "4.20.1",
     "ovh": "2.0.3",
     "p-debounce": "2.1.0",
@@ -45,7 +45,13 @@
   },
   "resolutions": {
     "async": "3.2.4",
-    "@types/react": "17.0.53"
+    "@types/react": "17.0.53",
+    "@next/swc-android-arm-eabi": "12.3.4",
+    "@next/swc-android-arm64": "12.3.4",
+    "@next/swc-darwin-x64": "12.3.4",
+    "@next/swc-freebsd-x64": "12.3.4",
+    "@next/swc-linux-arm64-gnu": "12.3.4",
+    "@next/swc-linux-arm64-musl": "12.3.4"
   },
   "scripts": {
     "dev": "FORCE_COLOR=true next dev | pino-pretty",

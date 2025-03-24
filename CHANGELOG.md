@@ -1,3 +1,12 @@
+## [1.57.36](https://github.com/SocialGouv/secretariat/compare/v1.57.35...v1.57.36) (2025-03-24)
+
+
+### Bug Fixes
+
+* **ci:** add token-bureau ([d92cd2d](https://github.com/SocialGouv/secretariat/commit/d92cd2de622a862207495dcd4844ac9f2ccef7d4))
+* token-bureau ([18bf423](https://github.com/SocialGouv/secretariat/commit/18bf423b38820770d385de3b3010a2195ce83299))
+* up next (fix CVE) ([#652](https://github.com/SocialGouv/secretariat/issues/652)) ([55d6d78](https://github.com/SocialGouv/secretariat/commit/55d6d7870ecd1a8ed4a856e52dcb1c7465144634))
+
 ## [1.57.35](https://github.com/SocialGouv/secretariat/compare/v1.57.34...v1.57.35) (2024-12-17)
 
 

@@ -77,20 +77,20 @@ const nextConfig = {
   },
 }
 
-const sentryWebpackPluginOptions = {
-  org: "incubateur",
-  project: "secretariat",
-  url: "https://sentry.fabrique.social.gouv.fr/",
-  release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-}
+// const sentryWebpackPluginOptions = {
+//   org: "incubateur",
+//   project: "secretariat",
+//   url: "https://sentry.fabrique.social.gouv.fr/",
+//   release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
+// }
 
-const sentryOptions = {
-  widenClientFileUpload: true,
-  hideSourceMaps: true,
-}
+// const sentryOptions = {
+//   widenClientFileUpload: true,
+//   hideSourceMaps: true,
+// }
 
 module.exports = withSentryConfig(
-  nextConfig,
-  sentryWebpackPluginOptions,
-  sentryOptions
+  nextConfig
+  // sentryWebpackPluginOptions,
+  // sentryOptions
 )

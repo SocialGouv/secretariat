@@ -1,3 +1,10 @@
+## [1.57.37](https://github.com/SocialGouv/secretariat/compare/v1.57.36...v1.57.37) (2025-06-30)
+
+
+### Bug Fixes
+
+* buildkit in gh ([#653](https://github.com/SocialGouv/secretariat/issues/653)) ([821826a](https://github.com/SocialGouv/secretariat/commit/821826a63c17f682240f8ddfcd2ad44eb95584ed))
+
 ## [1.57.36](https://github.com/SocialGouv/secretariat/compare/v1.57.35...v1.57.36) (2025-03-24)
 
 

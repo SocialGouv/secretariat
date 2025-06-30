@@ -3,7 +3,6 @@ global:
   pgUser: secretariat
 
 app:
-  ~needs: [build-app]
   envFrom:
     - secretRef:
         name: app
@@ -14,7 +13,7 @@ app:
   imagePackage: app
 
 hasura:
-  ~needs: [pg, build-hasura]
+  ~needs: [pg]
   annotations:
     "oblik.socialgouv.io/min-request-memory": 1Gi
     "oblik.socialgouv.io/min-request-cpu": 300m
@@ -28,26 +27,3 @@ hasura:
 
 pg:
   ~chart: pg
-
-jobs:
-  runs:
-    build-app:
-      use: build
-      with:
-        imagePackage: app
-        buildArgs:
-          NEXT_PUBLIC_HASURA_URL:
-            "https://hasura-{{ .Values.global.host }}/v1/graphql"
-          NEXT_PUBLIC_SENTRY_DSN: "https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85"
-          NEXT_PUBLIC_SENTRY_ENVIRONMENT: "{{ .Values.global.env }}"
-          NEXT_PUBLIC_SENTRY_RELEASE: "{{ .Values.global.imageTag }}"
-        secrets:
-          sentry_auth_token:
-            secretName: sentry
-            secretKey: SENTRY_AUTH_TOKEN
-
-    build-hasura:
-      use: build
-      with:
-        imagePackage: hasura
-        context: ./packages/hasura

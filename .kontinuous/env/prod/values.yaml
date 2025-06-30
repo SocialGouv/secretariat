@@ -36,16 +36,6 @@ hasura:
   autoscale:
     enabled: true
 
-jobs:
-  runs:
-    build-app:
-      use: build
-      with:
-        imagePackage: app
-        buildArgs:
-          NEXT_PUBLIC_MATOMO_SITE_ID: "82"
-          NEXT_PUBLIC_MATOMO_URL: "https://matomo.fabrique.social.gouv.fr/"
-
 pg:
   cnpg-cluster:
     resources:

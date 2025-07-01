@@ -1,3 +1,10 @@
+## [1.57.38](https://github.com/SocialGouv/secretariat/compare/v1.57.37...v1.57.38) (2025-07-01)
+
+
+### Bug Fixes
+
+* **ci:** subdomain typo ([b1f086b](https://github.com/SocialGouv/secretariat/commit/b1f086b83aa85b9a21c6cd7edd1410f87f71e014))
+
 ## [1.57.37](https://github.com/SocialGouv/secretariat/compare/v1.57.36...v1.57.37) (2025-06-30)
 
 

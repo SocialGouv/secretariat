@@ -49,7 +49,7 @@ jobs:
           buildkit-svc-count: ${{ vars.BUILDKIT_SVC_COUNT }}
           buildkit-daemon-address: ${{ vars.BUILDKIT_DAEMON_ADDRESS }}
           build-args: |
-            NEXT_PUBLIC_HASURA_URL=https://${{ steps.env.outputs.subdomain_hasura }}/v1/graphql
+            NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat-preprod.ovh.fabrique.social.gouv.fr/v1/graphql
             NEXT_PUBLIC_SENTRY_DSN=https://1fc6ed945722444583d4238af34346a9@sentry.fabrique.social.gouv.fr/85
             NEXT_PUBLIC_SENTRY_ENVIRONMENT=preproduction
             NEXT_PUBLIC_SENTRY_RELEASE=${{ github.sha }}

@@ -1,3 +1,10 @@
+## [1.57.39](https://github.com/SocialGouv/secretariat/compare/v1.57.38...v1.57.39) (2025-10-01)
+
+
+### Bug Fixes
+
+* change noreply email address ([f3baac7](https://github.com/SocialGouv/secretariat/commit/f3baac79e83fb808229f9d9b722a86d003febef4))
+
 ## [1.57.38](https://github.com/SocialGouv/secretariat/compare/v1.57.37...v1.57.38) (2025-07-01)
 
 

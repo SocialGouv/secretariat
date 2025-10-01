@@ -62,11 +62,11 @@ const sendEmail = async (
       msg: {
         from: {
           personalName: "Fabrique Numérique des Ministères Sociaux",
-          address: "noreply@fabrique.social.gouv.fr",
+          address: "noreply@secretariat.fabrique.social.gouv.fr",
         },
         replyTo: {
           personalName: "Fabrique Numérique des Ministères Sociaux",
-          address: "noreply@fabrique.social.gouv.fr",
+          address: "noreply@secretariat.fabrique.social.gouv.fr",
         },
         subject,
         text: text(textBody),

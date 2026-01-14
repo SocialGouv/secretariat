@@ -9698,7 +9698,7 @@ __metadata:
     typescript: "npm:4.9.5"
     vitest: "npm:1.0.4"
     whatwg-fetch: "npm:3.6.2"
-    zod: "npm:3.21.4"
+    zod: "npm:3.22.3"
   languageName: unknown
   linkType: soft
 
@@ -11591,9 +11591,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:3.21.4":
-  version: 3.21.4
-  resolution: "zod@npm:3.21.4"
-  checksum: 03c79fa4610a35e24119771970be764c6e177a271a225587f86a7fc35d55e94a154d8e1970d23ffe35b567c147262bedbcb53b31aa30eeef2493fbd13e1b4aca
+"zod@npm:3.22.3":
+  version: 3.22.3
+  resolution: "zod@npm:3.22.3"
+  checksum: 3aad6e6b61ddceaeb887dccc5f747903e619b09dfd208f6dc30eef15edf3942b8e6cd97a08e080c9c8723575446941edb823a8881c512e00e8dd3085f20659cc
   languageName: node
   linkType: hard
